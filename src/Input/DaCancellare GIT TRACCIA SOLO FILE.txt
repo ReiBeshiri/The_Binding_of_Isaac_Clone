@@ -1,2 +1,0 @@
-GIT TRACCIA SOLO FILE
-Cancellare SOLO se è presente qualcos'altro nella cartella corrente
