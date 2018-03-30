@@ -25,10 +25,16 @@ public abstract class AbstractCharacter implements Animated {
     /**
      * 
      * @param dt
+     *            DeltaTime to perform move.
      */
-    protected abstract void move(int dt);
+    protected abstract void move(final int dt);
 
-    protected abstract Bullet shot();
+    /**
+     * 
+     * @param direction
+     * @return new Bullet, that depend on the type of enemy.
+     */
+    protected abstract Bullet shot(final Command direction);
 
     /**
      * 
@@ -51,7 +57,7 @@ public abstract class AbstractCharacter implements Animated {
      */
     @Override
     public void update(final int dt, final List<Command> movements) {
-
+        move(dt);
     }
 
     /**
