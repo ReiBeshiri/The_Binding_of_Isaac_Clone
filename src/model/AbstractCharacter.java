@@ -2,6 +2,8 @@ package model;
 
 import java.util.List;
 
+import input.Command;
+
 /**
  * Abstract class for character that can move or shot.
  * 
@@ -27,14 +29,15 @@ public abstract class AbstractCharacter implements Animated {
      * @param dt
      *            DeltaTime to perform move.
      */
-    protected abstract void move(final int dt);
+    protected abstract void move(int dt);
 
     /**
      * 
      * @param direction
+     *            Direction where bullet need to spawn.
      * @return new Bullet, that depend on the type of enemy.
      */
-    protected abstract Bullet shot(final Command direction);
+    protected abstract Bullet shot(Command direction);
 
     /**
      * 

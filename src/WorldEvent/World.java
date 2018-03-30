@@ -2,6 +2,9 @@ package worldevent;
 
 import java.util.List;
 
+import model.Enemy;
+import model.Player;
+
 /**
  * Interface.
  * World
