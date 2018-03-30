@@ -9,21 +9,27 @@ import java.util.List;
 public abstract class AbstractCharacter implements Animated {
     private final double velocity;
     private final int life;
+
     /**
      * 
-     * @param v Velocity of this object.
-     * @param life Life of this player.
+     * @param v
+     *            Velocity of this object.
+     * @param life
+     *            Life of this player.
      */
     public AbstractCharacter(final double v, final int life) {
         velocity = v;
         this.life = life;
     }
+
     /**
      * 
      * @param dt
      */
-    protected abstract void move (int dt);
+    protected abstract void move(int dt);
+
     protected abstract Bullet shot();
+
     /**
      * 
      */
@@ -31,6 +37,7 @@ public abstract class AbstractCharacter implements Animated {
     public double getVel() {
         return velocity;
     }
+
     /**
      * 
      */
@@ -38,6 +45,7 @@ public abstract class AbstractCharacter implements Animated {
     public void setVel(final double vel) {
         velocity = vel;
     }
+
     /**
      * 
      */
@@ -45,6 +53,7 @@ public abstract class AbstractCharacter implements Animated {
     public void update(final int dt, final List<Command> movements) {
 
     }
+
     /**
      * 
      * @return Life of the entity.
@@ -52,9 +61,11 @@ public abstract class AbstractCharacter implements Animated {
     public int getLife() {
         return life;
     }
+
     /**
      * 
-     * @param dec life to dec.
+     * @param dec
+     *            life to dec.
      */
     public void decLife(final int dec) {
         life -= dec;

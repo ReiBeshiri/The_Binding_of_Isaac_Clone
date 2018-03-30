@@ -1,4 +1,4 @@
-package WorldEvent;
+package worldevent;
 
 import java.util.List;
 
