@@ -6,14 +6,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Play" />
-            <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Options" />
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="41.0" mnemonicParsing="false" text="Exit" />
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#playButtonClick" text="Play" />
+            <Button fx:id="optionsButton" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#optionsButtonClick" text="Options" />
+            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#exitButtonClick" text="Exit" />
          </children>
       </VBox>
    </center>
@@ -37,8 +36,8 @@
    <right>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Help" />
-            <Button mnemonicParsing="false" text="Credits" />
+            <Button fx:id="helpButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#helpButtonClick" text="Help" />
+            <Button fx:id="CreditsButton" mnemonicParsing="false" onAction="#CreditsButtonClick" text="Credits" />
          </children>
       </VBox>
    </right>
