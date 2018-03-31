@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Play" />
+            <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Options" />
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="41.0" mnemonicParsing="false" text="Exit" />
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <Label alignment="CENTER" text="Leaderboard" BorderPane.alignment="CENTER" />
+         </left>
+         <top>
+            <Label text="Kill To Survive" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </top>
+      </BorderPane>
+   </top>
+   <right>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Help" />
+            <Button mnemonicParsing="false" text="Credits" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
