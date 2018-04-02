@@ -9,8 +9,8 @@ import input.Command;
  * 
  */
 public abstract class AbstractCharacter implements Animated {
-    private final double velocity;
-    private final int life;
+    private double velocity;
+    private int life;
 
     /**
      * 
@@ -28,8 +28,10 @@ public abstract class AbstractCharacter implements Animated {
      * 
      * @param dt
      *            DeltaTime to perform move.
+     * @param movements
+     *            List of pressed keys for movements.
      */
-    protected abstract void move(int dt);
+    protected abstract void move(int dt, List<Command> movements);
 
     /**
      * 
@@ -60,7 +62,7 @@ public abstract class AbstractCharacter implements Animated {
      */
     @Override
     public void update(final int dt, final List<Command> movements) {
-        move(dt);
+        move(dt, movements);
     }
 
     /**

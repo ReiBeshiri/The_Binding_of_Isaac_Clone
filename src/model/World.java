@@ -1,4 +1,4 @@
-package worldevent;
+package model;
 
 import java.util.List;
 
