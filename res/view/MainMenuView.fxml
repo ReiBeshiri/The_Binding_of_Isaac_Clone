@@ -19,20 +19,6 @@
    <left>
       <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </left>
-   <top>
-      <BorderPane BorderPane.alignment="CENTER">
-         <left>
-            <Label alignment="CENTER" text="Leaderboard" BorderPane.alignment="CENTER" />
-         </left>
-         <top>
-            <Label text="Kill To Survive" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </top>
-      </BorderPane>
-   </top>
    <right>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -41,4 +27,20 @@
          </children>
       </VBox>
    </right>
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label prefWidth="375.0" text="Leaderboard">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label text="Kill To Survive" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
