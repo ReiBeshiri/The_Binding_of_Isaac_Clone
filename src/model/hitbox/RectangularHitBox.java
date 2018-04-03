@@ -37,7 +37,7 @@ public class RectangularHitBox extends AbstractHitBox {
      *
      * @return Return weight of rect.
      */
-    public double getWeight() {
+    public double getWidth() {
         return weight;
     }
 
