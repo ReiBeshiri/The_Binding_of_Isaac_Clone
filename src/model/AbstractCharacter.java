@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import input.Command;
+import model.hitbox.HitBox;
 
 /**
  * Abstract class for character that can move or shot.
@@ -11,6 +12,7 @@ import input.Command;
 public abstract class AbstractCharacter implements Animated {
     private double velocity;
     private int life;
+    private HitBox hitBox;
 
     /**
      * 
@@ -18,10 +20,13 @@ public abstract class AbstractCharacter implements Animated {
      *            Velocity of this object.
      * @param life
      *            Life of this player.
+     * @param h
+     *            HitBox of object.
      */
-    public AbstractCharacter(final double v, final int life) {
+    public AbstractCharacter(final double v, final int life, final HitBox h) {
         velocity = v;
         this.life = life;
+        hitBox = h;
     }
 
     /**
@@ -80,5 +85,21 @@ public abstract class AbstractCharacter implements Animated {
      */
     public void decLife(final int dec) {
         life -= dec;
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hitBox;
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public void setHitBox(final HitBox hBox) {
+        hitBox = hBox;
     }
 }
