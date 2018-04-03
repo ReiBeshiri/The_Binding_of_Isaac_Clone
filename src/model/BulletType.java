@@ -26,21 +26,22 @@ public enum BulletType {
         this.range=range;
         this.steps=steps;
     }
-    /*
+    /**
+     * /*
      * Get the value of the damage
      * @return The damage made by the bullet
      */
     public double getDamage() {
         return damage;
     }
-    /*     
+    /**
      * Get the value of the range
      * @return The range of the bullet
      */
     public double getRange() {
         return range;
     }
-    /*
+    /**
      * Get the value of the steps
      * @return The steps of the bullet
      */
