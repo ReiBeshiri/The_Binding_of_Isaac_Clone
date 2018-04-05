@@ -19,19 +19,19 @@ public enum Command {
      * 
      */
     DOWN(180);
-    private final int angle;
+    private final double angle;
     /**
      * 
      * @param angle
      */
-    Command(final int angle) {
+    Command(final double angle) {
         this.angle = angle;
     }
     /**
      * 
      * @return angle.
      */
-    public int getAngle() {
+    public double getAngle() {
         return angle;
     }
 }
