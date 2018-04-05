@@ -111,7 +111,7 @@ public interface World {
      * @param btn
      *          the button to add
      */
-    void addButton(Button btn);
+    void addButton(ButtonRoom btn);
     /**
      * 
      * °°°°°° da rivedere, non sono sicuro °°°°°°.
@@ -120,4 +120,16 @@ public interface World {
      * When an enemy could shot this method will be called in the update
      */
     void refreshShotRatio();
+    /**
+     * change button state.
+     * @param effect
+     *          true the button will be activated, false otherwise.
+     */
+    void setButton(boolean effect);
+    /**
+     * World will keep track of the commands pressed by the user (updateMethod will update this list). 
+     * @return  the list of the commands pressed by the user
+     * 
+     */
+    List<Command> getCommandList();
 }
