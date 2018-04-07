@@ -35,7 +35,7 @@ public interface World {
      * @param player
      *          set the playable character
      */
-    void setPlayer(Player player);
+    void setPlayer(PlayerImpl player);
     /**
      * This method set the next round to be played.
      * 
@@ -104,7 +104,7 @@ public interface World {
      * 
      * @return Return the Player Object
      */
-    Player getPlayer();
+    PlayerImpl getPlayer();
     /**
      * Add a Button to the World.
      * 
