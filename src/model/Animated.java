@@ -1,9 +1,5 @@
 package model;
 
-import java.util.List;
-
-import input.Command;
-
 /**
  * 
  *
@@ -26,9 +22,8 @@ public interface Animated extends GameObject {
      * 
      * @param dt
      *            DeltaTime to update position depending of time.
-     * @param movements
-     *            list of movements pressed from the player.
+     * 
      */
-    void update(int dt, List<Command> movements);
+    void update(int dt);
 
 }

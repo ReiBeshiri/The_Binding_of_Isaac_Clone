@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 import input.Command;
 import model.hitbox.HitBox;
 
@@ -33,10 +31,8 @@ public abstract class AbstractCharacter implements Animated {
      * 
      * @param dt
      *            DeltaTime to perform move.
-     * @param movements
-     *            List of pressed keys for movements.
      */
-    protected abstract void move(int dt, List<Command> movements);
+    protected abstract void move(int dt);
 
     /**
      * 
@@ -47,7 +43,7 @@ public abstract class AbstractCharacter implements Animated {
     protected abstract Bullet shot(Command direction);
 
     /**
-     * 
+     * Get vel.
      */
     @Override
     public double getVel() {
@@ -55,7 +51,7 @@ public abstract class AbstractCharacter implements Animated {
     }
 
     /**
-     * 
+     * Setter for vel.
      */
     @Override
     public void setVel(final double vel) {
@@ -63,15 +59,15 @@ public abstract class AbstractCharacter implements Animated {
     }
 
     /**
-     * 
+     * Update the state of entity.
      */
     @Override
-    public void update(final int dt, final List<Command> movements) {
-        move(dt, movements);
+    public void update(final int dt) {
+        move(dt);
     }
 
     /**
-     * 
+     * Return life of the entity.
      * @return Life of the entity.
      */
     public int getLife() {
@@ -88,7 +84,7 @@ public abstract class AbstractCharacter implements Animated {
     }
 
     /**
-     * 
+     * Return HitBox.
      */
     @Override
     public HitBox getHitBox() {
@@ -96,7 +92,7 @@ public abstract class AbstractCharacter implements Animated {
     }
 
     /**
-     * 
+     * Set HitBox. Used for perform movement.
      */
     @Override
     public void setHitBox(final HitBox hBox) {
