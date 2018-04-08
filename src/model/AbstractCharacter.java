@@ -14,6 +14,7 @@ public abstract class AbstractCharacter implements Animated {
     private int life;
     private HitBox hitBox;
     private final AI ai;
+
     /**
      * 
      * @param v
@@ -73,6 +74,7 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * Return life of the entity.
+     * 
      * @return Life of the entity.
      */
     public int getLife() {
@@ -103,8 +105,10 @@ public abstract class AbstractCharacter implements Animated {
     public void setHitBox(final HitBox hBox) {
         hitBox = hBox;
     }
+
     /**
      * Method to expose the AI only to subclass.
+     * 
      * @return AI.
      */
     protected AI getAI() {

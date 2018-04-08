@@ -9,9 +9,13 @@ import model.hitbox.HitBox;
 public interface MovementStrategy {
     /**
      * Method to perform move.
-     * @param dt Delta time.
-     * @param vel Velocity.
-     * @param h HitBox of entity that require movement.
+     * 
+     * @param dt
+     *            Delta time.
+     * @param vel
+     *            Velocity.
+     * @param h
+     *            HitBox of entity that require movement.
      * @return HitBox in new position of entity.
      */
     HitBox move(int dt, double vel, CircleHitBox h);
