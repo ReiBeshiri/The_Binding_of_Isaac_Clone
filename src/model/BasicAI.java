@@ -5,14 +5,14 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 
 /**
- * This class represent the player logic to shoot and move.
+ * This class represent the generic logic to shoot and move.
  *
  */
 public class BasicAI implements AI {
     private final MovementStrategy movementStrategy;
     private final BulletStrategy  bulletStrategy; //Strategy for bullet...
     /**
-     * Constructor of PlayerAI.
+     * Constructor of basic AI.
      * @param m Strategy of movement.
      * @param b Strategy for bullet.
      */
@@ -21,7 +21,7 @@ public class BasicAI implements AI {
         bulletStrategy = b;
     }
     /**
-     * Player movement.
+     * Generic movement.
      * 
      */
     @Override
@@ -29,7 +29,7 @@ public class BasicAI implements AI {
         return movementStrategy.move(dt, vel, hBox);
     }
     /**
-     * Player shoot.
+     * Generic shoot.
      * 
      * Note: We can add params to add personalization of shoot type (range, dmg) ecc...
      */
