@@ -7,7 +7,9 @@ import model.hitbox.HitBox;
 /**
  * Interface that represent AI for entity in game. 
  * This interface encapsulate the movement logic and the shoot logic. 
- *
+ * 
+ * Note: For extension we can use a setter method for change the movement strategy or to change 
+ * the bullet strategy.
  */
 public interface AI {
     /**
