@@ -1,12 +1,19 @@
 package model;
 
+import java.util.Collection;
+
 import input.Command;
+import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 
 /**
  * Implementation of the Player.
  */
 public class PlayerImpl extends AbstractCharacter implements Player {
+    // Represent the number of the bullet shooted by player.
+    // In this case is always the same, for expansion, we only need to change this constant
+    // or implement a get, set and transform this to a private field.
+    private static final int N_BULLET_TO_SHOOT = 1;
     /**
      * 
      * @param v
@@ -15,46 +22,27 @@ public class PlayerImpl extends AbstractCharacter implements Player {
      *            Player's life.
      * @param h
      *            HitBox.
+     * @param ai
+     *            Artificial Intelligence.
      */
-    public PlayerImpl(final double v, final int life, final HitBox h) {
-        super(v, life, h);
+    public PlayerImpl(final double v, final int life, final HitBox h, final AI ai) {
+        super(v, life, h, ai);
     }
 
     /**
-     * 
+     * Player Movement.
      */
     @Override
     public void move(final int dt) {
-//        int deltaX = 0, deltaY = 0;
-//        if (movements.contains(Command.UP)) {
-//            deltaY++;
-//        }
-//        if (movements.contains(Command.DOWN)) {
-//            deltaY--;
-//        }
-//        if (movements.contains(Command.RIGHT)) {
-//            deltaX++;
-//        }
-//        if (movements.contains(Command.LEFT)) {
-//            deltaX--;
-//        }
-//        if (deltaX != 0 || deltaY != 0) {
-//            // This function give the result in degrees of the angle in direction we should
-//            // move.
-//            final double angle = Math.toDegrees(Math.atan2(deltaY, deltaX));
-//            final CircleHitBox hBox = (CircleHitBox) getHitBox();
-//            // x-component and y-component of movements, using trigonometry.
-//            setHitBox(new CircleHitBox(hBox.getX() + getVel() * dt * Math.sin(angle * Math.PI / PLANE_ANGLE),
-//                    hBox.getY() + getVel() * dt * Math.cos(angle * Math.PI / PLANE_ANGLE), hBox.getRadius()));
-//        }
+        //Safe-casting.
+        super.getAI().move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
     }
 
     /**
-     * 
+     * Player shoot.
      */
     @Override
-    public Bullet shot(final Command direction) {
-        // TODO Auto-generated method stub
-        return null;
+    public Collection<Bullet> shot(final Command direction) {
+        return super.getAI().shoot(super.getHitBox(), super.getVel(), N_BULLET_TO_SHOOT);
     }
 }

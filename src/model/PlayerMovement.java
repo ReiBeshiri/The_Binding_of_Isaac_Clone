@@ -45,5 +45,16 @@ public class PlayerMovement implements MovementStrategy {
         //in the last position.
         return h;
     }
-
+    /*
+     * | \
+     * | a \
+     * |     \ 
+     * |       \ speed.
+     * | y       \
+     * |           \
+     * |     x       \
+     * |_______________\
+     *       x --> speed * sen(a);
+     *       y --> speed * cos(a);
+     */
 }

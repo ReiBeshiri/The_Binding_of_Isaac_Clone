@@ -15,17 +15,17 @@ public interface AI {
     /**
      * Method that realize movement.
      * @param dt DeltaTime.
-     * @param vel Velocity.
+     * @param d Velocity.
      * @param hBox HitBox.
      * @return HitbBox of entity in the new position.
      */
-    HitBox move(int dt, int vel, CircleHitBox hBox);
+    HitBox move(int dt, double d, CircleHitBox hBox);
     /**
      * Return the collections of bullet shooted by entity. 
      * @param hBox HitBox of entity where the bullet start.
-     * @param vel Velocity.
+     * @param d Velocity.
      * @param nBulletToShoot  Number of bullet to shoot.
      * @return The collection of bullet shooted by entity.
      */
-    Collection<Bullet> shoot(HitBox hBox, int vel, int nBulletToShoot);
+    Collection<Bullet> shoot(HitBox hBox, double d, int nBulletToShoot);
 }

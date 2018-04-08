@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Collection;
+
 import input.Command;
 import model.hitbox.HitBox;
 
@@ -11,7 +13,7 @@ public abstract class AbstractCharacter implements Animated {
     private double velocity;
     private int life;
     private HitBox hitBox;
-
+    private final AI ai;
     /**
      * 
      * @param v
@@ -20,11 +22,14 @@ public abstract class AbstractCharacter implements Animated {
      *            Life of this player.
      * @param h
      *            HitBox of object.
+     * @param ai
+     *            Artificial Intelligence.
      */
-    public AbstractCharacter(final double v, final int life, final HitBox h) {
+    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai) {
         velocity = v;
         this.life = life;
         hitBox = h;
+        this.ai = ai;
     }
 
     /**
@@ -38,9 +43,9 @@ public abstract class AbstractCharacter implements Animated {
      * 
      * @param direction
      *            Direction where bullet need to spawn.
-     * @return new Bullet, that depend on the type of enemy.
+     * @return Collection of new Bullets, that depend on the type of enemy.
      */
-    protected abstract Bullet shot(Command direction);
+    protected abstract Collection<Bullet> shot(Command direction);
 
     /**
      * Get vel.
@@ -59,7 +64,7 @@ public abstract class AbstractCharacter implements Animated {
     }
 
     /**
-     * Update the state of entity.
+     * Update the state of entity. (Template Method).
      */
     @Override
     public void update(final int dt) {
@@ -97,5 +102,12 @@ public abstract class AbstractCharacter implements Animated {
     @Override
     public void setHitBox(final HitBox hBox) {
         hitBox = hBox;
+    }
+    /**
+     * Method to expose the AI only to subclass.
+     * @return AI.
+     */
+    protected AI getAI() {
+        return ai;
     }
 }
