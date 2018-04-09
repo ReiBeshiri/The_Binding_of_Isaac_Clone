@@ -9,10 +9,9 @@ import model.hitbox.HitBox;
  * Abstract class for character that can move or shot.
  * 
  */
-public abstract class AbstractCharacter implements Animated {
+public abstract class AbstractCharacter extends AbstractGameObject implements Animated {
     private double velocity;
     private int life;
-    private HitBox hitBox;
     private final AI ai;
 
     /**
@@ -27,9 +26,9 @@ public abstract class AbstractCharacter implements Animated {
      *            Artificial Intelligence.
      */
     public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai) {
+        super(h);
         velocity = v;
         this.life = life;
-        hitBox = h;
         this.ai = ai;
     }
 
@@ -89,23 +88,6 @@ public abstract class AbstractCharacter implements Animated {
     public void decLife(final int dec) {
         life -= dec;
     }
-
-    /**
-     * Return HitBox.
-     */
-    @Override
-    public HitBox getHitBox() {
-        return hitBox;
-    }
-
-    /**
-     * Set HitBox. Used for perform movement.
-     */
-    @Override
-    public void setHitBox(final HitBox hBox) {
-        hitBox = hBox;
-    }
-
     /**
      * Method to expose the AI only to subclass.
      * 
