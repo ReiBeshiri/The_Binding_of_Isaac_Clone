@@ -30,7 +30,7 @@ public class BasicAI implements AI {
      * 
      */
     @Override
-    public HitBox move(final int dt, final int vel, final CircleHitBox hBox) {
+    public HitBox move(final int dt, final double vel, final CircleHitBox hBox) {
         return movementStrategy.move(dt, vel, hBox);
     }
 
@@ -41,7 +41,7 @@ public class BasicAI implements AI {
      * ecc...
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox hBox, final int vel, final int nBulletToShoot) {
+    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final int nBulletToShoot) {
         // TODO Need to know how bullets are implemented.
         // bulletStrategy.shoot(hBox, vel);
     }
