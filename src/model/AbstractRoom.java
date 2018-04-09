@@ -10,7 +10,7 @@ import model.hitbox.HitBox;
  */
 public abstract class AbstractRoom implements Room {
     private final HitBox h;
-    private List<Door> doors;
+    private final List<Door> doors;
     /**
      * 
      * @param h HitBox of room.
