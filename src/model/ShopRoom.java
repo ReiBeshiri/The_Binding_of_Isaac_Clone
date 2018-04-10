@@ -21,7 +21,6 @@ public class ShopRoom extends AbstractRoom implements Room {
         this.heart = heart;
     }
     /**
-     * 
      * @return the heart that you can buy.
      */
     public Heart getHeart() {

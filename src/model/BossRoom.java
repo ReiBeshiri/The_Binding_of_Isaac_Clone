@@ -5,7 +5,7 @@ import java.util.List;
 import model.hitbox.HitBox;
 /**
  * 
- * BossRoom implements.
+ * BossRoom implement.
  *
  */
 public class BossRoom extends AbstractRoom implements Room {
@@ -14,7 +14,7 @@ public class BossRoom extends AbstractRoom implements Room {
      * 
      * @param h BossRoom's HitBox.
      * @param doors BossRoom's doors.
-     * @param boss The game's boss.
+     * @param boss The boss of the game.
      */
     public BossRoom(final HitBox h, final List<Door> doors, final Enemy boss) {
         super(h, doors);

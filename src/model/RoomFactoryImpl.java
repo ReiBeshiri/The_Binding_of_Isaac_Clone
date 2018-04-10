@@ -11,21 +11,21 @@ import model.hitbox.HitBox;
 public class RoomFactoryImpl implements RoomFactory {
 
     /**
-     * ss.
+     * Create the MainRoom.
      */
     @Override
     public Room createMainRoom(final HitBox hitbox, final List<Door> doors, final Button button) {
         return new MainRoom(hitbox, doors, button);
     }
     /**
-     * ss.
+     * Create the BossRoom.
      */
     @Override
     public Room createBossRoom(final HitBox hitbox, final List<Door> doors, final Enemy boss) {
         return new BossRoom(hitbox, doors, boss);
     }
     /**
-     * ss.
+     * Create the ShopRoom.
      */
     @Override
     public Room createShopRoom(final HitBox hitbox, final List<Door> doors, final Heart heart) {
