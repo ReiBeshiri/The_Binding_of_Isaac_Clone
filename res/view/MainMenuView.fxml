@@ -1,63 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#playButtonClick" text="Play" />
-            <Button fx:id="optionsButton" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#optionsButtonClick" text="Options" />
-            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#exitButtonClick" text="Exit" />
-         </children>
-      </VBox>
-   </center>
-   <right>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="helpButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#helpButtonClick" text="Help" />
-            <Button fx:id="CreditsButton" mnemonicParsing="false" onAction="#CreditsButtonClick" text="Credits" />
-         </children>
-      </VBox>
-   </right>
-   <top>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <Label prefWidth="375.0" text="Leaderboard">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label text="Kill To Survive" textAlignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
-   </top>
-   <left>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <GridPane>
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-              </rowConstraints>
+<AnchorPane fx:id="rootMainMenuPane" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.MainMenuViewController">
+   <children>
+      <BorderPane fx:id="contentPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane>
                <children>
-                  <Label text="Nickname" />
-                  <Label text="Score" GridPane.columnIndex="1" />
+                  <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="playButton" mnemonicParsing="false" onAction="#playButtonClick" text="Play">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/playImage.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="optionsButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#optionsButtonClick" text="Options">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/optionsImage.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="exitButton" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#exitButtonClick" text="Exit">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/exitImage.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
-            </GridPane>
-            <ListView maxHeight="1.7976931348623157E308" />
-         </children>
-      </VBox>
-   </left>
-</BorderPane>
+            </AnchorPane>
+         </center>
+         <right>
+            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="helpButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#helpButtonClick" text="Help">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="creditsButton" mnemonicParsing="false" onAction="#creditsButtonClick" text="Credits">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </right>
+         <left>
+            <VBox alignment="CENTER" layoutX="0.15999984741210938" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Leaderboard">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Nickname">
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Score" GridPane.columnIndex="1">
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <ListView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </ListView>
+               </children>
+            </VBox>
+         </left>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <top>
+            <Label text="Kill To Survive" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

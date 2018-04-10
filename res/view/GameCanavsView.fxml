@@ -4,8 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<FlowPane fx:id="rootGamePane" alignment="CENTER" columnHalignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane fx:id="rootGamePane" alignment="CENTER" columnHalignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.GameCanvasViewController">
    <children>
       <AnchorPane fx:id="contentPane">
          <children>

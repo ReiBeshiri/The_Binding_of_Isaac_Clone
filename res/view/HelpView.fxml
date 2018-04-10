@@ -4,44 +4,47 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <bottom>
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClick" text="Back" BorderPane.alignment="CENTER" />
-   </bottom>
-   <top>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Help Menu" />
-            <Label text="P.S.: It's NOT an easy game :|" />
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER" prefWidth="283.0">
+<AnchorPane fx:id="rootHelpPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.HelpViewController">
+   <children>
+      <BorderPane fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClick" text="Back" BorderPane.alignment="CENTER" />
+         </bottom>
+         <top>
+            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="How to play:" textAlignment="CENTER" />
-                  <Label text="Use W,A,S,D keys to move around and the ARROW KEYS to shoot  " textAlignment="CENTER" wrapText="true" />
+                  <Label text="Help Menu" />
+                  <Label text="P.S.: It's NOT an easy game :|" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefWidth="283.0">
+         </top>
+         <center>
+            <HBox BorderPane.alignment="CENTER">
                <children>
-                  <Label text="How to win:" />
-                  <Label text="Just survive ;)" />
-                  <Label alignment="CENTER" text="JK, In order to win you have to kill all the enemies in each round, then you can go and face up the Boss, kill it and there you have it." textAlignment="CENTER" wrapText="true" />
-                  <Label text="WINNER WINNER CHICKEN DINNER" />
+                  <VBox alignment="CENTER" prefWidth="283.0">
+                     <children>
+                        <Label text="How to play:" textAlignment="CENTER" />
+                        <Label text="Use W,A,S,D keys to move around and the ARROW KEYS to shoot  " textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefWidth="283.0">
+                     <children>
+                        <Label text="How to win:" />
+                        <Label text="Just survive ;)" />
+                        <Label alignment="CENTER" text="JK, In order to win you have to kill all the enemies in each round, then you can go and face up the Boss, kill it and there you have it." textAlignment="CENTER" wrapText="true" />
+                        <Label text="WINNER WINNER CHICKEN DINNER" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefWidth="283.0">
+                     <children>
+                        <Label text="Scope of the game:" />
+                        <Label text="In this game you have to become the best of the best, in order to do so you have to finish the game in the shortest time and using as few as possible items from the shop. Doing so you'll get a high score. The sooner you end the game the higher your score will be" textAlignment="CENTER" wrapText="true" />
+                        <Label text="Just GIT GUD" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefWidth="283.0">
-               <children>
-                  <Label text="Scope of the game:" />
-                  <Label text="In this game you have to become the best of the best, in order to do so you have to finish the game in the shortest time and using as few as possible items from the shop. Doing so you'll get a high score. The sooner you end the game the higher your score will be" textAlignment="CENTER" wrapText="true" />
-                  <Label text="Just GIT GUD" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </center>
-</BorderPane>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
