@@ -111,7 +111,7 @@ public interface World {
      * @param btn
      *          the button to add
      */
-    void addButton(ButtonRoom btn);
+    void addButton(ButtonImpl btn);
     /**
      * 
      * °°°°°° da rivedere, non sono sicuro °°°°°°.
