@@ -7,7 +7,7 @@ import model.hitbox.HitBox;
 /**
  * 
  * Interface for room factory.
- *
+ * Prova.
  */
 public interface RoomFactory {
     /**
