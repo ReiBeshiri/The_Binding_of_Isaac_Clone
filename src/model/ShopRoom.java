@@ -8,7 +8,7 @@ import model.hitbox.HitBox;
  * ShopRoom implement.
  *
  */
-public class ShopRoom extends AbstractRoom implements Room {
+public class ShopRoom extends AbstractRoom {
     private final Heart heart;
     /**
      * 

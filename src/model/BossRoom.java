@@ -8,7 +8,7 @@ import model.hitbox.HitBox;
  * BossRoom implement.
  *
  */
-public class BossRoom extends AbstractRoom implements Room {
+public class BossRoom extends AbstractRoom {
     private final Enemy boss;
     /**
      * 

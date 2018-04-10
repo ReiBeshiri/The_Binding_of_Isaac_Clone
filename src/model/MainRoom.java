@@ -8,7 +8,7 @@ import model.hitbox.HitBox;
  * MainRoom implements.
  *
  */
-public class MainRoom extends AbstractRoom implements Room {
+public class MainRoom extends AbstractRoom {
     private final Button button;
     /**
      * 
