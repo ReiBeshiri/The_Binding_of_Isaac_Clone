@@ -3,6 +3,11 @@ package model;
 import java.util.List;
 
 import input.Command;
+import model.gameobject.animated.Bullet;
+import model.gameobject.animated.Enemy;
+import model.gameobject.animated.Player;
+import model.gameobject.inanimated.Button;
+import model.room.Room;
 import worldevent.WorldEvent;
     /**
      *WorldImpl. 

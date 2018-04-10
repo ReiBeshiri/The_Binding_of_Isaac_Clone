@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import input.Command;
-import model.Animated;
 import model.hitbox.RectangularHitBox;
+import model.gameobject.animated.Animated;
 import model.hitbox.CircleHitBox;
 /*import model.map.Room;*/ // <-- TO CHECK WHEN MAP & ROOMS ARE IMPLEMENTED
 
