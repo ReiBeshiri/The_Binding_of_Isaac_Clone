@@ -1,6 +1,9 @@
 package model;
 
 import java.util.List;
+
+import input.Command;
+import worldevent.WorldEvent;
 /**
  * Interface.
  * World
@@ -35,7 +38,7 @@ public interface World {
      * @param player
      *          set the playable character
      */
-    void setPlayer(PlayerImpl player);
+    void setPlayer(Player player);
     /**
      * This method set the next round to be played.
      * 
@@ -48,7 +51,7 @@ public interface World {
      * @param listener
      *          the listener to be set
      */
-    void setEventListener(WorldEventListener listener);
+    void setEventListener(WorldEvent listener);
     /**
      * This method removes a bullet from the World.
      * Usually when the bullet collides this other objects.
@@ -91,7 +94,7 @@ public interface World {
      * @param list
      *          list of command the player press
      */
-    void update(Double deltaTime, List<Command> list);
+    void update(double deltaTime, List<Command> list);
     /**
      * Add a new room.
      * 
@@ -104,14 +107,14 @@ public interface World {
      * 
      * @return Return the Player Object
      */
-    PlayerImpl getPlayer();
+    Player getPlayer();
     /**
      * Add a Button to the World.
      * 
      * @param btn
      *          the button to add
      */
-    void addButton(ButtonImpl btn);
+    void addButton(Button btn);
     /**
      * 
      * °°°°°° da rivedere, non sono sicuro °°°°°°.

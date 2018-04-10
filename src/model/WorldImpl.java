@@ -1,6 +1,9 @@
 package model;
 
 import java.util.List;
+
+import input.Command;
+import worldevent.WorldEvent;
     /**
      *WorldImpl. 
      *
@@ -43,7 +46,7 @@ public class WorldImpl implements World {
      *           the player that will be set.
      */
     @Override
-    public void setPlayer(final PlayerImpl player) {
+    public void setPlayer(final Player player) {
         // TODO Auto-generated method stub
     }
     /**
@@ -98,7 +101,7 @@ public class WorldImpl implements World {
      * @return the player(user) obj.
      */
     @Override
-    public PlayerImpl getPlayer() {
+    public Player getPlayer() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -107,7 +110,7 @@ public class WorldImpl implements World {
      *          the button to add.
      */
     @Override
-    public void addButton(final ButtonImpl btn) {
+    public void addButton(final Button btn) {
         // TODO Auto-generated method stub
 
     }
@@ -133,7 +136,7 @@ public class WorldImpl implements World {
      *            the listener to set as WorldEventListener.
      */
     @Override
-    public void setEventListener(WorldEventListener listener) {
+    public void setEventListener(final WorldEvent listener) {
         // TODO Auto-generated method stub
     }
     /**
@@ -143,7 +146,7 @@ public class WorldImpl implements World {
      *          the list of command to be updated.
      */
     @Override
-    public void update(Double deltaTime, List<Command> list) {
+    public void update(final double deltaTime, final List<Command> list) {
         // TODO Auto-generated method stub
     }
     /**
