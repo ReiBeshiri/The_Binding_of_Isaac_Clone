@@ -2,8 +2,8 @@ package model.room;
 
 import java.util.List;
 
-import model.gameobject.inanimated.Door;
 import model.hitbox.HitBox;
+import model.inanimated.Door;
 /**
  * 
  * Interface that represents rooms in the world.

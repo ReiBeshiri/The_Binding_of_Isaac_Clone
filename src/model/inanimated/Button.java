@@ -1,4 +1,4 @@
-package model.gameobject.inanimated;
+package model.inanimated;
 /**
  * 
  * Interface that represents buttons in the world.

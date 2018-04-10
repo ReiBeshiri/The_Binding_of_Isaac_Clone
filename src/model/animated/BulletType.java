@@ -1,4 +1,4 @@
-package model.gameobject.animated;
+package model.animated;
 
 /**
  * Defines all the bullets used in the game

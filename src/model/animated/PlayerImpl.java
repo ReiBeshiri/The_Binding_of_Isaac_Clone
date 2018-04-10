@@ -1,4 +1,4 @@
-package model.gameobject.animated;
+package model.animated;
 
 import java.util.Collection;
 

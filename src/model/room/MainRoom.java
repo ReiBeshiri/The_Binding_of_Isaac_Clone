@@ -2,9 +2,9 @@ package model.room;
 
 import java.util.List;
 
-import model.gameobject.inanimated.Button;
-import model.gameobject.inanimated.Door;
 import model.hitbox.HitBox;
+import model.inanimated.Button;
+import model.inanimated.Door;
 /**
  * 
  * MainRoom implements.

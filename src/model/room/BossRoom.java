@@ -2,9 +2,9 @@ package model.room;
 
 import java.util.List;
 
-import model.gameobject.animated.Enemy;
-import model.gameobject.inanimated.Door;
+import model.animated.Enemy;
 import model.hitbox.HitBox;
+import model.inanimated.Door;
 /**
  * 
  * BossRoom implement.

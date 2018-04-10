@@ -2,7 +2,7 @@ package model.ai;
 
 import java.util.Collection;
 
-import model.gameobject.animated.Bullet;
+import model.animated.Bullet;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;

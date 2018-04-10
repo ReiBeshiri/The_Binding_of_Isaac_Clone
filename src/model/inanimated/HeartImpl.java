@@ -1,4 +1,4 @@
-package model.gameobject.inanimated;
+package model.inanimated;
 
 import model.hitbox.HitBox;
 /**

@@ -2,9 +2,9 @@ package model.room;
 
 import java.util.List;
 
-import model.gameobject.inanimated.Door;
-import model.gameobject.inanimated.Heart;
 import model.hitbox.HitBox;
+import model.inanimated.Door;
+import model.inanimated.Heart;
 /**
  * 
  * ShopRoom implement.

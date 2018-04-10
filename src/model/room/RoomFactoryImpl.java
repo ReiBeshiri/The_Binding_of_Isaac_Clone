@@ -2,11 +2,11 @@ package model.room;
 
 import java.util.List;
 
-import model.gameobject.animated.Enemy;
-import model.gameobject.inanimated.Button;
-import model.gameobject.inanimated.Door;
-import model.gameobject.inanimated.Heart;
+import model.animated.Enemy;
 import model.hitbox.HitBox;
+import model.inanimated.Button;
+import model.inanimated.Door;
+import model.inanimated.Heart;
 /**
  * 
  * Implement Room Factory.

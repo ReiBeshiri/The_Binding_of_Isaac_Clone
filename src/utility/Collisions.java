@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import input.Command;
 import model.hitbox.RectangularHitBox;
-import model.gameobject.animated.Animated;
+import model.animated.Animated;
 import model.hitbox.CircleHitBox;
 /*import model.map.Room;*/ // <-- TO CHECK WHEN MAP & ROOMS ARE IMPLEMENTED
 
