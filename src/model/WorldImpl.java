@@ -14,37 +14,43 @@ import worldevent.WorldEvent;
      *
      */
 public class WorldImpl implements World {
+    private Player player;
+    private List<GameObject> listGameObject;
+    private Room room;                                  //|method addRoom is setRoom
+    private boolean gameOver;   //false initially
+    private boolean bossDefeated;   //false initially
+    private List<Bullet> listBulletPlayer;              //|keep track of 2 different lists
+    private List<Bullet> listBulletEnemies;             //|keep track of 2 different lists
+    private Button button;                              //|need setButtonState as method
+    private WorldEvent listener;
+    private List<Command> listCommand;
     /**
-     * @return list of gameobj.
+     * @return list of game objects.
      */
     @Override
     public List<GameObject> getAllElements() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.listGameObject;
     }
     /**
      * @return the actual room.
      */
     @Override
     public Room getActualRoom() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.room;
     }
     /**
      * @return true if game is over.
      */
     @Override
     public boolean isGameOver() {
-        // TODO Auto-generated method stub
-        return false;
+        return this.gameOver;
     }
     /**
      * @return true if boss is defeated.
      */
     @Override
     public boolean isBossDefeated() {
-        // TODO Auto-generated method stub
-        return false;
+        return this.bossDefeated;
     }
     /**
      * @param player
@@ -52,7 +58,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void setPlayer(final Player player) {
-        // TODO Auto-generated method stub
+        this.player = player;
     }
     /**
      * set the next round.
@@ -60,7 +66,6 @@ public class WorldImpl implements World {
     @Override
     public void setNextRound() {
         // TODO Auto-generated method stub
-
     }
     /**
      * @param bullet
@@ -84,7 +89,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void addPlayerBullet(final Bullet bullet) {
-        // TODO Auto-generated method stub
+        this.listBulletPlayer.add(bullet);
     }
     /**
      * @param bullet
@@ -92,7 +97,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void addEnemyBullet(final Bullet bullet) {
-        // TODO Auto-generated method stub
+        this.listBulletEnemies.add(bullet);
     }
     /**
      * @param newRoom
@@ -107,8 +112,7 @@ public class WorldImpl implements World {
      */
     @Override
     public Player getPlayer() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.player;
     }
     /**
      * @param btn
@@ -120,7 +124,7 @@ public class WorldImpl implements World {
 
     }
     /**
-     * refresh shot ratio every delta time.
+     * refresh shot ratio.
      */
     @Override
     public void refreshShotRatio() {
@@ -134,7 +138,6 @@ public class WorldImpl implements World {
     @Override
     public void setButton(final boolean effect) {
         // TODO Auto-generated method stub
-
     }
     /**
      * @param listener
@@ -142,7 +145,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void setEventListener(final WorldEvent listener) {
-        // TODO Auto-generated method stub
+        this.listener = listener;
     }
     /**
      * @param deltaTime
@@ -159,8 +162,7 @@ public class WorldImpl implements World {
      */
     @Override
     public List<Command> getCommandList() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.listCommand;
     }
 
 }
