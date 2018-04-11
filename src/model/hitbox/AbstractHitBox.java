@@ -5,8 +5,8 @@ package model.hitbox;
  * be initialized.
  */
 public abstract class AbstractHitBox implements HitBox {
-    private final double x;
-    private final double y;
+    private double x;
+    private double y;
 
     /**
      * 
@@ -16,6 +16,14 @@ public abstract class AbstractHitBox implements HitBox {
      *            Initial Y value.
      */
     public AbstractHitBox(final double x, final double y) {
+        changePosition(x, y);
+    }
+    
+    /**
+     * 
+     */
+    @Override
+    public void changePosition(double x, double y) {
         this.x = x;
         this.y = y;
     }

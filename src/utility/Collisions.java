@@ -7,26 +7,27 @@ import input.Command;
 import model.hitbox.RectangularHitBox;
 import model.animated.Animated;
 import model.hitbox.CircleHitBox;
-/*import model.map.Room;*/ // <-- TO CHECK WHEN MAP & ROOMS ARE IMPLEMENTED
+import model.room.*;
 
+/**
+ * Utility class for the collisions.
+ */
 public final class Collisions {
 
     public Collisions() {
         
     }
     
-    /* <-- TO DO: ADD IN THE HITBOX PACKAGE .changePosition -->*/
     /**
-     * Checks if the Circle has collided with the room walls
+     * Checks if the Circle has collided with the room walls.
      * @param chb
-     *          The CircleHitBox entity
-     * @return A boolean, true if the entity has collided with the walls, false otherwise
-     *//*
-    public static boolean checkBoundaryCollision(final CircleHitBox chb) {
-        final RectangularHitBox room=Room.getRoomSpace();//returns a HitboxRectangle that defines the position, 
-                                                         //width and height of the space where the player can move
-                                                         //the walls MUST BE EXCLUDED. 
+     *          The CircleHitBox entity.
+     * @return A boolean, true if the entity has collided with the walls, false otherwise.
+     */
+    public static boolean checkBoundaryCollision(final CircleHitBox chb, final Room rectRoom) {
+        final RectangularHitBox room=(RectangularHitBox)rectRoom.getHitBox();
         boolean result=false;
+        
         //top wall
         if(chb.getY() + chb.getRadius() > room.getX() + room.getHeight()) {
             result = true;
@@ -40,7 +41,7 @@ public final class Collisions {
         //right wall
         if(chb.getX() + chb.getRadius() > room.getX() + room.getWidth()) {
             result = true;
-            chb.changePosition(room.getX() + room.getWidth() - chb.getRadius(), chb.getY())
+            chb.changePosition(room.getX() + room.getWidth() - chb.getRadius(), chb.getY());
         }
         //left wall
         if(chb.getX() - chb.getRadius() < room.getX()) {
@@ -49,15 +50,27 @@ public final class Collisions {
         }
         return result;
     }
-    */
     
     /**
-     * Checks if the second Circle has collided with the first Circle
+     * Checks if the second Animated object has collided with the first Animated object.
+     * @param a1
+     *          The first Animated entity.
+     * @param a2
+     *          The second Animated entity.
+     * @return
+     *          A collection of blocked movements.
+     */
+    public static Collection<Command> entityCollision(Animated a1, Animated a2){
+        return entityCollision((CircleHitBox)a1.getHitBox(), (CircleHitBox)a2.getHitBox());
+    }
+    
+    /**
+     * Checks if the second Circle has collided with the first Circle.
      * @param ch1
-     *          The first HitBox
+     *          The first HitBox.
      * @param ch2
-     *           The second HitBox
-     * @return A collection of blocked movements
+     *           The second HitBox.
+     * @return A collection of blocked movements.
      */
     public static Collection<Command> entityCollision(final CircleHitBox chb1, final CircleHitBox chb2){
         
