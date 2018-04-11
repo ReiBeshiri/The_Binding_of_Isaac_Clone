@@ -18,7 +18,7 @@
             </VBox>
          </bottom>
          <top>
-            <Label text="GameOver" BorderPane.alignment="CENTER" />
+            <Label id="lblTitle" text="GameOver" BorderPane.alignment="CENTER" />
          </top>
          <center>
             <VBox alignment="CENTER">

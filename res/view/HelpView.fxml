@@ -4,47 +4,87 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootHelpPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.HelpViewController">
+<AnchorPane fx:id="rootHelpPane" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.HelpViewController">
    <children>
-      <BorderPane fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="contentPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <GridPane id="HelpInfo" alignment="CENTER" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="200.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="200.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="200.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="104.0" minHeight="0.0" prefHeight="31.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="278.0" minHeight="10.0" prefHeight="247.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label id="HelpInfo" text="How to play:" textAlignment="CENTER" wrapText="true" />
+                  <Label id="HelpInfo" text="How to win:" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" />
+                  <Label id="HelpInfo" text="Scope of th game:" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" />
+                  <GridPane GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label id="HelpInfo" text="Use ARROW KEYS to shoot." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
+                        <Label id="HelpInfo" text="Use W,A,S,D keys to move around." textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </GridPane>
+                  <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label id="HelpInfo" text="Just survive ;)" textAlignment="CENTER" wrapText="true" />
+                        <Label id="HelpInfo" text="JK, you have to kill all the enemies in each round." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
+                        <Label id="HelpInfo" text="Then you can go and face up the Boss," textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2" />
+                        <Label id="HelpInfo" text="WINNER WINNER CHICKEN DINNER" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="4" />
+                        <Label id="HelpInfo" text=" kill it and there you have it." GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label id="HelpInfo" text="Doing so you'll get a high score." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="3" />
+                        <Label id="HelpInfo" text="In this game you have to become the best of the best." textAlignment="CENTER" wrapText="true" />
+                        <Label id="HelpInfo" text="You have to finish the game in the shortest time." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
+                        <Label id="HelpInfo" text="Using as few as possible items from the shop." textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </center>
          <bottom>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClick" text="Back" BorderPane.alignment="CENTER" />
          </bottom>
          <top>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Help Menu" />
+                  <Label id="lblTitle" text="Help Menu" />
                   <Label text="P.S.: It's NOT an easy game :|" />
                </children>
             </VBox>
          </top>
-         <center>
-            <HBox BorderPane.alignment="CENTER">
-               <children>
-                  <VBox alignment="CENTER" prefWidth="283.0">
-                     <children>
-                        <Label text="How to play:" textAlignment="CENTER" />
-                        <Label text="Use W,A,S,D keys to move around and the ARROW KEYS to shoot  " textAlignment="CENTER" wrapText="true" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" prefWidth="283.0">
-                     <children>
-                        <Label text="How to win:" />
-                        <Label text="Just survive ;)" />
-                        <Label alignment="CENTER" text="JK, In order to win you have to kill all the enemies in each round, then you can go and face up the Boss, kill it and there you have it." textAlignment="CENTER" wrapText="true" />
-                        <Label text="WINNER WINNER CHICKEN DINNER" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" prefWidth="283.0">
-                     <children>
-                        <Label text="Scope of the game:" />
-                        <Label text="In this game you have to become the best of the best, in order to do so you have to finish the game in the shortest time and using as few as possible items from the shop. Doing so you'll get a high score. The sooner you end the game the higher your score will be" textAlignment="CENTER" wrapText="true" />
-                        <Label text="Just GIT GUD" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </center>
       </BorderPane>
    </children>
 </AnchorPane>

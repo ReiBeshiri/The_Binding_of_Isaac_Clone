@@ -9,7 +9,7 @@
    <children>
       <BorderPane fx:id="contentPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <Label text="CREDITS" BorderPane.alignment="CENTER" />
+            <Label id="lblTitle" text="CREDITS" BorderPane.alignment="CENTER" />
          </top>
          <center>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
@@ -23,7 +23,7 @@
             </VBox>
          </center>
          <bottom>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClick" text="Back" BorderPane.alignment="CENTER" />
+            <Button id="back" fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClick" text="Back" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>

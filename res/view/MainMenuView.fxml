@@ -90,7 +90,7 @@
                       <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Nickname">
+                        <Label id="HelpInfo" text="Nickname">
                            <padding>
                               <Insets bottom="5.0" />
                            </padding>
@@ -98,7 +98,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Score" GridPane.columnIndex="1">
+                        <Label id="HelpInfo" text="Score" GridPane.columnIndex="1">
                            <padding>
                               <Insets bottom="5.0" />
                            </padding>
@@ -120,7 +120,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
          <top>
-            <Label text="Kill To Survive" BorderPane.alignment="CENTER">
+            <Label id="lblTitle" text="Kill To Survive" BorderPane.alignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

@@ -5,11 +5,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootOptionsPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.OptionsMenuViewController">
+<AnchorPane fx:id="rootOptionsPane" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.OptionsMenuViewController">
    <children>
       <BorderPane fx:id="contentPane" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <Label alignment="CENTER" contentDisplay="CENTER" styleClass="background" text="Options" BorderPane.alignment="CENTER" />
+            <Label id="lblTitle" alignment="CENTER" contentDisplay="CENTER" styleClass="background" text="Options" BorderPane.alignment="CENTER" />
          </top>
          <bottom>
             <AnchorPane>

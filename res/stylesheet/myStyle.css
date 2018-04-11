@@ -10,7 +10,21 @@
 .label {
     -fx-font-size: 36pt;
     -fx-font-family: 'a dripping marker';
-    -fx-text-fill: white;
+    -fx-text-fill: black;
+    -fx-opacity: 1;
+}
+
+#lblTitle {
+    -fx-font-size: 50pt;
+    -fx-font-family: 'a dripping marker';
+    -fx-text-fill: black;
+    -fx-opacity: 1;
+}
+
+#HelpInfo {
+    -fx-font-size: 20pt;
+    -fx-font-family: 'a dripping marker';
+    -fx-text-fill: black;
     -fx-opacity: 1;
 }
 
@@ -23,7 +37,7 @@
 	-fx-border-radius: 3px;
 }
 
-.button {
+.button{
     -fx-background-color: transparent;
     -fx-font-family: 'a dripping marker';
     -fx-font-size: 36pt;
