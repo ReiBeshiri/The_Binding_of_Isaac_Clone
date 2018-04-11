@@ -18,12 +18,11 @@ public abstract class AbstractHitBox implements HitBox {
     public AbstractHitBox(final double x, final double y) {
         changePosition(x, y);
     }
-    
     /**
      * 
      */
     @Override
-    public void changePosition(double x, double y) {
+    public void changePosition(final double x, final double y) {
         this.x = x;
         this.y = y;
     }

@@ -14,7 +14,6 @@ public interface HitBox {
      *          Y Coordinate.
      */
     void changePosition(double x, double y);
-    
     /**
      * Get X of center of HitBox.
      * 
