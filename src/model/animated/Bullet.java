@@ -12,7 +12,7 @@ public interface Bullet extends Animated {
      */
     double getRange();
     /**
-     * Check if the bullet has gone out of range.
+     * Checks if the bullet has gone out of range.
      * @return True if has gone out of range, false otherwise
      */
     boolean isDead();
