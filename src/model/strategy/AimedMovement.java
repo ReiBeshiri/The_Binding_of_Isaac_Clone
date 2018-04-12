@@ -7,21 +7,16 @@ import model.hitbox.HitBox;
  * 
  */
 public class AimedMovement implements MovementStrategy {
-    private final HitBox target;
+    private static final int PLANE_ANGLE = 180;
     /**
-     * Where to shot.
-     * @param t Target hitbox.
-     */
-    public AimedMovement(final HitBox t) {
-        target = t;
-    }
-    /**
-     * 
+     * Move the entity to next step.
      */
     @Override
     public HitBox move(final int dt, final double vel, final CircleHitBox h) {
-        // TODO Auto-generated method stub
-        return null;
+        final double angle = Math.toDegrees(Math.atan2(/*ModelUtility.getPlayerHitBox - */h.getY(),
+                /*ModelUtility.getPlayerHitBox - */ h.getX()));
+        final double deltaX = Math.cos(angle * Math.PI / PLANE_ANGLE);
+        final double deltaY = Math.sin(angle * Math.PI / PLANE_ANGLE);
+        return new CircleHitBox(h.getX() + deltaX, h.getY() + deltaY, h.getRadius());
     }
-
 }
