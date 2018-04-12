@@ -19,11 +19,13 @@ public class WorldImpl implements World {
     private Room room;                                  //|method addRoom is setRoom
     private boolean gameOver;   //false initially
     private boolean bossDefeated;   //false initially
-    private List<Bullet> listBulletPlayer;              //|keep track of 2 different lists
-    private List<Bullet> listBulletEnemies;             //|keep track of 2 different lists
-    private Button button;                              //|need setButtonState as method
+    private List<Bullet> listBulletPlayer;
+    private List<Bullet> listBulletEnemies;
+    private Button button;
     private WorldEvent listener;
     private List<Command> listCommand;
+    private List<Enemy> listEnemy;
+    private List<Room> listRoom;
     /**
      * @return list of game objects.
      */
@@ -69,11 +71,19 @@ public class WorldImpl implements World {
     }
     /**
      * @param bullet
-     *          the bullet removed from the bullet Collection.
+     *          the bullet removed from the enemy bullet list.
      */
     @Override
-    public void removeBullet(final Bullet bullet) {
-        // TODO Auto-generated method stub
+    public void removeBulletEnemy(final Bullet bullet) {
+        this.listBulletEnemies.remove(bullet);
+    }
+    /**
+     * @param bullet
+     *          the bullet removed from the player bullet Collection.
+     */
+    @Override
+    public void removeBulletPlayer(final Bullet bullet) {
+        this.listBulletPlayer.remove(bullet);
     }
     /**
      * @param enemy
@@ -81,7 +91,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void removeEnemy(final Enemy enemy) {
-        // TODO Auto-generated method stub
+        this.listEnemy.remove(enemy);
     }
     /**
      * @param bullet
@@ -105,7 +115,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void addRoom(final Room newRoom) {
-        // TODO Auto-generated method stub
+        this.listRoom.add(newRoom);
     }
     /**
      * @return the player(user) obj.
@@ -120,7 +130,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void addButton(final Button btn) {
-        // TODO Auto-generated method stub
+        this.button = btn;
     }
     /**
      * refresh shot ratio.
@@ -163,5 +173,4 @@ public class WorldImpl implements World {
     public List<Command> getCommandList() {
         return this.listCommand;
     }
-
 }

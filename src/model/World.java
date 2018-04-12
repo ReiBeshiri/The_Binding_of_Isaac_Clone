@@ -58,13 +58,21 @@ public interface World {
      */
     void setEventListener(WorldEvent listener);
     /**
-     * This method removes a bullet from the World.
+     * This method removes a bullet from the enemy bullet list.
      * Usually when the bullet collides this other objects.
      * 
      * @param bullet
      *          the bulled to be deleted
      */
-    void removeBullet(Bullet bullet);
+    void removeBulletEnemy(Bullet bullet);
+    /**
+     * This method removes a bullet from the player bullet list.
+     * Usually when the bullet collides this other objects.
+     * 
+     * @param bullet
+     *          the bulled to be deleted
+     */
+    void removeBulletPlayer(Bullet bullet);
     /**
      * This method removes a enemy from the World.
      * Usually when the enemy loses all his hearts.
