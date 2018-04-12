@@ -27,7 +27,7 @@ public class AimedProjectile implements ProjectileType {
     @Override
     public Collection<Bullet> shoot(final HitBox sender, final Collection<Command> dir, final double dt, final double range, final double vel) {
         final Collection<Bullet> bulletColl = new ArrayList<>();
-        bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel, new AimedMovement(), range));
+        bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel, new FollowPlayerMovement(), range));
         return bulletColl;
     }
 
