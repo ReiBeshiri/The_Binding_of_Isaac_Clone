@@ -57,7 +57,7 @@ public class WorldImpl implements World {
      *           the player that will be set.
      */
     @Override
-    public void setPlayer(final Player player) {
+    public void createPlayer(final Player player) {
         this.player = player;
     }
     /**
@@ -121,7 +121,6 @@ public class WorldImpl implements World {
     @Override
     public void addButton(final Button btn) {
         // TODO Auto-generated method stub
-
     }
     /**
      * refresh shot ratio.
@@ -137,7 +136,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void setButton(final boolean effect) {
-        // TODO Auto-generated method stub
+        this.button.setPressed(effect);
     }
     /**
      * @param listener

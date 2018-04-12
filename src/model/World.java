@@ -43,7 +43,7 @@ public interface World {
      * @param player
      *          set the playable character
      */
-    void setPlayer(Player player);
+    void createPlayer(Player player);
     /**
      * This method set the next round to be played.
      * 
