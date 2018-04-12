@@ -10,38 +10,66 @@ import model.room.Room;
  * 
  *
  */
-public class ModelUtilityImpl implements ModelUtility {
-    private Player player;
-    private Room room;
-    private List<Command> listCommand;
-    private HitBox hb;
+public final class ModelUtilityImpl {
+    /**
+     * Private Constructor for static class.
+     */
+    private ModelUtilityImpl() {
+    }
+    private static Player player; 
+    private static Room room;
+    private static List<Command> listCommand;
+    private static HitBox hb;
     /**
      * @return player.
      */
-    @Override
-    public Player getPlayer() {
-        return this.player;
+    public static Player getPlayer() {
+        return player;
     }
     /**
      * @return player hitbox.
      */
-    @Override
-    public HitBox getPlayerHitBox() {
-        return this.hb;
+    public static HitBox getPlayerHitBox() {
+        return hb;
     }
     /**
      * @return room.
      */
-    @Override
-    public Room getRoom() {
-        return this.room;
+    public static Room getRoom() {
+        return room;
     }
     /**
      * @return List of Command.
      */
-    @Override
-    public List<Command> getListCommand() {
-        return this.listCommand;
+    public static List<Command> getListCommand() {
+        return listCommand;
     }
-
+    /**
+     * @param player 
+     *          the new player to update.
+     */
+    public void updatePlayerModelUtility(final Player player) {
+        ModelUtilityImpl.player = player;
+    }
+    /**
+     * @param hb
+     *          the new hb.
+     */
+    public void updatePlayerHBModelUtility(final HitBox hb) {
+        ModelUtilityImpl.hb = hb;
+    }
+    /**
+     * @param room
+     *          the new room.
+     */
+    public void updateRoomModelUtility(final Room room) {
+        ModelUtilityImpl.room = room;
+    }
+    /**
+     * @param list
+     *          the new list.
+     */
+    public void updateListCommandModelUtility(final List<Command> list) {
+        ModelUtilityImpl.listCommand = list;
+    }
 }
