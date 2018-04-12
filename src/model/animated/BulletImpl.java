@@ -1,45 +1,47 @@
 package model.animated;
 
-public class BulletImpl /*extends AbstractCharacter implements Bullet */{ 
-                        //Devo estendere da qualche metodo che
-                        //implementa Animated, altrimenti la sola implementazione
-                        //di Bullet mi obbliga a definire anche:
-                        //getVel, setVel, update, getHitBox, setHitBox.
-                        //Se estendo da AbstractCharacter il costruttore è errato 
-                        //perche non devo passare nessun Life e nessuna "Ai" (questa la definisco con una strategy)
-                        //e qui non definisco "shot" ma solamente il quanto "Range" deve ancora percorrere il bullet.
-                        //Quindi: non posso implementare BULLET, ANIMATED, o GAMEOBJECT
-                                //se estendo da AbstractCharacter non va bene il costruttore.
-                        //Unica soluzione che mi viene in mente è passare per una classe astratta intermedia
-                        //Questa implementa Animated. AbstractCharacter estendera questa classe intermedia,
-                        //E BulletImpl estendera la classe intermedia implementando Bullet.
-    /*
-    public BulletImpl(double v, int life, HitBox h, AI ai) {
-        super(v, life, h, ai);
-        // TODO Auto-generated constructor stub
+import model.hitbox.CircleHitBox;
+import model.hitbox.HitBox;
+import model.strategy.MovementStrategy;
+/**
+ * 
+ * Class for all the bullets fired in the game.
+ *
+ */
+public class BulletImpl extends AnimatedEntity implements Bullet{
+
+    private double range;
+    private final MovementStrategy bulletMS;
+    /**
+     * 
+     * @param chb
+     *          The HitBox of the bullet.
+     * @param vel
+     *          The speed of the bullet.
+     * @param bulletMS
+     *          The movement of the bullet.
+     * @param range
+     *          The range of the bullet.
+     */
+    public BulletImpl(final CircleHitBox chb, final double vel, final MovementStrategy bulletMS, final double range) {
+        super(vel, chb);
+        this.bulletMS=bulletMS;
+        this.range=range;
     }
 
     @Override
     public double getRange() {
-        // TODO Auto-generated method stub
-        return 0;
+        return this.range;
     }
 
     @Override
     public boolean isDead() {
-        // TODO Auto-generated method stub
-        return false;
+        return range <= 0;
     }
 
     @Override
-    protected void move(int dt) {
-        // TODO Auto-generated method stub
-        
+    protected HitBox performMove(int dt) {
+        range-=super.getVel()*dt;
+        return bulletMS.move(dt, super.getVel(), (CircleHitBox)super.getHitBox());
     }
-
-    @Override
-    protected Collection<Bullet> shot(Command direction) {
-        // TODO Auto-generated method stub
-        return null;
-    }*/
 }
