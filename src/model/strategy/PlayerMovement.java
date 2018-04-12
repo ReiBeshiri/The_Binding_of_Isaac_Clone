@@ -16,7 +16,7 @@ public class PlayerMovement implements MovementStrategy {
      */
     @Override
     public HitBox move(final int dt, final double vel, final CircleHitBox h) {
-        final List<Command> list /*= ModelUtilities().getInputCommandList()*/;
+        final List<Command> list = /* ModelUtility....*/ null;
         int deltaX = 0, deltaY = 0;
         if (list.contains(Command.UP)) {
             deltaY++;
