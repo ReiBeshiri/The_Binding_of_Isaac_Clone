@@ -22,4 +22,11 @@ public class ButtonImpl extends AbstractInanimated implements Button {
     public boolean isPressed() {
         return super.isEnable();
     }
+    /**
+     * @param press The state of the button.
+     */
+    @Override
+    public void setPressed(final boolean press) {
+        super.setEnable(press);
+    }
 }

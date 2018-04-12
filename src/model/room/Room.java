@@ -7,7 +7,7 @@ import model.inanimated.Door;
 /**
  * 
  * Interface that represents rooms in the world.
- *
+ *      BISOGNA FARE LA SINGLETON.
  */
 public interface Room {
     /**

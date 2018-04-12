@@ -1,11 +1,17 @@
 package controller;
 
-public class GameEngineImpl implements GameEngine {
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
+/**
+ * 
+ * s.
+ *
+ */
+public class GameEngineImpl implements GameEngine {
+    private final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     @Override
     public void initGame() {
-        // TODO Auto-generated method stub
-
     }
 
     @Override

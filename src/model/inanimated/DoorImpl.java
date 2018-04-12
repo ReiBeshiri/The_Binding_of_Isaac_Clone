@@ -22,4 +22,12 @@ public class DoorImpl extends AbstractInanimated implements Door {
     public boolean isOpen() {
         return super.isEnable();
     }
+    /**
+     * 
+     * @param open The state of the door.
+     */
+    @Override
+    public void setOpen(final boolean open) {
+        super.setEnable(open);
+    }
 }
