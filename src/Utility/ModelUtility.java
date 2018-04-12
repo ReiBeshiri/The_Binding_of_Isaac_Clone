@@ -1,4 +1,4 @@
-package model;
+package Utility;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ import model.room.Room;
  * 
  *
  */
-public final class ModelUtilityImpl {
+public final class ModelUtility {
     /**
      * Private Constructor for static class.
      */
-    private ModelUtilityImpl() {
+    private ModelUtility() {
     }
     private static Player player; 
     private static Room room;
@@ -49,27 +49,27 @@ public final class ModelUtilityImpl {
      *          the new player to update.
      */
     public void updatePlayerModelUtility(final Player player) {
-        ModelUtilityImpl.player = player;
+        ModelUtility.player = player;
     }
     /**
      * @param hb
      *          the new hb.
      */
     public void updatePlayerHBModelUtility(final HitBox hb) {
-        ModelUtilityImpl.hb = hb;
+        ModelUtility.hb = hb;
     }
     /**
      * @param room
      *          the new room.
      */
     public void updateRoomModelUtility(final Room room) {
-        ModelUtilityImpl.room = room;
+        ModelUtility.room = room;
     }
     /**
      * @param list
      *          the new list.
      */
     public void updateListCommandModelUtility(final List<Command> list) {
-        ModelUtilityImpl.listCommand = list;
+        ModelUtility.listCommand = list;
     }
 }
