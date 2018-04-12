@@ -14,32 +14,33 @@ import model.hitbox.HitBox;
  *
  */
 public class FourWayProjectile implements ProjectileType {
-    
-    private double radius;
+    private final double radius;
     /**
      * Constructs a new instance of an directional projectile.
      */
     public FourWayProjectile() {
         radius = 1;
     }
-
+    /**
+     * 
+     */
     @Override
-    public Collection<Bullet> shoot(HitBox sender, Collection<Command> dir, double dt, double range, double vel) {
-            final Collection<Bullet> bulletColl=new ArrayList<>();
-            for(Command d : dir) {
-                if(d == Command.UP) {
+    public Collection<Bullet> shoot(final HitBox sender, final Collection<Command> dir, final double dt, final double range, final double vel) {
+            final Collection<Bullet> bulletColl = new ArrayList<>();
+            for (final Command d : dir) {
+                if (d == Command.UP) {
                     bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
                             new SimplyDirectionMovement(Command.UP), range));
                 }
-                if(d == Command.DOWN) {
+                if (d == Command.DOWN) {
                     bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
                             new SimplyDirectionMovement(Command.DOWN), range));
                 }
-                if(d == Command.LEFT) {
+                if (d == Command.LEFT) {
                     bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
                             new SimplyDirectionMovement(Command.LEFT), range));
                 }
-                if(d == Command.RIGHT) {
+                if (d == Command.RIGHT) {
                     bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
                             new SimplyDirectionMovement(Command.RIGHT), range));
                 }

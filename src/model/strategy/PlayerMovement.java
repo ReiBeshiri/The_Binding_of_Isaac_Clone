@@ -2,7 +2,7 @@ package model.strategy;
 
 import java.util.List;
 
-import Utility.ModelUtility;
+import utility.ModelUtility;
 import input.Command;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;

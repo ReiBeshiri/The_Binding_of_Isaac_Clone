@@ -100,7 +100,6 @@ public abstract class AbstractCharacter implements Animated {
      */
     @Override
     public HitBox getHitBox() {
-        // TODO Auto-generated method stub
         return hitBox;
     }
     /**

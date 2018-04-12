@@ -11,7 +11,6 @@ import model.hitbox.HitBox;
  *
  */
 public interface ProjectileType {
-    
     /**
      * Determines the bullets shot and the way they are shot.
      * @param sender
