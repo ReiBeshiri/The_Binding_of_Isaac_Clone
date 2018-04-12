@@ -3,6 +3,7 @@ package model.strategy;
 import java.util.List;
 
 import input.Command;
+import model.ModelUtilityImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 /**
@@ -16,7 +17,7 @@ public class PlayerMovement implements MovementStrategy {
      */
     @Override
     public HitBox move(final int dt, final double vel, final CircleHitBox h) {
-        final List<Command> list = /* ModelUtility....*/ null;
+        final List<Command> list = ModelUtilityImpl.getListCommand();
         int deltaX = 0, deltaY = 0;
         if (list.contains(Command.UP)) {
             deltaY++;
