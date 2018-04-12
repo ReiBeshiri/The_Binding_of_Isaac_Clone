@@ -34,9 +34,7 @@ public interface AI {
      *            HitBox of entity where the bullet start.
      * @param vel
      *            Velocity.
-     * @param nBulletToShoot
-     *            Number of bullet to shoot.
      * @return The collection of bullet shooted by entity.
      */
-    Collection<Bullet> shoot(HitBox hBox, double vel, int nBulletToShoot);
+    Collection<Bullet> shoot(HitBox hBox, double vel);
 }

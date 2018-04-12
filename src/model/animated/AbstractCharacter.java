@@ -2,7 +2,6 @@ package model.animated;
 
 import java.util.Collection;
 
-import input.Command;
 import model.ai.AI;
 import model.hitbox.HitBox;
 
@@ -43,11 +42,9 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * 
-     * @param direction
-     *            Direction where bullet need to spawn.
      * @return Collection of new Bullets, that depend on the type of enemy.
      */
-    protected abstract Collection<Bullet> shot(Command direction);
+    protected abstract Collection<Bullet> shot();
 
     /**
      * Get vel.
