@@ -2,7 +2,6 @@ package model.animated;
 
 import java.util.Collection;
 
-import input.Command;
 import model.ai.AI;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
@@ -15,7 +14,7 @@ public class PlayerImpl extends AbstractCharacter implements Player {
     // In this case is always the same, for expansion, we only need to change this
     // constant
     // or implement a get, set and transform this to a private field.
-    private static final int N_BULLET_TO_SHOOT = 1;
+    //private static final int N_BULLET_TO_SHOOT = 1;
 
     /**
      * 
@@ -45,7 +44,7 @@ public class PlayerImpl extends AbstractCharacter implements Player {
      * Player shoot.
      */
     @Override
-    public Collection<Bullet> shot(final Command direction) {
-        return super.getAI().shoot(super.getHitBox(), super.getVel(), N_BULLET_TO_SHOOT);
+    public Collection<Bullet> shot() {
+        return super.getAI().shoot(super.getHitBox(), super.getVel());
     }
 }

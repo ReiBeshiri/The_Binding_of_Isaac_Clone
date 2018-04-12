@@ -44,7 +44,7 @@ public class BasicAI implements AI {
      * ecc...
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final int nBulletToShoot) {
+    public Collection<Bullet> shoot(final HitBox hBox, final double vel) {
         // TODO Need to know how bullets are implemented.
         // return bulletStrategy.shoot(hBox, vel);
     }
