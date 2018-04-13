@@ -40,10 +40,10 @@ public class SimplyDirectionMovement implements MovementStrategy {
             x--;
         }
         if (x != 0) {
-            final double deltaX = vel * dt * Math.sin(moveDirection.getAngle());
+            final double deltaX = vel * dt * Math.sin(Math.toRadians(moveDirection.getAngle()));
             return new CircleHitBox(h.getX() + deltaX, h.getY(), h.getRadius());
         } else if (y != 0) {
-            final double deltaY = vel * dt * Math.cos(moveDirection.getAngle());
+            final double deltaY = vel * dt * Math.cos(Math.toRadians(moveDirection.getAngle()));
             return new CircleHitBox(h.getX(), h.getY() + deltaY, h.getRadius());
         }
         return h;
