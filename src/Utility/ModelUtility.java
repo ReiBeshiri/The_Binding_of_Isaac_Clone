@@ -3,6 +3,7 @@ package utility;
 import java.util.List;
 
 import input.Command;
+import model.animated.Animated;
 import model.animated.Player;
 import model.hitbox.HitBox;
 import model.room.Room;
@@ -16,21 +17,20 @@ public final class ModelUtility {
      */
     private ModelUtility() {
     }
-    private static Player player; 
+    private static Animated player; 
     private static Room room;
     private static List<Command> listCommand;
-    private static HitBox hb;
     /**
      * @return player.
      */
-    public static Player getPlayer() {
+    public static Animated getPlayer() {
         return player;
     }
     /**
      * @return player hitbox.
      */
     public static HitBox getPlayerHitBox() {
-        return hb;
+        return player.getHitBox();
     }
     /**
      * @return room.
@@ -48,15 +48,8 @@ public final class ModelUtility {
      * @param player 
      *          the new player to update.
      */
-    public void updatePlayerModelUtility(final Player player) {
+    public void updatePlayerModelUtility(final Animated player) {
         ModelUtility.player = player;
-    }
-    /**
-     * @param hb
-     *          the new hb.
-     */
-    public void updatePlayerHBModelUtility(final HitBox hb) {
-        ModelUtility.hb = hb;
     }
     /**
      * @param room
