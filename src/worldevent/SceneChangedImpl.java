@@ -1,24 +1,24 @@
 package worldevent;
 
-import input.Scene;
+import input.ScenePanel;
 /**
  *  Class that represent change of scene.
  *
  */
 public class SceneChangedImpl implements SceneChanged {
-    private final Scene scene;
+    private final ScenePanel scene;
     /**
      * 
      * @param s Next scene.
      */
-    public SceneChangedImpl(final Scene s) {
+    public SceneChangedImpl(final ScenePanel s) {
         scene = s;
     }
     /**
      * Next scene.
      */
     @Override
-    public Scene getNextScene() {
+    public ScenePanel getNextScene() {
         return scene;
     }
 

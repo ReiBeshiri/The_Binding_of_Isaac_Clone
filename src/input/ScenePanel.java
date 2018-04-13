@@ -3,7 +3,7 @@ package input;
  * Scenes of the game.
  * 
  */
-public enum Scene {
+public enum ScenePanel {
     /**
      * Start scene.
      */
