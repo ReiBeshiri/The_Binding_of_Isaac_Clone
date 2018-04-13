@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import input.Command;
+import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.Enemy;
 import model.animated.Player;
@@ -43,7 +44,7 @@ public interface World {
      * @param player
      *          set the playable character
      */
-    void createPlayer(Player player);
+    void createPlayer(Animated player);
     /**
      * This method set the next round to be played.
      * 
@@ -80,7 +81,7 @@ public interface World {
      * @param enemy
      *          the enemy to be deleted
      */
-    void removeEnemy(Enemy enemy);
+    void removeEnemy(Animated enemy);
     /**
      * When a command to shot is received, a shot is created in the World.
      * 
@@ -120,7 +121,7 @@ public interface World {
      * 
      * @return Return the Player Object
      */
-    Player getPlayer();
+    Animated getPlayer();
     /**
      * Add a Button to the World.
      * 

@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import input.Command;
+import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.Enemy;
 import model.animated.Player;
@@ -14,7 +15,7 @@ import worldevent.WorldEvent;
      *
      */
 public class WorldImpl implements World {
-    private Player player;
+    private Animated player;                            //|is the player
     private List<GameObject> listGameObject;
     private Room room;                                  //|method addRoom is setRoom
     private boolean gameOver;   //false initially
@@ -24,7 +25,7 @@ public class WorldImpl implements World {
     private Button button;
     private WorldEvent listener;
     private List<Command> listCommand;
-    private List<Enemy> listEnemy;
+    private List<Animated> listEnemy;                   //|list of enemies
     private List<Room> listRoom;
     /**
      * @return list of game objects.
@@ -59,7 +60,7 @@ public class WorldImpl implements World {
      *           the player that will be set.
      */
     @Override
-    public void createPlayer(final Player player) {
+    public void createPlayer(final Animated player) {
         this.player = player;
     }
     /**
@@ -90,7 +91,7 @@ public class WorldImpl implements World {
      *          the enemy removed from the enemy list. 
      */
     @Override
-    public void removeEnemy(final Enemy enemy) {
+    public void removeEnemy(final Animated enemy) {
         this.listEnemy.remove(enemy);
     }
     /**
@@ -121,7 +122,7 @@ public class WorldImpl implements World {
      * @return the player(user) obj.
      */
     @Override
-    public Player getPlayer() {
+    public Animated getPlayer() {
         return this.player;
     }
     /**
