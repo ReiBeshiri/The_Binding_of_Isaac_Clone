@@ -25,7 +25,7 @@ public abstract class AbstractRoom implements Room {
      * return the list of actual room's doors. 
      */
     @Override
-    public List<Door> getList() {
+    public List<Door> getDoors() {
         return doors;
     }
     /**

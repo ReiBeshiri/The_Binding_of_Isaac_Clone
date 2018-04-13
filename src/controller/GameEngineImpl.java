@@ -9,9 +9,9 @@ import java.awt.Toolkit;
  *
  */
 public class GameEngineImpl implements GameEngine {
-    private final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     @Override
     public void initGame() {
+        
     }
 
     @Override

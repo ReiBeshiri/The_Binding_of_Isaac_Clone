@@ -14,7 +14,7 @@ public interface Room {
      * 
      * @return a list of actual room's doors. 
      */
-    List<Door> getList();
+    List<Door> getDoors();
     /**
      * 
      * @return HitBox of the room.
