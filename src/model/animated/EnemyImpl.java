@@ -42,7 +42,7 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
      * 
      */
     @Override
-    protected Collection<Bullet> shot() {
+    protected Collection<Bullet> shoot() {
         return super.getAI().shoot(super.getHitBox(), super.getVel());
     }
 

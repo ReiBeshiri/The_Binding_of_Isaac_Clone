@@ -6,6 +6,7 @@ import model.animated.Bullet;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
+import model.strategy.ProjectileType;
 
 /**
  * This class represent the generic logic to shoot and move.
@@ -13,19 +14,19 @@ import model.strategy.MovementStrategy;
  */
 public class BasicAI implements AI {
     private final MovementStrategy movementStrategy;
-    private final BulletStrategy bulletStrategy; // Strategy for bullet...
+    private final ProjectileType pType;
 
     /**
      * Constructor of basic AI.
      * 
      * @param m
      *            Strategy of movement.
-     * @param b
+     * @param p
      *            Strategy for bullet.
      */
-    public BasicAI(final MovementStrategy m, final BulletStrategy b) {
+    public BasicAI(final MovementStrategy m, final ProjectileType p) {
         movementStrategy = m;
-        bulletStrategy = b;
+        pType = p;
     }
 
     /**
@@ -45,7 +46,6 @@ public class BasicAI implements AI {
      */
     @Override
     public Collection<Bullet> shoot(final HitBox hBox, final double vel) {
-        // TODO Need to know how bullets are implemented.
-        // return bulletStrategy.shoot(hBox, vel);
+        return pType.shoot(hBox, dir, dt, range, vel);
     }
 }

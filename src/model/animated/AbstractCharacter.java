@@ -44,7 +44,7 @@ public abstract class AbstractCharacter implements Animated {
      * 
      * @return Collection of new Bullets, that depend on the type of enemy.
      */
-    protected abstract Collection<Bullet> shot();
+    protected abstract Collection<Bullet> shoot();
 
     /**
      * Get vel.

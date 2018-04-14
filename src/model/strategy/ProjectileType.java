@@ -1,8 +1,6 @@
 package model.strategy;
 
 import java.util.Collection;
-
-import input.Command;
 import model.animated.Bullet;
 import model.hitbox.HitBox;
 /**
@@ -17,8 +15,7 @@ public interface ProjectileType {
      *          The hitbox where the bullet starts.
      * @param dir
      *          The directions in which the projectile was shot.
-     * @param dt
-     *          Delta time.
+
      * @param range
      *          The range of the bullet.
      * @param vel
@@ -26,5 +23,5 @@ public interface ProjectileType {
      * @return
      *          The bullet that has been shot.
      */
-    Collection<Bullet> shoot(HitBox sender, Collection<Command> dir, double dt, double range, double vel);
+    Collection<Bullet> shoot(HitBox sender/*, Collection<Command> dir, double dt*/, double range, double vel);
 }

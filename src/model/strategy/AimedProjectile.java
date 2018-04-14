@@ -2,12 +2,11 @@ package model.strategy;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
-import input.Command;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import utility.ModelUtility;
 /**
  * 
  * Shoots a aimed bullet to a specific point.
@@ -25,9 +24,11 @@ public class AimedProjectile implements ProjectileType {
      * 
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox sender, final Collection<Command> dir, final double dt, final double range, final double vel) {
+    public Collection<Bullet> shoot(final HitBox sender/*, final Collection<Command> dir, final double dt*/, final double range, final double vel) {
         final Collection<Bullet> bulletColl = new ArrayList<>();
-        bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel, new AimedProjectileMovement(), range));
+        bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel, 
+                new BulletMovement(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(), ModelUtility.getPlayerHitBox().getX() - sender.getX())),
+                range));
         return bulletColl;
     }
 

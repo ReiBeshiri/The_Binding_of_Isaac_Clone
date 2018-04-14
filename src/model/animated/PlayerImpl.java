@@ -44,7 +44,7 @@ public class PlayerImpl extends AbstractCharacter implements Player {
      * Player shoot.
      */
     @Override
-    public Collection<Bullet> shot() {
+    public Collection<Bullet> shoot() {
         return super.getAI().shoot(super.getHitBox(), super.getVel());
     }
 }
