@@ -1,4 +1,8 @@
 package model.animated;
+
+import input.Command;
+import model.hitbox.HitBox;
+
 /**
  * Factory for enemy.
  * 
@@ -7,22 +11,28 @@ package model.animated;
 public interface EnemyFactory {
     /**
      * 
-     * @return Animated Enemy.
+     * @param h HitBox.
+     * @param c Direction.
+     * @return Animated type enemy.
      */
-    Animated createStaticSimpleDirectionShotEnemy();
+    Animated createStaticSimpleDirectionShotEnemy(HitBox h, Command c);
     /**
      * 
-     * @return Animated Enemy.
+     * @param h HitBox.
+     * @return Static enemy with aimed shot.
      */
-    Animated createStaticAimedBulletEnemy();
+    Animated createStaticAimedBulletEnemy(HitBox h);
     /**
      * 
-     * @return Animated Enemy.
+     * @param h HitBox.
+     * @param c Direction to shot.
+     * @return Animated enemy thats move in a simple direction.
      */
-    Animated createSimpleDirectionMovedEnemy();
+    Animated createSimpleDirectionMovedEnemy(HitBox h, Command c);
     /**
      * 
-     * @return Animated Enemy.
+     * @param h HitBox.
+     * @return Boss.
      */
-    Animated createBoss();
+    Animated createBoss(HitBox h);
 }
