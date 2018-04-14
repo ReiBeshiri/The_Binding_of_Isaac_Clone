@@ -14,6 +14,7 @@ public abstract class AbstractCharacter implements Animated {
     private int life;
     private final AI ai;
     private HitBox hitBox;
+    private final double range;
 
     /**
      * 
@@ -25,12 +26,15 @@ public abstract class AbstractCharacter implements Animated {
      *            HitBox of object.
      * @param ai
      *            Artificial Intelligence.
+     * @param range
+     *            Range of his bullet.
      */
-    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai) {
+    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai, final double range) {
         velocity = v;
         this.life = life;
         this.ai = ai;
         hitBox = h;
+        this.range = range;
     }
 
     /**
@@ -94,6 +98,14 @@ public abstract class AbstractCharacter implements Animated {
      */
     protected AI getAI() {
         return ai;
+    }
+    /**
+     * Method to expose the range only to subclass.
+     * 
+     * @return range.
+     */
+    protected double getRange() {
+        return range;
     }
     /**
      * Return HitBox.

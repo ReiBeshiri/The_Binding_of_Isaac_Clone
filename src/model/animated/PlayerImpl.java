@@ -26,9 +26,11 @@ public class PlayerImpl extends AbstractCharacter implements Player {
      *            HitBox.
      * @param ai
      *            Artificial Intelligence.
+     * @param range
+     *            Range of his bullet.
      */
-    public PlayerImpl(final double v, final int life, final HitBox h, final AI ai) {
-        super(v, life, h, ai);
+    public PlayerImpl(final double v, final int life, final HitBox h, final AI ai, final double range) {
+        super(v, life, h, ai, range);
     }
 
     /**
@@ -45,6 +47,6 @@ public class PlayerImpl extends AbstractCharacter implements Player {
      */
     @Override
     public Collection<Bullet> shoot() {
-        return super.getAI().shoot(super.getHitBox(), super.getVel());
+        return super.getAI().shoot(super.getHitBox(), super.getVel(), super.getRange());
     }
 }

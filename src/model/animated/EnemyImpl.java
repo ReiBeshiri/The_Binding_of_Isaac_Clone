@@ -18,9 +18,10 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
      * @param h hitBox.
      * @param ai AI.
      * @param points Points
+     * @param range range of his bullet.
      */
-    public EnemyImpl(final double v, final int life, final HitBox h, final AI ai, final int points) {
-        super(v, life, h, ai);
+    public EnemyImpl(final double v, final int life, final HitBox h, final AI ai, final int points, final double range) {
+        super(v, life, h, ai, range);
         this.points = points;
     }
 
@@ -39,11 +40,11 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
         super.getAI().move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
     }
     /**
-     * 
+     * Shot bullet/bullets.
      */
     @Override
     protected Collection<Bullet> shoot() {
-        return super.getAI().shoot(super.getHitBox(), super.getVel());
+        return super.getAI().shoot(super.getHitBox(), super.getVel(), super.getRange());
     }
 
 }

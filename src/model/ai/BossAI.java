@@ -7,12 +7,13 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
-
 /**
- * This class represent the generic logic to shoot and move.
- *
+ * Boss AI.
+ * 
  */
-public class BasicAI implements AI {
+public class BossAI implements AI {
+    private static final int PHASE2_INIT = 20;
+    private static final int PHASE3_INIT = 5;
     private MovementStrategy movementStrategy;
     private ProjectileType pType;
 
@@ -24,49 +25,48 @@ public class BasicAI implements AI {
      * @param p
      *            Strategy for bullet.
      */
-    public BasicAI(final MovementStrategy m, final ProjectileType p) {
+    public BossAI(final MovementStrategy m, final ProjectileType p) {
         movementStrategy = m;
         pType = p;
     }
-
     /**
-     * Generic movement.
      * 
      */
     @Override
     public HitBox move(final int dt, final double vel, final CircleHitBox hBox) {
         return movementStrategy.move(dt, vel, hBox);
     }
-
     /**
-     * Generic shoot.
      * 
-     * Note: We can add params to add personalization of shoot type (range, dmg)
-     * ecc...
      */
     @Override
     public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range) {
         return pType.shoot(hBox, range, vel);
     }
     /**
-     * Set new Movement Strategy.
-     * Note: We can use this method in a player for poweUp.
+     * 
      */
     @Override
     public void setMovementStrategy(final MovementStrategy mS) {
         movementStrategy = mS;
     }
     /**
-     * Set new Projectile Strategy.
-     * Note: We can use this method in a player for poweUp.
+     * 
      */
     @Override
     public void setProjectileType(final ProjectileType pT) {
         pType = pT;
     }
     /**
-     * For boss Decision.
+     * 
      */
     @Override
-    public void nextPhaseStrategy(final int life) { }
+    public void nextPhaseStrategy(final int life) {
+        if (life <= PHASE3_INIT) {
+            //Set third_strategy.
+        } else if (life <= PHASE2_INIT) {
+            //Set second_phase.
+        }
+    }
+
 }
