@@ -14,7 +14,7 @@ public abstract class AbstractCharacter implements Animated {
     private int life;
     private final AI ai;
     private HitBox hitBox;
-    private final double range;
+    private double range;
 
     /**
      * 
@@ -96,7 +96,7 @@ public abstract class AbstractCharacter implements Animated {
      * 
      * @return AI.
      */
-    protected AI getAI() {
+    public AI getAI() {
         return ai;
     }
     /**
@@ -104,8 +104,17 @@ public abstract class AbstractCharacter implements Animated {
      * 
      * @return range.
      */
-    protected double getRange() {
+    public double getRange() {
         return range;
+    }
+    /**
+     * Set new range.
+     * 
+     * Note: Uses for power-up.
+     * @param incRange New range for entity bullets.
+     */
+    public void setRange(final double incRange) {
+        range += incRange;
     }
     /**
      * Return HitBox.

@@ -25,10 +25,11 @@ public interface EnemyFactory {
     /**
      * 
      * @param h HitBox.
-     * @param c Direction to shot.
+     * @param dMove Direction to move.
+     * @param dShot Direction to shot.
      * @return Animated enemy thats move in a simple direction.
      */
-    Animated createSimpleDirectionMovedEnemy(HitBox h, Command c);
+    Animated createSimpleDirectionMovedEnemy(HitBox h, Command dMove, Command dShot);
     /**
      * 
      * @param h HitBox.
