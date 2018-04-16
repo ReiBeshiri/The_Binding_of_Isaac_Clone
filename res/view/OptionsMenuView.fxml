@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -32,37 +34,56 @@
                       <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" />
                     </columnConstraints>
                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints vgrow="SOMETIMES" />
                       <RowConstraints vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="FPS">
+                        <Label text="FPS" GridPane.rowIndex="1">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </Label>
-                        <ComboBox fx:id="fpsComboBox" GridPane.columnIndex="1" />
-                     </children>
-                  </GridPane>
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="God Mode">
+                        <ComboBox fx:id="fpsComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<String fx:value="30"/>
+									<String fx:value="60" />
+									<String fx:value="120" />
+								</FXCollections>
+							</items>
+							<value>
+								<String fx:value="60" />
+							</value>
+						</ComboBox>
+                        <Label text="God Mode" GridPane.rowIndex="2">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </Label>
-                        <CheckBox fx:id="godModeCheckBox" mnemonicParsing="false" GridPane.columnIndex="1">
+                        <CheckBox fx:id="godModeCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </CheckBox>
+                        <Label text="Resolution">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <ComboBox fx:id="resolutionComboBox" GridPane.columnIndex="1">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<String fx:value="800x450"/>
+									<String fx:value="1280x720" />
+									<String fx:value="1920x1080" />
+                                    <String fx:value="3840x2160" />
+								</FXCollections>
+							</items>
+							<value>
+								<String fx:value="1280x720" />
+							</value>
+						</ComboBox>
                      </children>
                   </GridPane>
                </children>

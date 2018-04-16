@@ -60,11 +60,14 @@
 
 .combo-box-base {
     -fx-background-color: #c8c8c8;
+    -fx-font-family: 'a dripping marker';
+    -fx-font-size: 15pt;
+    -fx-text-fill: black;
 }
 
 .combo-box-popup .list-view .list-cell {
 	-fx-background-color: transparent;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 	
 }
 
