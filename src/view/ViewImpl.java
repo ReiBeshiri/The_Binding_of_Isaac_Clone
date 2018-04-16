@@ -1,19 +1,28 @@
 package view;
 import input.ScenePanel;
 import javafx.application.Application;
-
-public class ViewImpl implements View extends Application {
+import javafx.stage.Stage;
+/**
+ * 
+ *
+ */
+public class ViewImpl extends Application implements View {
 
     @Override
-    public void changeScene(ScenePanel s) {
-        // TODO Auto-generated method stub
+    public void changeScene(final ScenePanel s) {
+        
 
     }
 
     @Override
     public void render() {
-        // TODO Auto-generated method stub
+       
 
     }
 
+    @Override
+    public void start(final Stage primaryStage) throws Exception {
+       
+    }
+    
 }
