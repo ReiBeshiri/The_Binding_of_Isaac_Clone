@@ -21,11 +21,4 @@ public interface GameLoop {
      * @return true if the game loop is running, false otherwise.
      */
     boolean isRunning();
-    /**
-     * 
-     * @param delta s.
-     * @param shoots s.
-     * @param movements s.
-     */
-    void update(double delta, Set<Command> shoots, Set<Command> movements);
 }

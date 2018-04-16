@@ -8,11 +8,11 @@ public interface GameEngine extends WorldEventListener, KeyShootListener, KeyMov
     /**
      * s.
      */
-    void initGame();
+    void initView();
     /**
      * s.
      */
-    void mainLoop();
+    void newGame();
     /**
      * s.
      */
@@ -25,4 +25,8 @@ public interface GameEngine extends WorldEventListener, KeyShootListener, KeyMov
      * s.
      */
     void resumeGameLoop();
+    /**
+     * s.
+     */
+    void gameOver();
 }
