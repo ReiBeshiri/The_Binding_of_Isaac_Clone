@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  *
  */
 public class ViewImpl extends Application implements View {
-
+    
     @Override
     public void changeScene(final ScenePanel s) {
         
