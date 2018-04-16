@@ -4,7 +4,7 @@ package controller;
  * Interface.
  *
  */
-public interface GameEngine {
+public interface GameEngine extends WorldEventListener, KeyShootListener, KeyMovementListener {
     /**
      * s.
      */
@@ -16,7 +16,7 @@ public interface GameEngine {
     /**
      * s.
      */
-    void getActualTime();//Deve essere time
+    void getActualTime(); //Deve essere time
     /**
      * s.
      */

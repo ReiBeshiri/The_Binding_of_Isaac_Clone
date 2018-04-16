@@ -105,10 +105,12 @@ public interface World {
      * 
      * @param deltaTime
      *                 DT to define
-     * @param list
+     * @param movements
      *          list of command the player press
+     * @param shoots
+     *          list of shoots the player do
      */
-    void update(double deltaTime, List<Command> list);
+    void update(double deltaTime, List<Command> movements, List<Command> shoots);
     /**
      * Add a new room.
      * 
