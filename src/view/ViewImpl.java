@@ -24,5 +24,4 @@ public class ViewImpl extends Application implements View {
     public void start(final Stage primaryStage) throws Exception {
        
     }
-    
 }
