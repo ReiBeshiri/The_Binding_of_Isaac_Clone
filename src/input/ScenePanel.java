@@ -7,25 +7,34 @@ public enum ScenePanel {
     /**
      * Start scene.
      */
-    MENU,
+    MENU("MainMenuView.fxml"),
     /**
      * Option scene.
      */
-    OPTIONS,
+    OPTIONS("OptionsMenuView.fxml"),
     /**
      * credit scene.
      */
-    CREDITS,
+    CREDITS("CreditsView.fxml"),
     /**
      * Help scene.
      */
-    HELP,
+    HELP("HelpView.fxml"),
     /**
      * End game scene.
      */
-    ENDGAME,
+    ENDGAME("EndGameView.fxml"),
     /**
      * Game main scene.
      */
-    GAME;
+    GAME("GameCanvasView.fxml");
+    
+    private String file;
+    ScenePanel(final String file) {
+        this.file=file;
+    }
+    private String getFile() {
+        return file;
+    }
 }
+
