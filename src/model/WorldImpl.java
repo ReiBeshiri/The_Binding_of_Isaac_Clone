@@ -24,7 +24,8 @@ public class WorldImpl implements World {
     private List<Bullet> listBulletEnemies;
     private Button button;
     private WorldEvent listener;
-    private List<Command> listCommand;
+    private List<Command> listMovements;
+    private List<Command> listShots;
     private List<Animated> listEnemy;                   //|list of enemies
     private List<Room> listRoom;
     /**
@@ -160,18 +161,26 @@ public class WorldImpl implements World {
     /**
      * @param deltaTime
      *            A fixed amount of time that will effect the game flow.
-     * @param list 
+     * @param listMovement 
+     *          the list of command to be updated.
+     * @param listShots 
      *          the list of command to be updated.
      */
     @Override
-    public void update(final double deltaTime, final List<Command> list) {
+    public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
         // TODO Auto-generated method stub
     }
     /**
-     * @return the list of command pressed by the user.
+     * @return the list of command pressed by the user for moving.
      */
     @Override
-    public List<Command> getCommandList() {
-        return this.listCommand;
+    public List<Command> getMovementCommandList() {
+        return this.listMovements;
+    }
+    /**
+     * @return the list of command pressed by the user for shots.
+     */
+    public List<Command> getShotCommandList() {
+        return this.listShots;
     }
 }
