@@ -29,4 +29,8 @@ public interface GameEngine extends WorldEventListener, KeyShootListener, KeyMov
      * s.
      */
     void gameOver();
+    /**
+     * s.
+     */
+    void victory();
 }

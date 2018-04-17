@@ -53,21 +53,15 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * 
      */
     @Override
-    public boolean isRunning() {
-        return this.running;
-    }
-    /**
-     * 
-     */
-    @Override
     public void run() {
         while (running) {
             final long now = System.nanoTime();
             final long sleepTime;
             final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60); //Avanzo di tempo tra un frame e il successivo?
             
-            update(delta); //Da finire;
-            
+            update(delta);
+            //Render
+            checkEndGame();
             
             sleepTime = (lastLoop - System.nanoTime() + optimalTime) / GameLoopImpl.SECONDMICRO;
 
@@ -82,10 +76,26 @@ public class GameLoopImpl implements GameLoop, Runnable {
     }
     /**
      * 
+     */
+    @Override
+    public boolean isRunning() {
+        return this.running;
+    }
+    /**
+     * 
      * @param delta
      */
     private void update(final double delta) {
         world.update(delta, GameEngineImpl.get().getKeyMovementList(), GameEngineImpl.get().getKeyShootListener());
+    }
+    
+    private void checkEndGame() {
+        if (this.world.isGameOver()) {
+            GameEngineImpl.get().gameOver();
+        }
+        if (this.world.isBossDefeated()) {
+            GameEngineImpl.get().victory();
+        }
     }
 
 }
