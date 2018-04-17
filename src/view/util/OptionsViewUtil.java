@@ -4,8 +4,12 @@ package view.util;
  */
 public class OptionsViewUtil {
     private static final Tuple<Integer,Integer> STANDARD_RES = new Tuple<Integer,Integer>(1280, 720);
-    
     private static Tuple<Integer,Integer> selectedRes = STANDARD_RES;
+    
+    private static final int STANDARD_FPS = 60;
+    private static int selectedFPS = STANDARD_FPS;
+    
+    private static boolean godMode;
     private OptionsViewUtil() {
         
     }
@@ -30,7 +34,32 @@ public class OptionsViewUtil {
     public static Tuple<Integer, Integer> getSelectedRes(){
         return selectedRes;
     }
-    
-    
-    //TO DO: FPS & GOD mode
+    /**
+     * Getter for the currently selected FPS.
+     * @return The selected FPS in the options view.
+     */
+    public static int getFps() {
+        return selectedFPS;
+    }
+    /**
+     * Setter used to set a different FPS.
+     * @param value The selected value in the options view.
+     */
+    public static void setFps(final int value) {
+        selectedFPS = value;
+    }
+    /**
+     * Getter for the God Mode option.
+     * @return True if is selected, false otherwise.
+     */
+    public static boolean getGodMode() {
+        return godMode;
+    }
+    /**
+     * Setter used for the God Mode option.
+     * @param value True if the option is selected, false otherwise.
+     */
+    public static void setGodMode(final boolean value) {
+        godMode = value;
+    }
 }
