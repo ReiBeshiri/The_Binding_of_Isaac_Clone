@@ -26,7 +26,9 @@ public class OptionsMenuViewController {
     public OptionsMenuViewController() {
    
     }
-    
+    /**
+     * 
+     */
     @FXML
     private void applyButtonClick() {
         final String resSelected = resolutionComboBox.getValue();

@@ -1,7 +1,6 @@
 package view.util;
 
 /**
- * 
  * Represents a tuple as one element, used to set the resolution.
  *
  * @param <Width>
