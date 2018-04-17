@@ -23,36 +23,36 @@ public class EnemyFactoryImpl implements EnemyFactory {
      * 
      */
     @Override
-    public Animated createStaticSimpleDirectionShotEnemy(final HitBox h, final Command c) {
+    public Animated createStaticSimpleDirectionShotEnemy(final HitBox h, final Command c, final double bulletRadius) {
         return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h, 
-                new BasicAI(new Motionless(), new SingleDirectionProjectile(c)), 
+                new BasicAI(new Motionless(), new SingleDirectionProjectile(c, bulletRadius)), 
                 STATIC_ENEMY.getPoints(), ENEMY_BULLET.getRange());
     }
     /**
      * 
      */
     @Override
-    public Animated createStaticAimedBulletEnemy(final HitBox h) {
+    public Animated createStaticAimedBulletEnemy(final HitBox h, final double bulletRadius) {
         return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h, 
-                new BasicAI(new Motionless(), new AimedProjectile()), 
+                new BasicAI(new Motionless(), new AimedProjectile(bulletRadius)), 
                 STATIC_ENEMY.getPoints(), ENEMY_BULLET.getRange());
     }
     /**
      * 
      */
     @Override
-    public Animated createSimpleDirectionMovedEnemy(final HitBox h, final Command dMove, final Command dShot) {
+    public Animated createSimpleDirectionMovedEnemy(final HitBox h, final Command dMove, final Command dShot, final double bulletRadius) {
         return new EnemyImpl(MOVEABLE_ENEMY.getVel(), MOVEABLE_ENEMY.getLife(), h, 
-                new BasicAI(new SimplyDirectionMovement(dMove), new SingleDirectionProjectile(dShot)), 
+                new BasicAI(new SimplyDirectionMovement(dMove), new SingleDirectionProjectile(dShot, bulletRadius)), 
                 MOVEABLE_ENEMY.getPoints(), ENEMY_BULLET.getRange());
     }
     /**
      * Note: Boss start with bullet that chase player.
      */
     @Override
-    public Animated createBoss(final HitBox h) {
+    public Animated createBoss(final HitBox h, final double bulletRadius) {
         return new EnemyImpl(BOSS.getVel(), BOSS.getLife(), h, 
-                new BossAI(new Motionless(), new ChasePlayerProjectile()), 
+                new BossAI(new Motionless(), new ChasePlayerProjectile(bulletRadius)), 
                 BOSS.getPoints(), BOSS_BULLET.getRange());
     }
 }

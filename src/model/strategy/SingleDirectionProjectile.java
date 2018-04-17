@@ -14,12 +14,15 @@ import model.hitbox.HitBox;
  */
 public class SingleDirectionProjectile implements ProjectileType {
     private final Command dir;
+    private final double radius;
     /**
      * 
      * @param dir Direction where shoot the bullet. 
+     * @param r radius of bullet.
      */
-    public SingleDirectionProjectile(final Command dir) {
+    public SingleDirectionProjectile(final Command dir, final double r) {
         this.dir = dir;
+        radius = r;
     }
     /**
      * 
@@ -27,7 +30,7 @@ public class SingleDirectionProjectile implements ProjectileType {
     @Override
     public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel) {
         final List<Bullet> list = new ArrayList<>();
-        list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), ((CircleHitBox) sender).getRadius()), 
+        list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), 
                 vel, new SimplyDirectionMovement(dir), range));
         return list;
     }

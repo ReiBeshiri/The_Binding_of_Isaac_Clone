@@ -5,8 +5,6 @@ import java.util.List;
 import input.Command;
 import model.animated.Animated;
 import model.animated.Bullet;
-import model.animated.Enemy;
-import model.animated.Player;
 import model.inanimated.Button;
 import model.room.Room;
 import worldevent.WorldEvent;

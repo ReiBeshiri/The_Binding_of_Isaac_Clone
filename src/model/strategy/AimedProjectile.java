@@ -16,9 +16,10 @@ public class AimedProjectile implements ProjectileType {
     private final double radius;
     /**
      * Constructs a new instance of an aimed projectile.
+     * @param r Radius of bullet.
      */
-    public AimedProjectile() {
-        radius = 1;
+    public AimedProjectile(final double r) {
+        radius = r;
     }
     /**
      * 
