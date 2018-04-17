@@ -19,7 +19,8 @@ public final class ModelUtility {
     }
     private static Animated player; 
     private static Room room;
-    private static List<Command> listCommand;
+    private static List<Command> listMovementCommand;
+    private static List<Command> listShotsCommand;
     /**
      * @return player.
      */
@@ -39,10 +40,16 @@ public final class ModelUtility {
         return room;
     }
     /**
-     * @return List of Command.
+     * @return List of Command for moving.
      */
-    public static List<Command> getListCommand() {
-        return listCommand;
+    public static List<Command> getListMovementCommand() {
+        return listMovementCommand;
+    }
+    /**
+     * @return List of Command for shots.
+     */
+    public static List<Command> getListShotsCommand() {
+        return listShotsCommand;
     }
     /**
      * @param player 
@@ -59,10 +66,13 @@ public final class ModelUtility {
         ModelUtility.room = room;
     }
     /**
-     * @param list
+     * @param listShotsCommand
+     *          the new list.
+     * @param listMovementCommand
      *          the new list.
      */
-    public void updateListCommandModelUtility(final List<Command> list) {
-        ModelUtility.listCommand = list;
+    public void updateListCommandModelUtility(final List<Command> listMovementCommand, final List<Command> listShotsCommand) {
+        ModelUtility.listMovementCommand = listMovementCommand;
+        ModelUtility.listMovementCommand = listShotsCommand;
     }
 }
