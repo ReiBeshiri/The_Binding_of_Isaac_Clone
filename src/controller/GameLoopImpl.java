@@ -1,8 +1,5 @@
 package controller;
 
-import java.util.Set;
-
-import input.Command;
 import model.World;
 /**
  * 
@@ -10,6 +7,7 @@ import model.World;
  * to the view.
  */
 public class GameLoopImpl implements GameLoop, Runnable {
+    private static final long SECONDMICRO = 1000000;
     private static final int SECONDNANO = 1000000000;
     private static final int FPS = 60;
     private static final int MSWAIT = 5;
@@ -29,7 +27,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * 
      */
     @Override
-    public void start() {
+    public synchronized void start() { //Cos'è synchronized?
         if (!running) {
             this.running = true;
             optimalTime = GameLoopImpl.SECONDNANO / GameLoopImpl.FPS;
@@ -65,16 +63,29 @@ public class GameLoopImpl implements GameLoop, Runnable {
     public void run() {
         while (running) {
             final long now = System.nanoTime();
+            final long sleepTime;
             final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60); //Avanzo di tempo tra un frame e il successivo?
-            this.world.update(delta, list); //Da finire;
+            
+            update(delta); //Da finire;
+            
+            
+            sleepTime = (lastLoop - System.nanoTime() + optimalTime) / GameLoopImpl.SECONDMICRO;
+
+            if (sleepTime > 0) {
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (Exception e) {
+                    //Cosa facciamo?
+                }
+            }
         }
     }
     /**
      * 
+     * @param delta
      */
-    @Override
-    public void update(double delta, Set<Command> shoots, Set<Command> movements) {
-        
+    private void update(final double delta) {
+        world.update(delta, GameEngineImpl.get().getKeyMovementList(), GameEngineImpl.get().getKeyShootListener());
     }
 
 }
