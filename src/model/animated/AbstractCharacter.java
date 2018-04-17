@@ -15,6 +15,7 @@ public abstract class AbstractCharacter implements Animated {
     private final AI ai;
     private HitBox hitBox;
     private double range;
+    private final int maxLife;
 
     /**
      * 
@@ -32,6 +33,7 @@ public abstract class AbstractCharacter implements Animated {
     public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai, final double range) {
         velocity = v;
         this.life = life;
+        this.maxLife = life;
         this.ai = ai;
         hitBox = h;
         this.range = range;
@@ -72,6 +74,20 @@ public abstract class AbstractCharacter implements Animated {
     @Override
     public void update(final int dt) {
         move(dt);
+    }
+    /**
+     * Return HitBox.
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hitBox;
+    }
+    /**
+     * Set HitBox.
+     */
+    @Override
+    public void setHitBox(final HitBox h) {
+        hitBox = h;
     }
 
     /**
@@ -117,17 +133,14 @@ public abstract class AbstractCharacter implements Animated {
         range += incRange;
     }
     /**
-     * Return HitBox.
+     * Increase life if entity doesn't have max life already.
+     * @param inc Delta to increase life.
      */
-    @Override
-    public HitBox getHitBox() {
-        return hitBox;
-    }
-    /**
-     * Set HitBox.
-     */
-    @Override
-    public void setHitBox(final HitBox h) {
-        hitBox = h;
+    public void incLife(final int inc) {
+        if (this.life + inc <= this.maxLife) {
+           this.life += inc;
+        } else if (this.life + inc > this.maxLife) {
+            this.life = this.maxLife;
+        }
     }
 }
