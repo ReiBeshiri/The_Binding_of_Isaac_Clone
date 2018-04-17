@@ -1,7 +1,5 @@
 package controller;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -9,6 +7,8 @@ import java.util.Set;
 import input.Command;
 import model.World;
 import model.WorldImpl;
+import view.View;
+import view.ViewImpl;
 import worldevent.WorldEvent;
 
 /**
@@ -22,6 +22,11 @@ public class GameEngineImpl implements GameEngine {
     private static GameEngineImpl singleton;
     private World world;
     private GameLoop gameLoop;
+    private View gui;
+    
+    public GameEngineImpl() {
+        gui = new ViewImpl(); //gui = ViewImpl.get();
+    }
     /**
      * Get the instance of GameEngineImpl.
      * @return the instance of controller.
@@ -32,6 +37,9 @@ public class GameEngineImpl implements GameEngine {
         }
         return singleton;
     }
+    /**
+     * 
+     */
     @Override
     public void initView() {
     }
@@ -122,6 +130,16 @@ public class GameEngineImpl implements GameEngine {
         //gui.gameOver();
         stopGameLoop();
     }
+    /**
+     * 
+     */
+    public void victory() {
+        //gui.victory();
+        stopGameLoop();
+    }
+    /**
+     * 
+     */
     private void cleanKeys() {
         this.movements.clear();
         this.shoots.clear();
