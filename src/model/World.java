@@ -147,8 +147,13 @@ public interface World {
     void setButton(boolean effect);
     /**
      * World will keep track of the commands pressed by the user (updateMethod will update this list). 
-     * @return  the list of the commands pressed by the user
+     * @return  the list of the commands pressed by the user for moving.
      * 
      */
-    List<Command> getCommandList();
+    List<Command> getMovementCommandList();
+    /**
+     * 
+     * @return the list of commands pressed by the user for shots.
+     */
+    List<Command> getShotCommandList();
 }

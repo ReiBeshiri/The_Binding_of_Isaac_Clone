@@ -8,9 +8,9 @@ package view.util;
  * @param <Height>
  *              The type of the second element.
  */
-public class Tuple<Width, Height> {
-    private final Width x;
-    private final Height y;
+public class Tuple<X, Y> {
+    private final X x;
+    private final Y y;
     /**
      * Constructor of the class.
      * @param x
@@ -18,7 +18,7 @@ public class Tuple<Width, Height> {
      * @param y
      *          The Height element.
      */
-    public Tuple(final Width x, final Height y) {
+    public Tuple(final X x, final Y y) {
         this.x = x;
         this.y = y;
     }
@@ -26,14 +26,14 @@ public class Tuple<Width, Height> {
      * Getter for the Width.
      * @return The Width element.
      */
-    public Width getWidth() {
+    public X getWidth() {
         return x;
     }
     /**
      * Getter for the Height.
      * @return The Height element.
      */
-    public Height getHeight() {
+    public Y getHeight() {
         return y;
     }
 }
