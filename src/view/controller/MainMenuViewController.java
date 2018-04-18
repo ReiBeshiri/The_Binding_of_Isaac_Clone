@@ -21,9 +21,12 @@ public class MainMenuViewController extends AbstractControllerFXML {
     @FXML private Button helpButton;
     @FXML private Button creditsButton;
     //@FXML private ListView leaderboardView; forse necessita di una sua view. Guarda controllo TableView.
-    
+    /**
+     * "The constructor is called first, then any @FXML annotated fields are populated".
+     * "the constructor does NOT have access to @FXML fields referring to components defined in the .fxml file".
+     */
     public MainMenuViewController() {
-        // TODO Auto-generated constructor stub
+        //super.openingFade(() -> ViewManager.Push()); TO CHECK if works
     }
     @Override
     public Region getRoot() {

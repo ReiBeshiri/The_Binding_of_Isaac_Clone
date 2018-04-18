@@ -16,7 +16,7 @@ public class CreditsViewController extends AbstractControllerFXML{
 
     @FXML
     private void backButtonClick() {
-        //ViewManager close & POP
+        //super.closingFade(() -> ViewManager.Pop());
     }
     
     @Override

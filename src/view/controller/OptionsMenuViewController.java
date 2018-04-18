@@ -54,9 +54,15 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
         OptionsViewUtil.setGodMode(godModeCheckBox.isSelected());
         
         //ViewManager.RESIZE
-        //Close & POP form stack  
+        
+        //super.closingFade(() -> ViewManager.Pop());
     }
-
+    
+    @FXML
+    private void exitButtonClick() {
+       //super.closingFade(() -> ViewManager.Pop());
+    }
+    
     @Override
     public Region getRoot() {
         return this.contentPane;

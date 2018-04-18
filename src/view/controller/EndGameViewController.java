@@ -19,12 +19,15 @@ public class EndGameViewController extends AbstractControllerFXML{
 
     @FXML
     private void exitButtonClick() {
-        //ViewManager close & POP
+        //super.closingFade(() -> ViewManager.Pop()); DOBBIAMO GESTIRE LA CHIUSURA. 
+                                                    //(qui in teoria lo stack rimane vuoto)
+                                                    //una possibile soluzione sarebbe che all'avvio del gioco
+                                                    //si fa una push nello stack relativo al menu principale.
     }
     
     @FXML
     private void saveButtonClick() {
-        //Save points and nickname
+        //super.closingFade(() -> ViewManager.Pop()); DOBBIAMO GESTIRE LA CHIUSURA. 
     }
     @Override
     public Region getRoot() {
