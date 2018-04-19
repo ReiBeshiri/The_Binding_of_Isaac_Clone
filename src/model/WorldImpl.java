@@ -10,6 +10,7 @@ import model.animated.Enemy;
 import model.animated.Player;
 import model.inanimated.Button;
 import model.room.Room;
+import worldevent.PlayerHeartChange;
 import worldevent.WorldEvent;
     /**
      *WorldImpl. 
@@ -29,6 +30,7 @@ public class WorldImpl implements World {
     private List<Command> listShots;
     private List<Animated> listEnemy;                   //|list of enemies
     private List<Room> listRoom;
+    private List<WorldEvent> listEvent;
     /**
      * @return list of game objects.
      */
@@ -191,14 +193,16 @@ public class WorldImpl implements World {
     private void incPlayerLife(final int life) {
         AbstractCharacter player = (AbstractCharacter) this.player;
         player.incLife(life);
+        listEvent.add(new PlayerHeartChange(player.getLife()));
     }
     /**
      * 
-     * @param life hp to dec to the character.
+     * @param life hp to dec to the player.
      * @param c Animated obj to cast.
      */
-    private void decCharacterLife(final int life, final Animated c) {
-        AbstractCharacter character = (AbstractCharacter) c;
-        character.decLife(life);
+    private void decPlayerLife(final int life, final Animated c) {
+        AbstractCharacter player = (AbstractCharacter) c;
+        player.decLife(life);
+        listEvent.add(new PlayerHeartChange(player.getLife()));
     }
 }
