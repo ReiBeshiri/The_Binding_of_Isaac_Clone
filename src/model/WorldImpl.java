@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import input.Command;
+import model.animated.AbstractCharacter;
 import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.Enemy;
@@ -182,5 +183,22 @@ public class WorldImpl implements World {
      */
     public List<Command> getShotCommandList() {
         return this.listShots;
+    }
+    /**
+     * @param life hp to inc to the player.
+     * inc the player's heart by an amount.
+     */
+    private void incPlayerLife(final int life) {
+        AbstractCharacter player = (AbstractCharacter) this.player;
+        player.incLife(life);
+    }
+    /**
+     * 
+     * @param life hp to dec to the character.
+     * @param c Animated obj to cast.
+     */
+    private void decCharacterLife(final int life, final Animated c) {
+        AbstractCharacter character = (AbstractCharacter) c;
+        character.decLife(life);
     }
 }
