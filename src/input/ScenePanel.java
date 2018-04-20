@@ -27,7 +27,12 @@ public enum ScenePanel {
     /**
      * Game main scene.
      */
-    GAME("GameCanvasView.fxml");
+    GAME("GameCanvasView.fxml"),
+    /**
+     * 
+     */
+    PAUSE("TODO");
+    
     
     private String file;
     ScenePanel(final String file) {
