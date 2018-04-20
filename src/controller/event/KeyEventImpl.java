@@ -1,11 +1,12 @@
 package controller.event;
 
 import input.ScenePanel;
+import javafx.scene.input.KeyCode;
 /**
  *
  */
 public class KeyEventImpl implements KeyEvent {
-    private String key;
+    private KeyCode key;
     private ScenePanel gameState;
     private KeyType type;
     /**
@@ -14,7 +15,7 @@ public class KeyEventImpl implements KeyEvent {
      * @param gameState s.
      * @param keyType s.
      */
-    public KeyEventImpl(final String key, final ScenePanel gameState, final KeyType keyType) { //La key potrebbe avere un enum o una classe.
+    public KeyEventImpl(final KeyCode key, final ScenePanel gameState, final KeyType keyType) { //La key potrebbe avere un enum o una classe.
         this.key = key;
         this.gameState = gameState;
         this.type = keyType;
@@ -24,7 +25,7 @@ public class KeyEventImpl implements KeyEvent {
      */
     @Override
     public String getEvent() {
-        return this.key;
+        return this.key.getName(); //Bisogna verificare cosa ritorna.
     }
     /**
      * 
