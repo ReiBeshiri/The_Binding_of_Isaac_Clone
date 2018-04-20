@@ -23,7 +23,9 @@ public class GameEngineImpl implements GameEngine {
     private World world;
     private GameLoop gameLoop;
     private View gui;
-    
+    /**
+     * 
+     */
     public GameEngineImpl() {
         gui = new ViewImpl(); //gui = ViewImpl.get();
     }
