@@ -1,18 +1,42 @@
 package view;
 
+import java.util.List;
 import input.ScenePanel;
-
+import model.GameObject;
 /**
- * 
+ * View.
  */
 public interface View {
     /**
-     * 
+     * Changed current scene.
      * @param s Scene to change.
      */
     void changeScene(ScenePanel s);
     /**
-     * 
+     * Render new scene.
+     * @param list Lit of objects to render.
      */
-    void render();
+    void render(List<GameObject> list);
+    /**
+     * Render new Room.
+     */
+    void roomChanged();
+    /**
+     * Render new playerLife.
+     */
+    void playerLifeChanged();
+    /**
+     * Set initial height of window.
+     * @param h Height.
+     */
+    void setHeight(int h);
+    /**
+     * Set initial Width of window.
+     * @param w Width.
+     */
+    void setWidth(int w);
+    /**
+     * Check params and start view.
+     */
+    void viewStart();
 }
