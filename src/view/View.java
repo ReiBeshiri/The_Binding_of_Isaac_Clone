@@ -2,6 +2,7 @@ package view;
 
 import java.util.List;
 import input.ScenePanel;
+import javafx.event.Event;
 import model.GameObject;
 /**
  * View.
@@ -39,4 +40,9 @@ public interface View {
      * Check params and start view.
      */
     void viewStart();
+    /**
+     * Notify event to observer.
+     * @param e Event received.
+     */
+    void notifyEvent(Event e);
 }

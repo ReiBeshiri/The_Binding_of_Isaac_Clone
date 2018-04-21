@@ -1,8 +1,9 @@
 package view;
 
-import java.util.List;
-import controller.Observer;
 import input.ScenePanel;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
 /**
  * generic type of scene.
  */
@@ -13,12 +14,17 @@ public interface GenericScene {
      */
     ScenePanel getSceneType();
     /**
-     * Observer of a specific scene.
-     * @return list of observersOfThisScene.
+     * return event handler of that scene.
+     * @return event handler.
      */
-    List<Observer> getObserverList();
+    EventHandler<KeyEvent> getEventHandler();
     /**
-     * Add observer for a specific scene.
+     * Check specific type of events.
+     * @param e Event received.
      */
-    void addSceneObservers();
+    void checkSceneHandler(Event e);
+    /**
+     * Add exit status tu scene stack.
+     */
+    void exitStatus();
 }
