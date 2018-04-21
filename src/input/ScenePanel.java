@@ -13,7 +13,7 @@ public enum ScenePanel {
      */
     OPTIONS("OptionsMenuView.fxml"),
     /**
-     * credit scene.
+     * Credits scene.
      */
     CREDITS("CreditsView.fxml"),
     /**
@@ -29,9 +29,9 @@ public enum ScenePanel {
      */
     GAME("GameCanvasView.fxml"),
     /**
-     * 
+     * Pause scene.
      */
-    PAUSE("TODO");
+    PAUSE("PauseView.fxml");
     
     
     private String file;
