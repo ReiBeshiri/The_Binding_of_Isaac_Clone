@@ -189,6 +189,7 @@ public class WorldImpl implements World {
         return this.listShots;
     }
     /**
+     * Increment player's life.
      * @param life hp to inc to the player.
      * inc the player's heart by an amount.
      */
@@ -198,7 +199,7 @@ public class WorldImpl implements World {
         listEvent.add(new PlayerHeartChange(player.getLife()));
     }
     /**
-     * 
+     * Decrement player's life.
      * @param life hp to dec to the player.
      * @param c Animated obj to cast.
      */
@@ -208,7 +209,7 @@ public class WorldImpl implements World {
         listEvent.add(new PlayerHeartChange(player.getLife()));
     }
     /**
-     * 
+     * Decrement enemy's life.
      * @param life hp to dec from the enemy.
      * @param e Animeted obj to cast.
      */
@@ -221,11 +222,16 @@ public class WorldImpl implements World {
         removeEnemy(enemy);
     }
     /**
+     * Method to put first of the update before to check the collision with enemy/enemy bullet. 
      * @return if the enemy in a room are all defeated.
      */
     private boolean allEnemyDefeated() {
         return this.listEnemy.isEmpty();
     }
+    /**
+     * Check if the enemy bullet's hits the player.
+     * @param p player.
+     */
     private void playerGetsHitByBullet(final Animated p) {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
