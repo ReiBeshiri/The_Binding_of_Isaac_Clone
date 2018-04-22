@@ -19,14 +19,12 @@ public abstract class AbstractGenericScene {
      */
     public AbstractGenericScene(final SceneType s) {
         scene = s;
-        sceneHandler = new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(final KeyEvent event) {
-                if (event.getCode().toString().equals(InputCommandType.Esc.toString()) && event.getEventType().equals(KeyEvent.KEY_PRESSED)) {
-                    exitStatus();
-                }
-                checkSceneHandler(event);
+        sceneHandler = e -> {
+            if (e.getCode().toString().equals(InputCommandType.Esc.toString()) 
+                    && e.getEventType().equals(KeyEvent.KEY_PRESSED)) {
+                exitStatus();
             }
+            checkSceneHandler(e);
         };
     }
     /**
