@@ -3,7 +3,7 @@ package input;
  * Scenes of the game.
  * 
  */
-public enum ScenePanel {
+public enum SceneType {
     /**
      * Start scene.
      */
@@ -13,7 +13,7 @@ public enum ScenePanel {
      */
     OPTIONS("OptionsMenuView.fxml"),
     /**
-     * credit scene.
+     * Credits scene.
      */
     CREDITS("CreditsView.fxml"),
     /**
@@ -29,14 +29,12 @@ public enum ScenePanel {
      */
     GAME("GameCanvasView.fxml"),
     /**
-     * 
+     * Pause scene.
      */
-    PAUSE("TODO");
-    
-    
+    PAUSE("PauseView.fxml");
     private String file;
-    ScenePanel(final String file) {
-        this.file=file;
+    SceneType(final String file) {
+        this.file = file;
     }
     private String getFile() {
         return file;

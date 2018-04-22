@@ -1,18 +1,18 @@
 package view;
 
 import java.util.List;
-import input.ScenePanel;
+import input.SceneType;
 import javafx.event.Event;
 import model.GameObject;
 /**
- * View.
+ * View class. This class comunicate with controller.
  */
 public interface View {
     /**
      * Changed current scene.
      * @param s Scene to change.
      */
-    void changeScene(ScenePanel s);
+    void changeScene(SceneType s);
     /**
      * Render new scene.
      * @param list Lit of objects to render.

@@ -4,7 +4,7 @@ import controller.event.Event;
 import controller.event.KeyEvent;
 import controller.event.KeyType;
 import input.Command;
-import input.ScenePanel;
+import input.SceneType;
 import javafx.scene.input.KeyCode;
 /**
  *
@@ -17,9 +17,9 @@ public class KeyObserver implements Observer {
     public <E extends Event> void notifyEvent(final E event) {
         if (event instanceof KeyEvent) {
             final KeyEvent keyEvent = (KeyEvent) event;
-            if (compare(keyEvent, KeyCode.ESCAPE.getName(), ScenePanel.GAME, KeyType.KEY_RELEASED)) {
+            if (compare(keyEvent, KeyCode.ESCAPE.getName(), SceneType.GAME, KeyType.KEY_RELEASED)) {
                 GameEngineImpl.get().stopGameLoop();
-            } else if (compare(keyEvent, KeyCode.ESCAPE.getName(), ScenePanel.PAUSE, KeyType.KEY_RELEASED)) {
+            } else if (compare(keyEvent, KeyCode.ESCAPE.getName(), SceneType.PAUSE, KeyType.KEY_RELEASED)) {
                 GameEngineImpl.get().resumeGameLoop();
             }
             if (keyEvent.getType().equals(KeyType.KEY_PRESSED)) {
@@ -30,7 +30,7 @@ public class KeyObserver implements Observer {
         }
     }
     //
-    private boolean compare(final KeyEvent event, final String key, final ScenePanel scene, final KeyType type) {
+    private boolean compare(final KeyEvent event, final String key, final SceneType scene, final KeyType type) {
         return event.getEvent().equals(key) && event.getGameState().equals(scene) && event.getType().equals(type);
     }
     //

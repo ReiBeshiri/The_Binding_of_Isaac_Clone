@@ -1,6 +1,6 @@
 package view;
 
-import input.ScenePanel;
+import input.SceneType;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
@@ -12,7 +12,7 @@ public interface GenericScene {
      * getter for a scene represented by this class.
      * @return enum type of this scene.
      */
-    ScenePanel getSceneType();
+    SceneType getSceneType();
     /**
      * return event handler of that scene.
      * @return event handler.
