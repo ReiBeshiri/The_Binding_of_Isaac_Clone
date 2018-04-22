@@ -1,6 +1,6 @@
 package controller.event;
 
-import input.ScenePanel;
+import input.SceneType;
 
 /**
  * s.
@@ -9,7 +9,7 @@ public interface KeyEvent extends Event {
     /**
      * @return s.
      */
-    ScenePanel getGameState();
+    SceneType getGameState();
     /**
      * 
      * @return s.

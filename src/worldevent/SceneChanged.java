@@ -1,6 +1,6 @@
 package worldevent;
 
-import input.ScenePanel;
+import input.SceneType;
 /**
  * Notify when the scene change.
  *
@@ -10,5 +10,5 @@ public interface SceneChanged {
      * 
      * @return Next scene.
      */
-    ScenePanel getNextScene();
+    SceneType getNextScene();
 }
