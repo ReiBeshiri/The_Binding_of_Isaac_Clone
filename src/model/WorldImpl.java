@@ -10,7 +10,9 @@ import model.animated.Enemy;
 import model.animated.Player;
 import model.inanimated.Button;
 import model.room.Room;
+import utility.Collisions;
 import worldevent.PlayerHeartChange;
+import worldevent.PlayerKillEnemy;
 import worldevent.WorldEvent;
     /**
      *WorldImpl. 
@@ -204,5 +206,30 @@ public class WorldImpl implements World {
         AbstractCharacter player = (AbstractCharacter) c;
         player.decLife(life);
         listEvent.add(new PlayerHeartChange(player.getLife()));
+    }
+    /**
+     * 
+     * @param life hp to dec from the enemy.
+     * @param e Animeted obj to cast.
+     */
+    private void decEnemyLife(final int life, final Animated e) {
+        AbstractCharacter enemy = (AbstractCharacter) e;
+        enemy.decLife(life);
+        if (enemy.getLife() <= 0) {
+            listEvent.add(new PlayerKillEnemy(0)); //Da qualche parte devo prendere il punteggio
+        }
+        removeEnemy(enemy);
+    }
+    /**
+     * @return if the enemy in a room are all defeated.
+     */
+    private boolean allEnemyDefeated() {
+        return this.listEnemy.isEmpty();
+    }
+    private void playerGetsHitByBullet(final Animated p) {
+        AbstractCharacter player = (AbstractCharacter) p;
+        for (Bullet b : this.listBulletEnemies) {
+        //collisione tra player e lista di bullet con eliminazione bullet e scala vita al player.
+        }
     }
 }
