@@ -1,5 +1,6 @@
 package view;
 
+import input.InputCommandType;
 import input.SceneType;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -21,7 +22,7 @@ public abstract class AbstractGenericScene {
         sceneHandler = new EventHandler<KeyEvent>() {
             @Override
             public void handle(final KeyEvent event) {
-                if (event.getCode().toString().equals("ESC") && event.getEventType().equals(KeyEvent.KEY_PRESSED)) {
+                if (event.getCode().toString().equals(InputCommandType.Esc.toString()) && event.getEventType().equals(KeyEvent.KEY_PRESSED)) {
                     exitStatus();
                 }
                 checkSceneHandler(event);
