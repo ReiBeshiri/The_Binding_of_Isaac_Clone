@@ -33,6 +33,7 @@ public class WorldImpl implements World {
     private List<Animated> listEnemy;                   //|list of enemies
     private List<Room> listRoom;
     private List<WorldEvent> listEvent;
+    private final static int DAMAGE = 1;
     /**
      * @return list of game objects.
      */
@@ -230,16 +231,29 @@ public class WorldImpl implements World {
         return this.listEnemy.isEmpty();
     }
     /**
-     * Check if the enemy bullet's hits the player.
+     * Check if a enemy bullet's hits the player.
      * @param p player.
      */
     private void playerGetsHitByBullet(final Animated p) {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
             if (!Collisions.entityCollision(b, player).isEmpty()) {
-                player.decLife(1); //where should i take the dmg from?
-                listBulletEnemies.remove(b);
+                player.decLife(DAMAGE); //where should i take the dmg from?
+                removeBulletEnemy(b);
             }
         }
+    }
+    /**
+     * Check if a player's bullet hits an enemy.
+     */
+    private void playerHitsEnemy() {
+        for (Bullet b : this.listBulletPlayer) {
+            for (Animated enemy : this.listEnemy) {
+                if (!Collisions.entityCollision(b, enemy).isEmpty()) {
+                    decEnemyLife(DAMAGE, enemy);
+                    removeBulletPlayer(b);
+                }
+            }
+         }
     }
 }
