@@ -1,19 +1,19 @@
 package model.animated;
 
 /**
- * Defines all the bullets used in the game
+ * Defines all the bullets used in the game.
  */
 public enum BulletType {
-    /*
-     * Bullets shot by the Player
+    /**
+     * Bullets shot by the Player.
      */
     PLAYER_BULLET(1,1000,10),
-    /*
-     * Bullets shot by the Enemies
+    /**
+     * Bullets shot by the Enemies.
      */
     ENEMY_BULLET(1,1000,10),
-    /*
-     * Bullets shot by the Boss
+    /**
+     * Bullets shot by the Boss.
      */
     BOSS_BULLET(1,1500,10);
     
@@ -27,25 +27,21 @@ public enum BulletType {
     }
     /**
      * Get the value of the damage.
-     * /*
-     * Get the value of the damage
-     * @return The damage made by the bullet
+     * @return The damage made by the bullet.
      */
     public double getDamage() {
         return damage;
     }
     /**
      * Get the value of the range.
-     * Get the value of the range
-     * @return The range of the bullet
+     * @return The range of the bullet.
      */
     public double getRange() {
         return range;
     }
     /**
      * Get the value of the steps.
-     * Get the value of the steps
-     * @return The steps of the bullet
+     * @return The steps of the bullet.
      */
     public double getSteps() {
         return steps;

@@ -3,13 +3,14 @@ package model.animated;
 import model.hitbox.HitBox;
 /**
  * 
- * Abstract class that acts as a filter between Animated, BulletImpl and AbstractCharacter.
+ * Abstract class that acts as a filter between Animated and BulletImpl.
  *
  */
-public abstract class AnimatedEntity implements Animated {
+public abstract class AbstractBullet implements Animated {
 
     private double vel;
     private HitBox hb;
+    
     /**
      * Constructor that initialize the common variables.
      * @param vel
@@ -17,7 +18,7 @@ public abstract class AnimatedEntity implements Animated {
      * @param hb
      *          The HitBox of the entity.
      */
-    public AnimatedEntity(final double vel, final HitBox hb) {
+    public AbstractBullet(final double vel, final HitBox hb) {
        setVel(vel);
        setHitBox(hb);
     }
@@ -43,6 +44,7 @@ public abstract class AnimatedEntity implements Animated {
         this.vel=vel;
 
     }
+    
     /**
      * Traveled distance during the update method.
      * @param dt

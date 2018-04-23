@@ -8,12 +8,12 @@ import model.strategy.MovementStrategy;
  * Class for all the bullets fired in the game.
  *
  */
-public class BulletImpl extends AnimatedEntity implements Bullet{
+public class BulletImpl extends AbstractBullet implements Bullet{
 
     private double range;
     private final MovementStrategy bulletMS;
     /**
-     * 
+     * Constructor that initialize the common variables.
      * @param chb
      *          The HitBox of the bullet.
      * @param vel
