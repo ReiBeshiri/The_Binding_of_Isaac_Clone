@@ -215,9 +215,10 @@ public class WorldImpl implements World {
      */
     private void decEnemyLife(final int life, final Animated e) {
         AbstractCharacter enemy = (AbstractCharacter) e;
+        Enemy enemyPoints = (Enemy) enemy;
         enemy.decLife(life);
         if (enemy.getLife() <= 0) {
-            listEvent.add(new PlayerKillEnemy(0)); //Da qualche parte devo prendere il punteggio
+            listEvent.add(new PlayerKillEnemy(enemyPoints.getPoint()));
         }
         removeEnemy(enemy);
     }
@@ -235,7 +236,10 @@ public class WorldImpl implements World {
     private void playerGetsHitByBullet(final Animated p) {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
-        //collisione tra player e lista di bullet con eliminazione bullet e scala vita al player.
+            if (!Collisions.entityCollision(b, player).isEmpty()) {
+                player.decLife(1); //where should i take the dmg from?
+                listBulletEnemies.remove(b);
+            }
         }
     }
 }
