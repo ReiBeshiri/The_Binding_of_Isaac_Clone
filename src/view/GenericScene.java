@@ -24,7 +24,7 @@ public interface GenericScene {
      */
     void checkSceneHandler(Event e);
     /**
-     * Add exit status tu scene stack.
+     * Add exit status to scene stack.
      */
     void exitStatus();
 }
