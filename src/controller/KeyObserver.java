@@ -4,6 +4,7 @@ import controller.event.Event;
 import controller.event.KeyEvent;
 import controller.event.KeyType;
 import input.Command;
+import input.InputCommandType;
 import input.SceneType;
 import javafx.scene.input.KeyCode;
 /**
@@ -36,56 +37,57 @@ public class KeyObserver implements Observer {
     //
     private void key(final String key, final boolean pressed) {
         switch (key) {
-        case KeyCode.W.getName():
+        case "W":
             if (pressed) {
                 GameEngineImpl.get().addMovement(Command.UP);
             } else {
                 GameEngineImpl.get().removeMovement(Command.UP);
             }
             break;
-        case KeyCode.A.getName():
+        case "A":
             if (pressed) {
                 GameEngineImpl.get().addMovement(Command.LEFT);
             } else {
                 GameEngineImpl.get().removeMovement(Command.LEFT);
+                KeyCode.UP.getName();
             }
             break;
-        case KeyCode.S.getName():
+        case "S":
             if (pressed) {
                 GameEngineImpl.get().addMovement(Command.DOWN);
             } else {
                 GameEngineImpl.get().removeMovement(Command.DOWN);
             }
             break;
-        case KeyCode.D.getName():
+        case "D":
             if (pressed) {
                 GameEngineImpl.get().addMovement(Command.RIGHT);
             } else {
                 GameEngineImpl.get().removeMovement(Command.RIGHT);
             }
             break;
-        case KeyCode.UP.getName():
+        case "Up":
             if (pressed) {
                 GameEngineImpl.get().addShoot(Command.UP);
             } else {
                 GameEngineImpl.get().removeShoot(Command.UP);
             }
             break;
-        case KeyCode.LEFT.getName():
+        case "Left":
             if (pressed) {
                 GameEngineImpl.get().addShoot(Command.LEFT);
             } else {
                 GameEngineImpl.get().removeShoot(Command.LEFT);
             }
             break;
-        case KeyCode.DOWN.getName():
+        case "Down":
             if (pressed) {
                 GameEngineImpl.get().addShoot(Command.DOWN);
             } else {
                 GameEngineImpl.get().removeShoot(Command.DOWN);
             }
             break;
-        case KeyCode.RIGHT.getName():
+        case "Right":
             if (pressed) {
                 GameEngineImpl.get().addShoot(Command.RIGHT);
             } else {

@@ -1,5 +1,9 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import controller.event.Event;
 import model.World;
 /**
  * 
@@ -16,6 +20,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private int optimalTime; //A cosa serve?
     private long lastLoop;
     private World world;
+    private List<Event> event = new ArrayList<>(); 
     /**
      * 
      * @param world The instance of the model
