@@ -11,14 +11,11 @@ import javafx.util.Duration;
 /**
  * Abstract class with the common behavior to all controller classes.
  */
-public abstract class AbstractControllerFXML {
+public abstract class AbstractControllerFXML implements ControllerFXML{
 
     private FadeTransition fade;
     private static final int TRANSITION_TIME = 500;
-    /**
-     * Getter of the root node for the FXML file.
-     * @return The root element.
-     */
+    @Override
     public abstract Region getRoot();
     
     /**
@@ -69,19 +66,14 @@ public abstract class AbstractControllerFXML {
         this.fadeAnimation(node, from, to);
         fade.setOnFinished(e -> toRun.run());
     }
-    /**
-     * Method used to apply a fade-out transition to a window
-     * and to set the window that needs to appear.
-     * @param toRun
-     *          The window that needs to be opened at the end of the transition.
-     */
+    
+    @Override
     public void closingFade(Runnable toRun) {
         this.getRoot().setDisable(true);
         this.fadeAnimation(this.getRoot(), 1.0, 0.0, toRun);
     }
-    /**
-     * Method used to apply a fade-in transition to a window
-     */
+    
+    @Override
     public void openingFade() {
         this.getRoot().setDisable(false);
         this.fadeAnimation(this.getRoot(), 0.0, 1.0);
