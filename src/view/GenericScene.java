@@ -4,6 +4,7 @@ import input.SceneType;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import view.controller.ControllerFXML;
 /**
  * generic type of scene.
  */
@@ -27,4 +28,9 @@ public interface GenericScene {
      * Add exit status to scene stack.
      */
     void exitStatus();
+    /**
+     * Get controller for a specific scene.
+     * @return Controller of the scene.
+     */
+    ControllerFXML getSceneController();
 }

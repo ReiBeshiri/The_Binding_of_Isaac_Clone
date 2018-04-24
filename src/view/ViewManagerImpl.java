@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+
 /**
  * 
  *
@@ -15,20 +16,26 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     private final Stack<GenericScene> stack;
     private Stage stage;
     private ViewManager manager;
+    private int heigth;
+    private int width;
+
     private ViewManagerImpl() {
         super();
-        stack = new Stack<>(); 
+        stack = new Stack<>();
     }
+
     /**
      * Push scene Generic scene and update stack state.
      */
     @Override
     public void push(final GenericScene scene) {
         if (!stack.isEmpty()) {
-           stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
+            stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
         stack.push(scene);
+        stage.setScene(stack.lastElement().getSceneController().getRoot().getScene());
     }
+
     /**
      * 
      */
@@ -37,8 +44,10 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         if (stack.size() > 1) {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
             stack.pop();
+            stage.setScene(stack.lastElement().getSceneController().getRoot().getScene());
         }
     }
+
     /**
      * 
      */
@@ -46,6 +55,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     public void notifyEvent(final Event e) {
         
     }
+
     /**
      * 
      */
@@ -56,27 +66,30 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         }
         return manager;
     }
+
     /**
      * 
      */
     @Override
     public void setHeight(final int h) {
-        // TODO Auto-generated method stub
-
+        heigth = h;
     }
+
     /**
      * 
      */
     @Override
     public void setWidth(final int w) {
-        // TODO Auto-generated method stub
-
+        width = w;
     }
+
     /**
      * 
      */
     @Override
     public void start(final Stage primaryStage) throws Exception {
         stage = primaryStage;
+        
+        primaryStage.show();
     }
 }
