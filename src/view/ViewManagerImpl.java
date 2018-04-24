@@ -5,6 +5,7 @@ import java.util.Stack;
 
 import javafx.application.Application;
 import javafx.event.Event;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 /**
  * 
@@ -18,11 +19,13 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         stack = new Stack<>(); 
     }
     /**
-     * 
+     * Push scene Generic scene and update stack state.
      */
     @Override
     public void push(final GenericScene scene) {
-        
+        if (!stack.isEmpty()) {
+           stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
+        }
     }
     /**
      * 
@@ -30,7 +33,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     @Override
     public void pop() {
         if (stack.size() > 1) {
-            
+            stage.getScene()
         }
     }
     /**
