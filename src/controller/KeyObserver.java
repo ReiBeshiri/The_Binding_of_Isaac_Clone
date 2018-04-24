@@ -39,59 +39,59 @@ public class KeyObserver implements Observer {
         switch (key) {
         case "W":
             if (pressed) {
-                GameEngineImpl.get().addMovement(Command.UP);
+                GameEngineImpl.get().getGameLoop().addMovement(Command.UP);
             } else {
-                GameEngineImpl.get().removeMovement(Command.UP);
+                GameEngineImpl.get().getGameLoop().removeMovement(Command.UP);
             }
             break;
         case "A":
             if (pressed) {
-                GameEngineImpl.get().addMovement(Command.LEFT);
+                GameEngineImpl.get().getGameLoop().addMovement(Command.LEFT);
             } else {
-                GameEngineImpl.get().removeMovement(Command.LEFT);
+                GameEngineImpl.get().getGameLoop().removeMovement(Command.LEFT);
                 KeyCode.UP.getName();
             }
             break;
         case "S":
             if (pressed) {
-                GameEngineImpl.get().addMovement(Command.DOWN);
+                GameEngineImpl.get().getGameLoop().addMovement(Command.DOWN);
             } else {
-                GameEngineImpl.get().removeMovement(Command.DOWN);
+                GameEngineImpl.get().getGameLoop().removeMovement(Command.DOWN);
             }
             break;
         case "D":
             if (pressed) {
-                GameEngineImpl.get().addMovement(Command.RIGHT);
+                GameEngineImpl.get().getGameLoop().addMovement(Command.RIGHT);
             } else {
-                GameEngineImpl.get().removeMovement(Command.RIGHT);
+                GameEngineImpl.get().getGameLoop().removeMovement(Command.RIGHT);
             }
             break;
         case "Up":
             if (pressed) {
-                GameEngineImpl.get().addShoot(Command.UP);
+                GameEngineImpl.get().getGameLoop().addShoot(Command.UP);
             } else {
-                GameEngineImpl.get().removeShoot(Command.UP);
+                GameEngineImpl.get().getGameLoop().removeShoot(Command.UP);
             }
             break;
         case "Left":
             if (pressed) {
-                GameEngineImpl.get().addShoot(Command.LEFT);
+                GameEngineImpl.get().getGameLoop().addShoot(Command.LEFT);
             } else {
-                GameEngineImpl.get().removeShoot(Command.LEFT);
+                GameEngineImpl.get().getGameLoop().removeShoot(Command.LEFT);
             }
             break;
         case "Down":
             if (pressed) {
-                GameEngineImpl.get().addShoot(Command.DOWN);
+                GameEngineImpl.get().getGameLoop().addShoot(Command.DOWN);
             } else {
-                GameEngineImpl.get().removeShoot(Command.DOWN);
+                GameEngineImpl.get().getGameLoop().removeShoot(Command.DOWN);
             }
             break;
         case "Right":
             if (pressed) {
-                GameEngineImpl.get().addShoot(Command.RIGHT);
+                GameEngineImpl.get().getGameLoop().addShoot(Command.RIGHT);
             } else {
-                GameEngineImpl.get().removeShoot(Command.RIGHT);
+                GameEngineImpl.get().getGameLoop().removeShoot(Command.RIGHT);
             }
             break;
         default:

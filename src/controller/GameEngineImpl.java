@@ -1,24 +1,15 @@
 package controller;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
-
-import input.Command;
 import model.World;
 import model.WorldImpl;
 import view.View;
-import view.ViewImpl;
-import worldevent.WorldEvent;
-
 /**
  * 
  * s.
  *
  */
 public class GameEngineImpl implements GameEngine {
-    private final Set<Command> movements = new HashSet<>();
-    private final Set<Command> shoots = new HashSet<>();
     private static GameEngineImpl singleton;
     private World world;
     private GameLoop gameLoop;
@@ -54,18 +45,11 @@ public class GameEngineImpl implements GameEngine {
         this.gameLoop = new GameLoopImpl(world);
         resumeGameLoop();
     }
-
-    @Override
-    public void getActualTime() {
-        // TODO Auto-generated method stub
-
-    }
     /**
      * 
      */
     @Override
     public void stopGameLoop() {
-        cleanKeys();
         gameLoop.stop();
     }
     /**
@@ -76,53 +60,6 @@ public class GameEngineImpl implements GameEngine {
         if (!Objects.isNull(gameLoop)) {
             gameLoop.start();
         }
-    }
-
-    @Override
-    public void notifyEvent(final WorldEvent we) {
-        // TODO Auto-generated method stub
-    }
-    /**
-     * 
-     */
-    @Override
-    public void addShoot(final Command d) {
-        shoots.add(d);
-    }
-    /**
-     * 
-     */
-    @Override
-    public void removeShoot(final Command d) {
-        shoots.remove(d);
-    }
-    /**
-     * 
-     */
-    @Override
-    public void addMovement(final Command d) {
-        movements.add(d);
-    }
-    /**
-     * 
-     */
-    @Override
-    public void removeMovement(final Command d) {
-        movements.add(d);
-    }
-    /**
-     * 
-     */
-    @Override
-    public Set<Command> getKeyShootListener() {
-        return this.shoots;
-    }
-    /**
-     * 
-     */
-    @Override
-    public Set<Command> getKeyMovementList() {
-        return this.shoots;
     }
     /**
      * 
@@ -140,11 +77,9 @@ public class GameEngineImpl implements GameEngine {
         stopGameLoop();
     }
     /**
-     * 
+     * @return the gameLoop;
      */
-    private void cleanKeys() {
-        this.movements.clear();
-        this.shoots.clear();
+    public GameLoop getGameLoop() {
+        return this.gameLoop;
     }
-
 }

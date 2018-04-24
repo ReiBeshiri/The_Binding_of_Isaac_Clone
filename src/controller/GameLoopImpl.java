@@ -1,16 +1,22 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import controller.event.Event;
+import input.Command;
 import model.World;
+import worldevent.WorldEvent;
 /**
  * 
  * Defines all the operation to update the model and pass model object 
  * to the view.
  */
 public class GameLoopImpl implements GameLoop, Runnable {
+    private final List<Command> movements = new ArrayList<>();
+    private final List<Command> shoots = new ArrayList<>();
     private static final long SECONDMICRO = 1000000;
     private static final int SECONDNANO = 1000000000;
     private static final int FPS = 60;
@@ -19,8 +25,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private Thread thread;
     private int optimalTime; //A cosa serve?
     private long lastLoop;
-    private World world;
-    private List<Event> event = new ArrayList<>(); 
+    private World world; 
     /**
      * 
      * @param world The instance of the model
@@ -81,19 +86,12 @@ public class GameLoopImpl implements GameLoop, Runnable {
     }
     /**
      * 
-     */
-    @Override
-    public boolean isRunning() {
-        return this.running;
-    }
-    /**
-     * 
      * @param delta
      */
     private void update(final double delta) {
-        world.update(delta, GameEngineImpl.get().getKeyMovementList(), GameEngineImpl.get().getKeyShootListener());
+        world.update(delta, this.movements, this.shoots);
     }
-    
+    //
     private void checkEndGame() {
         if (this.world.isGameOver()) {
             GameEngineImpl.get().gameOver();
@@ -102,5 +100,44 @@ public class GameLoopImpl implements GameLoop, Runnable {
             GameEngineImpl.get().victory();
         }
     }
-
+    /**
+     * 
+     */
+    @Override
+    public boolean isRunning() {
+        return this.running;
+    }
+    //
+    @Override
+    public void notifyEvent(final WorldEvent we) {
+        // TODO Auto-generated method stub
+    }
+    /**
+     * 
+     */
+    @Override
+    public void addShoot(final Command d) {
+        shoots.add(d);
+    }
+    /**
+     * 
+     */
+    @Override
+    public void removeShoot(final Command d) {
+        shoots.remove(d);
+    }
+    /**
+     * 
+     */
+    @Override
+    public void addMovement(final Command d) {
+        movements.add(d);
+    }
+    /**
+     * 
+     */
+    @Override
+    public void removeMovement(final Command d) {
+        movements.add(d);
+    }
 }
