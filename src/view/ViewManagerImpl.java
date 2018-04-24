@@ -16,6 +16,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     private Stage stage;
     private ViewManager manager;
     private ViewManagerImpl() {
+        super();
         stack = new Stack<>(); 
     }
     /**
@@ -26,6 +27,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         if (!stack.isEmpty()) {
            stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
+        stack.push(scene);
     }
     /**
      * 
@@ -33,7 +35,8 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     @Override
     public void pop() {
         if (stack.size() > 1) {
-            stage.getScene()
+            stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
+            stack.pop();
         }
     }
     /**
@@ -74,7 +77,6 @@ public final class ViewManagerImpl extends Application implements ViewManager {
      */
     @Override
     public void start(final Stage primaryStage) throws Exception {
-        // TODO Auto-generated method stub
-
+        stage = primaryStage;
     }
 }
