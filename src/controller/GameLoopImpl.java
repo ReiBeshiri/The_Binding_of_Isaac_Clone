@@ -1,13 +1,11 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import controller.event.Event;
 import input.Command;
 import model.World;
+import worldevent.PlayerKillAllEnemy;
+import worldevent.PlayerKillEnemy;
 import worldevent.WorldEvent;
 /**
  * 
@@ -17,6 +15,7 @@ import worldevent.WorldEvent;
 public class GameLoopImpl implements GameLoop, Runnable {
     private final List<Command> movements = new ArrayList<>();
     private final List<Command> shoots = new ArrayList<>();
+    private List<WorldEvent> worldEvent = new ArrayList<>();
     private static final long SECONDMICRO = 1000000;
     private static final int SECONDNANO = 1000000000;
     private static final int FPS = 60;
@@ -25,7 +24,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private Thread thread;
     private int optimalTime; //A cosa serve?
     private long lastLoop;
-    private World world; 
+    private World world;
+    private int score;
     /**
      * 
      * @param world The instance of the model
@@ -68,11 +68,11 @@ public class GameLoopImpl implements GameLoop, Runnable {
             final long now = System.nanoTime();
             final long sleepTime;
             final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60); //Avanzo di tempo tra un frame e il successivo?
-            
+            //
             update(delta);
             //Render
-            checkEndGame();
-            
+            //checkEndGame(); Non serve piu tanto gestiamo tutto con gli eventi;
+            checkEvent();
             sleepTime = (lastLoop - System.nanoTime() + optimalTime) / GameLoopImpl.SECONDMICRO;
 
             if (sleepTime > 0) {
@@ -92,13 +92,16 @@ public class GameLoopImpl implements GameLoop, Runnable {
         world.update(delta, this.movements, this.shoots);
     }
     //
-    private void checkEndGame() {
-        if (this.world.isGameOver()) {
-            GameEngineImpl.get().gameOver();
-        }
-        if (this.world.isBossDefeated()) {
-            GameEngineImpl.get().victory();
-        }
+    private void checkEvent() {
+        this.worldEvent = utility.ModelUtility.getWorldEventList();
+        worldEvent.forEach(x-> {
+            if (x instanceof PlayerKillEnemy) {
+                score += ((PlayerKillEnemy) x).getPoint();
+            } else if (x instanceof PlayerKillAllEnemy) {
+                //Stoppare il tempo; Se il nemico muore a meta del ruond non si calcola il bonus tempo,
+                //si calcolano solo i nemici che ha ucciso.
+            }
+        });
     }
     /**
      * 
@@ -106,11 +109,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
     @Override
     public boolean isRunning() {
         return this.running;
-    }
-    //
-    @Override
-    public void notifyEvent(final WorldEvent we) {
-        // TODO Auto-generated method stub
     }
     /**
      * 
@@ -141,3 +139,12 @@ public class GameLoopImpl implements GameLoop, Runnable {
         movements.add(d);
     }
 }
+
+/*private void checkEndGame() {
+if (this.world.isGameOver()) {
+    GameEngineImpl.get().gameOver();
+}
+if (this.world.isBossDefeated()) {
+    GameEngineImpl.get().victory();
+}
+}*/
