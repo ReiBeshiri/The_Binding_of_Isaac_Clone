@@ -18,7 +18,7 @@ public class GameEngineImpl implements GameEngine {
      * 
      */
     public GameEngineImpl() {
-        gui = new ViewImpl(); //gui = ViewImpl.get();
+        //gui = new ViewImpl(); //gui = ViewImpl.get();
     }
     /**
      * Get the instance of GameEngineImpl.

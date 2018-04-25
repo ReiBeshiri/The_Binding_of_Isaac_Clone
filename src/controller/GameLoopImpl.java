@@ -94,7 +94,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     //
     private void checkEvent() {
         this.worldEvent = utility.ModelUtility.getWorldEventList();
-        worldEvent.forEach(x-> {
+        worldEvent.forEach(x -> {
             if (x instanceof PlayerKillEnemy) {
                 score += ((PlayerKillEnemy) x).getPoint();
             } else if (x instanceof PlayerKillAllEnemy) {
