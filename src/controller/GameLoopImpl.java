@@ -28,7 +28,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private static final int MSWAIT = 5;
     private static final int MAX_TIME_BONUS = 180;
     private boolean running;
-    private Thread thread;
+    private Thread thread; 
     private int optimalTime; //A cosa serve?
     private long lastLoop;
     private World world;
@@ -51,9 +51,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
             this.running = true;
             optimalTime = GameLoopImpl.SECONDNANO / GameLoopImpl.FPS;
             this.lastLoop = System.nanoTime();
-            thread = new Thread();
+            thread = new Thread(this);
             thread.start();
-            
         }
     }
     /**
