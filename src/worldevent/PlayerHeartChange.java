@@ -4,7 +4,7 @@ package worldevent;
  * Event generated when the player gain/lose heart points.
  */
 public class PlayerHeartChange implements WorldEvent {
-    private int life;
+    private final int life;
     /**
      * 
      * @param life player's life.
