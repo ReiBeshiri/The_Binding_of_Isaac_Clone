@@ -53,6 +53,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
             this.lastLoop = System.nanoTime();
             thread = new Thread();
             thread.start();
+            
         }
     }
     /**

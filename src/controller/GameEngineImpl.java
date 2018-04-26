@@ -10,7 +10,7 @@ import view.ViewImpl;
  * s.
  *
  */
-public class GameEngineImpl implements GameEngine {
+public final class GameEngineImpl implements GameEngine {
     private static GameEngineImpl singleton;
     private World world;
     private GameLoop gameLoop;
@@ -18,7 +18,7 @@ public class GameEngineImpl implements GameEngine {
     /**
      * 
      */
-    public GameEngineImpl() {
+    private GameEngineImpl() {
         gui = new ViewImpl(); //gui = ViewImpl.get();
     }
     /**
