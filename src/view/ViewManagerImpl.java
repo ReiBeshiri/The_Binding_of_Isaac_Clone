@@ -3,6 +3,7 @@ package view;
 import java.util.Objects;
 import java.util.Stack;
 
+import controller.event.KeyType;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
@@ -34,6 +35,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         }
         stack.push(scene);
         stage.setScene(stack.lastElement().getSceneController().getRoot().getScene());
+        stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
     }
 
     /**
