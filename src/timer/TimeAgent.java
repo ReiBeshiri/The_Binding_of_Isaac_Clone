@@ -1,4 +1,4 @@
-package TimeLib;
+package timer;
 
 public class TimeAgent extends Thread {
 	

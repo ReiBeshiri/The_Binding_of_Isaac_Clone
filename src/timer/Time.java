@@ -1,4 +1,4 @@
-package TimeLib;
+package timer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,6 +6,7 @@ public class Time {
 
 	private static final int S_MAX = 59;
 	private static final int M_MAX = 59;
+	private static final int SECONDS_IN_A_MINUTE = 60;
 
 	private int minutes, seconds;
 	private final List<TimeEventListener> listeners;
@@ -32,6 +33,10 @@ public class Time {
 
 	public int getSeconds() {
 		return seconds;
+	}
+	
+	public int getTimeInSeconds() {
+	    return seconds + minutes * SECONDS_IN_A_MINUTE;
 	}
 	
 	private void notifyEvent(final TimeEvent t) {

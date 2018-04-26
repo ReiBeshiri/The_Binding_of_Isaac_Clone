@@ -1,4 +1,4 @@
-package TimeLib;
+package timer;
 
 public class TimeEvent {
 	private final Time value;

@@ -4,6 +4,7 @@ import java.util.Objects;
 import model.World;
 import model.WorldImpl;
 import view.View;
+import view.ViewImpl;
 /**
  * 
  * s.
@@ -13,12 +14,12 @@ public class GameEngineImpl implements GameEngine {
     private static GameEngineImpl singleton;
     private World world;
     private GameLoop gameLoop;
-    private View gui;
+    private final View gui;
     /**
      * 
      */
     public GameEngineImpl() {
-        //gui = new ViewImpl(); //gui = ViewImpl.get();
+        gui = new ViewImpl(); //gui = ViewImpl.get();
     }
     /**
      * Get the instance of GameEngineImpl.
