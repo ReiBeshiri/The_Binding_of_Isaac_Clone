@@ -16,7 +16,7 @@ public interface GameEngine {
     /**
      * s.
      */
-    void stopGameLoop();
+    void stopGame();
     /**
      * s.
      */

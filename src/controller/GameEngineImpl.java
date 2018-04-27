@@ -50,7 +50,7 @@ public final class GameEngineImpl implements GameEngine {
      * 
      */
     @Override
-    public void stopGameLoop() {
+    public void stopGame() {
         gameLoop.stop();
     }
     /**
@@ -68,14 +68,14 @@ public final class GameEngineImpl implements GameEngine {
     @Override
     public void gameOver() {
         //gui.gameOver();
-        stopGameLoop();
+        stopGame();
     }
     /**
      * 
      */
     public void victory() {
         //gui.victory();
-        stopGameLoop();
+        stopGame();
     }
     /**
      * @return the gameLoop;

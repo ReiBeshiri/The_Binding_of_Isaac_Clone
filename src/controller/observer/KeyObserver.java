@@ -1,10 +1,10 @@
-package controller;
+package controller.observer;
 
+import controller.GameEngineImpl;
 import controller.event.Event;
 import controller.event.KeyEvent;
 import controller.event.KeyType;
 import input.Command;
-import input.InputCommandType;
 import input.SceneType;
 import javafx.scene.input.KeyCode;
 /**
@@ -16,10 +16,10 @@ public class KeyObserver implements Observer {
      */
     @Override
     public <E extends Event> void notifyEvent(final E event) {
-        if (event instanceof KeyEvent) {
+        if (event instanceof KeyEvent) { //Si potrebbe togliere; 
             final KeyEvent keyEvent = (KeyEvent) event;
             if (compare(keyEvent, KeyCode.ESCAPE.getName(), SceneType.GAME, KeyType.KEY_RELEASED)) {
-                GameEngineImpl.get().stopGameLoop();
+                GameEngineImpl.get().stopGame();
             } else if (compare(keyEvent, KeyCode.ESCAPE.getName(), SceneType.PAUSE, KeyType.KEY_RELEASED)) {
                 GameEngineImpl.get().resumeGameLoop();
             }

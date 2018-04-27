@@ -1,11 +1,11 @@
 package timer;
 
 public class TimeAgent extends Thread {
-	
-	private Time time;
-	private boolean stop = false;
-	
-    public TimeAgent (final Time t) {
+
+    private Time time;
+    private boolean stop = false;
+
+    public TimeAgent(final Time t) {
         time = t;
     }
 
@@ -16,12 +16,12 @@ public class TimeAgent extends Thread {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-            		e.printStackTrace();
+                e.printStackTrace();
             }
         }
     }
-    
+
     public void interrupt() {
-    		stop = true;
+        stop = true;
     }
 }

@@ -1,4 +1,4 @@
-package controller;
+package controller.observer;
 
 import controller.event.Event;
 /**

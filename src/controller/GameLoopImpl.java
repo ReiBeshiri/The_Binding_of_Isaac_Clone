@@ -34,19 +34,20 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private World world;
     private int score;
     private TimeAgent timeAgent;
-    private Time time;
+    private final Time time;
     /**
      * 
      * @param world The instance of the model
      */
     public GameLoopImpl(final World world) {
         this.world = world;
+        time = new Time(0, 0);
     }
     /**
      * 
      */
     @Override
-    public void start() { //Cos'è synchronized?
+    public void start() {
         if (!running) {
             this.running = true;
             optimalTime = GameLoopImpl.SECONDNANO / GameLoopImpl.FPS;
@@ -76,8 +77,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
         while (running) {
             final long now = System.nanoTime();
             final long sleepTime;
-            final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60); //Avanzo di tempo tra un frame e il successivo?
-            //
+            final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60);
+
             update(delta);
             //Render
             checkEvent();
@@ -108,13 +109,15 @@ public class GameLoopImpl implements GameLoop, Runnable {
             } else if (x instanceof PlayerKillEnemy) {
                 score += ((PlayerKillEnemy) x).getPoint();
             } else if (x instanceof PlayerKillAllEnemy) {
-                timeAgent.interrupt();
-                score += bonusTime(time.getTimeInSeconds());
+                stopTime();
             } else if (x instanceof BossFightStarted) {
                 startTime();
             } else if (x instanceof PlayerKillBoss) {
+                stopTime();
+                score += bonusTime(time.getTimeInSeconds());
                 GameEngineImpl.get().victory();
             } else if (x instanceof PlayerDied) {
+                stopTime();
                 GameEngineImpl.get().gameOver();
             }
         });
@@ -125,9 +128,11 @@ public class GameLoopImpl implements GameLoop, Runnable {
     }
     //
     private void startTime() {
-        time = new Time(0, 0);
         timeAgent = new TimeAgent(time);
         timeAgent.start();
+    }
+    private void stopTime() {
+        timeAgent.interrupt();
     }
     /**
      * 
