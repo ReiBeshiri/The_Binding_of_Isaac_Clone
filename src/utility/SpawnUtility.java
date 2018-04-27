@@ -7,7 +7,7 @@ public final class SpawnUtility {
     }
     private static final double XSTANDARD = ProportionUtility.getWidth() / 5;
     private static final double YSTANDARD = ProportionUtility.getHeigth() / 4;
-    //this first set of spawns are the spawn in the top of the map.
+    //this first set of spawns are the spawn in the bottom of the map.
     /**
      * @return x axis spawn A.
      */
@@ -56,7 +56,7 @@ public final class SpawnUtility {
     public static double getSpawnDY() {
         return YSTANDARD;
     }
-  //this second set of spawns are the spawn in the bottom of the map.
+  //this second set of spawns are the spawn in the top of the map.
     /**
      * @return x axis spawn E.
      */
