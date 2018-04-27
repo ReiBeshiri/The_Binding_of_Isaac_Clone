@@ -33,7 +33,8 @@ public class WorldImpl implements World {
     private List<Animated> listEnemy;                   //|list of enemies
     private List<Room> listRoom;
     private List<WorldEvent> listEvent;
-    private final static int DAMAGE = 1;
+    private int currentRound;
+    private static final int DAMAGE = 1;
     /**
      * @return list of game objects.
      */
@@ -190,6 +191,15 @@ public class WorldImpl implements World {
         return this.listShots;
     }
     /**
+     * @return the current round.
+     */
+    public int getCurrentRound() {
+        return this.currentRound;
+    }
+    //
+    //Private methods for update utility.
+    //
+    /**
      * Increment player's life.
      * @param life hp to inc to the player.
      * inc the player's heart by an amount.
@@ -246,7 +256,7 @@ public class WorldImpl implements World {
     /**
      * Check if a player's bullet hits an enemy.
      */
-    private void playerHitsEnemy() {
+    private void playerBulletHitsEnemy() {
         for (Bullet b : this.listBulletPlayer) {
             for (Animated enemy : this.listEnemy) {
                 if (!Collisions.entityCollision(b, enemy).isEmpty()) {
@@ -255,5 +265,11 @@ public class WorldImpl implements World {
                 }
             }
          }
+    }
+    /**
+     * Increment the current round.
+     */
+    private void incCurrentRound() {
+        this.currentRound++;
     }
 }

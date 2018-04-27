@@ -154,4 +154,8 @@ public interface World {
      * @return the list of commands pressed by the user for shots.
      */
     List<Command> getShotCommandList();
+    /**
+     * @return the current round.
+     */
+    int getCurrentRound();
 }
