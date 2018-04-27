@@ -18,6 +18,7 @@ public final class ModelUtility {
      */
     private ModelUtility() {
     }
+    private static int currentRound;
     private static Animated player; 
     private static Room room;
     private static List<Command> listMovementCommand;
@@ -62,6 +63,12 @@ public final class ModelUtility {
         return listWorldEvent;
     }
     /**
+     * @return current Round.
+     */
+    public static int getCurrentRound() {
+        return currentRound;
+    }
+    /**
      * @param player 
      *          the new player to update.
      */
@@ -90,5 +97,11 @@ public final class ModelUtility {
     public static void updateListCommandModelUtility(final List<Command> listMovementCommand, final List<Command> listShotsCommand) {
         ModelUtility.listMovementCommand = listMovementCommand;
         ModelUtility.listShotsCommand = listShotsCommand;
+    }
+    /**
+     * @param newCurrent new current round to update.
+     */
+    public static void updateCurrentRound(final int newCurrent) {
+        ModelUtility.currentRound = newCurrent;
     }
 }
