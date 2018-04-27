@@ -63,4 +63,16 @@ public final class ProportionUtility {
     public static double getRadiusItemShop() {
         return ProportionUtility.heigth / ProportionUtility.PROPORTION_ITEMSHOP;
     }
+    /**
+     * @return width of the room.
+     */
+    public static double getWidth() {
+        return ProportionUtility.width;
+    }
+    /**
+     * @return heigth of the room.
+     */
+    public static double getHeigth() {
+        return ProportionUtility.heigth;
+    }
 }
