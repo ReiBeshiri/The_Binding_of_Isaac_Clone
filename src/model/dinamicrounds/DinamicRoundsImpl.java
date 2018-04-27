@@ -13,7 +13,6 @@ public class DinamicRoundsImpl implements DinamicRounds {
     @Override
     public void generateMonster() {
         // TODO Auto-generated method stub
-
     }
     /**
      * @return the number of monsters to generate.
