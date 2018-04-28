@@ -46,11 +46,6 @@ public final class ProxyFXMLLoader implements LoaderFXML {
         }
         return proxy;
     }
-
-    /**
-     * Class that load FXML files from disk.
-     *
-     */
     private class RealFXMLLoader implements LoaderFXML {
         private static final String PATH = "/res/";
 
