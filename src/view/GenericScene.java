@@ -1,9 +1,9 @@
 package view;
 
-import input.SceneType;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import utils.SceneType;
 import view.controller.ControllerFXML;
 /**
  * generic type of scene.

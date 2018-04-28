@@ -1,6 +1,6 @@
 package controller.event;
 
-import input.SceneType;
+import utils.SceneType;
 
 /**
  * s.

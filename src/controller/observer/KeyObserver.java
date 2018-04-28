@@ -5,8 +5,8 @@ import controller.event.Event;
 import controller.event.KeyEvent;
 import controller.event.KeyType;
 import input.Command;
-import input.SceneType;
 import javafx.scene.input.KeyCode;
+import utils.SceneType;
 /**
  *
  */

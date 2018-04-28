@@ -1,4 +1,4 @@
-package input;
+package utils;
 /**
  * Scenes of the game.
  * 
@@ -36,7 +36,11 @@ public enum SceneType {
     SceneType(final String file) {
         this.file = file;
     }
-    private String getFile() {
+    /**
+     * Get File name.
+     * @return file name.
+     */
+    public String getFile() {
         return file;
     }
 }

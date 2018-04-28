@@ -1,6 +1,6 @@
 package worldevent;
 
-import input.SceneType;
+import utils.SceneType;
 /**
  *  Class that represent change of scene.
  *
