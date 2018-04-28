@@ -12,7 +12,7 @@ public final class KtsApp {
      * @param args params.
      */
     public static void main(final String[] args) {
-        GameEngineImpl.get().initView(); 
+        GameEngineImpl.get().initView();
     }
 
 }

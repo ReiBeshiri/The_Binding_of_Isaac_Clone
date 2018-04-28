@@ -1,10 +1,13 @@
 package utils;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import javafx.fxml.FXMLLoader;
 import view.controller.ControllerFXML;
+
 /**
  * Class that represent proxy for FXML files.
  *
@@ -18,6 +21,7 @@ public final class ProxyFXMLLoader implements LoaderFXML {
         loadedMap = new HashMap<>();
         realLoader = new RealFXMLLoader();
     }
+
     /**
      * Return ControllerFXML for a scene.
      */
@@ -30,8 +34,10 @@ public final class ProxyFXMLLoader implements LoaderFXML {
             return loadedMap.get(scene);
         }
     }
+
     /**
      * Singleton to returns only instance of this class.
+     * 
      * @return Only instance of this class.
      */
     public static ProxyFXMLLoader get() {
@@ -39,5 +45,30 @@ public final class ProxyFXMLLoader implements LoaderFXML {
             proxy = new ProxyFXMLLoader();
         }
         return proxy;
+    }
+
+    /**
+     * Class that load FXML files from disk.
+     *
+     */
+    private class RealFXMLLoader implements LoaderFXML {
+        private static final String PATH = "/res/";
+
+        /**
+         * Get the FXML loaded controller.
+         */
+        @Override
+        public ControllerFXML getFXMLController(final SceneType scene) {
+            ControllerFXML controllerFXML;
+            final FXMLLoader loader = new FXMLLoader();
+            try {
+                loader.load(getClass().getResourceAsStream(PATH + scene.getFile()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            controllerFXML = loader.getController();
+            return controllerFXML;
+        }
+
     }
 }
