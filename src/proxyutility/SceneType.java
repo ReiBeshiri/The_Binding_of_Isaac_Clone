@@ -1,4 +1,4 @@
-package utils;
+package proxyutility;
 /**
  * Scenes of the game.
  * 

@@ -6,7 +6,7 @@ import controller.event.KeyEvent;
 import controller.event.KeyType;
 import input.Command;
 import javafx.scene.input.KeyCode;
-import utils.SceneType;
+import proxyutility.SceneType;
 /**
  *
  */

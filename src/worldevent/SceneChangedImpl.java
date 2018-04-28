@@ -1,6 +1,6 @@
 package worldevent;
 
-import utils.SceneType;
+import proxyutility.SceneType;
 /**
  *  Class that represent change of scene.
  *

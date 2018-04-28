@@ -1,6 +1,6 @@
 package worldevent;
 
-import utils.SceneType;
+import proxyutility.SceneType;
 /**
  * Notify when the scene change.
  *

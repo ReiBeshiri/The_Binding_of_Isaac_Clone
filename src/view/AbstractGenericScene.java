@@ -4,7 +4,7 @@ import input.InputCommandType;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-import utils.SceneType;
+import proxyutility.SceneType;
 import view.controller.ControllerFXML;
 
 /**

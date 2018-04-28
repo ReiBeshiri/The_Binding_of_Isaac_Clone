@@ -1,7 +1,7 @@
 package controller.event;
 
 import javafx.scene.input.KeyCode;
-import utils.SceneType;
+import proxyutility.SceneType;
 /**
  *
  */

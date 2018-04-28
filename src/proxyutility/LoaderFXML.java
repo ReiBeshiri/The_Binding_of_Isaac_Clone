@@ -1,4 +1,4 @@
-package utils;
+package proxyutility;
 import view.controller.ControllerFXML;
 
 /**
