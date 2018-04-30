@@ -2,9 +2,11 @@ package utility;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import input.Command;
 import model.hitbox.RectangularHitBox;
+import model.inanimated.Door;
 import model.animated.Animated;
 import model.hitbox.CircleHitBox;
 import model.room.*;
@@ -92,6 +94,29 @@ public final class Collisions {
             }
         }
         return dir;
+    }
+   
+    /**
+     * Checks if the second Circle (player) has collided with the Rectangle (door).
+     * @param chb
+     *          The player HitBox.
+     * @param rhb
+     *          The door HitBox.
+     * @return True if the collision occurred, false otherwise. 
+     */
+    private boolean doorPlayerCollision(final CircleHitBox chb, final RectangularHitBox rhb) {
+        final double distX = Math.abs(chb.getX() - rhb.getX() - rhb.getWidth() / 2);
+        final double distY = Math.abs(chb.getY() - rhb.getY() - rhb.getHeight() / 2);
+        
+        if (distX > ((rhb.getWidth() / 2) + chb.getRadius()) || distY > ((rhb.getHeight() / 2) + chb.getRadius())) {
+            return false;
+        }
+        if (distX <= (rhb.getWidth() / 2) || distY <= (rhb.getHeight() / 2)) {
+            return true;
+        }
+        final double dx = distX - (rhb.getWidth() / 2);
+        final double dy = distY - (rhb.getHeight() / 2);
+        return (dx * dx + dy * dy <= (chb.getRadius() * chb.getRadius()));
     }
 
 }
