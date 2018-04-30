@@ -1,6 +1,6 @@
 package view;
 
-import javafx.event.Event;
+import controller.event.Event;
 /**
  * Class that manage different types of view.
  * 
@@ -20,11 +20,6 @@ public interface ViewManager {
      * @param e Event to be notified.
      */
     void notifyEvent(Event e);
-    /**
-     * Returns unique instance of this class. Singleton.
-     * @return ViewManager singleton.
-     */
-    ViewManager get();
     /**
      * Set stage height.
      * @param h Height.

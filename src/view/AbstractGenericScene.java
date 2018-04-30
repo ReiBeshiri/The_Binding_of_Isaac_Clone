@@ -4,6 +4,7 @@ import input.InputCommandType;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import proxyutility.ProxyFXMLLoader;
 import proxyutility.SceneType;
 import view.controller.ControllerFXML;
 
@@ -11,9 +12,9 @@ import view.controller.ControllerFXML;
  * Class that represent a generic scene.
  * Some method need to be defined in a specific concrete subclass.
  */
-public abstract class AbstractGenericScene {
+public abstract class AbstractGenericScene implements GenericScene {
     private final SceneType scene;
-    private ControllerFXML controller;
+    private final ControllerFXML controller;
     private final EventHandler<KeyEvent> sceneHandler;
     /**
      * Constructor for a generic scene.
@@ -21,7 +22,7 @@ public abstract class AbstractGenericScene {
      */
     public AbstractGenericScene(final SceneType s) {
         scene = s;
-        //Caricare la scena con il proxy.
+        controller = ProxyFXMLLoader.get().getFXMLController(s);
         sceneHandler = e -> {
             if (e.getCode().toString().equals(InputCommandType.Esc.toString()) 
                     && e.getEventType().equals(KeyEvent.KEY_PRESSED)) {

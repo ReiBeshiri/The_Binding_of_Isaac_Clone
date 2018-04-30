@@ -2,12 +2,10 @@ package view;
 
 import java.util.Objects;
 import java.util.Stack;
-
-import controller.event.KeyType;
 import javafx.application.Application;
-import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import controller.event.Event;
 
 /**
  * 
@@ -16,7 +14,7 @@ import javafx.stage.Stage;
 public final class ViewManagerImpl extends Application implements ViewManager {
     private final Stack<GenericScene> stack;
     private Stage stage;
-    private ViewManager manager;
+    private static ViewManager manager;
     private int heigth;
     private int width;
 
@@ -55,14 +53,13 @@ public final class ViewManagerImpl extends Application implements ViewManager {
      */
     @Override
     public void notifyEvent(final Event e) {
-        
     }
 
     /**
-     * 
+     * Singleton for ViewManager.
+     * @return Only instance of this class.
      */
-    @Override
-    public ViewManager get() {
+    public static ViewManager get() {
         if (Objects.isNull(manager)) {
             manager = new ViewManagerImpl();
         }
@@ -91,7 +88,6 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     @Override
     public void start(final Stage primaryStage) throws Exception {
         stage = primaryStage;
-        
         primaryStage.show();
     }
 }
