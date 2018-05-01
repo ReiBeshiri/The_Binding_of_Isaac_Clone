@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 import controller.event.Event;
 
 /**
- * 
+ * Class that represent view manager. 
+ * This class is used to manage scene state.
  *
  */
 public final class ViewManagerImpl extends Application implements ViewManager {
