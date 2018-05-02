@@ -39,4 +39,14 @@ public interface View {
      * @param e Event received.
      */
     void notifyEvent(Event e);
+    /**
+     * Change Boss door status.
+     * @param open if the door is open or close.
+     */
+    void changeBossDoorStatus(boolean open);
+    /**
+     * Change Shop door status.
+     * @param open if shop door is open. 
+     */
+    void changeShoopDoorStatus(boolean open);
 }

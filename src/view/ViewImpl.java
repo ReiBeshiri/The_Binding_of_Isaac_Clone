@@ -1,14 +1,17 @@
 package view;
 
 import java.util.List;
-
+import javafx.application.Application;
 import javafx.event.Event;
 import model.GameObject;
 /**
- * 
+ * Class that represent view. 
  *
  */
 public class ViewImpl implements View {
+    private int heigth;
+    private int width;
+
     /**
      * 
      */
@@ -38,24 +41,21 @@ public class ViewImpl implements View {
      */
     @Override
     public void setHeight(final int h) {
-        // TODO Auto-generated method stub
-
+        heigth = h;
     }
     /**
      * 
      */
     @Override
     public void setWidth(final int w) {
-        // TODO Auto-generated method stub
-
+        width = w;
     }
     /**
      * 
      */
     @Override
     public void viewStart() {
-        // TODO Auto-generated method stub
-
+        Application.launch(ViewManagerImpl.class, "");
     }
     /**
      * 
@@ -64,6 +64,14 @@ public class ViewImpl implements View {
     public void notifyEvent(final Event e) {
         // TODO Auto-generated method stub
 
+    }
+    @Override
+    public void changeBossDoorStatus(final boolean open) {
+        
+    }
+    @Override
+    public void changeShoopDoorStatus(final boolean open) {
+        
     }
 
 }
