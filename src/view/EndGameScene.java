@@ -1,6 +1,5 @@
 package view;
 
-import javafx.application.Platform;
 import javafx.event.Event;
 import static proxyutility.SceneType.ENDGAME;
 /**
@@ -18,10 +17,7 @@ public class EndGameScene extends AbstractGenericScene {
      * Close window.
      */
     @Override
-    public void exitStatus() {
-        //Send shoutdown signal.
-        Platform.runLater(() -> System.exit(0));
-    }
+    public void exitStatus() { }
     /**
      * 
      */

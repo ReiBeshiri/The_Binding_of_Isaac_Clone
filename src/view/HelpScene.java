@@ -1,6 +1,8 @@
 package view;
 
 import javafx.event.Event;
+import view.util.SceneFactory;
+
 import static proxyutility.SceneType.HELP;
 /**
  * Class that represent help game scene.
@@ -19,8 +21,7 @@ public class HelpScene extends AbstractGenericScene {
      */
     @Override
     public void exitStatus() {
-        //Push using state factory.
-        ViewManagerImpl.get().push(null);
+        ViewManagerImpl.get().push(SceneFactory.createMenuScene());
     }
 
     /**

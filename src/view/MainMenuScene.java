@@ -1,6 +1,5 @@
 package view;
 
-import javafx.application.Platform;
 import javafx.event.Event;
 import static proxyutility.SceneType.MENU;
 /**
@@ -19,10 +18,7 @@ public class MainMenuScene extends AbstractGenericScene {
      * Exit status for the specific scene.
      */
     @Override
-    public void exitStatus() {
-        //Send shotdown signal.
-        Platform.runLater(() -> System.exit(0));
-    }
+    public void exitStatus() { }
 
     /**
      * 

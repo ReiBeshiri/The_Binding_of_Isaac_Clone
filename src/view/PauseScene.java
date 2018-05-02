@@ -1,6 +1,8 @@
 package view;
 
 import javafx.event.Event;
+import view.util.SceneFactory;
+
 import static proxyutility.SceneType.PAUSE;
 /**
  * Class for a pause scene.
@@ -20,10 +22,11 @@ public class PauseScene extends AbstractGenericScene {
      */
     @Override
     public void exitStatus() {
-        //Use scene factory.
-        ViewManagerImpl.get().push(null);
+        ViewManagerImpl.get().push(SceneFactory.createGameScene());
     }
-
+    /**
+     * 
+     */
     @Override
     public void checkSceneHandler(final Event e) { }
 

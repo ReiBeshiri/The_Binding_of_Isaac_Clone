@@ -3,6 +3,7 @@ package view;
 import javafx.event.Event;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import view.util.SceneFactory;
 
 import static proxyutility.SceneType.GAME;
 
@@ -26,8 +27,7 @@ public class GameScene extends AbstractGenericScene {
      */
     @Override
     public void exitStatus() {
-        // Use Factory.
-        ViewManagerImpl.get().push(null);
+        ViewManagerImpl.get().push(SceneFactory.createPauseScene());
     }
 
     /**

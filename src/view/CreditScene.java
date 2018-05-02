@@ -1,6 +1,8 @@
 package view;
 
 import javafx.event.Event;
+import view.util.SceneFactory;
+
 import static proxyutility.SceneType.CREDITS;
 /**
  * Class that represent Credit scene.
@@ -8,19 +10,17 @@ import static proxyutility.SceneType.CREDITS;
  */
 public class CreditScene extends AbstractGenericScene {
     /**
-     * 
-     * @param s
+     * Constructor for credit scene.
      */
     public CreditScene() {
         super(CREDITS);
     }
     /**
-     * 
+     * Exit status for this specific scene.
      */
     @Override
     public void exitStatus() {
-        //Use State factory.
-        ViewManagerImpl.get().push(null);
+        ViewManagerImpl.get().push(SceneFactory.createMenuScene());
     }
     /**
      * 

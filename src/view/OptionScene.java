@@ -1,6 +1,8 @@
 package view;
 
 import javafx.event.Event;
+import view.util.SceneFactory;
+
 import static proxyutility.SceneType.OPTIONS;
 /**
  * Class that represent option scene.
@@ -18,8 +20,7 @@ public class OptionScene extends AbstractGenericScene {
      */
     @Override
     public void exitStatus() {
-        //Use state factory,
-        ViewManagerImpl.get().push(null);
+        ViewManagerImpl.get().push(SceneFactory.createMenuScene());
     }
 
     /**
