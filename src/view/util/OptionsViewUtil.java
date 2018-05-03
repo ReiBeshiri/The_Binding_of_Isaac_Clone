@@ -2,22 +2,21 @@ package view.util;
 /**
  * Utility class meant to keep views values e.g. fps, resolution and god mode.
  */
-public class OptionsViewUtil {
-    private static final Tuple<Integer,Integer> STANDARD_RES = new Tuple<Integer,Integer>(1280, 720);
-    private static Tuple<Integer,Integer> selectedRes = STANDARD_RES;
-    
+public final class OptionsViewUtil {
+    private static final Tuple<Integer, Integer> STANDARD_RES = new Tuple<Integer, Integer>(1280, 720);
+    private static Tuple<Integer, Integer> selectedRes = STANDARD_RES;
+
     private static final int STANDARD_FPS = 60;
     private static int selectedFPS = STANDARD_FPS;
-    
+
     private static boolean godMode;
-    private OptionsViewUtil() {
-        
-    }
+
+    private OptionsViewUtil() { }
     /**
      * Getter of the standard resolution.
      * @return The standard resolution memorized in STANDARD_RES
      */
-    public static Tuple<Integer, Integer> getStandardRes(){
+    public static Tuple<Integer, Integer> getStandardRes() {
         return STANDARD_RES;
     }
     /**
@@ -25,13 +24,13 @@ public class OptionsViewUtil {
      * @param value The selected value in the options view.
      */
     public static void setResolution(final Tuple<Integer, Integer> value) {
-        selectedRes=value;
+        selectedRes = value;
     }
     /**
      * Getter for the currently selected resolution.
      * @return The selected resolution in the options view.
      */
-    public static Tuple<Integer, Integer> getSelectedRes(){
+    public static Tuple<Integer, Integer> getSelectedRes() {
         return selectedRes;
     }
     /**
@@ -52,7 +51,7 @@ public class OptionsViewUtil {
      * Getter for the God Mode option.
      * @return True if is selected, false otherwise.
      */
-    public static boolean getGodMode() {
+    public static boolean isGodModeSelected() {
         return godMode;
     }
     /**

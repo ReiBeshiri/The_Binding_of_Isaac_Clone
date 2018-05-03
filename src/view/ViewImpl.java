@@ -4,13 +4,12 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.event.Event;
 import model.GameObject;
+import view.util.OptionsViewUtil;
 /**
  * Class that represent view. 
  *
  */
 public class ViewImpl implements View {
-    private int heigth;
-    private int width;
 
     /**
      * 
@@ -36,25 +35,14 @@ public class ViewImpl implements View {
         // TODO Auto-generated method stub
 
     }
-    /**
-     * 
-     */
-    @Override
-    public void setHeight(final int h) {
-        heigth = h;
-    }
-    /**
-     * 
-     */
-    @Override
-    public void setWidth(final int w) {
-        width = w;
-    }
+
     /**
      * 
      */
     @Override
     public void viewStart() {
+        ViewManagerImpl.get().setHeight(OptionsViewUtil.getStandardRes().getHeight());
+        ViewManagerImpl.get().setWidth(OptionsViewUtil.getStandardRes().getWidth());
         Application.launch(ViewManagerImpl.class, "");
     }
     /**
@@ -62,16 +50,21 @@ public class ViewImpl implements View {
      */
     @Override
     public void notifyEvent(final Event e) {
-        // TODO Auto-generated method stub
 
     }
+    /**
+     * 
+     */
     @Override
     public void changeBossDoorStatus(final boolean open) {
-        
+
     }
+    /**
+     * 
+     */
     @Override
     public void changeShoopDoorStatus(final boolean open) {
-        
+
     }
 
 }

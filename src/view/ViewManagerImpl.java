@@ -5,6 +5,7 @@ import java.util.Stack;
 import javafx.application.Application;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import view.util.SceneFactory;
 import controller.event.Event;
 
 /**
@@ -89,6 +90,9 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     @Override
     public void start(final Stage primaryStage) throws Exception {
         stage = primaryStage;
+        stage.setHeight(heigth);
+        stage.setWidth(width);
+        ViewManagerImpl.get().push(SceneFactory.createMenuScene());
         primaryStage.show();
     }
 }

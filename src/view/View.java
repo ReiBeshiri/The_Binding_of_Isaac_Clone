@@ -21,16 +21,6 @@ public interface View {
      */
     void playerLifeChanged();
     /**
-     * Set initial height of window.
-     * @param h Height.
-     */
-    void setHeight(int h);
-    /**
-     * Set initial Width of window.
-     * @param w Width.
-     */
-    void setWidth(int w);
-    /**
      * Check params and start view.
      */
     void viewStart();
