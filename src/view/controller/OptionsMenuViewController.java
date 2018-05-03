@@ -34,7 +34,7 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
     private void initialize() {
         resolutionComboBox.setValue(OptionsViewUtil.getSelectedRes().getWidth() + "x" + OptionsViewUtil.getSelectedRes().getHeight());
         fpsComboBox.setValue(Integer.toString(OptionsViewUtil.getFps()));
-        godModeCheckBox.setSelected(OptionsViewUtil.getGodMode());
+        godModeCheckBox.setSelected(OptionsViewUtil.isGodModeSelected());
     }
 
     @FXML
