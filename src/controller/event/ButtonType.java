@@ -10,5 +10,25 @@ public enum ButtonType {
     /**
      * 
      */
-    QUIT_GAME;
+    QUIT_GAME,
+    /**
+     * 
+     */
+    HELP,
+    /**
+     * 
+     */
+    CREDITS,
+    /**
+     * 
+     */
+    OPTIONS,
+    /**
+     * 
+     */
+    PAUSE_GAME,
+    /**
+     * 
+     */
+    RESUME_GAME;
 }
