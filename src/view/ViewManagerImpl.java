@@ -3,6 +3,7 @@ package view;
 import java.util.Objects;
 import java.util.Stack;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import view.util.SceneFactory;
@@ -34,7 +35,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
         stack.push(scene);
-        stage.setScene(stack.lastElement().getSceneController().getRoot().getScene());
+        stage.setScene(new Scene(stack.lastElement().getSceneController().getRoot()));
         stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
     }
 
@@ -46,7 +47,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         if (stack.size() > 1) {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
             stack.pop();
-            stage.setScene(stack.lastElement().getSceneController().getRoot().getScene());
+            stage.setScene(new Scene(stack.lastElement().getSceneController().getRoot()));
         }
     }
 
