@@ -1,15 +1,31 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import controller.event.KeyEvent;
+import controller.observer.ButtonObserver;
+import controller.observer.KeyObserver;
+import controller.observer.Observer;
 import javafx.application.Application;
-import javafx.event.Event;
+import controller.event.ButtonEvent;
+import controller.event.Event;
 import model.GameObject;
 import view.util.OptionsViewUtil;
+
 /**
- * Class that represent view. 
+ * Class that represent view.
  *
  */
 public class ViewImpl implements View {
+    private final List<Observer> observers;
+
+    /**
+     * 
+     */
+    public ViewImpl() {
+        observers = new ArrayList<>();
+    }
 
     /**
      * 
@@ -19,6 +35,7 @@ public class ViewImpl implements View {
         // TODO Auto-generated method stub
 
     }
+
     /**
      * 
      */
@@ -27,6 +44,7 @@ public class ViewImpl implements View {
         // TODO Auto-generated method stub
 
     }
+
     /**
      * 
      */
@@ -45,13 +63,19 @@ public class ViewImpl implements View {
         ViewManagerImpl.get().setWidth(OptionsViewUtil.getStandardRes().getWidth());
         Application.launch(ViewManagerImpl.class, "");
     }
+
     /**
      * 
      */
     @Override
     public void notifyEvent(final Event e) {
-
+        if (e instanceof KeyEvent) {
+            observers.stream().filter(x -> x instanceof KeyObserver).forEach(x -> ((KeyObserver) x).notifyEvent(e));
+        } else if (e instanceof ButtonEvent) {
+            observers.stream().filter(x -> x instanceof KeyObserver).forEach(x -> ((ButtonObserver) x).notifyEvent(e));
+        }
     }
+
     /**
      * 
      */
@@ -59,12 +83,21 @@ public class ViewImpl implements View {
     public void changeBossDoorStatus(final boolean open) {
 
     }
+
     /**
      * 
      */
     @Override
     public void changeShoopDoorStatus(final boolean open) {
 
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public void addObserver(final Observer obs) {
+        observers.add(obs);
     }
 
 }

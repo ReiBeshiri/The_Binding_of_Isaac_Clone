@@ -1,7 +1,9 @@
 package view;
 
 import java.util.List;
-import javafx.event.Event;
+
+import controller.observer.Observer;
+import controller.event.Event;
 import model.GameObject;
 /**
  * View class. This class communicate with controller.
@@ -39,4 +41,9 @@ public interface View {
      * @param open if shop door is open. 
      */
     void changeShoopDoorStatus(boolean open);
+    /**
+     * Add observer for view.
+     * @param obs Observer.
+     */
+    void addObserver(Observer obs);
 }
