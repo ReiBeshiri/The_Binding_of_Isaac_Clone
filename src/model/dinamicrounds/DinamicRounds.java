@@ -11,5 +11,5 @@ public interface DinamicRounds {
      * 
      * @return the number of monsters to genrate besed on the round.
      */
-    int numerOfEnemyToGenerate();
+    int numberOfEnemyToGenerate();
 }
