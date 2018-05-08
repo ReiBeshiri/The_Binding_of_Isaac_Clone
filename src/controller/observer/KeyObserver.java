@@ -8,11 +8,11 @@ import input.Command;
 import javafx.scene.input.KeyCode;
 import proxyutility.SceneType;
 /**
- *
+ * Observer that manages the pressure of the keys on the keyboard.
  */
 public class KeyObserver implements Observer {
     /**
-     * 
+     * Manage KeyEvent events.
      */
     @Override
     public <E extends Event> void notifyEvent(final E event) {
@@ -30,11 +30,22 @@ public class KeyObserver implements Observer {
             }
         }
     }
-    //
+    /**
+     * Compare the event with the other argument.
+     * @param event that happened.
+     * @param key that must be compared.
+     * @param scene that must be compared.
+     * @param type that must be compared
+     * @return true if the comparison between the event and the parameters is right, false otherwise.
+     */
     private boolean compare(final KeyEvent event, final String key, final SceneType scene, final KeyType type) {
         return event.getEvent().equals(key) && event.getGameState().equals(scene) && event.getType().equals(type);
     }
-    //
+    /**
+     * Adds a command to the list of commands if the key has been pressed, remove it from the list if the button has been released.
+     * @param key to check.
+     * @param pressed is true if the key has been pressed, false if the key has been released.
+     */
     private void key(final String key, final boolean pressed) {
         switch (key) {
         case "W":

@@ -26,7 +26,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private static final int SECONDNANO = 1000000000;
     private static final int FPS = 60;
     private static final int MSWAIT = 5;
-    private static final int MAX_TIME_BONUS = 180;
     private boolean running;
     private Thread thread; 
     private int optimalTime; //A cosa serve?
@@ -124,7 +123,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     }
     //
     private int bonusTime(final int timeElapsed) {
-        return (GameLoopImpl.MAX_TIME_BONUS - timeElapsed);
+        return 1000 * (int) Math.exp(-(Math.pow(timeElapsed, 2)) / 200000);//Bisogna guardarci meglio;
     }
     //
     private void startTime() {
