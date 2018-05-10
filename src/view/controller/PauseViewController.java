@@ -2,10 +2,14 @@ package view.controller;
 
 import java.util.Arrays;
 
+import controller.event.ButtonType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
+import proxyutility.SceneType;
+import view.MainMenuScene;
+import view.ViewManagerImpl;
 /**
  * 
  * Controller class for the PauseView file.
@@ -27,15 +31,15 @@ public class PauseViewController extends AbstractControllerFXML {
 
     @FXML
     private void inizialize() {
-        super.setButtonNotification(Arrays.asList(resumeButton, exitButton), "Pause");
+        super.setButtonNotification(Arrays.asList(ButtonType.PAUSE_GAME, ButtonType.QUIT_GAME), SceneType.PAUSE);
     }
     
     @FXML
     private void resumeButtonClick() {
-      //super.closingFade(() -> ViewManager.Pop());
+        super.closingFade(()-> ViewManagerImpl.get().pop());
     }
     @FXML
     private void exitButtonClick() {
-        //super.closingFade(() -> ViewManager.Push(MainMenu));
+        super.closingFade(()->ViewManagerImpl.get().push(new MainMenuScene()));
      }
 }

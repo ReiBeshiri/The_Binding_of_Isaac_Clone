@@ -13,13 +13,16 @@ public class GameCanvasViewController extends AbstractControllerFXML{
     private FlowPane rootGamePane;
     @FXML
     private Canvas roomCanvas;
-    
-    public GameCanvasViewController() {
-    }
-    
+    @FXML
+    private Canvas elapsedTimeCanvas;
+
     @FXML
     private void inizialize() {
-        
+        //Assegnazione del "Disegnatore" e passaggio di tale drower all viewimpl
+        /*
+         disegnatore = new disegnatoreImpl(roomCanvas, elapsedTimeCanvas);
+         ViewImpl.PassoNuovoDisegnatore(disegnatore);
+        */
     }
 
     @Override

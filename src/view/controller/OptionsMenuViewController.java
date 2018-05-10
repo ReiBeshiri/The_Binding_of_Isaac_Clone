@@ -5,6 +5,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
+import view.ViewManagerImpl;
 import view.util.OptionsViewUtil;
 import view.util.Tuple;
 /**
@@ -55,7 +56,7 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
         
         //ViewManager.RESIZE
         
-        //super.closingFade(() -> ViewManager.Pop());
+        super.closingFade(()->ViewManagerImpl.get().pop());
     }
     
     @FXML

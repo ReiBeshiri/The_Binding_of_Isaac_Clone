@@ -2,11 +2,18 @@ package view.controller;
 
 import java.util.Arrays;
 
+import controller.event.ButtonType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 //import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
+import proxyutility.SceneType;
+import view.CreditScene;
+import view.GameScene;
+import view.HelpScene;
+import view.OptionScene;
+import view.ViewManagerImpl;
 /**
  * 
  * Controller class for the MainMenuView file.
@@ -21,13 +28,7 @@ public class MainMenuViewController extends AbstractControllerFXML {
     @FXML private Button helpButton;
     @FXML private Button creditsButton;
     //@FXML private ListView leaderboardView; forse necessita di una sua view. Guarda controllo TableView.
-    /**
-     * "The constructor is called first, then any @FXML annotated fields are populated".
-     * "the constructor does NOT have access to @FXML fields referring to components defined in the .fxml file".
-     */
-    public MainMenuViewController() {
-        //super.openingFade(() -> ViewManager.Push()); TO CHECK if works
-    }
+    
     @Override
     public Region getRoot() {
         return contentPane;
@@ -35,30 +36,31 @@ public class MainMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
-        super.setButtonNotification(Arrays.asList(playButton, optionsButton, exitButton, helpButton, creditsButton), "MainMenu");
+        super.setButtonNotification(Arrays.asList(ButtonType.START_GAME, ButtonType.OPTIONS, ButtonType.QUIT_GAME,ButtonType.HELP,
+                ButtonType.CREDITS), SceneType.MENU);
     }
     @FXML
     private void playButtonClick() {
-        //PUSH a "Play Game" in stack
+        ViewManagerImpl.get().push(new GameScene());
     }
     
     @FXML
     private void optionsButtonClick() {
-        //PUSH a "Options Menu" in stack
+        ViewManagerImpl.get().push(new OptionScene());
     }
     
     @FXML
     private void exitButtonClick() {
-        //PUSH a "Exit Game" in stack
+        ViewManagerImpl.get().pop();
     }
     
     @FXML
     private void helpButtonClick() {
-        //PUSH a "Help Menu" in stack
+        ViewManagerImpl.get().push(new HelpScene());
     }
     
     @FXML
     private void creditsButtonClick() {
-        //PUSH a "Credits" in stack
+        ViewManagerImpl.get().push(new CreditScene());
     }
 }
