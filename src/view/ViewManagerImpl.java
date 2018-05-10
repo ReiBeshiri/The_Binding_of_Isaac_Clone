@@ -20,6 +20,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     private static ViewManager manager;
     private int heigth;
     private int width;
+    private View view;
 
     private ViewManagerImpl() {
         super();
@@ -56,6 +57,9 @@ public final class ViewManagerImpl extends Application implements ViewManager {
      */
     @Override
     public void notifyEvent(final Event e) {
+        if (Objects.nonNull(view)) {
+            view.notifyEvent(e);
+        }
     }
 
     /**
@@ -95,5 +99,13 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         stage.setWidth(width);
         ViewManagerImpl.get().push(SceneFactory.createMenuScene());
         primaryStage.show();
+    }
+
+    /**
+     * Set view instance.
+     */
+    @Override
+    public void setViewReferene(final View v) {
+        view = v;
     }
 }

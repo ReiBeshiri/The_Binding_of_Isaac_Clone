@@ -30,4 +30,9 @@ public interface ViewManager {
      * @param w Width.
      */
     void setWidth(int w);
+    /**
+     * Set reference to View instance.
+     * @param v view instance.
+     */
+    void setViewReferene(View v);
 }
