@@ -19,7 +19,7 @@ public final class GameEngineImpl implements GameEngine {
      * 
      */
     private GameEngineImpl() {
-        gui = new ViewImpl(); //gui = ViewImpl.get();
+        gui = new ViewImpl();
     }
     /**
      * Get the instance of GameEngineImpl.
@@ -36,6 +36,8 @@ public final class GameEngineImpl implements GameEngine {
      */
     @Override
     public void initView() {
+        
+        gui.viewStart();
     }
     /**
      * 

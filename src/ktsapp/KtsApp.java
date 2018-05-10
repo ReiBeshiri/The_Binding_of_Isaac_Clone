@@ -9,7 +9,7 @@ public final class KtsApp {
      private KtsApp() { }
     /**
      * Main program entry.
-     * @param args params.
+     * @param args parameter.
      */
     public static void main(final String[] args) {
         GameEngineImpl.get().initView();
