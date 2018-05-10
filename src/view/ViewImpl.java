@@ -72,7 +72,7 @@ public class ViewImpl implements View {
         if (e instanceof KeyEvent) {
             observers.stream().filter(x -> x instanceof KeyObserver).forEach(x -> ((KeyObserver) x).notifyEvent(e));
         } else if (e instanceof ButtonEvent) {
-            observers.stream().filter(x -> x instanceof KeyObserver).forEach(x -> ((ButtonObserver) x).notifyEvent(e));
+            observers.stream().filter(x -> x instanceof ButtonObserver).forEach(x -> ((ButtonObserver) x).notifyEvent(e));
         }
     }
 
