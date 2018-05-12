@@ -6,9 +6,7 @@ import model.WorldImpl;
 import view.View;
 import view.ViewImpl;
 /**
- * 
- * s.
- *
+ * GameEngineImpl manages all game situations.
  */
 public final class GameEngineImpl implements GameEngine {
     private static GameEngineImpl singleton;
@@ -16,7 +14,7 @@ public final class GameEngineImpl implements GameEngine {
     private GameLoop gameLoop;
     private final View gui;
     /**
-     * 
+     * The class constructor.
      */
     private GameEngineImpl() {
         gui = new ViewImpl();
@@ -32,15 +30,14 @@ public final class GameEngineImpl implements GameEngine {
         return singleton;
     }
     /**
-     * 
+     * Initialize the view for the kts application.
      */
     @Override
     public void initView() {
-        
         gui.viewStart();
     }
     /**
-     * 
+     * Create a new game.
      */
     @Override
     public void newGame() {
@@ -49,14 +46,14 @@ public final class GameEngineImpl implements GameEngine {
         resumeGameLoop();
     }
     /**
-     * 
+     * Stop the game.
      */
     @Override
     public void stopGame() {
         gameLoop.stop();
     }
     /**
-     * 
+     * Resume the execution of the game.
      */
     @Override
     public void resumeGameLoop() {
@@ -65,7 +62,7 @@ public final class GameEngineImpl implements GameEngine {
         }
     }
     /**
-     * 
+     * The player has lost.
      */
     @Override
     public void gameOver() {
@@ -73,14 +70,14 @@ public final class GameEngineImpl implements GameEngine {
         stopGame();
     }
     /**
-     * 
+     * The player has won.
      */
     public void victory() {
         //gui.victory();
         stopGame();
     }
     /**
-     * @return the gameLoop;
+     * @return the gameLoop object. 
      */
     public GameLoop getGameLoop() {
         return this.gameLoop;

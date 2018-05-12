@@ -79,30 +79,30 @@ public class KeyObserver implements Observer {
             break;
         case "Up":
             if (pressed) {
-                GameEngineImpl.get().getGameLoop().addShoot(Command.UP);
+                GameEngineImpl.get().getGameLoop().addShot(Command.UP);
             } else {
-                GameEngineImpl.get().getGameLoop().removeShoot(Command.UP);
+                GameEngineImpl.get().getGameLoop().removeShot(Command.UP);
             }
             break;
         case "Left":
             if (pressed) {
-                GameEngineImpl.get().getGameLoop().addShoot(Command.LEFT);
+                GameEngineImpl.get().getGameLoop().addShot(Command.LEFT);
             } else {
-                GameEngineImpl.get().getGameLoop().removeShoot(Command.LEFT);
+                GameEngineImpl.get().getGameLoop().removeShot(Command.LEFT);
             }
             break;
         case "Down":
             if (pressed) {
-                GameEngineImpl.get().getGameLoop().addShoot(Command.DOWN);
+                GameEngineImpl.get().getGameLoop().addShot(Command.DOWN);
             } else {
-                GameEngineImpl.get().getGameLoop().removeShoot(Command.DOWN);
+                GameEngineImpl.get().getGameLoop().removeShot(Command.DOWN);
             }
             break;
         case "Right":
             if (pressed) {
-                GameEngineImpl.get().getGameLoop().addShoot(Command.RIGHT);
+                GameEngineImpl.get().getGameLoop().addShot(Command.RIGHT);
             } else {
-                GameEngineImpl.get().getGameLoop().removeShoot(Command.RIGHT);
+                GameEngineImpl.get().getGameLoop().removeShot(Command.RIGHT);
             }
             break;
         default:

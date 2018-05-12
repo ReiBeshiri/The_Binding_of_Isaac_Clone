@@ -1,36 +1,33 @@
 package controller;
 /**
- * 
- * Interface.
- *
+ * Interface that manages all game situations.
  */
 public interface GameEngine {
     /**
-     * s.
+     * Initialize the view for the kts application.
      */
     void initView();
     /**
-     * s.
+     * Create a new game.
      */
     void newGame();
     /**
-     * s.
+     * Stop the game.
      */
     void stopGame();
     /**
-     * s.
+     * Resume the execution of the game.
      */
     void resumeGameLoop();
     /**
-     * s.
+     * The player has lost.
      */
     void gameOver();
     /**
-     * s.
+     * The player has won.
      */
     void victory();
     /**
-     * s.
      * @return the gameLoop object.
      */
     GameLoop getGameLoop();

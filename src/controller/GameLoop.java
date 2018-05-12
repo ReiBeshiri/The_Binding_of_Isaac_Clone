@@ -1,10 +1,9 @@
 package controller;
-
 /**
- *     Note: when the GameLoopImpl class will be added this class should implement Runnable
- *      and not extends Thread so it can extends some other utility class.
+ * Defines all the operation for update the model and pass the information of model 
+ * to the view for update the graphic.
  */
-public interface GameLoop extends KeyShootListener, KeyMovementListener {
+public interface GameLoop extends KeyShot, KeyMovement {
     /**
      * Start the game loop.
      */
@@ -14,7 +13,6 @@ public interface GameLoop extends KeyShootListener, KeyMovementListener {
      */
     void stop();
     /**
-     * 
      * @return true if the game loop is running, false otherwise.
      */
     boolean isRunning();
