@@ -27,7 +27,6 @@ public class WorldImpl implements World {
     private List<Bullet> listBulletPlayer;
     private List<Bullet> listBulletEnemies;
     private Button button;
-    private WorldEvent listener;
     private List<Command> listMovements;
     private List<Command> listShots;
     private List<Animated> listEnemy;                   //|list of enemies
@@ -35,6 +34,8 @@ public class WorldImpl implements World {
     private List<WorldEvent> listEvent;
     private int currentRound;
     private static final int DAMAGE = 1;
+    private static final int SHOTRATIO = 500;
+    private long lastTimeShot;
     /**
      * @return list of game objects.
      */
@@ -145,9 +146,13 @@ public class WorldImpl implements World {
      * refresh shot ratio.
      */
     @Override
-    public void refreshShotRatio() {
-        // TODO Auto-generated method stub
-
+    public boolean refreshShotRatio() {
+        if (System.currentTimeMillis() - lastTimeShot < SHOTRATIO) {
+            return false;
+        } else {
+            lastTimeShot = System.currentTimeMillis();
+            return true;
+        }
     }
     /**
      * @param effect
@@ -156,14 +161,6 @@ public class WorldImpl implements World {
     @Override
     public void setButton(final boolean effect) {
         this.button.setPressed(effect);
-    }
-    /**
-     * @param listener
-     *            the listener to set as WorldEventListener.
-     */
-    @Override
-    public void setEventListener(final WorldEvent listener) {
-        this.listener = listener;
     }
     /**
      * @param deltaTime
@@ -176,6 +173,7 @@ public class WorldImpl implements World {
     @Override
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
         // TODO Auto-generated method stub
+        // update ModelUtility
     }
     /**
      * @return the list of command pressed by the user for moving.
@@ -201,8 +199,8 @@ public class WorldImpl implements World {
     //
     /**
      * Increment player's life.
-     * @param life hp to inc to the player.
-     * inc the player's heart by an amount.
+     * @param life hp to increment to the player.
+     * increment the player's heart by an amount.
      */
     private void incPlayerLife(final int life) {
         AbstractCharacter player = (AbstractCharacter) this.player;
@@ -211,8 +209,8 @@ public class WorldImpl implements World {
     }
     /**
      * Decrement player's life.
-     * @param life hp to dec to the player.
-     * @param c Animated obj to cast.
+     * @param life hp to decrement to the player.
+     * @param c Animated object to cast.
      */
     private void decPlayerLife(final int life, final Animated c) {
         AbstractCharacter player = (AbstractCharacter) c;
@@ -221,8 +219,8 @@ public class WorldImpl implements World {
     }
     /**
      * Decrement enemy's life.
-     * @param life hp to dec from the enemy.
-     * @param e Animeted obj to cast.
+     * @param life hp to decrement from the enemy.
+     * @param e Animated object to cast.
      */
     private void decEnemyLife(final int life, final Animated e) {
         AbstractCharacter enemy = (AbstractCharacter) e;

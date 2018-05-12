@@ -11,68 +11,65 @@ public final class ProportionUtility {
     private static final double PROPORTION_BUTTON = 30;
     private static final double PROPORTION_DOOR = 5;
     private static final double PROPORTION_ITEMSHOP = 30;
-    private static double heigth;
-    private static double width;
+    private static final double HEIGHT = 600;
+    private static final double WIDTH = 800;
     /**
-     * @param h new height.
-     * @param w new width.
+     *
      */
-    public void updateDimension(final double h, final double w) {
-        ProportionUtility.heigth = h;
-        ProportionUtility.width = w;
+    public void updateDimension() {
     }
     /**
      * @return get radius animated obj like enemy & player.
      */
     public static double getRadiusPlayer() {
-        return ProportionUtility.heigth /  ProportionUtility.PROPORTION_PLAYER_ENEMY;
+        return ProportionUtility.HEIGHT /  ProportionUtility.PROPORTION_PLAYER_ENEMY;
     }
     /**
      * @return get radius animated obj like enemy & player.
      */
     public static double getRadiusEnemy() {
-        return ProportionUtility.heigth /  ProportionUtility.PROPORTION_PLAYER_ENEMY;
+        return ProportionUtility.HEIGHT /  ProportionUtility.PROPORTION_PLAYER_ENEMY;
     }
     /**
      * @return get radius bullet.
      */
     public static double getRadiusBullet() {
-        return ProportionUtility.heigth / ProportionUtility.PROPORTION_BULLET;
+        return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_BULLET;
     }
     /**
      * @return get radius boss.
      */
     public static double getRadiusBoss() {
-        return ProportionUtility.heigth / ProportionUtility.PROPORTION_BOSS;
+        return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_BOSS;
     }
     /**
      * @return get radius button.
      */
     public static double getRadiusButton() {
-        return ProportionUtility.heigth / ProportionUtility.PROPORTION_BUTTON;
+        return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_BUTTON;
     }
     /**
      * @return get the height of the door.
      */
     public static double getHeightDoor() {
-        return ProportionUtility.heigth / ProportionUtility.PROPORTION_DOOR;
+        return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_DOOR;
     }
     /**
      * @return get item shop radius.
      */
     public static double getRadiusItemShop() {
-        return ProportionUtility.heigth / ProportionUtility.PROPORTION_ITEMSHOP;
+        return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_ITEMSHOP;
     }
     /**
      * @return width of the room.
      */
     public static double getWidth() {
-        return ProportionUtility.width;
+        return ProportionUtility.WIDTH;
     }
     /**
      * @return heigth of the room.
      */
     public static double getHeigth() {
-        return ProportionUtility.heigth;
+        return ProportionUtility.HEIGHT;
     }
 }

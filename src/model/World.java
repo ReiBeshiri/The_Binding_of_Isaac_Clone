@@ -50,13 +50,6 @@ public interface World {
      */
     void setNextRound();
     /**
-     * set the listener to the World.
-     * 
-     * @param listener
-     *          the listener to be set
-     */
-    void setEventListener(WorldEvent listener);
-    /**
      * This method removes a bullet from the enemy bullet list.
      * Usually when the bullet collides this other objects.
      * 
@@ -135,8 +128,9 @@ public interface World {
      * 
      * Refresh the shot ratio of the enemies.
      * When an enemy could shot this method will be called in the update
+     * @return if T time passed.
      */
-    void refreshShotRatio();
+    boolean refreshShotRatio();
     /**
      * change button state.
      * @param effect

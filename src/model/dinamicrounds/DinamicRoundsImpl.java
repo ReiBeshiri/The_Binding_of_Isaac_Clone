@@ -46,21 +46,30 @@ public class DinamicRoundsImpl implements DinamicRounds {
      * Generate a random Monster. 
      */
     @Override
-    public void generateMonster() {
+    public List<Animated> generateMonster() {
         enemyToSpawn = numberOfEnemyToGenerate();
-        Collections.shuffle(listEnemy);
         Collections.shuffle(listSpawns);
-        Collections.shuffle(listCommand);
-        EnemyFactory enemy = new EnemyFactoryImpl();
         for (int i = 0; i < enemyToSpawn; i++) {
+            Collections.shuffle(listEnemy);
+            Collections.shuffle(listCommand);
+            EnemyFactory enemy = new EnemyFactoryImpl();
             Spawns spawn;
             spawn = listSpawns.remove(0);
             if (listEnemy.get(0).equals(EnemyType.SIPMLE)) {
                 HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
                 enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0), ProportionUtility.getRadiusBullet());
+                listReturnEnemy.add((Animated) enemy); 
+            } else if (listEnemy.get(0).equals(EnemyType.SIMPLEMOVE)) {
+                HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
+                enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1), ProportionUtility.getRadiusBullet());
+                listReturnEnemy.add((Animated) enemy); 
+            } else if (listEnemy.get(0).equals(EnemyType.SIMPLEAIMED)) {
+                HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
+                enemy.createStaticAimedBulletEnemy(hb, ProportionUtility.getRadiusBullet());
+                listReturnEnemy.add((Animated) enemy);
             }
         }
-
+        return listReturnEnemy;
     }
     /**
      * @return the number of monsters to generate.
