@@ -21,4 +21,18 @@ public class ScoreImpl implements Score {
     public String toString() {
         return this.name + " " + this.point;
     }
+    /**
+     * Get player's name.
+     */
+    @Override
+    public String getName() {
+        return this.name;
+    }
+    /**
+     * Get player's point.
+     */
+    @Override
+    public int getPoint() {
+        return this.point;
+    }
 }

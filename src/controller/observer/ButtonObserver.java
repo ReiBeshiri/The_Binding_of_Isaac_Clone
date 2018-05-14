@@ -2,14 +2,14 @@ package controller.observer;
 
 import controller.GameEngineImpl;
 import controller.event.ButtonEvent;
-import controller.event.ButtonType;
 import controller.event.Event;
+import controller.util.ButtonType;
 /**
- *
+ *Observer for manage button events.
  */
 public class ButtonObserver implements Observer {
     /**
-     * 
+     * Manage button event.
      */
     @Override
     public <E extends Event> void notifyEvent(final E event) {

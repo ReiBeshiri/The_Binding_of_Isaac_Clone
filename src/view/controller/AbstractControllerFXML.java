@@ -3,7 +3,7 @@ package view.controller;
 import java.util.List;
 
 import controller.event.ButtonEventImpl;
-import controller.event.ButtonType;
+import controller.util.ButtonType;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;

@@ -1,18 +1,16 @@
 package controller.event;
 
 import proxyutility.SceneType;
-
 /**
- * s.
+ * Event created by pressing a key.
  */
 public interface KeyEvent extends Event {
     /**
-     * @return s.
+     * @return the scene when the key was pressed.
      */
     SceneType getGameState();
     /**
-     * 
-     * @return s.
+     * @return if key was pressed or released.
      */
     KeyType getType(); 
 }

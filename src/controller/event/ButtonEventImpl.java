@@ -1,35 +1,23 @@
 package controller.event;
 
-import proxyutility.SceneType;
+import controller.util.ButtonType;
 /**
- *Event by pressing a button.
+ *Event created by pressing a view button.
  */
 public class ButtonEventImpl implements ButtonEvent {
     private final ButtonType buttonType;
-    private SceneType gameState;
     /**
      * The class constructor.
-     * @param type What the button do.
-     * @param state The scene when the button was pressed.
+     * @param type is what the button do.
      */
-    public ButtonEventImpl(final ButtonType type, final SceneType state) {
+    public ButtonEventImpl(final ButtonType type) {
         this.buttonType = type;
-        this.gameState = state;
     }
     /**
-     * Get the message of event.
-     * @return The message of event.
+     * Get the button pressed.
      */
     @Override
     public String getEvent() {
         return buttonType.toString();
     }
-    /**
-     * Return The scene when the button was pressed.
-     */
-    @Override
-    public SceneType getGameState() {
-        return this.gameState;
-    }
-
 }

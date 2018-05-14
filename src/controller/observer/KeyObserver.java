@@ -16,7 +16,7 @@ public class KeyObserver implements Observer {
      */
     @Override
     public <E extends Event> void notifyEvent(final E event) {
-        if (event instanceof KeyEvent) { //Si potrebbe togliere; 
+        if (event instanceof KeyEvent) { 
             final KeyEvent keyEvent = (KeyEvent) event;
             if (compare(keyEvent, KeyCode.ESCAPE.getName(), SceneType.GAME, KeyType.KEY_RELEASED)) {
                 GameEngineImpl.get().stopGame();

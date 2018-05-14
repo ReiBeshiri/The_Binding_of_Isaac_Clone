@@ -2,7 +2,7 @@ package view.controller;
 
 import java.util.Arrays;
 
-import controller.event.ButtonType;
+import controller.util.ButtonType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
