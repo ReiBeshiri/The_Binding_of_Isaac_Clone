@@ -1,16 +1,9 @@
 package view.controller;
 
-import java.util.List;
-
-import controller.event.ButtonEventImpl;
-import controller.util.ButtonType;
 import javafx.animation.FadeTransition;
-import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
 import javafx.util.Duration;
-import proxyutility.SceneType;
-import view.ViewManagerImpl;
 /**
  * Abstract class with the common behavior to all controller classes.
  */
@@ -21,26 +14,6 @@ public abstract class AbstractControllerFXML implements ControllerFXML{
     @Override
     public abstract Region getRoot();
     
-    /**
-     * Method to set buttons behavior.
-     * @param sceneButtons
-     *          List of buttons that can generate an event.
-     * @param sceneName
-     *          The current scene.
-     */
-    protected void setButtonNotification(final List<ButtonType> sceneButtons, final SceneType sceneName) {
-        
-        //Non posso filtrare gli eventi perche il tipo ButtonType non ha eventi. La lista deve essere di Button.
-                                                                //e quindi a.equals(filter.getTarget()) non ha alcun senso.
-        
-        this.getRoot().addEventFilter(ActionEvent.ACTION, filter->{
-            sceneButtons.stream().forEach(a -> {
-                if(a.equals(filter.getTarget())) {
-                    ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(a,sceneName));
-                }
-            });
-        });
-    }
     /**
      * see https://stackoverflow.com/questions/24978278/fade-in-fade-out-a-screen-in-javafx
      * Method used to apply a fade-in or fade-in transition to a window.
