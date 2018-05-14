@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.util.Objects;
 import model.World;
 import model.WorldImpl;
@@ -34,6 +35,7 @@ public final class GameEngineImpl implements GameEngine {
      */
     @Override
     public void initView() {
+        readSaves();
         gui.viewStart();
     }
     /**
@@ -81,5 +83,20 @@ public final class GameEngineImpl implements GameEngine {
      */
     public GameLoop getGameLoop() {
         return this.gameLoop;
+    }
+    /**
+     * Read the saves.
+     */
+    private void readSaves() {
+        File file = new File("");
+        try {
+            if (file.exists()) {
+            } else {
+                file.createNewFile();
+            }
+        }
+            
+        }
+        
     }
 }
