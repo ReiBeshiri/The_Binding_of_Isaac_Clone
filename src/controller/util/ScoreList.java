@@ -4,16 +4,16 @@ import java.util.Iterator;
 import java.util.List;
 /**
  * This class implements iterator, it contains a list of Score object to iterate.
- * @param <Score> Object contains name, time elapsed and score.
+ * @param <E> Object contains name, time elapsed and score.
  */
-public class ScoreList<Score> implements Iterator<Score> {
-    private List<Score> list; 
+public class ScoreList<E extends Score> implements Iterator<E> {
+    private List<E> list; 
     private int count;
     /**
      * 
      * @param ls List of Score Object;
      */
-    public ScoreList(final List<Score> ls) {
+    public ScoreList(final List<E> ls) {
         list = ls;
         count = -1;
     }
@@ -28,7 +28,7 @@ public class ScoreList<Score> implements Iterator<Score> {
      * Return the next element of the list.
      */
     @Override
-    public Score next() {
+    public E next() {
         count = count + 1;
         return list.get(count);
     }

@@ -1,5 +1,7 @@
 package controller.util;
 
+import timer.Time;
+
 /**
  * Interface for score object.
  */
@@ -14,4 +16,9 @@ public interface Score {
      * @return player's point.
      */
     int getPoint();
+    /**
+     * Get the time elapsed to win the game.
+     * @return time elapsed for win the game.
+     */
+    Time getTime();
 }

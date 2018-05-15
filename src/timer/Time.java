@@ -67,5 +67,10 @@ public class Time {
     public void addListener(final TimeEventListener l) {
         listeners.add(l);
     }
+    
+    public String toString() {
+        return Integer.toString(minutes) + ":" + Integer.toString(seconds);
+        
+    }
 
 }

@@ -11,8 +11,9 @@ public class ScoreImpl implements Score {
     private final Time time;
     /**
      * 
-     * @param name the name of the player;
-     * @param point the point that the player has made.
+     * @param name of the player;
+     * @param point the player has made.
+     * @param time elapsed to win the game.
      */
     public ScoreImpl(final String name, final int point, final Time time) {
         this.name = name;
@@ -24,7 +25,7 @@ public class ScoreImpl implements Score {
      */
     @Override
     public String toString() {
-        return this.name + " " + this.point;
+        return this.name + " " + this.point + " " + this.time.toString();
     }
     /**
      * Get player's name.
@@ -39,5 +40,12 @@ public class ScoreImpl implements Score {
     @Override
     public int getPoint() {
         return this.point;
+    }
+    /**
+     * Get time elapsed to win the game.
+     */
+    @Override
+    public Time getTime() {
+        return this.time;
     }
 }

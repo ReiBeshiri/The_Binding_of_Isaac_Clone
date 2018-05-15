@@ -12,6 +12,7 @@ import controller.util.Score;
 import controller.util.ScoreImpl;
 import model.World;
 import model.WorldImpl;
+import timer.Time;
 import view.View;
 import view.ViewImpl;
 /**
@@ -19,8 +20,10 @@ import view.ViewImpl;
  */
 public final class GameEngineImpl implements GameEngine {
     static final int NAME = 0;
-    static final int TIME = 1;
-    static final int SCORE = 2;
+    static final int SCORE = 1;
+    static final int TIME = 2;
+    static final int MINUTES = 0;
+    static final int SECONDS = 1;
     private static GameEngineImpl singleton;
     private World world;
     private GameLoop gameLoop;
@@ -47,7 +50,7 @@ public final class GameEngineImpl implements GameEngine {
      */
     @Override
     public void initView() {
-        readSaves();
+        readLeaderboard();
         gui.viewStart();
     }
     /**
@@ -97,24 +100,33 @@ public final class GameEngineImpl implements GameEngine {
         return this.gameLoop;
     }
     /**
+     * Get the leaderboard of this computer.
+     * @return the leaderboard.
+     */
+    public List<Score> getLeaderboard() {
+        return this.scoreList;
+    }
+    /**
      * Read the saves.
      */
     private void readLeaderboard() {
-        File file = new File("");
-        
+        File file = new File("C:\\Users\\andre\\Desktop\\LeaderBoard.txt");
+        List<String> items;
+        List<String> splitTime;
+
         try {
             if (!file.createNewFile()) {
                 BufferedReader in = new BufferedReader(new FileReader(file));
                 for (String x = in.readLine(); x != null; x = in.readLine()) {
-                    List<String> items = Arrays.asList(x.split(" "));
-                    scoreList.add(new ScoreImpl(items.get(NAME), items.get(TIME), items.get(SCORE)));
+                    items = Arrays.asList(x.split(" "));
+                    splitTime = Arrays.asList(items.get(TIME).split(":"));
+                    scoreList.add(new ScoreImpl(items.get(NAME), Integer.parseInt(items.get(SCORE)), 
+                            new Time(Integer.parseInt(splitTime.get(MINUTES)), Integer.parseInt(splitTime.get(SECONDS)))));
                 }
+                in.close();
             }
         } catch (Exception e) {
-            
-        } finally {
-            
+            e.getMessage(); //To change.
         }
-        
     }
 }
