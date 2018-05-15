@@ -1,7 +1,15 @@
 package controller;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+
+import controller.util.Score;
+import controller.util.ScoreImpl;
 import model.World;
 import model.WorldImpl;
 import view.View;
@@ -10,10 +18,14 @@ import view.ViewImpl;
  * GameEngineImpl manages all game situations.
  */
 public final class GameEngineImpl implements GameEngine {
+    static final int NAME = 0;
+    static final int TIME = 1;
+    static final int SCORE = 2;
     private static GameEngineImpl singleton;
     private World world;
     private GameLoop gameLoop;
     private final View gui;
+    private List<Score> scoreList = new ArrayList<>();
     /**
      * The class constructor.
      */
@@ -87,14 +99,20 @@ public final class GameEngineImpl implements GameEngine {
     /**
      * Read the saves.
      */
-    private void readSaves() {
+    private void readLeaderboard() {
         File file = new File("");
+        
         try {
-            if (file.exists()) {
-            } else {
-                file.createNewFile();
+            if (!file.createNewFile()) {
+                BufferedReader in = new BufferedReader(new FileReader(file));
+                for (String x = in.readLine(); x != null; x = in.readLine()) {
+                    List<String> items = Arrays.asList(x.split(" "));
+                    scoreList.add(new ScoreImpl(items.get(NAME), items.get(TIME), items.get(SCORE)));
+                }
             }
-        }
+        } catch (Exception e) {
+            
+        } finally {
             
         }
         
