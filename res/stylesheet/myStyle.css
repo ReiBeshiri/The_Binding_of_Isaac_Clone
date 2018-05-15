@@ -83,3 +83,18 @@
 
 .check-box:selected .box {
 	-fx-background-color: #c8c8c8;
+}
+
+.table-view{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-row-cell:odd {
+    -fx-background: -fx-control-inner-background-alt;
+}
+
+.column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}

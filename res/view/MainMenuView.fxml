@@ -58,7 +58,7 @@
             </AnchorPane>
          </center>
          <right>
-            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="466.0" prefWidth="267.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="helpButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#helpButtonClick" text="Help">
                      <font>
@@ -74,45 +74,17 @@
             </VBox>
          </right>
          <left>
-            <VBox alignment="CENTER" layoutX="0.15999984741210938" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" layoutX="0.15999984741210938" prefHeight="466.0" prefWidth="267.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Leaderboard">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label id="HelpInfo" text="Nickname">
-                           <padding>
-                              <Insets bottom="5.0" />
-                           </padding>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label id="HelpInfo" text="Score" GridPane.columnIndex="1">
-                           <padding>
-                              <Insets bottom="5.0" />
-                           </padding>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </GridPane>
-                  <ListView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <padding>
-                        <Insets top="5.0" />
-                     </padding>
-                  </ListView>
+                  <Button fx:id="btnLeaderboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnLeaderboardClick" prefHeight="165.0" prefWidth="267.0" text="Leaderboard">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Leader.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </VBox>
          </left>
