@@ -1,11 +1,11 @@
-package model.dinamicrounds;
+package model.rounds;
 
 import java.util.List;
 
 import model.animated.Animated;
 
 /**
- * Dinamic Rounds Interface. 
+ * Dynamic Rounds Interface. 
  */
 public interface DinamicRounds {
     /**
@@ -15,7 +15,7 @@ public interface DinamicRounds {
     List<Animated> generateMonster();
     /**
      * 
-     * @return the number of monsters to genrate besed on the round.
+     * @return the number of monsters to generate based on the round.
      */
     int numberOfEnemyToGenerate();
 }

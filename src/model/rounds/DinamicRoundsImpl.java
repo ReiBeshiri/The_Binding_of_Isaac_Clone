@@ -1,4 +1,4 @@
-package model.dinamicrounds;
+package model.rounds;
 import java.util.Collections;
 import java.util.List;
 import input.Command;
