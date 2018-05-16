@@ -59,7 +59,19 @@ public enum ImageType {
     /**
      * Right shop door locked.
      */
-    RIGHT_SHOP_DOOR_UNLOCKED("RightShopDoorUnlocked.png");
+    RIGHT_SHOP_DOOR_UNLOCKED("RightShopDoorUnlocked.png"),
+    /**
+     * Button Active
+     */
+    BUTTON_UP("btnUp.png"),
+    /**
+     * Button Deactive
+     */
+    BUTTON_DOWN("btnDown.png"),
+    /**
+     * PowerUp - Health Upp
+     */
+    POWERUP_HEALTH("PowerUp-HealthUpp.png");
 
     private final String path;
 
