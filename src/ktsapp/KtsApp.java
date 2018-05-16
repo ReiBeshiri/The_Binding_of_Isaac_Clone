@@ -1,7 +1,6 @@
 package ktsapp;
 
 import controller.GameEngineImpl;
-
 /**
  * Main entry of the game.
  */

@@ -16,7 +16,7 @@ public class ButtonObserver implements Observer {
         if (event instanceof ButtonEvent) {
             final ButtonEvent buttonEvent = (ButtonEvent) event;
             if (buttonEvent.getEvent().equals(ButtonType.START_GAME.toString())) {
-                GameEngineImpl.get().newGame();
+                GameEngineImpl.get().newGame(buttonEvent.getPlayerName());
             } else if (buttonEvent.getEvent().equals(ButtonType.QUIT_GAME.toString())) {
                 GameEngineImpl.get().stopGame();
             }

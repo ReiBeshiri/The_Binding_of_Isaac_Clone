@@ -67,10 +67,12 @@ public class Time {
     public void addListener(final TimeEventListener l) {
         listeners.add(l);
     }
-    
+    /**
+     * 
+     */
+    @Override
     public String toString() {
         return Integer.toString(minutes) + ":" + Integer.toString(seconds);
-        
     }
 
 }

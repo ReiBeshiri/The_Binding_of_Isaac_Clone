@@ -48,4 +48,14 @@ public class ScoreImpl implements Score {
     public Time getTime() {
         return this.time;
     }
+    /**
+     * To compare score of two players.
+     */
+    @Override
+    public int compareTo(final Score player) {
+        if (this.point == player.getPoint()) {
+            return player.getTime().getTimeInSeconds() - this.time.getTimeInSeconds();
+        }
+        return this.point - player.getPoint();
+    }
 }

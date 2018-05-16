@@ -5,7 +5,7 @@ import timer.Time;
 /**
  * Interface for score object.
  */
-public interface Score {
+public interface Score extends Comparable<Score> {
     /**
      * Get player's name.
      * @return the name of the player.

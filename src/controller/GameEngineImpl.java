@@ -51,15 +51,17 @@ public final class GameEngineImpl implements GameEngine {
     @Override
     public void initView() {
         readLeaderboard();
+        //Passare alla view la leaderboard;
         gui.viewStart();
     }
     /**
      * Create a new game.
+     * @param name of the player.
      */
     @Override
-    public void newGame() {
+    public void newGame(final String name) {
         this.world = new WorldImpl();
-        this.gameLoop = new GameLoopImpl(world);
+        this.gameLoop = new GameLoopImpl(world, name);
         resumeGameLoop();
     }
     /**

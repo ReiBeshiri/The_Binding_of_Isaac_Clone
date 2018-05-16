@@ -1,7 +1,12 @@
+
+
 package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import controller.util.Score;
+import controller.util.ScoreImpl;
 import input.Command;
 import model.World;
 import timer.Time;
@@ -31,15 +36,18 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private int optimalTime; //A cosa serve?
     private long lastLoop;
     private World world;
-    private int score;
+    private int point;
     private TimeAgent timeAgent;
     private final Time time;
+    private final String name;
     /**
      * The class constructor.
      * @param world The instance of the model
+     * @param name of the player.s
      */
-    public GameLoopImpl(final World world) {
+    public GameLoopImpl(final World world, final String name) {
         this.world = world;
+        this.name = name;
         time = new Time(0, 0);
     }
     /**
@@ -108,14 +116,15 @@ public class GameLoopImpl implements GameLoop, Runnable {
             if (x instanceof PlayerHitButton) {
                 startTime();
             } else if (x instanceof PlayerKillEnemy) {
-                score += ((PlayerKillEnemy) x).getPoint();
+                point += ((PlayerKillEnemy) x).getPoint();
             } else if (x instanceof PlayerKillAllEnemy) {
                 stopTime();
             } else if (x instanceof BossFightStarted) {
                 startTime();
             } else if (x instanceof PlayerKillBoss) {
                 stopTime();
-                score += bonusTime(time.getTimeInSeconds());
+                point += bonusTime(time.getTimeInSeconds());
+                Score score = new ScoreImpl(name, point, time);
                 GameEngineImpl.get().victory();
             } else if (x instanceof PlayerDied) {
                 stopTime();
@@ -178,5 +187,12 @@ public class GameLoopImpl implements GameLoop, Runnable {
     @Override
     public void removeMovement(final Command d) {
         movement.add(d);
+    }
+    /**
+     * Get player's name.
+     * @return the player's name.
+     */
+    public String getName() {
+        return this.name;
     }
 }
