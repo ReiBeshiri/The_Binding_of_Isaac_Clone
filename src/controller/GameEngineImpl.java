@@ -109,6 +109,14 @@ public final class GameEngineImpl implements GameEngine {
         return this.scoreList;
     }
     /**
+     * Set the leaderboard.
+     */
+    @Override
+    public void setLeaderboard(final List<Score> list) {
+        this.scoreList = list;
+        //Qui bisogna fare il savataggio.
+    }
+    /**
      * Read the saves.
      */
     private void readLeaderboard() {

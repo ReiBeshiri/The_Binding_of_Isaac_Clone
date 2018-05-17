@@ -43,4 +43,9 @@ public interface GameEngine {
      * @return the leaderboard.
      */
     List<Score> getLeaderboard();
+    /**
+     * Set the leaderboard.
+     * @param list of new leaderboard.
+     */
+    void setLeaderboard(List<Score> list);
 }

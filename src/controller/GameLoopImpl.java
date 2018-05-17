@@ -5,6 +5,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.util.LeaderboardComparator;
 import controller.util.Score;
 import controller.util.ScoreImpl;
 import input.Command;
@@ -125,6 +126,14 @@ public class GameLoopImpl implements GameLoop, Runnable {
                 stopTime();
                 point += bonusTime(time.getTimeInSeconds());
                 Score score = new ScoreImpl(name, point, time);
+                List<Score> leaderboard = GameEngineImpl.get().getLeaderboard();
+                if (score.compareTo(leaderboard.get(leaderboard.size() - 1)) > 0) {
+                    leaderboard.remove(leaderboard.size() - 1);
+                    leaderboard.add(score);
+                    leaderboard.sort(new LeaderboardComparator<Score>());
+                    GameEngineImpl.get().setLeaderboard(leaderboard);
+                    //Richiamo il metodo della view a cui passo la leaderboard
+                }
                 GameEngineImpl.get().victory();
             } else if (x instanceof PlayerDied) {
                 stopTime();
