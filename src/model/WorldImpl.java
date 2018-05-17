@@ -143,18 +143,6 @@ public class WorldImpl implements World {
         this.button = btn;
     }
     /**
-     * refresh shot ratio.
-     */
-    @Override
-    public boolean refreshShotRatio() {
-        if (System.currentTimeMillis() - lastTimeShot < SHOTRATIO) {
-            return false;
-        } else {
-            lastTimeShot = System.currentTimeMillis();
-            return true;
-        }
-    }
-    /**
      * @param effect
      *          the change status of the button.
      */

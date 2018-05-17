@@ -123,15 +123,6 @@ public interface World {
      */
     void addButton(Button btn);
     /**
-     * 
-     * °°°°°° da rivedere, non sono sicuro °°°°°°.
-     * 
-     * Refresh the shot ratio of the enemies.
-     * When an enemy could shot this method will be called in the update
-     * @return if T time passed.
-     */
-    boolean refreshShotRatio();
-    /**
      * change button state.
      * @param effect
      *          true the button will be activated, false otherwise.
