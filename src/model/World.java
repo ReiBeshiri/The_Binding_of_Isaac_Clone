@@ -143,4 +143,11 @@ public interface World {
      * @return the current round.
      */
     int getCurrentRound();
+    /**
+     * Set the modality of the game.
+     * There are two types of mode currently :
+     * Normal Mode
+     * Infinite Mode
+     */
+    void setMode();
 }

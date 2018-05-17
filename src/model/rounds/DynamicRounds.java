@@ -13,9 +13,11 @@ import utility.ProportionUtility;
 import utility.Spawns;
 
 /**
- *      Dinamic Rounds.
+ *      Dynamic Round class.
+ *      This class will mainly create a list of Enemy in a loop.
+ *      Every time the player get in a higher rounds there will be more monsters, the max number of monsters in a single round is 7.
  */
-public class DinamicRoundsImpl implements DinamicRounds {
+public class DynamicRounds implements RoundsGenerator {
     private static final int MAXENEMY = 7;
     private List<EnemyType> listEnemy;
     private List<Command> listCommand;
@@ -25,7 +27,7 @@ public class DinamicRoundsImpl implements DinamicRounds {
     /**
      * Add to the list all the possible enemies, and the spawns.
      */
-    public DinamicRoundsImpl() {
+    public DynamicRounds() {
         listEnemy.add(EnemyType.SIMPLEAIMED);
         listEnemy.add(EnemyType.SIMPLEMOVE);
         listEnemy.add(EnemyType.SIPMLE);
@@ -74,9 +76,8 @@ public class DinamicRoundsImpl implements DinamicRounds {
     /**
      * @return the number of monsters to generate.
      */
-    @Override
-    public int numberOfEnemyToGenerate() {
-        return getCurrentRound() < DinamicRoundsImpl.MAXENEMY ? getCurrentRound() : DinamicRoundsImpl.MAXENEMY; 
+    private int numberOfEnemyToGenerate() {
+        return getCurrentRound() < DynamicRounds.MAXENEMY ? getCurrentRound() : DynamicRounds.MAXENEMY; 
     }
     /**
      * @return the current rounds, so the difficulty can be adapted.

@@ -10,7 +10,10 @@ import model.animated.Enemy;
 import model.animated.Player;
 import model.inanimated.Button;
 import model.room.Room;
+import model.rounds.RoundsGenerator;
+import model.rounds.StaticRounds;
 import utility.Collisions;
+import utility.Mode;
 import worldevent.PlayerHeartChange;
 import worldevent.PlayerKillEnemy;
 import worldevent.WorldEvent;
@@ -34,8 +37,7 @@ public class WorldImpl implements World {
     private List<WorldEvent> listEvent;
     private int currentRound;
     private static final int DAMAGE = 1;
-    private static final int SHOTRATIO = 500;
-    private long lastTimeShot;
+    private Mode mode;
     /**
      * @return list of game objects.
      */
@@ -73,11 +75,21 @@ public class WorldImpl implements World {
         this.player = player;
     }
     /**
-     * set the next round.
+     * Set the game mode.
+     * @param m the game mode chosen by the player.
+     */
+    public void setMode(final Mode m) {
+        this.mode = m;
+    }
+    /**
+     * Set the next round by adding to the list of enemy the new monsters to generate.
      */
     @Override
     public void setNextRound() {
-        // TODO Auto-generated method stub
+        if (this.mode.equals(Mode.NORMAL)) {
+            RoundsGenerator roundsGen = new StaticRounds();
+            listEnemy.addAll(roundsGen.generateMonster());
+        }
     }
     /**
      * @param bullet
@@ -128,7 +140,7 @@ public class WorldImpl implements World {
         this.listRoom.add(newRoom);
     }
     /**
-     * @return the player(user) obj.
+     * @return the player(user) object.
      */
     @Override
     public Animated getPlayer() {
