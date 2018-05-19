@@ -13,14 +13,14 @@ public class HelpViewController extends AbstractControllerFXML {
 
     @FXML
     private BorderPane contentPane;
-    
+
     @FXML
     private void backButtonClick() {
         super.closingFade(() -> ViewManagerImpl.get().pop());
     }
 
     @Override
-    public Region getRoot() {
+    public final Region getRoot() {
         return contentPane;
     }
 

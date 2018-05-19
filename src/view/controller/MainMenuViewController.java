@@ -18,9 +18,9 @@ import view.ViewManagerImpl;
 public class MainMenuViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane contentPane;
-    
+
     @Override
-    public Region getRoot() {
+    public final Region getRoot() {
         return contentPane;
     }
 
@@ -29,23 +29,23 @@ public class MainMenuViewController extends AbstractControllerFXML {
         ViewManagerImpl.get().push(new GameScene());
         ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.START_GAME));
     }
-    
+
     @FXML
     private void optionsButtonClick() {
         ViewManagerImpl.get().push(new OptionScene());
     }
-    
+
     @FXML
     private void exitButtonClick() {
         ViewManagerImpl.get().pop();
         ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME));
     }
-    
+
     @FXML
     private void helpButtonClick() {
         ViewManagerImpl.get().push(new HelpScene());
     }
-    
+
     @FXML
     private void creditsButtonClick() {
         ViewManagerImpl.get().push(new CreditScene());

@@ -22,15 +22,12 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
     private CheckBox godModeCheckBox;
     @FXML 
     private BorderPane contentPane;
-    
+
     private static final Tuple<Integer, Integer> LOW_RES = new Tuple<>(800, 450);
     private static final Tuple<Integer, Integer> MEDIUM_RES = new Tuple<>(1280, 720);
     private static final Tuple<Integer, Integer> HIGH_RES = new Tuple<>(1920, 1080);
     private static final Tuple<Integer, Integer> ULTRA_RES = new Tuple<>(3840, 2160);
-    
-    public OptionsMenuViewController() {
-    }
-    
+
     @FXML
     private void initialize() {
         resolutionComboBox.setValue(OptionsViewUtil.getSelectedRes().getWidth() + "x" + OptionsViewUtil.getSelectedRes().getHeight());
@@ -50,23 +47,22 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
         } else if (resSelected.equals("3840x2160")) {
             OptionsViewUtil.setResolution(ULTRA_RES);
         }
-        
+
         OptionsViewUtil.setFps(Integer.parseInt(fpsComboBox.getSelectionModel().getSelectedItem()));
         OptionsViewUtil.setGodMode(godModeCheckBox.isSelected());
-        
+
         //ViewManager.RESIZE
-        
-        super.closingFade(()->ViewManagerImpl.get().pop());
-    }
-    
-    @FXML
-    private void exitButtonClick() {
-        super.closingFade(()->ViewManagerImpl.get().pop());
-    }
-    
-    @Override
-    public Region getRoot() {
-        return this.contentPane;
+
+        super.closingFade(() -> ViewManagerImpl.get().pop());
     }
 
+    @FXML
+    private void exitButtonClick() {
+        super.closingFade(() -> ViewManagerImpl.get().pop());
+    }
+
+    @Override
+    public final Region getRoot() {
+        return this.contentPane;
+    }
 }

@@ -12,7 +12,7 @@ import model.inanimated.Button;
 import model.room.Room;
 import model.rounds.RoundsGenerator;
 import model.rounds.StaticRounds;
-import utility.Collisions;
+import utility.CollisionUtil;
 import utility.Mode;
 import worldevent.PlayerHeartChange;
 import worldevent.PlayerKillEnemy;
@@ -245,7 +245,7 @@ public class WorldImpl implements World {
     private void playerGetsHitByBullet(final Animated p) {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
-            if (!Collisions.entityCollision(b, player).isEmpty()) {
+            if (!CollisionUtil.entityCollision(b, player).isEmpty()) {
                 player.decLife(DAMAGE); //where should i take the dmg from?
                 removeBulletEnemy(b);
             }
@@ -257,7 +257,7 @@ public class WorldImpl implements World {
     private void playerBulletHitsEnemy() {
         for (Bullet b : this.listBulletPlayer) {
             for (Animated enemy : this.listEnemy) {
-                if (!Collisions.entityCollision(b, enemy).isEmpty()) {
+                if (!CollisionUtil.entityCollision(b, enemy).isEmpty()) {
                     decEnemyLife(DAMAGE, enemy);
                     removeBulletPlayer(b);
                 }

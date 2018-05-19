@@ -7,18 +7,18 @@ import view.ViewManagerImpl;
 /**
  * Controller class for the CreditsView file.
  */
-public class CreditsViewController extends AbstractControllerFXML{
+public class CreditsViewController extends AbstractControllerFXML {
 
     @FXML
     private BorderPane contentPane;
 
     @FXML
     private void backButtonClick() {
-        super.closingFade(()->ViewManagerImpl.get().pop());
+        super.closingFade(() -> ViewManagerImpl.get().pop());
     }
 
     @Override
-    public Region getRoot() {
+    public final Region getRoot() {
         return contentPane;
     }
 

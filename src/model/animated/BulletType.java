@@ -7,16 +7,16 @@ public enum BulletType {
     /**
      * Bullets shot by the Player.
      */
-    PLAYER_BULLET(1,1000,10),
+    PLAYER_BULLET(1, 1000, 10),
     /**
      * Bullets shot by the Enemies.
      */
-    ENEMY_BULLET(1,1000,10),
+    ENEMY_BULLET(1, 1000, 10),
     /**
      * Bullets shot by the Boss.
      */
-    BOSS_BULLET(1,1500,10);
-    
+    BOSS_BULLET(1, 1500, 10);
+
     private final double damage;
     private final double range;
     private final double steps;

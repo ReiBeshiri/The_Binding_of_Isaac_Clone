@@ -8,7 +8,7 @@ import view.ViewManagerImpl;
 /**
  * Controller class for the EndGameView file.
  */
-public class EndGameViewController extends AbstractControllerFXML{
+public class EndGameViewController extends AbstractControllerFXML {
 
     @FXML
     private BorderPane contentPane;
@@ -26,7 +26,7 @@ public class EndGameViewController extends AbstractControllerFXML{
     }
 
     @Override
-    public Region getRoot() {
+    public final Region getRoot() {
         return contentPane;
     }
 

@@ -21,19 +21,19 @@ public class PauseViewController extends AbstractControllerFXML {
     private Button exitButton;
     @FXML 
     private Button resumeButton;
-    
+
     @Override
-    public Region getRoot() {
+    public final Region getRoot() {
         return contentPane;
     }
-    
+
     @FXML
     private void resumeButtonClick() {
-        super.closingFade(()-> ViewManagerImpl.get().pop());
+        super.closingFade(() -> ViewManagerImpl.get().pop());
     }
     @FXML
     private void exitButtonClick() {
-        super.closingFade(()->ViewManagerImpl.get().push(new MainMenuScene()));
+        super.closingFade(() -> ViewManagerImpl.get().push(new MainMenuScene()));
         ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME));
      }
 }

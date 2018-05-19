@@ -25,11 +25,8 @@ public class GameCanvasViewController extends AbstractControllerFXML {
         */
     }
 
-    /**
-     * 
-     */
     @Override
-    public Region getRoot() {
+    public final Region getRoot() {
         return rootGamePane;
     }
 

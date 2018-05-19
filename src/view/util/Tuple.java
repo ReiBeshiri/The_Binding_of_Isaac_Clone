@@ -3,9 +3,9 @@ package view.util;
 /**
  * Represents a tuple as one element, used to set the resolution.
  *
- * @param <Width>
+ * @param <X>
  *              The type of the first element.
- * @param <Height>
+ * @param <Y>
  *              The type of the second element.
  */
 public class Tuple<X, Y> {
