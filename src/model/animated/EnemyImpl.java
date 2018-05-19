@@ -5,23 +5,38 @@ import java.util.Collection;
 import model.ai.AI;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import proxyutility.ImageType;
+
 /**
  * Class that represent generic enemy.
  *
  */
 public class EnemyImpl extends AbstractCharacter implements Enemy {
     private final int points;
+
     /**
      * Constructor for enemy.
-     * @param v Vel.
-     * @param life Life.
-     * @param h hitBox.
-     * @param ai AI.
-     * @param points Points
-     * @param range range of his bullet.
+     * 
+     * @param v
+     *            Vel.
+     * @param life
+     *            Life.
+     * @param h
+     *            hitBox.
+     * @param ai
+     *            AI.
+     * @param points
+     *            Points
+     * @param range
+     *            range of his bullet.
+     * @param img
+     *            image for this enemy.
+     * @param ratio
+     *            shoot ratio for this enemy.
      */
-    public EnemyImpl(final double v, final int life, final HitBox h, final AI ai, final int points, final double range) {
-        super(v, life, h, ai, range);
+    public EnemyImpl(final double v, final int life, final HitBox h, final AI ai, final int points, final double range,
+            final ImageType img, final double ratio) {
+        super(v, life, h, ai, range, img, ratio);
         this.points = points;
     }
 
@@ -32,6 +47,7 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
     public int getPoint() {
         return points;
     }
+
     /**
      * Perform enemy movement.
      */
@@ -39,6 +55,7 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
     protected void move(final int dt) {
         super.getAI().move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
     }
+
     /**
      * Shot bullet/bullets.
      */

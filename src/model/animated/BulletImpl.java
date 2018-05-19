@@ -3,12 +3,13 @@ package model.animated;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
+import proxyutility.ImageType;
 /**
  * 
  * Class for all the bullets fired in the game.
  *
  */
-public class BulletImpl extends AbstractBullet implements Bullet{
+public class BulletImpl extends AbstractBullet implements Bullet {
 
     private double range;
     private final MovementStrategy bulletMS;
@@ -24,24 +25,30 @@ public class BulletImpl extends AbstractBullet implements Bullet{
      *          The range of the bullet.
      */
     public BulletImpl(final CircleHitBox chb, final double vel, final MovementStrategy bulletMS, final double range) {
-        super(vel, chb);
-        this.bulletMS=bulletMS;
-        this.range=range;
+        super(vel, chb, ImageType.BULLET);
+        this.bulletMS = bulletMS;
+        this.range = range;
     }
-
+    /**
+     * 
+     */
     @Override
     public double getRange() {
         return this.range;
     }
-
+    /**
+     * 
+     */
     @Override
     public boolean isDead() {
         return range <= 0;
     }
-
+    /**
+     * 
+     */
     @Override
-    protected HitBox performMove(int dt) {
-        range-=super.getVel()*dt;
-        return bulletMS.move(dt, super.getVel(), (CircleHitBox)super.getHitBox());
+    protected HitBox performMove(final int dt) {
+        range -= super.getVel() * dt;
+        return bulletMS.move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
     }
 }

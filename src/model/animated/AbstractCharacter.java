@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import model.ai.AI;
 import model.hitbox.HitBox;
+import proxyutility.ImageType;
 
 /**
  * Abstract class for character that can move or shot.
@@ -16,6 +17,8 @@ public abstract class AbstractCharacter implements Animated {
     private HitBox hitBox;
     private double range;
     private final int maxLife;
+    private final double ratio;
+    private final ImageType img;
 
     /**
      * 
@@ -29,14 +32,21 @@ public abstract class AbstractCharacter implements Animated {
      *            Artificial Intelligence.
      * @param range
      *            Range of his bullet.
+     * @param img
+     *            Image for this entity.
+     * @param ratio
+     *            Ratio for this entity.
      */
-    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai, final double range) {
+    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai, final double range,
+            final ImageType img, final double ratio) {
         velocity = v;
         this.life = life;
         this.maxLife = life;
         this.ai = ai;
         hitBox = h;
         this.range = range;
+        this.ratio = ratio;
+        this.img = img;
     }
 
     /**
@@ -75,6 +85,7 @@ public abstract class AbstractCharacter implements Animated {
     public void update(final int dt) {
         move(dt);
     }
+
     /**
      * Return HitBox.
      */
@@ -82,6 +93,7 @@ public abstract class AbstractCharacter implements Animated {
     public HitBox getHitBox() {
         return hitBox;
     }
+
     /**
      * Set HitBox.
      */
@@ -107,6 +119,7 @@ public abstract class AbstractCharacter implements Animated {
     public void decLife(final int dec) {
         life -= dec;
     }
+
     /**
      * Method to expose the AI only to subclass.
      * 
@@ -115,6 +128,7 @@ public abstract class AbstractCharacter implements Animated {
     public AI getAI() {
         return ai;
     }
+
     /**
      * Method to expose the range only to subclass.
      * 
@@ -123,24 +137,44 @@ public abstract class AbstractCharacter implements Animated {
     public double getRange() {
         return range;
     }
+
     /**
      * Set new range.
      * 
      * Note: Uses for power-up.
-     * @param incRange New range for entity bullets.
+     * 
+     * @param incRange
+     *            New range for entity bullets.
      */
     public void setRange(final double incRange) {
         range += incRange;
     }
+
     /**
      * Increase life if entity doesn't have max life already.
-     * @param inc Delta to increase life.
+     * 
+     * @param inc
+     *            Delta to increase life.
      */
     public void incLife(final int inc) {
         if (this.life + inc <= this.maxLife) {
-           this.life += inc;
+            this.life += inc;
         } else if (this.life + inc > this.maxLife) {
             this.life = this.maxLife;
         }
+    }
+    /**
+     * 
+     */
+    @Override
+    public ImageType getImageType() {
+        return img;
+    }
+    /**
+     * Return shot ratio.
+     * @return ratio for this character.
+     */
+    public double getShootRatio() {
+        return this.ratio;
     }
 }

@@ -7,30 +7,32 @@ public enum EntityType {
     /**
      * 
      */
-    PLAYER(6, 3, 0),
+    PLAYER(6, 3, 0, 1),
     /**
      * 
      */
-    STATIC_ENEMY(4, 0, 3),
+    STATIC_ENEMY(4, 0, 3, 5),
     /**
      * 
      */
-    MOVEABLE_ENEMY(3, 2, 5),
+    MOVEABLE_ENEMY(3, 2, 5, 5),
     /**
      * 
      */
-    BOSS(20, 3, 50);
+    BOSS(20, 3, 50, 10);
     private int life;
     private double vel;
     private int points;
+    private double shootRatio;
     /**
      * 
      * @param l Life.
      */
-    EntityType(final int l, final double v, final int points) {
+    EntityType(final int l, final double v, final int points, final double sR) {
         life = l;
         vel = v;
         this.points = points;
+        shootRatio = sR;
     }
     /**
      * 
@@ -52,5 +54,12 @@ public enum EntityType {
      */
     public int getPoints() {
         return points;
+    }
+    /**
+     * 
+     * @return Shoot ratio.
+     */
+    public double getShotRatio() {
+        return shootRatio;
     }
 }

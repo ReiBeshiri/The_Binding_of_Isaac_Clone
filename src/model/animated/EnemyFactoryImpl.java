@@ -14,6 +14,8 @@ import model.strategy.ChasePlayerProjectile;
 import model.strategy.Motionless;
 import model.strategy.SimplyDirectionMovement;
 import model.strategy.SingleDirectionProjectile;
+import proxyutility.ImageType;
+
 /**
  * 
  *
@@ -23,36 +25,42 @@ public class EnemyFactoryImpl implements EnemyFactory {
      * 
      */
     @Override
-    public Animated createStaticSimpleDirectionShotEnemy(final HitBox h, final Command c, final double bulletRadius) {
-        return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h, 
-                new BasicAI(new Motionless(), new SingleDirectionProjectile(c, bulletRadius)), 
-                STATIC_ENEMY.getPoints(), ENEMY_BULLET.getRange());
+    public Animated createStaticSimpleDirectionShotEnemy(final HitBox h, final Command c, final double bulletRadius,
+            final ImageType img, final double ratio) {
+        return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
+                new BasicAI(new Motionless(), new SingleDirectionProjectile(c, bulletRadius)), STATIC_ENEMY.getPoints(),
+                ENEMY_BULLET.getRange(), ImageType.BASIC_ENEMY, STATIC_ENEMY.getShotRatio());
     }
+
     /**
      * 
      */
     @Override
-    public Animated createStaticAimedBulletEnemy(final HitBox h, final double bulletRadius) {
-        return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h, 
-                new BasicAI(new Motionless(), new AimedProjectile(bulletRadius)), 
-                STATIC_ENEMY.getPoints(), ENEMY_BULLET.getRange());
+    public Animated createStaticAimedBulletEnemy(final HitBox h, final double bulletRadius, final ImageType img,
+            final double ratio) {
+        return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
+                new BasicAI(new Motionless(), new AimedProjectile(bulletRadius)), STATIC_ENEMY.getPoints(),
+                ENEMY_BULLET.getRange(), ImageType.AIMED_ENEMY, STATIC_ENEMY.getShotRatio());
     }
+
     /**
      * 
      */
     @Override
-    public Animated createSimpleDirectionMovedEnemy(final HitBox h, final Command dMove, final Command dShot, final double bulletRadius) {
-        return new EnemyImpl(MOVEABLE_ENEMY.getVel(), MOVEABLE_ENEMY.getLife(), h, 
-                new BasicAI(new SimplyDirectionMovement(dMove), new SingleDirectionProjectile(dShot, bulletRadius)), 
-                MOVEABLE_ENEMY.getPoints(), ENEMY_BULLET.getRange());
+    public Animated createSimpleDirectionMovedEnemy(final HitBox h, final Command dMove, final Command dShot,
+            final double bulletRadius, final ImageType img, final double ratio) {
+        return new EnemyImpl(MOVEABLE_ENEMY.getVel(), MOVEABLE_ENEMY.getLife(), h,
+                new BasicAI(new SimplyDirectionMovement(dMove), new SingleDirectionProjectile(dShot, bulletRadius)),
+                MOVEABLE_ENEMY.getPoints(), ENEMY_BULLET.getRange(), ImageType.BASIC_ENEMY, MOVEABLE_ENEMY.getShotRatio());
     }
+
     /**
      * Note: Boss start with bullet that chase player.
      */
     @Override
-    public Animated createBoss(final HitBox h, final double bulletRadius) {
-        return new EnemyImpl(BOSS.getVel(), BOSS.getLife(), h, 
-                new BossAI(new Motionless(), new ChasePlayerProjectile(bulletRadius)), 
-                BOSS.getPoints(), BOSS_BULLET.getRange());
+    public Animated createBoss(final HitBox h, final double bulletRadius, final ImageType img, final double ratio) {
+        return new EnemyImpl(BOSS.getVel(), BOSS.getLife(), h,
+                new BossAI(new Motionless(), new ChasePlayerProjectile(bulletRadius)), BOSS.getPoints(),
+                BOSS_BULLET.getRange(), ImageType.BOSS_ENEMY, BOSS.getShotRatio());
     }
 }

@@ -5,6 +5,7 @@ import java.util.Collection;
 import model.ai.AI;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import proxyutility.ImageType;
 
 /**
  * Implementation of the Player.
@@ -14,7 +15,7 @@ public class PlayerImpl extends AbstractCharacter implements Player {
     // In this case is always the same, for expansion, we only need to change this
     // constant
     // or implement a get, set and transform this to a private field.
-    //private static final int N_BULLET_TO_SHOOT = 1;
+    // private static final int N_BULLET_TO_SHOOT = 1;
 
     /**
      * 
@@ -28,9 +29,14 @@ public class PlayerImpl extends AbstractCharacter implements Player {
      *            Artificial Intelligence.
      * @param range
      *            Range of his bullet.
+     * @param img
+     *            Image for player.
+     * @param ratio
+     *            shoot ratio for payer.
      */
-    public PlayerImpl(final double v, final int life, final HitBox h, final AI ai, final double range) {
-        super(v, life, h, ai, range);
+    public PlayerImpl(final double v, final int life, final HitBox h, final AI ai, final double range,
+            final ImageType img, final double ratio) {
+        super(v, life, h, ai, range, img, ratio);
     }
 
     /**
