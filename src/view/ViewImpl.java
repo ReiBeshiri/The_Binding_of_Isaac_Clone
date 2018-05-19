@@ -2,6 +2,7 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import controller.event.KeyEvent;
 import controller.observer.ButtonObserver;
@@ -17,14 +18,27 @@ import view.util.OptionsViewUtil;
  * Class that represent view.
  *
  */
-public class ViewImpl implements View {
+public final class ViewImpl implements View {
     private final List<Observer> observers;
+    private DrawerManager drawer;
+    private static View view;
 
     /**
      * 
      */
-    public ViewImpl() {
+    private ViewImpl() {
         observers = new ArrayList<>();
+    }
+
+    /**
+     * Singleton for ViewManager.
+     * @return Only instance of this class.
+     */
+    public static View get() {
+        if (Objects.isNull(view)) {
+            view = new ViewImpl();
+        }
+        return view;
     }
 
     /**
@@ -98,6 +112,14 @@ public class ViewImpl implements View {
     @Override
     public void addObserver(final Observer obs) {
         observers.add(obs);
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public void setDrawer(final DrawerManager drawer) {
+        this.drawer = drawer;
     }
 
 }

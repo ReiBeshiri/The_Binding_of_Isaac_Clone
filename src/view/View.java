@@ -46,4 +46,9 @@ public interface View {
      * @param obs Observer.
      */
     void addObserver(Observer obs);
+    /**
+     * Set drawer instance.
+     * @param drawer drawer manager.
+     */
+    void setDrawer(DrawerManager drawer);
 }

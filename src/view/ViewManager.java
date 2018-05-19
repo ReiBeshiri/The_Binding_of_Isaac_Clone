@@ -1,7 +1,6 @@
 package view;
 
 import controller.event.Event;
-import proxyutility.SceneType;
 /**
  * Class that manage different types of view.
  * 
@@ -31,11 +30,6 @@ public interface ViewManager {
      * @param w Width.
      */
     void setWidth(int w);
-    /**
-     * Set reference to View instance.
-     * @param v view instance.
-     */
-    void setViewReferene(View v);
     /**
      * Active scene.
      * @return Get current scene.
