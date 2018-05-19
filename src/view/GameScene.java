@@ -1,5 +1,7 @@
 package view;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.Event;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -15,11 +17,13 @@ import controller.event.KeyType;
  *
  */
 public class GameScene extends AbstractGenericScene {
+    private final InvalidationListener gameCanvasObserver;
     /**
      * Constructor for game scene.
      */
     public GameScene() {
         super(GAME);
+        gameCanvasObserver = new CanvasObserver(); 
     }
 
     /**
@@ -44,4 +48,18 @@ public class GameScene extends AbstractGenericScene {
         }
     }
 
+    /**
+     * Return a Invalidation listener for canvas.
+     * @return Canvas observer.
+     */
+    public InvalidationListener getCanvasObserver() {
+        return this.gameCanvasObserver;
+    }
+
+    private class CanvasObserver implements InvalidationListener {
+        @Override
+        public void invalidated(final Observable observable) {
+            ViewManagerImpl.get().updateViewState();
+        }
+    }
 }

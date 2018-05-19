@@ -7,7 +7,7 @@ import javafx.scene.layout.Region;
 /**
  * Controller class for the HelpView file.
  */
-public class GameCanvasViewController extends AbstractControllerFXML{
+public class GameCanvasViewController extends AbstractControllerFXML {
 
     @FXML
     private FlowPane rootGamePane;
@@ -25,9 +25,20 @@ public class GameCanvasViewController extends AbstractControllerFXML{
         */
     }
 
+    /**
+     * 
+     */
     @Override
     public Region getRoot() {
         return rootGamePane;
+    }
+
+    /**
+     * Main canvas.
+     * @return Canvas where paint scene.
+     */
+    public Canvas getGameCanvas() {
+        return roomCanvas;
     }
 
 }
