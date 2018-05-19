@@ -75,7 +75,7 @@ public enum ImageType {
     /**
      * Bullet.
      */
-    BULLET("");
+    BULLET("PlayerProjectile.png");
     private final String path;
 
     ImageType(final String path) {
