@@ -10,6 +10,7 @@ import model.animated.Enemy;
 import model.animated.Player;
 import model.inanimated.Button;
 import model.room.Room;
+import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
 import model.rounds.StaticRounds;
 import utility.CollisionUtil;
@@ -38,6 +39,7 @@ public class WorldImpl implements World {
     private int currentRound;
     private static final int DAMAGE = 1;
     private Mode mode;
+    private RoundsGenerator roundsGenerator;
     /**
      * @return list of game objects.
      */
@@ -80,16 +82,18 @@ public class WorldImpl implements World {
      */
     public void setMode(final Mode m) {
         this.mode = m;
+        if (this.mode.equals(Mode.NORMAL)) {
+            this.roundsGenerator = new StaticRounds();
+        } else {
+            this.roundsGenerator = new DynamicRounds();
+        }
     }
     /**
      * Set the next round by adding to the list of enemy the new monsters to generate.
      */
     @Override
     public void setNextRound() {
-        if (this.mode.equals(Mode.NORMAL)) {
-            RoundsGenerator roundsGen = new StaticRounds();
-            listEnemy.addAll(roundsGen.generateMonster());
-        }
+            listEnemy.addAll(roundsGenerator.generateMonster());
     }
     /**
      * @param bullet

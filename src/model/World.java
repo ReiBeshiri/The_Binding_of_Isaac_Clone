@@ -7,6 +7,7 @@ import model.animated.Animated;
 import model.animated.Bullet;
 import model.inanimated.Button;
 import model.room.Room;
+import utility.Mode;
 import worldevent.WorldEvent;
 /**
  * Interface.
@@ -149,5 +150,5 @@ public interface World {
      * Normal Mode
      * Infinite Mode
      */
-    void setMode();
+    void setMode(Mode m);
 }
