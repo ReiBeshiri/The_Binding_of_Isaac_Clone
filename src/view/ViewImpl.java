@@ -31,7 +31,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * Singleton for ViewManager.
+     * Singleton for ViewImpl.
      * @return Only instance of this class.
      */
     public static View get() {
