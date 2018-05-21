@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.CreditScene;
-import view.GameScene;
 import view.HelpScene;
 import view.OptionScene;
 import view.ViewManagerImpl;
@@ -26,8 +25,7 @@ public class MainMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void playButtonClick() {
-        ViewManagerImpl.get().push(new GameScene());
-        ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.START_GAME));
+        ViewManagerImpl.get().push(new NicknameScene());
     }
 
     @FXML
@@ -38,7 +36,7 @@ public class MainMenuViewController extends AbstractControllerFXML {
     @FXML
     private void exitButtonClick() {
         ViewManagerImpl.get().pop();
-        ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME));
+        ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME, ""));
     }
 
     @FXML
