@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.*?>
@@ -7,91 +8,54 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootOptionsPane" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.OptionsMenuViewController">
-   <children>
-      <BorderPane fx:id="contentPane" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <Label id="lblTitle" alignment="CENTER" contentDisplay="CENTER" styleClass="background" text="Options" BorderPane.alignment="CENTER" />
-         </top>
-         <bottom>
-            <AnchorPane>
+
+<BorderPane fx:id="contentPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.OptionsMenuViewController">
+   <top>
+      <Label id="lblTitle" alignment="CENTER" contentDisplay="CENTER" styleClass="background" text="Options" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+                <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="applyButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#applyButtonClick" text="Apply" AnchorPane.bottomAnchor="0.0" />
-                        <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exitButtonClick" text="Exit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </VBox>
+                  <Label text="God Mode">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <CheckBox fx:id="godModeCheckBox" mnemonicParsing="false" GridPane.columnIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </CheckBox>
                </children>
-            </AnchorPane>
-         </bottom>
-         <center>
-            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-               <children>
-                  <GridPane BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
-                      <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints vgrow="SOMETIMES" />
-                      <RowConstraints vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="FPS" GridPane.rowIndex="1">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </Label>
-                        <ComboBox fx:id="fpsComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1">
-							<items>
-								<FXCollections fx:factory="observableArrayList">
-									<String fx:value="30"/>
-									<String fx:value="60" />
-									<String fx:value="120" />
-								</FXCollections>
-							</items>
-							<value>
-								<String fx:value="60" />
-							</value>
-						</ComboBox>
-                        <Label text="God Mode" GridPane.rowIndex="2">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </Label>
-                        <CheckBox fx:id="godModeCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </CheckBox>
-                        <Label text="Resolution">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </Label>
-                        <ComboBox fx:id="resolutionComboBox" GridPane.columnIndex="1">
-							<items>
-								<FXCollections fx:factory="observableArrayList">
-									<String fx:value="800x450"/>
-									<String fx:value="1280x720" />
-									<String fx:value="1920x1080" />
-                                    <String fx:value="3840x2160" />
-								</FXCollections>
-							</items>
-							<value>
-								<String fx:value="1280x720" />
-							</value>
-						</ComboBox>
-                     </children>
-                  </GridPane>
-               </children>
-            </VBox>
-         </center>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
-      </BorderPane>
-   </children>
-</AnchorPane>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <bottom>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="applyButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#applyButtonClick" text="Apply" />
+            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exitButtonClick" text="Exit" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+   </bottom>
+</BorderPane>

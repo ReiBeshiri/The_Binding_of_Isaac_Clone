@@ -4,26 +4,21 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.LeaderboardController">
-   <children>
-      <BorderPane fx:id="contentPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-               <children>
-                  <TableView styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                        <TableColumn maxWidth="266.0" minWidth="266.0" prefWidth="266.0" resizable="false" text="Nickname" />
-                      <TableColumn maxWidth="266.0" minWidth="266.0" prefWidth="266.0" resizable="false" text="Points" />
-                        <TableColumn maxWidth="266.0" minWidth="266.0" prefWidth="266.0" resizable="false" text="Time" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-                  <Button fx:id="btnBackButton" mnemonicParsing="false" onAction="#btnBackButtonClick" text="Back" />
-               </children>
-            </VBox>
-         </center>
-      </BorderPane>
-   </children>
-</AnchorPane>
+
+<BorderPane fx:id="contentPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.LeaderboardController">
+   <center>
+      <TableView styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn editable="false" minWidth="-1.0" prefWidth="266.0" sortable="false" text="Nickname" />
+          <TableColumn minWidth="-1.0" prefWidth="266.0" text="Points" />
+            <TableColumn minWidth="-1.0" prefWidth="266.0" text="Time" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </center>
+   <bottom>
+      <Button fx:id="btnBackButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnBackButtonClick" text="Back" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

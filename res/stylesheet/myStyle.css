@@ -39,6 +39,8 @@
 
 .button{
     -fx-background-color: transparent;
+    -fx-border-color: #c8c8c8;
+	-fx-border-radius: 15px; 
     -fx-font-family: 'a dripping marker';
     -fx-font-size: 36pt;
     -fx-text-fill: white;
@@ -83,6 +85,7 @@
 
 .check-box:selected .box {
 	-fx-background-color: #c8c8c8;
+
 }
 
 .table-view{
@@ -90,8 +93,8 @@
     -fx-text-fill: white;
 }
 
-.table-row-cell:odd {
-    -fx-background: -fx-control-inner-background-alt;
+.table-column{
+    -fx-border-color: white;
 }
 
 .column-header {

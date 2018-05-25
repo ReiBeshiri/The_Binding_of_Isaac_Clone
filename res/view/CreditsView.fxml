@@ -5,26 +5,23 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootCreditsPane" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.CreditsViewController">
-   <children>
-      <BorderPane fx:id="contentPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <Label id="lblTitle" text="CREDITS" BorderPane.alignment="CENTER" />
-         </top>
-         <center>
-            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="Developed by:" />
-                  <Label text="Beshiri Rei" />
-                  <Label text="Cristurean Denis" />
-                  <Label text="Vaienti Andrea" />
-                  <Label text="Vincenzi Mattia" />
-               </children>
-            </VBox>
-         </center>
-         <bottom>
-            <Button id="back" fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClick" text="Back" BorderPane.alignment="CENTER" />
-         </bottom>
-      </BorderPane>
-   </children>
-</AnchorPane>
+
+<BorderPane fx:id="contentPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.CreditsViewController">
+   <top>
+      <Label id="lblTitle" text="CREDITS" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Developed by:" />
+            <Label text="Beshiri Rei" />
+            <Label text="Cristurean Denis" />
+            <Label text="Vaienti Andrea" />
+            <Label text="Vincenzi Mattia" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Button id="back" fx:id="backButton" mnemonicParsing="false" onAction="#backButtonClick" text="Back" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
