@@ -141,4 +141,9 @@ public final class ViewManagerImpl extends Application implements ViewManager {
             gameCanvas.widthProperty().removeListener(gScene.getCanvasObserver());
         }
     }
+
+    @Override
+    public Stage getMainStage() {
+        return stage;
+    }
 }

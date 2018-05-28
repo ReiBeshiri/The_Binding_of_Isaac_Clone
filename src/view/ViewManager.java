@@ -1,6 +1,7 @@
 package view;
 
 import controller.event.Event;
+import javafx.stage.Stage;
 /**
  * Class that manage different types of view.
  * 
@@ -39,4 +40,9 @@ public interface ViewManager {
      * Redraw scene.
      */
     void updateViewState();
+    /**
+     * Get stage.
+     * @return stage.
+     */
+    Stage getMainStage();
 }
