@@ -44,20 +44,12 @@ public class GameScene extends AbstractGenericScene {
     @Override
     public void checkSceneHandler(final Event e) {
         if (e.getEventType().equals(KeyEvent.KEY_PRESSED)) {
-            ViewManagerImpl.get().notifyEvent(new KeyEventImpl(KeyCode.getKeyCode(e.getEventType().getName()),
+            ViewImpl.get().notifyEvent(new KeyEventImpl(KeyCode.getKeyCode(e.getEventType().getName()),
                     this.getSceneType(), KeyType.KEY_PRESSED));
         } else if (e.getEventType().equals(KeyEvent.KEY_RELEASED)) {
-            ViewManagerImpl.get().notifyEvent(new KeyEventImpl(KeyCode.getKeyCode(e.getEventType().getName()),
+            ViewImpl.get().notifyEvent(new KeyEventImpl(KeyCode.getKeyCode(e.getEventType().getName()),
                     this.getSceneType(), KeyType.KEY_RELEASED));
         }
-    }
-
-    /**
-     * Return a Invalidation listener for canvas.
-     * @return Canvas observer.
-     */
-    public InvalidationListener getCanvasObserver() {
-        return this.gameCanvasObserver;
     }
 
     /**
@@ -66,8 +58,8 @@ public class GameScene extends AbstractGenericScene {
     public void addCanvasListener() {
         gameCanvas.heightProperty().bind(ViewManagerImpl.get().getMainStage().heightProperty());
         gameCanvas.widthProperty().bind(ViewManagerImpl.get().getMainStage().widthProperty());
-        gameCanvas.heightProperty().addListener(getCanvasObserver());
-        gameCanvas.widthProperty().addListener(getCanvasObserver());
+        gameCanvas.heightProperty().addListener(gameCanvasObserver);
+        gameCanvas.widthProperty().addListener(gameCanvasObserver);
     }
  
     /**
@@ -76,8 +68,8 @@ public class GameScene extends AbstractGenericScene {
     public void removeCanvasListener() {
         gameCanvas.heightProperty().unbind();
         gameCanvas.widthProperty().unbind();
-        gameCanvas.heightProperty().removeListener(getCanvasObserver());
-        gameCanvas.widthProperty().removeListener(getCanvasObserver());
+        gameCanvas.heightProperty().removeListener(gameCanvasObserver);
+        gameCanvas.widthProperty().removeListener(gameCanvasObserver);
     }
 
     private class CanvasObserver implements InvalidationListener {

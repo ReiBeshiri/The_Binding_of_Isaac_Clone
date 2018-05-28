@@ -1,6 +1,5 @@
 package view;
 
-import controller.event.Event;
 import javafx.stage.Stage;
 /**
  * Class that manage different types of view.
@@ -16,11 +15,6 @@ public interface ViewManager {
      * Pop last added-element in scene stack. 
      */
     void pop();
-    /**
-     * Notify event to view.
-     * @param e Event to be notified.
-     */
-    void notifyEvent(Event e);
     /**
      * Set stage height.
      * @param h Height.

@@ -4,13 +4,10 @@ import java.util.Objects;
 import java.util.Stack;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import proxyutility.SceneType;
-import view.controller.GameCanvasViewController;
 import view.util.SceneFactory;
-import controller.event.Event;
 
 /**
  * Class that represent view manager. This class is used to manage scene state.
@@ -43,7 +40,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     }
 
     /**
-     * 
+     * Pop scene.
      */
     @Override
     public void pop() {
@@ -51,17 +48,9 @@ public final class ViewManagerImpl extends Application implements ViewManager {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
             final GenericScene removed = stack.pop();
             stage.setScene(new Scene(stack.lastElement().getSceneController().getRoot()));
-            checkCurrentScene();
+            stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
             checkRemovedScene(removed);
         }
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public void notifyEvent(final Event e) {
-        ViewImpl.get().notifyEvent(e);
     }
 
     /**
@@ -121,24 +110,13 @@ public final class ViewManagerImpl extends Application implements ViewManager {
 
     private void checkCurrentScene() {
         if (getCurrentScene().getSceneType() == SceneType.GAME) {
-            final Canvas gameCanvas = ((GameCanvasViewController) getCurrentScene().getSceneController())
-                    .getGameCanvas();
-            final GameScene gScene = (GameScene) getCurrentScene();
-            gameCanvas.heightProperty().bind(stage.heightProperty());
-            gameCanvas.widthProperty().bind(stage.widthProperty());
-            gameCanvas.heightProperty().addListener(gScene.getCanvasObserver());
-            gameCanvas.widthProperty().addListener(gScene.getCanvasObserver());
+            ((GameScene) stack.lastElement()).addCanvasListener();
         }
     }
 
     private void checkRemovedScene(final GenericScene removed) {
         if (removed.getSceneType() == SceneType.GAME) {
-            final Canvas gameCanvas = ((GameCanvasViewController) removed.getSceneController()).getGameCanvas();
-            final GameScene gScene = (GameScene) removed;
-            gameCanvas.heightProperty().unbind();
-            gameCanvas.widthProperty().unbind();
-            gameCanvas.heightProperty().removeListener(gScene.getCanvasObserver());
-            gameCanvas.widthProperty().removeListener(gScene.getCanvasObserver());
+            ((GameScene) stack.lastElement()).removeCanvasListener();
         }
     }
 
