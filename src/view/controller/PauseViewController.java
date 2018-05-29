@@ -35,6 +35,6 @@ public class PauseViewController extends AbstractControllerFXML {
     @FXML
     private void exitButtonClick() {
         super.closingFade(() -> ViewManagerImpl.get().push(new MainMenuScene()));
-        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME));
+        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME, ""));
      }
 }

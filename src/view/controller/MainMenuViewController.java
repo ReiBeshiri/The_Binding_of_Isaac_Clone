@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.CreditScene;
 import view.HelpScene;
+import view.NewGameScene;
 import view.OptionScene;
 import view.ViewImpl;
 import view.ViewManagerImpl;
@@ -26,7 +27,7 @@ public class MainMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void playButtonClick() {
-        ViewManagerImpl.get().push(new NicknameScene());
+        ViewManagerImpl.get().push(new NewGameScene());
     }
 
     @FXML
