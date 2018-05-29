@@ -73,16 +73,20 @@ public enum ImageType {
      */
     POWERUP_HEALTH("PowerUp-HealthUpp.png"),
     /**
-     * Bullet.
+     * Player Bullet.
      */
-    BULLET("PlayerProjectile.png");
+    PLAYER_BULLET("PlayerProjectile.png"),
+    /**
+     * Enemy Bullet.
+     */
+    ENEMY_BULLET("EnemyProjectile.png");
     private final String path;
 
     ImageType(final String path) {
         this.path = path;
     }
     /**
-     * 
+     * Getter for name.
      * @return Return the image name.
      */
     public String getName() {

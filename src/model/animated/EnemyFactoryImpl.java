@@ -17,12 +17,12 @@ import model.strategy.SingleDirectionProjectile;
 import proxyutility.ImageType;
 
 /**
- * 
+ * Factory implementation for enemy.
  *
  */
 public class EnemyFactoryImpl implements EnemyFactory {
     /**
-     * 
+     * Create static enemy that shot in only direction.
      */
     @Override
     public Animated createStaticSimpleDirectionShotEnemy(final HitBox h, final Command c, final double bulletRadius,
@@ -33,7 +33,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
     }
 
     /**
-     * 
+     * Create a static enemy that shot aimed bullets.
      */
     @Override
     public Animated createStaticAimedBulletEnemy(final HitBox h, final double bulletRadius, final ImageType img,
@@ -44,7 +44,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
     }
 
     /**
-     * 
+     * Create a enemy that moves in only one direction and shot bullets in a single direction.
      */
     @Override
     public Animated createSimpleDirectionMovedEnemy(final HitBox h, final Command dMove, final Command dShot,
@@ -55,6 +55,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
     }
 
     /**
+     * Create boss with initial behavior.
      * Note: Boss start with bullet that chase player.
      */
     @Override

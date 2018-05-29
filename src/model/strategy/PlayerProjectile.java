@@ -10,6 +10,7 @@ import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import utility.ModelUtility;
+import static proxyutility.ImageType.PLAYER_BULLET;
 import static input.Command.DOWN;
 import static input.Command.UP;
 import static input.Command.LEFT;
@@ -53,7 +54,7 @@ public class PlayerProjectile implements ProjectileType {
         if (dirToShoot != null) {
             final List<Bullet> shots = new ArrayList<>();
             shots.add(new BulletImpl(new CircleHitBox(x, y, radius), vel, 
-                    new SimplyDirectionMovement(dirToShoot), range));
+                    new SimplyDirectionMovement(dirToShoot), range, PLAYER_BULLET));
             return shots;
         }
         return Collections.emptyList();

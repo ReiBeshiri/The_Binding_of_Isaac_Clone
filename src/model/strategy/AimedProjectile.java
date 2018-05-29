@@ -7,6 +7,7 @@ import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import utility.ModelUtility;
+import static proxyutility.ImageType.ENEMY_BULLET;
 /**
  * 
  * Shoots a aimed bullet to a specific point.
@@ -29,7 +30,7 @@ public class AimedProjectile implements ProjectileType {
         final Collection<Bullet> bulletColl = new ArrayList<>();
         bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel, 
                 new BulletMovement(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(), ModelUtility.getPlayerHitBox().getX() - sender.getX())),
-                range));
+                range, ENEMY_BULLET));
         return bulletColl;
     }
 

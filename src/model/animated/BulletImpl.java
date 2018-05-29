@@ -23,9 +23,11 @@ public class BulletImpl extends AbstractBullet implements Bullet {
      *          The movement of the bullet.
      * @param range
      *          The range of the bullet.
+     * @param bulletImg
+     *          The bullet image.
      */
-    public BulletImpl(final CircleHitBox chb, final double vel, final MovementStrategy bulletMS, final double range) {
-        super(vel, chb, ImageType.BULLET);
+    public BulletImpl(final CircleHitBox chb, final double vel, final MovementStrategy bulletMS, final double range, final ImageType bulletImg) {
+        super(vel, chb, bulletImg);
         this.bulletMS = bulletMS;
         this.range = range;
     }

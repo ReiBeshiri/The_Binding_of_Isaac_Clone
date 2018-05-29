@@ -7,8 +7,9 @@ import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import proxyutility.ImageType;
 /**
- * 
+ * Class that represent movement of the bullet that follow player. 
  *
  */
 public class ChasePlayerProjectile implements ProjectileType {
@@ -21,13 +22,13 @@ public class ChasePlayerProjectile implements ProjectileType {
         radius = r;
     }
     /**
-     * 
+     * Shoot bullet/s.
      */
     @Override
     public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel) {
         final List<Bullet> list = new ArrayList<>();
         list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), 
-                vel, new FollowPlayerMovement(), range));
+                vel, new FollowPlayerMovement(), range, ImageType.ENEMY_BULLET));
         return list;
     }
 
