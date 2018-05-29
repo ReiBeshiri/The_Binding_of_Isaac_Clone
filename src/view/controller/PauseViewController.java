@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.MainMenuScene;
+import view.ViewImpl;
 import view.ViewManagerImpl;
 /**
  * 
@@ -34,6 +35,6 @@ public class PauseViewController extends AbstractControllerFXML {
     @FXML
     private void exitButtonClick() {
         super.closingFade(() -> ViewManagerImpl.get().push(new MainMenuScene()));
-        ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME));
+        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME));
      }
 }

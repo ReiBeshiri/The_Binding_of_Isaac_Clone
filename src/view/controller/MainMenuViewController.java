@@ -8,6 +8,7 @@ import javafx.scene.layout.Region;
 import view.CreditScene;
 import view.HelpScene;
 import view.OptionScene;
+import view.ViewImpl;
 import view.ViewManagerImpl;
 /**
  * 
@@ -36,7 +37,7 @@ public class MainMenuViewController extends AbstractControllerFXML {
     @FXML
     private void exitButtonClick() {
         ViewManagerImpl.get().pop();
-        ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME, ""));
+        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME, ""));
     }
 
     @FXML

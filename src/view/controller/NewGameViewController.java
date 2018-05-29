@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.GameScene;
+import view.ViewImpl;
 import view.ViewManagerImpl;
 /**
  * 
@@ -30,7 +31,7 @@ public class NewGameViewController extends AbstractControllerFXML {
     private void btnPlayClick() {
         if (!txtNickname.getText().isEmpty()) {
             ViewManagerImpl.get().push(new GameScene());
-            ViewManagerImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.START_GAME, txtNickname.getText()));
+            ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.START_GAME, txtNickname.getText()));
         }
     }
 
