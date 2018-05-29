@@ -8,7 +8,8 @@ import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import static proxyutility.ImageType.ENEMY_BULLET;
+import proxyutility.ImageType;
+
 /**
  * Projectile in a single basic direction.
  */
@@ -28,10 +29,10 @@ public class SingleDirectionProjectile implements ProjectileType {
      * 
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel) {
+    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel, final ImageType bulletImg) {
         final List<Bullet> list = new ArrayList<>();
         list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), 
-                vel, new SimplyDirectionMovement(dir), range, ENEMY_BULLET));
+                vel, new SimplyDirectionMovement(dir), range, bulletImg));
         return list;
     }
 

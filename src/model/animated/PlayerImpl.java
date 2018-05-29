@@ -1,11 +1,11 @@
 package model.animated;
 
 import java.util.Collection;
-
 import model.ai.AI;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import proxyutility.ImageType;
+import static proxyutility.ImageType.PLAYER_BULLET;
 
 /**
  * Implementation of the Player.
@@ -53,6 +53,6 @@ public class PlayerImpl extends AbstractCharacter implements Player {
      */
     @Override
     public Collection<Bullet> shoot() {
-        return super.getAI().shoot(super.getHitBox(), super.getVel(), super.getRange());
+        return super.getAI().shoot(super.getHitBox(), super.getVel(), super.getRange(), PLAYER_BULLET);
     }
 }

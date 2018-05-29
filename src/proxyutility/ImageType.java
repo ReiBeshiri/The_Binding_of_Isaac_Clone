@@ -79,7 +79,11 @@ public enum ImageType {
     /**
      * Enemy Bullet.
      */
-    ENEMY_BULLET("EnemyProjectile.png");
+    ENEMY_BULLET("EnemyProjectile.png"),
+    /**
+     * Boss Bullet.
+     */
+    BOSS_BULLET("BossProjectile.png");
     private final String path;
 
     ImageType(final String path) {

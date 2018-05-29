@@ -7,7 +7,8 @@ import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import static proxyutility.ImageType.ENEMY_BULLET;
+import proxyutility.ImageType;
+
 import static input.Command.DOWN;
 import static input.Command.UP;
 import static input.Command.LEFT;
@@ -33,7 +34,7 @@ public class FourWayProjectile implements ProjectileType {
      */
     @Override
     public Collection<Bullet> shoot(final HitBox sender/* , final Collection<Command> dir, final double dt */,
-            final double range, final double vel) {
+            final double range, final double vel, final ImageType bulletImg) {
         // final Collection<Bullet> bulletColl = new ArrayList<>();
         // for (final Command d : dir) {
         // if (d == Command.UP) {
@@ -60,7 +61,7 @@ public class FourWayProjectile implements ProjectileType {
         // return bulletColl;
         return Arrays.asList(UP, DOWN, LEFT, RIGHT).stream()
                 .map(x -> new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
-                        new SimplyDirectionMovement(x), range, ENEMY_BULLET))
+                        new SimplyDirectionMovement(x), range, bulletImg))
                 .collect(Collectors.toList());
     }
 

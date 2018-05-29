@@ -13,7 +13,7 @@ import proxyutility.ImageType;
  */
 public class EnemyImpl extends AbstractCharacter implements Enemy {
     private final int points;
-
+    private final ImageType bulletImg;
     /**
      * Constructor for enemy.
      * 
@@ -33,11 +33,14 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
      *            image for this enemy.
      * @param ratio
      *            shoot ratio for this enemy.
+     * @param bulletImage 
+     *            Bullet Image for this enemy.
      */
     public EnemyImpl(final double v, final int life, final HitBox h, final AI ai, final int points, final double range,
-            final ImageType img, final double ratio) {
+            final ImageType img, final double ratio, final ImageType bulletImage) {
         super(v, life, h, ai, range, img, ratio);
         this.points = points;
+        this.bulletImg = bulletImage;
     }
 
     /**
@@ -61,7 +64,7 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
      */
     @Override
     protected Collection<Bullet> shoot() {
-        return super.getAI().shoot(super.getHitBox(), super.getVel(), super.getRange());
+        return super.getAI().shoot(super.getHitBox(), super.getVel(), super.getRange(), bulletImg);
     }
 
 }

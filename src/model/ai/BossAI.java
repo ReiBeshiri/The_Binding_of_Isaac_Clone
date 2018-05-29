@@ -7,6 +7,7 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
+import proxyutility.ImageType;
 /**
  * Boss AI.
  * 
@@ -30,35 +31,35 @@ public class BossAI implements AI {
         pType = p;
     }
     /**
-     * 
+     * Move.
      */
     @Override
     public HitBox move(final int dt, final double vel, final CircleHitBox hBox) {
         return movementStrategy.move(dt, vel, hBox);
     }
     /**
-     * 
+     * Shoot.
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range) {
-        return pType.shoot(hBox, range, vel);
+    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range, final ImageType bulletImg) {
+        return pType.shoot(hBox, range, vel, bulletImg);
     }
     /**
-     * 
+     * Set movement startegy.
      */
     @Override
     public void setMovementStrategy(final MovementStrategy mS) {
         movementStrategy = mS;
     }
     /**
-     * 
+     * Set next projectile type.
      */
     @Override
     public void setProjectileType(final ProjectileType pT) {
         pType = pT;
     }
     /**
-     * 
+     * Decide next step.
      */
     @Override
     public void nextPhaseStrategy(final int life) {

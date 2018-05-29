@@ -7,6 +7,7 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
+import proxyutility.ImageType;
 
 /**
  * This class represent the generic logic to shoot and move.
@@ -45,8 +46,8 @@ public class BasicAI implements AI {
      * ecc...
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range) {
-        return pType.shoot(hBox, range, vel);
+    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range, final ImageType bulletImg) {
+        return pType.shoot(hBox, range, vel, bulletImg);
     }
     /**
      * Set new Movement Strategy.

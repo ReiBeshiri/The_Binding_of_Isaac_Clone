@@ -9,8 +9,8 @@ import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import proxyutility.ImageType;
 import utility.ModelUtility;
-import static proxyutility.ImageType.PLAYER_BULLET;
 import static input.Command.DOWN;
 import static input.Command.UP;
 import static input.Command.LEFT;
@@ -29,10 +29,10 @@ public class PlayerProjectile implements ProjectileType {
         radius = r;
     }
     /**
-     * 
+     * Shoot single bullet for player.
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel) {
+    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel, final ImageType bulletImg) {
         final List<Command> shotCommand = ModelUtility.getListShotsCommand();
         Command dirToShoot = null;
         double x = sender.getX();
@@ -54,7 +54,7 @@ public class PlayerProjectile implements ProjectileType {
         if (dirToShoot != null) {
             final List<Bullet> shots = new ArrayList<>();
             shots.add(new BulletImpl(new CircleHitBox(x, y, radius), vel, 
-                    new SimplyDirectionMovement(dirToShoot), range, PLAYER_BULLET));
+                    new SimplyDirectionMovement(dirToShoot), range, bulletImg));
             return shots;
         }
         return Collections.emptyList();

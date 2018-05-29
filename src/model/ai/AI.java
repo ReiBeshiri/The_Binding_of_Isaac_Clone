@@ -7,6 +7,7 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
+import proxyutility.ImageType;
 
 /**
  * Interface that represent AI for entity in game. This interface encapsulate
@@ -39,9 +40,11 @@ public interface AI {
      *            Velocity.
      * @param range
      *            Range of bullet.
+     * @param bulletImg
+     *            Image of the bullet.
      * @return The collection of bullet shooted by entity.
      */
-    Collection<Bullet> shoot(HitBox hBox, double vel, double range);
+    Collection<Bullet> shoot(HitBox hBox, double vel, double range, ImageType bulletImg);
     /**
      * Set new type of movement.
      * @param mS New movement strategy.
