@@ -33,9 +33,13 @@ public enum SceneType {
      */
     PAUSE("PauseView.fxml"),
     /**
-     * Leaderboard scene.
+     * Leader-board scene.
      */
-    LEADERBOARD("LeaderboardView.fxml");
+    LEADERBOARD("LeaderboardView.fxml"),
+    /**
+     * New game scene.
+     */
+    NEWGAME("NewGameView.fxml");
     private String file;
     SceneType(final String file) {
         this.file = file;
