@@ -7,6 +7,7 @@ public final class ProportionUtility {
     }
     private static final double PROPORTION_PLAYER_ENEMY = 10;
     private static final double PROPORTION_BOSS = 5;
+    private static final double PROPORTION_WALL = 100;
     private static final double PROPORTION_BULLET = 30;
     private static final double PROPORTION_BUTTON = 30;
     private static final double PROPORTION_DOOR = 5;
@@ -61,15 +62,24 @@ public final class ProportionUtility {
         return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_ITEMSHOP;
     }
     /**
-     * @return width of the room.
+     * @return the dimension of the wall.
+     * The dimension is based on the height of the Room (600 / 100).
      */
-    public static double getWidth() {
-        return ProportionUtility.WIDTH;
+    public static double getWallsWidth() {
+        return ProportionUtility.getHeigth() / ProportionUtility.PROPORTION_WALL;
     }
     /**
-     * @return heigth of the room.
+     * @return width of the room minus the dimension of the walls.
+     * So it return the actual dimension of the playable room.
+     */
+    public static double getWidth() {
+        return ProportionUtility.WIDTH - getWallsWidth() * 2;
+    }
+    /**
+     * @return heigth of the room minus the dimension of the walls.
+     * So it return the actual dimension of the playable room.
      */
     public static double getHeigth() {
-        return ProportionUtility.HEIGHT;
+        return ProportionUtility.HEIGHT - getWallsWidth() * 2;
     }
 }
