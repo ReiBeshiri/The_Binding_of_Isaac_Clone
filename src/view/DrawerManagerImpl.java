@@ -12,8 +12,10 @@ import model.room.Room;
  *
  */
 public class DrawerManagerImpl implements DrawerManager {
+
     private final GraphicsContext gcGameCanvas;
     private final GraphicsContext gcTimerCanvas;
+
     /**
      * Constructor for drawer manager.
      * @param gameCanvas main canvas of the game.
@@ -23,6 +25,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas = gameCanvas.getGraphicsContext2D();
         gcTimerCanvas = timerCanvas.getGraphicsContext2D();
     }
+
     @Override
     public void drawAnimatedEntity(final List<Animated> list) {
 

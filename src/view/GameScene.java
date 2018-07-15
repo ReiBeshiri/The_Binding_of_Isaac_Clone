@@ -19,8 +19,10 @@ import controller.event.KeyType;
  *
  */
 public class GameScene extends AbstractGenericScene {
+
     private final InvalidationListener gameCanvasObserver;
     private final Canvas gameCanvas;
+
     /**
      * Constructor for game scene.
      */

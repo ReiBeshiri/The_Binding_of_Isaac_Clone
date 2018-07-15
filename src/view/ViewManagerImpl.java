@@ -82,7 +82,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     }
 
     /**
-     * 
+     * Entry method of javaFX.
      */
     @Override
     public void start(final Stage primaryStage) throws Exception {

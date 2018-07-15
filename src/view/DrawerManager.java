@@ -8,7 +8,7 @@ import model.room.Room;
 import timer.TimeEventListener;
 
 /**
- * Class that manage drawer.
+ * Class that manage the drawer on the two canvas of the game.
  *
  */
 public interface DrawerManager extends TimeEventListener {
