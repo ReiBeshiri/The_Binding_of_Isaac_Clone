@@ -13,17 +13,22 @@ import worldevent.WorldEvent;
  *
  */
 public final class ModelUtility {
-    /**
-     * Private Constructor for static class.
-     */
-    private ModelUtility() {
-    }
+
+    private static final double WORLD_HEIGHT = 800;
+    private static final double WORLD_WIDTH = 600;
+    private static final double WORLD_WIDTH_PROP = 4;
+    private static final double WORLD_HEIGHT_PROP = 3;
     private static int currentRound;
     private static Animated player; 
     private static Room room;
     private static List<Command> listMovementCommand;
     private static List<Command> listShotsCommand;
     private static List<WorldEvent> listWorldEvent; //Communicate with Controller.
+
+    /**
+     * Private Constructor for static class.
+     */
+    private ModelUtility() { }
     /**
      * @return player.
      */
@@ -103,5 +108,33 @@ public final class ModelUtility {
      */
     public static void updateCurrentRound(final int newCurrent) {
         ModelUtility.currentRound = newCurrent;
+    }
+    /**
+     * World height.
+     * @return world height.
+     */
+    public static double getWorldHeight() {
+        return WORLD_HEIGHT;
+    }
+    /**
+     * World width.
+     * @return world width.
+     */
+    public static double getWorldWidth() {
+        return WORLD_WIDTH;
+    }
+    /**
+     * World height proportion.
+     * @return world height proportion.
+     */
+    public static double getWorldHeightProp() {
+        return WORLD_HEIGHT_PROP;
+    }
+    /**
+     * World width proportion.
+     * @return world width proportion.
+     */
+    public static double getWorldWidthProp() {
+        return WORLD_WIDTH_PROP;
     }
 }

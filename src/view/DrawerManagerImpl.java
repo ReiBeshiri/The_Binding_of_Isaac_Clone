@@ -6,6 +6,9 @@ import javafx.scene.canvas.GraphicsContext;
 import model.animated.Animated;
 import model.room.Room;
 import timer.Time;
+import utility.ModelUtility;
+import view.util.Tupla;
+import view.util.ViewUtil;
 
 /**
  * Drawer manager.
@@ -41,6 +44,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas = gameCanvas.getGraphicsContext2D();
         gcTimerCanvas = timerCanvas.getGraphicsContext2D();
         gcHearthCanvas = hearthCanvas.getGraphicsContext2D();
+        setCanvasDimension();
     }
 
     /**
@@ -49,6 +53,7 @@ public class DrawerManagerImpl implements DrawerManager {
     @Override
     public void notifyTimeChange(final Time t) {
         time = t;
+        drawTime();
     }
 
     /**
@@ -57,6 +62,7 @@ public class DrawerManagerImpl implements DrawerManager {
     @Override
     public void setPlayerLife(final int life) {
         this.life = life;
+        drawPlayerLife();
     }
 
     /**
@@ -83,6 +89,24 @@ public class DrawerManagerImpl implements DrawerManager {
 
     }
 
+    /**
+     * Resize canvas dimension.
+     */
+    @Override
+    public void resize() {
+        final Tupla<Double, Double> gameCanvasDimension = getScaledDimension(
+                new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
+                new Tupla<Double, Double>(ViewManagerImpl.get().getStageWidth(),
+                        ViewManagerImpl.get().getStageHeight() - ViewUtil.getStageDeltaHeight()),
+                new Tupla<Double, Double>(ModelUtility.getWorldWidthProp(), ModelUtility.getWorldHeightProp()),
+                new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
+        gameCanvas.setHeight(gameCanvasDimension.getHeight());
+        gameCanvas.setWidth(gameCanvasDimension.getWidth());
+        draw();
+
+        //CONTINUARE !!!! TRASFORMAZIONI E RESIZE DEGLI LTRI CANVAS.
+    }
+
     private void drawEntities() {
 
     }
@@ -97,5 +121,45 @@ public class DrawerManagerImpl implements DrawerManager {
 
     private void drawPlayerLife() {
 
+    }
+
+    private Tupla<Double, Double> getScaledDimension(final Tupla<Double, Double> canvasSize,
+            final Tupla<Double, Double> boundary, final Tupla<Double, Double> prop, final Tupla<Double, Double> max) {
+
+        double canvasWidth = canvasSize.getWidth();
+        double canvasHeight = canvasSize.getHeight();
+
+        if (canvasSize.getWidth() > boundary.getWidth()) {
+            canvasWidth = boundary.getWidth();
+            canvasHeight = (canvasWidth * prop.getHeight()) / prop.getWidth();
+        } else if (canvasSize.getHeight() > boundary.getHeight()) {
+            canvasHeight = boundary.getHeight();
+            canvasWidth = (prop.getWidth() * canvasHeight) / prop.getHeight();
+        }
+        if (canvasSize.getWidth() < boundary.getWidth()
+                && boundary.getHeight() >= boundary.getWidth() * prop.getHeight() / prop.getWidth()) {
+            canvasWidth = boundary.getWidth();
+            canvasHeight = (canvasWidth * prop.getHeight()) / prop.getWidth();
+        } else if (canvasSize.getHeight() < boundary.getHeight()
+                && boundary.getWidth() >= boundary.getHeight() * prop.getWidth() / prop.getHeight()) {
+            canvasHeight = boundary.getHeight();
+            canvasWidth = (prop.getWidth() * canvasHeight) / prop.getHeight();
+        }
+        if (canvasHeight > max.getHeight()) {
+            canvasHeight = max.getHeight();
+        }
+        if (canvasWidth > max.getWidth()) {
+            canvasWidth = max.getWidth();
+        }
+        return new Tupla<Double, Double>(canvasHeight, canvasWidth);
+    }
+
+    private void setCanvasDimension() {
+        gameCanvas.setHeight(ModelUtility.getWorldHeight());
+        gameCanvas.setWidth(ModelUtility.getWorldWidth());
+        timercanvas.setHeight(ViewUtil.getTimerCanvasHeight());
+        timercanvas.setWidth(ViewUtil.getTimerCanvasWidth());
+        hearthCanvas.setHeight(ViewUtil.getLifeCanvasHeight());
+        hearthCanvas.setWidth(ViewUtil.getLifeCanvasWidth());
     }
 }

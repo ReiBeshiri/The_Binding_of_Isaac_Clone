@@ -8,7 +8,7 @@ package view.util;
  * @param <Y>
  *              The type of the second element.
  */
-public class Tuple<X, Y> {
+public class Tupla<X, Y> {
     private final X x;
     private final Y y;
     /**
@@ -18,7 +18,7 @@ public class Tuple<X, Y> {
      * @param y
      *          The Height element.
      */
-    public Tuple(final X x, final Y y) {
+    public Tupla(final X x, final Y y) {
         this.x = x;
         this.y = y;
     }

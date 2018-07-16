@@ -14,7 +14,8 @@ import controller.event.Event;
 import model.GameObject;
 import model.animated.Animated;
 import model.room.Room;
-import utility.ProportionUtility;
+import utility.ModelUtility;
+import view.util.ViewUtil;
 
 /**
  * Class that represent view.
@@ -46,6 +47,8 @@ public final class ViewImpl implements View {
 
     /**
      * Set animated entities list for drawer manager.
+     * 
+     * DA RIVEDERE DIPENDE SE ME LI PASSANO COSI' O NO...
      */
     @Override
     public void render(final List<GameObject> list) {
@@ -54,6 +57,7 @@ public final class ViewImpl implements View {
                 .filter(x -> x instanceof Animated)
                 .map(x -> (Animated) x)
                 .collect(Collectors.toList()));
+        drawer.draw();
     }
 
     /**
@@ -77,8 +81,8 @@ public final class ViewImpl implements View {
      */
     @Override
     public void viewStart() {
-        ViewManagerImpl.get().setHeight(ProportionUtility.getHeigth());
-        ViewManagerImpl.get().setWidth(ProportionUtility.getWidth());
+        ViewManagerImpl.get().setHeight(ModelUtility.getWorldHeight() + ViewUtil.getStageDeltaHeight());
+        ViewManagerImpl.get().setWidth(ModelUtility.getWorldWidth());
         Application.launch(ViewManagerImpl.class, "");
     }
 
@@ -104,7 +108,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * 
+     * Set drawer reference.
      */
     @Override
     public void setDrawer(final DrawerManager drawer) {
@@ -112,11 +116,11 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * 
+     * Called when resize event occur.
      */
     @Override
     public void redraw() {
-        drawer.draw();
+        drawer.resize();
     }
 
 }

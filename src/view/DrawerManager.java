@@ -34,4 +34,9 @@ public interface DrawerManager extends TimeEventListener {
      * Draw scene.
      */
     void draw();
+
+    /**
+     * Resize dimension of canvas in the scene.
+     */
+    void resize();
 }
