@@ -5,6 +5,7 @@ import java.util.List;
 import controller.observer.Observer;
 import controller.event.Event;
 import model.GameObject;
+import model.room.Room;
 /**
  * View class. This class communicate with controller.
  */
@@ -16,12 +17,14 @@ public interface View {
     void render(List<GameObject> list);
     /**
      * Render new Room.
+     * @param room room.
      */
-    void roomChanged();
+    void roomChanged(Room room);
     /**
      * Render new playerLife.
+     * @param life life.
      */
-    void playerLifeChanged();
+    void playerLifeChanged(int life);
     /**
      * Check params and start view.
      */
@@ -32,16 +35,6 @@ public interface View {
      */
     void notifyEvent(Event e);
     /**
-     * Change Boss door status.
-     * @param open if the door is open or close.
-     */
-    void changeBossDoorStatus(boolean open);
-    /**
-     * Change Shop door status.
-     * @param open if shop door is open. 
-     */
-    void changeShoopDoorStatus(boolean open);
-    /**
      * Add observer for view.
      * @param obs Observer.
      */
@@ -51,4 +44,8 @@ public interface View {
      * @param drawer drawer manager.
      */
     void setDrawer(DrawerManager drawer);
+    /**
+     * Redraw.
+     */
+    void redraw();
 }

@@ -106,7 +106,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
      */
     public void updateViewState() {
         if (getCurrentScene().getSceneType() == SceneType.GAME) {
-            
+            ViewImpl.get().redraw();
         }
     }
 

@@ -1,6 +1,5 @@
 package view;
 
-import javafx.stage.Stage;
 /**
  * Class that manage different types of view.
  * 

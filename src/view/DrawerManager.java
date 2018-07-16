@@ -3,7 +3,6 @@ package view;
 import java.util.List;
 
 import model.animated.Animated;
-import model.inanimated.Door;
 import model.room.Room;
 import timer.TimeEventListener;
 
@@ -12,24 +11,27 @@ import timer.TimeEventListener;
  *
  */
 public interface DrawerManager extends TimeEventListener {
+
     /**
-     * Draw animated entities.
-     * @param list List of dynamic enemy.
+     * Set Player life.
+     * @param life life.
      */
-    void drawAnimatedEntity(List<Animated> list);
+    void setPlayerLife(int life);
+
     /**
-     * Draw room.
-     * @param room Room to draw.
+     * Set Animated entities.
+     * @param entities list of entities.
      */
-    void drawRoom(Room room);
+    void setAnimatedEntities(List<Animated> entities);
+
     /**
-     * Draw player life.
-     * @param life Life to draw.
+     * Set actual room.
+     * @param room actual room.
      */
-    void drawPlayerLife(int life);
+    void setRoom(Room room);
+
     /**
-     * Change door status.
-     * @param door door to change.
+     * Draw scene.
      */
-    void changeDoorStatus(Door door);
+    void draw();
 }

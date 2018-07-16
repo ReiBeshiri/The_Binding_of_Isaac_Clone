@@ -3,7 +3,7 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+import java.util.stream.Collectors;
 import controller.event.KeyEvent;
 import controller.observer.ButtonObserver;
 import controller.observer.KeyObserver;
@@ -12,8 +12,9 @@ import javafx.application.Application;
 import controller.event.ButtonEvent;
 import controller.event.Event;
 import model.GameObject;
+import model.animated.Animated;
+import model.room.Room;
 import utility.ProportionUtility;
-import view.util.OptionsViewUtil;
 
 /**
  * Class that represent view.
@@ -33,6 +34,7 @@ public final class ViewImpl implements View {
 
     /**
      * Singleton for ViewImpl.
+     * 
      * @return Only instance of this class.
      */
     public static View get() {
@@ -43,30 +45,31 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * 
+     * Set animated entities list for drawer manager.
      */
     @Override
     public void render(final List<GameObject> list) {
-        // TODO Auto-generated method stub
-
+        drawer.setAnimatedEntities(
+                list.stream()
+                .filter(x -> x instanceof Animated)
+                .map(x -> (Animated) x)
+                .collect(Collectors.toList()));
     }
 
     /**
-     * 
+     * Set room for drawer manager.
      */
     @Override
-    public void roomChanged() {
-        // TODO Auto-generated method stub
-
+    public void roomChanged(final Room room) {
+        drawer.setRoom(room);
     }
 
     /**
-     * 
+     * Set player life for drawer manager.
      */
     @Override
-    public void playerLifeChanged() {
-        // TODO Auto-generated method stub
-
+    public void playerLifeChanged(final int life) {
+        drawer.setPlayerLife(life);
     }
 
     /**
@@ -87,24 +90,9 @@ public final class ViewImpl implements View {
         if (e instanceof KeyEvent) {
             observers.stream().filter(x -> x instanceof KeyObserver).forEach(x -> ((KeyObserver) x).notifyEvent(e));
         } else if (e instanceof ButtonEvent) {
-            observers.stream().filter(x -> x instanceof ButtonObserver).forEach(x -> ((ButtonObserver) x).notifyEvent(e));
+            observers.stream().filter(x -> x instanceof ButtonObserver)
+                    .forEach(x -> ((ButtonObserver) x).notifyEvent(e));
         }
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public void changeBossDoorStatus(final boolean open) {
-
-    }
-
-    /**
-     * 
-     */
-    @Override
-    public void changeShoopDoorStatus(final boolean open) {
-
     }
 
     /**
@@ -121,6 +109,14 @@ public final class ViewImpl implements View {
     @Override
     public void setDrawer(final DrawerManager drawer) {
         this.drawer = drawer;
+    }
+
+    /**
+     * 
+     */
+    @Override
+    public void redraw() {
+        drawer.draw();
     }
 
 }
