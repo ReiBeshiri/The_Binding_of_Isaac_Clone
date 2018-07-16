@@ -12,6 +12,7 @@ import javafx.application.Application;
 import controller.event.ButtonEvent;
 import controller.event.Event;
 import model.GameObject;
+import utility.ProportionUtility;
 import view.util.OptionsViewUtil;
 
 /**
@@ -73,8 +74,8 @@ public final class ViewImpl implements View {
      */
     @Override
     public void viewStart() {
-        ViewManagerImpl.get().setHeight(OptionsViewUtil.getStandardRes().getHeight());
-        ViewManagerImpl.get().setWidth(OptionsViewUtil.getStandardRes().getWidth());
+        ViewManagerImpl.get().setHeight(ProportionUtility.getHeigth());
+        ViewManagerImpl.get().setWidth(ProportionUtility.getWidth());
         Application.launch(ViewManagerImpl.class, "");
     }
 

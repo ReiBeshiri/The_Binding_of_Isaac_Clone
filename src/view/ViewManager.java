@@ -19,12 +19,12 @@ public interface ViewManager {
      * Set stage height.
      * @param h Height.
      */
-    void setHeight(int h);
+    void setHeight(double h);
     /**
      * Set stage width.
      * @param w Width.
      */
-    void setWidth(int w);
+    void setWidth(double w);
     /**
      * Active scene.
      * @return Get current scene.
@@ -35,8 +35,13 @@ public interface ViewManager {
      */
     void updateViewState();
     /**
-     * Get stage.
-     * @return stage.
+     * Get height of stage.
+     * @return Height of the stage.
      */
-    Stage getMainStage();
+    double getStageHeight();
+    /**
+     * Get width of the stage.
+     * @return Width of the stage.
+     */
+    double getStageWidth();
 }

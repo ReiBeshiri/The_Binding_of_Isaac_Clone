@@ -14,16 +14,21 @@ public class Time {
 
     private int minutes, seconds;
     private final List<TimeEventListener> listeners;
+
     /**
      * Constructor for a time.
-     * @param m Minutes;
-     * @param s Seconds.
+     * 
+     * @param m
+     *            Minutes;
+     * @param s
+     *            Seconds.
      */
     public Time(final int m, final int s) {
         minutes = m;
         seconds = s;
         listeners = new ArrayList<>();
     }
+
     /**
      * Inc time and notify listeners.
      */
@@ -36,37 +41,48 @@ public class Time {
         }
         notifyEvent(new TimeEvent(this));
     }
+
     /**
      * Get minutes.
+     * 
      * @return Minutes.
      */
     public int getMinutes() {
         return minutes;
     }
+
     /**
      * Get actual seconds.
+     * 
      * @return Actual seconds.
      */
     public int getSeconds() {
         return seconds;
     }
+
     /**
      * Get time converted in seconds.
+     * 
      * @return Seconds elapsed.
      */
     public int getTimeInSeconds() {
         return seconds + minutes * SECONDS_IN_A_MINUTE;
     }
+
     private void notifyEvent(final TimeEvent time) {
-        listeners.stream().forEach(x -> x.notifyChange());
+        listeners.stream().forEach(x -> x.notifyTimeChange(time.getTime()));
     }
+
     /**
      * Add lister for timer.
-     * @param l Listener.
+     * 
+     * @param l
+     *            Listener.
      */
     public void addListener(final TimeEventListener l) {
         listeners.add(l);
     }
+
     /**
      * 
      */

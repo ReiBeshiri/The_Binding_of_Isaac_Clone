@@ -6,6 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import model.animated.Animated;
 import model.inanimated.Door;
 import model.room.Room;
+import timer.Time;
 
 /**
  * Drawer manager.
@@ -13,6 +14,8 @@ import model.room.Room;
  */
 public class DrawerManagerImpl implements DrawerManager {
 
+    private final Canvas gameCanvas;
+    private final Canvas timercanvas;
     private final GraphicsContext gcGameCanvas;
     private final GraphicsContext gcTimerCanvas;
 
@@ -22,6 +25,8 @@ public class DrawerManagerImpl implements DrawerManager {
      * @param timerCanvas canvas timer.
      */
     public DrawerManagerImpl(final Canvas gameCanvas, final Canvas timerCanvas) {
+        this.gameCanvas = gameCanvas;
+        this.timercanvas = timerCanvas;
         gcGameCanvas = gameCanvas.getGraphicsContext2D();
         gcTimerCanvas = timerCanvas.getGraphicsContext2D();
     }
@@ -47,7 +52,7 @@ public class DrawerManagerImpl implements DrawerManager {
     }
 
     @Override
-    public void notifyChange() {
+    public void notifyTimeChange(final Time t) {
 
     }
 }

@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import proxyutility.SceneType;
 import view.util.SceneFactory;
 
 /**
@@ -16,8 +17,8 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     private final Stack<GenericScene> stack;
     private Stage stage;
     private static ViewManager manager;
-    private int heigth;
-    private int width;
+    private double heigth;
+    private double width;
 
     private ViewManagerImpl() {
         super();
@@ -66,7 +67,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
      * 
      */
     @Override
-    public void setHeight(final int h) {
+    public void setHeight(final double h) {
         heigth = h;
     }
 
@@ -74,7 +75,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
      * 
      */
     @Override
-    public void setWidth(final int w) {
+    public void setWidth(final double w) {
         width = w;
     }
 
@@ -87,6 +88,8 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         stage.setHeight(heigth);
         stage.setWidth(width);
         ViewManagerImpl.get().push(SceneFactory.createMenuScene());
+        primaryStage.widthProperty().addListener(o -> updateViewState());
+        primaryStage.heightProperty().addListener(o -> updateViewState());
         primaryStage.show();
     }
 
@@ -99,14 +102,28 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     }
 
     /**
-     * 
+     * Update view state when stage dimension changed.
      */
     public void updateViewState() {
-
+        if (getCurrentScene().getSceneType() == SceneType.GAME) {
+            
+        }
     }
 
+    /**
+     * 
+     */
     @Override
-    public Stage getMainStage() {
-        return stage;
+    public double getStageHeight() {
+        return stage.getHeight();
     }
+
+    /**
+     * 
+     */
+    @Override
+    public double getStageWidth() {
+        return stage.getWidth();
+    }
+
 }

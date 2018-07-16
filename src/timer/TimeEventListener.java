@@ -1,5 +1,13 @@
 package timer;
 
+/**
+ * Interface that represent event of time changed.
+ *
+ */
 public interface TimeEventListener {
-	void notifyChange();
+    /**
+     * Notify event of time changed.
+     * @param t time.
+     */
+    void notifyTimeChange(Time t);
 }
