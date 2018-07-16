@@ -1,12 +1,8 @@
 package view;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.event.Event;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import view.controller.GameCanvasViewController;
 import view.util.SceneFactory;
 
 import static proxyutility.SceneType.GAME;
@@ -20,16 +16,11 @@ import controller.event.KeyType;
  */
 public class GameScene extends AbstractGenericScene {
 
-    private final InvalidationListener gameCanvasObserver;
-    private final Canvas gameCanvas;
-
     /**
      * Constructor for game scene.
      */
     public GameScene() {
         super(GAME);
-        gameCanvasObserver = new CanvasObserver();
-        gameCanvas = ((GameCanvasViewController) super.getSceneController()).getGameCanvas();
     }
 
     /**
@@ -54,30 +45,4 @@ public class GameScene extends AbstractGenericScene {
         }
     }
 
-    /**
-     * Add canvas listener.
-     */
-    public void addCanvasListener() {
-        gameCanvas.heightProperty().bind(ViewManagerImpl.get().getMainStage().heightProperty());
-        gameCanvas.widthProperty().bind(ViewManagerImpl.get().getMainStage().widthProperty());
-        gameCanvas.heightProperty().addListener(gameCanvasObserver);
-        gameCanvas.widthProperty().addListener(gameCanvasObserver);
-    }
- 
-    /**
-     * Remove canvas listener.
-     */
-    public void removeCanvasListener() {
-        gameCanvas.heightProperty().unbind();
-        gameCanvas.widthProperty().unbind();
-        gameCanvas.heightProperty().removeListener(gameCanvasObserver);
-        gameCanvas.widthProperty().removeListener(gameCanvasObserver);
-    }
-
-    private class CanvasObserver implements InvalidationListener {
-        @Override
-        public void invalidated(final Observable observable) {
-            ViewManagerImpl.get().updateViewState();
-        }
-    }
 }

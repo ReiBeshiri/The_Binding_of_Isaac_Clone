@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import proxyutility.SceneType;
 import view.util.SceneFactory;
 
 /**
@@ -36,7 +35,6 @@ public final class ViewManagerImpl extends Application implements ViewManager {
         stack.push(scene);
         stage.setScene(new Scene(stack.lastElement().getSceneController().getRoot()));
         stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
-        checkCurrentScene();
     }
 
     /**
@@ -46,10 +44,9 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     public void pop() {
         if (stack.size() > 1) {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
-            final GenericScene removed = stack.pop();
+            stack.pop();
             stage.setScene(new Scene(stack.lastElement().getSceneController().getRoot()));
             stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
-            checkRemovedScene(removed);
         }
     }
 
@@ -106,18 +103,6 @@ public final class ViewManagerImpl extends Application implements ViewManager {
      */
     public void updateViewState() {
 
-    }
-
-    private void checkCurrentScene() {
-        if (getCurrentScene().getSceneType() == SceneType.GAME) {
-            ((GameScene) stack.lastElement()).addCanvasListener();
-        }
-    }
-
-    private void checkRemovedScene(final GenericScene removed) {
-        if (removed.getSceneType() == SceneType.GAME) {
-            ((GameScene) stack.lastElement()).removeCanvasListener();
-        }
     }
 
     @Override
