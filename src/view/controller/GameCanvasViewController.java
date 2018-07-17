@@ -17,6 +17,8 @@ public class GameCanvasViewController extends AbstractControllerFXML {
     @FXML
     private Canvas roomCanvas;
     @FXML
+    private Canvas lifesCanvas;
+    @FXML
     private Canvas elapsedTimeCanvas; 
 
     /**
@@ -24,7 +26,7 @@ public class GameCanvasViewController extends AbstractControllerFXML {
      */
     @FXML
     public void inizialize() {
-        final DrawerManager drawer = new DrawerManagerImpl(roomCanvas, elapsedTimeCanvas);
+        final DrawerManager drawer = new DrawerManagerImpl(roomCanvas, elapsedTimeCanvas, lifesCanvas);
         ViewImpl.get().setDrawer(drawer);
     }
 
