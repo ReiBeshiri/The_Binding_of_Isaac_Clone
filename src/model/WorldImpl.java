@@ -8,6 +8,8 @@ import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.Enemy;
 import model.animated.Player;
+import model.environment.WorldEnvironment;
+import model.environment.WorldEnvironmentImpl;
 import model.inanimated.Button;
 import model.room.Room;
 import model.rounds.DynamicRounds;
@@ -40,6 +42,7 @@ public class WorldImpl implements World {
     private static final int DAMAGE = 1;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
+    private WorldEnvironment we;
     /**
      * @return list of game objects.
      */
@@ -75,6 +78,14 @@ public class WorldImpl implements World {
     @Override
     public void createPlayer(final Animated player) {
         this.player = player;
+    }
+    /**
+     * Create the environment.
+     * Needs to be called to create the rooms.
+     */
+    public void createEnvironment() {
+        we = new WorldEnvironmentImpl();
+        listRoom.addAll(we.createWorld());
     }
     /**
      * Set the game mode.

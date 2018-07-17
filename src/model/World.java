@@ -145,10 +145,16 @@ public interface World {
      */
     int getCurrentRound();
     /**
+     * @param m mode.
      * Set the modality of the game.
      * There are two types of mode currently :
      * Normal Mode
      * Infinite Mode
      */
     void setMode(Mode m);
+    /**
+     * Create Environment.
+     * Creates the rooms and the doors.
+     */
+    void createEnvironment();
 }

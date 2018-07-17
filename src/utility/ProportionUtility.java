@@ -56,6 +56,12 @@ public final class ProportionUtility {
         return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_DOOR;
     }
     /**
+     * @return get the width of the door.
+     */
+    public static double getWidthDoor() {
+        return ProportionUtility.PROPORTION_DOOR;
+    }
+    /**
      * @return get item shop radius.
      */
     public static double getRadiusItemShop() {
