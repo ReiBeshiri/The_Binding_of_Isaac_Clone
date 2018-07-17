@@ -9,6 +9,7 @@ public final class ViewUtil {
     private static final double LIFE_CANVAS_H = 50;
     private static final double LIFE_CANVAS_W = 400;
     private static final double STAGE_DELTA_HEIGTH = 50;
+    private static final double TIMER_TEXT_FONT = 3;
 
     private static final Tupla<Integer, Integer> STANDARD_RES = new Tupla<Integer, Integer>(1280, 720);
     private static Tupla<Integer, Integer> selectedRes = STANDARD_RES;
@@ -102,5 +103,12 @@ public final class ViewUtil {
      */
     public static double getStageDeltaHeight() {
         return STAGE_DELTA_HEIGTH;
+    }
+    /**
+     * Get proportion for timer font.
+     * @return font proportion.
+     */
+    public static double getTextTimerProp() {
+        return TIMER_TEXT_FONT;
     }
 }

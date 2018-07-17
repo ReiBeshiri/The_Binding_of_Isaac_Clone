@@ -1,8 +1,13 @@
 package view;
 
 import java.util.List;
+
+import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import model.animated.Animated;
 import model.room.Room;
 import timer.Time;
@@ -102,9 +107,25 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
         gameCanvas.setHeight(gameCanvasDimension.getHeight());
         gameCanvas.setWidth(gameCanvasDimension.getWidth());
-        draw();
+        gameCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
+        gameCanvas.setTranslateY(
+                (ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight() - timercanvas.getHeight()) / 2);
 
-        //CONTINUARE !!!! TRASFORMAZIONI E RESIZE DEGLI LTRI CANVAS.
+        timercanvas.setWidth(gameCanvas.getWidth() / 2);
+        timercanvas.setHeight(timercanvas.getWidth() / (ViewUtil.getTimerCanvasWidth() / ViewUtil.getStageDeltaHeight()));
+        timercanvas.setTranslateX(ViewManagerImpl.get().getStageWidth()
+                - ((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2) - timercanvas.getWidth());
+        timercanvas.setTranslateY(ViewManagerImpl.get().getStageHeight()
+                + (ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight() - timercanvas.getHeight()) / 2);
+
+        hearthCanvas.setWidth(gameCanvas.getWidth() / 2);
+        hearthCanvas
+                .setHeight(hearthCanvas.getWidth() / (ViewUtil.getLifeCanvasWidth() / ViewUtil.getLifeCanvasHeight()));
+        hearthCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
+        hearthCanvas.setTranslateY(gameCanvas.getHeight()
+                + (ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight() - hearthCanvas.getHeight()) / 2);
+
+        draw();
     }
 
     private void drawEntities() {
@@ -116,7 +137,18 @@ public class DrawerManagerImpl implements DrawerManager {
     }
 
     private void drawTime() {
-
+        gcTimerCanvas.save();
+        gcTimerCanvas.clearRect(0, 0, timercanvas.getWidth(), timercanvas.getHeight());
+        gcTimerCanvas.setFill(Color.DARKGRAY);
+        gcTimerCanvas.fillRect(0, 0, timercanvas.getWidth(), timercanvas.getHeight());
+        gcTimerCanvas.restore();
+        gcTimerCanvas.save();
+        gcTimerCanvas.setTextAlign(TextAlignment.RIGHT);
+        gcTimerCanvas.setTextBaseline(VPos.CENTER);
+        gcTimerCanvas.setFill(Color.WHITE);
+        gcTimerCanvas.setFont(new Font(timercanvas.getHeight() / ViewUtil.getTextTimerProp()));
+        gcTimerCanvas.fillText(time.toString(), Math.round(timercanvas.getWidth() / 2), Math.round(timercanvas.getHeight() / 2), timercanvas.getWidth());
+        gcTimerCanvas.restore();
     }
 
     private void drawPlayerLife() {
