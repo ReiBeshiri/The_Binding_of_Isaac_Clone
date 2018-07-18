@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collection;
 import java.util.List;
 
 import input.Command;
@@ -10,6 +11,7 @@ import model.animated.Enemy;
 import model.animated.Player;
 import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
+import model.hitbox.CircleHitBox;
 import model.inanimated.Button;
 import model.room.Room;
 import model.rounds.DynamicRounds;
@@ -17,6 +19,7 @@ import model.rounds.RoundsGenerator;
 import model.rounds.StaticRounds;
 import utility.CollisionUtil;
 import utility.Mode;
+import utility.ModelUtility;
 import worldevent.PlayerHeartChange;
 import worldevent.PlayerKillEnemy;
 import worldevent.WorldEvent;
@@ -187,8 +190,32 @@ public class WorldImpl implements World {
      */
     @Override
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
-        // TODO Auto-generated method stub
+        this.listMovements = listMovement;
+        this.listShots = listShots;
+        this.player.update(deltaTime);
+        this.listEnemy.iterator().next().update(deltaTime);
+        if (!allEnemyDefeated()) {
+            playerGetsHitByBullet(this.player);
+            playerBulletHitsEnemy();
+            if (allEnemyDefeated()) {
+                incCurrentRound();
+                this.button.setPressed(false);
+                this.room.getDoors().iterator().next().setOpen(true);
+            }
+        }
+        if (!this.button.isPressed()) {
+            Collection<Command> c = CollisionUtil.entityCollision((CircleHitBox) this.button.getHitBox(), (CircleHitBox) this.player.getHitBox());
+            if (!c.isEmpty()) {
+                this.roundsGenerator.generateMonster();
+            }
+        }
         // update ModelUtility
+        ModelUtility.updateCurrentRound(this.currentRound);
+        ModelUtility.updateListCommandModelUtility(listMovement, listShots);
+        ModelUtility.updateListWorldEvent(this.listEvent);
+        ModelUtility.updatePlayerModelUtility(this.player);
+        ModelUtility.updateRoomModelUtility(this.room);
+        ModelUtility.updateListGameObject(getNewListGameObj());
     }
     /**
      * @return the list of command pressed by the user for moving.
@@ -284,5 +311,17 @@ public class WorldImpl implements World {
      */
     private void incCurrentRound() {
         this.currentRound++;
+    }
+    /**
+     * @return the updated list of the game object in the game.
+     */
+    private List<GameObject> getNewListGameObj(){
+        this.listGameObject.removeAll(this.listGameObject);
+        this.listGameObject.add(this.player);
+        this.listGameObject.add(this.button);
+        this.listGameObject.addAll(this.listBulletEnemies);
+        this.listGameObject.addAll(this.listBulletPlayer);
+        this.listGameObject.addAll(this.listEnemy);
+        return this.listGameObject;
     }
 }

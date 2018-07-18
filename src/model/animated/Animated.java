@@ -26,6 +26,6 @@ public interface Animated extends GameObject {
      *            DeltaTime to update position depending of time.
      * 
      */
-    void update(int dt);
+    void update(double dt);
 
 }

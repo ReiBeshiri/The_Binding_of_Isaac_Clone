@@ -54,7 +54,7 @@ public abstract class AbstractCharacter implements Animated {
      * @param dt
      *            DeltaTime to perform move.
      */
-    protected abstract void move(int dt);
+    protected abstract void move(double dt);
 
     /**
      * 
@@ -82,7 +82,7 @@ public abstract class AbstractCharacter implements Animated {
      * Update the state of entity. (Template Method).
      */
     @Override
-    public void update(final int dt) {
+    public void update(final double dt) {
         move(dt);
     }
 

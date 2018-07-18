@@ -8,6 +8,7 @@ public interface Button extends Inanimated {
     /**
      * 
      * @return return the status of the button.
+     *  Return true if the button is pressed, false otherwise.
      */
     boolean isPressed();
     /**

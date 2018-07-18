@@ -3,6 +3,7 @@ package utility;
 import java.util.List;
 
 import input.Command;
+import model.GameObject;
 import model.animated.Animated;
 import model.animated.Player;
 import model.hitbox.HitBox;
@@ -23,6 +24,7 @@ public final class ModelUtility {
     private static Room room;
     private static List<Command> listMovementCommand;
     private static List<Command> listShotsCommand;
+    private static List<GameObject> listGameObject;
     private static List<WorldEvent> listWorldEvent; //Communicate with Controller.
 
     /**
@@ -34,6 +36,12 @@ public final class ModelUtility {
      */
     public static Animated getPlayer() {
         return player;
+    }
+    /**
+     * @return list Game Object.
+     */
+    public static List<GameObject> getGameObject() {
+        return listGameObject;
     }
     /**
      * @return player hitbox.
@@ -108,6 +116,13 @@ public final class ModelUtility {
      */
     public static void updateCurrentRound(final int newCurrent) {
         ModelUtility.currentRound = newCurrent;
+    }
+    /**
+     * @param list game object.
+     *          the new list.
+     */
+    public static void updateListGameObject(final List<GameObject> list) {
+        ModelUtility.listGameObject = list;
     }
     /**
      * World height.
