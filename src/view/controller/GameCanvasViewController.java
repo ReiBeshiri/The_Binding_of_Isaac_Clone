@@ -2,7 +2,7 @@ package view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import view.DrawerManager;
 import view.DrawerManagerImpl;
@@ -13,7 +13,7 @@ import view.ViewImpl;
 public class GameCanvasViewController extends AbstractControllerFXML {
 
     @FXML
-    private FlowPane rootGamePane;
+    private Pane rootGamePane;
     @FXML
     private Canvas roomCanvas;
     @FXML
