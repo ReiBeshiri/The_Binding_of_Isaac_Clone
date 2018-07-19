@@ -1,6 +1,7 @@
 package model.inanimated;
 
 import model.hitbox.HitBox;
+import proxyutility.ImageType;
 import utility.RoomEnum;
 /**
  * 
@@ -9,6 +10,7 @@ import utility.RoomEnum;
  */
 public class DoorImpl extends AbstractInanimated implements Door {
     private RoomEnum destination;
+    private ImageType imgDoor;
     /**
      * 
      * @param h HitBox.
@@ -35,10 +37,17 @@ public class DoorImpl extends AbstractInanimated implements Door {
         super.setEnable(open);
     }
     /**
-     * s.
+     * Get destination of this door.
      */
     @Override
     public RoomEnum getDestination() {
         return this.destination;
+    }
+    /**
+     * Return image that represent current status of door.
+     */
+    @Override
+    public ImageType getImageType() {
+        return imgDoor;
     }
 }

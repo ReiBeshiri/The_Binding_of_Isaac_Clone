@@ -1,6 +1,7 @@
 package model.inanimated;
 
 import model.hitbox.HitBox;
+import proxyutility.ImageType;
 /**
  * 
  * Heart implements.
@@ -10,6 +11,7 @@ public class HeartImpl extends AbstractInanimated implements Heart {
 
     private static final int COST = 1;
     private static final int LIFE = 1;
+    private ImageType imgHearth;
     //All'inizio il "bottone" non sarà attivo perchè la vita sarà gia piena,
     //ma appena si perde vita bisogna attivarlo.
     /**
@@ -19,6 +21,7 @@ public class HeartImpl extends AbstractInanimated implements Heart {
      */
     public HeartImpl(final HitBox h, final boolean enable) {
         super(h, enable);
+        imgHearth = ImageType.POWERUP_HEALTH;
     }
 
     /**
@@ -35,6 +38,13 @@ public class HeartImpl extends AbstractInanimated implements Heart {
     @Override
     public int getLife() {
         return HeartImpl.LIFE;
+    }
+    /**
+     * Return image of hearth.
+     */
+    @Override
+    public ImageType getImageType() {
+        return imgHearth;
     }
 
 }
