@@ -34,7 +34,7 @@ public class BossAI implements AI {
      * Move.
      */
     @Override
-    public HitBox move(final int dt, final double vel, final CircleHitBox hBox) {
+    public HitBox move(final double dt, final double vel, final CircleHitBox hBox) {
         return movementStrategy.move(dt, vel, hBox);
     }
     /**

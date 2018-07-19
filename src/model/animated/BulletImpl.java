@@ -49,7 +49,7 @@ public class BulletImpl extends AbstractBullet implements Bullet {
      * 
      */
     @Override
-    protected HitBox performMove(final int dt) {
+    protected HitBox performMove(final double dt) {
         range -= super.getVel() * dt;
         return bulletMS.move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
     }

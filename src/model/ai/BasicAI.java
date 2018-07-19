@@ -35,7 +35,7 @@ public class BasicAI implements AI {
      * 
      */
     @Override
-    public HitBox move(final int dt, final double vel, final CircleHitBox hBox) {
+    public HitBox move(final double dt, final double vel, final CircleHitBox hBox) {
         return movementStrategy.move(dt, vel, hBox);
     }
 

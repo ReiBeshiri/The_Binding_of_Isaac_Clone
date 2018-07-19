@@ -43,7 +43,7 @@ public class PlayerImpl extends AbstractCharacter implements Player {
      * Player Movement.
      */
     @Override
-    public void move(final int dt) {
+    public void move(final double dt) {
         // Safe-casting.
         super.setHitBox(super.getAI().move(dt, super.getVel(), (CircleHitBox) super.getHitBox()));
     }

@@ -64,12 +64,12 @@ public abstract class AbstractBullet implements Animated {
      * @return
      *          The HitBox in the new position.
     */
-    protected abstract HitBox performMove(int dt);
+    protected abstract HitBox performMove(double dt);
     /**
      * 
      */
     @Override
-    public void update(final int dt) {
+    public void update(final double dt) {
         final HitBox position = performMove(dt);
         this.hb.changePosition(position.getX(), position.getY());
     }

@@ -29,7 +29,7 @@ public interface AI {
      *            HitBox.
      * @return HitbBox of entity in the new position.
      */
-    HitBox move(int dt, double vel, CircleHitBox hBox);
+    HitBox move(double dt, double vel, CircleHitBox hBox);
 
     /**
      * Return the collections of bullet shooted by entity.

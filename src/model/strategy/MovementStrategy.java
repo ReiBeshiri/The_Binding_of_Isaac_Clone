@@ -18,5 +18,5 @@ public interface MovementStrategy {
      *            HitBox of entity that require movement.
      * @return HitBox in new position of entity.
      */
-    HitBox move(int dt, double vel, CircleHitBox h);
+    HitBox move(double dt, double vel, CircleHitBox h);
 }

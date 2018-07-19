@@ -55,7 +55,7 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
      * Perform enemy movement.
      */
     @Override
-    protected void move(final int dt) {
+    protected void move(final double dt) {
         super.getAI().move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
     }
 
