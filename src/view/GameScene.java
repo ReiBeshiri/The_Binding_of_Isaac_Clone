@@ -4,9 +4,7 @@ import javafx.event.Event;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import view.util.SceneFactory;
-
 import static proxyutility.SceneType.GAME;
-
 import controller.event.KeyEventImpl;
 import controller.event.KeyType;
 
