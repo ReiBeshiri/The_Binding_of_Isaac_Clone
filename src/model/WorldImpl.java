@@ -13,6 +13,7 @@ import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
 import model.hitbox.CircleHitBox;
 import model.inanimated.Button;
+import model.inanimated.Door;
 import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
@@ -20,7 +21,10 @@ import model.rounds.StaticRounds;
 import utility.CollisionUtil;
 import utility.Mode;
 import utility.ModelUtility;
+import worldevent.PlayerDied;
 import worldevent.PlayerHeartChange;
+import worldevent.PlayerHitButton;
+import worldevent.PlayerKillAllEnemy;
 import worldevent.PlayerKillEnemy;
 import worldevent.WorldEvent;
     /**
@@ -41,7 +45,7 @@ public class WorldImpl implements World {
     private List<Animated> listEnemy;                   //|list of enemies
     private List<Room> listRoom;
     private List<WorldEvent> listEvent;
-    private int currentRound;
+    private int currentRound = 1;
     private static final int DAMAGE = 1;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
@@ -193,22 +197,7 @@ public class WorldImpl implements World {
         this.listMovements = listMovement;
         this.listShots = listShots;
         this.player.update(deltaTime);
-        this.listEnemy.iterator().next().update(deltaTime);
-        if (!allEnemyDefeated()) {
-            playerGetsHitByBullet(this.player);
-            playerBulletHitsEnemy();
-            if (allEnemyDefeated()) {
-                incCurrentRound();
-                this.button.setPressed(false);
-                this.room.getDoors().iterator().next().setOpen(true);
-            }
-        }
-        if (!this.button.isPressed()) {
-            Collection<Command> c = CollisionUtil.entityCollision((CircleHitBox) this.button.getHitBox(), (CircleHitBox) this.player.getHitBox());
-            if (!c.isEmpty()) {
-                this.roundsGenerator.generateMonster();
-            }
-        }
+        mainRoomActions(deltaTime);
         // update ModelUtility
         ModelUtility.updateCurrentRound(this.currentRound);
         ModelUtility.updateListCommandModelUtility(listMovement, listShots);
@@ -251,6 +240,7 @@ public class WorldImpl implements World {
     }
     /**
      * Decrement player's life.
+     * If the life is <= 0 create the PlayerDied event.
      * @param life hp to decrement to the player.
      * @param c Animated object to cast.
      */
@@ -258,6 +248,9 @@ public class WorldImpl implements World {
         AbstractCharacter player = (AbstractCharacter) c;
         player.decLife(life);
         listEvent.add(new PlayerHeartChange(player.getLife()));
+        if (player.getLife() <= 0) {
+            this.listEvent.add(new PlayerDied());
+        }
     }
     /**
      * Decrement enemy's life.
@@ -288,7 +281,7 @@ public class WorldImpl implements World {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
             if (!CollisionUtil.entityCollision(b, player).isEmpty()) {
-                player.decLife(DAMAGE); //where should i take the dmg from?
+                player.decLife(DAMAGE);
                 removeBulletEnemy(b);
             }
         }
@@ -315,7 +308,7 @@ public class WorldImpl implements World {
     /**
      * @return the updated list of the game object in the game.
      */
-    private List<GameObject> getNewListGameObj(){
+    private List<GameObject> getNewListGameObj() {
         this.listGameObject.removeAll(this.listGameObject);
         this.listGameObject.add(this.player);
         this.listGameObject.add(this.button);
@@ -323,5 +316,43 @@ public class WorldImpl implements World {
         this.listGameObject.addAll(this.listBulletPlayer);
         this.listGameObject.addAll(this.listEnemy);
         return this.listGameObject;
+    }
+    /**
+     * 
+     * @param hb1 first CirceHitbox.
+     * @param hb2 second CirceHitbox.
+     * @return if the two objects are colliding.
+     */
+    private boolean isColliding(final CircleHitBox hb1,  final CircleHitBox hb2) {
+        Collection<Command> c = CollisionUtil.entityCollision(hb1, hb2);
+        return c.isEmpty();
+    }
+    private void mainRoomActions(final Double deltaTime) {
+        if (this.room.equals(this.listRoom.get(0))) {
+            this.listEnemy.iterator().next().update(deltaTime);
+            if (!allEnemyDefeated()) {
+                playerGetsHitByBullet(this.player);
+                playerBulletHitsEnemy();
+                if (allEnemyDefeated()) {
+                    this.listEvent.add(new PlayerKillAllEnemy());
+                    incCurrentRound();
+                    this.button.setPressed(false);
+                    Door ml = this.room.getDoors().get(0);  // 0 is the mainRoom to Shop door.
+                    ml.setOpen(true);
+                }
+            }
+            if (getCurrentRound() >= 4) {
+                Door mr = this.room.getDoors().get(1);  // 1 is the mainRoom to Boss door.
+                mr.setOpen(true);
+                Door ml = this.room.getDoors().get(0);  // 0 is the mainRoom to Shop door.
+                ml.setOpen(true);
+            }
+            if (!this.button.isPressed() && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) this.player.getHitBox())) {
+                //se il bottone non è premuto e lo preme parte il round sucessivo.
+                //nella modalità normale ci sono 3 round e dopo la fine del terzo il current round sarà 4 quindi premendo il botton non succ niente.
+                setNextRound();
+                this.listEvent.add(new PlayerHitButton());
+            }
+        }
     }
 }

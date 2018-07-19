@@ -49,7 +49,7 @@ public class StaticRounds implements RoundsGenerator {
             HitBox hbThird = new CircleHitBox(Spawns.H.getX(), Spawns.H.getY(), ProportionUtility.getRadiusEnemy());
             enemyThird.createSimpleDirectionMovedEnemy(hbThird, Command.LEFT, Command.UP, ProportionUtility.getRadiusEnemy());
             listReturnEnemy.add((Animated) enemyThird);
-        } else {
+        } else if (getCurrentRound() == 3) {
             //first enemy is a simple direction moved enemy.
             EnemyFactory enemyFirst = new EnemyFactoryImpl();
             HitBox hbFirst = new CircleHitBox(Spawns.D.getX(), Spawns.D.getY(), ProportionUtility.getRadiusEnemy());

@@ -27,6 +27,9 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private HitBox hbBtn = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeigth() / 2, ProportionUtility.getRadiusButton());
     /**
      * Create rooms.
+     * The first Room of the list is the MainRoom.
+     * The second Room of the list is the ShopRoom.
+     * The third Room of the list is the BossRoom.
      */
     @Override
     public List<Room> createWorld() {
