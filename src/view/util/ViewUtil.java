@@ -10,6 +10,9 @@ public final class ViewUtil {
     private static final double LIFE_CANVAS_W = 400;
     private static final double STAGE_DELTA_HEIGTH = 50;
     private static final double TIMER_TEXT_FONT = 3;
+    private static final double HEARTH_HEIGHT = 25;
+    private static final double HEARTH_WIDTH = 25;
+    private static final double SPACE_HEARTH_PROPORTION = 40;
 
     private static final Tupla<Integer, Integer> STANDARD_RES = new Tupla<Integer, Integer>(1280, 720);
     private static Tupla<Integer, Integer> selectedRes = STANDARD_RES;
@@ -110,5 +113,26 @@ public final class ViewUtil {
      */
     public static double getTextTimerProp() {
         return TIMER_TEXT_FONT;
+    }
+    /**
+     * Get heath width.
+     * @return hearth width.
+     */
+    public static double getHearthWidth() {
+        return HEARTH_WIDTH;
+    }
+    /**
+     * Get hearth height.
+     * @return hearth height.
+     */
+    public static double getHearthHeight() {
+        return HEARTH_HEIGHT;
+    }
+    /**
+     * Get proportion of distance between two hearth. 
+     * @return proportion of distance between two hearths.
+     */
+    public static double getHearthSpaceProportion() {
+        return SPACE_HEARTH_PROPORTION;
     }
 }

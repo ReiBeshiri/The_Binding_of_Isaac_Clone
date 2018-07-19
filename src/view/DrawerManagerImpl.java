@@ -1,7 +1,7 @@
 package view;
 
 import java.util.List;
-
+import java.util.stream.IntStream;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,10 +10,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import model.animated.Animated;
 import model.room.Room;
+import proxyutility.ImageType;
+import proxyutility.ProxyImageLoader;
 import timer.Time;
 import utility.ModelUtility;
 import view.util.Tupla;
 import view.util.ViewUtil;
+
+import java.util.LinkedList;
 
 /**
  * Drawer manager.
@@ -155,12 +159,29 @@ public class DrawerManagerImpl implements DrawerManager {
     private void drawPlayerLife() {
         final Tupla<Double, Double> scaleFactor = computeScaleFactor(
                 new Tupla<Double, Double>(lifeCanvas.getWidth(), lifeCanvas.getHeight()),
-                new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
+                new Tupla<Double, Double>(ViewUtil.getLifeCanvasWidth(), ViewUtil.getLifeCanvasHeight()));
         gcLifeCanvas.save();
         gcLifeCanvas.clearRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
         gcLifeCanvas.setFill(Color.DARKGRAY);
         gcLifeCanvas.fillRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
         gcLifeCanvas.scale(scaleFactor.getWidth(), scaleFactor.getHeight());
+        final int completedHearth = life / 2;
+        final int halfHeath = life - completedHearth > 0 ? 1 : 0;
+        final double imgBlock = ((completedHearth + halfHeath) * ViewUtil.getHearthWidth())
+                + (completedHearth + halfHeath - 1) * ViewUtil.getLifeCanvasWidth()
+                        / ViewUtil.getHearthSpaceProportion();
+        final double yDistance = (ViewUtil.getLifeCanvasHeight() - ViewUtil.getHearthHeight()) / 2;
+        final List<Double> xDistances = new LinkedList<>();
+        IntStream.range(0, completedHearth)
+                .mapToDouble(x -> (ViewUtil.getLifeCanvasWidth() - imgBlock) / 2 + x * ViewUtil.getHearthWidth()
+                        + x * ViewUtil.getLifeCanvasWidth() / ViewUtil.getHearthSpaceProportion())
+                .forEach(x -> xDistances.add(x));
+        IntStream.range(0, completedHearth).forEach(x -> {
+            gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.FULL_HEART), xDistances.get(x), yDistance);
+        });
+        if (halfHeath == 1) {
+            gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.HALF_HEART), xDistances.get(xDistances.size() - 1), yDistance);
+        }
         gcLifeCanvas.restore();
     }
 
