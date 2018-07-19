@@ -20,7 +20,7 @@ public class BulletMovement implements MovementStrategy {
      * 
      */
     @Override
-    public HitBox move(final int dt, final double vel, final CircleHitBox h) {
+    public HitBox move(final double dt, final double vel, final CircleHitBox h) {
         final double deltaX = Math.sin(angle * Math.PI / PLANE_ANGLE);
         final double deltaY = Math.cos(angle * Math.PI / PLANE_ANGLE);
         return new CircleHitBox(h.getX() + deltaX, h.getY() + deltaY, h.getRadius());

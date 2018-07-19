@@ -11,7 +11,7 @@ public class Motionless implements MovementStrategy {
      * 
      */
     @Override
-    public HitBox move(final int dt, final double vel, final CircleHitBox h) { 
+    public HitBox move(final double dt, final double vel, final CircleHitBox h) { 
         return h;
     }
 

@@ -16,7 +16,7 @@ public class PlayerMovement implements MovementStrategy {
      * Method that perform Player Movement.
      */
     @Override
-    public HitBox move(final int dt, final double vel, final CircleHitBox h) {
+    public HitBox move(final double dt, final double vel, final CircleHitBox h) {
         final List<Command> list = ModelUtility.getListMovementCommand();
         int deltaX = 0, deltaY = 0;
         if (list.contains(Command.UP)) {

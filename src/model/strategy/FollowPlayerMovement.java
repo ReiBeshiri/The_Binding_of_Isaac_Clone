@@ -13,7 +13,7 @@ public class FollowPlayerMovement implements MovementStrategy {
      * Move the entity to next step.
      */
     @Override
-    public HitBox move(final int dt, final double vel, final CircleHitBox h) {
+    public HitBox move(final double dt, final double vel, final CircleHitBox h) {
         final double angle = Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - h.getY(),
                 ModelUtility.getPlayerHitBox().getX() - h.getX()));
         final double deltaX = Math.sin(angle * Math.PI / PLANE_ANGLE);

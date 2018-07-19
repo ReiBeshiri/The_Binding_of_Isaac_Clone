@@ -28,7 +28,7 @@ public class SimplyDirectionMovement implements MovementStrategy {
      * movements, instead, we can't have two movements "pressed" in the same time.
      */
     @Override
-    public HitBox move(final int dt, final double vel, final CircleHitBox h) {
+    public HitBox move(final double dt, final double vel, final CircleHitBox h) {
         int x = 0, y = 0;
         if (moveDirection == UP) {
             y++;
