@@ -9,6 +9,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import model.animated.Animated;
+import model.hitbox.CircleHitBox;
+import model.hitbox.HitBox;
 import model.room.Room;
 import proxyutility.ImageType;
 import proxyutility.ProxyImageLoader;
@@ -95,7 +97,8 @@ public class DrawerManagerImpl implements DrawerManager {
      */
     @Override
     public void draw() {
-
+        drawRoom();
+        drawEntities();
     }
 
     /**
@@ -133,7 +136,20 @@ public class DrawerManagerImpl implements DrawerManager {
     }
 
     private void drawEntities() {
-
+        final Tupla<Double, Double> scalingFactor = computeScaleFactor(
+                new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
+                new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
+        gcGameCanvas.save();
+        gcGameCanvas.scale(scalingFactor.getWidth(), scalingFactor.getHeight());
+        entities.forEach(x -> {
+            //Safe-casting, all moving entities have a circle hitBox.
+            final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
+            final double upperLeftX = hBox.getX() - hBox.getRadius();
+            final double upperLeftY = hBox.getY() - hBox.getRadius();
+            gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()), upperLeftX, upperLeftY,
+                    2 * hBox.getRadius(), 2 * hBox.getRadius());
+        });
+        gcGameCanvas.restore();
     }
 
     private void drawRoom() {
@@ -180,7 +196,8 @@ public class DrawerManagerImpl implements DrawerManager {
             gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.FULL_HEART), xDistances.get(x), yDistance);
         });
         if (halfHeath == 1) {
-            gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.HALF_HEART), xDistances.get(xDistances.size() - 1), yDistance);
+            gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.HALF_HEART),
+                    xDistances.get(xDistances.size() - 1), yDistance);
         }
         gcLifeCanvas.restore();
     }
