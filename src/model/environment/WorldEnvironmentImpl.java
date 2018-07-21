@@ -13,6 +13,7 @@ import model.inanimated.DoorImpl;
 import model.room.Room;
 import model.room.RoomFactory;
 import model.room.RoomFactoryImpl;
+import proxyutility.ImageType;
 import utility.ProportionUtility;
 import utility.RoomEnum;
 /**
@@ -21,10 +22,14 @@ import utility.RoomEnum;
 public class WorldEnvironmentImpl implements WorldEnvironment {
     private List<Room> listRoom;
     private RoomFactory rf = new RoomFactoryImpl();
-    private HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeigth() / 2, ProportionUtility.getWidth(), ProportionUtility.getHeigth());
-    private HitBox hbDoorr = new RectangularHitBox(ProportionUtility.getWidth() - 1, ProportionUtility.getHeigth() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
-    private HitBox hbDoorl = new RectangularHitBox(1, ProportionUtility.getHeigth() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
-    private HitBox hbBtn = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeigth() / 2, ProportionUtility.getRadiusButton());
+    private HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getWidth(), ProportionUtility.getHeight());
+    private HitBox hbDoorr = new RectangularHitBox(ProportionUtility.getWidth() - 1, ProportionUtility.getHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
+    private HitBox hbDoorl = new RectangularHitBox(ProportionUtility.getWallsWidth() + 1, ProportionUtility.getHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
+    private HitBox hbBtn = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusButton());
+    private Door rightDoorFromMainToShop;
+    private Door leftDoorFromShopToMain;
+    private Door rightDoorFromShopToBoss;
+    private Door rightDoorFromBossToShop;
     /**
      * Create rooms.
      * The first Room of the list is the MainRoom.
@@ -39,28 +44,28 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         return listRoom;
     }
     private Room createMainRoom() {
-        Door door1 = new DoorImpl(hbDoorl, false, RoomEnum.SHOPROOM);
-        Door door2 = new DoorImpl(hbDoorr, false, RoomEnum.BOSSROOM);
+        this.rightDoorFromMainToShop = new DoorImpl(hbDoorr, false, RoomEnum.SHOPROOM, ImageType.RIGHT_SHOP_DOOR_LOCKED);
         Button bt = new ButtonImpl(hbBtn, false);
         List<Door> ld = new ArrayList<>();
-        ld.add(door1);
-        ld.add(door2);
+        ld.add(this.rightDoorFromMainToShop);
         Room mainRoom = rf.createMainRoom(hbRoom, ld, bt);
         return mainRoom;
     }
     private Room createShopRoom() {
-        Door door1 = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM);
+        this.leftDoorFromShopToMain = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_SHOP_DOOR_LOCKED);
+        this.rightDoorFromShopToBoss = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.RIGHT_BOSS_DOOR);
         Button bt = new ButtonImpl(hbBtn, false);
         List<Door> ld = new ArrayList<>();
-        ld.add(door1);
+        ld.add(this.leftDoorFromShopToMain);
+        ld.add(rightDoorFromShopToBoss);
         Room shopRoom = rf.createMainRoom(hbRoom, ld, bt);
         return shopRoom;
     }
     private Room createBossRoom() {
-        Door door1 = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM);
+        this.rightDoorFromBossToShop = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_BOSS_DOOR);
         Button bt = new ButtonImpl(hbBtn, false);
         List<Door> ld = new ArrayList<>();
-        ld.add(door1);
+        ld.add(this.rightDoorFromBossToShop);
         Room bossRoom = rf.createMainRoom(hbRoom, ld, bt);
         return bossRoom;
     }

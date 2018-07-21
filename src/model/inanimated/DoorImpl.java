@@ -16,10 +16,12 @@ public class DoorImpl extends AbstractInanimated implements Door {
      * @param h HitBox.
      * @param open State of the door.
      * @param destination Destination of the door.
+     * @param imgDoor the image of the door.
      */
-    public DoorImpl(final HitBox h, final boolean open, final RoomEnum destination) {
+    public DoorImpl(final HitBox h, final boolean open, final RoomEnum destination, final ImageType imgDoor) {
         super(h, open);
         this.destination = destination;
+        this.imgDoor = imgDoor;
     }
     /**
      * Return true if the door is open, false otherwise.
