@@ -297,4 +297,12 @@ public class DrawerManagerImpl implements DrawerManager {
         return new Tupla<Double, Double>(canvasSize.getWidth() / boundarySize.getWidth(),
                 canvasSize.getHeight() / boundarySize.getHeight());
     }
+
+    private void drawHitBoxImage(final ImageType img, final CircleHitBox hBox) {
+        
+    }
+
+    private void drawHitBoxImage(final ImageType img, final RectangularHitBox hBox) {
+        
+    }
 }
