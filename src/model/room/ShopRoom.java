@@ -4,29 +4,33 @@ import java.util.List;
 
 import model.hitbox.HitBox;
 import model.inanimated.Door;
-import model.inanimated.Heart;
+import model.inanimated.Inanimated;
+import model.inanimated.Wall;
 /**
  * 
  * ShopRoom implement.
  *
  */
 public class ShopRoom extends AbstractRoom {
-    private final Heart heart;
+    private final List<Inanimated> items;
+
     /**
-     * 
+     * Constructor of the room.
      * @param h ShopRoom's HitBox.
      * @param doors ShopRoom's doors.
-     * @param heart The heart that you can buy.
+     * @param items List of power up.
+     * @param walls list of the wall of the room.
      */
-    public ShopRoom(final HitBox h, final List<Door> doors, final Heart heart) {
-        super(h, doors);
-        this.heart = heart;
+    public ShopRoom(final HitBox h, final List<Door> doors, final List<Inanimated> items, final List<Wall> walls) {
+        super(h, doors, walls);
+        this.items = items;
     }
+
     /**
-     * @return the heart that you can buy.
+     * @return List of items that you can buy.
      */
-    public Heart getHeart() {
-        return this.heart;
+    public List<Inanimated> getItems() {
+        return this.items;
     }
 
 }

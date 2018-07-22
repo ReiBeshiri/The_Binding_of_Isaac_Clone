@@ -11,7 +11,10 @@ import javafx.scene.text.TextAlignment;
 import model.animated.Animated;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.hitbox.RectangularHitBox;
+import model.room.MainRoom;
 import model.room.Room;
+import model.room.ShopRoom;
 import proxyutility.ImageType;
 import proxyutility.ProxyImageLoader;
 import timer.Time;
@@ -158,7 +161,49 @@ public class DrawerManagerImpl implements DrawerManager {
     }
 
     private void drawRoom() {
+        final Tupla<Double, Double> scalingFactor = computeScaleFactor(
+                new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
+                new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
+        gcGameCanvas.save();
+        gcGameCanvas.scale(scalingFactor.getWidth(), scalingFactor.getHeight());
+        gcGameCanvas.setFill(Color.DARKGOLDENROD);
+        gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+        room.getDoors().forEach(x -> {
+            // Safe-casting, all doors have a rectangular hitBox.
+            final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
+            final double upperLeftX = hBox.getX() - hBox.getWidth() / 2;
+            final double upperLeftY = hBox.getY() - hBox.getHeight() / 2;
+            gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()), upperLeftX, upperLeftY,
+                    hBox.getWidth(), hBox.getHeight());
+        });
+        room.getWalls().forEach(x -> {
+            // Safe-casting, all doors have a rectangular hitBox.
+            final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
+            final double upperLeftX = hBox.getX() - hBox.getWidth() / 2;
+            final double upperLeftY = hBox.getY() - hBox.getHeight() / 2;
+            gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()), upperLeftX, upperLeftY,
+                    hBox.getWidth(), hBox.getHeight());
+        });
 
+        if (room instanceof MainRoom) {
+            final MainRoom mainRoom = (MainRoom) room;
+            final CircleHitBox hBox = (CircleHitBox) mainRoom.getButton().getHitBox();
+            final double upperLeftX = hBox.getX() - hBox.getRadius() / 2;
+            final double upperLeftY = hBox.getY() - hBox.getRadius() / 2;
+            gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(((MainRoom) room).getButton().getImageType()), upperLeftX, upperLeftY,
+                    2 * hBox.getRadius(), 2 * hBox.getRadius());
+        } else if (room instanceof ShopRoom) {
+            final ShopRoom shopRoom = (ShopRoom) room;
+            shopRoom.getItems().forEach(x -> {
+                final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
+                final double upperLeftX = hBox.getX() - hBox.getRadius() / 2;
+                final double upperLeftY = hBox.getY() - hBox.getRadius() / 2;
+                gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()), upperLeftX, upperLeftY,
+                        2 * hBox.getRadius(), 2 * hBox.getRadius());
+            });
+        }
+
+        gcGameCanvas.restore();
     }
 
     private void drawTime() {
