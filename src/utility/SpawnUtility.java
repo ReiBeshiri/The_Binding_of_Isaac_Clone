@@ -7,6 +7,32 @@ public final class SpawnUtility {
     }
     private static final double XSTANDARD = ProportionUtility.getWidth() / 5;
     private static final double YSTANDARD = ProportionUtility.getHeight() / 4;
+    private static final double STANDARD = 10;
+    //enter doors spwans.
+    /**
+     * @return x after enter right door.
+     */
+    public static double getSpawnXEnterRightDoor() {
+        return ProportionUtility.getWidthDoor() + STANDARD;
+    }
+    /**
+     * @return y after enter right door.
+     */
+    public static double getSpawnYEnterRightDoor() {
+        return ProportionUtility.getHeight() / 2;
+    }
+    /**
+     * @return x after enter left door.
+     */
+    public static double getSpawnXEnterLeftDoor() {
+        return ProportionUtility.getWidth() - STANDARD;
+    }
+    /**
+     * @return y after enter left door.
+     */
+    public static double getSpawnYEnterLeftDoor() {
+        return ProportionUtility.getHeight() / 2;
+    }
     //this first set of spawns are the spawn in the bottom of the map.
     /**
      * @return x axis spawn A.

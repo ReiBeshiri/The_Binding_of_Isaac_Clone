@@ -7,24 +7,37 @@ import input.Command;
 import model.animated.AbstractCharacter;
 import model.animated.Animated;
 import model.animated.Bullet;
+import model.animated.BulletImpl;
 import model.animated.Enemy;
 import model.animated.Player;
 import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
 import model.hitbox.CircleHitBox;
+import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
+import model.inanimated.Heart;
+import model.inanimated.Inanimated;
 import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
 import model.rounds.StaticRounds;
+import model.strategy.MovementStrategy;
+import model.strategy.PlayerProjectile;
+import model.strategy.SimplyDirectionMovement;
+import proxyutility.ImageType;
 import utility.CollisionUtil;
 import utility.Mode;
 import utility.ModelUtility;
+import utility.ProportionUtility;
+import utility.SpawnUtility;
+import utility.Spawns;
+import worldevent.BossFightStarted;
 import worldevent.PlayerDied;
 import worldevent.PlayerHeartChange;
 import worldevent.PlayerHitButton;
 import worldevent.PlayerKillAllEnemy;
+import worldevent.PlayerKillBoss;
 import worldevent.PlayerKillEnemy;
 import worldevent.WorldEvent;
     /**
@@ -93,6 +106,7 @@ public class WorldImpl implements World {
     public void createEnvironment() {
         we = new WorldEnvironmentImpl();
         listRoom.addAll(we.createWorld());
+        this.room = this.listRoom.get(0);
     }
     /**
      * Set the game mode.
@@ -196,8 +210,15 @@ public class WorldImpl implements World {
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
         this.listMovements = listMovement;
         this.listShots = listShots;
+        createPlayerBullet(listShots);
         this.player.update(deltaTime);
-        mainRoomActions(deltaTime);
+        if (getActualRoom().equals(this.listRoom.get(0))) {
+            mainRoomActions(deltaTime);
+        } else if (getActualRoom().equals(this.listRoom.get(1))) {
+            shopRoomAction();
+        } else {
+            bossRoomAction(deltaTime);
+        }
         // update ModelUtility
         ModelUtility.updateCurrentRound(this.currentRound);
         ModelUtility.updateListCommandModelUtility(listMovement, listShots);
@@ -234,7 +255,7 @@ public class WorldImpl implements World {
      * increment the player's heart by an amount.
      */
     private void incPlayerLife(final int life) {
-        AbstractCharacter player = (AbstractCharacter) this.player;
+        AbstractCharacter player = (AbstractCharacter) getPlayer();
         player.incLife(life);
         listEvent.add(new PlayerHeartChange(player.getLife()));
     }
@@ -281,7 +302,7 @@ public class WorldImpl implements World {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
             if (!CollisionUtil.entityCollision(b, player).isEmpty()) {
-                player.decLife(DAMAGE);
+                decPlayerLife(DAMAGE, player);
                 removeBulletEnemy(b);
             }
         }
@@ -310,7 +331,7 @@ public class WorldImpl implements World {
      */
     private List<GameObject> getNewListGameObj() {
         this.listGameObject.removeAll(this.listGameObject);
-        this.listGameObject.add(this.player);
+        this.listGameObject.add(getPlayer());
         this.listGameObject.add(this.button);
         this.listGameObject.addAll(this.listBulletEnemies);
         this.listGameObject.addAll(this.listBulletPlayer);
@@ -327,31 +348,86 @@ public class WorldImpl implements World {
         Collection<Command> c = CollisionUtil.entityCollision(hb1, hb2);
         return c.isEmpty();
     }
+    /**
+     * create player bullets.
+     * @param listShot the list of the shots to create.
+     */
+    private void createPlayerBullet(final List<Command> listShot) {
+       for (Command s : listShot) {
+            MovementStrategy ms = new SimplyDirectionMovement(s);
+            HitBox hb = new CircleHitBox(this.player.getHitBox().getX(), this.player.getHitBox().getY(), ProportionUtility.getRadiusBullet());
+            this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerBulletSpeed(), ms, ProportionUtility.getPlayerBulletRange(), ImageType.ENEMY_BULLET));
+        }
+    }
+    /**
+     * Action in the main room.
+     * @param deltaTime delta time.
+     */
     private void mainRoomActions(final Double deltaTime) {
-        if (this.room.equals(this.listRoom.get(0))) {
+        if (getActualRoom().equals(this.listRoom.get(0))) {
             this.listEnemy.iterator().next().update(deltaTime);
             if (!allEnemyDefeated()) {
-                playerGetsHitByBullet(this.player);
+                playerGetsHitByBullet(getPlayer());
                 playerBulletHitsEnemy();
                 if (allEnemyDefeated()) {
                     this.listEvent.add(new PlayerKillAllEnemy());
                     incCurrentRound();
                     this.button.setPressed(false);
-                    Door ml = this.room.getDoors().get(0);  // 0 is the mainRoom to Shop door.
-                    ml.setOpen(true);
+                    we.getRightDoorFromMainToShop().setOpen(true);
+                    if (getCurrentRound() >= 4) {
+                        we.getRightDoorFromShopToBoss().setOpen(true);
+                    }
                 }
             }
-            if (getCurrentRound() >= 4) {
-                Door mr = this.room.getDoors().get(1);  // 1 is the mainRoom to Boss door.
-                mr.setOpen(true);
-                Door ml = this.room.getDoors().get(0);  // 0 is the mainRoom to Shop door.
-                ml.setOpen(true);
-            }
-            if (!this.button.isPressed() && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) this.player.getHitBox())) {
+            if (!this.button.isPressed() && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) getPlayer().getHitBox())) {
                 //se il bottone non è premuto e lo preme parte il round sucessivo.
                 //nella modalità normale ci sono 3 round e dopo la fine del terzo il current round sarà 4 quindi premendo il botton non succ niente.
                 setNextRound();
                 this.listEvent.add(new PlayerHitButton());
+            }
+            if (!this.button.isPressed() && getCurrentRound() >= 4 && CollisionUtil.checkBoundaryCollision((CircleHitBox) getPlayer().getHitBox(), (Room) we.getRightDoorFromMainToShop())) {
+                //se hai finito i round nella main puoi andare nello shop.
+                this.room = this.listRoom.get(2);
+                getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor());
+            }
+        }
+    }
+    /**
+     * Action in the boss room.
+     * @param deltaTime dt.
+     */
+    private void bossRoomAction(final double deltaTime) {
+        if (getActualRoom().equals(this.listRoom.get(2))) {
+            if (!isBossDefeated()) {
+                Animated boss = we.getBoss();
+                this.listEnemy.add(boss);
+                boss.update(deltaTime);
+                playerGetsHitByBullet(getPlayer());
+                playerBulletHitsEnemy();
+                if (allEnemyDefeated()) {
+                    this.bossDefeated = true;
+                    this.listEvent.add(new PlayerKillBoss());
+                }
+            }
+        }
+    }
+    /**
+     * Action in the shop room.
+     */
+    private void shopRoomAction() {
+        if (getActualRoom().equals(this.listRoom.get(1))) {
+            for (Inanimated i : we.getItems()) {
+                Heart h = (Heart) i;
+                if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
+                    incPlayerLife(h.getLife());
+                    we.getItems().remove(i);
+                }
+            }
+            if (CollisionUtil.checkBoundaryCollision((CircleHitBox) getPlayer().getHitBox(), (Room) we.getRightDoorFromShopToBoss())) {
+                this.room = this.listRoom.get(2);
+                we.getLeftDoorFromBossToShop().setOpen(false);
+                this.listEvent.add(new BossFightStarted());
+                getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor());
             }
         }
     }

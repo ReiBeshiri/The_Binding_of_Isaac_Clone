@@ -7,6 +7,7 @@ import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
 import model.inanimated.Heart;
+import model.inanimated.Inanimated;
 import model.inanimated.Wall;
 
 /**
@@ -36,9 +37,9 @@ public interface RoomFactory {
      * 
      * @param hitbox ShopRoom's HitBox.
      * @param doors ShopRoom's doors.
-     * @param heart The heart that you can buy.
+     * @param items The items that you can buy.
      * @param walls Walls of the room.
      * @return a ShopRoom.
      */
-    Room createShopRoom(HitBox hitbox, List<Door> doors, Heart heart, List<Wall> walls);
+    Room createShopRoom(HitBox hitbox, List<Door> doors, List<Inanimated> items, List<Wall> walls);
 }

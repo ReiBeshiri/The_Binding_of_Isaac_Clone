@@ -7,6 +7,7 @@ import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
 import model.inanimated.Heart;
+import model.inanimated.Inanimated;
 import model.inanimated.Wall;
 /**
  * 
@@ -33,8 +34,8 @@ public class RoomFactoryImpl implements RoomFactory {
      * Create the ShopRoom.
      */
     @Override
-    public Room createShopRoom(final HitBox hitbox, final List<Door> doors, final Heart heart, final List<Wall> walls) {
-        return new ShopRoom(hitbox, doors, heart, walls);
+    public Room createShopRoom(final HitBox hitbox, final List<Door> doors, final List<Inanimated> items, final List<Wall> walls) {
+        return new ShopRoom(hitbox, doors, items, walls);
     }
 
 }

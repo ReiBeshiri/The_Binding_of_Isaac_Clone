@@ -2,6 +2,9 @@ package model.environment;
 
 import java.util.List;
 
+import model.animated.Animated;
+import model.inanimated.Door;
+import model.inanimated.Inanimated;
 import model.room.Room;
 
 /**
@@ -11,5 +14,29 @@ public interface WorldEnvironment {
     /**
      * @return list of rooms in the world.
      */
-List<Room> createWorld();
+    List<Room> createWorld();
+    /**
+     * @return rightDoorFromMainToShop.
+     */
+    Door getRightDoorFromMainToShop();
+    /**
+     * @return leftDoorFromShopToMain.
+     */
+    Door getLeftDoorFromShopToMain();
+    /**
+     * @return rightDoorFromShopToBoss.
+     */
+    Door getRightDoorFromShopToBoss();
+    /**
+     * @return rightDoorFromBossToShop.
+     */
+    Door getLeftDoorFromBossToShop();
+    /**
+     * @return boss.
+     */
+    Animated getBoss();
+    /**
+     * @return list of items.
+     */
+    List<Inanimated> getItems();
 }

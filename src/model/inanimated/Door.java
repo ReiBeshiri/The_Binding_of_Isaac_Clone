@@ -1,5 +1,6 @@
 package model.inanimated;
 
+import proxyutility.ImageType;
 import utility.RoomEnum;
 
 /**
@@ -17,8 +18,12 @@ public interface Door extends Inanimated {
      */
     void setOpen(boolean open);
     /**
-     * 
      * @return the destination of the door.
      */
     RoomEnum getDestination();
+    /**
+     * Set the image of the door.
+     * @param img the new image to set.
+     */
+    void setImgDoor(ImageType img);
 }

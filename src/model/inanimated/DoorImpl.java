@@ -52,4 +52,11 @@ public class DoorImpl extends AbstractInanimated implements Door {
     public ImageType getImageType() {
         return imgDoor;
     }
+    /**
+     * set the new image of the door.
+     */
+    @Override
+    public void setImgDoor(final ImageType img) {
+        this.imgDoor = img;
+    }
 }
