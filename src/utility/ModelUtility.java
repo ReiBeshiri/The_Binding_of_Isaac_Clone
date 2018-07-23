@@ -1,16 +1,15 @@
 package utility;
 
 import java.util.List;
-
 import input.Command;
 import model.GameObject;
 import model.animated.Animated;
-import model.animated.Player;
 import model.hitbox.HitBox;
 import model.room.Room;
 import worldevent.WorldEvent;
+
 /**
- * 
+ * Utility used to obtain information of model.
  *
  */
 public final class ModelUtility {
