@@ -6,7 +6,6 @@ import model.animated.Enemy;
 import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
-import model.inanimated.Heart;
 import model.inanimated.Inanimated;
 import model.inanimated.Wall;
 

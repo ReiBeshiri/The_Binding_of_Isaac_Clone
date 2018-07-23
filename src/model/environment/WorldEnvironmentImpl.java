@@ -36,11 +36,11 @@ import utility.SpawnUtility;
  */
 public class WorldEnvironmentImpl implements WorldEnvironment {
     private List<Room> listRoom;
-    private RoomFactory rf = new RoomFactoryImpl();
-    private HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getWidth(), ProportionUtility.getHeight());
-    private HitBox hbDoorr = new RectangularHitBox(ProportionUtility.getWidth() - 1, ProportionUtility.getHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
-    private HitBox hbDoorl = new RectangularHitBox(ProportionUtility.getWallsWidth() + 1, ProportionUtility.getHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
-    private HitBox hbBtn = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusButton());
+    private final RoomFactory rf = new RoomFactoryImpl();
+    private final HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getWidth(), ProportionUtility.getHeight());
+    private final HitBox hbDoorr = new RectangularHitBox(ProportionUtility.getWidth() - 1, ProportionUtility.getHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
+    private final HitBox hbDoorl = new RectangularHitBox(ProportionUtility.getWallsWidth() + 1, ProportionUtility.getHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
+    private final HitBox hbBtn = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusButton());
     private Door rightDoorFromMainToShop;
     private Door leftDoorFromShopToMain;
     private Door rightDoorFromShopToBoss;
@@ -48,11 +48,12 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private List<Wall> lw;
     private List<Inanimated> items;
     private Animated boss;
-    private int bossPoints = 1000;
+    private static final int BOSS_POINTS = 1000;
     private HitBox bossHB;
     private MovementStrategy bossMov;
     private ProjectileType bossShot;
     private AI bossAI;
+
     /**
      * Create rooms.
      * The first Room of the list is the MainRoom.
@@ -94,7 +95,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         this.bossMov = new FollowPlayerMovement();
         this.bossShot = new ChasePlayerProjectile(ProportionUtility.getRadiusBullet());
         this.bossAI = new BossAI(this.bossMov, this.bossShot);
-        this.boss = new EnemyImpl(ProportionUtility.getBossVel(), ProportionUtility.getBossLife(), this.bossHB, this.bossAI, this.bossPoints, ProportionUtility.getBossBulletRng(), ImageType.BOSS_ENEMY, ProportionUtility.getBossShotRatio(), ImageType.BOSS_BULLET);
+        this.boss = new EnemyImpl(ProportionUtility.getBossVel(), ProportionUtility.getBossLife(), this.bossHB, this.bossAI, this.BOSS_POINTS, ProportionUtility.getBossBulletRng(), ImageType.BOSS_ENEMY, ProportionUtility.getBossShotRatio(), ImageType.BOSS_BULLET);
         Room bossRoom = rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, lw);
         return bossRoom;
     }

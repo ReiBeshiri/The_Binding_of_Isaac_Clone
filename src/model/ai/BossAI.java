@@ -30,6 +30,7 @@ public class BossAI implements AI {
         movementStrategy = m;
         pType = p;
     }
+
     /**
      * Move.
      */
@@ -37,6 +38,7 @@ public class BossAI implements AI {
     public HitBox move(final double dt, final double vel, final CircleHitBox hBox) {
         return movementStrategy.move(dt, vel, hBox);
     }
+
     /**
      * Shoot.
      */
@@ -44,6 +46,7 @@ public class BossAI implements AI {
     public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range, final ImageType bulletImg) {
         return pType.shoot(hBox, range, vel, bulletImg);
     }
+
     /**
      * Set movement startegy.
      */
@@ -51,6 +54,7 @@ public class BossAI implements AI {
     public void setMovementStrategy(final MovementStrategy mS) {
         movementStrategy = mS;
     }
+
     /**
      * Set next projectile type.
      */
@@ -58,6 +62,7 @@ public class BossAI implements AI {
     public void setProjectileType(final ProjectileType pT) {
         pType = pT;
     }
+
     /**
      * Decide next step.
      */
