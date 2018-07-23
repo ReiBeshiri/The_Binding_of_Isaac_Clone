@@ -9,8 +9,9 @@ import utility.RoomEnum;
  *
  */
 public class DoorImpl extends AbstractInanimated implements Door {
-    private RoomEnum destination;
+    private final RoomEnum destination;
     private ImageType imgDoor;
+
     /**
      * 
      * @param h HitBox.
@@ -23,6 +24,7 @@ public class DoorImpl extends AbstractInanimated implements Door {
         this.destination = destination;
         this.imgDoor = imgDoor;
     }
+
     /**
      * Return true if the door is open, false otherwise.
      */
@@ -30,6 +32,7 @@ public class DoorImpl extends AbstractInanimated implements Door {
     public boolean isOpen() {
         return super.isEnable();
     }
+
     /**
      * 
      * @param open The state of the door.
@@ -38,6 +41,7 @@ public class DoorImpl extends AbstractInanimated implements Door {
     public void setOpen(final boolean open) {
         super.setEnable(open);
     }
+
     /**
      * Get destination of this door.
      */
@@ -45,6 +49,7 @@ public class DoorImpl extends AbstractInanimated implements Door {
     public RoomEnum getDestination() {
         return this.destination;
     }
+
     /**
      * Return image that represent current status of door.
      */
@@ -52,6 +57,7 @@ public class DoorImpl extends AbstractInanimated implements Door {
     public ImageType getImageType() {
         return imgDoor;
     }
+ 
     /**
      * set the new image of the door.
      */

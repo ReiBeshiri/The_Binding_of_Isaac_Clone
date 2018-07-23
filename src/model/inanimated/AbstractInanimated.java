@@ -9,6 +9,7 @@ import model.hitbox.HitBox;
 public abstract class AbstractInanimated implements Inanimated {
     private boolean enable;
     private HitBox hitBox;
+
     /**
      * 
      * @param h HitBox.
@@ -18,6 +19,7 @@ public abstract class AbstractInanimated implements Inanimated {
         this.enable = enable;
         hitBox = h;
     }
+
     /**
      * 
      * @return Return if the Object is enable or not.
@@ -25,6 +27,7 @@ public abstract class AbstractInanimated implements Inanimated {
     protected boolean isEnable() {
         return this.enable;
     }
+
     /**
      * 
      * @param enable State of the object.
@@ -32,6 +35,7 @@ public abstract class AbstractInanimated implements Inanimated {
     protected void setEnable(final boolean enable) {
         this.enable = enable;
     }
+
     /**
      * Return HitBox.
      */

@@ -11,7 +11,8 @@ public class HeartImpl extends AbstractInanimated implements Heart {
 
     private static final int COST = 1;
     private static final int LIFE = 1;
-    private ImageType imgHearth;
+    private final ImageType imgHearth;
+
     //All'inizio il "bottone" non sarà attivo perchè la vita sarà gia piena,
     //ma appena si perde vita bisogna attivarlo.
     /**
@@ -39,6 +40,7 @@ public class HeartImpl extends AbstractInanimated implements Heart {
     public int getLife() {
         return HeartImpl.LIFE;
     }
+
     /**
      * Return image of hearth.
      */

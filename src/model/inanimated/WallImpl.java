@@ -2,11 +2,13 @@ package model.inanimated;
 
 import model.hitbox.HitBox;
 import proxyutility.ImageType;
+
 /**
  * Walls class.
  */
 public class WallImpl extends AbstractInanimated implements Wall {
-    private ImageType imgWall;
+    private final ImageType imgWall;
+
     /**
      * @param hb HitBox
      * @param open always false.
@@ -16,19 +18,13 @@ public class WallImpl extends AbstractInanimated implements Wall {
         super(hb, open);
         this.imgWall = imgWall;
     }
-    /**
-     * return HitBox.
-     */
-    @Override
-    public HitBox getHitBox() {
-        return super.getHitBox();
-    }
+
     /**
      * cannot set HitBox after creating the wall.
      */
     @Override
-    public void setHitBox(final HitBox h) {
-    }
+    public void setHitBox(final HitBox h) { }
+
     /**
      * get Image type.
      */
