@@ -9,15 +9,17 @@ import model.hitbox.HitBox;
 public class BulletMovement implements MovementStrategy {
     private static final int PLANE_ANGLE = 180;
     private final double angle;
+
     /**
-     * 
+     * Constructor for this class.
      * @param angle Movement's angle.
      */
     public BulletMovement(final double angle) {
         this.angle = angle;
     }
+
     /**
-     * 
+     * Perform movement of the bullet, using angle.
      */
     @Override
     public HitBox move(final double dt, final double vel, final CircleHitBox h) {

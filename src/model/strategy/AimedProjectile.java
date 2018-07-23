@@ -10,11 +10,12 @@ import proxyutility.ImageType;
 import utility.ModelUtility;
 /**
  * 
- * Shoots a aimed bullet to a specific point.
+ * Shoots an aimed bullet to a specific point.
  *
  */
 public class AimedProjectile implements ProjectileType {
     private final double radius;
+
     /**
      * Constructs a new instance of an aimed projectile.
      * @param r Radius of bullet.
@@ -22,6 +23,7 @@ public class AimedProjectile implements ProjectileType {
     public AimedProjectile(final double r) {
         radius = r;
     }
+
     /**
      * Shoot a bullet/s.
      */

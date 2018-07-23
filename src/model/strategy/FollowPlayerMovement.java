@@ -3,12 +3,14 @@ package model.strategy;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import utility.ModelUtility;
+
 /**
  * Class that represent the movement of aimed bullet or enemy.
  * 
  */
 public class FollowPlayerMovement implements MovementStrategy {
     private static final int PLANE_ANGLE = 180;
+
     /**
      * Move the entity to next step.
      */

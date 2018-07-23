@@ -16,7 +16,7 @@ import utility.ProportionUtility;
  * Class that represent collection of bullet shooted in same direction.
  *
  */
-public class BossComboProjectile implements ProjectileType {
+public class BossSimpleComboProjectile implements ProjectileType {
 
     private final Command dir;
     private final double radius;
@@ -32,7 +32,7 @@ public class BossComboProjectile implements ProjectileType {
      * @param n
      *            number of bullet to shoot.
      */
-    public BossComboProjectile(final Command dir, final double r, final int n) {
+    public BossSimpleComboProjectile(final Command dir, final double r, final int n) {
         this.dir = dir;
         radius = r;
         bulletNumber = n;
@@ -47,7 +47,7 @@ public class BossComboProjectile implements ProjectileType {
         final double delta = (ProportionUtility.getHeight() - bulletNumber * radius * 2)
                 / (bulletNumber + 1);
         return IntStream.range(0, bulletNumber)
-                        .mapToObj(x -> new CircleHitBox(sender.getX() - ProportionUtility.getRadiusBoss() - radius, delta * (x + 1) + radius * 2 * x, radius))
+                        .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * ProportionUtility.getRadiusBoss() - radius, delta * (x + 1) + radius * 2 * x, radius))
                         .map(x -> new BulletImpl(x, vel, new SimplyDirectionMovement(dir), range, bulletImg))
                         .collect(Collectors.toList());
     }
