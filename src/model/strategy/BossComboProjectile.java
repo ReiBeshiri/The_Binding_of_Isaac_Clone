@@ -1,49 +1,54 @@
 package model.strategy;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import input.Command;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import proxyutility.ImageType;
+import utility.ProportionUtility;
 
 /**
  * 
- * Shots designed with unique behavior.
- * May be shot by the boss.
+ * Class that represent collection of bullet shooted in same direction.
  *
  */
 public class BossComboProjectile implements ProjectileType {
 
     private final Command dir;
     private final double radius;
-    private final int[] xAxisSpownPoints = {-100, -80, -60, -40, -20, 0, 20, 40, 60, 80, 100};
-    private static final int Y_AXIS = 50;
+    private final int bulletNumber;
+
     /**
      * Constructor that initialize the common variables.
-     * @param dir Direction where shoot the bullet. 
-     * @param r radius of bullet.
+     * 
+     * @param dir
+     *            Direction where shoot the bullet.
+     * @param r
+     *            radius of bullet.
+     * @param n
+     *            number of bullet to shoot.
      */
-    public BossComboProjectile(final Command dir, final double r) {
+    public BossComboProjectile(final Command dir, final double r, final int n) {
         this.dir = dir;
         radius = r;
+        bulletNumber = n;
     }
 
     /**
      * Shoot bullet/s of boss.
      */
     @Override
-    public final Collection<Bullet> shoot(final HitBox sender, final double range, final double vel, final ImageType bulletImg) {
-        final List<Bullet> list = new ArrayList<>();
-        for (final int xPos : xAxisSpownPoints) {
-            list.add(new BulletImpl(new CircleHitBox(sender.getX() + xPos, sender.getY() + Y_AXIS, radius), 
-                    vel, new SimplyDirectionMovement(dir), range, bulletImg));
-        }
-        list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), 
-                vel, new SimplyDirectionMovement(dir), range, bulletImg));
-        return list;
+    public final Collection<Bullet> shoot(final HitBox sender, final double range, final double vel,
+            final ImageType bulletImg) {
+        final double delta = (ProportionUtility.getHeight() - bulletNumber * radius * 2)
+                / (bulletNumber + 1);
+        return IntStream.range(0, bulletNumber)
+                        .mapToObj(x -> new CircleHitBox(sender.getX() - ProportionUtility.getRadiusBoss() - radius, delta * (x + 1) + radius * 2 * x, radius))
+                        .map(x -> new BulletImpl(x, vel, new SimplyDirectionMovement(dir), range, bulletImg))
+                        .collect(Collectors.toList());
     }
 }
