@@ -2,7 +2,7 @@ package proxyutility;
 
 import javafx.scene.image.Image;
 /**
- * Interface taht represrnt image loader.
+ * Interface that represent image loader.
  *
  */
 public interface ImageLoader {

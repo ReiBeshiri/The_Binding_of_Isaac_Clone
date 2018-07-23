@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
  * @param <E> Object contains name, time elapsed and score.
  */
 public class ScoreListImpl<E extends Score> implements ScoreList<E> {
-    private List<E> list; 
+    private final List<E> list; 
     private int count;
     /**
      * 

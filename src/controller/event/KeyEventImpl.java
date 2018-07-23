@@ -6,9 +6,9 @@ import proxyutility.SceneType;
  *Event created by pressing a key.
  */
 public class KeyEventImpl implements KeyEvent {
-    private KeyCode key;
-    private SceneType gameState;
-    private KeyType type;
+    private final KeyCode key;
+    private final SceneType gameState;
+    private final KeyType type;
     /**
      * The class constructor.
      * @param key was pressed.
