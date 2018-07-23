@@ -5,6 +5,7 @@ package timer;
  *
  */
 public interface TimeEventListener {
+
     /**
      * Notify event of time changed.
      * @param t time.

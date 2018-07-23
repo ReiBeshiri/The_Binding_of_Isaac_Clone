@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Class that represent Time.
  *
  */
 public class Time {
@@ -84,7 +84,7 @@ public class Time {
     }
 
     /**
-     * 
+     * Override of toString() method.
      */
     @Override
     public String toString() {

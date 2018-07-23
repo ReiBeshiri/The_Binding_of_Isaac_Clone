@@ -12,6 +12,7 @@ public class EndGameViewController extends AbstractControllerFXML {
 
     @FXML
     private BorderPane contentPane;
+
     @FXML
     private TextField nicknameText;
 

@@ -1,6 +1,7 @@
 package model.inanimated;
 
 import model.hitbox.HitBox;
+
 /**
  * 
  * Abstract class for inanimate entity.

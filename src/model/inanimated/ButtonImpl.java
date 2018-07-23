@@ -9,6 +9,7 @@ import proxyutility.ImageType;
  */
 public class ButtonImpl extends AbstractInanimated implements Button {
     private ImageType btnImg;
+
     /**
      * 
      * @param h HitBox.
@@ -18,6 +19,7 @@ public class ButtonImpl extends AbstractInanimated implements Button {
         super(h, pressed);
         btnImg = ImageType.BUTTON_UP;
     }
+
     /**
      * Return true if the button is pressed, false otherwise.
      */
@@ -25,6 +27,7 @@ public class ButtonImpl extends AbstractInanimated implements Button {
     public boolean isPressed() {
         return super.isEnable();
     }
+
     /**
      * @param press The state of the button.
      */
@@ -33,6 +36,7 @@ public class ButtonImpl extends AbstractInanimated implements Button {
         super.setEnable(press);
         btnImg = ImageType.BUTTON_DOWN;
     }
+
     /**
      * Return image that represent current status of button.
      */

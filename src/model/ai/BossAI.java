@@ -1,13 +1,17 @@
 package model.ai;
 
 import java.util.Collection;
-
+import input.Command;
 import model.animated.Bullet;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.strategy.BossAimedComboProjectile;
+import model.strategy.BossSimpleComboProjectile;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
 import proxyutility.ImageType;
+import utility.ProportionUtility;
+
 /**
  * Boss AI.
  * 
@@ -15,6 +19,8 @@ import proxyutility.ImageType;
 public class BossAI implements AI {
     private static final int PHASE2_INIT = 20;
     private static final int PHASE3_INIT = 5;
+    private static final int SECOND_PHASE_START_BULLET_NUM = 10;
+    private static final int THIRD_PHASE_START_BULLET_NUM = 10;
     private MovementStrategy movementStrategy;
     private ProjectileType pType;
 
@@ -64,14 +70,14 @@ public class BossAI implements AI {
     }
 
     /**
-     * Decide next step.
+     * Decide next step and set correct strategy.
      */
     @Override
     public void nextPhaseStrategy(final int life) {
         if (life <= PHASE3_INIT) {
-            //Set third_strategy.
+            setProjectileType(new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), SECOND_PHASE_START_BULLET_NUM));
         } else if (life <= PHASE2_INIT) {
-            //Set second_phase.
+            setProjectileType(new BossAimedComboProjectile(ProportionUtility.getRadiusBullet(), THIRD_PHASE_START_BULLET_NUM));
         }
     }
 
