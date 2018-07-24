@@ -8,6 +8,7 @@ import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.animated.Enemy;
+import model.animated.PlayerImpl;
 import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
 import model.hitbox.CircleHitBox;
@@ -108,6 +109,7 @@ public class WorldImpl implements World {
         we = new WorldEnvironmentImpl();
         listRoom.addAll(we.createWorld());
         this.room = this.listRoom.get(0);
+        createPlayer(playerCreation());
     }
 
     /**
@@ -326,7 +328,7 @@ public class WorldImpl implements World {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
             if (b.isDead()) {
-                removeBulletPlayer(b);
+                removeBulletEnemy(b);
             }
             if (!CollisionUtil.entityCollision(b, player).isEmpty()) {
                 decPlayerLife(DAMAGE, player);
@@ -470,5 +472,14 @@ public class WorldImpl implements World {
                 getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor());
             }
         }
+    }
+
+    /**
+     * @return the player in the spawn A of the map.
+     */
+    private Animated playerCreation() {
+        HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(), ProportionUtility.getRadiusPlayer());
+        Animated p = new PlayerImpl(ProportionUtility.getPlayerVel(), ProportionUtility.getPlayerLife(), hb, null, ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio()); 
+        return p;
     }
 }

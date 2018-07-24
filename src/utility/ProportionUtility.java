@@ -17,20 +17,22 @@ public final class ProportionUtility {
     private static final double PROPORTION_ITEMSHOP = 30;
     private static final double HEIGHT = 600;
     private static final double WIDTH = 800;
-    private static final double PLAYER_BULLET_SPEED = 20;
+    private static final double PLAYER_BULLET_RATIO = 0.5;
     private static final double PLAYER_BULLET_RANGE = 400;
-    private static final int BOSS_LIFE = 30;
     private static final double BOSS_VEL = 20;
     private static final double BOSS_BULLET_RNG = 500;
     private static final double BOSS_SHOT_RATIO = 0.4;
+    private static final double PLAYER_VEL = 20;
+    private static final int PLAYER_LIFE = 6;
+    private static final int BOSS_LIFE = 30;
 
     private ProportionUtility() { }
 
     /**
      * @return the bullet velocity of the player.
      */
-    public static double getPlayerBulletSpeed() {
-        return ProportionUtility.PLAYER_BULLET_SPEED;
+    public static double getPlayerBulletRatio() {
+        return ProportionUtility.PLAYER_BULLET_RATIO;
     }
 
     /**
@@ -65,7 +67,21 @@ public final class ProportionUtility {
      * @return wall range top down (40).
      */
     public static double getWallRangeTopdown() {
-        return ProportionUtility.PROPORTION_WALL_RANGE_SIDE;
+        return ProportionUtility.PROPORTION_WALL_RANGE_TOPDOWN;
+    }
+
+    /**
+     * @return velocity of the player.
+     */
+    public static double getPlayerVel() {
+        return ProportionUtility.PLAYER_VEL;
+    }
+
+    /**
+     * @return life of the player.
+     */
+    public static int getPlayerLife() {
+        return ProportionUtility.PLAYER_LIFE;
     }
 
     /**
