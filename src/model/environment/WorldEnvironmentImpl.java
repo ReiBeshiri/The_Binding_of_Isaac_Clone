@@ -2,12 +2,10 @@ package model.environment;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import model.ai.AI;
 import model.ai.BossAI;
 import model.animated.Animated;
 import model.animated.Enemy;
-import model.animated.EnemyFactoryImpl;
 import model.animated.EnemyImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
@@ -27,10 +25,10 @@ import model.strategy.FollowPlayerMovement;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
 import proxyutility.ImageType;
-import utility.ModelUtility;
 import utility.ProportionUtility;
 import utility.RoomEnum;
 import utility.SpawnUtility;
+
 /**
  * World Environment Impl. 
  */
@@ -68,6 +66,10 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         listRoom.add(createBossRoom());
         return listRoom;
     }
+
+    /**
+     * @return create main room.
+     */
     private Room createMainRoom() {
         this.rightDoorFromMainToShop = new DoorImpl(hbDoorr, false, RoomEnum.SHOPROOM, ImageType.RIGHT_SHOP_DOOR_LOCKED);
         Button bt = new ButtonImpl(hbBtn, false);
@@ -76,6 +78,10 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         Room mainRoom = rf.createMainRoom(hbRoom, ld, bt, lw);
         return mainRoom;
     }
+
+    /**
+     * @return create shop room.
+     */
     private Room createShopRoom() {
         this.leftDoorFromShopToMain = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_SHOP_DOOR_LOCKED);
         this.rightDoorFromShopToBoss = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.RIGHT_BOSS_DOOR);
@@ -87,6 +93,10 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         Room shopRoom = rf.createShopRoom(hbRoom, ld, items, lw);
         return shopRoom;
     }
+
+    /**
+     * @return create boss room.
+     */
     private Room createBossRoom() {
         this.rightDoorFromBossToShop = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_BOSS_DOOR);
         List<Door> ld = new ArrayList<>();
@@ -99,8 +109,13 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         Room bossRoom = rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, lw);
         return bossRoom;
     }
+
+    /**
+     * create walls.
+     */
     private void createWalls() {
     }
+
     /**
      * @return rightDoorFromMainToShop.
      */
@@ -108,6 +123,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     public Door getRightDoorFromMainToShop() {
         return this.rightDoorFromMainToShop;
     }
+
     /**
      * @return leftDoorFromShopToMain.
      */
@@ -115,6 +131,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     public Door getLeftDoorFromShopToMain() {
         return this.leftDoorFromShopToMain;
     }
+
     /**
      * @return rightDoorFromShopToBoss.
      */
@@ -122,6 +139,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     public Door getRightDoorFromShopToBoss() {
         return this.rightDoorFromShopToBoss;
     }
+
     /**
      * @return rightDoorFromBossToShop.
      */
@@ -129,12 +147,14 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     public Door getLeftDoorFromBossToShop() {
         return this.rightDoorFromBossToShop;
     }
+
     /**
      * @return boss.
      */
     public Animated getBoss() {
         return this.boss;
     }
+
     /**
      * @return list of items in the shop.
      */
