@@ -325,6 +325,9 @@ public class WorldImpl implements World {
     private void playerGetsHitByBullet(final Animated p) {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
+            if (b.isDead()) {
+                removeBulletPlayer(b);
+            }
             if (!CollisionUtil.entityCollision(b, player).isEmpty()) {
                 decPlayerLife(DAMAGE, player);
                 removeBulletEnemy(b);
@@ -337,6 +340,9 @@ public class WorldImpl implements World {
      */
     private void playerBulletHitsEnemy() {
         for (Bullet b : this.listBulletPlayer) {
+            if (b.isDead()) {
+                removeBulletPlayer(b);
+            }
             for (Animated enemy : this.listEnemy) {
                 if (!CollisionUtil.entityCollision(b, enemy).isEmpty()) {
                     decEnemyLife(DAMAGE, enemy);

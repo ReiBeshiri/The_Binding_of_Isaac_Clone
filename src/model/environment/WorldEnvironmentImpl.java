@@ -19,6 +19,7 @@ import model.inanimated.DoorImpl;
 import model.inanimated.HeartImpl;
 import model.inanimated.Inanimated;
 import model.inanimated.Wall;
+import model.inanimated.WallImpl;
 import model.room.Room;
 import model.room.RoomFactory;
 import model.room.RoomFactoryImpl;
@@ -34,14 +35,14 @@ import utility.RoomEnum;
 import utility.SpawnUtility;
 
 /**
- * World Environment Impl. 
+ * World Environment Implement. 
  */
 public class WorldEnvironmentImpl implements WorldEnvironment {
     private List<Room> listRoom;
     private final RoomFactory rf = new RoomFactoryImpl();
     private final HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getWidth(), ProportionUtility.getHeight());
-    private final HitBox hbDoorr = new RectangularHitBox(ProportionUtility.getWidth() - 1, ProportionUtility.getHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
-    private final HitBox hbDoorl = new RectangularHitBox(ProportionUtility.getWallsWidth() + 1, ProportionUtility.getHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
+    private final HitBox hbDoorr = new RectangularHitBox(ProportionUtility.getWidth() + ProportionUtility.getWallStandard() * 2, (ProportionUtility.getHeight() + ProportionUtility.getWallStandard() * 2) / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
+    private final HitBox hbDoorl = new RectangularHitBox(0, (ProportionUtility.getHeight() + ProportionUtility.getWallStandard() * 2) / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
     private final HitBox hbBtn = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusButton());
     private Door rightDoorFromMainToShop;
     private Door leftDoorFromShopToMain;
@@ -120,6 +121,43 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      * create walls.
      */
     private void createWalls() {
+        double y = ProportionUtility.getWallStandard();
+        double x = 0;
+        for (int i = 0; i < (ProportionUtility.getHeight() + ProportionUtility.getWallStandard() * 2 - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide() - 1; i++) {
+            HitBox hb = new RectangularHitBox(x, y, ProportionUtility.getWallRangeSide(), ProportionUtility.getWallStandard());
+            Wall wall = new WallImpl(hb, false, ImageType.MAP_VERTICAL_BORDER);
+            this.lw.add(wall);
+            y += ProportionUtility.getWallRangeSide();
+            if (y == ProportionUtility.getWallRangeSide() * (ProportionUtility.getHeight() + (ProportionUtility.getWallStandard() * 2 - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide()) / 2 + ProportionUtility.getWallStandard()) {
+                y = y + ProportionUtility.getHeightDoor();
+            }
+        }
+        y = ProportionUtility.getWallStandard();
+        for (int i = 0; i < (ProportionUtility.getHeight() + ProportionUtility.getWallStandard() * 2 - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide() - 1; i++) {
+            HitBox hb = new RectangularHitBox(ProportionUtility.getWidth() + ProportionUtility.getWallStandard() * 2, y, ProportionUtility.getWallRangeSide(), ProportionUtility.getWallStandard());
+            Wall wall = new WallImpl(hb, false, ImageType.MAP_VERTICAL_BORDER);
+            this.lw.add(wall);
+            y += ProportionUtility.getWallRangeSide();
+            if (y == (ProportionUtility.getWallRangeSide() * (ProportionUtility.getHeight() + ProportionUtility.getWallStandard() * 2 - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide()) / 2 + ProportionUtility.getWallStandard()) {
+                y = y + ProportionUtility.getHeightDoor();
+            }
+        }
+        y = 0;
+        x = 0;
+        for (int i = 0; i < (ProportionUtility.getWidth() + ProportionUtility.getWallStandard() * 2) / ProportionUtility.getWallRangeTopdown(); i++) {
+            HitBox hb = new RectangularHitBox(x, y, ProportionUtility.getWallStandard(), ProportionUtility.getWallRangeTopdown());
+            Wall wall = new WallImpl(hb, false, ImageType.MAP_HORIZONTAL_BORDER);
+            this.lw.add(wall);
+            x += ProportionUtility.getWallRangeTopdown();
+        }
+        x = 0;
+        y = ProportionUtility.getHeight() + ProportionUtility.getWallStandard() * 2;
+        for (int i = 0; i < (ProportionUtility.getWidth() + ProportionUtility.getWallStandard() * 2) / ProportionUtility.getWallRangeTopdown(); i++) {
+            HitBox hb = new RectangularHitBox(x, y, ProportionUtility.getWallStandard(), ProportionUtility.getWallRangeTopdown());
+            Wall wall = new WallImpl(hb, false, ImageType.MAP_HORIZONTAL_BORDER);
+            this.lw.add(wall);
+            x += ProportionUtility.getWallRangeTopdown();
+        }
     }
 
     /**

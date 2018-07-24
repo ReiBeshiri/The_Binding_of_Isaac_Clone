@@ -8,7 +8,8 @@ public final class ProportionUtility {
     private static final double PROPORTION_PLAYER_ENEMY = 10;
     private static final double PROPORTION_BOSS = 5;
     private static final double PROPORTION_WALL = 15;
-    private static final double PROPORTION_WALL_RANGE = 30;
+    private static final double PROPORTION_WALL_RANGE_SIDE = 30;
+    private static final double PROPORTION_WALL_RANGE_TOPDOWN = 40;
     private static final double PROPORTION_BULLET = 30;
     private static final double PROPORTION_BUTTON = 30;
     private static final double PROPORTION_DOOR_WIDTH = 15;
@@ -24,12 +25,6 @@ public final class ProportionUtility {
     private static final double BOSS_SHOT_RATIO = 0.4;
 
     private ProportionUtility() { }
-
-    /**
-     *
-     */
-    public void updateDimension() {
-    }
 
     /**
      * @return the bullet velocity of the player.
@@ -57,6 +52,20 @@ public final class ProportionUtility {
      */
     public static double getBossShotRatio() {
         return ProportionUtility.BOSS_SHOT_RATIO;
+    }
+
+    /**
+     * @return wall range side (30).
+     */
+    public static double getWallRangeSide() {
+        return ProportionUtility.PROPORTION_WALL_RANGE_SIDE;
+    }
+
+    /**
+     * @return wall range top down (40).
+     */
+    public static double getWallRangeTopdown() {
+        return ProportionUtility.PROPORTION_WALL_RANGE_SIDE;
     }
 
     /**
@@ -130,18 +139,10 @@ public final class ProportionUtility {
     }
 
     /**
-     * @return the width of the wall.
-     * The dimension is based on the height of the Room (15).
+     * @return the width or height of the wall.
+     * The dimension is based on the height or the width of the wall (15).
      */
-    public static double getWallsWidth() {
-        return ProportionUtility.PROPORTION_WALL;
-    }
-
-    /**
-     * @return the height of the wall.
-     * The dimension is based on the height of the Room (15).
-     */
-    public static double getWallsHeight() {
+    public static double getWallStandard() {
         return ProportionUtility.PROPORTION_WALL;
     }
 
@@ -150,7 +151,7 @@ public final class ProportionUtility {
      * So it return the actual dimension of the playable room.
      */
     public static double getWidth() {
-        return ProportionUtility.WIDTH - getWallsWidth() * 2;
+        return ProportionUtility.WIDTH - getWallStandard() * 2;
     }
 
     /**
@@ -158,6 +159,6 @@ public final class ProportionUtility {
      * So it return the actual dimension of the playable room.
      */
     public static double getHeight() {
-        return ProportionUtility.HEIGHT - getWallsWidth() * 2;
+        return ProportionUtility.HEIGHT - getWallStandard() * 2;
     }
 }
