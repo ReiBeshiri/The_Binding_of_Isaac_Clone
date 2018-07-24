@@ -140,7 +140,7 @@ public final class ModelUtility {
 
     /**
      * World height.
-     * @return world height.
+     * @return world height (600).
      */
     public static double getWorldHeight() {
         return WORLD_HEIGHT;
@@ -148,7 +148,7 @@ public final class ModelUtility {
 
     /**
      * World width.
-     * @return world width.
+     * @return world width (800).
      */
     public static double getWorldWidth() {
         return WORLD_WIDTH;
