@@ -2,6 +2,8 @@ package model.environment;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import input.Command;
 import model.ai.AI;
 import model.ai.BossAI;
 import model.animated.Animated;
@@ -20,8 +22,10 @@ import model.inanimated.Wall;
 import model.room.Room;
 import model.room.RoomFactory;
 import model.room.RoomFactoryImpl;
+import model.strategy.BossSimpleComboProjectile;
 import model.strategy.ChasePlayerProjectile;
 import model.strategy.FollowPlayerMovement;
+import model.strategy.Motionless;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
 import proxyutility.ImageType;
@@ -47,6 +51,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private List<Inanimated> items;
     private Animated boss;
     private static final int BOSS_POINTS = 1000;
+    private static final int BOSS_SHOTS = 10;
     private HitBox bossHB;
     private MovementStrategy bossMov;
     private ProjectileType bossShot;
@@ -95,15 +100,16 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     }
 
     /**
+     * The Boss stays in the right spot and shots to the left.
      * @return create boss room.
      */
     private Room createBossRoom() {
         this.rightDoorFromBossToShop = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_BOSS_DOOR);
         List<Door> ld = new ArrayList<>();
         ld.add(this.rightDoorFromBossToShop);
-        this.bossHB = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusBoss());
-        this.bossMov = new FollowPlayerMovement();
-        this.bossShot = new ChasePlayerProjectile(ProportionUtility.getRadiusBullet());
+        this.bossHB = new CircleHitBox(ProportionUtility.getWidth(), ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusBoss());
+        this.bossMov = new Motionless();
+        this.bossShot = new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), this.BOSS_SHOTS);
         this.bossAI = new BossAI(this.bossMov, this.bossShot);
         this.boss = new EnemyImpl(ProportionUtility.getBossVel(), ProportionUtility.getBossLife(), this.bossHB, this.bossAI, this.BOSS_POINTS, ProportionUtility.getBossBulletRng(), ImageType.BOSS_ENEMY, ProportionUtility.getBossShotRatio(), ImageType.BOSS_BULLET);
         Room bossRoom = rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, lw);

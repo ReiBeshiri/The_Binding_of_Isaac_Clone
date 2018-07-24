@@ -8,6 +8,7 @@ public final class ProportionUtility {
     private static final double PROPORTION_PLAYER_ENEMY = 10;
     private static final double PROPORTION_BOSS = 5;
     private static final double PROPORTION_WALL = 15;
+    private static final double PROPORTION_WALL_RANGE = 30;
     private static final double PROPORTION_BULLET = 30;
     private static final double PROPORTION_BUTTON = 30;
     private static final double PROPORTION_DOOR_WIDTH = 15;
