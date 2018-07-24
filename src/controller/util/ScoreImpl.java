@@ -9,6 +9,7 @@ public class ScoreImpl implements Score {
     private final String name;
     private final int point;
     private final Time time;
+
     /**
      * 
      * @param name of the player;
@@ -20,6 +21,7 @@ public class ScoreImpl implements Score {
         this.point = point;
         this.time = time;
     }
+
     /**
      * Override of the method toString().
      */
@@ -27,6 +29,7 @@ public class ScoreImpl implements Score {
     public String toString() {
         return this.name + " " + this.point + " " + this.time.toString();
     }
+
     /**
      * Get player's name.
      */
@@ -34,6 +37,7 @@ public class ScoreImpl implements Score {
     public String getName() {
         return this.name;
     }
+
     /**
      * Get player's point.
      */
@@ -41,6 +45,7 @@ public class ScoreImpl implements Score {
     public int getPoint() {
         return this.point;
     }
+
     /**
      * Get time elapsed to win the game.
      */
@@ -48,6 +53,7 @@ public class ScoreImpl implements Score {
     public Time getTime() {
         return this.time;
     }
+
     /**
      * To compare score of two players.
      */

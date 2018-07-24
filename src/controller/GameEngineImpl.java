@@ -7,34 +7,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
 import controller.util.Score;
 import controller.util.ScoreImpl;
 import model.World;
 import model.WorldImpl;
 import timer.Time;
-import view.View;
 import view.ViewImpl;
+
 /**
  * GameEngineImpl manages all game situations.
  */
 public final class GameEngineImpl implements GameEngine {
-    static final int NAME = 0;
-    static final int SCORE = 1;
-    static final int TIME = 2;
-    static final int MINUTES = 0;
-    static final int SECONDS = 1;
+    private static final int NAME = 0;
+    private static final int SCORE = 1;
+    private static final int TIME = 2;
+    private static final int MINUTES = 0;
+    private static final int SECONDS = 1;
     private static GameEngineImpl singleton;
-    private World world;
     private GameLoop gameLoop;
-    private final View gui;
     private List<Score> scoreList = new ArrayList<>();
+
     /**
      * The class constructor.
      */
-    private GameEngineImpl() {
-        gui = new ViewImpl();
-    }
+    private GameEngineImpl() { }
     /**
      * Get the instance of GameEngineImpl.
      * @return the instance of controller.
@@ -52,18 +48,20 @@ public final class GameEngineImpl implements GameEngine {
     public void initView() {
         readLeaderboard();
         //Passare alla view la leaderboard;
-        gui.viewStart();
+        ViewImpl.get().viewStart();
     }
+
     /**
      * Create a new game.
      * @param name of the player.
      */
     @Override
     public void newGame(final String name) {
-        this.world = new WorldImpl();
+        final World world = new WorldImpl();
         this.gameLoop = new GameLoopImpl(world, name);
         resumeGameLoop();
     }
+
     /**
      * Stop the game.
      */
@@ -71,6 +69,7 @@ public final class GameEngineImpl implements GameEngine {
     public void stopGame() {
         gameLoop.stop();
     }
+
     /**
      * Resume the execution of the game.
      */
@@ -80,6 +79,7 @@ public final class GameEngineImpl implements GameEngine {
             gameLoop.start();
         }
     }
+
     /**
      * The player has lost.
      */
@@ -88,6 +88,7 @@ public final class GameEngineImpl implements GameEngine {
         //gui.gameOver();
         stopGame();
     }
+
     /**
      * The player has won.
      */
@@ -95,12 +96,14 @@ public final class GameEngineImpl implements GameEngine {
         //gui.victory();
         stopGame();
     }
+
     /**
      * @return the gameLoop object. 
      */
     public GameLoop getGameLoop() {
         return this.gameLoop;
     }
+
     /**
      * Get the leaderboard of this computer.
      * @return the leaderboard.
@@ -108,6 +111,7 @@ public final class GameEngineImpl implements GameEngine {
     public List<Score> getLeaderboard() {
         return this.scoreList;
     }
+
     /**
      * Set the leaderboard.
      */
@@ -116,17 +120,18 @@ public final class GameEngineImpl implements GameEngine {
         this.scoreList = list;
         //Qui bisogna fare il savataggio.
     }
+
     /**
      * Read the saves.
      */
     private void readLeaderboard() {
-        File file = new File("C:\\Users\\andre\\Desktop\\LeaderBoard.txt");
+        final File file = new File("C:\\Users\\andre\\Desktop\\LeaderBoard.txt");
         List<String> items;
         List<String> splitTime;
 
         try {
             if (!file.createNewFile()) {
-                BufferedReader in = new BufferedReader(new FileReader(file));
+                final BufferedReader in = new BufferedReader(new FileReader(file));
                 for (String x = in.readLine(); x != null; x = in.readLine()) {
                     items = Arrays.asList(x.split(" "));
                     splitTime = Arrays.asList(items.get(TIME).split(":"));
@@ -136,7 +141,7 @@ public final class GameEngineImpl implements GameEngine {
                 in.close();
             }
         } catch (Exception e) {
-            e.getMessage(); //To change.
+            System.out.println("Error on reading leaderboard: " + e.getMessage()); //To change.
         }
     }
 }
