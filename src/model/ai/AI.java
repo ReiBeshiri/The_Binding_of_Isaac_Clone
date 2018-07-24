@@ -45,19 +45,34 @@ public interface AI {
      * @return The collection of bullet shooted by entity.
      */
     Collection<Bullet> shoot(HitBox hBox, double vel, double range, ImageType bulletImg);
+
     /**
      * Set new type of movement.
      * @param mS New movement strategy.
      */
     void setMovementStrategy(MovementStrategy mS);
+
     /**
-     * 
+     * Set new Projectile type.
      * @param pT New projectile type.
      */
     void setProjectileType(ProjectileType pT);
+
     /**
-     * 
+     * Decide next phase.
      * @param life Remain life.
      */
     void nextPhaseStrategy(int life);
+
+    /**
+     * Getter for actual projectile type.
+     * @return proj type.
+     */
+    ProjectileType getProjType();
+
+    /**
+     * Getter for actual movement strategy.
+     * @return actual movement startegy.
+     */
+    MovementStrategy getMovementStrategy();
 }

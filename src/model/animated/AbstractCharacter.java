@@ -87,6 +87,14 @@ public abstract class AbstractCharacter implements Animated {
     }
 
     /**
+     * Shot bullets of entity. (Template Method).
+     */
+    @Override
+    public Collection<Bullet> shot() {
+        return shoot();
+    }
+
+    /**
      * Return HitBox.
      */
     @Override

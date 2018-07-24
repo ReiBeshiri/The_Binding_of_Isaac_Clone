@@ -49,6 +49,7 @@ public class BasicAI implements AI {
     public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range, final ImageType bulletImg) {
         return pType.shoot(hBox, range, vel, bulletImg);
     }
+
     /**
      * Set new Movement Strategy.
      * Note: We can use this method in a player for poweUp.
@@ -57,6 +58,7 @@ public class BasicAI implements AI {
     public void setMovementStrategy(final MovementStrategy mS) {
         movementStrategy = mS;
     }
+
     /**
      * Set new Projectile Strategy.
      * Note: We can use this method in a player for poweUp.
@@ -65,9 +67,26 @@ public class BasicAI implements AI {
     public void setProjectileType(final ProjectileType pT) {
         pType = pT;
     }
+
     /**
      * For boss Decision.
      */
     @Override
     public void nextPhaseStrategy(final int life) { }
+
+    /**
+     * Used in phase of test.
+     */
+    @Override
+    public ProjectileType getProjType() {
+        return pType;
+    }
+
+    /**
+     * Used in phase of test.
+     */
+    @Override
+    public MovementStrategy getMovementStrategy() {
+        return movementStrategy;
+    }
 }

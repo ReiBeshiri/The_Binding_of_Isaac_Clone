@@ -1,5 +1,7 @@
 package model.animated;
 
+import java.util.Collection;
+import java.util.Collections;
 import model.hitbox.HitBox;
 import proxyutility.ImageType;
 /**
@@ -65,6 +67,16 @@ public abstract class AbstractBullet implements Animated {
      *          The HitBox in the new position.
     */
     protected abstract HitBox performMove(double dt);
+
+    /**
+     * Shot bullets of entity. (Template Method).
+     * Empty because bullet can't shoot.
+     */
+    @Override
+    public Collection<Bullet> shot() { 
+        return Collections.emptyList();
+    }
+
     /**
      * 
      */

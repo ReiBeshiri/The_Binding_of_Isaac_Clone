@@ -75,10 +75,25 @@ public class BossAI implements AI {
     @Override
     public void nextPhaseStrategy(final int life) {
         if (life <= PHASE3_INIT) {
-            setProjectileType(new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), SECOND_PHASE_START_BULLET_NUM));
-        } else if (life <= PHASE2_INIT) {
             setProjectileType(new BossAimedComboProjectile(ProportionUtility.getRadiusBullet(), THIRD_PHASE_START_BULLET_NUM));
+        } else if (life <= PHASE2_INIT) {
+            setProjectileType(new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), SECOND_PHASE_START_BULLET_NUM));
         }
     }
 
+    /**
+     * Used in phase of test.
+     */
+    @Override
+    public ProjectileType getProjType() {
+        return pType;
+    }
+
+    /**
+     * Used in phase of test.
+     */
+    @Override
+    public MovementStrategy getMovementStrategy() {
+        return movementStrategy;
+    }
 }
