@@ -10,5 +10,9 @@ public enum Mode {
     /**
      * Infinite mode.
      */
-    INFINITE;
+    INFINITE,
+    /**
+     * God Mode.
+     */
+    GOD;
 }
