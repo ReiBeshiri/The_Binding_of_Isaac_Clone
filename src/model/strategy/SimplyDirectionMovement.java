@@ -31,20 +31,20 @@ public class SimplyDirectionMovement implements MovementStrategy {
     public HitBox move(final double dt, final double vel, final CircleHitBox h) {
         int x = 0, y = 0;
         if (moveDirection == UP) {
-            y++;
-        } else if (moveDirection == DOWN) {
             y--;
+        } else if (moveDirection == DOWN) {
+            y++;
         } else if (moveDirection == RIGHT) {
             x++;
         } else {
             x--;
         }
-        if (x != 0) {
-            final double deltaX = vel * dt * Math.sin(Math.toRadians(moveDirection.getAngle()));
-            return new CircleHitBox(h.getX() + deltaX, h.getY(), h.getRadius());
-        } else if (y != 0) {
-            final double deltaY = vel * dt * Math.cos(Math.toRadians(moveDirection.getAngle()));
+        if (y != 0) {
+            final double deltaY = vel * dt * Math.sin(Math.toRadians(moveDirection.getAngle()));
             return new CircleHitBox(h.getX(), h.getY() + deltaY, h.getRadius());
+        } else if (x != 0) {
+            final double deltaX = vel * dt * Math.cos(Math.toRadians(moveDirection.getAngle()));
+            return new CircleHitBox(h.getX() + deltaX, h.getY(), h.getRadius());
         }
         return h;
     }

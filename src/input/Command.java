@@ -7,19 +7,19 @@ public enum Command {
     /**
      * Command Up is represented by 0° angle.
      */
-    UP(180),
+    UP(-90),
     /**
      * Command Right is represented by 90° angle.
      */
-    RIGHT(90),
+    RIGHT(0),
     /**
      * Command Left is represented by -90° angle.
      */
-    LEFT(-90),
+    LEFT(180),
     /**
      * Command Down is represented by 180° angle.
      */
-    DOWN(0);
+    DOWN(90);
     private final double angle;
 
     /**

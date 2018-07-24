@@ -46,8 +46,8 @@ class BulletMovementTest {
         final Bullet bullet = new BulletImpl(new CircleHitBox(0, 0, 0.2), 1, new BulletMovement(angle), 10,
                 ImageType.PLAYER_BULLET);
         bullet.update(1);
-        assertEquals(Math.sin(angle * Math.PI / 180), bullet.getHitBox().getX());
-        assertEquals(Math.cos(angle * Math.PI / 180), bullet.getHitBox().getY());
+        assertEquals(Math.cos(angle * Math.PI / 180), bullet.getHitBox().getX());
+        assertEquals(Math.sin(angle * Math.PI / 180), bullet.getHitBox().getY());
     }
 
     /**
@@ -55,16 +55,16 @@ class BulletMovementTest {
      */
     @Test
     public void testAimedMovementBullet() {
-        final double resAngle = -135;
+        final double resAngle = 135;
         final HitBox player = new CircleHitBox(0, 0, 3);
         final HitBox sender = new CircleHitBox(1, -1, 2);
         assertEquals(resAngle,
-                Math.atan2(-(player.getY() - sender.getY()), player.getX() - sender.getX()) * 180 / Math.PI);
-        final double resAngle1 = 135;
+                Math.atan2(player.getY() - sender.getY(), player.getX() - sender.getX()) * 180 / Math.PI);
+        final double resAngle1 = -135;
         final HitBox player1 = new CircleHitBox(0, 0, 3);
         final HitBox sender1 = new CircleHitBox(1, 1, 2);
         assertEquals(resAngle1,
-                Math.atan2(-(player1.getY() - sender1.getY()), player1.getX() - sender1.getX()) * 180 / Math.PI);
+                Math.atan2(player1.getY() - sender1.getY(), player1.getX() - sender1.getX()) * 180 / Math.PI);
     }
 
     @Test
