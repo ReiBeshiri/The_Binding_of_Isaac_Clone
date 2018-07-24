@@ -7,10 +7,12 @@ public enum RoomEnum {
      * 
      */
     BOSSROOM,
+
     /**
      * 
      */
     MAINROOM,
+
     /**
      * 
      */

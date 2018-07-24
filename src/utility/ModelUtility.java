@@ -30,42 +30,49 @@ public final class ModelUtility {
      * Private Constructor for static class.
      */
     private ModelUtility() { }
+
     /**
      * @return player.
      */
     public static Animated getPlayer() {
         return player;
     }
+
     /**
      * @return list Game Object.
      */
     public static List<GameObject> getGameObject() {
         return listGameObject;
     }
+
     /**
      * @return player hitbox.
      */
     public static HitBox getPlayerHitBox() {
         return player.getHitBox();
     }
+
     /**
      * @return room.
      */
     public static Room getRoom() {
         return room;
     }
+
     /**
      * @return List of Command for moving.
      */
     public static List<Command> getListMovementCommand() {
         return listMovementCommand;
     }
+
     /**
      * @return List of Command for shots.
      */
     public static List<Command> getListShotsCommand() {
         return ModelUtility.listShotsCommand;
     }
+
     /**
      * Method to communicate with the Controller.
      *  the controller should only take this list from the model.
@@ -74,12 +81,14 @@ public final class ModelUtility {
     public static List<WorldEvent> getWorldEventList() {
         return listWorldEvent;
     }
+
     /**
      * @return current Round.
      */
     public static int getCurrentRound() {
         return currentRound;
     }
+
     /**
      * @param player 
      *          the new player to update.
@@ -87,6 +96,7 @@ public final class ModelUtility {
     public static void updatePlayerModelUtility(final Animated player) {
         ModelUtility.player = player;
     }
+
     /**
      * @param list
      *          the new list.
@@ -94,12 +104,14 @@ public final class ModelUtility {
     public static void updateListWorldEvent(final List<WorldEvent> list) {
         ModelUtility.listWorldEvent = list;
     }
+
     /**
      * @param room update room.
      */
     public static void updateRoomModelUtility(final Room room) {
         ModelUtility.room = room;
     }
+
     /**
      * @param listShotsCommand
      *          the new list.
@@ -110,12 +122,14 @@ public final class ModelUtility {
         ModelUtility.listMovementCommand = listMovementCommand;
         ModelUtility.listShotsCommand = listShotsCommand;
     }
+
     /**
      * @param newCurrent new current round to update.
      */
     public static void updateCurrentRound(final int newCurrent) {
         ModelUtility.currentRound = newCurrent;
     }
+
     /**
      * @param list game object.
      *          the new list.
@@ -123,6 +137,7 @@ public final class ModelUtility {
     public static void updateListGameObject(final List<GameObject> list) {
         ModelUtility.listGameObject = list;
     }
+
     /**
      * World height.
      * @return world height.
@@ -130,6 +145,7 @@ public final class ModelUtility {
     public static double getWorldHeight() {
         return WORLD_HEIGHT;
     }
+
     /**
      * World width.
      * @return world width.
@@ -137,6 +153,7 @@ public final class ModelUtility {
     public static double getWorldWidth() {
         return WORLD_WIDTH;
     }
+
     /**
      * World height proportion.
      * @return world height proportion.
@@ -144,6 +161,7 @@ public final class ModelUtility {
     public static double getWorldHeightProp() {
         return WORLD_HEIGHT_PROP;
     }
+
     /**
      * World width proportion.
      * @return world width proportion.

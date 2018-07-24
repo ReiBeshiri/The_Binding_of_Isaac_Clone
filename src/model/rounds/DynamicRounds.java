@@ -47,6 +47,7 @@ public class DynamicRounds implements RoundsGenerator {
         listCommand.add(Command.DOWN);
         listCommand.add(Command.LEFT);
     }
+
     /**
      * Generate a random Monster. 
      */
@@ -76,12 +77,14 @@ public class DynamicRounds implements RoundsGenerator {
         }
         return listReturnEnemy;
     }
+
     /**
      * @return the number of monsters to generate.
      */
     private int numberOfEnemyToGenerate() {
         return getCurrentRound() < DynamicRounds.MAXENEMY ? getCurrentRound() : DynamicRounds.MAXENEMY; 
     }
+
     /**
      * @return the current rounds, so the difficulty can be adapted.
      */

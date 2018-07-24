@@ -7,10 +7,12 @@ public enum Mode {
      * Normal mode.
      */
     NORMAL,
+
     /**
      * Infinite mode.
      */
     INFINITE,
+
     /**
      * God Mode.
      */

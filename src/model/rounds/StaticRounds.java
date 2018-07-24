@@ -76,6 +76,7 @@ public class StaticRounds implements RoundsGenerator {
         }
         return listReturnEnemy;
     }
+
     /**
      * @return the current rounds, so the difficulty can be adapted.
      */
