@@ -13,6 +13,7 @@ public class BulletImpl extends AbstractBullet implements Bullet {
 
     private double range;
     private final MovementStrategy bulletMS;
+
     /**
      * Constructor that initialize the common variables.
      * @param chb
@@ -31,6 +32,7 @@ public class BulletImpl extends AbstractBullet implements Bullet {
         this.bulletMS = bulletMS;
         this.range = range;
     }
+
     /**
      * 
      */
@@ -38,6 +40,7 @@ public class BulletImpl extends AbstractBullet implements Bullet {
     public double getRange() {
         return this.range;
     }
+
     /**
      * 
      */
@@ -45,6 +48,7 @@ public class BulletImpl extends AbstractBullet implements Bullet {
     public boolean isDead() {
         return range <= 0;
     }
+
     /**
      * 
      */

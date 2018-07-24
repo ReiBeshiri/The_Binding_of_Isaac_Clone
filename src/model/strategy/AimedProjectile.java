@@ -31,7 +31,7 @@ public class AimedProjectile implements ProjectileType {
     public Collection<Bullet> shoot(final HitBox sender/*, final Collection<Command> dir, final double dt*/, final double range, final double vel, final ImageType bulletImg) {
         final Collection<Bullet> bulletColl = new ArrayList<>();
         bulletColl.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel, 
-                new BulletMovement(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(), ModelUtility.getPlayerHitBox().getX() - sender.getX())),
+                new BulletMovement(Math.atan2(-(ModelUtility.getPlayerHitBox().getY() - sender.getY()), ModelUtility.getPlayerHitBox().getX() - sender.getX())),
                 range, bulletImg));
         return bulletColl;
     }

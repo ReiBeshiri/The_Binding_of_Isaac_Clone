@@ -12,7 +12,7 @@ public class BulletMovement implements MovementStrategy {
 
     /**
      * Constructor for this class.
-     * @param angle Movement's angle.
+     * @param angle Movement's angle in radiant.
      */
     public BulletMovement(final double angle) {
         this.angle = angle;
@@ -23,8 +23,8 @@ public class BulletMovement implements MovementStrategy {
      */
     @Override
     public HitBox move(final double dt, final double vel, final CircleHitBox h) {
-        final double deltaX = Math.sin(angle * Math.PI / PLANE_ANGLE);
-        final double deltaY = Math.cos(angle * Math.PI / PLANE_ANGLE);
+        final double deltaX = dt * vel * Math.sin(angle * Math.PI / PLANE_ANGLE);
+        final double deltaY = dt * vel * Math.cos(angle * Math.PI / PLANE_ANGLE);
         return new CircleHitBox(h.getX() + deltaX, h.getY() + deltaY, h.getRadius());
     }
 

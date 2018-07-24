@@ -77,15 +77,15 @@ public final class CollisionUtil {
         final double dx = chb2.getX() - chb1.getX();
         final double dy = chb2.getY() - chb1.getY();
         final double distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < chb1.getRadius() + chb2.getRadius()) {
+        if (distance <= chb1.getRadius() + chb2.getRadius()) {
             if (dx > 0) {
                 dir.add(Command.LEFT);
-            } else {
+            } else if (dx < 0) {
                 dir.add(Command.RIGHT);
             }
             if (dy < 0) {
                 dir.add(Command.DOWN);
-            } else {
+            } else if (dy > 0) {
                 dir.add(Command.UP);
             }
         }
