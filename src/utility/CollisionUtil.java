@@ -28,13 +28,13 @@ public final class CollisionUtil {
         final RectangularHitBox room = (RectangularHitBox) rectRoom.getHitBox();
         boolean result = false;
 
-        //top wall
-        if (chb.getY() + chb.getRadius() >= room.getX() + room.getHeight()) {
+        //bottom wall
+        if (chb.getY() + chb.getRadius() >= room.getY() + room.getHeight()) {
             result = true;
-            chb.changePosition(chb.getX(), room.getX() + room.getHeight() - chb.getRadius());
+            chb.changePosition(chb.getX(), room.getY() + room.getHeight() - chb.getRadius());
         }
 
-        //bottom wall
+        //up wall
         if (chb.getY() - chb.getRadius() <= room.getY()) {
            result = true;
            chb.changePosition(chb.getX(), room.getY() + chb.getRadius());

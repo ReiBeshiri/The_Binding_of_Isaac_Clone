@@ -60,9 +60,13 @@ class CollisionTest {
     }
 
     @Test
-    public void collisionBetweenEntityAndRoom() {
+    public void collisionBetweenEntityAndRoomBorders() {
         final Room room = new MainRoom(new RectangularHitBox(0, 0, 600, 800), null, null, null);
         final CircleHitBox player = new CircleHitBox(3, 2, 2);
         assertTrue(CollisionUtil.checkBoundaryCollision(player, room));
+        final CircleHitBox enemy = new CircleHitBox(800, 600, 2);
+        assertTrue(CollisionUtil.checkBoundaryCollision(enemy, room));
+        final CircleHitBox boss = new CircleHitBox(400, 300, 10);
+        assertFalse(CollisionUtil.checkBoundaryCollision(boss, room));
     }
 }
