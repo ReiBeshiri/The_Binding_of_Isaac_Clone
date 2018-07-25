@@ -7,6 +7,9 @@ import input.Command;
 import model.animated.Animated;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
+import model.hitbox.RectangularHitBox;
+import model.room.MainRoom;
+import model.room.Room;
 import model.strategy.BulletMovement;
 import proxyutility.ImageType;
 import utility.CollisionUtil;
@@ -52,8 +55,14 @@ class CollisionTest {
                 break;
             }
             bullet.update(1);
-            System.out.println("x: " + bullet.getHitBox().getX() + "y: " + bullet.getHitBox().getY());
         }
         assertTrue(collisionDetected);
+    }
+
+    @Test
+    public void collisionBetweenEntityAndRoom() {
+        final Room room = new MainRoom(new RectangularHitBox(0, 0, 600, 800), null, null, null);
+        final CircleHitBox player = new CircleHitBox(3, 2, 2);
+        assertTrue(CollisionUtil.checkBoundaryCollision(player, room));
     }
 }

@@ -29,22 +29,25 @@ public final class CollisionUtil {
         boolean result = false;
 
         //top wall
-        if (chb.getY() + chb.getRadius() > room.getX() + room.getHeight()) {
+        if (chb.getY() + chb.getRadius() >= room.getX() + room.getHeight()) {
             result = true;
             chb.changePosition(chb.getX(), room.getX() + room.getHeight() - chb.getRadius());
         }
+
         //bottom wall
-        if (chb.getY() - chb.getRadius() < room.getY()) {
+        if (chb.getY() - chb.getRadius() <= room.getY()) {
            result = true;
            chb.changePosition(chb.getX(), room.getY() + chb.getRadius());
         }
+
         //right wall
-        if (chb.getX() + chb.getRadius() > room.getX() + room.getWidth()) {
+        if (chb.getX() + chb.getRadius() >= room.getX() + room.getWidth()) {
             result = true;
             chb.changePosition(room.getX() + room.getWidth() - chb.getRadius(), chb.getY());
         }
+
         //left wall
-        if (chb.getX() - chb.getRadius() < room.getX()) {
+        if (chb.getX() - chb.getRadius() <= room.getX()) {
             result = true;
             chb.changePosition(room.getX() + chb.getRadius(), chb.getY());
         }
