@@ -61,12 +61,51 @@ class CollisionTest {
 
     @Test
     public void collisionBetweenEntityAndRoomBorders() {
+        //TOP BORDER COLLISION.
         final Room room = new MainRoom(new RectangularHitBox(0, 0, 600, 800), null, null, null);
         final CircleHitBox player = new CircleHitBox(3, 2, 2);
         assertTrue(CollisionUtil.checkBoundaryCollision(player, room));
-        final CircleHitBox enemy = new CircleHitBox(800, 600, 2);
+
+        //BOTTOM COLLISION BORDER.
+        final CircleHitBox enemy = new CircleHitBox(400, 600, 2);
         assertTrue(CollisionUtil.checkBoundaryCollision(enemy, room));
+
+        //RIGHT COLLISION BORDER.
+        final CircleHitBox enemy2 = new CircleHitBox(800, 300, 2);
+        assertTrue(CollisionUtil.checkBoundaryCollision(enemy2, room));
+
+        //LEFT COLLISION BORDER
+        final CircleHitBox enemy3 = new CircleHitBox(0, 300, 2);
+        assertTrue(CollisionUtil.checkBoundaryCollision(enemy3, room));
+
+        //NO COLLISION.
         final CircleHitBox boss = new CircleHitBox(400, 300, 10);
         assertFalse(CollisionUtil.checkBoundaryCollision(boss, room));
+    }
+
+    @Test
+    public void collisionBetweenPlayerAndDoor() {
+        final RectangularHitBox rigthDoor = new RectangularHitBox(780, 270, 30, 20);
+        final CircleHitBox player = new CircleHitBox(778, 200, 2);
+        assertFalse(CollisionUtil.doorPlayerCollision(player, rigthDoor));
+
+        //COLLISION WITH RIGHT DOOR.
+        final double deltaY = 80;
+        player.changePosition(player.getX(), player.getY() + deltaY);
+        assertTrue(CollisionUtil.doorPlayerCollision(player, rigthDoor));
+
+        //COLLISION WITH LEFT DOOR.
+        final RectangularHitBox leftDoor = new RectangularHitBox(0, 300, 30, 20);
+        final CircleHitBox enemy = new CircleHitBox(2, 298, 2);
+        assertTrue(CollisionUtil.doorPlayerCollision(enemy, leftDoor));
+    }
+
+    @Test
+    public void collisionWithHearth() {
+        final CircleHitBox hearth = new CircleHitBox(400, 600, 0.5);
+        final CircleHitBox player = new CircleHitBox(400, 598, 2);
+        assertFalse(CollisionUtil.entityCollision(hearth, player).isEmpty());
+        assertTrue(CollisionUtil.entityCollision(hearth, player).size() == 1);
+        assertTrue(CollisionUtil.entityCollision(hearth, player).contains(Command.DOWN));
     }
 }
