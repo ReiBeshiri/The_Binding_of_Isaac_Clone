@@ -20,10 +20,10 @@ public class PlayerMovement implements MovementStrategy {
         final List<Command> list = ModelUtility.getListMovementCommand();
         int deltaX = 0, deltaY = 0;
         if (list.contains(Command.UP)) {
-            deltaY++;
+            deltaY--;
         }
         if (list.contains(Command.DOWN)) {
-            deltaY--;
+            deltaY++;
         }
         if (list.contains(Command.RIGHT)) {
             deltaX++;
@@ -38,9 +38,9 @@ public class PlayerMovement implements MovementStrategy {
             // x-component and y-component of movements, using trigonometry.
             // With "angle * Math.PI / PLANE_ANGLE" we convert angle by degrees (obtained by conversion of atan2 result)
             // to radiant. 
-            final double performedX = h.getX() * vel * dt * Math.sin(angle * Math.PI / PLANE_ANGLE);
-            final double performedY = h.getY() * vel * dt * Math.cos(angle * Math.PI / PLANE_ANGLE);
-            return new CircleHitBox(performedX, performedY, h.getRadius());
+            final double performedY = vel * dt * Math.sin(angle * Math.PI / PLANE_ANGLE);
+            final double performedX = vel * dt * Math.cos(angle * Math.PI / PLANE_ANGLE);
+            return new CircleHitBox(h.getX() + performedX, h.getY() + performedY, h.getRadius());
         } 
         //If anything command was pressed in this frame, return the old HitBox, 
         //in the last position.
