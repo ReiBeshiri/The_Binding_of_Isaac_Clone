@@ -8,13 +8,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane fx:id="contentPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.MainMenuViewController">
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
    <top>
-      <Label id="lblTitle" text="Kill To Survive" BorderPane.alignment="CENTER">
+      <Label id="lblTitle" text="KILL TO SURVIVE" BorderPane.alignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>

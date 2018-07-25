@@ -6,7 +6,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane fx:id="contentPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.EndGameViewController">
    <top>
       <Label id="lblTitle" text="GameOver" BorderPane.alignment="CENTER" />
@@ -16,26 +15,23 @@
          <children>
             <GridPane>
               <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
-                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" valignment="CENTER" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="You Scored:">
+                  <Label contentDisplay="CENTER" text="You Scored:">
                      <padding>
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <TextField editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" />
-                  <Label text="Nickname:" GridPane.rowIndex="1">
-                     <padding>
-                        <Insets right="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="nicknameText" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="nicknameText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.rowIndex="3" />
+                  <TextField fx:id="scoreText" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.rowIndex="1" />
+                  <Label text="Insert Your Nickname Here:" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

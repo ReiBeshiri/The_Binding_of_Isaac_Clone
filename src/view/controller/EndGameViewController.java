@@ -17,13 +17,12 @@ public class EndGameViewController extends AbstractControllerFXML {
     private TextField nicknameText;
 
     @FXML
-    private void exitButtonClick() {
-        super.closingFade(() -> ViewManagerImpl.get().pop());
-    }
+    private TextField scoreText;
 
     @FXML
-    private void saveButtonClick() {
-        //super.closingFade(() -> ViewManager.Pop()); DOBBIAMO GESTIRE IL SALVATAGGIO. 
+    private void exitButtonClick() {
+        //TODO Salvataggio su leadearboard
+        super.closingFade(() -> ViewManagerImpl.get().pop());
     }
 
     @Override
