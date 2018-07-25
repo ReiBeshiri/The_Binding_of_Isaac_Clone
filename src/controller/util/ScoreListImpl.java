@@ -2,6 +2,7 @@ package controller.util;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**
  * This class implements iterator, it contains a list of Score object to iterate.
  * @param <E> Object contains name, time elapsed and score.
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 public class ScoreListImpl<E extends Score> implements ScoreList<E> {
     private final List<E> list; 
     private int count;
+
     /**
      * 
      * @param ls List of Score Object;
@@ -17,6 +19,7 @@ public class ScoreListImpl<E extends Score> implements ScoreList<E> {
         list = ls;
         count = -1;
     }
+
     /**
      * Return true if the list has another element, false otherwise.
      */
@@ -24,6 +27,7 @@ public class ScoreListImpl<E extends Score> implements ScoreList<E> {
     public boolean hasNext() {
         return count < list.size() - 1;
     }
+
     /**
      * Return the next element of the list.
      */
@@ -32,6 +36,7 @@ public class ScoreListImpl<E extends Score> implements ScoreList<E> {
         count = count + 1;
         return list.get(count);
     }
+
     /**
      * Reset the counter of the list, in this way it starts again from the head of the list.
      */
@@ -39,6 +44,7 @@ public class ScoreListImpl<E extends Score> implements ScoreList<E> {
     public void reset() {
         count = -1;
     }
+
     /**
      * Get names of leaderboard ordered by score.
      */
@@ -46,6 +52,7 @@ public class ScoreListImpl<E extends Score> implements ScoreList<E> {
     public List<String> getNameList() {
         return list.stream().map(x -> x.getName()).collect(Collectors.toList());
     }
+
     /**
      * Get points of leaderboard ordered by score.
      */
@@ -53,6 +60,7 @@ public class ScoreListImpl<E extends Score> implements ScoreList<E> {
     public List<Integer> getPointList() {
         return list.stream().map(x -> x.getPoint()).collect(Collectors.toList());
     }
+
     /**
      * Get times of leaderboard ordered by score.
      */

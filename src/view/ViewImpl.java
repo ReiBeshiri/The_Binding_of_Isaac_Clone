@@ -8,6 +8,8 @@ import controller.event.KeyEvent;
 import controller.observer.ButtonObserver;
 import controller.observer.KeyObserver;
 import controller.observer.Observer;
+import controller.util.Score;
+import controller.util.ScoreList;
 import javafx.application.Application;
 import controller.event.ButtonEvent;
 import controller.event.Event;
@@ -121,6 +123,13 @@ public final class ViewImpl implements View {
     @Override
     public void redraw() {
         drawer.resize();
+    }
+
+    /**
+     * Set scoreboard list.
+     */
+    @Override
+    public void setScoreBoard(final ScoreList<Score> score) {
     }
 
 }
