@@ -2,10 +2,8 @@ package utility;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import input.Command;
 import model.hitbox.RectangularHitBox;
-import model.room.Room;
 import model.animated.Animated;
 import model.hitbox.CircleHitBox;
 
@@ -20,12 +18,11 @@ public final class CollisionUtil {
      * Checks if the Circle has collided with the room walls.
      * @param chb
      *          The CircleHitBox entity.
-     * @param rectRoom
-     *          The Room, which is a RectangularHitBox entity.
+     * @param room
+     *          Rectangular HitBox that represent playable room. (Room minus wall dimension).
      * @return A boolean, true if the entity has collided with the walls, false otherwise.
      */
-    public static boolean checkBoundaryCollision(final CircleHitBox chb, final Room rectRoom) {
-        final RectangularHitBox room = (RectangularHitBox) rectRoom.getHitBox();
+    public static boolean checkBoundaryCollision(final CircleHitBox chb, final RectangularHitBox room) {
         boolean result = false;
 
         //bottom wall
