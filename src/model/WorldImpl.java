@@ -393,7 +393,7 @@ public class WorldImpl implements World {
        for (Command s : listShot) {
             MovementStrategy ms = new SimplyDirectionMovement(s);
             HitBox hb = new CircleHitBox(this.player.getHitBox().getX(), this.player.getHitBox().getY(), ProportionUtility.getRadiusBullet());
-            this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerBulletSpeed(), ms, ProportionUtility.getPlayerBulletRange(), ImageType.ENEMY_BULLET));
+            this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerVel(), ms, ProportionUtility.getPlayerBulletRange(), ImageType.ENEMY_BULLET));
         }
     }
 
