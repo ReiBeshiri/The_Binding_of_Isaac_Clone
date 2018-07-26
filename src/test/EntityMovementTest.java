@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Arrays;
-import java.util.Collections;
 import org.junit.jupiter.api.Test;
 import input.Command;
 import model.ai.BasicAI;
@@ -21,9 +20,11 @@ class EntityMovementTest {
 
     @Test
     public void playerMovementTest() {
-        // RIGHT MOVEMENT.
+
         final Animated player = new PlayerImpl(1, 6, new CircleHitBox(0, 0, 2),
                 new BasicAI(new PlayerMovement(), new PlayerProjectile(0.2)), 2, ImageType.PLAYER, 0.3);
+
+        // RIGHT MOVEMENT.
         final double oldX = player.getHitBox().getX();
         final double oldY = player.getHitBox().getY();
         ModelUtility.updateListCommandModelUtility(Arrays.asList(Command.RIGHT), null);
@@ -34,11 +35,26 @@ class EntityMovementTest {
         // UP MOVEMENT.
         final double oldXUp = player.getHitBox().getX();
         final double oldYUp = player.getHitBox().getY();
-        ModelUtility.updateListCommandModelUtility(Collections.emptyList(), null);
         ModelUtility.updateListCommandModelUtility(Arrays.asList(Command.UP), null);
         player.update(1);
         assertEquals(oldXUp, player.getHitBox().getX());
         assertEquals(oldYUp - 1, player.getHitBox().getY());
+
+        // LEFT MOVEMENT.
+        final double oldXLeft = player.getHitBox().getX();
+        final double oldYLeft = player.getHitBox().getY();
+        ModelUtility.updateListCommandModelUtility(Arrays.asList(Command.LEFT), null);
+        player.update(1);
+        assertEquals(oldXLeft - 1, player.getHitBox().getX());
+        assertEquals(oldYLeft, player.getHitBox().getY());
+ 
+        // DOWN MOVEMENT.
+        final double oldXDown = player.getHitBox().getX();
+        final double oldYDown = player.getHitBox().getY();
+        ModelUtility.updateListCommandModelUtility(Arrays.asList(Command.DOWN), null);
+        player.update(1);
+        assertEquals(oldXDown, player.getHitBox().getX());
+        assertEquals(oldYDown + 1, player.getHitBox().getY());
     }
 
     @Test
@@ -52,6 +68,18 @@ class EntityMovementTest {
 
         //REVERSE (DOWN) MOVEMENT.
         enemy.getAI().setMovementStrategy(new SimplyDirectionMovement(Command.UP.getOppositeCommand()));
+        enemy.update(1);
+        assertEquals(0, enemy.getHitBox().getX());
+        assertEquals(0, enemy.getHitBox().getY());
+
+        //RIGHT MOVEMENT.
+        enemy.getAI().setMovementStrategy(new SimplyDirectionMovement(Command.RIGHT));
+        enemy.update(1);
+        assertEquals(1, enemy.getHitBox().getX());
+        assertEquals(0, enemy.getHitBox().getY());
+
+        //REVERSE (LEFT) MOVEMENT.
+        enemy.getAI().setMovementStrategy(new SimplyDirectionMovement(Command.RIGHT.getOppositeCommand()));
         enemy.update(1);
         assertEquals(0, enemy.getHitBox().getX());
         assertEquals(0, enemy.getHitBox().getY());

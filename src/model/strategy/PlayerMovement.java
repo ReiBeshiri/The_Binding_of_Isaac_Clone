@@ -38,8 +38,9 @@ public class PlayerMovement implements MovementStrategy {
             // x-component and y-component of movements, using trigonometry.
             // With "angle * Math.PI / PLANE_ANGLE" we convert angle by degrees (obtained by conversion of atan2 result)
             // to radiant. 
-            final double performedY = vel * dt * Math.sin(angle * Math.PI / PLANE_ANGLE);
-            final double performedX = vel * dt * Math.cos(angle * Math.PI / PLANE_ANGLE);
+            // Used math.round to remove sin/cos gap.
+            final double performedY = vel * dt * Math.round(Math.sin(angle * Math.PI / PLANE_ANGLE));
+            final double performedX = vel * dt * Math.round(Math.cos(angle * Math.PI / PLANE_ANGLE));
             return new CircleHitBox(h.getX() + performedX, h.getY() + performedY, h.getRadius());
         } 
         //If anything command was pressed in this frame, return the old HitBox, 

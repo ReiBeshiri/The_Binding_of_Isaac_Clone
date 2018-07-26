@@ -65,7 +65,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     }
 
     /**
-     * 
+     * Set initial height of stage.
      */
     @Override
     public void setHeight(final double h) {
@@ -73,7 +73,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     }
 
     /**
-     * 
+     * Set initial width of stage.
      */
     @Override
     public void setWidth(final double w) {
@@ -112,7 +112,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     }
 
     /**
-     * 
+     * Get actual height of stage.
      */
     @Override
     public double getStageHeight() {
@@ -120,7 +120,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     }
 
     /**
-     * 
+     * Get actual width of stage.
      */
     @Override
     public double getStageWidth() {

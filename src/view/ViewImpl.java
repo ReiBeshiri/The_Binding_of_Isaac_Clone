@@ -29,7 +29,7 @@ public final class ViewImpl implements View {
     private static View view;
 
     /**
-     * 
+     * Provate constructor for this class.
      */
     private ViewImpl() {
         observers = new ArrayList<>();
@@ -79,7 +79,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * 
+     * Entry method to start view.
      */
     @Override
     public void viewStart() {
@@ -89,7 +89,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * 
+     * Event that notify events to controller.
      */
     @Override
     public void notifyEvent(final Event e) {
@@ -102,7 +102,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * 
+     * Used to add observer for events.
      */
     @Override
     public void addObserver(final Observer obs) {
