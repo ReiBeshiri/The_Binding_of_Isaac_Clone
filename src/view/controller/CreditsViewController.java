@@ -10,7 +10,7 @@ import view.ViewManagerImpl;
 public class CreditsViewController extends AbstractControllerFXML {
 
     @FXML
-    private BorderPane contentPane;
+    private BorderPane creditsContentPane;
 
     @FXML
     private void backButtonClick() {
@@ -19,7 +19,7 @@ public class CreditsViewController extends AbstractControllerFXML {
 
     @Override
     public final Region getRoot() {
-        return contentPane;
+        return creditsContentPane;
     }
 
 }

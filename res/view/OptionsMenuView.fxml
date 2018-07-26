@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane fx:id="contentPane" styleClass="background" stylesheets="@../stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.OptionsMenuViewController">
+<BorderPane fx:id="contentPane" styleClass="background" stylesheets="/stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.OptionsMenuViewController">
    <top>
       <Label id="lblTitle" alignment="CENTER" contentDisplay="CENTER" styleClass="background" text="Options" BorderPane.alignment="CENTER" />
    </top>
