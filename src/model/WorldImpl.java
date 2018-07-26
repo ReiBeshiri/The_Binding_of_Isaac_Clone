@@ -8,11 +8,13 @@ import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.animated.Enemy;
+import model.animated.Player;
 import model.animated.PlayerImpl;
 import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.hitbox.RectangularHitBox;
 import model.inanimated.Button;
 import model.inanimated.Heart;
 import model.inanimated.Inanimated;
@@ -425,7 +427,7 @@ public class WorldImpl implements World {
                 setNextRound();
                 this.listEvent.add(new PlayerHitButton());
             }
-            if (!this.button.isPressed() && getCurrentRound() >= 4 && CollisionUtil.checkBoundaryCollision((CircleHitBox) getPlayer().getHitBox(), (Room) we.getRightDoorFromMainToShop()) && this.mode.equals(Mode.NORMAL)) {
+            if (!this.button.isPressed() && getCurrentRound() >= 4 && CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox()) && this.mode.equals(Mode.NORMAL)) {
                 //se hai finito i round nella main puoi andare nello shop.
                 this.room = this.listRoom.get(2);
                 getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor());
@@ -465,7 +467,7 @@ public class WorldImpl implements World {
                     we.getItems().remove(i);
                 }
             }
-            if (CollisionUtil.checkBoundaryCollision((CircleHitBox) getPlayer().getHitBox(), (Room) we.getRightDoorFromShopToBoss())) {
+            if (CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
                 this.room = this.listRoom.get(2);
                 we.getLeftDoorFromBossToShop().setOpen(false);
                 this.listEvent.add(new BossFightStarted());
