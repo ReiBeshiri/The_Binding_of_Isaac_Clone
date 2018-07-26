@@ -45,7 +45,7 @@ public final class ViewManagerImpl implements ViewManager {
         if (stack.size() > 1) {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
             stack.pop();
-            stage.setScene(new Scene(stack.lastElement().getSceneController().getRoot()));
+            stage.setScene(new Scene(stack.lastElement().getSceneController().getRoot(), Color.DARKGRAY));
             stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
     }

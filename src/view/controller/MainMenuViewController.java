@@ -51,7 +51,7 @@ public class MainMenuViewController extends AbstractControllerFXML {
     private void creditsButtonClick() {
         ViewManagerImpl.get().push(new CreditScene());
     }
-    
+
     @FXML
     private void btnLeaderboardClick() {
         ViewManagerImpl.get().push(new LeaderboardScene());
