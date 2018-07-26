@@ -1,4 +1,8 @@
 package view.util;
+
+import controller.util.Score;
+import controller.util.ScoreList;
+
 /**
  * Utility class meant to keep views values e.g. fps, resolution and god mode.
  */
@@ -21,6 +25,8 @@ public final class ViewUtil {
     private static int selectedFPS = STANDARD_FPS;
 
     private static boolean godMode;
+
+    private static ScoreList<Score> leaderBoard; 
 
     private ViewUtil() { }
     /**
@@ -134,5 +140,19 @@ public final class ViewUtil {
      */
     public static double getHearthSpaceProportion() {
         return SPACE_HEARTH_PROPORTION;
+    }
+    /**
+     * Set scoreboard passed by controller.
+     * @param score scoreboard.
+     */
+    public static void setScoreBoard(final ScoreList<Score> score) {
+        leaderBoard = score;
+    }
+    /**
+     * Getter for scoreboard.
+     * @return scoreboard.
+     */
+    public static ScoreList<Score> getScoreBoard() {
+        return leaderBoard;
     }
 }

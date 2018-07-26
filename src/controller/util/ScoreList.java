@@ -42,4 +42,10 @@ public interface ScoreList<E extends Score> extends Iterator<E> {
      * @return the list of points in the leaderboard.
      */
     List<String> getTimeList();
+
+    /**
+     * Getter for score list.
+     * @return score list.
+     */
+    List<E> getScoreList();
 }

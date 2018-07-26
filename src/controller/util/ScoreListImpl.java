@@ -68,4 +68,12 @@ public class ScoreListImpl<E extends Score> implements ScoreList<E> {
     public List<String> getTimeList() {
         return list.stream().map(x -> x.getTime().toString()).collect(Collectors.toList());
     }
+
+    /**
+     * Get list of score.
+     */
+    @Override
+    public List<E> getScoreList() {
+        return list;
+    }
 }

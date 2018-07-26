@@ -7,6 +7,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.ViewManagerImpl;
+import view.util.ViewUtil;
+
 /**
  * Controller class for the LeaderboardView file.
  *
@@ -29,9 +31,15 @@ public class LeaderboardController extends AbstractControllerFXML {
         super.closingFade(() -> ViewManagerImpl.get().pop());
     }
 
+    /**
+     * Initialize method.
+     */
     @FXML
     public void initialize() {
-
+        nicknameColumn.setText("Nickname");
+        pointsColumn.setText("Points");
+        timeColumn.setText("Time");
+        table.getItems().setAll(ViewUtil.getScoreBoard().getScoreList());
     }
 
     @Override
