@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.CreditScene;
 import view.HelpScene;
+import view.LeaderboardScene;
 import view.NewGameScene;
 import view.OptionScene;
 import view.ViewImpl;
@@ -49,5 +50,10 @@ public class MainMenuViewController extends AbstractControllerFXML {
     @FXML
     private void creditsButtonClick() {
         ViewManagerImpl.get().push(new CreditScene());
+    }
+    
+    @FXML
+    private void btnLeaderboardClick() {
+        ViewManagerImpl.get().push(new LeaderboardScene());
     }
 }
