@@ -29,7 +29,7 @@ public final class ViewImpl implements View {
     private static View view;
 
     /**
-     * Provate constructor for this class.
+     * Private constructor for this class.
      */
     private ViewImpl() {
         observers = new ArrayList<>();
@@ -85,7 +85,7 @@ public final class ViewImpl implements View {
     public void viewStart() {
         ViewManagerImpl.get().setHeight(ModelUtility.getWorldHeight() + ViewUtil.getStageDeltaHeight());
         ViewManagerImpl.get().setWidth(ModelUtility.getWorldWidth());
-        Application.launch(ViewManagerImpl.class, "");
+        Application.launch(LaunchClass.class, "");
     }
 
     /**

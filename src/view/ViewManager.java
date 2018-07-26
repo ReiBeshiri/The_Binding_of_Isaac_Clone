@@ -1,5 +1,7 @@
 package view;
 
+import javafx.stage.Stage;
+
 /**
  * Class that manage different types of view.
  * 
@@ -43,4 +45,19 @@ public interface ViewManager {
      * @return Width of the stage.
      */
     double getStageWidth();
+    /**
+     * Set stage.
+     * @param primaryStage stage.
+     */
+    void setMainStage(Stage primaryStage);
+    /**
+     * Get started height.
+     * @return initial height.
+     */
+    double getStartedHeight();
+    /**
+     * Get started width.
+     * @return initial width.
+     */
+    double getStartedWidth();
 }

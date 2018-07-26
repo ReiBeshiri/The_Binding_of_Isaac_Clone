@@ -14,11 +14,11 @@ import view.util.SceneFactory;
  * Class that represent view manager. This class is used to manage scene state.
  *
  */
-public final class ViewManagerImpl extends Application implements ViewManager {
+public final class ViewManagerImpl implements ViewManager {
     private final Stack<GenericScene> stack;
     private Stage stage;
     private static ViewManager manager;
-    private double heigth;
+    private double height;
     private double width;
 
     private ViewManagerImpl() {
@@ -69,7 +69,7 @@ public final class ViewManagerImpl extends Application implements ViewManager {
      */
     @Override
     public void setHeight(final double h) {
-        heigth = h;
+        height = h;
     }
 
     /**
@@ -78,20 +78,6 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     @Override
     public void setWidth(final double w) {
         width = w;
-    }
-
-    /**
-     * Entry method of javaFX.
-     */
-    @Override
-    public void start(final Stage primaryStage) throws Exception {
-        stage = primaryStage;
-        stage.setHeight(heigth);
-        stage.setWidth(width);
-        ViewManagerImpl.get().push(SceneFactory.createMenuScene());
-        primaryStage.widthProperty().addListener(o -> updateViewState());
-        primaryStage.heightProperty().addListener(o -> updateViewState());
-        primaryStage.show();
     }
 
     /**
@@ -125,6 +111,30 @@ public final class ViewManagerImpl extends Application implements ViewManager {
     @Override
     public double getStageWidth() {
         return stage.getWidth();
+    }
+
+    /**
+     * Set stage.
+     */
+    @Override
+    public void setMainStage(final Stage primaryStage) {
+        stage = primaryStage;
+    }
+
+    /**
+     * Get height.
+     */
+    @Override
+    public double getStartedHeight() {
+        return height;
+    }
+
+    /**
+     * Get width.
+     */
+    @Override
+    public double getStartedWidth() {
+        return width;
     }
 
 }
