@@ -5,7 +5,9 @@ import view.EndGameScene;
 import view.GameScene;
 import view.GenericScene;
 import view.HelpScene;
+import view.LeaderboardScene;
 import view.MainMenuScene;
+import view.NewGameScene;
 import view.OptionScene;
 import view.PauseScene;
 /**
@@ -15,6 +17,7 @@ import view.PauseScene;
 public final class SceneFactory {
 
     private SceneFactory() { }
+
     /**
      * create new credit scene.
      * @return credit scene.
@@ -71,4 +74,19 @@ public final class SceneFactory {
         return new PauseScene();
     }
 
+    /**
+     * create leaderboard scene.
+     * @return leaderboard scene.
+     */
+    public static GenericScene createLeaderboardScene() {
+        return new LeaderboardScene();
+    }
+
+    /**
+     * create new game scene.
+     * @return new game scene.
+     */
+    public static GenericScene createNewGameScene() {
+        return new NewGameScene();
+    }
 }

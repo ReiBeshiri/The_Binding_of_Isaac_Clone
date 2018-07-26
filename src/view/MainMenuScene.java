@@ -7,6 +7,7 @@ import static proxyutility.SceneType.MENU;
  *
  */
 public class MainMenuScene extends AbstractGenericScene {
+
     /**
      * Constructor for menu scene.
      */

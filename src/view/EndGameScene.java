@@ -7,17 +7,20 @@ import static proxyutility.SceneType.ENDGAME;
  *
  */
 public class EndGameScene extends AbstractGenericScene {
+
     /**
      * Constructor for end game scene.
      */
     public EndGameScene() {
         super(ENDGAME);
     }
+
     /**
      * Close window.
      */
     @Override
     public void exitStatus() { }
+
     /**
      * 
      */
