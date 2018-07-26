@@ -14,14 +14,14 @@ import worldevent.WorldEvent;
  */
 public final class ModelUtility {
 
-    private static final double WORLD_HEIGHT = 800;
-    private static final double WORLD_WIDTH = 600;
+    private static final double WORLD_HEIGHT = 600;
+    private static final double WORLD_WIDTH = 800;
     private static final double WORLD_WIDTH_PROP = 4;
     private static final double WORLD_HEIGHT_PROP = 3;
     private static int currentRound;
     private static Animated player; 
     private static Room room;
-    private static List<Command> listMovementCommand;
+    private static List<Command> listMovementCommand; //The list of the movement of the player.
     private static List<Command> listShotsCommand;
     private static List<GameObject> listGameObject;
     private static List<WorldEvent> listWorldEvent; //Communicate with Controller.
