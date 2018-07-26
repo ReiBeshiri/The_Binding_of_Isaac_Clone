@@ -63,4 +63,10 @@ public interface View {
      * @param score scoreboard.
      */
     void setScoreBoard(ScoreList<Score> score);
+
+    /**
+     * Return true if godmode is selected.
+     * @return if godmode is selected or not.
+     */
+    boolean isGodModeSelected();
 }

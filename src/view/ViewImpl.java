@@ -132,4 +132,12 @@ public final class ViewImpl implements View {
     public void setScoreBoard(final ScoreList<Score> score) {
     }
 
+    /**
+     * Return status of godmode.
+     */
+    @Override
+    public boolean isGodModeSelected() {
+        return ViewUtil.isGodModeSelected();
+    }
+
 }
