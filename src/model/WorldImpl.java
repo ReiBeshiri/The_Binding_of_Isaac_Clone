@@ -116,6 +116,8 @@ public class WorldImpl implements World {
 
     /**
      * Set the game mode.
+     * The mode chosen by the player.
+     * Needs to be called to set the mode.
      * @param m the game mode chosen by the player.
      */
     public void setMode(final Mode m) {
@@ -240,7 +242,7 @@ public class WorldImpl implements World {
         ModelUtility.updateCurrentRound(this.currentRound);
         ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         ModelUtility.updateListWorldEvent(this.listEvent);
-        ModelUtility.updatePlayerModelUtility(this.player);
+        ModelUtility.updatePlayerModelUtility(getPlayer());
         ModelUtility.updateRoomModelUtility(this.room);
         ModelUtility.updateListGameObject(getNewListGameObj());
     }
