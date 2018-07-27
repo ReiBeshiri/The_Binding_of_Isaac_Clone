@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
 import javafx.util.Duration;
+
 /**
  * Abstract class with the common behavior to all controller classes.
  */
@@ -16,14 +17,16 @@ public abstract class AbstractControllerFXML implements ControllerFXML {
     public abstract Region getRoot();
 
     /**
-     * see https://stackoverflow.com/questions/24978278/fade-in-fade-out-a-screen-in-javafx
+     * see
+     * https://stackoverflow.com/questions/24978278/fade-in-fade-out-a-screen-in-javafx
      * Method used to apply a fade-in or fade-in transition to a window.
+     * 
      * @param node
-     *          The node on which we want to apply the transition.
+     *            The node on which we want to apply the transition.
      * @param from
-     *          The start opacity value.
+     *            The start opacity value.
      * @param to
-     *          The stop opacity value.
+     *            The stop opacity value.
      */
     private void fadeAnimation(final Node node, final double from, final double to) {
         fade = new FadeTransition(Duration.millis(TRANSITION_TIME), node);
@@ -33,16 +36,17 @@ public abstract class AbstractControllerFXML implements ControllerFXML {
     }
 
     /**
-     * Method used to apply a generic fade transition to a window
-     * and to set the window that needs to appear.
+     * Method used to apply a generic fade transition to a window and to set the
+     * window that needs to appear.
+     * 
      * @param node
-     *          The node on which we want to apply the transition.
+     *            The node on which we want to apply the transition.
      * @param from
-     *          The start opacity value.
+     *            The start opacity value.
      * @param to
-     *          The stop opacity value.
+     *            The stop opacity value.
      * @param toRun
-     *          The window that needs to be opened at the end of the transition.
+     *            The window that needs to be opened at the end of the transition.
      */
     private void fadeAnimation(final Node node, final double from, final double to, final Runnable toRun) {
         this.fadeAnimation(node, from, to);
@@ -51,8 +55,10 @@ public abstract class AbstractControllerFXML implements ControllerFXML {
 
     @Override
     public final void closingFade(final Runnable toRun) {
-        this.getRoot().setDisable(true);
-        this.fadeAnimation(this.getRoot(), 1.0, 0.0, toRun);
+        if (!this.getRoot().isDisable()) {
+            this.getRoot().setDisable(true);
+            this.fadeAnimation(this.getRoot(), 1.0, 0.0, toRun);
+        }
     }
 
     @Override

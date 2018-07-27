@@ -6,6 +6,7 @@ import java.util.Stack;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import proxyutility.SceneType;
@@ -16,11 +17,12 @@ import view.util.Tupla;
  *
  */
 public final class ViewManagerImpl implements ViewManager {
-    private final Stack<Tupla<GenericScene, Scene>> stack;
+    private final Stack<GenericScene> stack;
     private Stage stage;
     private static ViewManager manager;
     private double height;
     private double width;
+    private Scene scene;
 
     private ViewManagerImpl() {
         super();
@@ -33,12 +35,16 @@ public final class ViewManagerImpl implements ViewManager {
     @Override
     public void push(final GenericScene genScene) {
         if (!stack.isEmpty()) {
-            stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getX().getEventHandler());
+            stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
-        final Scene scene = new Scene(genScene.getSceneController().getRoot(), Color.DARKGRAY);
-        stack.push(new Tupla<GenericScene, Scene>(genScene, scene));
-        stage.setScene(stack.lastElement().getY());
-        stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getX().getEventHandler());
+        if (Objects.isNull(scene)) {
+            scene = new Scene(genScene.getSceneController().getRoot(), Color.DARKGRAY);
+            stage.setScene(scene);
+        } else {
+            scene.setRoot(genScene.getSceneController().getRoot());
+        }
+        stack.push(genScene);
+        stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
     }
 
     /**
@@ -47,11 +53,10 @@ public final class ViewManagerImpl implements ViewManager {
     @Override
     public void pop() {
         if (stack.size() > 1) {
-            stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getX().getEventHandler());
-            stage.getScene().setRoot(new Group());
+            stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
             stack.pop();
-            stage.setScene(stack.lastElement().getY());
-            stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getX().getEventHandler());
+            stage.getScene().setRoot(stack.lastElement().getSceneController().getRoot());
+            stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
     }
 
@@ -88,7 +93,7 @@ public final class ViewManagerImpl implements ViewManager {
      */
     @Override
     public GenericScene getCurrentScene() {
-        return stack.lastElement().getX();
+        return stack.lastElement();
     }
 
     /**

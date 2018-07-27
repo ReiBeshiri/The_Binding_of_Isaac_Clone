@@ -22,7 +22,8 @@ public class EndGameViewController extends AbstractControllerFXML {
     @FXML
     private void exitButtonClick() {
         //TODO Salvataggio su leadearboard
-        super.closingFade(() -> ViewManagerImpl.get().pop());
+        //super.closingFade(() -> ViewManagerImpl.get().pop());
+        ViewManagerImpl.get().pop();
     }
 
     @Override

@@ -32,7 +32,8 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void exitButtonClick() {
-        super.closingFade(() -> ViewManagerImpl.get().pop());
+        //super.closingFade(() -> ViewManagerImpl.get().pop());
+        ViewManagerImpl.get().pop();
     }
 
     @Override

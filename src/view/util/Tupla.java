@@ -11,6 +11,7 @@ package view.util;
 public class Tupla<X, Y> {
     private final X x;
     private final Y y;
+
     /**
      * Constructor of the class.
      * @param x
@@ -22,6 +23,7 @@ public class Tupla<X, Y> {
         this.x = x;
         this.y = y;
     }
+
     /**
      * Getter for the Width.
      * @return The Width element.
@@ -29,6 +31,7 @@ public class Tupla<X, Y> {
     public X getX() {
         return x;
     }
+
     /**
      * Getter for the Height.
      * @return The Height element.

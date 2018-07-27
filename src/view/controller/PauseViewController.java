@@ -30,7 +30,8 @@ public class PauseViewController extends AbstractControllerFXML {
 
     @FXML
     private void resumeButtonClick() {
-        super.closingFade(() -> ViewManagerImpl.get().pop());
+        //super.closingFade(() -> ViewManagerImpl.get().pop());
+        ViewManagerImpl.get().pop();
     }
     @FXML
     private void exitButtonClick() {
