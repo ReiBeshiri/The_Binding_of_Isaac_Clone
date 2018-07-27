@@ -49,7 +49,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private Door leftDoorFromShopToMain;
     private Door rightDoorFromShopToBoss;
     private Door rightDoorFromBossToShop;
-    private List<Wall> lw;
+    private List<Wall> lw = new ArrayList<>();
     private List<Inanimated> items;
     private Animated boss;
     private static final int BOSS_POINTS = 1000;
