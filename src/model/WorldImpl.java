@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import input.Command;
@@ -45,18 +46,18 @@ import worldevent.WorldEvent;
 */
 public class WorldImpl implements World {
     private Animated player;                            //|is the player
-    private List<GameObject> listGameObject;
+    private List<GameObject> listGameObject = new ArrayList<>();
     private Room room;                                  //|method addRoom is setRoom
     private boolean gameOver;   //false initially
     private boolean bossDefeated;   //false initially
-    private List<Bullet> listBulletPlayer;
-    private List<Bullet> listBulletEnemies;
+    private List<Bullet> listBulletPlayer = new ArrayList<>();
+    private List<Bullet> listBulletEnemies = new ArrayList<>();
     private Button button;
-    private List<Command> listMovements;
-    private List<Command> listShots;
-    private List<Animated> listEnemy;                   //|list of enemies
-    private List<Room> listRoom;
-    private List<WorldEvent> listEvent;
+    private List<Command> listMovements = new ArrayList<>();
+    private List<Command> listShots = new ArrayList<>();
+    private List<Animated> listEnemy = new ArrayList<>();                   //|list of enemies
+    private List<Room> listRoom = new ArrayList<>();
+    private List<WorldEvent> listEvent = new ArrayList<>();
     private int currentRound = 1;
     private static final int DAMAGE = 1;
     private Mode mode;
