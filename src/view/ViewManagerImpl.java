@@ -2,6 +2,8 @@ package view;
 
 import java.util.Objects;
 import java.util.Stack;
+
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -35,7 +37,7 @@ public final class ViewManagerImpl implements ViewManager {
         }
         final Scene scene = new Scene(genScene.getSceneController().getRoot(), Color.DARKGRAY);
         stack.push(new Tupla<GenericScene, Scene>(genScene, scene));
-        stage.setScene(scene);
+        stage.setScene(stack.lastElement().getY());
         stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getX().getEventHandler());
     }
 
@@ -46,6 +48,7 @@ public final class ViewManagerImpl implements ViewManager {
     public void pop() {
         if (stack.size() > 1) {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getX().getEventHandler());
+            stage.getScene().setRoot(new Group());
             stack.pop();
             stage.setScene(stack.lastElement().getY());
             stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getX().getEventHandler());

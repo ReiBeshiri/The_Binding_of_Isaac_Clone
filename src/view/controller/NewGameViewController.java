@@ -10,6 +10,7 @@ import javafx.scene.layout.Region;
 import view.GameScene;
 import view.ViewImpl;
 import view.ViewManagerImpl;
+import view.util.SceneFactory;
 /**
  * 
  * Controller class for the NewGameView file.
@@ -30,8 +31,8 @@ public class NewGameViewController extends AbstractControllerFXML {
     @FXML
     private void btnPlayClick() {
         if (!txtNickname.getText().isEmpty()) {
-            ViewManagerImpl.get().push(new GameScene());
-            ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.START_GAME, txtNickname.getText()));
+            ViewManagerImpl.get().push(SceneFactory.createGameScene());
+            //ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.START_GAME, txtNickname.getText()));
         }
     }
 

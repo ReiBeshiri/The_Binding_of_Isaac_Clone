@@ -31,11 +31,8 @@ public class LeaderboardController extends AbstractControllerFXML {
         super.closingFade(() -> ViewManagerImpl.get().pop());
     }
 
-    /**
-     * Initialize method.
-     */
     @FXML
-    public void initialize() {
+    private void initialize() {
         nicknameColumn.setText("Nickname");
         pointsColumn.setText("Points");
         timeColumn.setText("Time");
