@@ -69,4 +69,10 @@ public interface View {
      * @return if godmode is selected or not.
      */
     boolean isGodModeSelected();
+
+    /**
+     * Return if infinity mode is selected.
+     * @return if infinity mode is selected.
+     */
+    boolean isInfinityModeSelected();
 }

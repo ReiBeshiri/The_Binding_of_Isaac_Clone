@@ -140,4 +140,13 @@ public final class ViewImpl implements View {
         return ViewUtil.isGodModeSelected();
     }
 
+    /**
+     * Return if infinity mode is selected.
+     */
+    @Override
+    public boolean isInfinityModeSelected() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 }

@@ -25,6 +25,7 @@ public final class ViewUtil {
     private static int selectedFPS = STANDARD_FPS;
 
     private static boolean godMode;
+    private static boolean infinityMode;
 
     private static ScoreList<Score> leaderBoard; 
 
@@ -154,5 +155,19 @@ public final class ViewUtil {
      */
     public static ScoreList<Score> getScoreBoard() {
         return leaderBoard;
+    }
+    /**
+     * Getter for the infinity Mode option.
+     * @return True if is selected, false otherwise.
+     */
+    public static boolean isInfinityModeSelected() {
+        return infinityMode;
+    }
+    /**
+     * Setter used for the infinity Mode option.
+     * @param value True if the option is selected, false otherwise.
+     */
+    public static void setInfinityMode(final boolean value) {
+        infinityMode = value;
     }
 }

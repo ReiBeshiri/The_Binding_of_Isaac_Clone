@@ -23,12 +23,14 @@ public class GameCanvasViewController extends AbstractControllerFXML {
 
     @FXML
     private void inizialize() {
+        System.out.println("Ciao");
         final DrawerManager drawer = new DrawerManagerImpl(roomCanvas, elapsedTimeCanvas, lifesCanvas);
         ViewImpl.get().setDrawer(drawer);
     }
 
     @Override
     public final Region getRoot() {
+        inizialize();
         return rootGamePane;
     }
 

@@ -7,11 +7,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+import controller.observer.ButtonObserver;
+import controller.observer.KeyObserver;
 import controller.util.Score;
 import controller.util.ScoreImpl;
 import model.World;
 import model.WorldImpl;
 import timer.Time;
+import utility.Mode;
 import view.ViewImpl;
 
 /**
@@ -48,6 +52,8 @@ public final class GameEngineImpl implements GameEngine {
     public void initView() {
         //readLeaderboard();
         //Passare alla view la leaderboard;
+        ViewImpl.get().addObserver(new ButtonObserver());
+        ViewImpl.get().addObserver(new KeyObserver());
         ViewImpl.get().viewStart();
     }
 
@@ -58,6 +64,14 @@ public final class GameEngineImpl implements GameEngine {
     @Override
     public void newGame(final String name) {
         final World world = new WorldImpl();
+        world.createEnvironment();
+        if (ViewImpl.get().isGodModeSelected()) {
+            world.setMode(Mode.GOD);
+        } else if (ViewImpl.get().isInfinityModeSelected()) {
+            world.setMode(Mode.INFINITE);
+        } else {
+            world.setMode(Mode.NORMAL);
+        }
         this.gameLoop = new GameLoopImpl(world, name);
         resumeGameLoop();
     }
