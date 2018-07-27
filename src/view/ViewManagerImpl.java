@@ -2,15 +2,11 @@ package view;
 
 import java.util.Objects;
 import java.util.Stack;
-
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import proxyutility.SceneType;
-import view.util.Tupla;
 
 /**
  * Class that represent view manager. This class is used to manage scene state.
