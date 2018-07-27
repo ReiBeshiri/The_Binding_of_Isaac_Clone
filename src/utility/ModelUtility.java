@@ -18,6 +18,7 @@ public final class ModelUtility {
     private static final double WORLD_WIDTH = 800;
     private static final double WORLD_WIDTH_PROP = 4;
     private static final double WORLD_HEIGHT_PROP = 3;
+    private static final double EPSILON = 0.001;
     private static int currentRound;
     private static Animated player; 
     private static Room room;
@@ -36,6 +37,13 @@ public final class ModelUtility {
      */
     public static Animated getPlayer() {
         return player;
+    }
+
+    /**
+     * @return player.
+     */
+    public static double getEpsilon() {
+        return EPSILON;
     }
 
     /**

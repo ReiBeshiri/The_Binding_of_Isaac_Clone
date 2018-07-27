@@ -39,7 +39,7 @@ import utility.SpawnUtility;
  * World Environment Implement. 
  */
 public class WorldEnvironmentImpl implements WorldEnvironment {
-    private List<Room> listRoom;
+    private List<Room> listRoom = new ArrayList<>();
     private final RoomFactory rf = new RoomFactoryImpl();
     private final HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getWidth(), ProportionUtility.getHeight());
     private final HitBox hbDoorr = new RectangularHitBox(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
@@ -50,7 +50,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private Door rightDoorFromShopToBoss;
     private Door rightDoorFromBossToShop;
     private List<Wall> lw = new ArrayList<>();
-    private List<Inanimated> items;
+    private List<Inanimated> items = new ArrayList<>();
     private Animated boss;
     private static final int BOSS_POINTS = 1000;
     private static final int BOSS_SHOTS = 10;
@@ -129,7 +129,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
             Wall wall = new WallImpl(hb, false, ImageType.MAP_VERTICAL_BORDER);
             this.lw.add(wall);
             y += ProportionUtility.getWallRangeSide();
-            if (y == ProportionUtility.getWallRangeSide() * ((ModelUtility.getWorldHeight() - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide()) / 2 + ProportionUtility.getWallStandard()) {
+            if (ProportionUtility.getWallRangeSide() * ((ModelUtility.getWorldHeight() - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide()) / 2 + ProportionUtility.getWallStandard() - y < ModelUtility.getEpsilon()) {
                 y = y + ProportionUtility.getHeightDoor();
             }
         }
@@ -139,7 +139,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
             Wall wall = new WallImpl(hb, false, ImageType.MAP_VERTICAL_BORDER);
             this.lw.add(wall);
             y += ProportionUtility.getWallRangeSide();
-            if (y == (ProportionUtility.getWallRangeSide() * (ModelUtility.getWorldHeight() - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide()) / 2 + ProportionUtility.getWallStandard()) {
+            if ((ProportionUtility.getWallRangeSide() * (ModelUtility.getWorldHeight() - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide()) / 2 + ProportionUtility.getWallStandard() - y < ModelUtility.getEpsilon()) {
                 y = y + ProportionUtility.getHeightDoor();
             }
         }

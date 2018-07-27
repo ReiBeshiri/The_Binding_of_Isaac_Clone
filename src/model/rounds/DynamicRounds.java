@@ -1,4 +1,6 @@
 package model.rounds;
+import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 import input.Command;
@@ -22,30 +24,15 @@ public class DynamicRounds implements RoundsGenerator {
     private static final int MAXENEMY = 7;
     private static final double SHOTRATIOBASIC = 0.5;
     private static final double SHOTRATIOHARD = 0.4;
-    private List<EnemyType> listEnemy;
-    private List<Command> listCommand;
-    private List<Spawns> listSpawns;
+    private final List<EnemyType> listEnemy = new ArrayList<>();
+    private final List<Command> listCommand = new ArrayList<>();
+    private final List<Spawns> listSpawns = new ArrayList<>();
     private int enemyToSpawn;
-    private List<Animated> listReturnEnemy;
+    private final List<Animated> listReturnEnemy = new ArrayList<>();
     /**
      * Add to the list all the possible enemies, and the spawns.
      */
     public DynamicRounds() {
-        listEnemy.add(EnemyType.SIMPLEAIMED);
-        listEnemy.add(EnemyType.SIMPLEMOVE);
-        listEnemy.add(EnemyType.SIPMLE);
-        //spawns.add(Spawns.A); i'll take A as player's spawn.
-        listSpawns.add(Spawns.B);
-        listSpawns.add(Spawns.C);
-        listSpawns.add(Spawns.D);
-        listSpawns.add(Spawns.E);
-        listSpawns.add(Spawns.F);
-        listSpawns.add(Spawns.G);
-        listSpawns.add(Spawns.H);
-        listCommand.add(Command.UP);
-        listCommand.add(Command.RIGHT);
-        listCommand.add(Command.DOWN);
-        listCommand.add(Command.LEFT);
     }
 
     /**
@@ -53,6 +40,7 @@ public class DynamicRounds implements RoundsGenerator {
      */
     @Override
     public List<Animated> generateMonster() {
+        fullList();
         enemyToSpawn = numberOfEnemyToGenerate();
         Collections.shuffle(listSpawns);
         for (int i = 0; i < enemyToSpawn; i++) {
@@ -63,16 +51,16 @@ public class DynamicRounds implements RoundsGenerator {
             spawn = listSpawns.remove(0);
             if (listEnemy.get(0).equals(EnemyType.SIPMLE)) {
                 HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
-                enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
-                listReturnEnemy.add((Animated) enemy); 
+                Animated en = enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
+                listReturnEnemy.add(en); 
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEMOVE)) {
                 HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
-                enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
-                listReturnEnemy.add((Animated) enemy); 
+                Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
+                listReturnEnemy.add(en); 
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEAIMED)) {
                 HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
-                enemy.createStaticAimedBulletEnemy(hb, ProportionUtility.getRadiusBullet(), ImageType.AIMED_ENEMY, DynamicRounds.SHOTRATIOHARD);
-                listReturnEnemy.add((Animated) enemy);
+               Animated en = enemy.createStaticAimedBulletEnemy(hb, ProportionUtility.getRadiusBullet(), ImageType.AIMED_ENEMY, DynamicRounds.SHOTRATIOHARD);
+                listReturnEnemy.add(en);
             }
         }
         return listReturnEnemy;
@@ -90,5 +78,26 @@ public class DynamicRounds implements RoundsGenerator {
      */
     private int getCurrentRound() {
         return ModelUtility.getCurrentRound();
+    }
+
+    /**
+     * full the lists with the needed parameters.
+     */
+    private void fullList() {
+        listEnemy.add(EnemyType.SIMPLEAIMED);
+        listEnemy.add(EnemyType.SIMPLEMOVE);
+        listEnemy.add(EnemyType.SIPMLE);
+        //spawns.add(Spawns.A); i'll take A as player's spawn.
+        listSpawns.add(Spawns.B);
+        listSpawns.add(Spawns.C);
+        listSpawns.add(Spawns.D);
+        listSpawns.add(Spawns.E);
+        listSpawns.add(Spawns.F);
+        listSpawns.add(Spawns.G);
+        listSpawns.add(Spawns.H);
+        listCommand.add(Command.UP);
+        listCommand.add(Command.RIGHT);
+        listCommand.add(Command.DOWN);
+        listCommand.add(Command.LEFT);
     }
 }
