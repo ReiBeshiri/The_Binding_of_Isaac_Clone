@@ -26,14 +26,14 @@ public class Tupla<X, Y> {
      * Getter for the Width.
      * @return The Width element.
      */
-    public X getWidth() {
+    public X getX() {
         return x;
     }
     /**
      * Getter for the Height.
      * @return The Height element.
      */
-    public Y getHeight() {
+    public Y getY() {
         return y;
     }
 }

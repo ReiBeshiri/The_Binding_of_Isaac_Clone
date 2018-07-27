@@ -114,8 +114,8 @@ public class DrawerManagerImpl implements DrawerManager {
                         ViewManagerImpl.get().getStageHeight() - ViewUtil.getStageDeltaHeight()),
                 new Tupla<Double, Double>(ModelUtility.getWorldWidthProp(), ModelUtility.getWorldHeightProp()),
                 new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
-        gameCanvas.setHeight(gameCanvasDimension.getHeight());
-        gameCanvas.setWidth(gameCanvasDimension.getWidth());
+        gameCanvas.setHeight(gameCanvasDimension.getY());
+        gameCanvas.setWidth(gameCanvasDimension.getX());
         gameCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
         gameCanvas.setTranslateY((ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight()
                 - (gameCanvas.getWidth() / ((ViewUtil.getTimerCanvasWidth() / ViewUtil.getStageDeltaHeight()) * 2)))
@@ -147,7 +147,7 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
         gcGameCanvas.save();
-        gcGameCanvas.scale(scalingFactor.getWidth(), scalingFactor.getHeight());
+        gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         entities.forEach(x -> {
             // Safe-casting, all moving entities have a circle hitBox.
 //            final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
@@ -165,7 +165,7 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
         gcGameCanvas.save();
-        gcGameCanvas.scale(scalingFactor.getWidth(), scalingFactor.getHeight());
+        gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         gcGameCanvas.setFill(Color.DARKGOLDENROD);
         gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
         room.getDoors().forEach(x -> {
@@ -234,7 +234,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcLifeCanvas.clearRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
         gcLifeCanvas.setFill(Color.DARKGRAY);
         gcLifeCanvas.fillRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
-        gcLifeCanvas.scale(scaleFactor.getWidth(), scaleFactor.getHeight());
+        gcLifeCanvas.scale(scaleFactor.getX(), scaleFactor.getY());
         final int completedHearth = life / 2;
         final int halfHeath = life - completedHearth > 0 ? 1 : 0;
         final double imgBlock = ((completedHearth + halfHeath) * ViewUtil.getHearthWidth())
@@ -259,30 +259,30 @@ public class DrawerManagerImpl implements DrawerManager {
     private Tupla<Double, Double> getScaledDimension(final Tupla<Double, Double> canvasSize,
             final Tupla<Double, Double> boundary, final Tupla<Double, Double> prop, final Tupla<Double, Double> max) {
 
-        double canvasWidth = canvasSize.getWidth();
-        double canvasHeight = canvasSize.getHeight();
+        double canvasWidth = canvasSize.getX();
+        double canvasHeight = canvasSize.getY();
 
-        if (canvasSize.getWidth() > boundary.getWidth()) {
-            canvasWidth = boundary.getWidth();
-            canvasHeight = (canvasWidth * prop.getHeight()) / prop.getWidth();
-        } else if (canvasSize.getHeight() > boundary.getHeight()) {
-            canvasHeight = boundary.getHeight();
-            canvasWidth = (prop.getWidth() * canvasHeight) / prop.getHeight();
+        if (canvasSize.getX() > boundary.getX()) {
+            canvasWidth = boundary.getX();
+            canvasHeight = (canvasWidth * prop.getY()) / prop.getX();
+        } else if (canvasSize.getY() > boundary.getY()) {
+            canvasHeight = boundary.getY();
+            canvasWidth = (prop.getX() * canvasHeight) / prop.getY();
         }
-        if (canvasSize.getWidth() < boundary.getWidth()
-                && boundary.getHeight() >= boundary.getWidth() * prop.getHeight() / prop.getWidth()) {
-            canvasWidth = boundary.getWidth();
-            canvasHeight = (canvasWidth * prop.getHeight()) / prop.getWidth();
-        } else if (canvasSize.getHeight() < boundary.getHeight()
-                && boundary.getWidth() >= boundary.getHeight() * prop.getWidth() / prop.getHeight()) {
-            canvasHeight = boundary.getHeight();
-            canvasWidth = (prop.getWidth() * canvasHeight) / prop.getHeight();
+        if (canvasSize.getX() < boundary.getX()
+                && boundary.getY() >= boundary.getX() * prop.getY() / prop.getX()) {
+            canvasWidth = boundary.getX();
+            canvasHeight = (canvasWidth * prop.getY()) / prop.getX();
+        } else if (canvasSize.getY() < boundary.getY()
+                && boundary.getX() >= boundary.getY() * prop.getX() / prop.getY()) {
+            canvasHeight = boundary.getY();
+            canvasWidth = (prop.getX() * canvasHeight) / prop.getY();
         }
-        if (canvasHeight > max.getHeight()) {
-            canvasHeight = max.getHeight();
+        if (canvasHeight > max.getY()) {
+            canvasHeight = max.getY();
         }
-        if (canvasWidth > max.getWidth()) {
-            canvasWidth = max.getWidth();
+        if (canvasWidth > max.getX()) {
+            canvasWidth = max.getX();
         }
         return new Tupla<Double, Double>(canvasHeight, canvasWidth);
     }
@@ -298,8 +298,8 @@ public class DrawerManagerImpl implements DrawerManager {
 
     private Tupla<Double, Double> computeScaleFactor(final Tupla<Double, Double> canvasSize,
             final Tupla<Double, Double> boundarySize) {
-        return new Tupla<Double, Double>(canvasSize.getWidth() / boundarySize.getWidth(),
-                canvasSize.getHeight() / boundarySize.getHeight());
+        return new Tupla<Double, Double>(canvasSize.getX() / boundarySize.getX(),
+                canvasSize.getY() / boundarySize.getY());
     }
 
     private void drawHitBoxImage(final ImageType img, final CircleHitBox hBox) {
