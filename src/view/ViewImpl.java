@@ -145,8 +145,7 @@ public final class ViewImpl implements View {
      */
     @Override
     public boolean isInfinityModeSelected() {
-        // TODO Auto-generated method stub
-        return false;
+        return ViewUtil.isInfinityModeSelected();
     }
 
 }
