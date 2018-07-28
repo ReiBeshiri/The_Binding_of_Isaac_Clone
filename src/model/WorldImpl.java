@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import input.Command;
+import model.ai.BasicAI;
 import model.animated.AbstractCharacter;
 import model.animated.Animated;
 import model.animated.Bullet;
@@ -24,6 +25,8 @@ import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
 import model.rounds.StaticRounds;
 import model.strategy.MovementStrategy;
+import model.strategy.PlayerMovement;
+import model.strategy.PlayerProjectile;
 import model.strategy.SimplyDirectionMovement;
 import proxyutility.ImageType;
 import utility.CollisionUtil;
@@ -483,8 +486,11 @@ public class WorldImpl implements World {
      * @return the player in the spawn A of the map.
      */
     private Animated playerCreation() {
-        HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(), ProportionUtility.getRadiusPlayer());
-        Animated p = new PlayerImpl(ProportionUtility.getPlayerVel(), ProportionUtility.getPlayerLife(), hb, null, ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio()); 
+        HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
+                ProportionUtility.getRadiusPlayer());
+        Animated p = new PlayerImpl(ProportionUtility.getPlayerVel(), ProportionUtility.getPlayerLife(), hb,
+                new BasicAI(new PlayerMovement(), new PlayerProjectile(ProportionUtility.getRadiusBullet())),
+                ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio());
         return p;
     }
 }
