@@ -99,6 +99,7 @@ public class DrawerManagerImpl implements DrawerManager {
      */
     @Override
     public void draw() {
+        gcGameCanvas.clearRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
         drawRoom();
         drawEntities();
     }
