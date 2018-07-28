@@ -231,6 +231,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
+        ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         this.listMovements = listMovement;
         this.listShots = listShots;
         createPlayerBullet(listShots);
@@ -244,7 +245,7 @@ public class WorldImpl implements World {
         }
         // update ModelUtility
         ModelUtility.updateCurrentRound(this.currentRound);
-        ModelUtility.updateListCommandModelUtility(listMovement, listShots);
+        //ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         ModelUtility.updateListWorldEvent(this.listEvent);
         ModelUtility.updatePlayerModelUtility(getPlayer());
         ModelUtility.updateRoomModelUtility(this.room);
