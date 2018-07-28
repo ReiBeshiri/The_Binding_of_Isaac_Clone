@@ -16,6 +16,7 @@ import model.World;
 import model.WorldImpl;
 import timer.Time;
 import utility.Mode;
+import utility.ModelUtility;
 import view.ViewImpl;
 
 /**
@@ -72,6 +73,7 @@ public final class GameEngineImpl implements GameEngine {
         } else {
             world.setMode(Mode.NORMAL);
         }
+        ViewImpl.get().roomChanged(ModelUtility.getRoom());
         this.gameLoop = new GameLoopImpl(world, name);
         resumeGameLoop();
     }

@@ -117,6 +117,7 @@ public class WorldImpl implements World {
         this.room = this.listRoom.get(0);
         addButton(we.getButton());
         createPlayer(playerCreation());
+        ModelUtility.updateRoomModelUtility(this.room);
     }
 
     /**
