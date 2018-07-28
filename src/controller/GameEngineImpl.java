@@ -16,6 +16,7 @@ import model.World;
 import model.WorldImpl;
 import timer.Time;
 import utility.Mode;
+import utility.ModelUtility;
 import view.ViewImpl;
 
 /**
@@ -54,6 +55,7 @@ public final class GameEngineImpl implements GameEngine {
         //Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
+        ViewImpl.get().roomChanged(ModelUtility.getRoom());
         ViewImpl.get().viewStart();
     }
 
