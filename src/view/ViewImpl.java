@@ -17,7 +17,7 @@ import model.GameObject;
 import model.animated.Animated;
 import model.room.Room;
 import utility.ModelUtility;
-import view.util.ViewUtil;
+import view.util.ViewUtils;
 
 /**
  * Class that represent view.
@@ -83,7 +83,7 @@ public final class ViewImpl implements View {
      */
     @Override
     public void viewStart() {
-        ViewManagerImpl.get().setHeight(ModelUtility.getWorldHeight() + ViewUtil.getStageDeltaHeight());
+        ViewManagerImpl.get().setHeight(ModelUtility.getWorldHeight() + ViewUtils.getStageDeltaHeight());
         ViewManagerImpl.get().setWidth(ModelUtility.getWorldWidth());
         Application.launch(LaunchClass.class, "");
     }
@@ -130,6 +130,7 @@ public final class ViewImpl implements View {
      */
     @Override
     public void setScoreBoard(final ScoreList<Score> score) {
+        ViewUtils.setScoreBoard(score);
     }
 
     /**
@@ -137,7 +138,7 @@ public final class ViewImpl implements View {
      */
     @Override
     public boolean isGodModeSelected() {
-        return ViewUtil.isGodModeSelected();
+        return ViewUtils.isGodModeSelected();
     }
 
     /**
@@ -145,7 +146,7 @@ public final class ViewImpl implements View {
      */
     @Override
     public boolean isInfinityModeSelected() {
-        return ViewUtil.isInfinityModeSelected();
+        return ViewUtils.isInfinityModeSelected();
     }
 
 }

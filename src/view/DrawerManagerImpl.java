@@ -19,7 +19,7 @@ import proxyutility.ProxyImageLoader;
 import timer.Time;
 import utility.ModelUtility;
 import view.util.Tupla;
-import view.util.ViewUtil;
+import view.util.ViewUtils;
 
 import java.util.LinkedList;
 
@@ -111,19 +111,19 @@ public class DrawerManagerImpl implements DrawerManager {
         final Tupla<Double, Double> gameCanvasDimension = getScaledDimension(
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ViewManagerImpl.get().getStageWidth(),
-                        ViewManagerImpl.get().getStageHeight() - ViewUtil.getStageDeltaHeight()),
+                        ViewManagerImpl.get().getStageHeight() - ViewUtils.getStageDeltaHeight()),
                 new Tupla<Double, Double>(ModelUtility.getWorldWidthProp(), ModelUtility.getWorldHeightProp()),
                 new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
         gameCanvas.setHeight(gameCanvasDimension.getY());
         gameCanvas.setWidth(gameCanvasDimension.getX());
         gameCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
         gameCanvas.setTranslateY((ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight()
-                - (gameCanvas.getWidth() / ((ViewUtil.getTimerCanvasWidth() / ViewUtil.getStageDeltaHeight()) * 2)))
+                - (gameCanvas.getWidth() / ((ViewUtils.getTimerCanvasWidth() / ViewUtils.getStageDeltaHeight()) * 2)))
                 / 2);
 
         timerCanvas.setWidth(gameCanvas.getWidth() / 2);
         timerCanvas
-                .setHeight(timerCanvas.getWidth() / (ViewUtil.getTimerCanvasWidth() / ViewUtil.getStageDeltaHeight()));
+                .setHeight(timerCanvas.getWidth() / (ViewUtils.getTimerCanvasWidth() / ViewUtils.getStageDeltaHeight()));
         timerCanvas.setTranslateX(ViewManagerImpl.get().getStageWidth()
                 - ((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2) - timerCanvas.getWidth());
         // timercanvas.setTranslateY(ViewManagerImpl.get().getStageHeight()
@@ -132,7 +132,7 @@ public class DrawerManagerImpl implements DrawerManager {
         timerCanvas.setTranslateY(gameCanvas.getTranslateY() + gameCanvas.getHeight());
 
         lifeCanvas.setWidth(gameCanvas.getWidth() / 2);
-        lifeCanvas.setHeight(lifeCanvas.getWidth() / (ViewUtil.getLifeCanvasWidth() / ViewUtil.getLifeCanvasHeight()));
+        lifeCanvas.setHeight(lifeCanvas.getWidth() / (ViewUtils.getLifeCanvasWidth() / ViewUtils.getLifeCanvasHeight()));
         lifeCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
         // lifeCanvas.setTranslateY(gameCanvas.getHeight()
         // + (ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight() -
@@ -220,7 +220,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcTimerCanvas.setTextAlign(TextAlignment.RIGHT);
         gcTimerCanvas.setTextBaseline(VPos.CENTER);
         gcTimerCanvas.setFill(Color.WHITE);
-        gcTimerCanvas.setFont(new Font(timerCanvas.getHeight() / ViewUtil.getTextTimerProp()));
+        gcTimerCanvas.setFont(new Font(timerCanvas.getHeight() / ViewUtils.getTextTimerProp()));
         gcTimerCanvas.fillText(time.toString(), Math.round(timerCanvas.getWidth() / 2),
                 Math.round(timerCanvas.getHeight() / 2), timerCanvas.getWidth());
         gcTimerCanvas.restore();
@@ -229,7 +229,7 @@ public class DrawerManagerImpl implements DrawerManager {
     private void drawPlayerLife() {
         final Tupla<Double, Double> scaleFactor = computeScaleFactor(
                 new Tupla<Double, Double>(lifeCanvas.getWidth(), lifeCanvas.getHeight()),
-                new Tupla<Double, Double>(ViewUtil.getLifeCanvasWidth(), ViewUtil.getLifeCanvasHeight()));
+                new Tupla<Double, Double>(ViewUtils.getLifeCanvasWidth(), ViewUtils.getLifeCanvasHeight()));
         gcLifeCanvas.save();
         gcLifeCanvas.clearRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
         gcLifeCanvas.setFill(Color.DARKGRAY);
@@ -237,14 +237,14 @@ public class DrawerManagerImpl implements DrawerManager {
         gcLifeCanvas.scale(scaleFactor.getX(), scaleFactor.getY());
         final int completedHearth = life / 2;
         final int halfHeath = life - completedHearth > 0 ? 1 : 0;
-        final double imgBlock = ((completedHearth + halfHeath) * ViewUtil.getHearthWidth())
-                + (completedHearth + halfHeath - 1) * ViewUtil.getLifeCanvasWidth()
-                        / ViewUtil.getHearthSpaceProportion();
-        final double yDistance = (ViewUtil.getLifeCanvasHeight() - ViewUtil.getHearthHeight()) / 2;
+        final double imgBlock = ((completedHearth + halfHeath) * ViewUtils.getHearthWidth())
+                + (completedHearth + halfHeath - 1) * ViewUtils.getLifeCanvasWidth()
+                        / ViewUtils.getHearthSpaceProportion();
+        final double yDistance = (ViewUtils.getLifeCanvasHeight() - ViewUtils.getHearthHeight()) / 2;
         final List<Double> xDistances = new LinkedList<>();
         IntStream.range(0, completedHearth)
-                .mapToDouble(x -> (ViewUtil.getLifeCanvasWidth() - imgBlock) / 2 + x * ViewUtil.getHearthWidth()
-                        + x * ViewUtil.getLifeCanvasWidth() / ViewUtil.getHearthSpaceProportion())
+                .mapToDouble(x -> (ViewUtils.getLifeCanvasWidth() - imgBlock) / 2 + x * ViewUtils.getHearthWidth()
+                        + x * ViewUtils.getLifeCanvasWidth() / ViewUtils.getHearthSpaceProportion())
                 .forEach(x -> xDistances.add(x));
         IntStream.range(0, completedHearth).forEach(x -> {
             gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.FULL_HEART), xDistances.get(x), yDistance);
@@ -290,10 +290,10 @@ public class DrawerManagerImpl implements DrawerManager {
     private void setCanvasDimension() {
         gameCanvas.setHeight(ModelUtility.getWorldHeight());
         gameCanvas.setWidth(ModelUtility.getWorldWidth());
-        timerCanvas.setHeight(ViewUtil.getTimerCanvasHeight());
-        timerCanvas.setWidth(ViewUtil.getTimerCanvasWidth());
-        lifeCanvas.setHeight(ViewUtil.getLifeCanvasHeight());
-        lifeCanvas.setWidth(ViewUtil.getLifeCanvasWidth());
+        timerCanvas.setHeight(ViewUtils.getTimerCanvasHeight());
+        timerCanvas.setWidth(ViewUtils.getTimerCanvasWidth());
+        lifeCanvas.setHeight(ViewUtils.getLifeCanvasHeight());
+        lifeCanvas.setWidth(ViewUtils.getLifeCanvasWidth());
     }
 
     private Tupla<Double, Double> computeScaleFactor(final Tupla<Double, Double> canvasSize,

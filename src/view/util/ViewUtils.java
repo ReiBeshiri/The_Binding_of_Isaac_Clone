@@ -6,7 +6,7 @@ import controller.util.ScoreList;
 /**
  * Utility class meant to keep views values e.g. fps, resolution and god mode.
  */
-public final class ViewUtil {
+public final class ViewUtils {
 
     private static final double TIMER_CANVAS_H = 50;
     private static final double TIMER_CANVAS_W = 400;
@@ -29,7 +29,7 @@ public final class ViewUtil {
 
     private static ScoreList<Score> leaderBoard; 
 
-    private ViewUtil() { }
+    private ViewUtils() { }
     /**
      * Getter of the standard resolution.
      * @return The standard resolution memorized in STANDARD_RES

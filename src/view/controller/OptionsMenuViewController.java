@@ -6,7 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.ViewManagerImpl;
-import view.util.ViewUtil;
+import view.util.ViewUtils;
 import view.util.Tupla;
 /**
  * 
@@ -21,12 +21,12 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
-        godModeCheckBox.setSelected(ViewUtil.isGodModeSelected());
+        godModeCheckBox.setSelected(ViewUtils.isGodModeSelected());
     }
 
     @FXML
     private void applyButtonClick() {
-        ViewUtil.setGodMode(godModeCheckBox.isSelected());
+        ViewUtils.setGodMode(godModeCheckBox.isSelected());
         super.closingFade(() -> ViewManagerImpl.get().pop());
     }
 
