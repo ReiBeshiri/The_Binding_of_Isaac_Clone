@@ -20,6 +20,7 @@ import model.inanimated.HeartImpl;
 import model.inanimated.Inanimated;
 import model.inanimated.Wall;
 import model.inanimated.WallImpl;
+import model.room.MainRoom;
 import model.room.Room;
 import model.room.RoomFactory;
 import model.room.RoomFactoryImpl;
@@ -45,12 +46,13 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private final HitBox hbDoorr = new RectangularHitBox(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
     private final HitBox hbDoorl = new RectangularHitBox(0, ModelUtility.getWorldHeight() / 2, ProportionUtility.getWidthDoor(), ProportionUtility.getHeightDoor());
     private final HitBox hbBtn = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusButton());
+    private final Button bt = new ButtonImpl(hbBtn, false);
     private Door rightDoorFromMainToShop;
     private Door leftDoorFromShopToMain;
     private Door rightDoorFromShopToBoss;
     private Door rightDoorFromBossToShop;
-    private List<Wall> lw = new ArrayList<>();
-    private List<Inanimated> items = new ArrayList<>();
+    private final List<Wall> lw = new ArrayList<>();
+    private final List<Inanimated> items = new ArrayList<>();
     private Animated boss;
     private static final int BOSS_POINTS = 1000;
     private static final int BOSS_SHOTS = 10;
@@ -79,7 +81,6 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      */
     private Room createMainRoom() {
         this.rightDoorFromMainToShop = new DoorImpl(hbDoorr, false, RoomEnum.SHOPROOM, ImageType.RIGHT_SHOP_DOOR_LOCKED);
-        Button bt = new ButtonImpl(hbBtn, false);
         List<Door> ld = new ArrayList<>();
         ld.add(this.rightDoorFromMainToShop);
         Room mainRoom = rf.createMainRoom(hbRoom, ld, bt, lw);
@@ -206,5 +207,13 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     @Override
     public List<Inanimated> getItems() {
         return this.items;
+    }
+
+    /**
+     * @return the button of the main room.
+     */
+    @Override
+    public Button getButton() {
+        return this.bt;
     }
 }

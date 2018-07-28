@@ -10,7 +10,6 @@ import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.animated.Enemy;
-import model.animated.Player;
 import model.animated.PlayerImpl;
 import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
@@ -20,6 +19,7 @@ import model.hitbox.RectangularHitBox;
 import model.inanimated.Button;
 import model.inanimated.Heart;
 import model.inanimated.Inanimated;
+import model.room.MainRoom;
 import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
@@ -51,7 +51,7 @@ public class WorldImpl implements World {
     private Animated player;                            //|is the player
     private List<GameObject> listGameObject = new ArrayList<>();
     private Room room;                                  //|method addRoom is setRoom
-    private boolean gameOver;   //false initially
+    private boolean gameOver = false;   //false initially
     private boolean bossDefeated;   //false initially
     private List<Bullet> listBulletPlayer = new ArrayList<>();
     private List<Bullet> listBulletEnemies = new ArrayList<>();
@@ -115,6 +115,7 @@ public class WorldImpl implements World {
         we = new WorldEnvironmentImpl();
         listRoom.addAll(we.createWorld());
         this.room = this.listRoom.get(0);
+        addButton(we.getButton());
         createPlayer(playerCreation());
     }
 
@@ -374,7 +375,7 @@ public class WorldImpl implements World {
      * @return the updated list of the game object in the game.
      */
     private List<GameObject> getNewListGameObj() {
-        this.listGameObject.removeAll(this.listGameObject);
+        this.listGameObject.clear();
         this.listGameObject.add(getPlayer());
         this.listGameObject.add(this.button);
         this.listGameObject.addAll(this.listBulletEnemies);
@@ -412,7 +413,9 @@ public class WorldImpl implements World {
      */
     private void mainRoomActions(final Double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(0))) {
-            this.listEnemy.iterator().next().update(deltaTime);
+            if (!this.listEnemy.isEmpty()) {
+                this.listEnemy.iterator().next().update(deltaTime);
+            }
             if (!allEnemyDefeated()) {
                 playerGetsHitByBullet(getPlayer());
                 playerBulletHitsEnemy();
