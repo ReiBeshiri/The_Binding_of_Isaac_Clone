@@ -285,7 +285,7 @@ public class DrawerManagerImpl implements DrawerManager {
         if (canvasWidth > max.getX()) {
             canvasWidth = max.getX();
         }
-        return new Tupla<Double, Double>(canvasHeight, canvasWidth);
+        return new Tupla<Double, Double>(canvasWidth, canvasHeight);
     }
 
     private void setCanvasDimension() {
