@@ -61,6 +61,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private MovementStrategy bossMov;
     private ProjectileType bossShot;
     private AI bossAI;
+    private boolean considerDoor = false;
 
     /**
      * Create rooms.
@@ -168,11 +169,15 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         for (double i = 0; i < ModelUtility.getWorldWidth(); i += wallHorizontalWidth) {
             lw.add(new WallImpl(new RectangularHitBox(i, 0, wallHorizontalHeight, wallHorizontalWidth), false,
                     ImageType.MAP_HORIZONTAL_BORDER));
-            lw.add(new WallImpl(new RectangularHitBox(i, ModelUtility.getWorldHeight() - wallHorizontalHeight,
+            lw.add(new WallImpl(new RectangularHitBox(i, ModelUtility.getWorldHeight(),
                     wallHorizontalHeight, wallHorizontalWidth), false, ImageType.MAP_HORIZONTAL_BORDER));
         }
-        for (double i = wallHorizontalHeight; i < ModelUtility.getWorldHeight()
+        for (double i = wallHorizontalWidth; i < ModelUtility.getWorldHeight()
                 - wallHorizontalHeight; i += wallVerticalHeight) {
+            if ((ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2) - i < ModelUtility.getEpsilon() && !this.considerDoor) {
+                this.considerDoor = true;
+                i += ProportionUtility.getHeightDoor();
+            }
             lw.add(new WallImpl(new RectangularHitBox(0, i, wallVerticalHeight, wallVerticalWidth), false,
                     ImageType.MAP_VERTICAL_BORDER));
             lw.add(new WallImpl(new RectangularHitBox(ModelUtility.getWorldWidth() - wallVerticalWidth, i,

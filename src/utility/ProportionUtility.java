@@ -5,13 +5,13 @@ package utility;
  */
 public final class ProportionUtility {
 
-    private static final double PROPORTION_PLAYER_ENEMY = 10;
+    private static final double PROPORTION_PLAYER_ENEMY = 25;
     private static final double PROPORTION_BOSS = 5;
     private static final double PROPORTION_WALL = 15;
     private static final double PROPORTION_WALL_RANGE_SIDE = 30;
     private static final double PROPORTION_WALL_RANGE_TOPDOWN = 40;
-    private static final double PROPORTION_BULLET = 30;
-    private static final double PROPORTION_BUTTON = 30;
+    private static final double PROPORTION_BULLET = 40;
+    private static final double PROPORTION_BUTTON = 40;
     private static final double PROPORTION_DOOR_WIDTH = 15;
     private static final double PROPORTION_DOOR_HEIGHT = 120;
     private static final double PROPORTION_ITEMSHOP = 30;
