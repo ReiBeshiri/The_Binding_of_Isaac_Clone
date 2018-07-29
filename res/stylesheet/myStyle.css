@@ -8,14 +8,21 @@
 }
 
 .label {
-    -fx-font-size: 36pt;
+    -fx-font-size: 28pt;
     -fx-font-family: 'a dripping marker';
     -fx-text-fill: black;
     -fx-opacity: 1;
 }
 
 #lblTitle {
-    -fx-font-size: 50pt;
+    -fx-font-size: 45pt;
+    -fx-font-family: 'a dripping marker';
+    -fx-text-fill: black;
+    -fx-opacity: 1;
+}
+
+#lblSizeUp {
+    -fx-font-size: 35pt;
     -fx-font-family: 'a dripping marker';
     -fx-text-fill: black;
     -fx-opacity: 1;

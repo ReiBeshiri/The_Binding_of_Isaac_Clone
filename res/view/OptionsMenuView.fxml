@@ -8,7 +8,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane fx:id="contentPane" styleClass="background" stylesheets="/stylesheet/myStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.controller.OptionsMenuViewController">
    <top>
       <Label id="lblTitle" alignment="CENTER" contentDisplay="CENTER" styleClass="background" text="Options" BorderPane.alignment="CENTER" />
@@ -23,6 +22,7 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="God Mode">
@@ -30,7 +30,17 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <CheckBox fx:id="godModeCheckBox" mnemonicParsing="false" GridPane.columnIndex="1">
+                  <CheckBox fx:id="godModeCheckBox" mnemonicParsing="false" selected="false" GridPane.columnIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </CheckBox>
+                  <Label text="Infinity Mode" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <CheckBox fx:id="infinityModeCheckBox" mnemonicParsing="false" selected="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

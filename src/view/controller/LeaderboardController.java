@@ -34,10 +34,7 @@ public class LeaderboardController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
-        nicknameColumn.setText("Nickname");
-        pointsColumn.setText("Points");
-        timeColumn.setText("Time");
-        table.getItems().setAll(ViewUtils.getScoreBoard().getScoreList());
+        this.table.getItems().setAll(ViewUtils.getScoreBoard().getScoreList());
     }
 
     @Override
