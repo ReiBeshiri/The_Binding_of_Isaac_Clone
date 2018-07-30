@@ -13,7 +13,7 @@ public final class ProportionUtility {
     private static final double PROPORTION_BULLET = 40;
     private static final double PROPORTION_BUTTON = 40;
     private static final double PROPORTION_DOOR_WIDTH = 15;
-    private static final double PROPORTION_DOOR_HEIGHT = 120;
+    private static final double PROPORTION_DOOR_HEIGHT = 90;
     private static final double PROPORTION_ITEMSHOP = 30;
     private static final double HEIGHT = 600;
     private static final double WIDTH = 800;
@@ -134,7 +134,7 @@ public final class ProportionUtility {
     }
 
     /**
-     * @return get the height of the door (120).
+     * @return get the height of the door (90).
      */
     public static double getHeightDoor() {
         return ProportionUtility.PROPORTION_DOOR_HEIGHT;
