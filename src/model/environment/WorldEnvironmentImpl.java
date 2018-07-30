@@ -84,7 +84,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         lwMain.addAll(this.lw);
         lwMain.addAll(wallMainRoom());
         ld.add(this.rightDoorFromMainToShop);
-        Room mainRoom = rf.createMainRoom(hbRoom, ld, bt, lw);
+        Room mainRoom = rf.createMainRoom(hbRoom, ld, bt, lwMain);
         return mainRoom;
     }
 
@@ -197,7 +197,10 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     public Button getButton() {
         return this.bt;
     }
-    
+
+    /**
+     * @return wall main room.
+     */
     private List<Wall> wallMainRoom() {
         List<Wall> l = new ArrayList<>();
         for (double i = ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2; i < ModelUtility.getWorldHeight() / 2 + ProportionUtility.getHeightDoor() / 2; i += ProportionUtility.getWallVerticalHeight()) {
