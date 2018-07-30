@@ -396,7 +396,7 @@ public class WorldImpl implements World {
      */
     private boolean isColliding(final CircleHitBox hb1,  final CircleHitBox hb2) {
         Collection<Command> c = CollisionUtil.entityCollision(hb1, hb2);
-        return c.isEmpty();
+        return !c.isEmpty();
     }
 
     /**
