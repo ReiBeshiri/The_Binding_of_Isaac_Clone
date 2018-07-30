@@ -54,6 +54,12 @@ public interface View {
     void setDrawer(DrawerManager drawer);
 
     /**
+     * Return reference to drawer manager.
+     * @return reference to drawer.
+     */
+    DrawerManager getDrawerReference();
+
+    /**
      * Redraw.
      */
     void redraw();

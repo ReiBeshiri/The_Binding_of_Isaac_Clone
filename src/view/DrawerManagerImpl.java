@@ -150,7 +150,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas.save();
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         entities.forEach(x -> {
-            // Safe-casting, all moving entities have a circle hitBox.
+            // Safe-casting, all moving entities have a circwle hitBox.
 //            final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
 //            final double upperLeftX = hBox.getX() - hBox.getRadius();
 //            final double upperLeftY = hBox.getY() - hBox.getRadius();
@@ -166,9 +166,9 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
         gcGameCanvas.save();
-        gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         gcGameCanvas.setFill(Color.DARKGOLDENROD);
         gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+        gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         room.getDoors().forEach(x -> {
             // Safe-casting, all doors have a rectangular hitBox.
 //            final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
@@ -214,7 +214,7 @@ public class DrawerManagerImpl implements DrawerManager {
     private void drawTime() {
         gcTimerCanvas.save();
         gcTimerCanvas.clearRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
-        gcTimerCanvas.setFill(Color.DARKGRAY);
+        gcTimerCanvas.setFill(Color.RED);
         gcTimerCanvas.fillRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
         gcTimerCanvas.restore();
         gcTimerCanvas.save();
@@ -285,7 +285,7 @@ public class DrawerManagerImpl implements DrawerManager {
         if (canvasWidth > max.getX()) {
             canvasWidth = max.getX();
         }
-        return new Tupla<Double, Double>(canvasHeight, canvasWidth);
+        return new Tupla<Double, Double>(canvasWidth, canvasHeight);
     }
 
     private void setCanvasDimension() {
@@ -295,6 +295,9 @@ public class DrawerManagerImpl implements DrawerManager {
         timerCanvas.setWidth(ViewUtils.getTimerCanvasWidth());
         lifeCanvas.setHeight(ViewUtils.getLifeCanvasHeight());
         lifeCanvas.setWidth(ViewUtils.getLifeCanvasWidth());
+        timerCanvas.setTranslateX(gameCanvas.getWidth() / 2);
+        timerCanvas.setTranslateY(gameCanvas.getHeight());
+        lifeCanvas.setTranslateY(gameCanvas.getHeight());
     }
 
     private Tupla<Double, Double> computeScaleFactor(final Tupla<Double, Double> canvasSize,

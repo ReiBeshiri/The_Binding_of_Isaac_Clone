@@ -149,4 +149,12 @@ public final class ViewImpl implements View {
         return ViewUtils.isInfinityModeSelected();
     }
 
+    /**
+     * Return reference to drawer manager.
+     */
+    @Override
+    public DrawerManager getDrawerReference() {
+        return drawer;
+    }
+
 }

@@ -70,7 +70,7 @@ public class Time {
     }
 
     private void notifyEvent(final TimeEvent time) {
-        listeners.stream().forEach(x -> x.notifyTimeChange(time.getTime()));
+        listeners.forEach(x -> x.notifyTimeChange(time.getTime()));
     }
 
     /**

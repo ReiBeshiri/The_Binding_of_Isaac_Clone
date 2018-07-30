@@ -15,13 +15,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Nickname" />
-            <TextField fx:id="txtNickname" GridPane.columnIndex="1" />
+            <Label id="lblSizeUp" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Nickname " />
+            <TextField fx:id="txtNickname" maxWidth="-Infinity" prefWidth="300.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </center>
    <top>
-      <Label text="Insert your Nickname" BorderPane.alignment="CENTER" />
+      <Label id="lblTitle" text="Insert your Nickname" BorderPane.alignment="CENTER" />
    </top>
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
