@@ -140,7 +140,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void setNextRound() {
-            listEnemy.addAll(roundsGenerator.generateMonster());
+        listEnemy.addAll(roundsGenerator.generateMonster());
     }
 
     /**

@@ -1,7 +1,10 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+
 import controller.util.LeaderboardComparator;
 import controller.util.Score;
 import controller.util.ScoreCalculator;
@@ -33,11 +36,12 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private static final int FPS = 60;
     private static final int MSWAIT = 5;
     private boolean running;
-    private Thread thread; 
+    private Thread gameLoopThread; 
     private int optimalTime; //A cosa serve?
     private long lastLoop;
     private final World world;
     private int point;
+    private Thread timerThread;
     private TimeAgent timeAgent;
     private final Time time;
     private final String name;
@@ -62,8 +66,9 @@ public class GameLoopImpl implements GameLoop, Runnable {
             this.running = true;
             optimalTime = GameLoopImpl.SECONDNANO / GameLoopImpl.FPS;
             this.lastLoop = System.nanoTime();
-            thread = new Thread(this);
-            thread.start();
+            gameLoopThread = new Thread(this);
+            gameLoopThread.setDaemon(true);
+            gameLoopThread.start();
         }
     }
 
@@ -74,7 +79,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     public void stop() {
         if (running) {
             try {
-                thread.join(MSWAIT);
+                gameLoopThread.join(MSWAIT);
             } catch (InterruptedException e) {
                 System.out.println("Timer can't be stopped: " + e.getMessage());
             }
@@ -118,9 +123,9 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * Check the world's events.
      */
     private void checkEvent() {
-        final List<WorldEvent> worldEvent = ModelUtility.getWorldEventList();
+        final List<WorldEvent> worldEvent = Objects.isNull(ModelUtility.getWorldEventList()) ? Collections.emptyList() : ModelUtility.getWorldEventList();
         worldEvent.forEach(x -> {
-            if (x instanceof PlayerHitButton) {
+            if (x instanceof PlayerHitButton && (Objects.isNull(timerThread) || timerThread.isAlive())) {
                 startTime();
             } else if (x instanceof PlayerKillEnemy) {
                 point += ((PlayerKillEnemy) x).getPoint();
@@ -162,7 +167,10 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     private void startTime() {
         timeAgent = new TimeAgent(time);
-        timeAgent.start();
+        time.addListener(ViewImpl.get().getDrawerReference());
+        timerThread = new Thread(timeAgent);
+        timerThread.setDaemon(true);
+        timerThread.start();
     }
 
     /**

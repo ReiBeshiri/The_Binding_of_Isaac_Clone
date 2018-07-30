@@ -4,7 +4,7 @@ package timer;
  * Class used to implement thread for timer of the game.
  *
  */
-public class TimeAgent extends Thread {
+public class TimeAgent implements Runnable {
 
     private final Time time;
     private boolean stop;
@@ -14,7 +14,6 @@ public class TimeAgent extends Thread {
      * @param t initial time for timer.
      */
     public TimeAgent(final Time t) {
-        super();
         time = t;
         stop = false; 
     }
