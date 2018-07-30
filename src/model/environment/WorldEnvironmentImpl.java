@@ -42,7 +42,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private final HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getWidth(), ProportionUtility.getHeight());
     private final HitBox hbDoorr = new RectangularHitBox(ModelUtility.getWorldWidth() - ProportionUtility.getWidthDoor(), ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2,  ProportionUtility.getHeightDoor(), ProportionUtility.getWidthDoor());
     private final HitBox hbDoorl = new RectangularHitBox(0, ModelUtility.getWorldHeight() / 2, ProportionUtility.getHeightDoor() + ProportionUtility.getWidthDoor(), ProportionUtility.getWidthDoor() * 2);
-    private final HitBox hbBtn = new CircleHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusButton());
+    private final HitBox hbBtn = new CircleHitBox(ModelUtility.getWorldWidth() / 2, ModelUtility.getWorldHeight() / 2, ProportionUtility.getRadiusButton());
     private final Button bt = new ButtonImpl(hbBtn, false);
     private Door rightDoorFromMainToShop;
     private Door leftDoorFromShopToMain;
