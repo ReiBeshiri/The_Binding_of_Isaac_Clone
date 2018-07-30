@@ -168,9 +168,9 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         final double wallHorizontalHeight = 15;
         for (double i = wallHorizontalWidth / 2; i < ModelUtility.getWorldWidth(); i += wallHorizontalWidth) {
             lw.add(new WallImpl(new RectangularHitBox(i, wallHorizontalHeight / 2, wallHorizontalHeight, wallHorizontalWidth), false,
-                    ImageType.MAP_HORIZONTAL_BORDER));
+                    ImageType.MAP_VERTICAL_BORDER));
             lw.add(new WallImpl(new RectangularHitBox(i, ModelUtility.getWorldHeight() - wallHorizontalHeight / 2,
-                    wallHorizontalHeight, wallHorizontalWidth), false, ImageType.MAP_HORIZONTAL_BORDER));
+                    wallHorizontalHeight, wallHorizontalWidth), false, ImageType.MAP_VERTICAL_BORDER));
         }
         for (double i = wallHorizontalHeight + wallVerticalHeight / 2; i < ModelUtility.getWorldHeight()
                 - wallHorizontalHeight; i += wallVerticalHeight) {
@@ -179,9 +179,9 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
                 i += ProportionUtility.getHeightDoor();
             }
             lw.add(new WallImpl(new RectangularHitBox(wallVerticalWidth / 2, i, wallVerticalHeight, wallVerticalWidth), false,
-                    ImageType.MAP_VERTICAL_BORDER));
+                    ImageType.MAP_HORIZONTAL_BORDER));
             lw.add(new WallImpl(new RectangularHitBox(ModelUtility.getWorldWidth() - wallVerticalWidth / 2, i,
-                    wallVerticalHeight, wallVerticalWidth), false, ImageType.MAP_VERTICAL_BORDER));
+                    wallVerticalHeight, wallVerticalWidth), false, ImageType.MAP_HORIZONTAL_BORDER));
         }
     }
 
