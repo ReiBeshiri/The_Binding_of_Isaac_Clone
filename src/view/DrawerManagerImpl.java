@@ -1,10 +1,12 @@
 package view;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -92,6 +94,7 @@ public class DrawerManagerImpl implements DrawerManager {
     @Override
     public void setRoom(final Room room) {
         this.room = room;
+        drawRoom();
     }
 
     /**
@@ -244,7 +247,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcLifeCanvas.fillRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
         gcLifeCanvas.scale(scaleFactor.getX(), scaleFactor.getY());
         final int completedHearth = life / 2;
-        final int halfHeath = life - completedHearth > 0 ? 1 : 0;
+        final int halfHeath = life - 2 * completedHearth > 0 ? 1 : 0;
         final double imgBlock = ((completedHearth + halfHeath) * ViewUtils.getHearthWidth())
                 + (completedHearth + halfHeath - 1) * ViewUtils.getLifeCanvasWidth()
                         / ViewUtils.getHearthSpaceProportion();

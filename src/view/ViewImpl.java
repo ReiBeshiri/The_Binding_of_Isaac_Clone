@@ -11,6 +11,7 @@ import controller.observer.Observer;
 import controller.util.Score;
 import controller.util.ScoreList;
 import javafx.application.Application;
+import javafx.application.Platform;
 import controller.event.ButtonEvent;
 import controller.event.Event;
 import model.GameObject;
@@ -59,7 +60,7 @@ public final class ViewImpl implements View {
                 .filter(x -> x instanceof Animated)
                 .map(x -> (Animated) x)
                 .collect(Collectors.toList()));
-        drawer.draw();
+        Platform.runLater(() -> drawer.draw());
     }
 
     /**
