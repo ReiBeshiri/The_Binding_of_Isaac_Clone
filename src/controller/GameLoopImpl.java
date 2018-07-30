@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
 import controller.util.LeaderboardComparator;
 import controller.util.Score;
 import controller.util.ScoreCalculator;
@@ -16,7 +15,9 @@ import timer.TimeAgent;
 import utility.ModelUtility;
 import view.ViewImpl;
 import worldevent.BossFightStarted;
+import worldevent.GameStarted;
 import worldevent.PlayerDied;
+import worldevent.PlayerHeartChange;
 import worldevent.PlayerHitButton;
 import worldevent.PlayerKillAllEnemy;
 import worldevent.PlayerKillBoss;
@@ -149,9 +150,12 @@ public class GameLoopImpl implements GameLoop, Runnable {
             } else if (x instanceof PlayerDied) {
                 stopTime();
                 GameEngineImpl.get().gameOver();
+            } else if (x instanceof GameStarted) {
+                ViewImpl.get().playerLifeChanged(((GameStarted) x).getLife());
+            } else if (x instanceof PlayerHeartChange) {
+                ViewImpl.get().playerLifeChanged(((PlayerHeartChange) x).getCurretLife());
             }
         });
-        ModelUtility.updateListWorldEvent(Collections.emptyList());
     }
 
     /**
