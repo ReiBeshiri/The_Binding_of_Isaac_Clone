@@ -105,6 +105,7 @@ public class WorldImpl implements World {
     @Override
     public void createPlayer(final Animated player) {
         this.player = player;
+        ModelUtility.updatePlayerModelUtility(player);
     }
 
     /**

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-
 import controller.observer.ButtonObserver;
 import controller.observer.KeyObserver;
 import controller.util.Score;

@@ -151,6 +151,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
                 GameEngineImpl.get().gameOver();
             }
         });
+        ModelUtility.updateListWorldEvent(Collections.emptyList());
     }
 
     /**
