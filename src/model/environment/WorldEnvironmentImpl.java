@@ -37,7 +37,7 @@ import utility.SpawnUtility;
  * World Environment Implement. 
  */
 public class WorldEnvironmentImpl implements WorldEnvironment {
-    private List<Room> listRoom = new ArrayList<>();
+    private final List<Room> listRoom = new ArrayList<>();
     private final RoomFactory rf = new RoomFactoryImpl();
     private final HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWidth() / 2, ProportionUtility.getHeight() / 2, ProportionUtility.getWidth(), ProportionUtility.getHeight());
     private final HitBox hbDoorr = new RectangularHitBox(ModelUtility.getWorldWidth() - ProportionUtility.getWidthDoor(), ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2,  ProportionUtility.getHeightDoor(), ProportionUtility.getWidthDoor());
@@ -78,8 +78,11 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      * @return create main room.
      */
     private Room createMainRoom() {
+        List<Wall> lwMain = new ArrayList<>();
         this.rightDoorFromMainToShop = new DoorImpl(hbDoorr, false, RoomEnum.SHOPROOM, ImageType.RIGHT_SHOP_DOOR_LOCKED);
         List<Door> ld = new ArrayList<>();
+        lwMain.addAll(this.lw);
+        lwMain.addAll(wallMainRoom());
         ld.add(this.rightDoorFromMainToShop);
         Room mainRoom = rf.createMainRoom(hbRoom, ld, bt, lw);
         return mainRoom;
@@ -121,63 +124,22 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      * create walls.
      */
     private void createWalls() {
-//        double y = ProportionUtility.getWallStandard();
-//        double x = 0;
-//        for (int i = 0; i < (ModelUtility.getWorldHeight() - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide() - 1; i++) {
-//            HitBox hb = new RectangularHitBox(x, y, ProportionUtility.getWallRangeSide(), ProportionUtility.getWallStandard());
-//            Wall wall = new WallImpl(hb, false, ImageType.MAP_VERTICAL_BORDER);
-//            this.lw.add(wall);
-//            y += ProportionUtility.getWallRangeSide();
-//            if (ProportionUtility.getWallRangeSide() * ((ModelUtility.getWorldHeight() - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide()) / 2 + ProportionUtility.getWallStandard() - y < ModelUtility.getEpsilon()) {
-//                y = y + ProportionUtility.getHeightDoor();
-//            }
-//        }
-//        y = ProportionUtility.getWallStandard();
-//        for (int i = 0; i < (ModelUtility.getWorldHeight() - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide() - 1; i++) {
-//            HitBox hb = new RectangularHitBox(ProportionUtility.getWidth() + ProportionUtility.getWallStandard() * 2, y, ProportionUtility.getWallRangeSide(), ProportionUtility.getWallStandard());
-//            Wall wall = new WallImpl(hb, false, ImageType.MAP_VERTICAL_BORDER);
-//            this.lw.add(wall);
-//            y += ProportionUtility.getWallRangeSide();
-//            if ((ProportionUtility.getWallRangeSide() * (ModelUtility.getWorldHeight() - ProportionUtility.getHeightDoor()) / ProportionUtility.getWallRangeSide()) / 2 + ProportionUtility.getWallStandard() - y < ModelUtility.getEpsilon()) {
-//                y = y + ProportionUtility.getHeightDoor();
-//            }
-//        }
-//        y = 0;
-//        x = 0;
-//        for (int i = 0; i < ModelUtility.getWorldWidth() / ProportionUtility.getWallRangeTopdown(); i++) {
-//            HitBox hb = new RectangularHitBox(x, y, ProportionUtility.getWallStandard(), ProportionUtility.getWallRangeTopdown());
-//            Wall wall = new WallImpl(hb, false, ImageType.MAP_HORIZONTAL_BORDER);
-//            this.lw.add(wall);
-//            x += ProportionUtility.getWallRangeTopdown();
-//        }
-//        x = 0;
-//        y = ModelUtility.getWorldWidth();
-//        for (int i = 0; i < ModelUtility.getWorldWidth() / ProportionUtility.getWallRangeTopdown(); i++) {
-//            HitBox hb = new RectangularHitBox(x, y, ProportionUtility.getWallStandard(), ProportionUtility.getWallRangeTopdown());
-//            Wall wall = new WallImpl(hb, false, ImageType.MAP_HORIZONTAL_BORDER);
-//            this.lw.add(wall);
-//            x += ProportionUtility.getWallRangeTopdown();
-//        }
-        final double wallVerticalWidth = 15;
-        final double wallHorizontalWidth = 30;
-        final double wallVerticalHeight = 30;
-        final double wallHorizontalHeight = 15;
-        for (double i = 0; i < ModelUtility.getWorldWidth(); i += wallHorizontalWidth) {
-            lw.add(new WallImpl(new RectangularHitBox(i, 0, wallHorizontalHeight, wallHorizontalWidth), false,
+        for (double i = 0; i < ModelUtility.getWorldWidth(); i += ProportionUtility.getWallHorizontalWidth()) {
+            lw.add(new WallImpl(new RectangularHitBox(i, 0, ProportionUtility.getWallHorizontalHeight(), ProportionUtility.getWallHorizontalWidth()), false,
                     ImageType.MAP_VERTICAL_BORDER));
-            lw.add(new WallImpl(new RectangularHitBox(i, ModelUtility.getWorldHeight() - wallHorizontalHeight,
-                    wallHorizontalHeight, wallHorizontalWidth), false, ImageType.MAP_VERTICAL_BORDER));
+            lw.add(new WallImpl(new RectangularHitBox(i, ModelUtility.getWorldHeight() - ProportionUtility.getWallHorizontalHeight(),
+                    ProportionUtility.getWallHorizontalHeight(), ProportionUtility.getWallHorizontalWidth()), false, ImageType.MAP_VERTICAL_BORDER));
         }
-        for (double i = wallHorizontalHeight; i < ModelUtility.getWorldHeight()
-                - wallHorizontalHeight; i += wallVerticalHeight) {
+        for (double i = ProportionUtility.getWallHorizontalHeight(); i < ModelUtility.getWorldHeight()
+                - ProportionUtility.getWallHorizontalHeight(); i += ProportionUtility.getWallVerticalHeight()) {
             if ((ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2) - i < ModelUtility.getEpsilon() && !this.considerDoor) {
                 this.considerDoor = true;
                 i += ProportionUtility.getHeightDoor();
             }
-            lw.add(new WallImpl(new RectangularHitBox(0, i, wallVerticalHeight, wallVerticalWidth), false,
+            lw.add(new WallImpl(new RectangularHitBox(0, i, ProportionUtility.getWallVerticalHeight(), ProportionUtility.getWallVerticalWidth()), false,
                     ImageType.MAP_HORIZONTAL_BORDER));
-            lw.add(new WallImpl(new RectangularHitBox(ModelUtility.getWorldWidth() - wallVerticalWidth, i,
-                    wallVerticalHeight, wallVerticalWidth), false, ImageType.MAP_HORIZONTAL_BORDER));
+            lw.add(new WallImpl(new RectangularHitBox(ModelUtility.getWorldWidth() - ProportionUtility.getWallVerticalWidth(), i,
+                    ProportionUtility.getWallVerticalHeight(), ProportionUtility.getWallVerticalWidth()), false, ImageType.MAP_HORIZONTAL_BORDER));
         }
     }
 
@@ -234,5 +196,13 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     @Override
     public Button getButton() {
         return this.bt;
+    }
+    
+    private List<Wall> wallMainRoom() {
+        List<Wall> l = new ArrayList<>();
+        for (double i = ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2; i < ModelUtility.getWorldHeight() / 2 + ProportionUtility.getHeightDoor() / 2; i += ProportionUtility.getWallVerticalHeight()) {
+            l.add(new WallImpl(new RectangularHitBox(0, i, ProportionUtility.getWallVerticalHeight(), ProportionUtility.getWallVerticalWidth()), false, ImageType.MAP_HORIZONTAL_BORDER));
+        }
+        return l;
     }
 }

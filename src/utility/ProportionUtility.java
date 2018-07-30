@@ -23,6 +23,10 @@ public final class ProportionUtility {
     private static final double BOSS_BULLET_RNG = 500;
     private static final double BOSS_SHOT_RATIO = 0.4;
     private static final double PLAYER_VEL = 20;
+    private static final double WALLVERTICALWIDTH = 15;
+    private static final double WALLHORIZONTALWIDTH = 30;
+    private static final double WALLVERTICALLHEIGHT = 30;
+    private static final double WALLHORIZONTALHEIGHT = 15;
     private static final int PLAYER_LIFE = 6;
     private static final int BOSS_LIFE = 30;
 
@@ -33,6 +37,34 @@ public final class ProportionUtility {
      */
     public static double getPlayerBulletRatio() {
         return ProportionUtility.PLAYER_BULLET_RATIO;
+    }
+
+    /**
+     * @return wall vertical width (15).
+     */
+    public static double getWallVerticalWidth() {
+        return ProportionUtility.WALLVERTICALWIDTH;
+    }
+
+    /**
+     * @return wall vertical height (30).
+     */
+    public static double getWallVerticalHeight() {
+        return ProportionUtility.WALLVERTICALLHEIGHT;
+    }
+
+    /**
+     * @return wall horizontal width (30).
+     */
+    public static double getWallHorizontalWidth() {
+        return ProportionUtility.WALLHORIZONTALWIDTH;
+    }
+
+    /**
+     * @return wall horizontal height (15).
+     */
+    public static double getWallHorizontalHeight() {
+        return ProportionUtility.WALLHORIZONTALHEIGHT;
     }
 
     /**
