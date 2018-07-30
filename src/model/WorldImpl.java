@@ -19,7 +19,6 @@ import model.hitbox.RectangularHitBox;
 import model.inanimated.Button;
 import model.inanimated.Heart;
 import model.inanimated.Inanimated;
-import model.room.MainRoom;
 import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
@@ -35,7 +34,6 @@ import utility.ModelUtility;
 import utility.ProportionUtility;
 import utility.SpawnUtility;
 import worldevent.BossFightStarted;
-import worldevent.GameStarted;
 import worldevent.PlayerDied;
 import worldevent.PlayerHeartChange;
 import worldevent.PlayerHitButton;
@@ -119,8 +117,6 @@ public class WorldImpl implements World {
         this.room = this.listRoom.get(0);
         addButton(we.getButton());
         createPlayer(playerCreation());
-        this.listEvent.add(new GameStarted(((AbstractCharacter) getPlayer()).getLife()));
-        ModelUtility.updateListWorldEvent(this.listEvent);
         ModelUtility.updateRoomModelUtility(this.room);
     }
 
