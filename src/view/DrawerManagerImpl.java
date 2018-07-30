@@ -314,9 +314,7 @@ public class DrawerManagerImpl implements DrawerManager {
     }
 
     private void drawHitBoxImage(final ImageType img, final RectangularHitBox hBox) {
-        final double upperLeftX = hBox.getX() - hBox.getWidth() / 2;
-        final double upperLeftY = hBox.getY() - hBox.getHeight() / 2;
-        gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(img), upperLeftX, upperLeftY, hBox.getWidth(),
+        gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(img), hBox.getX(), hBox.getY(), hBox.getWidth(),
                 hBox.getHeight());
     }
 }

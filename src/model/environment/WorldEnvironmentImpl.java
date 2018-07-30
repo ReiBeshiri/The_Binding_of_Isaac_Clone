@@ -166,21 +166,21 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         final double wallHorizontalWidth = 30;
         final double wallVerticalHeight = 30;
         final double wallHorizontalHeight = 15;
-        for (double i = wallHorizontalWidth / 2; i < ModelUtility.getWorldWidth(); i += wallHorizontalWidth) {
-            lw.add(new WallImpl(new RectangularHitBox(i, wallHorizontalHeight / 2, wallHorizontalHeight, wallHorizontalWidth), false,
+        for (double i = 0; i < ModelUtility.getWorldWidth(); i += wallHorizontalWidth) {
+            lw.add(new WallImpl(new RectangularHitBox(i, wallHorizontalHeight, wallHorizontalHeight, wallHorizontalWidth), false,
                     ImageType.MAP_VERTICAL_BORDER));
-            lw.add(new WallImpl(new RectangularHitBox(i, ModelUtility.getWorldHeight() - wallHorizontalHeight / 2,
+            lw.add(new WallImpl(new RectangularHitBox(i, ModelUtility.getWorldHeight() - wallHorizontalHeight,
                     wallHorizontalHeight, wallHorizontalWidth), false, ImageType.MAP_VERTICAL_BORDER));
         }
-        for (double i = wallHorizontalHeight + wallVerticalHeight / 2; i < ModelUtility.getWorldHeight()
+        for (double i = wallHorizontalHeight; i < ModelUtility.getWorldHeight()
                 - wallHorizontalHeight; i += wallVerticalHeight) {
             if ((ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2) - i < ModelUtility.getEpsilon() && !this.considerDoor) {
                 this.considerDoor = true;
                 i += ProportionUtility.getHeightDoor();
             }
-            lw.add(new WallImpl(new RectangularHitBox(wallVerticalWidth / 2, i, wallVerticalHeight, wallVerticalWidth), false,
+            lw.add(new WallImpl(new RectangularHitBox(wallVerticalWidth, i, wallVerticalHeight, wallVerticalWidth), false,
                     ImageType.MAP_HORIZONTAL_BORDER));
-            lw.add(new WallImpl(new RectangularHitBox(ModelUtility.getWorldWidth() - wallVerticalWidth / 2, i,
+            lw.add(new WallImpl(new RectangularHitBox(ModelUtility.getWorldWidth() - wallVerticalWidth, i,
                     wallVerticalHeight, wallVerticalWidth), false, ImageType.MAP_HORIZONTAL_BORDER));
         }
     }
