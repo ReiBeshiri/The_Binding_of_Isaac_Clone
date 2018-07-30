@@ -5,6 +5,7 @@ package worldevent;
  */
 public class PlayerHeartChange implements WorldEvent {
     private final int life;
+
     /**
      * 
      * @param life player's life.
@@ -12,6 +13,7 @@ public class PlayerHeartChange implements WorldEvent {
     public PlayerHeartChange(final int life) {
         this.life = life;
     }
+
     /**
      * 
      * @return player's life.

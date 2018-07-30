@@ -35,6 +35,7 @@ import utility.ModelUtility;
 import utility.ProportionUtility;
 import utility.SpawnUtility;
 import worldevent.BossFightStarted;
+import worldevent.GameStarted;
 import worldevent.PlayerDied;
 import worldevent.PlayerHeartChange;
 import worldevent.PlayerHitButton;
@@ -118,6 +119,8 @@ public class WorldImpl implements World {
         this.room = this.listRoom.get(0);
         addButton(we.getButton());
         createPlayer(playerCreation());
+        this.listEvent.add(new GameStarted(((AbstractCharacter) getPlayer()).getLife()));
+        ModelUtility.updateListWorldEvent(this.listEvent);
         ModelUtility.updateRoomModelUtility(this.room);
     }
 
@@ -234,6 +237,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
+        resetObjects();
         ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         this.listMovements = listMovement;
         this.listShots = listShots;
@@ -246,7 +250,7 @@ public class WorldImpl implements World {
         } else {
             bossRoomAction(deltaTime);
         }
-        // update ModelUtility
+        //update ModelUtility
         ModelUtility.updateCurrentRound(this.currentRound);
         //ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         ModelUtility.updateListWorldEvent(this.listEvent);
@@ -377,7 +381,6 @@ public class WorldImpl implements World {
      * @return the updated list of the game object in the game.
      */
     private List<GameObject> getNewListGameObj() {
-        this.listGameObject.clear();
         this.listGameObject.add(getPlayer());
         this.listGameObject.add(this.button);
         this.listGameObject.addAll(this.listBulletEnemies);
@@ -387,7 +390,6 @@ public class WorldImpl implements World {
     }
 
     /**
-     * 
      * @param hb1 first CirceHitbox.
      * @param hb2 second CirceHitbox.
      * @return if the two objects are colliding.
@@ -498,5 +500,13 @@ public class WorldImpl implements World {
                 new BasicAI(new PlayerMovement(), new PlayerProjectile(ProportionUtility.getRadiusBullet())),
                 ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio());
         return p;
+    }
+
+    /**
+     * reset lists.
+     */
+    private void resetObjects() {
+        this.listEvent.clear();
+        this.listGameObject.clear();
     }
 }
