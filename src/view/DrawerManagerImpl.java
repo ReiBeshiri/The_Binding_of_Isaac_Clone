@@ -1,12 +1,10 @@
 package view;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.IntStream;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
