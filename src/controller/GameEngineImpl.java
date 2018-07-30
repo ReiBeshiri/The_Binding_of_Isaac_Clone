@@ -13,6 +13,7 @@ import controller.util.Score;
 import controller.util.ScoreImpl;
 import model.World;
 import model.WorldImpl;
+import model.animated.AbstractCharacter;
 import timer.Time;
 import utility.Mode;
 import utility.ModelUtility;
@@ -73,6 +74,7 @@ public final class GameEngineImpl implements GameEngine {
             world.setMode(Mode.NORMAL);
         }
         ViewImpl.get().roomChanged(ModelUtility.getRoom());
+        ViewImpl.get().playerLifeChanged(((AbstractCharacter) ModelUtility.getPlayer()).getLife());
         this.gameLoop = new GameLoopImpl(world, name);
         resumeGameLoop();
     }

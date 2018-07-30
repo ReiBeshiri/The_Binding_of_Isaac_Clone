@@ -123,8 +123,8 @@ public class DrawerManagerImpl implements DrawerManager {
                 / 2);
 
         timerCanvas.setWidth(gameCanvas.getWidth() / 2);
-        timerCanvas
-                .setHeight(timerCanvas.getWidth() / (ViewUtils.getTimerCanvasWidth() / ViewUtils.getStageDeltaHeight()));
+        timerCanvas.setHeight(
+                timerCanvas.getWidth() / (ViewUtils.getTimerCanvasWidth() / ViewUtils.getStageDeltaHeight()));
         timerCanvas.setTranslateX(ViewManagerImpl.get().getStageWidth()
                 - ((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2) - timerCanvas.getWidth());
         // timercanvas.setTranslateY(ViewManagerImpl.get().getStageHeight()
@@ -133,7 +133,8 @@ public class DrawerManagerImpl implements DrawerManager {
         timerCanvas.setTranslateY(gameCanvas.getTranslateY() + gameCanvas.getHeight());
 
         lifeCanvas.setWidth(gameCanvas.getWidth() / 2);
-        lifeCanvas.setHeight(lifeCanvas.getWidth() / (ViewUtils.getLifeCanvasWidth() / ViewUtils.getLifeCanvasHeight()));
+        lifeCanvas
+                .setHeight(lifeCanvas.getWidth() / (ViewUtils.getLifeCanvasWidth() / ViewUtils.getLifeCanvasHeight()));
         lifeCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
         // lifeCanvas.setTranslateY(gameCanvas.getHeight()
         // + (ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight() -
@@ -151,12 +152,13 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         entities.forEach(x -> {
             // Safe-casting, all moving entities have a circwle hitBox.
-//            final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
-//            final double upperLeftX = hBox.getX() - hBox.getRadius();
-//            final double upperLeftY = hBox.getY() - hBox.getRadius();
-//            gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()), upperLeftX, upperLeftY,
-//                    2 * hBox.getRadius(), 2 * hBox.getRadius());
-            drawHitBoxImage(x.getImageType(), (CircleHitBox) x.getHitBox());
+            // final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
+            // final double upperLeftX = hBox.getX() - hBox.getRadius();
+            // final double upperLeftY = hBox.getY() - hBox.getRadius();
+            // gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()),
+            // upperLeftX, upperLeftY,
+            // 2 * hBox.getRadius(), 2 * hBox.getRadius());
+            drawHitBoxImage(x.getImageType(), (CircleHitBox) x.getHitBox(), gcGameCanvas);
         });
         gcGameCanvas.restore();
     }
@@ -171,40 +173,45 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         room.getDoors().forEach(x -> {
             // Safe-casting, all doors have a rectangular hitBox.
-//            final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
-//            final double upperLeftX = hBox.getX() - hBox.getWidth() / 2;
-//            final double upperLeftY = hBox.getY() - hBox.getHeight() / 2;
-//            gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()), upperLeftX, upperLeftY,
-//                    hBox.getWidth(), hBox.getHeight());
-            drawHitBoxImage(x.getImageType(), (RectangularHitBox) x.getHitBox());
+            // final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
+            // final double upperLeftX = hBox.getX() - hBox.getWidth() / 2;
+            // final double upperLeftY = hBox.getY() - hBox.getHeight() / 2;
+            // gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()),
+            // upperLeftX, upperLeftY,
+            // hBox.getWidth(), hBox.getHeight());
+            drawHitBoxImage(x.getImageType(), (RectangularHitBox) x.getHitBox(), gcGameCanvas);
         });
         room.getWalls().forEach(x -> {
             // Safe-casting, all doors have a rectangular hitBox.
-//            final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
-//            final double upperLeftX = hBox.getX() - hBox.getWidth() / 2;
-//            final double upperLeftY = hBox.getY() - hBox.getHeight() / 2;
-//            gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()), upperLeftX, upperLeftY,
-//                    hBox.getWidth(), hBox.getHeight());
-            drawHitBoxImage(x.getImageType(), (RectangularHitBox) x.getHitBox());
+            // final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
+            // final double upperLeftX = hBox.getX() - hBox.getWidth() / 2;
+            // final double upperLeftY = hBox.getY() - hBox.getHeight() / 2;
+            // gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()),
+            // upperLeftX, upperLeftY,
+            // hBox.getWidth(), hBox.getHeight());
+            drawHitBoxImage(x.getImageType(), (RectangularHitBox) x.getHitBox(), gcGameCanvas);
         });
 
         if (room instanceof MainRoom) {
             final MainRoom mainRoom = (MainRoom) room;
-//            final CircleHitBox hBox = (CircleHitBox) mainRoom.getButton().getHitBox();
-//            final double upperLeftX = hBox.getX() - hBox.getRadius() / 2;
-//            final double upperLeftY = hBox.getY() - hBox.getRadius() / 2;
-//            gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(((MainRoom) room).getButton().getImageType()),
-//                    upperLeftX, upperLeftY, 2 * hBox.getRadius(), 2 * hBox.getRadius());
-            drawHitBoxImage(mainRoom.getButton().getImageType(), (CircleHitBox) mainRoom.getButton().getHitBox());
+            // final CircleHitBox hBox = (CircleHitBox) mainRoom.getButton().getHitBox();
+            // final double upperLeftX = hBox.getX() - hBox.getRadius() / 2;
+            // final double upperLeftY = hBox.getY() - hBox.getRadius() / 2;
+            // gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(((MainRoom)
+            // room).getButton().getImageType()),
+            // upperLeftX, upperLeftY, 2 * hBox.getRadius(), 2 * hBox.getRadius());
+            drawHitBoxImage(mainRoom.getButton().getImageType(), (CircleHitBox) mainRoom.getButton().getHitBox(),
+                    gcGameCanvas);
         } else if (room instanceof ShopRoom) {
             final ShopRoom shopRoom = (ShopRoom) room;
             shopRoom.getItems().forEach(x -> {
-//                final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
-//                final double upperLeftX = hBox.getX() - hBox.getRadius() / 2;
-//                final double upperLeftY = hBox.getY() - hBox.getRadius() / 2;
-//                gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()), upperLeftX, upperLeftY,
-//                        2 * hBox.getRadius(), 2 * hBox.getRadius());
-                drawHitBoxImage(x.getImageType(), (CircleHitBox) x.getHitBox());
+                // final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
+                // final double upperLeftX = hBox.getX() - hBox.getRadius() / 2;
+                // final double upperLeftY = hBox.getY() - hBox.getRadius() / 2;
+                // gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(x.getImageType()),
+                // upperLeftX, upperLeftY,
+                // 2 * hBox.getRadius(), 2 * hBox.getRadius());
+                drawHitBoxImage(x.getImageType(), (CircleHitBox) x.getHitBox(), gcGameCanvas);
             });
         }
 
@@ -248,11 +255,16 @@ public class DrawerManagerImpl implements DrawerManager {
                         + x * ViewUtils.getLifeCanvasWidth() / ViewUtils.getHearthSpaceProportion())
                 .forEach(x -> xDistances.add(x));
         IntStream.range(0, completedHearth).forEach(x -> {
-            gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.FULL_HEART), xDistances.get(x), yDistance);
+            // gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.FULL_HEART),
+            // xDistances.get(x), yDistance);
+            drawHitBoxImage(ImageType.FULL_HEART, new RectangularHitBox(xDistances.get(x), yDistance,
+                    ViewUtils.getHearthHeight(), ViewUtils.getHearthWidth()), gcLifeCanvas);
         });
         if (halfHeath == 1) {
-            gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.HALF_HEART),
-                    xDistances.get(xDistances.size() - 1), yDistance);
+            // gcLifeCanvas.drawImage(ProxyImageLoader.get().getImage(ImageType.HALF_HEART),
+            // xDistances.get(xDistances.size() - 1), yDistance);
+            drawHitBoxImage(ImageType.HALF_HEART, new RectangularHitBox(xDistances.get(xDistances.size() - 1),
+                    yDistance, ViewUtils.getHearthHeight(), ViewUtils.getHearthWidth()), gcLifeCanvas);
         }
         gcLifeCanvas.restore();
     }
@@ -270,8 +282,7 @@ public class DrawerManagerImpl implements DrawerManager {
             canvasHeight = boundary.getY();
             canvasWidth = (prop.getX() * canvasHeight) / prop.getY();
         }
-        if (canvasSize.getX() < boundary.getX()
-                && boundary.getY() >= boundary.getX() * prop.getY() / prop.getX()) {
+        if (canvasSize.getX() < boundary.getX() && boundary.getY() >= boundary.getX() * prop.getY() / prop.getX()) {
             canvasWidth = boundary.getX();
             canvasHeight = (canvasWidth * prop.getY()) / prop.getX();
         } else if (canvasSize.getY() < boundary.getY()
@@ -306,15 +317,14 @@ public class DrawerManagerImpl implements DrawerManager {
                 canvasSize.getY() / boundarySize.getY());
     }
 
-    private void drawHitBoxImage(final ImageType img, final CircleHitBox hBox) {
+    private void drawHitBoxImage(final ImageType img, final CircleHitBox hBox, final GraphicsContext gc) {
         final double upperLeftX = hBox.getX() - hBox.getRadius();
         final double upperLeftY = hBox.getY() - hBox.getRadius();
-        gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(img), upperLeftX, upperLeftY, 2 * hBox.getRadius(),
+        gc.drawImage(ProxyImageLoader.get().getImage(img), upperLeftX, upperLeftY, 2 * hBox.getRadius(),
                 2 * hBox.getRadius());
     }
 
-    private void drawHitBoxImage(final ImageType img, final RectangularHitBox hBox) {
-        gcGameCanvas.drawImage(ProxyImageLoader.get().getImage(img), hBox.getX(), hBox.getY(), hBox.getWidth(),
-                hBox.getHeight());
+    private void drawHitBoxImage(final ImageType img, final RectangularHitBox hBox, final GraphicsContext gc) {
+        gc.drawImage(ProxyImageLoader.get().getImage(img), hBox.getX(), hBox.getY(), hBox.getWidth(), hBox.getHeight());
     }
 }
