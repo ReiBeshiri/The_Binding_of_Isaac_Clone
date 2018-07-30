@@ -167,7 +167,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         final double wallVerticalHeight = 30;
         final double wallHorizontalHeight = 15;
         for (double i = 0; i < ModelUtility.getWorldWidth(); i += wallHorizontalWidth) {
-            lw.add(new WallImpl(new RectangularHitBox(i, wallHorizontalHeight, wallHorizontalHeight, wallHorizontalWidth), false,
+            lw.add(new WallImpl(new RectangularHitBox(i, 0, wallHorizontalHeight, wallHorizontalWidth), false,
                     ImageType.MAP_VERTICAL_BORDER));
             lw.add(new WallImpl(new RectangularHitBox(i, ModelUtility.getWorldHeight() - wallHorizontalHeight,
                     wallHorizontalHeight, wallHorizontalWidth), false, ImageType.MAP_VERTICAL_BORDER));
@@ -178,7 +178,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
                 this.considerDoor = true;
                 i += ProportionUtility.getHeightDoor();
             }
-            lw.add(new WallImpl(new RectangularHitBox(wallVerticalWidth, i, wallVerticalHeight, wallVerticalWidth), false,
+            lw.add(new WallImpl(new RectangularHitBox(0, i, wallVerticalHeight, wallVerticalWidth), false,
                     ImageType.MAP_HORIZONTAL_BORDER));
             lw.add(new WallImpl(new RectangularHitBox(ModelUtility.getWorldWidth() - wallVerticalWidth, i,
                     wallVerticalHeight, wallVerticalWidth), false, ImageType.MAP_HORIZONTAL_BORDER));
