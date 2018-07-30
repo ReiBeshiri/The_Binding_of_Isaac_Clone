@@ -50,7 +50,7 @@ public final class GameEngineImpl implements GameEngine {
      */
     @Override
     public void initView() {
-        //readLeaderboard();
+        readLeaderboard();
         //Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
