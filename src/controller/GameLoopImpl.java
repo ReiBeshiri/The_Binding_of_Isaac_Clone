@@ -125,7 +125,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private void checkEvent() {
         final List<WorldEvent> worldEvent = Objects.isNull(ModelUtility.getWorldEventList()) ? Collections.emptyList() : ModelUtility.getWorldEventList();
         worldEvent.forEach(x -> {
-            if (x instanceof PlayerHitButton && (Objects.isNull(timerThread) || timerThread.isAlive())) {
+            if (x instanceof PlayerHitButton && (Objects.isNull(timerThread) || !timerThread.isAlive())) {
                 startTime();
             } else if (x instanceof PlayerKillEnemy) {
                 point += ((PlayerKillEnemy) x).getPoint();

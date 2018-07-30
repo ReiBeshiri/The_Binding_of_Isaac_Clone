@@ -214,7 +214,7 @@ public class DrawerManagerImpl implements DrawerManager {
     private void drawTime() {
         gcTimerCanvas.save();
         gcTimerCanvas.clearRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
-        gcTimerCanvas.setFill(Color.DARKGRAY);
+        gcTimerCanvas.setFill(Color.RED);
         gcTimerCanvas.fillRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
         gcTimerCanvas.restore();
         gcTimerCanvas.save();
@@ -295,6 +295,9 @@ public class DrawerManagerImpl implements DrawerManager {
         timerCanvas.setWidth(ViewUtils.getTimerCanvasWidth());
         lifeCanvas.setHeight(ViewUtils.getLifeCanvasHeight());
         lifeCanvas.setWidth(ViewUtils.getLifeCanvasWidth());
+        timerCanvas.setTranslateX(gameCanvas.getWidth() / 2);
+        timerCanvas.setTranslateY(gameCanvas.getHeight());
+        lifeCanvas.setTranslateY(gameCanvas.getHeight());
     }
 
     private Tupla<Double, Double> computeScaleFactor(final Tupla<Double, Double> canvasSize,
