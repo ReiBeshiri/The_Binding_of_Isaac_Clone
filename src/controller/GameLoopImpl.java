@@ -15,7 +15,6 @@ import timer.TimeAgent;
 import utility.ModelUtility;
 import view.ViewImpl;
 import worldevent.BossFightStarted;
-import worldevent.GameStarted;
 import worldevent.PlayerDied;
 import worldevent.PlayerHeartChange;
 import worldevent.PlayerHitButton;
@@ -94,6 +93,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     public void run() {
         while (running) {
             final long now = System.nanoTime();
+            lastLoop = now;
             final long sleepTime;
             final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60);
 
@@ -150,8 +150,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
             } else if (x instanceof PlayerDied) {
                 stopTime();
                 GameEngineImpl.get().gameOver();
-            } else if (x instanceof GameStarted) {
-                ViewImpl.get().playerLifeChanged(((GameStarted) x).getLife());
             } else if (x instanceof PlayerHeartChange) {
                 ViewImpl.get().playerLifeChanged(((PlayerHeartChange) x).getCurretLife());
             }
