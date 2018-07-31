@@ -58,9 +58,9 @@ public class DrawerManagerImpl implements DrawerManager {
         gcTimerCanvas = timerCanvas.getGraphicsContext2D();
         gcLifeCanvas = lifeCanvas.getGraphicsContext2D();
         setCanvasDimension();
-        this.gameCanvas.setStyle(ViewUtils.getDafaultCSSStyle());
+       /*this.gameCanvas.setStyle(ViewUtils.getDafaultCSSStyle());
         this.timerCanvas.setStyle(ViewUtils.getDafaultCSSStyle());
-        this.lifeCanvas.setStyle(ViewUtils.getDafaultCSSStyle());
+        this.lifeCanvas.setStyle(ViewUtils.getDafaultCSSStyle());*/
     }
 
     /**

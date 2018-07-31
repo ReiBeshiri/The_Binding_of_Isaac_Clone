@@ -4,7 +4,7 @@
 }
 
 .background {
-    -fx-background-color: #7f7f7f;
+    -fx-background-color: #d8d8d8;
 }
 
 .label {
@@ -39,32 +39,32 @@
     -fx-background-color: transparent;
     -fx-font-size: 36pt;
     -fx-font-family: 'a dripping marker';
-    -fx-text-fill: white;
-    -fx-border-color: #c8c8c8;
+    -fx-text-fill: black;
+    -fx-border-color: #3e3e3e;
 	-fx-border-radius: 3px;
 }
 
 .button{
     -fx-background-color: transparent;
-    -fx-border-color: #c8c8c8;
+    -fx-border-color: #3e3e3e;
 	-fx-border-radius: 15px; 
     -fx-font-family: 'a dripping marker';
     -fx-font-size: 36pt;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .button:hover {
-    -fx-text-fill: #c8c8c8;
+    -fx-text-fill: #3e3e3e;
 }
 
 .list-view {
-    -fx-background-color: white;
+    -fx-background-color: black;
     -fx-font-family: 'a dripping marker';
     -fx-text-fill: black;
 }
 
 .list-cell {
-	-fx-text-fill: white;
+	-fx-text-fill: black;
 }
 
 .combo-box-base {
@@ -82,7 +82,7 @@
 
 .check-box .box {
 	-fx-background-color: transparent;
-	-fx-border-color: #c8c8c8;
+	-fx-border-color: #3e3e3e;
 	-fx-border-radius: 3px; 
 }
 
@@ -97,7 +97,7 @@
 
 .table-view{
     -fx-background-color: transparent;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .table-column{
@@ -106,5 +106,5 @@
 
 .column-header {
     -fx-background-color: transparent;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
