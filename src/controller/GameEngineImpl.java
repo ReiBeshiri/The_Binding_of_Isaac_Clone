@@ -11,6 +11,8 @@ import controller.observer.ButtonObserver;
 import controller.observer.KeyObserver;
 import controller.util.Score;
 import controller.util.ScoreImpl;
+import controller.util.ScoreList;
+import controller.util.ScoreListImpl;
 import model.World;
 import model.WorldImpl;
 import model.animated.AbstractCharacter;
@@ -52,6 +54,9 @@ public final class GameEngineImpl implements GameEngine {
     @Override
     public void initView() {
         readLeaderboard();
+        if(!Objects.isNull(scoreList)) {
+            ViewImpl.get().setScoreBoard(new ScoreListImpl<Score>(scoreList));
+        }
         //Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
@@ -161,5 +166,6 @@ public final class GameEngineImpl implements GameEngine {
         } catch (Exception e) {
             System.out.println("Error on reading leaderboard: " + e.getMessage()); //To change.
         }
+                
     }
 }
