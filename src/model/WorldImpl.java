@@ -415,12 +415,12 @@ public class WorldImpl implements World {
      */
     private void mainRoomActions(final Double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(0))) {
+            playerBulletHitsEnemy(deltaTime);
             if (!this.listEnemy.isEmpty()) {
                 this.listEnemy.iterator().next().update(deltaTime);
             }
             if (!allEnemyDefeated()) {
                 playerGetsHitByBullet(getPlayer(), deltaTime);
-                playerBulletHitsEnemy(deltaTime);
                 if (allEnemyDefeated()) {
                     this.listEvent.add(new PlayerKillAllEnemy());
                     incCurrentRound();
