@@ -11,4 +11,8 @@ public enum ButtonType {
      * The button pressed quit a game.
      */
     QUIT_GAME,
+    /**
+     * The button pressed stop the game.
+     */
+    PAUSE_GAME
 }
