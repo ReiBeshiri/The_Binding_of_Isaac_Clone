@@ -1,7 +1,6 @@
 package view;
 
 import javafx.event.Event;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import view.util.SceneFactory;
 import static proxyutility.SceneType.GAME;
@@ -35,10 +34,10 @@ public class GameScene extends AbstractGenericScene {
     @Override
     public void checkSceneHandler(final Event e) {
         if (e.getEventType().equals(KeyEvent.KEY_PRESSED)) {
-            ViewImpl.get().notifyEvent(new KeyEventImpl(KeyCode.getKeyCode(e.getEventType().getName()),
+            ViewImpl.get().notifyEvent(new KeyEventImpl(((KeyEvent) e).getCode(),
                     this.getSceneType(), KeyType.KEY_PRESSED));
         } else if (e.getEventType().equals(KeyEvent.KEY_RELEASED)) {
-            ViewImpl.get().notifyEvent(new KeyEventImpl(KeyCode.getKeyCode(e.getEventType().getName()),
+            ViewImpl.get().notifyEvent(new KeyEventImpl(((KeyEvent) e).getCode(),
                     this.getSceneType(), KeyType.KEY_RELEASED));
         }
     }
