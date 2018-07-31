@@ -31,7 +31,8 @@ public interface View {
     void playerLifeChanged(int life);
 
     /**
-     * Check params and start view.
+     * Start view.
+     * 
      */
     void viewStart();
 
