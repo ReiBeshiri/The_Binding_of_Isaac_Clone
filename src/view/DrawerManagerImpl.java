@@ -58,6 +58,9 @@ public class DrawerManagerImpl implements DrawerManager {
         gcTimerCanvas = timerCanvas.getGraphicsContext2D();
         gcLifeCanvas = lifeCanvas.getGraphicsContext2D();
         setCanvasDimension();
+        this.gameCanvas.setStyle(ViewUtils.getDafaultCSSStyle());
+        this.timerCanvas.setStyle(ViewUtils.getDafaultCSSStyle());
+        this.lifeCanvas.setStyle(ViewUtils.getDafaultCSSStyle());
     }
 
     /**
@@ -226,8 +229,8 @@ public class DrawerManagerImpl implements DrawerManager {
     private void drawTime() {
         gcTimerCanvas.save();
         gcTimerCanvas.clearRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
-        gcTimerCanvas.setFill(Color.LIGHTGRAY);
-        gcTimerCanvas.fillRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
+//        gcTimerCanvas.setFill(Color.DARKGRAY);
+//        gcTimerCanvas.fillRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
         gcTimerCanvas.restore();
         gcTimerCanvas.save();
         gcTimerCanvas.setTextAlign(TextAlignment.RIGHT);
@@ -245,8 +248,8 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(ViewUtils.getLifeCanvasWidth(), ViewUtils.getLifeCanvasHeight()));
         gcLifeCanvas.save();
         gcLifeCanvas.clearRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
-        gcLifeCanvas.setFill(Color.LIGHTGRAY);
-        gcLifeCanvas.fillRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
+//        gcLifeCanvas.setFill(Color.DARKGRAY);
+//        gcLifeCanvas.fillRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
         gcLifeCanvas.scale(scaleFactor.getX(), scaleFactor.getY());
         final int completedHearth = life / 2;
         final int halfHeath = life - 2 * completedHearth > 0 ? 1 : 0;

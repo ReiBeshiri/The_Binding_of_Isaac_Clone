@@ -4,7 +4,6 @@ import java.util.Objects;
 import java.util.Stack;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import proxyutility.SceneType;
 
@@ -34,7 +33,7 @@ public final class ViewManagerImpl implements ViewManager {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
         if (Objects.isNull(scene)) {
-            scene = new Scene(genScene.getSceneController().getRoot(), Color.LIGHTGRAY);
+            scene = new Scene(genScene.getSceneController().getRoot());
             stage.setScene(scene);
         } else {
             scene.setRoot(genScene.getSceneController().getRoot());
