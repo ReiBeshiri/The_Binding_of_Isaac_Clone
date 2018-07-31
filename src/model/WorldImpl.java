@@ -354,18 +354,20 @@ public class WorldImpl implements World {
      * Check if a player's bullet hits an enemy.
      */
     private void playerBulletHitsEnemy(final Double deltaTime) {
+        final List<Bullet> dieBullets = new ArrayList<>();
         for (Bullet b : this.listBulletPlayer) {
             b.update(deltaTime);
-            if (b.isDead()) {
-                removeBulletPlayer(b);
-            }
             for (Animated enemy : this.listEnemy) {
-                if (!CollisionUtil.entityCollision(b, enemy).isEmpty()) {
+                if (!CollisionUtil.entityCollision(b, enemy).isEmpty() && !b.isDead()) {
                     decEnemyLife(DAMAGE, enemy);
-                    removeBulletPlayer(b);
+                    dieBullets.add(b);
                 }
             }
-         }
+            if (b.isDead()) {
+                dieBullets.add(b);
+            }
+        }
+        listBulletPlayer.removeAll(dieBullets);
     }
 
     /**
