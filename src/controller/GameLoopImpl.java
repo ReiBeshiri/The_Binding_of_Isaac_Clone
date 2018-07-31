@@ -93,9 +93,9 @@ public class GameLoopImpl implements GameLoop, Runnable {
     public void run() {
         while (running) {
             final long now = System.nanoTime();
-            lastLoop = now;
             final long sleepTime;
             final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60);
+            lastLoop = now;
 
             update(delta);
             ViewImpl.get().render(ModelUtility.getGameObject());
