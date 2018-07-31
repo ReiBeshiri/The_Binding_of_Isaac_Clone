@@ -3,6 +3,7 @@ package model.environment;
 import java.util.List;
 
 import model.animated.Animated;
+import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
 import model.inanimated.Inanimated;
@@ -51,4 +52,9 @@ public interface WorldEnvironment {
      * @return list of items.
      */
     List<Inanimated> getItems();
+
+    /**
+     * @return the HB of the room.
+     */
+    HitBox getRoomHB();
 }
