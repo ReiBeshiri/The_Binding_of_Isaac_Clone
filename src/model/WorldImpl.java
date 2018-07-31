@@ -336,9 +336,10 @@ public class WorldImpl implements World {
      * Check if a enemy bullet's hits the player.
      * @param p player.
      */
-    private void playerGetsHitByBullet(final Animated p) {
+    private void playerGetsHitByBullet(final Animated p, final Double deltaTime) {
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
+            b.update(deltaTime);
             if (b.isDead()) {
                 removeBulletEnemy(b);
             }
@@ -352,8 +353,9 @@ public class WorldImpl implements World {
     /**
      * Check if a player's bullet hits an enemy.
      */
-    private void playerBulletHitsEnemy() {
+    private void playerBulletHitsEnemy(final Double deltaTime) {
         for (Bullet b : this.listBulletPlayer) {
+            b.update(deltaTime);
             if (b.isDead()) {
                 removeBulletPlayer(b);
             }
@@ -413,12 +415,12 @@ public class WorldImpl implements World {
      */
     private void mainRoomActions(final Double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(0))) {
+            playerBulletHitsEnemy(deltaTime);
             if (!this.listEnemy.isEmpty()) {
                 this.listEnemy.iterator().next().update(deltaTime);
             }
             if (!allEnemyDefeated()) {
-                playerGetsHitByBullet(getPlayer());
-                playerBulletHitsEnemy();
+                playerGetsHitByBullet(getPlayer(), deltaTime);
                 if (allEnemyDefeated()) {
                     this.listEvent.add(new PlayerKillAllEnemy());
                     incCurrentRound();
@@ -455,8 +457,8 @@ public class WorldImpl implements World {
                 Animated boss = we.getBoss();
                 this.listEnemy.add(boss);
                 boss.update(deltaTime);
-                playerGetsHitByBullet(getPlayer());
-                playerBulletHitsEnemy();
+                playerGetsHitByBullet(getPlayer(), deltaTime);
+                playerBulletHitsEnemy(deltaTime);
                 if (allEnemyDefeated()) {
                     this.bossDefeated = true;
                     this.listEvent.add(new PlayerKillBoss());

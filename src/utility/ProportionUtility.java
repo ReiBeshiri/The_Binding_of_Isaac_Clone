@@ -10,7 +10,7 @@ public final class ProportionUtility {
     private static final double PROPORTION_WALL = 15;
     private static final double PROPORTION_WALL_RANGE_SIDE = 30;
     private static final double PROPORTION_WALL_RANGE_TOPDOWN = 40;
-    private static final double PROPORTION_BULLET = 40;
+    private static final double PROPORTION_BULLET = 50;
     private static final double PROPORTION_BUTTON = 40;
     private static final double PROPORTION_DOOR_WIDTH = 15;
     private static final double PROPORTION_DOOR_HEIGHT = 90;
