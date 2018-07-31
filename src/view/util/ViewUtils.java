@@ -1,7 +1,7 @@
 package view.util;
 
+import java.util.List;
 import controller.util.Score;
-import controller.util.ScoreList;
 
 /**
  * Utility class meant to keep views values e.g. fps, resolution and god mode.
@@ -25,7 +25,7 @@ public final class ViewUtils {
     private static boolean godMode;
     private static boolean infinityMode;
 
-    private static ScoreList<Score> leaderBoard; 
+    private static List<Score> leaderBoard; 
 
     private ViewUtils() { }
 
@@ -161,7 +161,7 @@ public final class ViewUtils {
      * Set scoreboard passed by controller.
      * @param score scoreboard.
      */
-    public static void setScoreBoard(final ScoreList<Score> score) {
+    public static void setScoreBoard(final List<Score> score) {
         leaderBoard = score;
     }
 
@@ -169,7 +169,7 @@ public final class ViewUtils {
      * Getter for scoreboard.
      * @return scoreboard.
      */
-    public static ScoreList<Score> getScoreBoard() {
+    public static List<Score> getScoreBoard() {
         return leaderBoard;
     }
 

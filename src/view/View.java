@@ -1,10 +1,8 @@
 package view;
 
 import java.util.List;
-
 import controller.observer.Observer;
 import controller.util.Score;
-import controller.util.ScoreList;
 import controller.event.Event;
 import model.GameObject;
 import model.room.Room;
@@ -69,7 +67,7 @@ public interface View {
      * Receive scoreboard from controller.
      * @param score scoreboard.
      */
-    void setScoreBoard(ScoreList<Score> score);
+    void setScoreBoard(List<Score> score);
 
     /**
      * Return true if godmode is selected.

@@ -9,7 +9,6 @@ import controller.observer.ButtonObserver;
 import controller.observer.KeyObserver;
 import controller.observer.Observer;
 import controller.util.Score;
-import controller.util.ScoreList;
 import javafx.application.Application;
 import javafx.application.Platform;
 import controller.event.ButtonEvent;
@@ -130,7 +129,7 @@ public final class ViewImpl implements View {
      * Set scoreboard list.
      */
     @Override
-    public void setScoreBoard(final ScoreList<Score> score) {
+    public void setScoreBoard(final List<Score> score) {
         ViewUtils.setScoreBoard(score);
     }
 

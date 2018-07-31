@@ -34,7 +34,8 @@ public class LeaderboardController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
-        this.table.getItems().setAll(ViewUtils.getScoreBoard().getScoreList());
+        //this.table.getItems().setAll(ViewUtils.getScoreBoard().getScoreList());
+        System.out.println(ViewUtils.getScoreBoard().get(0));
     }
 
     @Override
