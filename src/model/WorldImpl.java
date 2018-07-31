@@ -235,7 +235,6 @@ public class WorldImpl implements World {
     @Override
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
         this.shotRatio += deltaTime;
-        System.out.println(this.shotRatio);
         resetObjects();
         ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         this.listMovements = listMovement;
