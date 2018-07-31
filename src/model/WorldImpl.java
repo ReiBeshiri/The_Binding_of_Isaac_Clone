@@ -19,7 +19,6 @@ import model.hitbox.RectangularHitBox;
 import model.inanimated.Button;
 import model.inanimated.Heart;
 import model.inanimated.Inanimated;
-import model.inanimated.Wall;
 import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
@@ -66,6 +65,7 @@ public class WorldImpl implements World {
     private Mode mode;
     private RoundsGenerator roundsGenerator;
     private WorldEnvironment we;
+    private double shotRatio = ProportionUtility.getPlayerBulletRatio();
     /**
      * @return list of game objects.
      */
@@ -234,6 +234,8 @@ public class WorldImpl implements World {
      */
     @Override
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
+        this.shotRatio += deltaTime;
+        System.out.println(this.shotRatio);
         resetObjects();
         ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         this.listMovements = listMovement;
@@ -407,10 +409,16 @@ public class WorldImpl implements World {
      * @param listShot the list of the shots to create.
      */
     private void createPlayerBullet(final List<Command> listShot) {
-       for (Command s : listShot) {
-            MovementStrategy ms = new SimplyDirectionMovement(s);
-            HitBox hb = new CircleHitBox(this.player.getHitBox().getX(), this.player.getHitBox().getY(), ProportionUtility.getRadiusBullet());
-            this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerVel(), ms, ProportionUtility.getPlayerBulletRange(), ImageType.ENEMY_BULLET));
+        if (this.shotRatio < ProportionUtility.getPlayerBulletRatio()) {
+            this.listShots.clear();
+        } else {
+            if (!this.listShots.isEmpty()) {
+                MovementStrategy ms = new SimplyDirectionMovement(this.listShots.get(0));
+                HitBox hb = new CircleHitBox(this.player.getHitBox().getX(), this.player.getHitBox().getY(), ProportionUtility.getRadiusBullet());
+                this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerVel(), ms, ProportionUtility.getPlayerBulletRange(), ImageType.ENEMY_BULLET));
+                this.shotRatio = 0;
+            }
+            this.listShots.clear();
         }
     }
 
