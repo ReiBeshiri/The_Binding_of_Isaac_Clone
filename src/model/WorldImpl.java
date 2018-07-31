@@ -19,6 +19,7 @@ import model.hitbox.RectangularHitBox;
 import model.inanimated.Button;
 import model.inanimated.Heart;
 import model.inanimated.Inanimated;
+import model.inanimated.Wall;
 import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
@@ -337,17 +338,19 @@ public class WorldImpl implements World {
      * @param p player.
      */
     private void playerGetsHitByBullet(final Animated p, final Double deltaTime) {
+        final List<Bullet> dieBullets = new ArrayList<>();
         AbstractCharacter player = (AbstractCharacter) p;
         for (Bullet b : this.listBulletEnemies) {
             b.update(deltaTime);
-            if (b.isDead()) {
-                removeBulletEnemy(b);
-            }
-            if (!CollisionUtil.entityCollision(b, player).isEmpty()) {
+            if (!CollisionUtil.entityCollision(b, player).isEmpty() && !b.isDead()) {
                 decPlayerLife(DAMAGE, player);
                 removeBulletEnemy(b);
             }
+            if (b.isDead()) {
+                dieBullets.add(b);
+            }
         }
+        this.listBulletEnemies.removeAll(dieBullets);
     }
 
     /**
@@ -417,6 +420,12 @@ public class WorldImpl implements World {
      */
     private void mainRoomActions(final Double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(0))) {
+            if (!this.button.isPressed() && getCurrentRound() >= 4 && CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox()) && this.mode.equals(Mode.NORMAL)) {
+                //se hai finito i round nella main puoi andare nello shop.
+                this.room = this.listRoom.get(2);
+                getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor());
+            }
+            //wallColliding();
             playerBulletHitsEnemy(deltaTime);
             if (!this.listEnemy.isEmpty()) {
                 this.listEnemy.iterator().next().update(deltaTime);
@@ -440,11 +449,6 @@ public class WorldImpl implements World {
                 //nella modalità normale ci sono 3 round e dopo la fine del terzo il current round sarà 4 quindi premendo il botton non succ niente.
                 setNextRound();
                 this.listEvent.add(new PlayerHitButton());
-            }
-            if (!this.button.isPressed() && getCurrentRound() >= 4 && CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox()) && this.mode.equals(Mode.NORMAL)) {
-                //se hai finito i round nella main puoi andare nello shop.
-                this.room = this.listRoom.get(2);
-                getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor());
             }
         }
     }
@@ -508,5 +512,12 @@ public class WorldImpl implements World {
     private void resetObjects() {
         this.listEvent.clear();
         this.listGameObject.clear();
+    }
+
+    /**
+     * Collisions with the walls.
+     */
+    private void wallColliding() {
+            CollisionUtil.checkBoundaryCollision((CircleHitBox) this.player.getHitBox(), (RectangularHitBox) we.getRoomHB());
     }
 }
