@@ -1,6 +1,7 @@
 package view.controller;
 
 import controller.util.Score;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,7 +21,7 @@ public class LeaderboardController extends AbstractControllerFXML {
     @FXML
     private TableColumn<Score, String> nicknameColumn;
     @FXML
-    private TableColumn<Score, Integer> pointsColumn;
+    private TableColumn<Score, String> pointsColumn;
     @FXML
     private TableColumn<Score, String> timeColumn;
     @FXML
@@ -35,7 +36,11 @@ public class LeaderboardController extends AbstractControllerFXML {
     @FXML
     private void initialize() {
         //this.table.getItems().setAll(ViewUtils.getScoreBoard().getScoreList());
-        System.out.println(ViewUtils.getScoreBoard().get(0));
+        //System.out.println(ViewUtils.getScoreBoard().get(0));
+        table.getItems().addAll(ViewUtils.getScoreBoard());
+        nicknameColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getName()));
+        pointsColumn.setCellValueFactory(x -> new SimpleStringProperty(Integer.toString(x.getValue().getPoint())));
+        timeColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getTime().toString()));
     }
 
     @Override
