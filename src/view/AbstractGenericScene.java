@@ -1,8 +1,8 @@
 package view;
 
-import input.InputCommandType;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import proxyutility.ProxyFXMLLoader;
 import proxyutility.SceneType;
@@ -25,7 +25,7 @@ public abstract class AbstractGenericScene implements GenericScene {
         scene = s;
         controller = ProxyFXMLLoader.get().getFXMLController(s);
         sceneHandler = e -> {
-            if (e.getCode().toString().equals(InputCommandType.Esc.toString()) 
+            if (e.getCode() == KeyCode.ESCAPE 
                     && e.getEventType().equals(KeyEvent.KEY_PRESSED)) {
                 exitStatus();
             }
