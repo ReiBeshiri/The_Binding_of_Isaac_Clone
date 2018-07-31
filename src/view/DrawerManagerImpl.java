@@ -1,6 +1,7 @@
 package view;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
@@ -20,7 +21,6 @@ import timer.Time;
 import utility.ModelUtility;
 import view.util.Tupla;
 import view.util.ViewUtils;
-
 import java.util.LinkedList;
 
 /**
@@ -125,7 +125,7 @@ public class DrawerManagerImpl implements DrawerManager {
 
         timerCanvas.setWidth(gameCanvas.getWidth() / 2);
         timerCanvas.setHeight(
-                timerCanvas.getWidth() / (ViewUtils.getTimerCanvasWidth() / ViewUtils.getStageDeltaHeight()));
+                timerCanvas.getWidth() / (ViewUtils.getTimerCanvasWidth() / ViewUtils.getTimerCanvasHeight()));
         timerCanvas.setTranslateX(ViewManagerImpl.get().getStageWidth()
                 - ((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2) - timerCanvas.getWidth());
         // timercanvas.setTranslateY(ViewManagerImpl.get().getStageHeight()
@@ -143,6 +143,10 @@ public class DrawerManagerImpl implements DrawerManager {
         lifeCanvas.setTranslateY(gameCanvas.getTranslateY() + gameCanvas.getHeight());
 
         draw();
+        drawPlayerLife();
+        if (!Objects.isNull(time)) {
+            drawTime();
+        }
     }
 
     private void drawEntities() {
@@ -222,7 +226,7 @@ public class DrawerManagerImpl implements DrawerManager {
     private void drawTime() {
         gcTimerCanvas.save();
         gcTimerCanvas.clearRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
-        gcTimerCanvas.setFill(Color.DARKGRAY);
+        gcTimerCanvas.setFill(Color.LIGHTGRAY);
         gcTimerCanvas.fillRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
         gcTimerCanvas.restore();
         gcTimerCanvas.save();
@@ -241,7 +245,7 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(ViewUtils.getLifeCanvasWidth(), ViewUtils.getLifeCanvasHeight()));
         gcLifeCanvas.save();
         gcLifeCanvas.clearRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
-        gcLifeCanvas.setFill(Color.DARKGRAY);
+        gcLifeCanvas.setFill(Color.LIGHTGRAY);
         gcLifeCanvas.fillRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
         gcLifeCanvas.scale(scaleFactor.getX(), scaleFactor.getY());
         final int completedHearth = life / 2;

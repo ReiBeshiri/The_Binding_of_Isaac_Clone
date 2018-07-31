@@ -34,7 +34,7 @@ public final class ViewManagerImpl implements ViewManager {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
         if (Objects.isNull(scene)) {
-            scene = new Scene(genScene.getSceneController().getRoot(), Color.DARKGRAY);
+            scene = new Scene(genScene.getSceneController().getRoot(), Color.LIGHTGRAY);
             stage.setScene(scene);
         } else {
             scene.setRoot(genScene.getSceneController().getRoot());
