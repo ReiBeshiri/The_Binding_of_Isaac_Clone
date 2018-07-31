@@ -142,7 +142,8 @@ public final class GameEngineImpl implements GameEngine {
      * Read the saves.
      */
     private void readLeaderboard() {
-        final File file = new File(System.getProperty("user.home") + System.lineSeparator() + "Leaderboard.txt");
+        final File file = new File(System.getProperty("user.home") + File.separator + "Leaderboard.txt");
+        System.out.println(System.getProperty("user.home") + File.separator + "Leaderboard.txt");
         List<String> items;
         List<String> splitTime;
 
