@@ -212,7 +212,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     @Override
     public void addMovement(final Command d) {
-        movement.add(d);
+            movement.add(d);
     }
 
     /**
@@ -220,7 +220,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     @Override
     public void removeMovement(final Command d) {
-        movement.add(d);
+        movement.remove(d);
     }
 
     /**
