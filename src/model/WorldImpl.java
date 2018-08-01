@@ -429,12 +429,15 @@ public class WorldImpl implements World {
      */
     private void mainRoomActions(final Double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(0))) {
+            wallColliding();
+            if (allEnemyDefeated() && !this.button.isPressed()) {
+                playerBulletHitsEnemy(deltaTime);
+            }
             if (!this.button.isPressed() && getCurrentRound() >= 4 && CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox()) && this.mode.equals(Mode.NORMAL)) {
                 //se hai finito i round nella main puoi andare nello shop.
                 this.room = this.listRoom.get(2);
                 getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor());
             }
-            //wallColliding();
             if (!this.listEnemy.isEmpty()) {
                 this.listEnemy.iterator().next().update(deltaTime);
             }

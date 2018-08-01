@@ -196,7 +196,7 @@ public final class ProportionUtility {
 
     /**
      * @return width of the room minus the dimension of the walls.
-     * So it return the actual dimension of the playable room.
+     * So it return the actual dimension of the playable room (770).
      */
     public static double getWidth() {
         return ProportionUtility.WIDTH - getWallStandard() * 2;
@@ -204,7 +204,7 @@ public final class ProportionUtility {
 
     /**
      * @return height of the room minus the dimension of the walls.
-     * So it return the actual dimension of the playable room.
+     * So it return the actual dimension of the playable room (570).
      */
     public static double getHeight() {
         return ProportionUtility.HEIGHT - getWallStandard() * 2;
