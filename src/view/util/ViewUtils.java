@@ -17,7 +17,6 @@ public final class ViewUtils {
     private static final double HEARTH_HEIGHT = 25;
     private static final double HEARTH_WIDTH = 25;
     private static final double SPACE_HEARTH_PROPORTION = 40;
-    private static final String DEFAULT_CSS_STYLE = "-fx-background-color: #7f7f7f;";
 
     private static final Tupla<Integer, Integer> STANDARD_RES = new Tupla<Integer, Integer>(1280, 720);
     private static Tupla<Integer, Integer> selectedRes = STANDARD_RES;
@@ -171,13 +170,5 @@ public final class ViewUtils {
      */
     public static List<Score> getScoreBoard() {
         return leaderBoard;
-    }
-
-    /**
-     * Get CSS style used in FXML files.
-     * @return CSS style code.
-     */
-    public static String getDafaultCSSStyle() {
-        return DEFAULT_CSS_STYLE;
     }
 }

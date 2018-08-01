@@ -35,8 +35,6 @@ public class LeaderboardController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
-        //this.table.getItems().setAll(ViewUtils.getScoreBoard().getScoreList());
-        //System.out.println(ViewUtils.getScoreBoard().get(0));
         table.getItems().addAll(ViewUtils.getScoreBoard());
         nicknameColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getName()));
         pointsColumn.setCellValueFactory(x -> new SimpleStringProperty(Integer.toString(x.getValue().getPoint())));
