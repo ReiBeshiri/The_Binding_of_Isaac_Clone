@@ -4,7 +4,7 @@ import java.util.List;
 import controller.observer.Observer;
 import controller.util.Score;
 import controller.event.Event;
-import model.GameObject;
+import model.animated.Animated;
 import model.room.Room;
 /**
  * View class. This class communicate with controller.
@@ -14,7 +14,7 @@ public interface View {
      * Render new scene.
      * @param list Lit of objects to render.
      */
-    void render(List<GameObject> list);
+    void render(List<Animated> list);
 
     /**
      * Render new Room.

@@ -21,6 +21,7 @@ import worldevent.PlayerHitButton;
 import worldevent.PlayerKillAllEnemy;
 import worldevent.PlayerKillBoss;
 import worldevent.PlayerKillEnemy;
+import worldevent.RoomChange;
 import worldevent.WorldEvent;
 
 /**
@@ -106,7 +107,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
             lastLoop = now;
 
             update(delta);
-            ViewImpl.get().render(ModelUtility.getGameObject());
+            ViewImpl.get().render(ModelUtility.getAnimatedObjects());
             checkEvent();
 
             sleepTime = (lastLoop - System.nanoTime() + optimalTime) / GameLoopImpl.SECONDMICRO;
@@ -189,7 +190,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * Check the world's events.
      */
     private void checkEvent() {
-        final List<WorldEvent> worldEvent = Objects.isNull(ModelUtility.getWorldEventList()) ? Collections.emptyList() : ModelUtility.getWorldEventList();
+        final List<WorldEvent> worldEvent = Objects.isNull(ModelUtility.getWorldEventList()) ? Collections.emptyList()
+                : ModelUtility.getWorldEventList();
         worldEvent.forEach(x -> {
             if (x instanceof PlayerHitButton && (Objects.isNull(timerThread) || !timerThread.isAlive())) {
                 startTime();
@@ -209,7 +211,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
                     leaderboard.add(score);
                     leaderboard.sort(new LeaderboardComparator<Score>());
                     GameEngineImpl.get().setLeaderboard(leaderboard);
-                    //Richiamo il metodo della view a cui passo la leaderboard
+                    // Richiamo il metodo della view a cui passo la leaderboard
                 }
                 GameEngineImpl.get().victory();
             } else if (x instanceof PlayerDied) {
@@ -217,6 +219,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
                 GameEngineImpl.get().gameOver();
             } else if (x instanceof PlayerHeartChange) {
                 ViewImpl.get().playerLifeChanged(((PlayerHeartChange) x).getCurretLife());
+            } else if (x instanceof RoomChange) {
+                ViewImpl.get().roomChanged(((RoomChange) x).getNewRoom());
             }
         });
     }

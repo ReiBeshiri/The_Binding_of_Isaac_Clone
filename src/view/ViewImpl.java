@@ -3,7 +3,6 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import controller.event.KeyEvent;
 import controller.observer.ButtonObserver;
 import controller.observer.KeyObserver;
@@ -13,7 +12,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import controller.event.ButtonEvent;
 import controller.event.Event;
-import model.GameObject;
 import model.animated.Animated;
 import model.room.Room;
 import utility.ModelUtility;
@@ -53,12 +51,7 @@ public final class ViewImpl implements View {
      * DA RIVEDERE DIPENDE SE ME LI PASSANO COSI' O NO...
      */
     @Override
-    public void render(final List<GameObject> list) {
-        drawer.setAnimatedEntities(
-                list.stream()
-                .filter(x -> x instanceof Animated)
-                .map(x -> (Animated) x)
-                .collect(Collectors.toList()));
+    public void render(final List<Animated> list) {
         Platform.runLater(() -> drawer.draw());
     }
 
