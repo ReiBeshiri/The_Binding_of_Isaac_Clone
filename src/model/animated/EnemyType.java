@@ -15,5 +15,4 @@ public enum EnemyType {
      * Create Simple Direction Moved Enemy.
      */
     SIMPLEMOVE;
-
 }

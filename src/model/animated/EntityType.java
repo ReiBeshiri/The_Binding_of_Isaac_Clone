@@ -7,7 +7,7 @@ public enum EntityType {
     /**
      * player stats.
      */
-    PLAYER(6, 3, 0, 1),
+    PLAYER(6, 5, 0, 50),
     /**
      * static enemy stats.
      */
