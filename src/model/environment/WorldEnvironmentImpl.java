@@ -39,7 +39,7 @@ import utility.SpawnUtility;
 public class WorldEnvironmentImpl implements WorldEnvironment {
     private final List<Room> listRoom = new ArrayList<>();
     private final RoomFactory rf = new RoomFactoryImpl();
-    private final HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWallVerticalWidth(), ProportionUtility.getWallHorizontalHeight(), ProportionUtility.getWidth(), ProportionUtility.getHeight());
+    private final HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWallVerticalWidth(), ProportionUtility.getWallHorizontalHeight(), ProportionUtility.getHeight(), ProportionUtility.getWidth());
     private final HitBox hbDoorr = new RectangularHitBox(ModelUtility.getWorldWidth() - ProportionUtility.getWidthDoor(), ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2,  ProportionUtility.getHeightDoor(), ProportionUtility.getWidthDoor());
     private final HitBox hbDoorl = new RectangularHitBox(0, ModelUtility.getWorldHeight() / 2, ProportionUtility.getHeightDoor() + ProportionUtility.getWidthDoor(), ProportionUtility.getWidthDoor() * 2);
     private final HitBox hbBtn = new CircleHitBox(ModelUtility.getWorldWidth() / 2, ModelUtility.getWorldHeight() / 2, ProportionUtility.getRadiusButton());
