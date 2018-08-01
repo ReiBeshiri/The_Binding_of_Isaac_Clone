@@ -52,6 +52,7 @@ public final class ViewImpl implements View {
      */
     @Override
     public void render(final List<Animated> list) {
+        drawer.setAnimatedEntities(list);
         Platform.runLater(() -> drawer.draw());
     }
 
