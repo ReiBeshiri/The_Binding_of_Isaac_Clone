@@ -364,7 +364,7 @@ public class WorldImpl implements World {
         for (Bullet b : this.listBulletPlayer) {
             b.update(deltaTime);
             for (Animated enemy : this.listEnemy) {
-                if (!CollisionUtil.entityCollision(b, enemy).isEmpty() && !b.isDead()) {
+                if (!CollisionUtil.entityCollision(b, enemy).isEmpty()) {
                     decEnemyLife(DAMAGE, enemy);
                     dieBullets.add(b);
                 }
@@ -530,6 +530,9 @@ public class WorldImpl implements World {
      * Collisions with the walls.
      */
     private void wallColliding() {
-            CollisionUtil.checkBoundaryCollision((CircleHitBox) this.player.getHitBox(), (RectangularHitBox) we.getRoomHB());
+        CollisionUtil.checkBoundaryCollision((CircleHitBox) this.player.getHitBox(), (RectangularHitBox) we.getRoomHB());
+        for (Animated enemy : this.listEnemy) {
+            CollisionUtil.checkBoundaryCollision((CircleHitBox) enemy.getHitBox(), (RectangularHitBox) we.getRoomHB());
+        }
     }
 }
