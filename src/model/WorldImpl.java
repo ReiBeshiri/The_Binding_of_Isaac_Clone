@@ -255,7 +255,7 @@ public class WorldImpl implements World {
         ModelUtility.updateCurrentRound(this.currentRound);
         ModelUtility.updateListWorldEvent(this.listEvent);
         ModelUtility.updatePlayerModelUtility(getPlayer());
-        ModelUtility.updateListGameObject(getNewListGameObj());
+        ModelUtility.updateListAnimatedObject(getNewListGameObj());
     }
 
     /**

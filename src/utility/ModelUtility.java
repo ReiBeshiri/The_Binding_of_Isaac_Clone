@@ -56,7 +56,7 @@ public final class ModelUtility {
     /**
      * @return list Game Object.
      */
-    public static List<Animated> getGameObject() {
+    public static List<Animated> getAnimatedObjects() {
         return listAnimatedObj;
     }
 
@@ -157,7 +157,7 @@ public final class ModelUtility {
      * @param list game object.
      *          the new list.
      */
-    public static void updateListGameObject(final List<Animated> list) {
+    public static void updateListAnimatedObject(final List<Animated> list) {
         ModelUtility.listAnimatedObj = list;
     }
 
