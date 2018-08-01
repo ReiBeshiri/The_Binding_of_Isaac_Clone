@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.ViewImpl;
 import view.ViewManagerImpl;
+import view.util.SceneFactory;
 /**
  * 
  * Controller class for the PauseView file.
@@ -35,6 +36,7 @@ public class PauseViewController extends AbstractControllerFXML {
     @FXML
     private void exitButtonClick() {
         //super.closingFade(() -> ViewManagerImpl.get().push(new MainMenuScene()));
-        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME, ""));
+        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.RETURN_MAIN_MENU, ""));
+        ViewManagerImpl.get().push(SceneFactory.createMenuScene());
      }
 }

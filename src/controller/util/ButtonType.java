@@ -14,5 +14,9 @@ public enum ButtonType {
     /**
      * The button pressed stop the game.
      */
-    PAUSE_GAME
+    PAUSE_GAME,
+    /**
+     * The button pressed allow to turn to main menu.
+     */
+    RETURN_MAIN_MENU
 }

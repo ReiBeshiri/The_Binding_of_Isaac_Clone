@@ -36,16 +36,10 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void exitButtonClick() {
-        if (godModeCheckBox.isSelected()) {
-            ViewUtils.setGodMode(true);
-        }
-        if (infinityModeCheckBox.isSelected()) {
-            ViewUtils.setInfinityMode(true);
-        }
+        godModeCheckBox.setSelected(ViewUtils.isGodModeSelected());
+        infinityModeCheckBox.setSelected(ViewUtils.isInfinityModeSelected());
         //super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
-        System.out.println(godModeCheckBox.isSelected());
-        System.out.println(infinityModeCheckBox.isSelected());
     }
 
     @Override

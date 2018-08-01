@@ -96,7 +96,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
             final long sleepTime;
             final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60);
             lastLoop = now;
-
+                        //DEBUG PRINT.
+                            System.out.println(delta);
             update(delta);
             ViewImpl.get().render(ModelUtility.getGameObject());
             checkEvent();
