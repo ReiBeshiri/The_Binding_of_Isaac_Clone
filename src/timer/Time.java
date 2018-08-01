@@ -96,7 +96,19 @@ public class Time {
      */
     @Override
     public String toString() {
-        return Integer.toString(minutes) + ":" + Integer.toString(seconds);
+        String timeToPrint = "";
+        if (Integer.toString(minutes).length() == 1) {
+            timeToPrint += "0" + minutes;
+        } else {
+            timeToPrint += minutes;
+        }
+        timeToPrint += ":";
+        if (Integer.toString(seconds).length() == 1) {
+            timeToPrint += "0" + seconds;
+        } else {
+            timeToPrint += seconds;
+        }
+        return timeToPrint;
     }
 
 }
