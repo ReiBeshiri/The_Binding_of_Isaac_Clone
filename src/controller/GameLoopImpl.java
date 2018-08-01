@@ -104,7 +104,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
             final long sleepTime;
             final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60);
             lastLoop = now;
-System.out.println(delta);
+
             update(delta);
             ViewImpl.get().render(ModelUtility.getGameObject());
             checkEvent();
@@ -246,6 +246,5 @@ System.out.println(delta);
      */
     private void stopTime() {
         timeAgent.interrupt();
-        System.out.println("TIME: " + time.toString());
     }
 }
