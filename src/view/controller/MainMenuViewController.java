@@ -5,13 +5,9 @@ import controller.util.ButtonType;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
-import view.CreditScene;
-import view.HelpScene;
-import view.LeaderboardScene;
-import view.NewGameScene;
-import view.OptionScene;
 import view.ViewImpl;
 import view.ViewManagerImpl;
+import view.util.SceneFactory;
 /**
  * 
  * Controller class for the MainMenuView file.
@@ -28,12 +24,12 @@ public class MainMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void playButtonClick() {
-        ViewManagerImpl.get().push(new NewGameScene());
+        ViewManagerImpl.get().push(SceneFactory.createNewGameScene());
     }
 
     @FXML
     private void optionsButtonClick() {
-        ViewManagerImpl.get().push(new OptionScene());
+        ViewManagerImpl.get().push(SceneFactory.createOptionScene());
     }
 
     @FXML
@@ -44,16 +40,16 @@ public class MainMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void helpButtonClick() {
-        ViewManagerImpl.get().push(new HelpScene());
+        ViewManagerImpl.get().push(SceneFactory.createHelpScene());
     }
 
     @FXML
     private void creditsButtonClick() {
-        ViewManagerImpl.get().push(new CreditScene());
+        ViewManagerImpl.get().push(SceneFactory.createCreditScene());
     }
 
     @FXML
     private void btnLeaderboardClick() {
-        ViewManagerImpl.get().push(new LeaderboardScene());
+        ViewManagerImpl.get().push(SceneFactory.createLeaderboardScene());
     }
 }

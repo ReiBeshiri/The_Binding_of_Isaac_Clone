@@ -7,10 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
-import view.GameScene;
 import view.ViewImpl;
 import view.ViewManagerImpl;
 import view.util.SceneFactory;
+
 /**
  * 
  * Controller class for the NewGameView file.

@@ -2,12 +2,11 @@ package view.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.ViewManagerImpl;
 import view.util.ViewUtils;
-import view.util.Tupla;
+
 /**
  * 
  * Controller class for the OptionsMenuView file.
@@ -37,10 +36,16 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
 
     @FXML
     private void exitButtonClick() {
-        godModeCheckBox.setSelected(ViewUtils.isGodModeSelected());
-        infinityModeCheckBox.setSelected(ViewUtils.isInfinityModeSelected());
+        if (godModeCheckBox.isSelected()) {
+            ViewUtils.setGodMode(true);
+        }
+        if (infinityModeCheckBox.isSelected()) {
+            ViewUtils.setInfinityMode(true);
+        }
         //super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
+        System.out.println(godModeCheckBox.isSelected());
+        System.out.println(infinityModeCheckBox.isSelected());
     }
 
     @Override
