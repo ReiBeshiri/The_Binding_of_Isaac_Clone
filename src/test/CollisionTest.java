@@ -61,7 +61,7 @@ class CollisionTest {
     public void collisionBetweenEntityAndRoomBorders() {
         //TOP BORDER COLLISION.
         final RectangularHitBox room = new RectangularHitBox(0, 0, 600, 800);
-        final CircleHitBox player = new CircleHitBox(3, 2, 2);
+        final CircleHitBox player = new CircleHitBox(3, 1.9, 2);
         assertTrue(CollisionUtil.checkBoundaryCollision(player, room));
 
         //BOTTOM COLLISION BORDER.

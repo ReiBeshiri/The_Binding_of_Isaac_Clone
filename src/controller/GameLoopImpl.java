@@ -106,6 +106,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
             lastLoop = now;
 
             update(delta);
+            System.out.println("x: " + ModelUtility.getPlayerHitBox().getX() + " y: " + ModelUtility.getPlayerHitBox().getY());
             ViewImpl.get().render(ModelUtility.getGameObject());
             checkEvent();
 
@@ -149,7 +150,9 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     @Override
     public void addMovement(final Command d) {
-        movement.add(d);
+        if (!movement.contains(d)) {
+            movement.add(d);
+        }
     }
 
     /**
