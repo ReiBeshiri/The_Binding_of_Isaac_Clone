@@ -2,6 +2,9 @@ package view;
 
 import javafx.event.Event;
 import static proxyutility.SceneType.PAUSE;
+
+import controller.event.ButtonEventImpl;
+import controller.util.ButtonType;
 /**
  * Class for a pause scene.
  *
@@ -22,6 +25,7 @@ public class PauseScene extends AbstractGenericScene {
     @Override
     public void exitStatus() {
         ViewManagerImpl.get().pop();
+        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.RESUME_GAME, ""));
     }
 
     /**

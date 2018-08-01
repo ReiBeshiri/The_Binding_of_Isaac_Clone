@@ -39,4 +39,12 @@ public class TimeAgent implements Runnable {
     public void interrupt() {
         stop = true;
     }
+
+    /**
+     * Return if thread is running.
+     * @return is thread is running.
+     */
+    public boolean isRunning() {
+        return !stop;
+    }
 }

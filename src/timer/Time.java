@@ -84,6 +84,14 @@ public class Time {
     }
 
     /**
+     * Return list of listeners. 
+     * @return list of listeners.
+     */
+    public List<TimeEventListener> getListeners() {
+        return listeners;
+    }
+
+    /**
      * Override of toString() method.
      */
     @Override

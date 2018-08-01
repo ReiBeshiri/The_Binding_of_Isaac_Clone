@@ -1,4 +1,5 @@
 package view.controller;
+
 import controller.event.ButtonEventImpl;
 import controller.util.ButtonType;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.layout.Region;
 import view.ViewImpl;
 import view.ViewManagerImpl;
 import view.util.SceneFactory;
+
 /**
  * 
  * Controller class for the PauseView file.
@@ -31,6 +33,7 @@ public class PauseViewController extends AbstractControllerFXML {
     private void resumeButtonClick() {
         //super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
+        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.RESUME_GAME, ""));
     }
 
     @FXML

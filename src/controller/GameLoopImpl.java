@@ -34,10 +34,10 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private static final long SECONDMICRO = 1000000;
     private static final int SECONDNANO = 1000000000;
     private static final int FPS = 60;
-    private static final int MSWAIT = 5;
+    //private static final int MSWAIT = 5;
     private boolean running;
     private Thread gameLoopThread; 
-    private int optimalTime; //A cosa serve?
+    private int optimalTime;
     private long lastLoop;
     private final World world;
     private int point;
@@ -78,10 +78,15 @@ public class GameLoopImpl implements GameLoop, Runnable {
     @Override
     public void stop() {
         if (running) {
-            try {
-                gameLoopThread.join(MSWAIT);
-            } catch (InterruptedException e) {
-                System.out.println("Timer can't be stopped: " + e.getMessage());
+//            try {
+//                gameLoopThread.join(MSWAIT);
+//                timerThread.join(MSWAIT);
+//            } catch (InterruptedException e) {
+//                System.out.println("Timer can't be stopped: " + e.getMessage());
+//            }
+            interrupt();
+            if (!Objects.isNull(timerThread) && timeAgent.isRunning()) {
+                stopTime();
             }
         }
     }
@@ -96,8 +101,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
             final long sleepTime;
             final double delta = (now - this.lastLoop) / ((double) GameLoopImpl.SECONDNANO / 60);
             lastLoop = now;
-                        //DEBUG PRINT.
-                            System.out.println(delta);
+System.out.println(delta);
             update(delta);
             ViewImpl.get().render(ModelUtility.getGameObject());
             checkEvent();
@@ -111,6 +115,61 @@ public class GameLoopImpl implements GameLoop, Runnable {
                 }
             }
         }
+    }
+
+    /**
+     * Return true if the game loop is running, false otherwise.
+     */
+    @Override
+    public boolean isRunning() {
+        return this.running;
+    }
+
+    /**
+     * Add a shot to list.
+     */
+    @Override
+    public void addShot(final Command d) {
+        shot.add(d);
+    }
+
+    /**
+     * Remove a shot from the list.
+     */
+    @Override
+    public void removeShot(final Command d) {
+        shot.remove(d);
+    }
+
+    /**
+     * Add a movement to list.
+     */
+    @Override
+    public void addMovement(final Command d) {
+        movement.add(d);
+    }
+
+    /**
+     * Remove a movement from the list.
+     */
+    @Override
+    public void removeMovement(final Command d) {
+        movement.remove(d);
+    }
+
+    /**
+     * Get player's name.
+     * @return the player's name.
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Interrupt event, that stop thread.
+     */
+    private void interrupt() {
+        running = false;
     }
 
     /**
@@ -171,7 +230,9 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     private void startTime() {
         timeAgent = new TimeAgent(time);
-        time.addListener(ViewImpl.get().getDrawerReference());
+        if (!time.getListeners().contains(ViewImpl.get().getDrawerReference())) {
+            time.addListener(ViewImpl.get().getDrawerReference());
+        }
         timerThread = new Thread(timeAgent);
         timerThread.setDaemon(true);
         timerThread.start();
@@ -182,53 +243,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     private void stopTime() {
         timeAgent.interrupt();
-    }
-
-    /**
-     * Return true if the game loop is running, false otherwise.
-     */
-    @Override
-    public boolean isRunning() {
-        return this.running;
-    }
-
-    /**
-     * Add a shot to list.
-     */
-    @Override
-    public void addShot(final Command d) {
-        shot.add(d);
-    }
-
-    /**
-     * Remove a shot from the list.
-     */
-    @Override
-    public void removeShot(final Command d) {
-        shot.remove(d);
-    }
-
-    /**
-     * Add a movement to list.
-     */
-    @Override
-    public void addMovement(final Command d) {
-            movement.add(d);
-    }
-
-    /**
-     * Remove a movement from the list.
-     */
-    @Override
-    public void removeMovement(final Command d) {
-        movement.remove(d);
-    }
-
-    /**
-     * Get player's name.
-     * @return the player's name.
-     */
-    public String getName() {
-        return this.name;
+        System.out.println("TIME: " + time.toString());
     }
 }
