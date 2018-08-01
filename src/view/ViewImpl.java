@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import controller.event.KeyEvent;
@@ -52,7 +53,7 @@ public final class ViewImpl implements View {
      */
     @Override
     public void render(final List<Animated> list) {
-        drawer.setAnimatedEntities(list);
+        drawer.setAnimatedEntities(new ArrayList<>(list));
         Platform.runLater(() -> drawer.draw());
     }
 
