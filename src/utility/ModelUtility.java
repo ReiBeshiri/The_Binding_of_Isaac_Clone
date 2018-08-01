@@ -20,7 +20,7 @@ public final class ModelUtility {
     private static final double WORLD_HEIGHT_PROP = 3;
     private static final double EPSILON = 0.001;
     private static int currentRound;
-    private static boolean canPause;
+    private static boolean pauseDuringRound;
     private static Animated player; 
     private static Room room;
     private static List<Command> listMovementCommand; //The list of the movement of the player.
@@ -44,7 +44,7 @@ public final class ModelUtility {
      * @return true if the user was playing a round, false if he wasn't.
      */
     public static boolean pauseDuringRound() {
-        return !canPause;
+        return pauseDuringRound;
     }
 
     /**
@@ -133,7 +133,7 @@ public final class ModelUtility {
      *          true if the user was playing a round, false if he wasn't.
      */
     public static void updatePauseDuringRound(final boolean pause) {
-        ModelUtility.canPause = pause;
+        ModelUtility.pauseDuringRound = pause;
     }
 
     /**

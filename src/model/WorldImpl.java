@@ -435,11 +435,11 @@ public class WorldImpl implements World {
                 getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor());
             }
             //wallColliding();
-            playerBulletHitsEnemy(deltaTime);
             if (!this.listEnemy.isEmpty()) {
                 this.listEnemy.iterator().next().update(deltaTime);
             }
             if (!allEnemyDefeated()) {
+                playerBulletHitsEnemy(deltaTime);
                 playerGetsHitByBullet(getPlayer(), deltaTime);
                 if (allEnemyDefeated()) {
                     this.listEvent.add(new PlayerKillAllEnemy());
