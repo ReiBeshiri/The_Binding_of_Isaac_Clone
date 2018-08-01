@@ -34,7 +34,11 @@ public class ButtonImpl extends AbstractInanimated implements Button {
     @Override
     public void setPressed(final boolean press) {
         super.setEnable(press);
-        btnImg = ImageType.BUTTON_DOWN;
+        if (press) {
+            btnImg = ImageType.BUTTON_DOWN;
+        } else {
+            btnImg = ImageType.BUTTON_UP;
+        }
     }
 
     /**

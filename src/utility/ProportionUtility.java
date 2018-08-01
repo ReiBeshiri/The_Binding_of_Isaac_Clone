@@ -22,6 +22,7 @@ public final class ProportionUtility {
     private static final double BOSS_VEL = 5;
     private static final double BOSS_BULLET_RNG = 500;
     private static final double BOSS_SHOT_RATIO = 0.4;
+    private static final double PLAYER_VEL_SHOT = 7;
     private static final double PLAYER_VEL = 5;
     private static final double WALLVERTICALWIDTH = 15;
     private static final double WALLHORIZONTALWIDTH = 30;
@@ -107,6 +108,13 @@ public final class ProportionUtility {
      */
     public static double getPlayerVel() {
         return ProportionUtility.PLAYER_VEL;
+    }
+
+    /**
+     * @return vel of the player bullets.
+     */
+    public static double getPlayerBulletVel() {
+        return ProportionUtility.PLAYER_VEL_SHOT;
     }
 
     /**

@@ -26,6 +26,7 @@ public class StaticRounds implements RoundsGenerator {
      */
     @Override
     public List<Animated> generateMonster() {
+        this.listReturnEnemy.clear();
         if (getCurrentRound() == 1) {
             //first enemy is a static simple direction shot enemy.
             EnemyFactory enemyFirst = new EnemyFactoryImpl();

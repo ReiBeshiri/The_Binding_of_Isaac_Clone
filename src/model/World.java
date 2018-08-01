@@ -14,12 +14,6 @@ import worldevent.WorldEvent;
  * World
  **/
 public interface World {
-    /**
-     * It gives you a GameObject list with all the objects (elements).
-     * 
-     * @return Return a list of all the object in the current World state
-     */
-    List<GameObject> getAllElements();
 
     /**
      * get the current Room.
