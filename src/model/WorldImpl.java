@@ -142,6 +142,7 @@ public class WorldImpl implements World {
     @Override
     public void setNextRound() {
         listEnemy.addAll(roundsGenerator.generateMonster());
+        this.button.setPressed(true);
     }
 
     /**
@@ -243,14 +244,15 @@ public class WorldImpl implements World {
         this.player.update(deltaTime);
         if (getActualRoom().equals(this.listRoom.get(0))) {
             mainRoomActions(deltaTime);
+            ModelUtility.updateCanPause(this.button.isPressed());
         } else if (getActualRoom().equals(this.listRoom.get(1))) {
             shopRoomAction();
+            ModelUtility.updateCanPause(true);  //you can always pause in the shop
         } else {
             bossRoomAction(deltaTime);
+            ModelUtility.updateCanPause(this.button.isPressed());
         }
-        //update ModelUtility
         ModelUtility.updateCurrentRound(this.currentRound);
-        //ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         ModelUtility.updateListWorldEvent(this.listEvent);
         ModelUtility.updatePlayerModelUtility(getPlayer());
         ModelUtility.updateRoomModelUtility(this.room);
@@ -466,12 +468,12 @@ public class WorldImpl implements World {
      */
     private void bossRoomAction(final double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(2))) {
+            Animated boss = we.getBoss();
+            playerBulletHitsEnemy(deltaTime);
             if (!isBossDefeated()) {
-                Animated boss = we.getBoss();
                 this.listEnemy.add(boss);
                 boss.update(deltaTime);
                 playerGetsHitByBullet(getPlayer(), deltaTime);
-                playerBulletHitsEnemy(deltaTime);
                 if (allEnemyDefeated()) {
                     this.bossDefeated = true;
                     this.listEvent.add(new PlayerKillBoss());
