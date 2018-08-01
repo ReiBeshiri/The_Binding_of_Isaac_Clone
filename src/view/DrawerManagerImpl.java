@@ -233,7 +233,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcTimerCanvas.save();
         gcTimerCanvas.setTextAlign(TextAlignment.RIGHT);
         gcTimerCanvas.setTextBaseline(VPos.CENTER);
-        gcTimerCanvas.setFill(Color.WHITE);
+        gcTimerCanvas.setFill(Color.BLACK);
         gcTimerCanvas.setFont(new Font(timerCanvas.getHeight() / ViewUtils.getTextTimerProp()));
         gcTimerCanvas.fillText(time.toString(), Math.round(timerCanvas.getWidth() / 2),
                 Math.round(timerCanvas.getHeight() / 2), timerCanvas.getWidth());

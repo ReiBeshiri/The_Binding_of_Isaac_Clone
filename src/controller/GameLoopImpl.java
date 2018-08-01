@@ -106,7 +106,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
             lastLoop = now;
 
             update(delta);
-            System.out.println("x: " + ModelUtility.getPlayerHitBox().getX() + " y: " + ModelUtility.getPlayerHitBox().getY());
             ViewImpl.get().render(ModelUtility.getGameObject());
             checkEvent();
 
