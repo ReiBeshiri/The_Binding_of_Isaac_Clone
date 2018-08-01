@@ -244,13 +244,13 @@ public class WorldImpl implements World {
         this.player.update(deltaTime);
         if (getActualRoom().equals(this.listRoom.get(0))) {
             mainRoomActions(deltaTime);
-            ModelUtility.updateCanPause(this.button.isPressed());
+            ModelUtility.updatePauseDuringRound(this.button.isPressed());
         } else if (getActualRoom().equals(this.listRoom.get(1))) {
             shopRoomAction();
-            ModelUtility.updateCanPause(true);  //you can always pause in the shop
+            ModelUtility.updatePauseDuringRound(true);  //you can always pause in the shop
         } else {
             bossRoomAction(deltaTime);
-            ModelUtility.updateCanPause(this.button.isPressed());
+            ModelUtility.updatePauseDuringRound(this.button.isPressed());
         }
         ModelUtility.updateCurrentRound(this.currentRound);
         ModelUtility.updateListWorldEvent(this.listEvent);

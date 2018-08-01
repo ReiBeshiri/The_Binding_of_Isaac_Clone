@@ -39,11 +39,11 @@ public final class ModelUtility {
     public static Animated getPlayer() {
         return player;
     }
-    
+
     /**
-     * @return if the user can pause the game.
+     * @return true if the user was playing a round, false if he wasn't.
      */
-    public static boolean canPause() {
+    public static boolean pauseDuringRound() {
         return canPause;
     }
 
@@ -130,9 +130,9 @@ public final class ModelUtility {
 
     /**
      * @param pause 
-     *          true if the user can pause, false if he can't .
+     *          true if the user was playing a round, false if he wasn't.
      */
-    public static void updateCanPause(final boolean pause) {
+    public static void updatePauseDuringRound(final boolean pause) {
         ModelUtility.canPause = pause;
     }
 
