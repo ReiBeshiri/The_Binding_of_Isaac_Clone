@@ -1,6 +1,9 @@
 package view;
 
 import javafx.event.Event;
+import javafx.scene.input.KeyEvent;
+import controller.event.KeyEventImpl;
+import controller.event.KeyType;
 import static proxyutility.SceneType.PAUSE;
 
 /**
@@ -30,6 +33,11 @@ public class PauseScene extends AbstractGenericScene {
      * Check events that occurs in this scene.
      */
     @Override
-    public void checkSceneHandler(final Event e) { }
+    public void checkSceneHandler(final Event e) { 
+        if (e.getEventType().equals(KeyEvent.KEY_PRESSED)) {
+            ViewImpl.get().notifyEvent(new KeyEventImpl(((KeyEvent) e).getCode(),
+                    this.getSceneType(), KeyType.KEY_PRESSED));
+        }
+    }
 
 }

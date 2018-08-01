@@ -69,6 +69,9 @@ public class GameLoopImpl implements GameLoop, Runnable {
             gameLoopThread = new Thread(this);
             gameLoopThread.setDaemon(true);
             gameLoopThread.start();
+            if (ModelUtility.pauseDuringRound()) {
+                startTime();
+            }
         }
     }
 
