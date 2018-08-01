@@ -44,7 +44,7 @@ public final class ModelUtility {
      * @return true if the user was playing a round, false if he wasn't.
      */
     public static boolean pauseDuringRound() {
-        return canPause;
+        return !canPause;
     }
 
     /**
