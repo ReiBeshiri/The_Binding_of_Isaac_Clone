@@ -18,7 +18,7 @@ public class KeyObserver implements Observer {
     public <E extends Event> void notifyEvent(final E event) {
         if (event instanceof KeyEvent) { 
             final KeyEvent keyEvent = (KeyEvent) event;
-            if (compare(keyEvent, KeyCode.ESCAPE.getName(), SceneType.GAME, KeyType.KEY_RELEASED)) {
+            if (compare(keyEvent, KeyCode.ESCAPE.getName(), SceneType.GAME, KeyType.KEY_PRESSED)) {
                 GameEngineImpl.get().stopGame();
             } else if (compare(keyEvent, KeyCode.ESCAPE.getName(), SceneType.PAUSE, KeyType.KEY_RELEASED)) {
                 GameEngineImpl.get().resumeGameLoop();

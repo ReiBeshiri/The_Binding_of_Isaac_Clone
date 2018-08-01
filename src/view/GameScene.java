@@ -3,10 +3,8 @@ package view;
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
 import view.util.SceneFactory;
-import controller.event.ButtonEventImpl;
 import controller.event.KeyEventImpl;
 import controller.event.KeyType;
-import controller.util.ButtonType;
 import static proxyutility.SceneType.GAME;
 
 /**
@@ -28,7 +26,6 @@ public class GameScene extends AbstractGenericScene {
     @Override
     public void exitStatus() {
         ViewManagerImpl.get().push(SceneFactory.createPauseScene());
-        ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.PAUSE_GAME, ""));
     }
 
     /**
