@@ -93,7 +93,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      */
     private Room createShopRoom() {
         this.leftDoorFromShopToMain = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_SHOP_DOOR_LOCKED);
-        this.rightDoorFromShopToBoss = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.RIGHT_BOSS_DOOR);
+        this.rightDoorFromShopToBoss = new DoorImpl(hbDoorr, false, RoomEnum.MAINROOM, ImageType.RIGHT_BOSS_DOOR);
         List<Door> ld = new ArrayList<>();
         ld.add(this.leftDoorFromShopToMain);
         ld.add(this.rightDoorFromShopToBoss);
@@ -111,11 +111,11 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         this.rightDoorFromBossToShop = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_BOSS_DOOR);
         List<Door> ld = new ArrayList<>();
         ld.add(this.rightDoorFromBossToShop);
-        this.bossHB = new CircleHitBox(ProportionUtility.getWidth(), ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusBoss());
+        this.bossHB = new CircleHitBox(SpawnUtility.getSpawnXEnterLeftDoor(), SpawnUtility.getSpawnYEnterLeftDoor(), ProportionUtility.getRadiusBoss());
         this.bossMov = new Motionless();
-        this.bossShot = new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), this.BOSS_SHOTS);
+        this.bossShot = new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), WorldEnvironmentImpl.BOSS_SHOTS);
         this.bossAI = new BossAI(this.bossMov, this.bossShot);
-        this.boss = new EnemyImpl(ProportionUtility.getBossVel(), ProportionUtility.getBossLife(), this.bossHB, this.bossAI, this.BOSS_POINTS, ProportionUtility.getBossBulletRng(), ImageType.BOSS_ENEMY, ProportionUtility.getBossShotRatio(), ImageType.BOSS_BULLET);
+        this.boss = new EnemyImpl(ProportionUtility.getBossVel(), ProportionUtility.getBossLife(), this.bossHB, this.bossAI, WorldEnvironmentImpl.BOSS_POINTS, ProportionUtility.getBossBulletRng(), ImageType.BOSS_ENEMY, ProportionUtility.getBossShotRatio(), ImageType.BOSS_BULLET);
         Room bossRoom = rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, lw);
         return bossRoom;
     }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-
 import input.Command;
 import model.ai.BasicAI;
 import model.animated.AbstractCharacter;
@@ -64,7 +63,7 @@ public class WorldImpl implements World {
     private List<Room> listRoom = new ArrayList<>();
     private List<WorldEvent> listEvent = new ArrayList<>();
     private int currentRound = 1;
-    private static final int DAMAGE = 1;
+    private static final int DAMAGE = 10;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
     private WorldEnvironment we;
@@ -246,7 +245,7 @@ public class WorldImpl implements World {
             mainRoomActions(deltaTime);
             ModelUtility.updatePauseDuringRound(this.button.isPressed());
         } else if (getActualRoom().equals(this.listRoom.get(1))) {
-            shopRoomAction();
+            shopRoomAction(deltaTime);
             ModelUtility.updatePauseDuringRound(true); // you can always pause in the shop
         } else {
             bossRoomAction(deltaTime);
@@ -358,7 +357,7 @@ public class WorldImpl implements World {
             b.update(deltaTime);
             if (!CollisionUtil.entityCollision(b, player).isEmpty() && !b.isDead()) {
                 decPlayerLife(DAMAGE, player);
-                removeBulletEnemy(b);
+                dieBullets.add(b);
             }
             if (b.isDead()) {
                 dieBullets.add(b);
@@ -486,6 +485,7 @@ public class WorldImpl implements World {
             }
             if (!this.listEnemy.isEmpty()) {
                 this.listEnemy.iterator().next().update(deltaTime);
+               //this.listBulletEnemies.addAll(this.listEnemy.iterator().next().shot());
             }
             if (!allEnemyDefeated()) {
                 playerBulletHitsEnemy(deltaTime);
@@ -494,11 +494,9 @@ public class WorldImpl implements World {
                     this.listEvent.add(new PlayerKillAllEnemy());
                     incCurrentRound();
                     this.button.setPressed(false);
-                    if (this.mode.equals(Mode.NORMAL)) {
-                        we.getRightDoorFromMainToShop().setOpen(true);
-                    }
                     if (getCurrentRound() >= 4 && this.mode.equals(Mode.NORMAL)) {
                         we.getRightDoorFromShopToBoss().setOpen(true);
+                        we.getRightDoorFromMainToShop().setOpen(true);
                     }
                 }
             }
@@ -521,11 +519,13 @@ public class WorldImpl implements World {
      */
     private void bossRoomAction(final double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(2))) {
+            wallColliding();
             Animated boss = we.getBoss();
             playerBulletHitsEnemy(deltaTime);
             if (!isBossDefeated()) {
                 this.listEnemy.add(boss);
                 boss.update(deltaTime);
+              //  this.listBulletEnemies.addAll(boss.shot());
                 playerGetsHitByBullet(getPlayer(), deltaTime);
                 if (allEnemyDefeated()) {
                     this.bossDefeated = true;
@@ -538,15 +538,19 @@ public class WorldImpl implements World {
     /**
      * Action in the shop room.
      */
-    private void shopRoomAction() {
+    private void shopRoomAction(final double deltaTime) {
+        List<Inanimated> dieItems = new ArrayList<>();
         if (getActualRoom().equals(this.listRoom.get(1))) {
+            wallColliding();
+            playerBulletHitsEnemy(deltaTime);
             for (Inanimated i : we.getItems()) {
                 Heart h = (Heart) i;
                 if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
                     incPlayerLife(h.getLife());
-                    we.getItems().remove(i);
+                    dieItems.add(i);
                 }
             }
+            we.getItems().removeAll(dieItems);
             if (CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                     (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
                 this.room = this.listRoom.get(2);
@@ -563,7 +567,7 @@ public class WorldImpl implements World {
      * @return the player in the spawn A of the map.
      */
     private Animated playerCreation() {
-        HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
+        HitBox hb = new CircleHitBox(SpawnUtility.getSpawnXEnterRightDoor(), SpawnUtility.getSpawnYEnterRightDoor(),
                 ProportionUtility.getRadiusPlayer());
         Animated p = new PlayerImpl(ProportionUtility.getPlayerVel(), ProportionUtility.getPlayerLife(), hb,
                 new BasicAI(new PlayerMovement(), new PlayerProjectile(ProportionUtility.getRadiusBullet())),

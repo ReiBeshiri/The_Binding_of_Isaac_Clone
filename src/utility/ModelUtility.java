@@ -171,7 +171,7 @@ public final class ModelUtility {
 
     /**
      * World width.
-     * @return world width (800).
+     * @return world width (1100).
      */
     public static double getWorldWidth() {
         return WORLD_WIDTH;
