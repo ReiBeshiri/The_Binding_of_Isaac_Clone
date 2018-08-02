@@ -201,4 +201,14 @@ public final class ViewImpl implements View {
         ViewUtils.setWorldWidthProp(wwProp);
     }
 
+    /**
+     * Method used to clear time canvas.
+     */
+    @Override
+    public void initTimeCanvas() {
+        if (!Objects.isNull(drawer)) {
+            drawer.initTimeCanvas();
+        }
+    }
+
 }

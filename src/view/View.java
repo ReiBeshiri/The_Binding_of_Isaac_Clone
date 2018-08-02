@@ -116,4 +116,9 @@ public interface View {
      * @param wwProp world width proportion.
      */
     void setWorldWidthProportion(double wwProp);
+
+    /**
+     * Method used in new game for init time canvas.
+     */
+    void initTimeCanvas();
 }

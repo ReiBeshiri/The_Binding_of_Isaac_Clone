@@ -7,6 +7,7 @@ import javafx.scene.layout.Region;
 import view.DrawerManager;
 import view.DrawerManagerImpl;
 import view.ViewImpl;
+
 /**
  * Controller class for the HelpView file.
  */

@@ -160,6 +160,15 @@ public class DrawerManagerImpl implements DrawerManager {
         }
     }
 
+    /**
+     * Initialize time canvas.
+     */
+    @Override
+    public void initTimeCanvas() {
+        time = new Time(0, 0);
+        drawTime();
+    }
+
     private void drawEntities() {
         final Tupla<Double, Double> scalingFactor = computeScaleFactor(
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),

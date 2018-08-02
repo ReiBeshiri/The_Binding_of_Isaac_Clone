@@ -86,9 +86,13 @@ public final class GameEngineImpl implements GameEngine {
         } else {
             world.setMode(Mode.NORMAL);
         }
-        //Dumb events created for start drawing life and time.
+
+        /////// Dumb events created for start drawing life and time.
+        ViewImpl.get().initTimeCanvas();
         ViewImpl.get().roomChanged(ModelUtility.getRoom());
         ViewImpl.get().playerLifeChanged(((AbstractCharacter) ModelUtility.getPlayer()).getLife());
+        ///////
+
         this.gameLoop = new GameLoopImpl(world, name);
         resumeGameLoop();
     }
