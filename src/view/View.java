@@ -80,4 +80,16 @@ public interface View {
      * @return if infinity mode is selected.
      */
     boolean isInfinityModeSelected();
+
+    /**
+     * Setter for initial height.
+     * @param h initial height.
+     */
+    void setInitialHeight(double h);
+
+    /**
+     * Setter for initial width.
+     * @param w initial width.
+     */
+    void setInitialWidth(double w);
 }

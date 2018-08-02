@@ -57,7 +57,8 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas = gameCanvas.getGraphicsContext2D();
         gcTimerCanvas = timerCanvas.getGraphicsContext2D();
         gcLifeCanvas = lifeCanvas.getGraphicsContext2D();
-        setCanvasDimension();
+        //setCanvasDimension();
+        resize();
     }
 
     /**
@@ -109,7 +110,7 @@ public class DrawerManagerImpl implements DrawerManager {
      * Resize canvas dimension.
      */
     @Override
-    public void resize() {
+    public final void resize() {
         final Tupla<Double, Double> gameCanvasDimension = getScaledDimension(
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ViewManagerImpl.get().getStageWidth(),
@@ -141,7 +142,13 @@ public class DrawerManagerImpl implements DrawerManager {
         // + (ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight() -
         // lifeCanvas.getHeight()) / 2);
         lifeCanvas.setTranslateY(gameCanvas.getTranslateY() + gameCanvas.getHeight());
+    }
 
+    /**
+     * Method used to redraw after a resize event.
+     */
+    @Override
+    public void redrawAfterResize() {
         draw();
         drawPlayerLife();
         if (!Objects.isNull(time)) {
@@ -302,17 +309,17 @@ public class DrawerManagerImpl implements DrawerManager {
         return new Tupla<Double, Double>(canvasWidth, canvasHeight);
     }
 
-    private void setCanvasDimension() {
-        gameCanvas.setHeight(ModelUtility.getWorldHeight());
-        gameCanvas.setWidth(ModelUtility.getWorldWidth());
-        timerCanvas.setHeight(ViewUtils.getTimerCanvasHeight());
-        timerCanvas.setWidth(ViewUtils.getTimerCanvasWidth());
-        lifeCanvas.setHeight(ViewUtils.getLifeCanvasHeight());
-        lifeCanvas.setWidth(ViewUtils.getLifeCanvasWidth());
-        timerCanvas.setTranslateX(gameCanvas.getWidth() / 2);
-        timerCanvas.setTranslateY(gameCanvas.getHeight());
-        lifeCanvas.setTranslateY(gameCanvas.getHeight());
-    }
+//    private void setCanvasDimension() {
+//        gameCanvas.setHeight(ModelUtility.getWorldHeight());
+//        gameCanvas.setWidth(ModelUtility.getWorldWidth());
+//        timerCanvas.setHeight(ViewUtils.getTimerCanvasHeight());
+//        timerCanvas.setWidth(ViewUtils.getTimerCanvasWidth());
+//        lifeCanvas.setHeight(ViewUtils.getLifeCanvasHeight());
+//        lifeCanvas.setWidth(ViewUtils.getLifeCanvasWidth());
+//        timerCanvas.setTranslateX(gameCanvas.getWidth() / 2);
+//        timerCanvas.setTranslateY(gameCanvas.getHeight());
+//        lifeCanvas.setTranslateY(gameCanvas.getHeight());
+//    }
 
     private Tupla<Double, Double> computeScaleFactor(final Tupla<Double, Double> canvasSize,
             final Tupla<Double, Double> boundarySize) {

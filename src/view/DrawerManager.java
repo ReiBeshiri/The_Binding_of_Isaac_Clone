@@ -39,4 +39,9 @@ public interface DrawerManager extends TimeEventListener {
      * Resize dimension of canvas in the scene.
      */
     void resize();
+
+    /**
+     * Method used to redraw after a resize event.
+     */
+    void redrawAfterResize();
 }

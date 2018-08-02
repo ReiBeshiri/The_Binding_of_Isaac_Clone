@@ -14,7 +14,6 @@ import controller.event.ButtonEvent;
 import controller.event.Event;
 import model.animated.Animated;
 import model.room.Room;
-import utility.ModelUtility;
 import view.util.ViewUtils;
 
 /**
@@ -77,8 +76,8 @@ public final class ViewImpl implements View {
      */
     @Override
     public void viewStart() {
-        ViewManagerImpl.get().setHeight(ModelUtility.getWorldHeight() + ViewUtils.getStageDeltaHeight());
-        ViewManagerImpl.get().setWidth(ModelUtility.getWorldWidth());
+//        ViewManagerImpl.get().setHeight(ModelUtility.getWorldHeight() + ViewUtils.getStageDeltaHeight());
+//        ViewManagerImpl.get().setWidth(ModelUtility.getWorldWidth());
         Application.launch(LaunchClass.class, "");
     }
 
@@ -116,7 +115,10 @@ public final class ViewImpl implements View {
      */
     @Override
     public void redraw() {
-        Platform.runLater(() -> drawer.resize());
+        Platform.runLater(() -> {
+            drawer.resize();
+            drawer.redrawAfterResize();
+        });
     }
 
     /**
@@ -149,6 +151,22 @@ public final class ViewImpl implements View {
     @Override
     public DrawerManager getDrawerReference() {
         return drawer;
+    }
+
+    /**
+     * Set initial height.
+     */
+    @Override
+    public void setInitialHeight(final double h) {
+        ViewManagerImpl.get().setHeight(h);
+    }
+
+    /**
+     * Set initial width.
+     */
+    @Override
+    public void setInitialWidth(final double w) {
+        ViewManagerImpl.get().setWidth(w);
     }
 
 }

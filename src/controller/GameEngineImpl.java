@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,6 +19,7 @@ import timer.Time;
 import utility.Mode;
 import utility.ModelUtility;
 import view.ViewImpl;
+import view.util.ViewUtils;
 
 /**
  * GameEngineImpl manages all game situations.
@@ -58,6 +60,10 @@ public final class GameEngineImpl implements GameEngine {
         //Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
+        System.out.println(((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / ViewUtils.getYScreenProp());
+        System.out.println(((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth()) / ViewUtils.getXScreenProp());
+        ViewImpl.get().setInitialHeight(((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / ViewUtils.getYScreenProp());
+        ViewImpl.get().setInitialWidth(((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth()) / ViewUtils.getXScreenProp());
         ViewImpl.get().viewStart();
     }
 
