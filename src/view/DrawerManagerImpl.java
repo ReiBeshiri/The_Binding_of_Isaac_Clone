@@ -141,9 +141,9 @@ public class DrawerManagerImpl implements DrawerManager {
         // lifeCanvas.setTranslateY(gameCanvas.getHeight()
         // + (ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight() -
         // lifeCanvas.getHeight()) / 2);
+        lifeCanvas.setTranslateY(gameCanvas.getTranslateY() + gameCanvas.getHeight());
 
         //DEBUG PRINT
-//        lifeCanvas.setTranslateY(gameCanvas.getTranslateY() + gameCanvas.getHeight());
 //        System.out.println("GAME x: " + gameCanvas.getWidth() + " y: " + gameCanvas.getHeight());
 //        System.out.println("TIME x: " + timerCanvas.getWidth() + " y: " + timerCanvas.getHeight());
 //        System.out.println("LIFE x: " + lifeCanvas.getWidth() + " y: " + lifeCanvas.getHeight());
