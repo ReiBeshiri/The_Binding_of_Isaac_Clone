@@ -17,8 +17,8 @@ public final class ViewUtils {
     private static final double HEARTH_HEIGHT = 25;
     private static final double HEARTH_WIDTH = 25;
     private static final double SPACE_HEARTH_PROPORTION = 40;
-    private static final int X_SCREEN_PROP = 1;
-    private static final int Y_SCREEN_PROP = 1;
+    private static final double X_SCREEN_PROP = 1;
+    private static final double Y_SCREEN_PROP = 1;
 
     private static final Tupla<Integer, Integer> STANDARD_RES = new Tupla<Integer, Integer>(1280, 720);
     private static Tupla<Integer, Integer> selectedRes = STANDARD_RES;
@@ -178,7 +178,7 @@ public final class ViewUtils {
      * X prop.
      * @return x proportion.
      */
-    public static int getXScreenProp() {
+    public static double getXScreenProp() {
         return X_SCREEN_PROP;
     }
 
@@ -186,7 +186,7 @@ public final class ViewUtils {
      * Y prop.
      * @return y proportion.
      */
-    public static int getYScreenProp() {
+    public static double getYScreenProp() {
         return Y_SCREEN_PROP;
     }
 }
