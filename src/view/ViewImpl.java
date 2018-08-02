@@ -210,5 +210,4 @@ public final class ViewImpl implements View {
             drawer.initTimeCanvas();
         }
     }
-
 }
