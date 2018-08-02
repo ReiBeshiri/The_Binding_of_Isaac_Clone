@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,25 +52,45 @@ import worldevent.WorldEvent;
  */
 public class WorldImpl implements World {
     private Animated player; // |is the player
-    private List<Animated> listAnimatedObj = new ArrayList<>();
+    private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom
-    private boolean gameOver = false; // false initially
+    private boolean gameOver; // false initially
     private boolean bossDefeated; // false initially
-    private List<Bullet> listBulletPlayer = new ArrayList<>();
-    private List<Bullet> listBulletEnemies = new ArrayList<>();
+    private final List<Bullet> listBulletPlayer;
+    private final List<Bullet> listBulletEnemies;
     private Button button;
-    private List<Command> listMovements = new ArrayList<>();
-    private List<Command> listShots = new ArrayList<>();
-    private List<Animated> listEnemy = new ArrayList<>(); // |list of enemies
-    private List<Room> listRoom = new ArrayList<>();
-    private List<WorldEvent> listEvent = new ArrayList<>();
+    private final List<Command> listMovements;
+    private final List<Command> listShots;
+    private final List<Animated> listEnemy; // |list of enemies
+    private final List<Room> listRoom;
+    private final List<WorldEvent> listEvent;
     private int currentRound = 1;
     private static final int DAMAGE = 1;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
     private WorldEnvironment we;
-    private double shotRatio = ProportionUtility.getPlayerBulletRatio();
+    private double shotRatio;
 
+    /**
+     * Constructor for this class.
+     */
+    public WorldImpl() {
+        listAnimatedObj = new ArrayList<>();
+        gameOver = false;
+        listBulletPlayer = new ArrayList<>();
+        listBulletEnemies = new ArrayList<>();
+        listEnemy = new ArrayList<>();
+        listMovements = new ArrayList<>();
+        listShots = new ArrayList<>();
+        listRoom = new ArrayList<>();
+        listEvent = new ArrayList<>();
+        shotRatio = ProportionUtility.getPlayerBulletRatio();
+        ModelUtility.updateCurrentRound(0);
+        ModelUtility.updateListAnimatedObject(Collections.emptyList());
+        ModelUtility.updateListCommandModelUtility(Collections.emptyList(), Collections.emptyList());
+        ModelUtility.updateListWorldEvent(Collections.emptyList());
+        ModelUtility.updatePauseDuringRound(false);
+    }
     /**
      * @return the actual room.
      */

@@ -167,7 +167,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas.save();
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         entities.forEach(x -> {
-            // Safe-casting, all moving entities have a circwle hitBox.
+            // Safe-casting, all moving entities have a circle hitBox.
             // final CircleHitBox hBox = (CircleHitBox) x.getHitBox();
             // final double upperLeftX = hBox.getX() - hBox.getRadius();
             // final double upperLeftY = hBox.getY() - hBox.getRadius();
@@ -184,8 +184,9 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ViewUtils.getWorldWidth(), ViewUtils.getWorldHeight()));
         gcGameCanvas.save();
-        gcGameCanvas.setFill(Color.DARKGOLDENROD);
-        gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+//        gcGameCanvas.setFill(Color.DARKGOLDENROD);
+//        gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+        drawHitBoxImage(ImageType.BACKGROUND, (RectangularHitBox) room.getHitBox(), gcGameCanvas);
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         room.getDoors().forEach(x -> {
             // Safe-casting, all doors have a rectangular hitBox.

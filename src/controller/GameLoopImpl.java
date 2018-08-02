@@ -245,6 +245,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
         timerThread = new Thread(timeAgent);
         timerThread.setDaemon(true);
         timerThread.start();
+        System.out.println("TIMER START!");
     }
 
     /**
@@ -252,5 +253,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     private void stopTime() {
         timeAgent.interrupt();
+        System.out.println("TIMER STOP!");
     }
 }
