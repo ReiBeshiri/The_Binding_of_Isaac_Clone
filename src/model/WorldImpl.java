@@ -59,8 +59,8 @@ public class WorldImpl implements World {
     private final List<Bullet> listBulletPlayer;
     private final List<Bullet> listBulletEnemies;
     private Button button;
-    private final List<Command> listMovements;
-    private final List<Command> listShots;
+    private List<Command> listMovements;
+    private List<Command> listShots;
     private final List<Animated> listEnemy; // |list of enemies
     private final List<Room> listRoom;
     private final List<WorldEvent> listEvent;
