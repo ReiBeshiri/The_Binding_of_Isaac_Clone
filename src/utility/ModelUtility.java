@@ -14,9 +14,9 @@ import worldevent.WorldEvent;
 public final class ModelUtility {
 
     private static final double WORLD_HEIGHT = 600;
-    private static final double WORLD_WIDTH = 800;
-    private static final double WORLD_WIDTH_PROP = 4;
-    private static final double WORLD_HEIGHT_PROP = 3;
+    private static final double WORLD_WIDTH = 1100;
+    private static final double WORLD_WIDTH_PROP = 11;
+    private static final double WORLD_HEIGHT_PROP = 6;
     private static final double EPSILON = 0.001;
     private static int currentRound;
     private static boolean pauseDuringRound;

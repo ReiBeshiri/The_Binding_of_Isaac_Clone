@@ -16,7 +16,7 @@ public final class ProportionUtility {
     private static final double PROPORTION_DOOR_HEIGHT = 90;
     private static final double PROPORTION_ITEMSHOP = 30;
     private static final double HEIGHT = 600;
-    private static final double WIDTH = 800;
+    private static final double WIDTH = 1100;
     private static final double PLAYER_BULLET_RATIO = 50;
     private static final double PLAYER_BULLET_RANGE = 400;
     private static final double BOSS_VEL = 5;

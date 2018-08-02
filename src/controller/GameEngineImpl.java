@@ -60,8 +60,6 @@ public final class GameEngineImpl implements GameEngine {
         //Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
-        System.out.println(((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / ViewUtils.getYScreenProp());
-        System.out.println(((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth()) / ViewUtils.getXScreenProp());
         ViewImpl.get().setInitialHeight(((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / ViewUtils.getYScreenProp());
         ViewImpl.get().setInitialWidth(((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth()) / ViewUtils.getXScreenProp());
         ViewImpl.get().viewStart();
