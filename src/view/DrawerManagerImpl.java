@@ -18,7 +18,6 @@ import model.room.ShopRoom;
 import proxyutility.ImageType;
 import proxyutility.ProxyImageLoader;
 import timer.Time;
-import utility.ModelUtility;
 import view.util.Tupla;
 import view.util.ViewUtils;
 import java.util.LinkedList;
@@ -115,8 +114,8 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ViewManagerImpl.get().getStageWidth(),
                         ViewManagerImpl.get().getStageHeight() - ViewUtils.getStageDeltaHeight()),
-                new Tupla<Double, Double>(ModelUtility.getWorldWidthProp(), ModelUtility.getWorldHeightProp()),
-                new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
+                new Tupla<Double, Double>(ViewUtils.getWorldWidthProp(), ViewUtils.getWorldHeightProp()),
+                new Tupla<Double, Double>(ViewUtils.getWorldWidth(), ViewUtils.getWorldHeight()));
         gameCanvas.setHeight(gameCanvasDimension.getY());
         gameCanvas.setWidth(gameCanvasDimension.getX());
         gameCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
@@ -164,7 +163,7 @@ public class DrawerManagerImpl implements DrawerManager {
     private void drawEntities() {
         final Tupla<Double, Double> scalingFactor = computeScaleFactor(
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
-                new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
+                new Tupla<Double, Double>(ViewUtils.getWorldWidth(), ViewUtils.getWorldHeight()));
         gcGameCanvas.save();
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         entities.forEach(x -> {
@@ -183,7 +182,7 @@ public class DrawerManagerImpl implements DrawerManager {
     private void drawRoom() {
         final Tupla<Double, Double> scalingFactor = computeScaleFactor(
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
-                new Tupla<Double, Double>(ModelUtility.getWorldWidth(), ModelUtility.getWorldHeight()));
+                new Tupla<Double, Double>(ViewUtils.getWorldWidth(), ViewUtils.getWorldHeight()));
         gcGameCanvas.save();
         gcGameCanvas.setFill(Color.DARKGOLDENROD);
         gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());

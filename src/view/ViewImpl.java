@@ -169,4 +169,36 @@ public final class ViewImpl implements View {
         ViewManagerImpl.get().setWidth(w);
     }
 
+    /**
+     * Setter for world height in view util.
+     */
+    @Override
+    public void setWorldHeight(final double wh) {
+        ViewUtils.setWorldHeight(wh);
+    }
+
+    /**
+     * Setter for world width in view util.
+     */
+    @Override
+    public void setWorldWidth(final double ww) {
+        ViewUtils.setWorldWidth(ww);
+    }
+
+    /**
+     * Setter for world height proportion in view util.
+     */
+    @Override
+    public void setWorldHeightProportion(final double whProp) {
+        ViewUtils.setWorldHeightProp(whProp);
+    }
+
+    /**
+     * Setter for world width proportion in view util.
+     */
+    @Override
+    public void setWorldWidthProportion(final double wwProp) {
+        ViewUtils.setWorldWidthProp(wwProp);
+    }
+
 }
