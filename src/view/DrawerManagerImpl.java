@@ -56,7 +56,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas = gameCanvas.getGraphicsContext2D();
         gcTimerCanvas = timerCanvas.getGraphicsContext2D();
         gcLifeCanvas = lifeCanvas.getGraphicsContext2D();
-        //setCanvasDimension();
+        // setCanvasDimension();
         resize();
     }
 
@@ -142,10 +142,13 @@ public class DrawerManagerImpl implements DrawerManager {
         // lifeCanvas.getHeight()) / 2);
         lifeCanvas.setTranslateY(gameCanvas.getTranslateY() + gameCanvas.getHeight());
 
-        //DEBUG PRINT
-//        System.out.println("GAME x: " + gameCanvas.getWidth() + " y: " + gameCanvas.getHeight());
-//        System.out.println("TIME x: " + timerCanvas.getWidth() + " y: " + timerCanvas.getHeight());
-//        System.out.println("LIFE x: " + lifeCanvas.getWidth() + " y: " + lifeCanvas.getHeight());
+        // DEBUG PRINT
+        // System.out.println("GAME x: " + gameCanvas.getWidth() + " y: " +
+        // gameCanvas.getHeight());
+        // System.out.println("TIME x: " + timerCanvas.getWidth() + " y: " +
+        // timerCanvas.getHeight());
+        // System.out.println("LIFE x: " + lifeCanvas.getWidth() + " y: " +
+        // lifeCanvas.getHeight());
     }
 
     /**
@@ -193,9 +196,10 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ViewUtils.getWorldWidth(), ViewUtils.getWorldHeight()));
         gcGameCanvas.save();
-//        gcGameCanvas.setFill(Color.DARKGOLDENROD);
-//        gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
-        drawHitBoxImage(ImageType.BACKGROUND, (RectangularHitBox) room.getHitBox(), gcGameCanvas);
+        // gcGameCanvas.setFill(Color.DARKGOLDENROD);
+        // gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+        drawHitBoxImage(ImageType.BACKGROUND,
+                new RectangularHitBox(0, 0, gameCanvas.getHeight(), gameCanvas.getWidth()), gcGameCanvas);
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         room.getDoors().forEach(x -> {
             // Safe-casting, all doors have a rectangular hitBox.
@@ -246,8 +250,9 @@ public class DrawerManagerImpl implements DrawerManager {
 
     private void drawTime() {
         gcTimerCanvas.clearRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
-//        gcTimerCanvas.setFill(Color.DARKGRAY);
-//        gcTimerCanvas.fillRect(0, 0, timerCanvas.getWidth(), timerCanvas.getHeight());
+        // gcTimerCanvas.setFill(Color.DARKGRAY);
+        // gcTimerCanvas.fillRect(0, 0, timerCanvas.getWidth(),
+        // timerCanvas.getHeight());
         gcTimerCanvas.save();
         gcTimerCanvas.setTextAlign(TextAlignment.RIGHT);
         gcTimerCanvas.setTextBaseline(VPos.CENTER);
@@ -264,8 +269,8 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(ViewUtils.getLifeCanvasWidth(), ViewUtils.getLifeCanvasHeight()));
         gcLifeCanvas.save();
         gcLifeCanvas.clearRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
-//        gcLifeCanvas.setFill(Color.DARKGRAY);
-//        gcLifeCanvas.fillRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
+        // gcLifeCanvas.setFill(Color.DARKGRAY);
+        // gcLifeCanvas.fillRect(0, 0, lifeCanvas.getWidth(), lifeCanvas.getHeight());
         gcLifeCanvas.scale(scaleFactor.getX(), scaleFactor.getY());
         final int completedHearth = life / 2;
         final int halfHeath = life - 2 * completedHearth > 0 ? 1 : 0;
@@ -323,17 +328,17 @@ public class DrawerManagerImpl implements DrawerManager {
         return new Tupla<Double, Double>(canvasWidth, canvasHeight);
     }
 
-//    private void setCanvasDimension() {
-//        gameCanvas.setHeight(ModelUtility.getWorldHeight());
-//        gameCanvas.setWidth(ModelUtility.getWorldWidth());
-//        timerCanvas.setHeight(ViewUtils.getTimerCanvasHeight());
-//        timerCanvas.setWidth(ViewUtils.getTimerCanvasWidth());
-//        lifeCanvas.setHeight(ViewUtils.getLifeCanvasHeight());
-//        lifeCanvas.setWidth(ViewUtils.getLifeCanvasWidth());
-//        timerCanvas.setTranslateX(gameCanvas.getWidth() / 2);
-//        timerCanvas.setTranslateY(gameCanvas.getHeight());
-//        lifeCanvas.setTranslateY(gameCanvas.getHeight());
-//    }
+    // private void setCanvasDimension() {
+    // gameCanvas.setHeight(ModelUtility.getWorldHeight());
+    // gameCanvas.setWidth(ModelUtility.getWorldWidth());
+    // timerCanvas.setHeight(ViewUtils.getTimerCanvasHeight());
+    // timerCanvas.setWidth(ViewUtils.getTimerCanvasWidth());
+    // lifeCanvas.setHeight(ViewUtils.getLifeCanvasHeight());
+    // lifeCanvas.setWidth(ViewUtils.getLifeCanvasWidth());
+    // timerCanvas.setTranslateX(gameCanvas.getWidth() / 2);
+    // timerCanvas.setTranslateY(gameCanvas.getHeight());
+    // lifeCanvas.setTranslateY(gameCanvas.getHeight());
+    // }
 
     private Tupla<Double, Double> computeScaleFactor(final Tupla<Double, Double> canvasSize,
             final Tupla<Double, Double> boundarySize) {
