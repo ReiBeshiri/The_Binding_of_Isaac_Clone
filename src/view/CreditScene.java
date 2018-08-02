@@ -1,7 +1,6 @@
 package view;
 
 import javafx.event.Event;
-import view.util.SceneFactory;
 
 import static proxyutility.SceneType.CREDITS;
 /**
@@ -20,7 +19,8 @@ public class CreditScene extends AbstractGenericScene {
      */
     @Override
     public void exitStatus() {
-        ViewManagerImpl.get().push(SceneFactory.createMenuScene());
+        ViewManagerImpl.get().pop();
+        //ViewManagerImpl.get().push(SceneFactory.createMenuScene());
     }
     /**
      * 
