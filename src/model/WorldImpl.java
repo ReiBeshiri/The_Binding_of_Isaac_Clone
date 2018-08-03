@@ -447,7 +447,7 @@ public class WorldImpl implements World {
      */
     private void createPlayerBullet() {
         if (!this.listShots.isEmpty() && ((AbstractCharacter) getPlayer()).canShot()) {
-            Command d = listShots.get(0);
+            final Command d = listShots.get(0);
             listShots.clear();
             listShots.add(d);
             ModelUtility.updateListShotCommand(listShots);
