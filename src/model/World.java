@@ -8,7 +8,7 @@ import model.animated.Bullet;
 import model.inanimated.Button;
 import model.room.Room;
 import utility.Mode;
-import worldevent.WorldEvent;
+
 /**
  * Interface.
  * World

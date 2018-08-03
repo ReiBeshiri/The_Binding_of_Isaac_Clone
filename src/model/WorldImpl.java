@@ -54,7 +54,7 @@ public class WorldImpl implements World {
     private Animated player; // |is the player
     private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom
-    private boolean gameOver; // false initially
+    private final boolean gameOver; // false initially
     private boolean bossDefeated; // false initially
     private final List<Bullet> listBulletPlayer;
     private final List<Bullet> listBulletEnemies;
@@ -261,7 +261,7 @@ public class WorldImpl implements World {
         ModelUtility.updateRoomModelUtility(this.room);
         this.listMovements = listMovement;
         this.listShots = listShots;
-        createPlayerBullet(listShots);
+        createPlayerBullet();
         this.player.update(deltaTime);
         if (getActualRoom().equals(this.listRoom.get(0))) {
             mainRoomActions(deltaTime);
@@ -313,7 +313,7 @@ public class WorldImpl implements World {
      *            amount.
      */
     private void incPlayerLife(final int life) {
-        AbstractCharacter player = (AbstractCharacter) getPlayer();
+        final AbstractCharacter player = (AbstractCharacter) getPlayer();
         player.incLife(life);
         listEvent.add(new PlayerHeartChange(player.getLife()));
     }
@@ -327,13 +327,11 @@ public class WorldImpl implements World {
      *            Animated object to cast.
      */
     private void decPlayerLife(final int life, final Animated c) {
-        AbstractCharacter player = (AbstractCharacter) c;
+        final AbstractCharacter player = (AbstractCharacter) c;
         player.decLife(life);
         listEvent.add(new PlayerHeartChange(player.getLife()));
-        if (player.getLife() <= 0) {
-            if (!this.mode.equals(Mode.GOD)) {
-                this.listEvent.add(new PlayerDied());
-            }
+        if (player.getLife() <= 0 && !this.mode.equals(Mode.GOD)) {
+            this.listEvent.add(new PlayerDied());
         }
     }
 
@@ -346,8 +344,8 @@ public class WorldImpl implements World {
      *            Animated object to cast.
      */
     private Animated decEnemyLife(final int life, final Animated e) {
-        AbstractCharacter enemy = (AbstractCharacter) e;
-        Enemy enemyPoints = (Enemy) enemy;
+        final AbstractCharacter enemy = (AbstractCharacter) e;
+        final Enemy enemyPoints = (Enemy) enemy;
         enemy.decLife(life);
         if (enemy.getLife() <= 0) {
             listEvent.add(new PlayerKillEnemy(enemyPoints.getPoint()));
@@ -374,8 +372,8 @@ public class WorldImpl implements World {
      */
     private void playerGetsHitByBullet(final Animated p, final Double deltaTime) {
         final List<Bullet> dieBullets = new ArrayList<>();
-        AbstractCharacter player = (AbstractCharacter) p;
-        for (Bullet b : this.listBulletEnemies) {
+        final AbstractCharacter player = (AbstractCharacter) p;
+        for (final Bullet b : this.listBulletEnemies) {
             b.update(deltaTime);
             if (!CollisionUtil.entityCollision(b, player).isEmpty() && !b.isDead()) {
                 decPlayerLife(DAMAGE, player);
@@ -394,9 +392,9 @@ public class WorldImpl implements World {
     private void playerBulletHitsEnemy(final Double deltaTime) {
         final List<Bullet> dieBullets = new ArrayList<>();
         final List<Animated> dieEnemy = new ArrayList<>();
-        for (Bullet b : this.listBulletPlayer) {
+        for (final Bullet b : this.listBulletPlayer) {
             b.update(deltaTime);
-            for (Animated enemy : this.listEnemy) {
+            for (final Animated enemy : this.listEnemy) {
                 if (!CollisionUtil.entityCollision(b, enemy).isEmpty()) {
                     if (!Objects.isNull(decEnemyLife(DAMAGE, enemy))) {
                         dieEnemy.add(enemy);
@@ -438,7 +436,7 @@ public class WorldImpl implements World {
      * @return if the two objects are colliding.
      */
     private boolean isColliding(final CircleHitBox hb1, final CircleHitBox hb2) {
-        Collection<Command> c = CollisionUtil.entityCollision(hb1, hb2);
+        final Collection<Command> c = CollisionUtil.entityCollision(hb1, hb2);
         return !c.isEmpty();
     }
 
@@ -448,13 +446,13 @@ public class WorldImpl implements World {
      * @param listShot
      *            the list of the shots to create.
      */
-    private void createPlayerBullet(final List<Command> listShot) {
+    private void createPlayerBullet() {
         if (this.shotRatio < ProportionUtility.getPlayerBulletRatio()) {
             this.listShots.clear();
         } else {
             if (!this.listShots.isEmpty()) {
-                MovementStrategy ms = new SimplyDirectionMovement(this.listShots.get(0));
-                HitBox hb = createRightDirectionBullet(this.listShots.get(0));
+                final MovementStrategy ms = new SimplyDirectionMovement(this.listShots.get(0));
+                final HitBox hb = createRightDirectionBullet(this.listShots.get(0));
                 this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerBulletVel(), ms,
                         ProportionUtility.getPlayerBulletRange(), ImageType.ENEMY_BULLET));
                 this.shotRatio = 0;
@@ -542,7 +540,7 @@ public class WorldImpl implements World {
      */
     private void bossRoomAction(final double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(2))) {
-            Animated boss = we.getBoss();
+            final Animated boss = we.getBoss();
             playerBulletHitsEnemy(deltaTime);
             if (!isBossDefeated()) {
                 this.listEnemy.add(boss);
@@ -561,8 +559,8 @@ public class WorldImpl implements World {
      */
     private void shopRoomAction() {
         if (getActualRoom().equals(this.listRoom.get(1))) {
-            for (Inanimated i : we.getItems()) {
-                Heart h = (Heart) i;
+            for (final Inanimated i : we.getItems()) {
+                final Heart h = (Heart) i;
                 if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
                     incPlayerLife(h.getLife());
                     we.getItems().remove(i);
@@ -584,12 +582,11 @@ public class WorldImpl implements World {
      * @return the player in the spawn A of the map.
      */
     private Animated playerCreation() {
-        HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
+        final HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
                 ProportionUtility.getRadiusPlayer());
-        Animated p = new PlayerImpl(ProportionUtility.getPlayerVel(), ProportionUtility.getPlayerLife(), hb,
-                new BasicAI(new PlayerMovement(), new PlayerProjectile(ProportionUtility.getRadiusBullet())),
-                ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio());
-        return p;
+        return new PlayerImpl(ProportionUtility.getPlayerVel(), ProportionUtility.getPlayerLife(), hb,
+               new BasicAI(new PlayerMovement(), new PlayerProjectile(ProportionUtility.getRadiusBullet())),
+               ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio());
     }
 
     /**
@@ -606,7 +603,7 @@ public class WorldImpl implements World {
     private void wallColliding() {
         CollisionUtil.checkBoundaryCollision((CircleHitBox) this.player.getHitBox(),
                 (RectangularHitBox) we.getRoomHB());
-        for (Animated enemy : this.listEnemy) {
+        for (final Animated enemy : this.listEnemy) {
             CollisionUtil.checkBoundaryCollision((CircleHitBox) enemy.getHitBox(), (RectangularHitBox) we.getRoomHB());
         }
     }
