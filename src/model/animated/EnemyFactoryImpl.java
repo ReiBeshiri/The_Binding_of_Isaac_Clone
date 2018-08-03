@@ -10,9 +10,9 @@ import model.strategy.Motionless;
 import model.strategy.SimplyDirectionMovement;
 import model.strategy.SingleDirectionProjectile;
 import proxyutility.ImageType;
-import static model.animated.EntityType.BOSS;
-import static model.animated.EntityType.MOVEABLE_ENEMY;
-import static model.animated.EntityType.STATIC_ENEMY;
+import static model.animated.EntityStats.BOSS;
+import static model.animated.EntityStats.MOVEABLE_ENEMY;
+import static model.animated.EntityStats.STATIC_ENEMY;
 
 /**
  * Factory implementation for enemy.
@@ -27,7 +27,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
             final ImageType img, final double ratio) {
         return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
                 new BasicAI(new Motionless(), new SingleDirectionProjectile(c, bulletRadius)), STATIC_ENEMY.getPoints(),
-                BulletType.ENEMY_BULLET.getRange(), ImageType.BASIC_ENEMY, STATIC_ENEMY.getShotRatio(),
+                EntityStats.STATIC_ENEMY.getBulletRange(), ImageType.BASIC_ENEMY, STATIC_ENEMY.getShotRatio(),
                 ImageType.ENEMY_BULLET);
     }
 
@@ -39,7 +39,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
             final double ratio) {
         return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
                 new BasicAI(new Motionless(), new AimedProjectile(bulletRadius)), STATIC_ENEMY.getPoints(),
-                BulletType.ENEMY_BULLET.getRange(), ImageType.AIMED_ENEMY, STATIC_ENEMY.getShotRatio(),
+                EntityStats.STATIC_ENEMY.getBulletRange(), ImageType.AIMED_ENEMY, STATIC_ENEMY.getShotRatio(),
                 ImageType.ENEMY_BULLET);
     }
 
@@ -52,7 +52,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
             final double bulletRadius, final ImageType img, final double ratio) {
         return new EnemyImpl(MOVEABLE_ENEMY.getVel(), MOVEABLE_ENEMY.getLife(), h,
                 new BasicAI(new SimplyDirectionMovement(dMove), new SingleDirectionProjectile(dShot, bulletRadius)),
-                MOVEABLE_ENEMY.getPoints(), BulletType.ENEMY_BULLET.getRange(), ImageType.BASIC_ENEMY,
+                MOVEABLE_ENEMY.getPoints(), EntityStats.MOVEABLE_ENEMY.getBulletRange(), ImageType.BASIC_ENEMY,
                 MOVEABLE_ENEMY.getShotRatio(), ImageType.ENEMY_BULLET);
     }
 
@@ -64,6 +64,6 @@ public class EnemyFactoryImpl implements EnemyFactory {
     public Animated createBoss(final HitBox h, final double bulletRadius, final ImageType img, final double ratio) {
         return new EnemyImpl(BOSS.getVel(), BOSS.getLife(), h,
                 new BossAI(new Motionless(), new ChasePlayerProjectile(bulletRadius)), BOSS.getPoints(),
-                BulletType.BOSS_BULLET.getRange(), ImageType.BOSS_ENEMY, BOSS.getShotRatio(), ImageType.BOSS_BULLET);
+                EntityStats.BOSS.getBulletRange(), ImageType.BOSS_ENEMY, BOSS.getShotRatio(), ImageType.BOSS_BULLET);
     }
 }
