@@ -15,7 +15,7 @@ public enum EntityType {
     /**
      * Movable enemy stats.
      */
-    MOVEABLE_ENEMY(3, 2, 5, 5),
+    MOVEABLE_ENEMY(3, 4, 5, 5),
     /**
      * Boss stats.
      */
