@@ -377,7 +377,7 @@ public class WorldImpl implements World {
             b.update(deltaTime);
             if (!CollisionUtil.entityCollision(b, player).isEmpty() && !b.isDead()) {
                 decPlayerLife(DAMAGE, player);
-                removeBulletEnemy(b);
+                dieBullets.add(b);
             }
             if (b.isDead()) {
                 dieBullets.add(b);
