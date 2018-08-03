@@ -13,14 +13,10 @@ import view.ViewImpl;
  */
 public class GameCanvasViewController extends AbstractControllerFXML {
 
-    @FXML
-    private Pane rootGamePane;
-    @FXML
-    private Canvas roomCanvas;
-    @FXML
-    private Canvas lifesCanvas;
-    @FXML
-    private Canvas elapsedTimeCanvas; 
+    @FXML private Pane rootGamePane;
+    @FXML private Canvas roomCanvas;
+    @FXML private Canvas lifesCanvas;
+    @FXML private Canvas elapsedTimeCanvas; 
 
     @FXML
     private void initialize() {

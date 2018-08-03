@@ -17,12 +17,9 @@ import view.ViewManagerImpl;
  */
 public class PauseViewController extends AbstractControllerFXML {
 
-    @FXML
-    private BorderPane contentPane;
-    @FXML
-    private Button exitButton;
-    @FXML
-    private Button resumeButton;
+    @FXML private BorderPane contentPane;
+    @FXML private Button exitButton;
+    @FXML private Button resumeButton;
 
     @Override
     public final Region getRoot() {
