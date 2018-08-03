@@ -11,11 +11,11 @@ public enum EntityType {
     /**
      * static enemy stats.
      */
-    STATIC_ENEMY(4, 0, 3, 5),
+    STATIC_ENEMY(4, 0, 3, 40),
     /**
      * Movable enemy stats.
      */
-    MOVEABLE_ENEMY(3, 4, 5, 5),
+    MOVEABLE_ENEMY(3, 4, 5, 40),
     /**
      * Boss stats.
      */
