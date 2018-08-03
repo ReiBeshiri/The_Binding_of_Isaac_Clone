@@ -85,9 +85,17 @@ public enum ImageType {
      */
     BOSS_BULLET("BossProjectile.png"),
     /**
-     * Background image.
+     * Background image for main room.
      */
-    BACKGROUND("Background.png");
+    BACKGROUND_MAIN_ROOM("BackgroundMain.png"),
+    /**
+     * Background image for shop room.
+     */
+    BACKGROUND_SHOP_ROOM("BackgroundShop.png"),
+    /**
+     * Background image for boss room.
+     */
+    BACKGROUND_BOSS_ROOM("BackgroundBoss.png");
     private final String path;
 
     ImageType(final String path) {

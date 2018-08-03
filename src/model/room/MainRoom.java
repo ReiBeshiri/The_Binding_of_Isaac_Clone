@@ -6,6 +6,7 @@ import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
 import model.inanimated.Wall;
+import proxyutility.ImageType;
 /**
  * 
  * MainRoom implements.
@@ -20,9 +21,10 @@ public class MainRoom extends AbstractRoom {
      * @param doors MainRoom's doors.
      * @param button MainRoom's button.
      * @param walls list of the walls in the room.
+     * @param backImg background image.
      */
-    public MainRoom(final HitBox h, final List<Door> doors, final Button button, final List<Wall> walls) {
-        super(h, doors, walls);
+    public MainRoom(final HitBox h, final List<Door> doors, final Button button, final List<Wall> walls, final ImageType backImg) {
+        super(h, doors, walls, backImg);
         this.button = button;
     }
 

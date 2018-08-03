@@ -196,11 +196,11 @@ public class DrawerManagerImpl implements DrawerManager {
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ViewUtils.getWorldWidth(), ViewUtils.getWorldHeight()));
         gcGameCanvas.save();
+        gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         // gcGameCanvas.setFill(Color.DARKGOLDENROD);
         // gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
-        drawHitBoxImage(ImageType.BACKGROUND,
+        drawHitBoxImage(room.getBackgroundImage(),
                 new RectangularHitBox(0, 0, gameCanvas.getHeight(), gameCanvas.getWidth()), gcGameCanvas);
-        gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         room.getDoors().forEach(x -> {
             // Safe-casting, all doors have a rectangular hitBox.
             // final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
