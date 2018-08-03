@@ -54,7 +54,7 @@ public class WorldImpl implements World {
     private Animated player; // |is the player
     private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom
-    private final boolean gameOver; // false initially  --> NO FINAL, appena viene modificata togliere final.
+    private final boolean gameOver; // false initially --> NO FINAL, appena viene modificata togliere final.
     private boolean bossDefeated; // false initially
     private final List<Bullet> listBulletPlayer;
     private final List<Bullet> listBulletEnemies;
@@ -69,8 +69,6 @@ public class WorldImpl implements World {
     private Mode mode;
     private RoundsGenerator roundsGenerator;
     private WorldEnvironment we;
-    private double shotRatioPlayer;
-    private double shotRatioEnemy;
 
     /**
      * Constructor for this class.
@@ -85,14 +83,13 @@ public class WorldImpl implements World {
         listShots = new ArrayList<>();
         listRoom = new ArrayList<>();
         listEvent = new ArrayList<>();
-        shotRatioPlayer = ProportionUtility.getPlayerBulletRatio();
-        shotRatioEnemy = ProportionUtility.getEnemyBulletRatio();
         ModelUtility.updateCurrentRound(0);
         ModelUtility.updateListAnimatedObject(Collections.emptyList());
         ModelUtility.updateListCommandModelUtility(Collections.emptyList(), Collections.emptyList());
         ModelUtility.updateListWorldEvent(Collections.emptyList());
         ModelUtility.updatePauseDuringRound(false);
     }
+
     /**
      * @return the actual room.
      */
@@ -163,7 +160,7 @@ public class WorldImpl implements World {
     public void setNextRound() {
         if (this.mode.equals(Mode.NORMAL) && getCurrentRound() < 4) {
             listEnemy.addAll(roundsGenerator.generateMonster());
-            this.button.setPressed(true); 
+            this.button.setPressed(true);
         }
     }
 
@@ -257,9 +254,8 @@ public class WorldImpl implements World {
      */
     @Override
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
-        this.shotRatioPlayer += deltaTime;
-        this.shotRatioEnemy += deltaTime;
         resetObjects();
+        incInternalDT(deltaTime);
         ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         ModelUtility.updateRoomModelUtility(this.room);
         this.listMovements = listMovement;
@@ -450,18 +446,13 @@ public class WorldImpl implements World {
      *            the list of the shots to create.
      */
     private void createPlayerBullet() {
-        if (this.shotRatioPlayer < ProportionUtility.getPlayerBulletRatio()) {
-            this.listShots.clear();
-        } else {
-            if (!this.listShots.isEmpty()) {
-                final MovementStrategy ms = new SimplyDirectionMovement(this.listShots.get(0));
-                final HitBox hb = createRightDirectionBullet(this.listShots.get(0));
-                this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerBulletVel(), ms,
-                        ProportionUtility.getPlayerBulletRange(), ImageType.ENEMY_BULLET));
-                this.shotRatioPlayer = 0;
-            }
-            this.listShots.clear();
+        if (!this.listShots.isEmpty() && ((AbstractCharacter) getPlayer()).canShot()) {
+            final MovementStrategy ms = new SimplyDirectionMovement(this.listShots.get(0));
+            final HitBox hb = createRightDirectionBullet(this.listShots.get(0));
+            this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerBulletVel(), ms,
+                    ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER_BULLET));
         }
+        this.listShots.clear();
     }
 
     private CircleHitBox createRightDirectionBullet(final Command d) {
@@ -509,7 +500,7 @@ public class WorldImpl implements World {
             if (!this.listEnemy.isEmpty()) {
                 listEnemy.forEach(x -> {
                     x.update(deltaTime);
-                    if (this.shotRatioEnemy > ((AbstractCharacter) x).canShot()) {
+                    if (((AbstractCharacter) x).canShot()) {
                         listBulletEnemies.addAll(x.shot());
                     }
                 });
@@ -531,7 +522,8 @@ public class WorldImpl implements World {
                 }
             }
             if (!this.button.isPressed()
-                    && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) getPlayer().getHitBox()) && getCurrentRound() < 4) {
+                    && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) getPlayer().getHitBox())
+                    && getCurrentRound() < 4) {
                 // se il bottone non è premuto e lo preme parte il round sucessivo.
                 // nella modalità normale ci sono 3 round e dopo la fine del terzo il current
                 // round sarà 4 quindi premendo il botton non succ niente.
@@ -594,8 +586,8 @@ public class WorldImpl implements World {
         final HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
                 ProportionUtility.getRadiusPlayer());
         return new PlayerImpl(ProportionUtility.getPlayerVel(), ProportionUtility.getPlayerLife(), hb,
-               new BasicAI(new PlayerMovement(), new PlayerProjectile(ProportionUtility.getRadiusBullet())),
-               ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio());
+                new BasicAI(new PlayerMovement(), new PlayerProjectile(ProportionUtility.getRadiusBullet())),
+                ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio());
     }
 
     /**
@@ -613,13 +605,22 @@ public class WorldImpl implements World {
         CollisionUtil.checkBoundaryCollision((CircleHitBox) this.player.getHitBox(),
                 (RectangularHitBox) we.getRoomHB());
         for (final Animated enemy : this.listEnemy) {
-            if (CollisionUtil.checkBoundaryCollision((CircleHitBox) enemy.getHitBox(), (RectangularHitBox) we.getRoomHB())) {
+            if (CollisionUtil.checkBoundaryCollision((CircleHitBox) enemy.getHitBox(),
+                    (RectangularHitBox) we.getRoomHB())) {
                 final AbstractCharacter character = (AbstractCharacter) enemy;
                 if (character.getAI().getMovementStrategy() instanceof SimplyDirectionMovement) {
-                    final SimplyDirectionMovement movement = (SimplyDirectionMovement) character.getAI().getMovementStrategy();
+                    final SimplyDirectionMovement movement = (SimplyDirectionMovement) character.getAI()
+                            .getMovementStrategy();
                     movement.reverseMovementDirection();
                 }
             }
         }
+    }
+
+    private void incInternalDT(final double dt) {
+        ((AbstractCharacter) getPlayer()).incAttendTime(dt);
+        listEnemy.forEach(x -> {
+            ((AbstractCharacter) x).incAttendTime(dt);
+        });
     }
 }
