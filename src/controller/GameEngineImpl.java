@@ -15,11 +15,9 @@ import controller.util.ScoreImpl;
 import model.World;
 import model.WorldImpl;
 import model.animated.AbstractCharacter;
-import model.hitbox.RectangularHitBox;
 import timer.Time;
 import utility.Mode;
 import utility.ModelUtility;
-import utility.ProportionUtility;
 import view.ViewImpl;
 import view.util.ViewUtils;
 

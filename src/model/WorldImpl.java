@@ -54,7 +54,7 @@ public class WorldImpl implements World {
     private Animated player; // |is the player
     private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom
-    private final boolean gameOver; // false initially
+    private final boolean gameOver; // false initially  --> NO FINAL, appena viene modificata togliere final.
     private boolean bossDefeated; // false initially
     private final List<Bullet> listBulletPlayer;
     private final List<Bullet> listBulletEnemies;
