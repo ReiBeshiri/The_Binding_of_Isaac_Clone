@@ -77,9 +77,9 @@ public class BossAI implements AI {
     public void nextPhaseStrategy(final int life) {
         if (life <= PHASE3_INIT) {
             setProjectileType(
-                    new BossAimedComboProjectile(EntityStats.BOSS.getBulletRadius(), THIRD_PHASE_START_BULLET_NUM));
+                    new BossAimedComboProjectile(THIRD_PHASE_START_BULLET_NUM));
         } else if (life <= PHASE2_INIT) {
-            setProjectileType(new BossSimpleComboProjectile(Command.LEFT, EntityStats.BOSS.getBulletRadius(),
+            setProjectileType(new BossSimpleComboProjectile(Command.LEFT,
                     SECOND_PHASE_START_BULLET_NUM));
         }
     }
