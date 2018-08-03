@@ -120,12 +120,12 @@ public class DrawerManagerImpl implements DrawerManager {
         gameCanvas.setWidth(gameCanvasDimension.getX());
         gameCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
         gameCanvas.setTranslateY((ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight()
-                - (gameCanvas.getWidth() / ((ViewUtils.getTimerCanvasWidth() / ViewUtils.getStageDeltaHeight()) * 2)))
+                - (gameCanvas.getWidth() / (ViewUtils.getBottomCanvasProp() * 2)))
                 / 2);
 
         timerCanvas.setWidth(gameCanvas.getWidth() / 2);
         timerCanvas.setHeight(
-                timerCanvas.getWidth() / (ViewUtils.getTimerCanvasWidth() / ViewUtils.getTimerCanvasHeight()));
+                timerCanvas.getWidth() / ViewUtils.getBottomCanvasProp());
         timerCanvas.setTranslateX(ViewManagerImpl.get().getStageWidth()
                 - ((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2) - timerCanvas.getWidth());
         // timercanvas.setTranslateY(ViewManagerImpl.get().getStageHeight()
@@ -135,7 +135,7 @@ public class DrawerManagerImpl implements DrawerManager {
 
         lifeCanvas.setWidth(gameCanvas.getWidth() / 2);
         lifeCanvas
-                .setHeight(lifeCanvas.getWidth() / (ViewUtils.getLifeCanvasWidth() / ViewUtils.getLifeCanvasHeight()));
+                .setHeight(lifeCanvas.getWidth() / ViewUtils.getBottomCanvasProp());
         lifeCanvas.setTranslateX((ViewManagerImpl.get().getStageWidth() - gameCanvas.getWidth()) / 2);
         // lifeCanvas.setTranslateY(gameCanvas.getHeight()
         // + (ViewManagerImpl.get().getStageHeight() - gameCanvas.getHeight() -
@@ -143,12 +143,12 @@ public class DrawerManagerImpl implements DrawerManager {
         lifeCanvas.setTranslateY(gameCanvas.getTranslateY() + gameCanvas.getHeight());
 
         // DEBUG PRINT
-        // System.out.println("GAME x: " + gameCanvas.getWidth() + " y: " +
-        // gameCanvas.getHeight());
-        // System.out.println("TIME x: " + timerCanvas.getWidth() + " y: " +
-        // timerCanvas.getHeight());
-        // System.out.println("LIFE x: " + lifeCanvas.getWidth() + " y: " +
-        // lifeCanvas.getHeight());
+//         System.out.println("GAME x: " + gameCanvas.getWidth() + " y: " +
+//         gameCanvas.getHeight());
+//         System.out.println("TIME x: " + timerCanvas.getWidth() + " y: " +
+//         timerCanvas.getHeight());
+//         System.out.println("LIFE x: " + lifeCanvas.getWidth() + " y: " +
+//         lifeCanvas.getHeight());
     }
 
     /**
