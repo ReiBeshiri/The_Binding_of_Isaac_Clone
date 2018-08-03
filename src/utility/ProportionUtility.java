@@ -21,7 +21,7 @@ public final class ProportionUtility {
     private static final double PLAYER_BULLET_RANGE = 400;
     private static final double BOSS_VEL = 5;
     private static final double BOSS_BULLET_RNG = 500;
-    private static final double BOSS_SHOT_RATIO = 0.4;
+    private static final double BOSS_SHOT_RATIO = 30;
     private static final double PLAYER_VEL_SHOT = 10;
     private static final double PLAYER_VEL = 7;
     private static final double WALLVERTICALWIDTH = 15;
@@ -30,6 +30,7 @@ public final class ProportionUtility {
     private static final double WALLHORIZONTALHEIGHT = 15;
     private static final int PLAYER_LIFE = 6;
     private static final int BOSS_LIFE = 30;
+    private static final double ENEMY_BULLET_RATIO = 40;
 
     private ProportionUtility() { }
 
@@ -38,6 +39,13 @@ public final class ProportionUtility {
      */
     public static double getPlayerBulletRatio() {
         return ProportionUtility.PLAYER_BULLET_RATIO;
+    }
+
+    /**
+     * @return the bullet ratio of the enemies.
+     */
+    public static double getEnemyBulletRatio() {
+        return ProportionUtility.ENEMY_BULLET_RATIO;
     }
 
     /**

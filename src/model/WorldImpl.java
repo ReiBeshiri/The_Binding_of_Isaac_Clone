@@ -65,11 +65,12 @@ public class WorldImpl implements World {
     private final List<Room> listRoom;
     private final List<WorldEvent> listEvent;
     private int currentRound = 1;
-    private static final int DAMAGE = 10;
+    private static final int DAMAGE = 1;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
     private WorldEnvironment we;
-    private double shotRatio;
+    private double shotRatioPlayer;
+    private double shotRatioEnemy;
 
     /**
      * Constructor for this class.
@@ -84,7 +85,8 @@ public class WorldImpl implements World {
         listShots = new ArrayList<>();
         listRoom = new ArrayList<>();
         listEvent = new ArrayList<>();
-        shotRatio = ProportionUtility.getPlayerBulletRatio();
+        shotRatioPlayer = ProportionUtility.getPlayerBulletRatio();
+        shotRatioEnemy = ProportionUtility.getEnemyBulletRatio();
         ModelUtility.updateCurrentRound(0);
         ModelUtility.updateListAnimatedObject(Collections.emptyList());
         ModelUtility.updateListCommandModelUtility(Collections.emptyList(), Collections.emptyList());
@@ -255,7 +257,8 @@ public class WorldImpl implements World {
      */
     @Override
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
-        this.shotRatio += deltaTime;
+        this.shotRatioPlayer += deltaTime;
+        this.shotRatioEnemy += deltaTime;
         resetObjects();
         ModelUtility.updateListCommandModelUtility(listMovement, listShots);
         ModelUtility.updateRoomModelUtility(this.room);
@@ -447,7 +450,7 @@ public class WorldImpl implements World {
      *            the list of the shots to create.
      */
     private void createPlayerBullet() {
-        if (this.shotRatio < ProportionUtility.getPlayerBulletRatio()) {
+        if (this.shotRatioPlayer < ProportionUtility.getPlayerBulletRatio()) {
             this.listShots.clear();
         } else {
             if (!this.listShots.isEmpty()) {
@@ -455,7 +458,7 @@ public class WorldImpl implements World {
                 final HitBox hb = createRightDirectionBullet(this.listShots.get(0));
                 this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerBulletVel(), ms,
                         ProportionUtility.getPlayerBulletRange(), ImageType.ENEMY_BULLET));
-                this.shotRatio = 0;
+                this.shotRatioPlayer = 0;
             }
             this.listShots.clear();
         }
@@ -504,16 +507,18 @@ public class WorldImpl implements World {
                         SpawnUtility.getSpawnYEnterRightDoor());
             }
             if (!this.listEnemy.isEmpty()) {
-                //this.listEnemy.iterator().next().update(deltaTime);
                 listEnemy.forEach(x -> {
                     x.update(deltaTime);
-                    listBulletEnemies.addAll(x.shot());
+                    if (this.shotRatioEnemy > ((AbstractCharacter) x).getShootRatio()) {
+                        listBulletEnemies.addAll(x.shot());
+                    }
                 });
             }
             if (!allEnemyDefeated()) {
                 playerBulletHitsEnemy(deltaTime);
                 playerGetsHitByBullet(getPlayer(), deltaTime);
                 if (allEnemyDefeated()) {
+                    this.listBulletEnemies.clear();
                     this.listEvent.add(new PlayerKillAllEnemy());
                     incCurrentRound();
                     this.button.setPressed(false);
