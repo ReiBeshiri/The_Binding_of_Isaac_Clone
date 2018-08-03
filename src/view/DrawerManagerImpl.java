@@ -200,7 +200,7 @@ public class DrawerManagerImpl implements DrawerManager {
         // gcGameCanvas.setFill(Color.DARKGOLDENROD);
         // gcGameCanvas.fillRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
         drawHitBoxImage(room.getBackgroundImage(),
-                new RectangularHitBox(0, 0, gameCanvas.getHeight(), gameCanvas.getWidth()), gcGameCanvas);
+                new RectangularHitBox(0, 0, ViewUtils.getWorldHeight(), ViewUtils.getWorldWidth()), gcGameCanvas);
         room.getDoors().forEach(x -> {
             // Safe-casting, all doors have a rectangular hitBox.
             // final RectangularHitBox hBox = (RectangularHitBox) x.getHitBox();
