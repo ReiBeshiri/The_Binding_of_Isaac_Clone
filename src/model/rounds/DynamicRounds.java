@@ -24,15 +24,19 @@ public class DynamicRounds implements RoundsGenerator {
     private static final int MAXENEMY = 7;
     private static final double SHOTRATIOBASIC = 0.5;
     private static final double SHOTRATIOHARD = 0.4;
-    private final List<EnemyType> listEnemy = new ArrayList<>();
-    private final List<Command> listCommand = new ArrayList<>();
-    private final List<Spawns> listSpawns = new ArrayList<>();
-    private int enemyToSpawn;
-    private final List<Animated> listReturnEnemy = new ArrayList<>();
+    private final List<EnemyType> listEnemy;
+    private final List<Command> listCommand;
+    private final List<Spawns> listSpawns;
+    private final List<Animated> listReturnEnemy;
+
     /**
      * Add to the list all the possible enemies, and the spawns.
      */
     public DynamicRounds() {
+        listEnemy = new ArrayList<>();
+        listCommand = new ArrayList<>();
+        listSpawns = new ArrayList<>();
+        listReturnEnemy = new ArrayList<>();
     }
 
     /**
@@ -41,25 +45,25 @@ public class DynamicRounds implements RoundsGenerator {
     @Override
     public List<Animated> generateMonster() {
         fullList();
-        enemyToSpawn = numberOfEnemyToGenerate();
+        final int enemyToSpawn = numberOfEnemyToGenerate();
         Collections.shuffle(listSpawns);
         for (int i = 0; i < enemyToSpawn; i++) {
             Collections.shuffle(listEnemy);
             Collections.shuffle(listCommand);
-            EnemyFactory enemy = new EnemyFactoryImpl();
+            final EnemyFactory enemy = new EnemyFactoryImpl();
             Spawns spawn;
             spawn = listSpawns.remove(0);
             if (listEnemy.get(0).equals(EnemyType.SIPMLE)) {
-                HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
-                Animated en = enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
+                final Animated en = enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
                 listReturnEnemy.add(en); 
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEMOVE)) {
-                HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
-                Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
+                final Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
                 listReturnEnemy.add(en); 
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEAIMED)) {
-                HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
-               Animated en = enemy.createStaticAimedBulletEnemy(hb, ProportionUtility.getRadiusBullet(), ImageType.AIMED_ENEMY, DynamicRounds.SHOTRATIOHARD);
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
+                final Animated en = enemy.createStaticAimedBulletEnemy(hb, ProportionUtility.getRadiusBullet(), ImageType.AIMED_ENEMY, DynamicRounds.SHOTRATIOHARD);
                 listReturnEnemy.add(en);
             }
         }
