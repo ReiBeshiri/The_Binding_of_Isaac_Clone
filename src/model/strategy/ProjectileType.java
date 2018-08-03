@@ -20,8 +20,12 @@ public interface ProjectileType {
      *          The speed of the bullet.
      * @param bulletImg
      *          Bullet image.
+     * @param damage
+     *          Bullet damage.
+     * @param radius
+     *          Bullet radius.
      * @return
      *          The bullet that has been shot.
      */
-    Collection<Bullet> shoot(HitBox sender/*, Collection<Command> dir, double dt*/, double range, double vel, ImageType bulletImg);
+    Collection<Bullet> shoot(HitBox sender, double range, double vel, ImageType bulletImg, int damage, double radius);
 }

@@ -42,9 +42,13 @@ public interface AI {
      *            Range of bullet.
      * @param bulletImg
      *            Image of the bullet.
+     * @param damage
+     *            Damage of the bullet.
+     * @param bulletRadius
+     *            Radius of the bullet.
      * @return The collection of bullet shooted by entity.
      */
-    Collection<Bullet> shoot(HitBox hBox, double vel, double range, ImageType bulletImg);
+    Collection<Bullet> shoot(HitBox hBox, double vel, double range, ImageType bulletImg, int damage, double bulletRadius);
 
     /**
      * Set new type of movement.

@@ -20,21 +20,13 @@ import static input.Command.RIGHT;
  *
  */
 public class FourWayProjectile implements ProjectileType {
-    private final double radius;
-
-    /**
-     * Constructs a new instance of an directional projectile.
-     */
-    public FourWayProjectile() {
-        radius = 1;
-    }
 
     /**
      * 
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox sender/* , final Collection<Command> dir, final double dt */,
-            final double range, final double vel, final ImageType bulletImg) {
+    public Collection<Bullet> shoot(final HitBox sender,
+            final double range, final double vel, final ImageType bulletImg, final int damage, final double radius) {
         // final Collection<Bullet> bulletColl = new ArrayList<>();
         // for (final Command d : dir) {
         // if (d == Command.UP) {
@@ -61,7 +53,7 @@ public class FourWayProjectile implements ProjectileType {
         // return bulletColl;
         return Arrays.asList(UP, DOWN, LEFT, RIGHT).stream()
                 .map(x -> new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
-                        new SimplyDirectionMovement(x), range, bulletImg))
+                        new SimplyDirectionMovement(x), range, bulletImg, damage))
                 .collect(Collectors.toList());
     }
 

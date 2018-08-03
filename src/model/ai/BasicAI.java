@@ -46,8 +46,8 @@ public class BasicAI implements AI {
      * ecc...
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range, final ImageType bulletImg) {
-        return pType.shoot(hBox, range, vel, bulletImg);
+    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range, final ImageType bulletImg, final int damage, final double bulletRadius) {
+        return pType.shoot(hBox, range, vel, bulletImg, damage, bulletRadius);
     }
 
     /**

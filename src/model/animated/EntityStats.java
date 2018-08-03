@@ -8,19 +8,19 @@ public enum EntityStats {
     /**
      * player stats.
      */
-    PLAYER(6, 7, 0, 40, 1, 400, 60, 10),
+    PLAYER(6, 7, 0, 40, 1, 400, 10, 10),
     /**
      * static enemy stats.
      */
-    STATIC_ENEMY(4, 0, 300, 45, 1, 400, 60, 7),
+    STATIC_ENEMY(4, 0, 300, 45, 1, 400, 10, 7),
     /**
      * Movable enemy stats.
      */
-    MOVEABLE_ENEMY(3, 5, 500, 50, 1, 400, 60, 8),
+    MOVEABLE_ENEMY(3, 5, 500, 50, 1, 400, 10, 8),
     /**
      * Boss stats.
      */
-    BOSS(30, 0, 5000, 50, 1, 500, 70, 11);
+    BOSS(30, 0, 5000, 50, 1, 500, 14, 11);
 
     private int life;
     private double vel;

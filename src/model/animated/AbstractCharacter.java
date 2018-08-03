@@ -15,13 +15,17 @@ public abstract class AbstractCharacter implements Animated {
     private int life;
     private final AI ai;
     private HitBox hitBox;
-    private double range;
     private final int maxLife;
     private final double ratio;
     private final ImageType img;
     private double attendTime;
+    private double bulletRange;
+    private final double bulletRadius;
+    private final double bulletVel;
+    private final int bulletDamage;
 
     /**
+     * Constructor for this class.
      * 
      * @param v
      *            Velocity of this object.
@@ -31,24 +35,34 @@ public abstract class AbstractCharacter implements Animated {
      *            HitBox of object.
      * @param ai
      *            Artificial Intelligence.
-     * @param range
-     *            Range of his bullet.
      * @param img
      *            Image for this entity.
      * @param ratio
      *            Ratio for this entity.
+     * @param bulletRadius
+     *            Radius of bullet for this entity.
+     * @param bulletVel
+     *            Bullet vel for this entity.
+     * @param bulletRange
+     *            Bullet range for this entity.
+     * @param bulletDamage
+     *            Bullet damage for this entity.
      */
-    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai, final double range,
-            final ImageType img, final double ratio) {
+    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai,
+            final ImageType img, final double ratio, final double bulletRadius, final double bulletVel,
+            final double bulletRange, final int bulletDamage) {
         velocity = v;
         this.life = life;
         this.maxLife = life;
         this.ai = ai;
         hitBox = h;
-        this.range = range;
         this.ratio = ratio;
         this.img = img;
         attendTime = 0;
+        this.bulletDamage = bulletDamage;
+        this.bulletRadius = bulletRadius;
+        this.bulletRange = bulletRange;
+        this.bulletVel = bulletVel;
     }
 
     /**
@@ -140,15 +154,6 @@ public abstract class AbstractCharacter implements Animated {
     }
 
     /**
-     * Method to expose the range only to subclass.
-     * 
-     * @return range.
-     */
-    public double getRange() {
-        return range;
-    }
-
-    /**
      * Set new range.
      * 
      * Note: Uses for power-up.
@@ -157,7 +162,7 @@ public abstract class AbstractCharacter implements Animated {
      *            New range for entity bullets.
      */
     public void setRange(final double incRange) {
-        range += incRange;
+        bulletRange += incRange;
     }
 
     /**
@@ -184,6 +189,7 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * Return if entity can shot.
+     * 
      * @return ratio if entity can shot.
      */
     public boolean canShot() {
@@ -196,9 +202,43 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * Method used to increment attend time.
-     * @param val val to inc.
+     * 
+     * @param val
+     *            val to inc.
      */
     public void incAttendTime(final double val) {
         attendTime += val;
+    }
+
+    /**
+     * Getter for bullet vel.
+     * @return bullet vel.
+     */
+    public double getBulletVel() {
+        return bulletVel;
+    }
+
+    /**
+     * Getter for bullet range.
+     * @return bullet range.
+     */
+    public double getBulletRange() {
+        return bulletRange;
+    }
+
+    /**
+     * Getter for bullet radius.
+     * @return bullet radius.
+     */
+    public double getBulletRadius() {
+        return bulletRadius;
+    }
+
+    /**
+     * Getter for bullet damage.
+     * @return bullet damage.
+     */
+    public int getBulletDamage() {
+        return bulletDamage;
     }
 }

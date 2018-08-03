@@ -15,24 +15,19 @@ import static input.Command.DOWN;
 import static input.Command.UP;
 import static input.Command.LEFT;
 import static input.Command.RIGHT;
+
 /**
  * Class that represent player bullet's type.
  * 
  */
 public class PlayerProjectile implements ProjectileType {
-    private final double radius;
-    /**
-     * 
-     * @param r Radius of bullet.
-     */
-    public PlayerProjectile(final double r) {
-        radius = r;
-    }
+
     /**
      * Shoot single bullet for player.
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel, final ImageType bulletImg) {
+    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel,
+            final ImageType bulletImg, final int damage, final double radius) {
         final List<Command> shotCommand = ModelUtility.getListShotsCommand();
         Command dirToShoot = null;
         double x = sender.getX();
@@ -53,8 +48,8 @@ public class PlayerProjectile implements ProjectileType {
         }
         if (dirToShoot != null) {
             final List<Bullet> shots = new ArrayList<>();
-            shots.add(new BulletImpl(new CircleHitBox(x, y, radius), vel, 
-                    new SimplyDirectionMovement(dirToShoot), range, bulletImg));
+            shots.add(new BulletImpl(new CircleHitBox(x, y, radius), vel, new SimplyDirectionMovement(dirToShoot),
+                    range, bulletImg, damage));
             return shots;
         }
         return Collections.emptyList();

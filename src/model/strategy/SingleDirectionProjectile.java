@@ -15,24 +15,26 @@ import proxyutility.ImageType;
  */
 public class SingleDirectionProjectile implements ProjectileType {
     private final Command dir;
-    private final double radius;
+
     /**
+     * Constructor for this class.
      * 
-     * @param dir Direction where shoot the bullet. 
-     * @param r radius of bullet.
+     * @param dir
+     *            Direction where shoot the bullet.
      */
-    public SingleDirectionProjectile(final Command dir, final double r) {
+    public SingleDirectionProjectile(final Command dir) {
         this.dir = dir;
-        radius = r;
     }
+
     /**
      * 
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel, final ImageType bulletImg) {
+    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel,
+            final ImageType bulletImg, final int damage, final double radius) {
         final List<Bullet> list = new ArrayList<>();
-        list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), 
-                vel, new SimplyDirectionMovement(dir), range, bulletImg));
+        list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
+                new SimplyDirectionMovement(dir), range, bulletImg, damage));
         return list;
     }
 

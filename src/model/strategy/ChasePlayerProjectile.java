@@ -14,22 +14,15 @@ import proxyutility.ImageType;
  *
  */
 public class ChasePlayerProjectile implements ProjectileType {
-    private final double radius;
-    /**
-     * 
-     * @param r Radius of bullet.
-     */
-    public ChasePlayerProjectile(final double r) {
-        radius = r;
-    }
+
     /**
      * Shoot bullet/s.
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel, final ImageType bulletImg) {
+    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel, final ImageType bulletImg, final int damage, final double radius) {
         final List<Bullet> list = new ArrayList<>();
         list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), 
-                vel, new FollowPlayerMovement(), range, bulletImg));
+                vel, new FollowPlayerMovement(), range, bulletImg, damage));
         return list;
     }
 

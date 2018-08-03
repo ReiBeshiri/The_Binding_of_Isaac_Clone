@@ -12,6 +12,7 @@ import proxyutility.ImageType;
 public class BulletImpl extends AbstractBullet implements Bullet {
 
     private double range;
+    private final double damage;
     private final MovementStrategy bulletMS;
 
     /**
@@ -26,23 +27,18 @@ public class BulletImpl extends AbstractBullet implements Bullet {
      *          The range of the bullet.
      * @param bulletImg
      *          The bullet image.
+     * @param damage
+     *          Bullet damage.
      */
-    public BulletImpl(final CircleHitBox chb, final double vel, final MovementStrategy bulletMS, final double range, final ImageType bulletImg) {
+    public BulletImpl(final CircleHitBox chb, final double vel, final MovementStrategy bulletMS, final double range, final ImageType bulletImg, final int damage) {
         super(vel, chb, bulletImg);
         this.bulletMS = bulletMS;
         this.range = range;
+        this.damage = damage;
     }
 
     /**
-     * 
-     */
-    @Override
-    public double getRange() {
-        return this.range;
-    }
-
-    /**
-     * 
+     * return if bullet is dead.
      */
     @Override
     public boolean isDead() {
@@ -50,11 +46,19 @@ public class BulletImpl extends AbstractBullet implements Bullet {
     }
 
     /**
-     * 
+     * Perform movement of the bullet.
      */
     @Override
     protected HitBox performMove(final double dt) {
         range -= super.getVel() * dt;
         return bulletMS.move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
+    }
+
+    /**
+     * Damage of the bullet.
+     */
+    @Override
+    public double getDamage() {
+        return damage;
     }
 }

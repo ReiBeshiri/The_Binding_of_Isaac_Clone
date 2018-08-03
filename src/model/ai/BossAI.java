@@ -11,7 +11,6 @@ import model.strategy.BossSimpleComboProjectile;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
 import proxyutility.ImageType;
-import utility.ProportionUtility;
 
 /**
  * Boss AI.
@@ -51,8 +50,8 @@ public class BossAI implements AI {
      */
     @Override
     public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range,
-            final ImageType bulletImg) {
-        return pType.shoot(hBox, range, vel, bulletImg);
+            final ImageType bulletImg, final int damage, final double bulletRadius) {
+        return pType.shoot(hBox, range, vel, bulletImg, damage, bulletRadius);
     }
 
     /**
