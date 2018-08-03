@@ -3,7 +3,6 @@ package model.ai;
 import java.util.Collection;
 import input.Command;
 import model.animated.Bullet;
-import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.BossAimedComboProjectile;

@@ -26,7 +26,7 @@ public enum EntityStats {
     private double vel;
     private int points;
     private double shootRatio;
-    private double bulletDamage;
+    private int bulletDamage;
     private double bulletRange;
     private double bulletRadius;
     private double bulletVel;
@@ -51,7 +51,7 @@ public enum EntityStats {
      * @param bulletVel
      *            bullet velocity.
      */
-    EntityStats(final int l, final double v, final int points, final double sR, final double bulletDamage,
+    EntityStats(final int l, final double v, final int points, final double sR, final int bulletDamage,
             final double bulletRange, final double bulletRadius, final double bulletVel) {
         life = l;
         vel = v;
@@ -101,7 +101,7 @@ public enum EntityStats {
     /**
      * @return bullet damage.
      */
-    public double getBulletDamage() {
+    public int getBulletDamage() {
         return bulletDamage;
     }
 
