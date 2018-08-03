@@ -608,7 +608,13 @@ public class WorldImpl implements World {
         CollisionUtil.checkBoundaryCollision((CircleHitBox) this.player.getHitBox(),
                 (RectangularHitBox) we.getRoomHB());
         for (final Animated enemy : this.listEnemy) {
-            CollisionUtil.checkBoundaryCollision((CircleHitBox) enemy.getHitBox(), (RectangularHitBox) we.getRoomHB());
+            if (CollisionUtil.checkBoundaryCollision((CircleHitBox) enemy.getHitBox(), (RectangularHitBox) we.getRoomHB())) {
+                final AbstractCharacter character = (AbstractCharacter) enemy;
+                if (character.getAI().getMovementStrategy() instanceof SimplyDirectionMovement) {
+                    final SimplyDirectionMovement movement = (SimplyDirectionMovement) character.getAI().getMovementStrategy();
+                    movement.reverseMovementDirection();
+                }
+            }
         }
     }
 }
