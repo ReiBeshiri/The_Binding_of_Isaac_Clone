@@ -13,6 +13,7 @@ import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.animated.Enemy;
+import model.animated.EntityStats;
 import model.animated.PlayerImpl;
 import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
@@ -449,8 +450,8 @@ public class WorldImpl implements World {
         if (!this.listShots.isEmpty() && ((AbstractCharacter) getPlayer()).canShot()) {
             final MovementStrategy ms = new SimplyDirectionMovement(this.listShots.get(0));
             final HitBox hb = createRightDirectionBullet(this.listShots.get(0));
-            this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, ProportionUtility.getPlayerBulletVel(), ms,
-                    ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER_BULLET));
+            this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, EntityStats.PLAYER.getBulletVel(), ms,
+                    EntityStats.PLAYER.getBulletRange(), ImageType.PLAYER_BULLET));
         }
         this.listShots.clear();
     }
@@ -459,19 +460,19 @@ public class WorldImpl implements World {
         if (d.equals(Command.RIGHT)) {
             return new CircleHitBox(
                     this.player.getHitBox().getX() + ((CircleHitBox) this.player.getHitBox()).getRadius(),
-                    this.player.getHitBox().getY(), ProportionUtility.getRadiusBullet());
+                    this.player.getHitBox().getY(), EntityStats.PLAYER.getBulletRadius());
         } else if (d.equals(Command.LEFT)) {
             return new CircleHitBox(
                     this.player.getHitBox().getX() - ((CircleHitBox) this.player.getHitBox()).getRadius(),
-                    this.player.getHitBox().getY(), ProportionUtility.getRadiusBullet());
+                    this.player.getHitBox().getY(), EntityStats.PLAYER.getBulletRadius());
         } else if (d.equals(Command.UP)) {
             return new CircleHitBox(this.player.getHitBox().getX(),
                     this.player.getHitBox().getY() - ((CircleHitBox) this.player.getHitBox()).getRadius(),
-                    ProportionUtility.getRadiusBullet());
+                    EntityStats.PLAYER.getBulletRadius());
         } else {
             return new CircleHitBox(this.player.getHitBox().getX(),
                     this.player.getHitBox().getY() + ((CircleHitBox) this.player.getHitBox()).getRadius(),
-                    ProportionUtility.getRadiusBullet());
+                    EntityStats.PLAYER.getBulletRadius());
         }
     }
 
@@ -585,9 +586,9 @@ public class WorldImpl implements World {
     private Animated playerCreation() {
         final HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
                 ProportionUtility.getRadiusPlayer());
-        return new PlayerImpl(ProportionUtility.getPlayerVel(), ProportionUtility.getPlayerLife(), hb,
-                new BasicAI(new PlayerMovement(), new PlayerProjectile(ProportionUtility.getRadiusBullet())),
-                ProportionUtility.getPlayerBulletRange(), ImageType.PLAYER, ProportionUtility.getPlayerBulletRatio());
+        return new PlayerImpl(EntityStats.PLAYER.getVel(), EntityStats.PLAYER.getLife(), hb,
+                new BasicAI(new PlayerMovement(), new PlayerProjectile(EntityStats.PLAYER.getBulletRadius())),
+                EntityStats.PLAYER.getBulletRange(), ImageType.PLAYER, EntityStats.PLAYER.getShotRatio());
     }
 
     /**

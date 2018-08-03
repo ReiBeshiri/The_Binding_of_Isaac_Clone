@@ -10,43 +10,18 @@ public final class ProportionUtility {
     private static final double PROPORTION_WALL = 15;
     private static final double PROPORTION_WALL_RANGE_SIDE = 30;
     private static final double PROPORTION_WALL_RANGE_TOPDOWN = 40;
-    private static final double PROPORTION_BULLET = 60;
     private static final double PROPORTION_BUTTON = 40;
     private static final double PROPORTION_DOOR_WIDTH = 15;
     private static final double PROPORTION_DOOR_HEIGHT = 90;
     private static final double PROPORTION_ITEMSHOP = 30;
     private static final double HEIGHT = 600;
     private static final double WIDTH = 1100;
-    private static final double PLAYER_BULLET_RATIO = 50;
-    private static final double PLAYER_BULLET_RANGE = 400;
-    private static final double BOSS_VEL = 5;
-    private static final double BOSS_BULLET_RNG = 500;
-    private static final double BOSS_SHOT_RATIO = 30;
-    private static final double PLAYER_VEL_SHOT = 10;
-    private static final double PLAYER_VEL = 7;
     private static final double WALLVERTICALWIDTH = 15;
     private static final double WALLHORIZONTALWIDTH = 30;
     private static final double WALLVERTICALLHEIGHT = 30;
     private static final double WALLHORIZONTALHEIGHT = 15;
-    private static final int PLAYER_LIFE = 6;
-    private static final int BOSS_LIFE = 30;
-    private static final double ENEMY_BULLET_RATIO = 40;
 
     private ProportionUtility() { }
-
-    /**
-     * @return the bullet velocity of the player.
-     */
-    public static double getPlayerBulletRatio() {
-        return ProportionUtility.PLAYER_BULLET_RATIO;
-    }
-
-    /**
-     * @return the bullet ratio of the enemies.
-     */
-    public static double getEnemyBulletRatio() {
-        return ProportionUtility.ENEMY_BULLET_RATIO;
-    }
 
     /**
      * @return wall vertical width (15).
@@ -77,27 +52,6 @@ public final class ProportionUtility {
     }
 
     /**
-     * @return boss life.
-     */
-    public static int getBossLife() {
-        return ProportionUtility.BOSS_LIFE;
-    }
-
-    /**
-     * @return boss velocity.
-     */
-    public static double getBossVel() {
-        return ProportionUtility.BOSS_VEL;
-    }
-
-    /**
-     * @return boss bullet shot ratio.
-     */
-    public static double getBossShotRatio() {
-        return ProportionUtility.BOSS_SHOT_RATIO;
-    }
-
-    /**
      * @return wall range side (30).
      */
     public static double getWallRangeSide() {
@@ -112,41 +66,6 @@ public final class ProportionUtility {
     }
 
     /**
-     * @return velocity of the player.
-     */
-    public static double getPlayerVel() {
-        return ProportionUtility.PLAYER_VEL;
-    }
-
-    /**
-     * @return vel of the player bullets.
-     */
-    public static double getPlayerBulletVel() {
-        return ProportionUtility.PLAYER_VEL_SHOT;
-    }
-
-    /**
-     * @return life of the player.
-     */
-    public static int getPlayerLife() {
-        return ProportionUtility.PLAYER_LIFE;
-    }
-
-    /**
-     * @return boss bullet range.
-     */
-    public static double getBossBulletRng() {
-        return ProportionUtility.BOSS_BULLET_RNG;
-    }
-
-    /**
-     * @return the bullet range of the player.
-     */
-    public static double getPlayerBulletRange() {
-        return ProportionUtility.PLAYER_BULLET_RANGE;
-    }
-
-    /**
      * @return get radius animated obj like enemy & player.
      */
     public static double getRadiusPlayer() {
@@ -158,13 +77,6 @@ public final class ProportionUtility {
      */
     public static double getRadiusEnemy() {
         return ProportionUtility.HEIGHT /  ProportionUtility.PROPORTION_PLAYER_ENEMY;
-    }
-
-    /**
-     * @return get radius bullet.
-     */
-    public static double getRadiusBullet() {
-        return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_BULLET;
     }
 
     /**
