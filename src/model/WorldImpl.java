@@ -504,7 +504,11 @@ public class WorldImpl implements World {
                         SpawnUtility.getSpawnYEnterRightDoor());
             }
             if (!this.listEnemy.isEmpty()) {
-                this.listEnemy.iterator().next().update(deltaTime);
+                //this.listEnemy.iterator().next().update(deltaTime);
+                listEnemy.forEach(x -> {
+                    x.update(deltaTime);
+                    listBulletEnemies.addAll(x.shot());
+                });
             }
             if (!allEnemyDefeated()) {
                 playerBulletHitsEnemy(deltaTime);
