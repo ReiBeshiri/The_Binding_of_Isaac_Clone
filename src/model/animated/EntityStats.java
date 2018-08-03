@@ -1,25 +1,26 @@
 package model.animated;
+
 /**
- * Enum. that represnet all type of entities. 
+ * Enum. that represnet all type of entities.
  *
  */
 public enum EntityStats {
     /**
      * player stats.
      */
-    PLAYER(6, 7, 0, 40, 1, 400, 60),
+    PLAYER(6, 7, 0, 40, 1, 400, 60, 10),
     /**
      * static enemy stats.
      */
-    STATIC_ENEMY(4, 0, 300, 45, 1, 400, 60),
+    STATIC_ENEMY(4, 0, 300, 45, 1, 400, 60, 7),
     /**
      * Movable enemy stats.
      */
-    MOVEABLE_ENEMY(3, 5, 500, 50, 1, 400, 60),
+    MOVEABLE_ENEMY(3, 5, 500, 50, 1, 400, 60, 8),
     /**
      * Boss stats.
      */
-    BOSS(30, 0, 5000, 50, 1, 500, 70);
+    BOSS(30, 0, 5000, 50, 1, 500, 70, 11);
 
     private int life;
     private double vel;
@@ -28,18 +29,30 @@ public enum EntityStats {
     private double bulletDamage;
     private double bulletRange;
     private double bulletRadius;
+    private double bulletVel;
 
     /**
      * Constructor for enum.
-     * @param l life.
-     * @param v velocity.
-     * @param points point.
-     * @param sR shoot ratio.
-     * @param bulletDamage bullet damage.
-     * @param bulletRange bullet range.
-     * @param bulletRadius bullets radius.
+     * 
+     * @param l
+     *            life.
+     * @param v
+     *            velocity.
+     * @param points
+     *            point.
+     * @param sR
+     *            shoot ratio.
+     * @param bulletDamage
+     *            bullet damage.
+     * @param bulletRange
+     *            bullet range.
+     * @param bulletRadius
+     *            bullets radius.
+     * @param bulletVel
+     *            bullet velocity.
      */
-    EntityStats(final int l, final double v, final int points, final double sR, final double bulletDamage, final double bulletRange, final double bulletRadius) {
+    EntityStats(final int l, final double v, final int points, final double sR, final double bulletDamage,
+            final double bulletRange, final double bulletRadius, final double bulletVel) {
         life = l;
         vel = v;
         this.points = points;
@@ -47,6 +60,7 @@ public enum EntityStats {
         this.bulletDamage = bulletDamage;
         this.bulletRange = bulletRange;
         this.bulletRadius = bulletRadius;
+        this.bulletVel = bulletVel;
     }
 
     /**
@@ -96,5 +110,12 @@ public enum EntityStats {
      */
     public double getBulletRadius() {
         return bulletRadius;
+    }
+
+    /**
+     * @return bullet velocity.
+     */
+    public double getBulletVel() {
+        return bulletVel;
     }
 }
