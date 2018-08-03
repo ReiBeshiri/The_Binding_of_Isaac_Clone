@@ -53,7 +53,7 @@ public class DynamicRounds implements RoundsGenerator {
             final EnemyFactory enemy = new EnemyFactoryImpl();
             Spawns spawn;
             spawn = listSpawns.remove(0);
-            if (listEnemy.get(0).equals(EnemyType.SIPMLE)) {
+            if (listEnemy.get(0).equals(EnemyType.SIMPLE)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
                 final Animated en = enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0), ProportionUtility.getRadiusBullet(), ImageType.BASIC_ENEMY, DynamicRounds.SHOTRATIOBASIC);
                 listReturnEnemy.add(en); 
@@ -90,7 +90,7 @@ public class DynamicRounds implements RoundsGenerator {
     private void fullList() {
         listEnemy.add(EnemyType.SIMPLEAIMED);
         listEnemy.add(EnemyType.SIMPLEMOVE);
-        listEnemy.add(EnemyType.SIPMLE);
+        listEnemy.add(EnemyType.SIMPLE);
         //spawns.add(Spawns.A); i'll take A as player's spawn.
         listSpawns.add(Spawns.B);
         listSpawns.add(Spawns.C);
