@@ -32,13 +32,4 @@ public class GameCanvasViewController extends AbstractControllerFXML {
     public final Region getRoot() {
         return rootGamePane;
     }
-
-    /**
-     * Main canvas.
-     * @return Canvas where paint scene.
-     */
-    public Canvas getGameCanvas() {
-        return roomCanvas;
-    }
-
 }
