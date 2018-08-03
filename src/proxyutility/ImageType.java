@@ -63,11 +63,11 @@ public enum ImageType {
     /**
      * Button Active.
      */
-    BUTTON_UP("btnUp.png"),
+    BUTTON_UP("buttonUp.png"),
     /**
      * Button Deactivate.
      */
-    BUTTON_DOWN("btnDown.png"),
+    BUTTON_DOWN("buttonDown.png"),
     /**
      * PowerUp - Health Up.
      */
