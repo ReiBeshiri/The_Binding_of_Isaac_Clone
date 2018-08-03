@@ -63,11 +63,11 @@ public enum ImageType {
     /**
      * Button Active.
      */
-    BUTTON_UP("btnUp.png"),
+    BUTTON_UP("buttonUp.png"),
     /**
      * Button Deactivate.
      */
-    BUTTON_DOWN("btnDown.png"),
+    BUTTON_DOWN("buttonDown.png"),
     /**
      * PowerUp - Health Up.
      */
@@ -83,7 +83,19 @@ public enum ImageType {
     /**
      * Boss Bullet.
      */
-    BOSS_BULLET("BossProjectile.png");
+    BOSS_BULLET("BossProjectile.png"),
+    /**
+     * Background image for main room.
+     */
+    BACKGROUND_MAIN_ROOM("BackgroundMain.png"),
+    /**
+     * Background image for shop room.
+     */
+    BACKGROUND_SHOP_ROOM("BackgroundShop.png"),
+    /**
+     * Background image for boss room.
+     */
+    BACKGROUND_BOSS_ROOM("BackgroundBoss.png");
     private final String path;
 
     ImageType(final String path) {

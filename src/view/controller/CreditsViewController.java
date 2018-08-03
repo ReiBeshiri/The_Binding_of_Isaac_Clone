@@ -9,8 +9,7 @@ import view.ViewManagerImpl;
  */
 public class CreditsViewController extends AbstractControllerFXML {
 
-    @FXML
-    private BorderPane creditsContentPane;
+    @FXML private BorderPane creditsContentPane;
 
     @FXML
     private void backButtonClick() {

@@ -60,8 +60,14 @@ public final class GameEngineImpl implements GameEngine {
         //Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
-        ViewImpl.get().setInitialHeight(((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / ViewUtils.getYScreenProp());
-        ViewImpl.get().setInitialWidth(((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth()) / ViewUtils.getXScreenProp());
+        ViewImpl.get().setInitialHeight(
+                ((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / ViewUtils.getYScreenProp());
+        ViewImpl.get().setInitialWidth(
+                ((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth()) / ViewUtils.getXScreenProp());
+        ViewImpl.get().setWorldHeight(ModelUtility.getWorldHeight());
+        ViewImpl.get().setWorldWidth(ModelUtility.getWorldWidth());
+        ViewImpl.get().setWorldHeightProportion(ModelUtility.getWorldHeightProp());
+        ViewImpl.get().setWorldWidthProportion(ModelUtility.getWorldWidthProp());
         ViewImpl.get().viewStart();
     }
 
@@ -80,8 +86,13 @@ public final class GameEngineImpl implements GameEngine {
         } else {
             world.setMode(Mode.NORMAL);
         }
+
+        /////// Dumb events created for start drawing life and time.
+        ViewImpl.get().initTimeCanvas();
         ViewImpl.get().roomChanged(ModelUtility.getRoom());
         ViewImpl.get().playerLifeChanged(((AbstractCharacter) ModelUtility.getPlayer()).getLife());
+        ///////
+
         this.gameLoop = new GameLoopImpl(world, name);
         resumeGameLoop();
     }

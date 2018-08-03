@@ -9,50 +9,28 @@ import controller.util.Score;
 public final class ViewUtils {
 
     private static final double TIMER_CANVAS_H = 50;
-    private static final double TIMER_CANVAS_W = 400;
+    private static final double TIMER_CANVAS_W = 550;
     private static final double LIFE_CANVAS_H = 50;
-    private static final double LIFE_CANVAS_W = 400;
+    private static final double LIFE_CANVAS_W = 550;
     private static final double STAGE_DELTA_HEIGTH = 75;
     private static final double TIMER_TEXT_FONT = 3;
     private static final double HEARTH_HEIGHT = 25;
-    private static final double HEARTH_WIDTH = 25;
+    private static final double HEARTH_WIDTH = 30;
     private static final double SPACE_HEARTH_PROPORTION = 40;
     private static final double X_SCREEN_PROP = 1;
     private static final double Y_SCREEN_PROP = 1;
-
-    private static final Tupla<Integer, Integer> STANDARD_RES = new Tupla<Integer, Integer>(1280, 720);
-    private static Tupla<Integer, Integer> selectedRes = STANDARD_RES;
+    private static final double BOTTOM_CANVAS_PROP = 11;
 
     private static boolean godMode;
     private static boolean infinityMode;
+    private static double worldHeight;
+    private static double worldWidth;
+    private static double worldHeightProportion;
+    private static double worldWidthProportion;
 
     private static List<Score> leaderBoard; 
 
     private ViewUtils() { }
-
-    /**
-     * Getter of the standard resolution.
-     * @return The standard resolution memorized in STANDARD_RES
-     */
-    public static Tupla<Integer, Integer> getStandardRes() {
-        return STANDARD_RES;
-    }
-
-    /**
-     * Setter used to set a different resolution.
-     * @param value The selected value in the options view.
-     */
-    public static void setResolution(final Tupla<Integer, Integer> value) {
-        selectedRes = value;
-    }
-
-    /**
-     * Getter for the currently selected resolution.
-     * @return The selected resolution in the options view.
-     */
-    public static Tupla<Integer, Integer> getSelectedRes() {
-        return selectedRes;
-    }
 
     /**
      * Getter for the God Mode option.
@@ -188,5 +166,77 @@ public final class ViewUtils {
      */
     public static double getYScreenProp() {
         return Y_SCREEN_PROP;
+    }
+
+    /**
+     * Set world height.
+     * @param wh world height.
+     */
+    public static void setWorldHeight(final double wh) {
+        worldHeight = wh;
+    }
+
+    /**
+     * Set world width.
+     * @param ww world width.
+     */
+    public static void setWorldWidth(final double ww) {
+        worldWidth = ww;
+    }
+
+    /**
+     * Getter for world height.
+     * @return world height.
+     */
+    public static double getWorldHeight() {
+        return worldHeight;
+    }
+
+    /**
+     * Getter for world width.
+     * @return world width.
+     */
+    public static double getWorldWidth() {
+        return worldWidth;
+    }
+
+    /**
+     * Set world height proportion.
+     * @param whP world height proportion.
+     */
+    public static void setWorldHeightProp(final double whP) {
+        worldHeightProportion = whP;
+    }
+
+    /**
+     * Set world width proportion.
+     * @param wwP world width proportion.
+     */
+    public static void setWorldWidthProp(final double wwP) {
+        worldWidthProportion = wwP;
+    }
+
+    /**
+     * Getter for world height proportion.
+     * @return world height proportion.
+     */
+    public static double getWorldHeightProp() {
+        return worldHeightProportion;
+    }
+
+    /**
+     * Getter for world width proportion.
+     * @return world width proportion.
+     */
+    public static double getWorldWidthProp() {
+        return worldWidthProportion;
+    }
+
+    /**
+     * Getter for proportion of bottom canvas.
+     * @return bottom canvas.
+     */
+    public static double getBottomCanvasProp() {
+        return BOTTOM_CANVAS_PROP;
     }
 }

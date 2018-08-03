@@ -13,12 +13,10 @@ import view.util.ViewUtils;
  *
  */
 public class OptionsMenuViewController extends AbstractControllerFXML {
-    @FXML 
-    private CheckBox godModeCheckBox;
-    @FXML 
-    private CheckBox infinityModeCheckBox;
-    @FXML 
-    private BorderPane contentPane;
+
+    @FXML private CheckBox godModeCheckBox;
+    @FXML private CheckBox infinityModeCheckBox;
+    @FXML private BorderPane contentPane;
 
     @FXML
     private void initialize() {

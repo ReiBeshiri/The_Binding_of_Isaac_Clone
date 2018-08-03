@@ -22,8 +22,8 @@ public final class ProportionUtility {
     private static final double BOSS_VEL = 5;
     private static final double BOSS_BULLET_RNG = 500;
     private static final double BOSS_SHOT_RATIO = 0.4;
-    private static final double PLAYER_VEL_SHOT = 7;
-    private static final double PLAYER_VEL = 5;
+    private static final double PLAYER_VEL_SHOT = 10;
+    private static final double PLAYER_VEL = 7;
     private static final double WALLVERTICALWIDTH = 15;
     private static final double WALLHORIZONTALWIDTH = 30;
     private static final double WALLVERTICALLHEIGHT = 30;
@@ -204,7 +204,7 @@ public final class ProportionUtility {
 
     /**
      * @return width of the room minus the dimension of the walls.
-     * So it return the actual dimension of the playable room (1070).
+     * So it return the actual dimension of the playable room (770).
      */
     public static double getWidth() {
         return ProportionUtility.WIDTH - getWallStandard() * 2;

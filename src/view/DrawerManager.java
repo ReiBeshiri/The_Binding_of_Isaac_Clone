@@ -44,4 +44,9 @@ public interface DrawerManager extends TimeEventListener {
      * Method used to redraw after a resize event.
      */
     void redrawAfterResize();
+
+    /**
+     * Method used for initialize time canvas.
+     */
+    void initTimeCanvas();
 }

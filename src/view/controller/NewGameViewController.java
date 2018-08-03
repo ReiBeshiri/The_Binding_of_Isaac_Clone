@@ -17,11 +17,11 @@ import view.util.SceneFactory;
  *
  */
 public class NewGameViewController extends AbstractControllerFXML {
+
     @FXML private BorderPane contentPane;
     @FXML private Button btnBack;
     @FXML private Button btnPlay;
     @FXML private TextField txtNickname;
-
 
     @Override
     public final Region getRoot() {

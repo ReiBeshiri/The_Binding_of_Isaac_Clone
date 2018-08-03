@@ -15,8 +15,13 @@ public class NewGameScene extends AbstractGenericScene {
         super(NEWGAME);
     }
 
+    /**
+     * Exit status for this scene.
+     */
     @Override
-    public void exitStatus() { }
+    public void exitStatus() {
+        ViewManagerImpl.get().pop();
+    }
 
     @Override
     public void checkSceneHandler(final Event e) { }

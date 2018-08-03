@@ -6,6 +6,7 @@ import model.hitbox.HitBox;
 import model.inanimated.Door;
 import model.inanimated.Inanimated;
 import model.inanimated.Wall;
+import proxyutility.ImageType;
 /**
  * 
  * ShopRoom implement.
@@ -20,9 +21,10 @@ public class ShopRoom extends AbstractRoom {
      * @param doors ShopRoom's doors.
      * @param items List of power up.
      * @param walls list of the wall of the room.
+     * @param backImg background image.
      */
-    public ShopRoom(final HitBox h, final List<Door> doors, final List<Inanimated> items, final List<Wall> walls) {
-        super(h, doors, walls);
+    public ShopRoom(final HitBox h, final List<Door> doors, final List<Inanimated> items, final List<Wall> walls, final ImageType backImg) {
+        super(h, doors, walls, backImg);
         this.items = items;
     }
 

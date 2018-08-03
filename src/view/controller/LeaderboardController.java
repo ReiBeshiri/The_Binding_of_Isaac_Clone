@@ -16,16 +16,11 @@ import view.util.ViewUtils;
  */
 public class LeaderboardController extends AbstractControllerFXML {
 
-    @FXML
-    private TableView<Score> table;
-    @FXML
-    private TableColumn<Score, String> nicknameColumn;
-    @FXML
-    private TableColumn<Score, String> pointsColumn;
-    @FXML
-    private TableColumn<Score, String> timeColumn;
-    @FXML
-    private BorderPane contentPane;
+    @FXML private TableView<Score> table;
+    @FXML private TableColumn<Score, String> nicknameColumn;
+    @FXML private TableColumn<Score, String> pointsColumn;
+    @FXML private TableColumn<Score, String> timeColumn;
+    @FXML private BorderPane contentPane;
 
     @FXML
     private void backButtonClick() {

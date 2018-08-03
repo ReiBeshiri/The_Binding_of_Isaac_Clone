@@ -6,7 +6,7 @@ public enum EnemyType {
     /**
      * Create Static Simple Direction Shot Enemy.
      */
-    SIPMLE,
+    SIMPLE,
     /**
      * Create Static Aimed Bullet Enemy.
      */

@@ -11,8 +11,7 @@ import view.ViewManagerImpl;
  */
 public class HelpViewController extends AbstractControllerFXML {
 
-    @FXML
-    private BorderPane contentPane;
+    @FXML private BorderPane contentPane;
 
     @FXML
     private void backButtonClick() {

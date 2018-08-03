@@ -7,19 +7,16 @@ import javafx.scene.layout.Region;
 import view.DrawerManager;
 import view.DrawerManagerImpl;
 import view.ViewImpl;
+
 /**
  * Controller class for the HelpView file.
  */
 public class GameCanvasViewController extends AbstractControllerFXML {
 
-    @FXML
-    private Pane rootGamePane;
-    @FXML
-    private Canvas roomCanvas;
-    @FXML
-    private Canvas lifesCanvas;
-    @FXML
-    private Canvas elapsedTimeCanvas; 
+    @FXML private Pane rootGamePane;
+    @FXML private Canvas roomCanvas;
+    @FXML private Canvas lifesCanvas;
+    @FXML private Canvas elapsedTimeCanvas; 
 
     @FXML
     private void initialize() {
@@ -31,13 +28,4 @@ public class GameCanvasViewController extends AbstractControllerFXML {
     public final Region getRoot() {
         return rootGamePane;
     }
-
-    /**
-     * Main canvas.
-     * @return Canvas where paint scene.
-     */
-    public Canvas getGameCanvas() {
-        return roomCanvas;
-    }
-
 }

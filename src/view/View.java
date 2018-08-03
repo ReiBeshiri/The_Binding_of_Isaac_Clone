@@ -92,4 +92,33 @@ public interface View {
      * @param w initial width.
      */
     void setInitialWidth(double w);
+
+    /**
+     * Setter for world height.
+     * @param wh world height.
+     */
+    void setWorldHeight(double wh);
+
+    /**
+     * Setter for world width.
+     * @param ww world width.
+     */
+    void setWorldWidth(double ww);
+
+    /**
+     * Setter for world height proportion.
+     * @param whProp world height proportion.
+     */
+    void setWorldHeightProportion(double whProp);
+
+    /**
+     * Setter for world width proportion.
+     * @param wwProp world width proportion.
+     */
+    void setWorldWidthProportion(double wwProp);
+
+    /**
+     * Method used in new game for init time canvas.
+     */
+    void initTimeCanvas();
 }
