@@ -65,7 +65,7 @@ public class WorldImpl implements World {
     private final List<Room> listRoom;
     private final List<WorldEvent> listEvent;
     private int currentRound = 1;
-    private static final int DAMAGE = 1;
+    private static final int DAMAGE = 10;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
     private WorldEnvironment we;
