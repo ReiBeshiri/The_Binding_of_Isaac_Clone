@@ -86,7 +86,8 @@ public class WorldImpl implements World {
         listEvent = new ArrayList<>();
         ModelUtility.updateCurrentRound(0);
         ModelUtility.updateListAnimatedObject(Collections.emptyList());
-        ModelUtility.updateListCommandModelUtility(Collections.emptyList(), Collections.emptyList());
+        ModelUtility.updateListMovementCommand(Collections.emptyList());
+        ModelUtility.updateListShotCommand(Collections.emptyList());
         ModelUtility.updateListWorldEvent(Collections.emptyList());
         ModelUtility.updatePauseDuringRound(false);
     }
@@ -257,7 +258,8 @@ public class WorldImpl implements World {
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
         resetObjects();
         incInternalDT(deltaTime);
-        ModelUtility.updateListCommandModelUtility(listMovement, listShots);
+        ModelUtility.updateListMovementCommand(listMovement);
+        ModelUtility.updateListShotCommand(listShots);
         ModelUtility.updateRoomModelUtility(this.room);
         this.listMovements = listMovement;
         this.listShots = listShots;
@@ -448,31 +450,11 @@ public class WorldImpl implements World {
      */
     private void createPlayerBullet() {
         if (!this.listShots.isEmpty() && ((AbstractCharacter) getPlayer()).canShot()) {
-            final MovementStrategy ms = new SimplyDirectionMovement(this.listShots.get(0));
-            final HitBox hb = createRightDirectionBullet(this.listShots.get(0));
-            this.listBulletPlayer.add(new BulletImpl((CircleHitBox) hb, EntityStats.PLAYER.getBulletVel(), ms,
-                    EntityStats.PLAYER.getBulletRange(), ImageType.PLAYER_BULLET));
-        }
-        this.listShots.clear();
-    }
-
-    private CircleHitBox createRightDirectionBullet(final Command d) {
-        if (d.equals(Command.RIGHT)) {
-            return new CircleHitBox(
-                    this.player.getHitBox().getX() + ((CircleHitBox) this.player.getHitBox()).getRadius(),
-                    this.player.getHitBox().getY(), EntityStats.PLAYER.getBulletRadius());
-        } else if (d.equals(Command.LEFT)) {
-            return new CircleHitBox(
-                    this.player.getHitBox().getX() - ((CircleHitBox) this.player.getHitBox()).getRadius(),
-                    this.player.getHitBox().getY(), EntityStats.PLAYER.getBulletRadius());
-        } else if (d.equals(Command.UP)) {
-            return new CircleHitBox(this.player.getHitBox().getX(),
-                    this.player.getHitBox().getY() - ((CircleHitBox) this.player.getHitBox()).getRadius(),
-                    EntityStats.PLAYER.getBulletRadius());
-        } else {
-            return new CircleHitBox(this.player.getHitBox().getX(),
-                    this.player.getHitBox().getY() + ((CircleHitBox) this.player.getHitBox()).getRadius(),
-                    EntityStats.PLAYER.getBulletRadius());
+            Command d = listShots.get(0);
+            listShots.clear();
+            listShots.add(d);
+            ModelUtility.updateListShotCommand(listShots);
+            this.listBulletPlayer.addAll(getPlayer().shot());
         }
     }
 
@@ -587,8 +569,8 @@ public class WorldImpl implements World {
         final HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
                 ProportionUtility.getRadiusPlayer());
         return new PlayerImpl(EntityStats.PLAYER.getVel(), EntityStats.PLAYER.getLife(), hb,
-                new BasicAI(new PlayerMovement(), new PlayerProjectile(EntityStats.PLAYER.getBulletRadius())),
-                EntityStats.PLAYER.getBulletRange(), ImageType.PLAYER, EntityStats.PLAYER.getShotRatio());
+                new BasicAI(new PlayerMovement(), new PlayerProjectile()),
+                ImageType.PLAYER, EntityStats.PLAYER.getShotRatio(), EntityStats.PLAYER.getBulletRadius(), EntityStats.PLAYER.getBulletVel(), EntityStats.PLAYER.getBulletRange(), EntityStats.PLAYER.getBulletDamage());
     }
 
     /**

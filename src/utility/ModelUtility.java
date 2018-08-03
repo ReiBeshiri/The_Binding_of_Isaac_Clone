@@ -136,14 +136,19 @@ public final class ModelUtility {
     }
 
     /**
-     * @param listShotsCommand
-     *          the new list.
      * @param listMovementCommand
      *          the new list.
      */
-    public static void updateListCommandModelUtility(final List<Command> listMovementCommand, final List<Command> listShotsCommand) {
+    public static void updateListMovementCommand(final List<Command> listMovementCommand) {
         ModelUtility.listMovementCommand = listMovementCommand;
-        ModelUtility.listShotsCommand = listShotsCommand;
+    }
+
+    /**
+     * @param listShotCommand
+     *          the new list.
+     */
+    public static void updateListShotCommand(final List<Command> listShotCommand) {
+        ModelUtility.listShotsCommand = listShotCommand;
     }
 
     /**
