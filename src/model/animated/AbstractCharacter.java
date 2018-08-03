@@ -19,6 +19,7 @@ public abstract class AbstractCharacter implements Animated {
     private final int maxLife;
     private final double ratio;
     private final ImageType img;
+    private double attendTime;
 
     /**
      * 
@@ -47,6 +48,7 @@ public abstract class AbstractCharacter implements Animated {
         this.range = range;
         this.ratio = ratio;
         this.img = img;
+        attendTime = 0;
     }
 
     /**
@@ -171,18 +173,32 @@ public abstract class AbstractCharacter implements Animated {
             this.life = this.maxLife;
         }
     }
+
     /**
-     * 
+     * Getter for image.
      */
     @Override
     public ImageType getImageType() {
         return img;
     }
+
     /**
-     * Return shot ratio.
-     * @return ratio for this character.
+     * Return if entity can shot.
+     * @return ratio if entity can shot.
      */
-    public double getShootRatio() {
-        return this.ratio;
+    public boolean canShot() {
+        if (attendTime > ratio) {
+            attendTime = 0;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method used to increment attend time.
+     * @param val val to inc.
+     */
+    public void incAttendTime(final double val) {
+        attendTime += val;
     }
 }

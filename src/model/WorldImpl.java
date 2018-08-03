@@ -509,7 +509,7 @@ public class WorldImpl implements World {
             if (!this.listEnemy.isEmpty()) {
                 listEnemy.forEach(x -> {
                     x.update(deltaTime);
-                    if (this.shotRatioEnemy > ((AbstractCharacter) x).getShootRatio()) {
+                    if (this.shotRatioEnemy > ((AbstractCharacter) x).canShot()) {
                         listBulletEnemies.addAll(x.shot());
                     }
                 });
