@@ -53,11 +53,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private Animated boss;
     private static final int BOSS_POINTS = 1000;
     private static final int BOSS_SHOTS = 10;
-    private HitBox bossHB;
-    private MovementStrategy bossMov;
-    private ProjectileType bossShot;
-    private AI bossAI;
-    private boolean considerDoor = false;
+    private boolean considerDoor;
 
     /**
      * Create rooms.
@@ -78,14 +74,13 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      * @return create main room.
      */
     private Room createMainRoom() {
-        List<Wall> lwMain = new ArrayList<>();
+        final List<Wall> lwMain = new ArrayList<>();
         this.rightDoorFromMainToShop = new DoorImpl(hbDoorr, false, RoomEnum.SHOPROOM, ImageType.RIGHT_SHOP_DOOR_LOCKED);
-        List<Door> ld = new ArrayList<>();
+        final List<Door> ld = new ArrayList<>();
         lwMain.addAll(this.lw);
         lwMain.addAll(wallMainRoom());
         ld.add(this.rightDoorFromMainToShop);
-        Room mainRoom = rf.createMainRoom(hbRoom, ld, bt, lwMain);
-        return mainRoom;
+        return rf.createMainRoom(hbRoom, ld, bt, lwMain);
     }
 
     /**
@@ -94,13 +89,12 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private Room createShopRoom() {
         this.leftDoorFromShopToMain = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_SHOP_DOOR_LOCKED);
         this.rightDoorFromShopToBoss = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.RIGHT_BOSS_DOOR);
-        List<Door> ld = new ArrayList<>();
+        final List<Door> ld = new ArrayList<>();
         ld.add(this.leftDoorFromShopToMain);
         ld.add(this.rightDoorFromShopToBoss);
-        HitBox hb = new CircleHitBox(SpawnUtility.getSpawnBX(), SpawnUtility.getSpawnBY(), ProportionUtility.getRadiusButton());
+        final HitBox hb = new CircleHitBox(SpawnUtility.getSpawnBX(), SpawnUtility.getSpawnBY(), ProportionUtility.getRadiusButton());
         items.add(new HeartImpl(hb, true));
-        Room shopRoom = rf.createShopRoom(hbRoom, ld, items, lw);
-        return shopRoom;
+        return rf.createShopRoom(hbRoom, ld, items, lw);
     }
 
     /**
@@ -109,15 +103,14 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      */
     private Room createBossRoom() {
         this.rightDoorFromBossToShop = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_BOSS_DOOR);
-        List<Door> ld = new ArrayList<>();
+        final List<Door> ld = new ArrayList<>();
         ld.add(this.rightDoorFromBossToShop);
-        this.bossHB = new CircleHitBox(ProportionUtility.getWidth(), ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusBoss());
-        this.bossMov = new Motionless();
-        this.bossShot = new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), this.BOSS_SHOTS);
-        this.bossAI = new BossAI(this.bossMov, this.bossShot);
-        this.boss = new EnemyImpl(ProportionUtility.getBossVel(), ProportionUtility.getBossLife(), this.bossHB, this.bossAI, this.BOSS_POINTS, ProportionUtility.getBossBulletRng(), ImageType.BOSS_ENEMY, ProportionUtility.getBossShotRatio(), ImageType.BOSS_BULLET);
-        Room bossRoom = rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, lw);
-        return bossRoom;
+        final HitBox bossHB = new CircleHitBox(ProportionUtility.getWidth(), ProportionUtility.getHeight() / 2, ProportionUtility.getRadiusBoss());
+        final MovementStrategy bossMov = new Motionless();
+        final ProjectileType bossShot = new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), BOSS_SHOTS);
+        final AI bossAI = new BossAI(bossMov, bossShot);
+        this.boss = new EnemyImpl(ProportionUtility.getBossVel(), ProportionUtility.getBossLife(), bossHB, bossAI, BOSS_POINTS, ProportionUtility.getBossBulletRng(), ImageType.BOSS_ENEMY, ProportionUtility.getBossShotRatio(), ImageType.BOSS_BULLET);
+        return rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, lw);
     }
 
     /**
@@ -210,7 +203,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      * @return wall main room.
      */
     private List<Wall> wallMainRoom() {
-        List<Wall> l = new ArrayList<>();
+        final List<Wall> l = new ArrayList<>();
         for (double i = ModelUtility.getWorldHeight() / 2 - ProportionUtility.getHeightDoor() / 2; i < ModelUtility.getWorldHeight() / 2 + ProportionUtility.getHeightDoor() / 2; i += ProportionUtility.getWallVerticalHeight()) {
             l.add(new WallImpl(new RectangularHitBox(0, i, ProportionUtility.getWallVerticalHeight(), ProportionUtility.getWallVerticalWidth()), false, ImageType.MAP_HORIZONTAL_BORDER));
         }
