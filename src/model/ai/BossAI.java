@@ -3,6 +3,7 @@ package model.ai;
 import java.util.Collection;
 import input.Command;
 import model.animated.Bullet;
+import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.BossAimedComboProjectile;
@@ -49,7 +50,8 @@ public class BossAI implements AI {
      * Shoot.
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range, final ImageType bulletImg) {
+    public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range,
+            final ImageType bulletImg) {
         return pType.shoot(hBox, range, vel, bulletImg);
     }
 
@@ -75,9 +77,11 @@ public class BossAI implements AI {
     @Override
     public void nextPhaseStrategy(final int life) {
         if (life <= PHASE3_INIT) {
-            setProjectileType(new BossAimedComboProjectile(ProportionUtility.getRadiusBullet(), THIRD_PHASE_START_BULLET_NUM));
+            setProjectileType(
+                    new BossAimedComboProjectile(EntityStats.BOSS.getBulletRadius(), THIRD_PHASE_START_BULLET_NUM));
         } else if (life <= PHASE2_INIT) {
-            setProjectileType(new BossSimpleComboProjectile(Command.LEFT, ProportionUtility.getRadiusBullet(), SECOND_PHASE_START_BULLET_NUM));
+            setProjectileType(new BossSimpleComboProjectile(Command.LEFT, EntityStats.BOSS.getBulletRadius(),
+                    SECOND_PHASE_START_BULLET_NUM));
         }
     }
 
