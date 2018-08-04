@@ -84,7 +84,7 @@ public class WorldImpl implements World {
         ModelUtility.updateCurrentRound(0);
         ModelUtility.updateListAnimatedObject(Collections.emptyList());
         ModelUtility.updateListMovementCommand(Collections.emptyList());
-        ModelUtility.updateListShotCommand(Collections.emptyList());
+        ModelUtility.updateListShotCommand(Command.RIGHT);
         ModelUtility.updateListWorldEvent(Collections.emptyList());
         ModelUtility.updatePauseDuringRound(false);
     }
@@ -255,11 +255,10 @@ public class WorldImpl implements World {
     public void update(final double deltaTime, final List<Command> listMovement, final List<Command> listShots) {
         resetObjects();
         incInternalDT(deltaTime);
-        ModelUtility.updateListMovementCommand(listMovement);
-        ModelUtility.updateListShotCommand(listShots);
-        ModelUtility.updateRoomModelUtility(this.room);
-        this.listMovements = listMovement;
         this.listShots = listShots;
+        this.listMovements = listMovement;
+        ModelUtility.updateRoomModelUtility(this.room);
+        ModelUtility.updateListMovementCommand(listMovement);
         createPlayerBullet();
         this.player.update(deltaTime);
         if (getActualRoom().equals(this.listRoom.get(0))) {
@@ -447,10 +446,10 @@ public class WorldImpl implements World {
      */
     private void createPlayerBullet() {
         if (!this.listShots.isEmpty() && ((AbstractCharacter) getPlayer()).canShot()) {
-            final Command d = listShots.get(0);
+            final Command d = listShots.remove(0);
             listShots.clear();
             listShots.add(d);
-            ModelUtility.updateListShotCommand(listShots);
+            ModelUtility.updateListShotCommand(d);
             this.listBulletPlayer.addAll(getPlayer().shot());
         }
     }
