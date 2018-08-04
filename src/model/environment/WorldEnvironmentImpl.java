@@ -84,7 +84,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      */
     private Room createShopRoom() {
         this.leftDoorFromShopToMain = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_SHOP_DOOR_LOCKED);
-        this.rightDoorFromShopToBoss = new DoorImpl(hbDoorr, false, RoomEnum.MAINROOM, ImageType.RIGHT_BOSS_DOOR);
+        this.rightDoorFromShopToBoss = new DoorImpl(hbDoorr, true, RoomEnum.MAINROOM, ImageType.RIGHT_BOSS_DOOR);
         final List<Door> ld = new ArrayList<>();
         ld.add(this.leftDoorFromShopToMain);
         ld.add(this.rightDoorFromShopToBoss);
