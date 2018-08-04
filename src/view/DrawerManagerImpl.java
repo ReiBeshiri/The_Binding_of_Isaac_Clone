@@ -279,7 +279,7 @@ public class DrawerManagerImpl implements DrawerManager {
                         / ViewUtils.getHearthSpaceProportion();
         final double yDistance = (ViewUtils.getLifeCanvasHeight() - ViewUtils.getHearthHeight()) / 2;
         final List<Double> xDistances = new LinkedList<>();
-        IntStream.range(0, completedHearth)
+        IntStream.range(0, completedHearth + halfHeath)
                 .mapToDouble(x -> (ViewUtils.getLifeCanvasWidth() - imgBlock) / 2 + x * ViewUtils.getHearthWidth()
                         + x * ViewUtils.getLifeCanvasWidth() / ViewUtils.getHearthSpaceProportion())
                 .forEach(x -> xDistances.add(x));
