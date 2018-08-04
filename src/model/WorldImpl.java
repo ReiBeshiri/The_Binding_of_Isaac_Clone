@@ -84,7 +84,7 @@ public class WorldImpl implements World {
         ModelUtility.updateCurrentRound(0);
         ModelUtility.updateListAnimatedObject(Collections.emptyList());
         ModelUtility.updateListMovementCommand(Collections.emptyList());
-        ModelUtility.updateListShotCommand(Command.RIGHT);
+        ModelUtility.updateListShotCommand(Collections.emptyList());
         ModelUtility.updateListWorldEvent(Collections.emptyList());
         ModelUtility.updatePauseDuringRound(false);
     }
@@ -446,11 +446,12 @@ public class WorldImpl implements World {
      */
     private void createPlayerBullet() {
         if (!this.listShots.isEmpty() && ((AbstractCharacter) getPlayer()).canShot()) {
-            final Command d = listShots.remove(0);
-            listShots.clear();
-            listShots.add(d);
-            ModelUtility.updateListShotCommand(d);
+            final Command d = this.listShots.remove(0);
+            this.listShots.clear();
+            this.listShots.add(d);
+            ModelUtility.updateListShotCommand(this.listShots);
             this.listBulletPlayer.addAll(getPlayer().shot());
+            this.listShots.clear();
         }
     }
 
@@ -523,8 +524,12 @@ public class WorldImpl implements World {
             final Animated boss = we.getBoss();
             playerBulletHitsEnemy(deltaTime);
             if (!isBossDefeated()) {
-                this.listEnemy.add(boss);
+                //if (listEnemy.isEmpty()) {
+                    this.listEnemy.add(boss);
+                //}
+               // listBulletEnemies.addAll(boss.shot());
                 boss.update(deltaTime);
+              //  System.out.println(listBulletEnemies);
                 playerGetsHitByBullet(getPlayer(), deltaTime);
                 if (allEnemyDefeated()) {
                     this.bossDefeated = true;
@@ -539,13 +544,15 @@ public class WorldImpl implements World {
      */
     private void shopRoomAction() {
         if (getActualRoom().equals(this.listRoom.get(1))) {
+            List<Inanimated> dieItems = new ArrayList<>();
             for (final Inanimated i : we.getItems()) {
                 final Heart h = (Heart) i;
                 if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
                     incPlayerLife(h.getLife());
-                    we.getItems().remove(i);
+                    dieItems.add(i);
                 }
             }
+            we.getItems().removeAll(dieItems);
             if (CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                     (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
                 this.room = this.listRoom.get(2);

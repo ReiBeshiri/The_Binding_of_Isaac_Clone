@@ -147,8 +147,8 @@ public final class ModelUtility {
      * @param listShotCommand
      *          the new shot dir.
      */
-    public static void updateListShotCommand(final Command listShotCommand) {
-        ModelUtility.listShotsCommand.add(listShotCommand);
+    public static void updateListShotCommand(final List<Command> listShotCommand) {
+        ModelUtility.listShotsCommand = listShotCommand;
     }
 
     /**
