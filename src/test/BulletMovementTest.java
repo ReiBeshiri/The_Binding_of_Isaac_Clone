@@ -3,6 +3,8 @@ package test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static model.animated.EntityStats.BOSS;
+import static model.animated.EntityStats.STATIC_ENEMY;
 import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
@@ -23,14 +25,13 @@ import model.strategy.FourWayProjectile;
 import model.strategy.Motionless;
 import model.strategy.SimplyDirectionMovement;
 import model.strategy.SingleDirectionProjectile;
-import proxyutility.ImageType;
 
 class BulletMovementTest {
 
     @Test
     public void testSimpleMovementBullet() {
         final Bullet bullet = new BulletImpl(new CircleHitBox(0, 0, 0.2), 1, new SimplyDirectionMovement(Command.RIGHT),
-                10, ImageType.PLAYER_BULLET);
+                STATIC_ENEMY.getBulletRange(), null, STATIC_ENEMY.getBulletDamage());
         bullet.update(1);
         assertEquals(1, bullet.getHitBox().getX());
         assertEquals(0, bullet.getHitBox().getY());
@@ -43,8 +44,7 @@ class BulletMovementTest {
     @Test
     public void testDiagonalMovementBullet() {
         final double angle = 45;
-        final Bullet bullet = new BulletImpl(new CircleHitBox(0, 0, 0.2), 1, new BulletMovement(angle), 10,
-                ImageType.PLAYER_BULLET);
+        final Bullet bullet = new BulletImpl(new CircleHitBox(0, 0, 0.2), 1, new BulletMovement(angle), 100, null, 1);
         bullet.update(1);
         assertEquals(Math.cos(angle * Math.PI / 180), bullet.getHitBox().getX());
         assertEquals(Math.sin(angle * Math.PI / 180), bullet.getHitBox().getY());
@@ -69,9 +69,10 @@ class BulletMovementTest {
 
     @Test
     public void testComboBossBullets() {
-        final Animated boss = new EnemyImpl(1, 3, new CircleHitBox(400, 300, 1),
-                new BossAI(new Motionless(), new BossSimpleComboProjectile(Command.LEFT, 0.2, 10)), 10, 10,
-                ImageType.BOSS_ENEMY, 0.3, ImageType.BOSS_BULLET);
+        final Animated boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
+                new BossAI(new Motionless(), new BossAimedComboProjectile(10)), BOSS.getPoints(), null,
+                BOSS.getShotRatio(), null, BOSS.getBulletRadius(), BOSS.getBulletVel(), BOSS.getBulletRange(),
+                BOSS.getBulletDamage());
         final List<Bullet> bullets = (List<Bullet>) boss.shot();
         assertFalse(bullets.isEmpty());
         assertTrue(bullets.size() == 10);
@@ -91,9 +92,10 @@ class BulletMovementTest {
     public void testBossDecision() {
         final int bossDmg1 = 30;
         final int bossDmg2 = 25;
-        final AbstractCharacter boss = new EnemyImpl(10, 50, new CircleHitBox(400, 300, 1),
-                new BossAI(new Motionless(), new SingleDirectionProjectile(Command.LEFT, 0.2)), 10, 10,
-                ImageType.BOSS_ENEMY, 0.3, ImageType.BOSS_BULLET);
+        final AbstractCharacter boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
+                new BossAI(new Motionless(), new SingleDirectionProjectile(Command.LEFT)), BOSS.getPoints(), null,
+                BOSS.getShotRatio(), null, BOSS.getBulletRadius(), BOSS.getBulletVel(), BOSS.getBulletRange(),
+                BOSS.getBulletDamage());
         boss.decLife(bossDmg1);
         boss.getAI().nextPhaseStrategy(boss.getLife());
         assertTrue(boss.getAI().getMovementStrategy() instanceof Motionless);
@@ -106,35 +108,36 @@ class BulletMovementTest {
 
     @Test
     public void fourWayBullets() {
-        final Animated enemy = new EnemyImpl(1, 10, new CircleHitBox(1, 1, 2),
-                new BasicAI(new Motionless(), new FourWayProjectile()), 10, 10, ImageType.BASIC_ENEMY, 0.3,
-                ImageType.ENEMY_BULLET);
+        final Animated enemy = new EnemyImpl(1, STATIC_ENEMY.getLife(), new CircleHitBox(1, 1, 2),
+                new BasicAI(new Motionless(), new FourWayProjectile()), STATIC_ENEMY.getPoints(), null,
+                STATIC_ENEMY.getShotRatio(), null, STATIC_ENEMY.getBulletRadius(), STATIC_ENEMY.getBulletVel(),
+                STATIC_ENEMY.getBulletRange(), STATIC_ENEMY.getBulletDamage());
         final List<Bullet> bullets = (List<Bullet>) enemy.shot();
 
         assertTrue(bullets.size() == 4);
 
-        //UP.
+        // UP.
         final double xUp = bullets.get(0).getHitBox().getX();
         final double yUp = bullets.get(0).getHitBox().getY();
         bullets.get(0).update(1);
         assertEquals(xUp, bullets.get(0).getHitBox().getX());
         assertEquals(yUp - 1, bullets.get(0).getHitBox().getY());
 
-        //DOWN
+        // DOWN
         final double xDown = bullets.get(1).getHitBox().getX();
         final double yDown = bullets.get(1).getHitBox().getY();
         bullets.get(1).update(1);
         assertEquals(xDown, bullets.get(1).getHitBox().getX());
         assertEquals(yDown + 1, bullets.get(1).getHitBox().getY());
 
-        //LEFT
+        // LEFT
         final double xLeft = bullets.get(2).getHitBox().getX();
         final double yLeft = bullets.get(2).getHitBox().getY();
         bullets.get(2).update(1);
         assertEquals(xLeft - 1, bullets.get(2).getHitBox().getX());
         assertEquals(yLeft, bullets.get(2).getHitBox().getY());
 
-        //RIGHT
+        // RIGHT
         final double x = bullets.get(3).getHitBox().getX();
         final double y = bullets.get(3).getHitBox().getY();
         bullets.get(3).update(1);

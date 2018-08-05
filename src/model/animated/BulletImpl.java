@@ -4,6 +4,7 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
 import proxyutility.ImageType;
+
 /**
  * 
  * Class for all the bullets fired in the game.
@@ -17,20 +18,22 @@ public class BulletImpl extends AbstractBullet implements Bullet {
 
     /**
      * Constructor that initialize the common variables.
+     * 
      * @param chb
-     *          The HitBox of the bullet.
+     *            The HitBox of the bullet.
      * @param vel
-     *          The speed of the bullet.
+     *            The speed of the bullet.
      * @param bulletMS
-     *          The movement of the bullet.
+     *            The movement of the bullet.
      * @param range
-     *          The range of the bullet.
+     *            The range of the bullet.
      * @param bulletImg
-     *          The bullet image.
+     *            The bullet image.
      * @param damage
-     *          Bullet damage.
+     *            Bullet damage.
      */
-    public BulletImpl(final CircleHitBox chb, final double vel, final MovementStrategy bulletMS, final double range, final ImageType bulletImg, final int damage) {
+    public BulletImpl(final CircleHitBox chb, final double vel, final MovementStrategy bulletMS, final double range,
+            final ImageType bulletImg, final int damage) {
         super(vel, chb, bulletImg);
         this.bulletMS = bulletMS;
         this.range = range;
