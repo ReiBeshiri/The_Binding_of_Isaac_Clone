@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
-import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import proxyutility.ImageType;

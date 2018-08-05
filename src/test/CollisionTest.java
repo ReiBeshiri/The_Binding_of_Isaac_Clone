@@ -1,5 +1,6 @@
 package test;
 
+import static model.animated.EntityStats.STATIC_ENEMY;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,6 @@ import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.RectangularHitBox;
 import model.strategy.BulletMovement;
-import proxyutility.ImageType;
 import utility.CollisionUtil;
 
 class CollisionTest {
@@ -44,8 +44,8 @@ class CollisionTest {
         final CircleHitBox player = new CircleHitBox(0, 0, 2);
         final CircleHitBox sender = new CircleHitBox(3, 3, 0.2);
         final double angle = Math.toDegrees(Math.atan2(player.getY() - sender.getY(), player.getX() - sender.getX()));
-        final Animated bullet = new BulletImpl(sender, 1, new BulletMovement(angle), 10,
-                ImageType.ENEMY_BULLET);
+        final Animated bullet = new BulletImpl(sender, 1, new BulletMovement(angle), STATIC_ENEMY.getBulletRange(),
+                null, STATIC_ENEMY.getBulletDamage());
         boolean collisionDetected = false;
         for (int i = 0; i < 10; i++) {
             if (!CollisionUtil.entityCollision(player, (CircleHitBox) bullet.getHitBox()).isEmpty()) {
@@ -59,24 +59,24 @@ class CollisionTest {
 
     @Test
     public void collisionBetweenEntityAndRoomBorders() {
-        //TOP BORDER COLLISION.
+        // TOP BORDER COLLISION.
         final RectangularHitBox room = new RectangularHitBox(0, 0, 600, 800);
         final CircleHitBox player = new CircleHitBox(3, 1.9, 2);
         assertTrue(CollisionUtil.checkBoundaryCollision(player, room));
 
-        //BOTTOM COLLISION BORDER.
+        // BOTTOM COLLISION BORDER.
         final CircleHitBox enemy = new CircleHitBox(400, 600, 2);
         assertTrue(CollisionUtil.checkBoundaryCollision(enemy, room));
 
-        //RIGHT COLLISION BORDER.
+        // RIGHT COLLISION BORDER.
         final CircleHitBox enemy2 = new CircleHitBox(800, 300, 2);
         assertTrue(CollisionUtil.checkBoundaryCollision(enemy2, room));
 
-        //LEFT COLLISION BORDER
+        // LEFT COLLISION BORDER
         final CircleHitBox enemy3 = new CircleHitBox(0, 300, 2);
         assertTrue(CollisionUtil.checkBoundaryCollision(enemy3, room));
 
-        //NO COLLISION.
+        // NO COLLISION.
         final CircleHitBox boss = new CircleHitBox(400, 300, 10);
         assertFalse(CollisionUtil.checkBoundaryCollision(boss, room));
     }
@@ -87,12 +87,12 @@ class CollisionTest {
         final CircleHitBox player = new CircleHitBox(778, 200, 2);
         assertFalse(CollisionUtil.doorPlayerCollision(player, rigthDoor));
 
-        //COLLISION WITH RIGHT DOOR.
+        // COLLISION WITH RIGHT DOOR.
         final double deltaY = 80;
         player.changePosition(player.getX(), player.getY() + deltaY);
         assertTrue(CollisionUtil.doorPlayerCollision(player, rigthDoor));
 
-        //COLLISION WITH LEFT DOOR.
+        // COLLISION WITH LEFT DOOR.
         final RectangularHitBox leftDoor = new RectangularHitBox(0, 300, 30, 20);
         final CircleHitBox enemy = new CircleHitBox(2, 298, 2);
         assertTrue(CollisionUtil.doorPlayerCollision(enemy, leftDoor));
