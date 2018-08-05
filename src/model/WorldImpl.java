@@ -544,7 +544,7 @@ public class WorldImpl implements World {
      */
     private void shopRoomAction() {
         if (getActualRoom().equals(this.listRoom.get(1))) {
-            List<Inanimated> dieItems = new ArrayList<>();
+            final List<Inanimated> dieItems = new ArrayList<>();
             for (final Inanimated i : we.getItems()) {
                 final Heart h = (Heart) i;
                 if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
