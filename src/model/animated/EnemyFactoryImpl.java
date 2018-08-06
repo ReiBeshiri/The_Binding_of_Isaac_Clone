@@ -6,6 +6,7 @@ import model.ai.BossAI;
 import model.hitbox.HitBox;
 import model.strategy.AimedProjectile;
 import model.strategy.ChasePlayerProjectile;
+import model.strategy.FourWayProjectile;
 import model.strategy.Motionless;
 import model.strategy.SimplyDirectionMovement;
 import model.strategy.SingleDirectionProjectile;
@@ -65,5 +66,29 @@ public class EnemyFactoryImpl implements EnemyFactory {
                 new BossAI(new Motionless(), new ChasePlayerProjectile()), BOSS.getPoints(), ImageType.BOSS_ENEMY,
                 BOSS.getShotRatio(), ImageType.BOSS_BULLET, BOSS.getBulletRadius(), BOSS.getBulletVel(),
                 BOSS.getBulletRange(), BOSS.getBulletDamage());
+    }
+
+    /**
+     * Create enemy that shot bullets that follow player movements.
+     */
+    @Override
+    public Animated createStaticEnemyFollowPlayerBullet(final HitBox h) {
+        return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
+                new BasicAI(new Motionless(), new ChasePlayerProjectile()), STATIC_ENEMY.getPoints(),
+                ImageType.BASIC_ENEMY, STATIC_ENEMY.getShotRatio(), ImageType.ENEMY_BULLET,
+                STATIC_ENEMY.getBulletRadius(), STATIC_ENEMY.getBulletVel(), STATIC_ENEMY.getBulletRange(),
+                STATIC_ENEMY.getBulletDamage());
+    }
+
+    /**
+     * Create enemy that shot bullets in four directions.
+     */
+    @Override
+    public Animated createStaticEnemyFourWayProjectile(final HitBox h) {
+        return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
+                new BasicAI(new Motionless(), new FourWayProjectile()), STATIC_ENEMY.getPoints(),
+                ImageType.BASIC_ENEMY, STATIC_ENEMY.getShotRatio(), ImageType.ENEMY_BULLET,
+                STATIC_ENEMY.getBulletRadius(), STATIC_ENEMY.getBulletVel(), STATIC_ENEMY.getBulletRange(),
+                STATIC_ENEMY.getBulletDamage());
     }
 }
