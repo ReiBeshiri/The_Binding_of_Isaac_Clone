@@ -265,7 +265,7 @@ public class WorldImpl implements World {
             ModelUtility.updatePauseDuringRound(this.button.isPressed());
         } else if (getActualRoom().equals(this.listRoom.get(1))) {
             shopRoomAction();
-            ModelUtility.updatePauseDuringRound(true); // you can always pause in the shop
+            ModelUtility.updatePauseDuringRound(true);
         } else {
             bossRoomAction(deltaTime);
             ModelUtility.updatePauseDuringRound(this.button.isPressed());
@@ -535,9 +535,7 @@ public class WorldImpl implements World {
                 if (abstractBoss.canShot()) {
                     listBulletEnemies.addAll(boss.shot());
                 }
-                incInternalDT(deltaTime);
                 listBulletEnemies.forEach(x -> x.update(deltaTime));
-                playerGetsHitByBullet(getPlayer(), deltaTime);
                 if (allEnemyDefeated()) {
                     this.bossDefeated = true;
                     this.listEvent.add(new PlayerKillBoss());

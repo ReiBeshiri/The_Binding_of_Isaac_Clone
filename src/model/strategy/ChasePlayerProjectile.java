@@ -5,12 +5,13 @@ import java.util.Collection;
 import java.util.List;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
+import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import proxyutility.ImageType;
 
 /**
- * Class that represent movement of the bullet that follow player. 
+ * Class that represent movement of the bullet that follow player.
  *
  */
 public class ChasePlayerProjectile implements ProjectileType {
@@ -19,10 +20,12 @@ public class ChasePlayerProjectile implements ProjectileType {
      * Shoot bullet/s.
      */
     @Override
-    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel, final ImageType bulletImg, final int damage, final double radius) {
+    public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel,
+            final ImageType bulletImg, final int damage, final double radius) {
         final List<Bullet> list = new ArrayList<>();
-        list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), 
-                vel, new FollowPlayerMovement(), range, bulletImg, damage));
+        list.add(new BulletImpl(
+                new CircleHitBox(sender.getX() - EntityStats.BOSS.getEntityRadius(), sender.getY(), radius), vel,
+                new FollowPlayerMovement(), range, bulletImg, damage));
         return list;
     }
 
