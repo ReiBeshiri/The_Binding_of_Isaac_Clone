@@ -520,15 +520,23 @@ public class WorldImpl implements World {
      */
     private void bossRoomAction(final double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(2))) {
+            wallColliding();
             final Animated boss = we.getBoss();
+            final AbstractCharacter abstractBoss = (AbstractCharacter) boss;
             playerBulletHitsEnemy(deltaTime);
+            playerGetsHitByBullet(getPlayer(), deltaTime);
             if (!isBossDefeated()) {
-                //if (listEnemy.isEmpty()) {
+                if (listEnemy.isEmpty()) {
                     this.listEnemy.add(boss);
-                //}
+                }
                // listBulletEnemies.addAll(boss.shot());
+                abstractBoss.getAI().nextPhaseStrategy(abstractBoss.getLife());
                 boss.update(deltaTime);
-              //  System.out.println(listBulletEnemies);
+                if (abstractBoss.canShot()) {
+                    listBulletEnemies.addAll(boss.shot());
+                }
+                incInternalDT(deltaTime);
+                listBulletEnemies.forEach(x -> x.update(deltaTime));
                 playerGetsHitByBullet(getPlayer(), deltaTime);
                 if (allEnemyDefeated()) {
                     this.bossDefeated = true;

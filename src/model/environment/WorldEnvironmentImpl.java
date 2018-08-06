@@ -105,8 +105,10 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         this.rightDoorFromBossToShop = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_BOSS_DOOR);
         final List<Door> ld = new ArrayList<>();
         ld.add(this.rightDoorFromBossToShop);
-        final HitBox bossHB = new CircleHitBox(ProportionUtility.getWidth(), ProportionUtility.getHeight() / 2,
-                EntityStats.BOSS.getEntityRadius());
+        final HitBox bossHB = new CircleHitBox(
+                ProportionUtility.getWidth() - EntityStats.BOSS.getEntityRadius()
+                        - ProportionUtility.getWallHorizontalWidth(),
+                ProportionUtility.getHeight() / 2, EntityStats.BOSS.getEntityRadius());
         this.boss = e.createBoss(bossHB);
         return rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, lw);
     }
