@@ -8,7 +8,7 @@ public enum EntityStats {
     /**
      * player stats.
      */
-    PLAYER(6, 7, 0, 40, 1, 400, 10, 10, 24),
+    PLAYER(6, 7, 0, 40, 10, 400, 10, 10, 24),
     /**
      * static enemy stats.
      */

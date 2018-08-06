@@ -15,5 +15,5 @@ public interface Bullet extends Animated {
      * Getter for bullet damage.
      * @return bullet damage.
      */
-    double getDamage();
+    int getDamage();
 }

@@ -62,7 +62,6 @@ public class WorldImpl implements World {
     private final List<Room> listRoom;
     private final List<WorldEvent> listEvent;
     private int currentRound = 1;
-    private static final int DAMAGE = 1;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
     private WorldEnvironment we;
@@ -373,7 +372,7 @@ public class WorldImpl implements World {
         for (final Bullet b : this.listBulletEnemies) {
             b.update(deltaTime);
             if (!CollisionUtil.entityCollision(b, player).isEmpty() && !b.isDead()) {
-                decPlayerLife(DAMAGE, player);
+                decPlayerLife(b.getDamage(), player);
                 dieBullets.add(b);
             }
             if (b.isDead()) {
@@ -393,7 +392,7 @@ public class WorldImpl implements World {
             b.update(deltaTime);
             for (final Animated enemy : this.listEnemy) {
                 if (!CollisionUtil.entityCollision(b, enemy).isEmpty()) {
-                    if (!Objects.isNull(decEnemyLife(DAMAGE, enemy))) {
+                    if (!Objects.isNull(decEnemyLife(b.getDamage(), enemy))) {
                         dieEnemy.add(enemy);
                     }
                     dieBullets.add(b);

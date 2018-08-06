@@ -13,7 +13,7 @@ import proxyutility.ImageType;
 public class BulletImpl extends AbstractBullet implements Bullet {
 
     private double range;
-    private final double damage;
+    private final int damage;
     private final MovementStrategy bulletMS;
 
     /**
@@ -61,7 +61,7 @@ public class BulletImpl extends AbstractBullet implements Bullet {
      * Damage of the bullet.
      */
     @Override
-    public double getDamage() {
+    public int getDamage() {
         return damage;
     }
 }
