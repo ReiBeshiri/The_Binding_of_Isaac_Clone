@@ -264,10 +264,10 @@ public class WorldImpl implements World {
             ModelUtility.updatePauseDuringRound(this.button.isPressed());
         } else if (getActualRoom().equals(this.listRoom.get(1))) {
             shopRoomAction();
-            ModelUtility.updatePauseDuringRound(true);
+            ModelUtility.updatePauseDuringRound(false);
         } else {
             bossRoomAction(deltaTime);
-            ModelUtility.updatePauseDuringRound(this.button.isPressed());
+            ModelUtility.updatePauseDuringRound(true);
         }
         ModelUtility.updateCurrentRound(this.currentRound);
         ModelUtility.updateListWorldEvent(this.listEvent);
