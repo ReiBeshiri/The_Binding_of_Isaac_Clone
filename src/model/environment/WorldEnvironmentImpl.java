@@ -6,6 +6,7 @@ import model.animated.Animated;
 import model.animated.Enemy;
 import model.animated.EnemyFactory;
 import model.animated.EnemyFactoryImpl;
+import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.hitbox.RectangularHitBox;
@@ -105,7 +106,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         final List<Door> ld = new ArrayList<>();
         ld.add(this.rightDoorFromBossToShop);
         final HitBox bossHB = new CircleHitBox(ProportionUtility.getWidth(), ProportionUtility.getHeight() / 2,
-                ProportionUtility.getRadiusBoss());
+                EntityStats.BOSS.getEntityRadius());
         this.boss = e.createBoss(bossHB);
         return rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, lw);
     }

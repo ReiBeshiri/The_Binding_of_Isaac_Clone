@@ -1,5 +1,7 @@
 package model.strategy;
 
+import static model.animated.EntityStats.BOSS;
+
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -42,7 +44,7 @@ public class BossSimpleComboProjectile implements ProjectileType {
             final ImageType bulletImg, final int damage, final double radius) {
         final double delta = (ProportionUtility.getHeight() - bulletNumber * radius * 2) / (bulletNumber + 1);
         return IntStream.range(0, bulletNumber)
-                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * ProportionUtility.getRadiusBoss() - radius,
+                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius() - radius,
                         delta * (x + 1) + radius * 2 * x, radius))
                 .map(x -> new BulletImpl(x, vel, new SimplyDirectionMovement(dir), range, bulletImg, damage))
                 .collect(Collectors.toList());

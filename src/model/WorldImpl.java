@@ -32,7 +32,6 @@ import proxyutility.ImageType;
 import utility.CollisionUtil;
 import utility.Mode;
 import utility.ModelUtility;
-import utility.ProportionUtility;
 import utility.SpawnUtility;
 import worldevent.BossFightStarted;
 import worldevent.PlayerDied;
@@ -570,7 +569,7 @@ public class WorldImpl implements World {
      */
     private Animated playerCreation() {
         final HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
-                ProportionUtility.getRadiusPlayer());
+                EntityStats.PLAYER.getEntityRadius());
         return new PlayerImpl(EntityStats.PLAYER.getVel(), EntityStats.PLAYER.getLife(), hb,
                 new BasicAI(new PlayerMovement(), new PlayerProjectile()),
                 ImageType.PLAYER, EntityStats.PLAYER.getShotRatio(), EntityStats.PLAYER.getBulletRadius(), EntityStats.PLAYER.getBulletVel(), EntityStats.PLAYER.getBulletRange(), EntityStats.PLAYER.getBulletDamage());

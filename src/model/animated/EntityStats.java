@@ -1,26 +1,26 @@
 package model.animated;
 
 /**
- * Enum. that represnet all type of entities.
+ * Enum. that represent all type of entities.
  *
  */
 public enum EntityStats {
     /**
      * player stats.
      */
-    PLAYER(6, 7, 0, 40, 1, 400, 10, 10),
+    PLAYER(6, 7, 0, 40, 1, 400, 10, 10, 24),
     /**
      * static enemy stats.
      */
-    STATIC_ENEMY(4, 0, 300, 45, 1, 400, 10, 7),
+    STATIC_ENEMY(4, 0, 300, 45, 1, 400, 10, 7, 22),
     /**
      * Movable enemy stats.
      */
-    MOVEABLE_ENEMY(3, 5, 500, 50, 1, 400, 10, 8),
+    MOVEABLE_ENEMY(3, 5, 500, 50, 1, 400, 10, 8, 22),
     /**
      * Boss stats.
      */
-    BOSS(30, 0, 5000, 50, 1, 500, 14, 11);
+    BOSS(30, 0, 5000, 50, 1, 500, 14, 11, 120);
 
     private int life;
     private double vel;
@@ -30,6 +30,7 @@ public enum EntityStats {
     private double bulletRange;
     private double bulletRadius;
     private double bulletVel;
+    private double radius;
 
     /**
      * Constructor for enum.
@@ -50,9 +51,11 @@ public enum EntityStats {
      *            bullets radius.
      * @param bulletVel
      *            bullet velocity.
+     * @param radius
+     *            bullet radius.
      */
     EntityStats(final int l, final double v, final int points, final double sR, final int bulletDamage,
-            final double bulletRange, final double bulletRadius, final double bulletVel) {
+            final double bulletRange, final double bulletRadius, final double bulletVel, final double radius) {
         life = l;
         vel = v;
         this.points = points;
@@ -61,6 +64,7 @@ public enum EntityStats {
         this.bulletRange = bulletRange;
         this.bulletRadius = bulletRadius;
         this.bulletVel = bulletVel;
+        this.radius = radius;
     }
 
     /**
@@ -117,5 +121,12 @@ public enum EntityStats {
      */
     public double getBulletVel() {
         return bulletVel;
+    }
+
+    /**
+     * @return radius of entity.
+     */
+    public double getEntityRadius() {
+        return radius;
     }
 }

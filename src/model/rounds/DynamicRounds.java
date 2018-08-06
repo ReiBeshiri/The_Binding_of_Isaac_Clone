@@ -1,4 +1,5 @@
 package model.rounds;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,16 +8,16 @@ import model.animated.Animated;
 import model.animated.EnemyFactory;
 import model.animated.EnemyFactoryImpl;
 import model.animated.EnemyType;
+import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import utility.ModelUtility;
-import utility.ProportionUtility;
 import utility.Spawns;
 
 /**
- *      Dynamic Round class.
- *      This class will mainly create a list of Enemy in a loop.
- *      Every time the player get in a higher rounds there will be more monsters, the max number of monsters in a single round is 7.
+ * Dynamic Round class. This class will mainly create a list of Enemy in a loop.
+ * Every time the player get in a higher rounds there will be more monsters, the
+ * max number of monsters in a single round is 7.
  */
 public class DynamicRounds implements RoundsGenerator {
     private static final int MAXENEMY = 7;
@@ -36,7 +37,7 @@ public class DynamicRounds implements RoundsGenerator {
     }
 
     /**
-     * Generate a random Monster. 
+     * Generate a random Monster.
      */
     @Override
     public List<Animated> generateMonster() {
@@ -50,15 +51,18 @@ public class DynamicRounds implements RoundsGenerator {
             Spawns spawn;
             spawn = listSpawns.remove(0);
             if (listEnemy.get(0).equals(EnemyType.SIMPLE)) {
-                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
+                        EntityStats.STATIC_ENEMY.getEntityRadius());
                 final Animated en = enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0));
-                listReturnEnemy.add(en); 
+                listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEMOVE)) {
-                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
+                        EntityStats.MOVEABLE_ENEMY.getEntityRadius());
                 final Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1));
-                listReturnEnemy.add(en); 
+                listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEAIMED)) {
-                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(), ProportionUtility.getRadiusEnemy());
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
+                        EntityStats.STATIC_ENEMY.getEntityRadius());
                 final Animated en = enemy.createStaticAimedBulletEnemy(hb);
                 listReturnEnemy.add(en);
             }
@@ -70,7 +74,7 @@ public class DynamicRounds implements RoundsGenerator {
      * @return the number of monsters to generate.
      */
     private int numberOfEnemyToGenerate() {
-        return getCurrentRound() < DynamicRounds.MAXENEMY ? getCurrentRound() : DynamicRounds.MAXENEMY; 
+        return getCurrentRound() < DynamicRounds.MAXENEMY ? getCurrentRound() : DynamicRounds.MAXENEMY;
     }
 
     /**
@@ -87,7 +91,7 @@ public class DynamicRounds implements RoundsGenerator {
         listEnemy.add(EnemyType.SIMPLEAIMED);
         listEnemy.add(EnemyType.SIMPLEMOVE);
         listEnemy.add(EnemyType.SIMPLE);
-        //spawns.add(Spawns.A); i'll take A as player's spawn.
+        // spawns.add(Spawns.A); i'll take A as player's spawn.
         listSpawns.add(Spawns.B);
         listSpawns.add(Spawns.C);
         listSpawns.add(Spawns.D);

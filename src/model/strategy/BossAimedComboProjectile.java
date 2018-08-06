@@ -1,5 +1,6 @@
 package model.strategy;
 
+import static model.animated.EntityStats.BOSS;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -41,12 +42,12 @@ public class BossAimedComboProjectile implements ProjectileType {
         final List<Bullet> bullets = new ArrayList<>();
         final int upperBullets = bulletNum % 2 == 0 ? bulletNum / 2 : bulletNum / 2 + 1;
         final int downBullets = bulletNum - upperBullets;
-        final double deltaUp = ((ProportionUtility.getHeight() - ProportionUtility.getRadiusBoss()) / 2
+        final double deltaUp = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2
                 - upperBullets * radius * 2) / upperBullets;
-        final double deltaDown = ((ProportionUtility.getHeight() - ProportionUtility.getRadiusBoss()) / 2
+        final double deltaDown = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2
                 - downBullets * radius * 2) / downBullets;
         bullets.addAll(IntStream.range(0, upperBullets)
-                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * ProportionUtility.getRadiusBoss() - radius,
+                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius() - radius,
                         deltaUp * (x + 1) + radius * 2 * x, radius))
                 .map(x -> new BulletImpl(x, vel,
                         new BulletMovement(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(),
@@ -54,8 +55,8 @@ public class BossAimedComboProjectile implements ProjectileType {
                         range, bulletImg, damage))
                 .collect(Collectors.toList()));
         bullets.addAll(IntStream.range(0, downBullets)
-                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * ProportionUtility.getRadiusBoss() - radius,
-                        ProportionUtility.getRadiusBoss() + deltaDown * x + radius * 2 * x, radius))
+                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius() - radius,
+                        BOSS.getEntityRadius() + deltaDown * x + radius * 2 * x, radius))
                 .map(x -> new BulletImpl(x, vel,
                         new BulletMovement(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(),
                                 ModelUtility.getPlayerHitBox().getX() - sender.getX())),

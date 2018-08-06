@@ -5,8 +5,6 @@ package utility;
  */
 public final class ProportionUtility {
 
-    private static final double PROPORTION_PLAYER_ENEMY = 25;
-    private static final double PROPORTION_BOSS = 5;
     private static final double PROPORTION_WALL = 15;
     private static final double PROPORTION_WALL_RANGE_SIDE = 30;
     private static final double PROPORTION_WALL_RANGE_TOPDOWN = 40;
@@ -63,27 +61,6 @@ public final class ProportionUtility {
      */
     public static double getWallRangeTopdown() {
         return ProportionUtility.PROPORTION_WALL_RANGE_TOPDOWN;
-    }
-
-    /**
-     * @return get radius animated obj like enemy & player.
-     */
-    public static double getRadiusPlayer() {
-        return ProportionUtility.HEIGHT /  ProportionUtility.PROPORTION_PLAYER_ENEMY;
-    }
-
-    /**
-     * @return get radius animated obj like enemy & player.
-     */
-    public static double getRadiusEnemy() {
-        return ProportionUtility.HEIGHT /  ProportionUtility.PROPORTION_PLAYER_ENEMY;
-    }
-
-    /**
-     * @return get radius boss.
-     */
-    public static double getRadiusBoss() {
-        return ProportionUtility.HEIGHT / ProportionUtility.PROPORTION_BOSS;
     }
 
     /**
