@@ -244,6 +244,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
             time.addListener(ViewImpl.get().getDrawerReference());
         }
         timerThread = new Thread(timeAgent);
+        System.out.println("TIMER: " + timerThread.toString());
         timerThread.setDaemon(true);
         timerThread.start();
     }
@@ -253,5 +254,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     private void stopTime() {
         timeAgent.interrupt();
+        System.out.println("STOP");
     }
 }

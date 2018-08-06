@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
-import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import proxyutility.ImageType;
@@ -24,7 +23,7 @@ public class ChasePlayerProjectile implements ProjectileType {
             final ImageType bulletImg, final int damage, final double radius) {
         final List<Bullet> list = new ArrayList<>();
         list.add(new BulletImpl(
-                new CircleHitBox(sender.getX() - EntityStats.BOSS.getEntityRadius(), sender.getY(), radius), vel,
+                new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
                 new FollowPlayerMovement(), range, bulletImg, damage));
         return list;
     }
