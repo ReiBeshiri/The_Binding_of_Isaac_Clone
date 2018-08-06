@@ -70,8 +70,8 @@ class BulletMovementTest {
     @Test
     public void testComboBossBullets() {
         final Animated boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
-                new BossAI(new Motionless(), new BossAimedComboProjectile(10)), BOSS.getPoints(), null,
-                BOSS.getShotRatio(), null, BOSS.getBulletRadius(), BOSS.getBulletVel(), BOSS.getBulletRange(),
+                new BossAI(new Motionless(), new BossSimpleComboProjectile(Command.LEFT, 10)), BOSS.getPoints(), null,
+                BOSS.getShotRatio(), null, BOSS.getBulletRadius(), 1, BOSS.getBulletRange(),
                 BOSS.getBulletDamage());
         final List<Bullet> bullets = (List<Bullet>) boss.shot();
         assertFalse(bullets.isEmpty());
@@ -90,11 +90,11 @@ class BulletMovementTest {
      */
     @Test
     public void testBossDecision() {
-        final int bossDmg1 = 30;
-        final int bossDmg2 = 25;
+        final int bossDmg1 = 15;
+        final int bossDmg2 = 10;
         final AbstractCharacter boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
                 new BossAI(new Motionless(), new SingleDirectionProjectile(Command.LEFT)), BOSS.getPoints(), null,
-                BOSS.getShotRatio(), null, BOSS.getBulletRadius(), BOSS.getBulletVel(), BOSS.getBulletRange(),
+                BOSS.getShotRatio(), null, BOSS.getBulletRadius(), 1, BOSS.getBulletRange(),
                 BOSS.getBulletDamage());
         boss.decLife(bossDmg1);
         boss.getAI().nextPhaseStrategy(boss.getLife());
@@ -110,7 +110,7 @@ class BulletMovementTest {
     public void fourWayBullets() {
         final Animated enemy = new EnemyImpl(1, STATIC_ENEMY.getLife(), new CircleHitBox(1, 1, 2),
                 new BasicAI(new Motionless(), new FourWayProjectile()), STATIC_ENEMY.getPoints(), null,
-                STATIC_ENEMY.getShotRatio(), null, STATIC_ENEMY.getBulletRadius(), STATIC_ENEMY.getBulletVel(),
+                STATIC_ENEMY.getShotRatio(), null, STATIC_ENEMY.getBulletRadius(), 1,
                 STATIC_ENEMY.getBulletRange(), STATIC_ENEMY.getBulletDamage());
         final List<Bullet> bullets = (List<Bullet>) enemy.shot();
 
