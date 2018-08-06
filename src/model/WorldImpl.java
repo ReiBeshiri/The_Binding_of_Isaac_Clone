@@ -522,20 +522,24 @@ public class WorldImpl implements World {
             wallColliding();
             final Animated boss = we.getBoss();
             final AbstractCharacter abstractBoss = (AbstractCharacter) boss;
+            System.out.println(listBulletEnemies);
+            abstractBoss.getLife();
             playerBulletHitsEnemy(deltaTime);
-            playerGetsHitByBullet(getPlayer(), deltaTime);
             if (!isBossDefeated()) {
                 if (listEnemy.isEmpty()) {
                     this.listEnemy.add(boss);
                 }
-               // listBulletEnemies.addAll(boss.shot());
                 abstractBoss.getAI().nextPhaseStrategy(abstractBoss.getLife());
-                boss.update(deltaTime);
-                if (abstractBoss.canShot()) {
-                    listBulletEnemies.addAll(boss.shot());
+                if (!this.listEnemy.isEmpty()) {
+                    listEnemy.forEach(x -> {
+                        x.update(deltaTime);
+                        if (((AbstractCharacter) x).canShot()) {
+                            listBulletEnemies.addAll(x.shot());
+                        }
+                    });
                 }
-                listBulletEnemies.forEach(x -> x.update(deltaTime));
-                if (allEnemyDefeated()) {
+                playerGetsHitByBullet(getPlayer(), deltaTime);
+                if (allEnemyDefeated() || abstractBoss.getLife() <= 0) {
                     this.bossDefeated = true;
                     this.listEvent.add(new PlayerKillBoss());
                 }

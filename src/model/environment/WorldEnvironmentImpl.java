@@ -109,10 +109,8 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         ld.add(this.rightDoorFromBossToShop);
         wallBossRoom.addAll(lw);
         wallBossRoom.addAll(wallBossRoom());
-        final HitBox bossHB = new CircleHitBox(
-                ProportionUtility.getWidth() - EntityStats.BOSS.getEntityRadius()
-                        - ProportionUtility.getWallHorizontalWidth(),
-                ProportionUtility.getHeight() / 2, EntityStats.BOSS.getEntityRadius());
+        final HitBox bossHB = new CircleHitBox(ProportionUtility.getWidth(), ProportionUtility.getHeight() / 2,
+                EntityStats.BOSS.getEntityRadius());
         this.boss = e.createBoss(bossHB);
         return rf.createBossRoom(hbRoom, ld, (Enemy) this.boss, wallBossRoom);
     }
