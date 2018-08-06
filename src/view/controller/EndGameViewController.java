@@ -12,8 +12,12 @@ import view.ViewManagerImpl;
 public class EndGameViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane contentPane;
-    @FXML private TextField nicknameText;
     @FXML private TextField scoreText;
+
+    @FXML
+    private void initialize() {
+        //this.scoreText =
+    }
 
     @FXML
     private void exitButtonClick() {
