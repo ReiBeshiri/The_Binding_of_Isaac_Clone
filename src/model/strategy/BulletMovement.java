@@ -12,7 +12,7 @@ public class BulletMovement implements MovementStrategy {
 
     /**
      * Constructor for this class.
-     * @param angle Movement's angle in radiant.
+     * @param angle Movement's angle in degrees.
      */
     public BulletMovement(final double angle) {
         this.angle = angle;
