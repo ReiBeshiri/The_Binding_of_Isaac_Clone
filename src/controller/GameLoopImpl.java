@@ -217,6 +217,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
             } else if (x instanceof PlayerDied) {
                 stopTime();
                 GameEngineImpl.get().gameOver();
+                ViewImpl.get().notifyGameOverEvent();
             } else if (x instanceof PlayerHeartChange) {
                 ViewImpl.get().playerLifeChanged(((PlayerHeartChange) x).getCurretLife());
             } else if (x instanceof RoomChange) {

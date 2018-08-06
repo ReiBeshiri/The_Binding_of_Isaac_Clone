@@ -121,4 +121,9 @@ public interface View {
      * Method used in new game for init time canvas.
      */
     void initTimeCanvas();
+
+    /**
+     * Method used to notify that player was dead. 
+     */
+    void notifyGameOverEvent();
 }

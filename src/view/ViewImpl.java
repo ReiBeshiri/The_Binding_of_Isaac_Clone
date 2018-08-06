@@ -14,6 +14,7 @@ import controller.event.ButtonEvent;
 import controller.event.Event;
 import model.animated.Animated;
 import model.room.Room;
+import view.util.SceneFactory;
 import view.util.ViewUtils;
 
 /**
@@ -209,5 +210,14 @@ public final class ViewImpl implements View {
         if (!Objects.isNull(drawer)) {
             drawer.initTimeCanvas();
         }
+    }
+
+    /**
+     * Method used to notify that player is died.
+     */
+    @Override
+    public void notifyGameOverEvent() {
+        ViewManagerImpl.get().pop();
+        ViewManagerImpl.get().push(SceneFactory.createEndGameScene());
     }
 }
