@@ -82,12 +82,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
     @Override
     public void stop() {
         if (running) {
-//            try {
-//                gameLoopThread.join(MSWAIT);
-//                timerThread.join(MSWAIT);
-//            } catch (InterruptedException e) {
-//                System.out.println("Timer can't be stopped: " + e.getMessage());
-//            }
             interrupt();
             if (!Objects.isNull(timerThread) && timeAgent.isRunning()) {
                 stopTime();
@@ -244,7 +238,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
             time.addListener(ViewImpl.get().getDrawerReference());
         }
         timerThread = new Thread(timeAgent);
-        System.out.println("TIMER: " + timerThread.toString());
         timerThread.setDaemon(true);
         timerThread.start();
     }
@@ -254,6 +247,5 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     private void stopTime() {
         timeAgent.interrupt();
-        System.out.println("STOP");
     }
 }

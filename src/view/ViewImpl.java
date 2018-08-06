@@ -48,7 +48,6 @@ public final class ViewImpl implements View {
     /**
      * Set animated entities list for drawer manager.
      * 
-     * DA RIVEDERE DIPENDE SE ME LI PASSANO COSI' O NO...
      */
     @Override
     public void render(final List<Animated> list) {
@@ -77,8 +76,6 @@ public final class ViewImpl implements View {
      */
     @Override
     public void viewStart() {
-//        ViewManagerImpl.get().setHeight(ModelUtility.getWorldHeight() + ViewUtils.getStageDeltaHeight());
-//        ViewManagerImpl.get().setWidth(ModelUtility.getWorldWidth());
         Application.launch(LaunchClass.class, "");
     }
 
@@ -208,7 +205,7 @@ public final class ViewImpl implements View {
     @Override
     public void initTimeCanvas() {
         if (!Objects.isNull(drawer)) {
-            drawer.initTimeCanvas();
+            Platform.runLater(() -> drawer.initTimeCanvas());
         }
     }
 

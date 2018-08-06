@@ -522,7 +522,6 @@ public class WorldImpl implements World {
             wallColliding();
             final Animated boss = we.getBoss();
             final AbstractCharacter abstractBoss = (AbstractCharacter) boss;
-            System.out.println(listBulletEnemies);
             abstractBoss.getLife();
             playerBulletHitsEnemy(deltaTime);
             if (!isBossDefeated()) {
