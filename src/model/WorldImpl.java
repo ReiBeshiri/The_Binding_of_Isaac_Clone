@@ -559,6 +559,7 @@ public class WorldImpl implements World {
                 final Heart h = (Heart) i;
                 if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
                     incPlayerLife(h.getLife());
+                    listEvent.add(new PlayerKillEnemy(-h.getCost()));
                     dieItems.add(i);
                 }
             }

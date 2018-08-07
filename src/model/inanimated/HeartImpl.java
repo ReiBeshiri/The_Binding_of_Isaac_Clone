@@ -9,7 +9,7 @@ import proxyutility.ImageType;
  */
 public class HeartImpl extends AbstractInanimated implements Heart {
 
-    private static final int COST = 1;
+    private static final int COST = 500;
     private static final int LIFE = 1;
     private final ImageType imgHearth;
 

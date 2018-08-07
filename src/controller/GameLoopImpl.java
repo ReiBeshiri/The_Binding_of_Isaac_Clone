@@ -191,6 +191,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
                 startTime();
             } else if (x instanceof PlayerKillEnemy) {
                 point += ((PlayerKillEnemy) x).getPoint();
+                System.out.println(point);
             } else if (x instanceof PlayerKillAllEnemy) {
                 stopTime();
             } else if (x instanceof BossFightStarted) {
