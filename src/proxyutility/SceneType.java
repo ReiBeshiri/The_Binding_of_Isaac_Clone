@@ -21,10 +21,6 @@ public enum SceneType {
      */
     HELP("HelpView.fxml"),
     /**
-     * End game scene.
-     */
-    ENDGAME("EndGameView.fxml"),
-    /**
      * Game main scene.
      */
     GAME("GameCanvasView.fxml"),

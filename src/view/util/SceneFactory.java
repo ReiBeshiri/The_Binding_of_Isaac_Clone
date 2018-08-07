@@ -1,7 +1,6 @@
 package view.util;
 
 import view.CreditScene;
-import view.EndGameScene;
 import view.GameScene;
 import view.GenericScene;
 import view.HelpScene;
@@ -26,14 +25,6 @@ public final class SceneFactory {
      */
     public static GenericScene createCreditScene() {
         return new CreditScene();
-    }
-
-    /**
-     * create new end game scene.
-     * @return end game scene.
-     */
-    public static GenericScene createEndGameScene() {
-        return new EndGameScene();
     }
 
     /**
