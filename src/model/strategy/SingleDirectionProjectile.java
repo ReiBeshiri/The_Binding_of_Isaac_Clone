@@ -8,8 +8,8 @@ import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import proxyutility.ImageType;
 import utility.Command;
+import utility.ImageType;
 
 /**
  * Projectile in a single basic direction.

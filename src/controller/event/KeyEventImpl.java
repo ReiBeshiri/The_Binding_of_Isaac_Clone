@@ -1,7 +1,7 @@
 package controller.event;
 
 import javafx.scene.input.KeyCode;
-import proxyutility.SceneType;
+import view.utility.SceneType;
 /**
  *Event created by pressing a key.
  */

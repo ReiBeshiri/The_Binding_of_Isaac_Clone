@@ -11,8 +11,8 @@ import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.utility.ProportionUtility;
-import proxyutility.ImageType;
 import utility.Command;
+import utility.ImageType;
 
 /**
  * 

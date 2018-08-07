@@ -1,4 +1,4 @@
-package view.util;
+package view.utility;
 
 /**
  * Represents a tuple as one element, used to set the resolution.

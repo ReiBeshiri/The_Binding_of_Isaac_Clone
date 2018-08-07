@@ -1,7 +1,8 @@
 package view;
 
+import static view.utility.SceneType.WIN;
+
 import javafx.event.Event;
-import static proxyutility.SceneType.WIN;
 
 /**
  * Class that represent win scene.

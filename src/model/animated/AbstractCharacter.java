@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import model.ai.AI;
 import model.hitbox.HitBox;
-import proxyutility.ImageType;
+import utility.ImageType;
 
 /**
  * Abstract class for character that can move or shot.

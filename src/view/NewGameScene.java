@@ -1,7 +1,8 @@
 package view;
 
+import static view.utility.SceneType.NEWGAME;
+
 import javafx.event.Event;
-import static proxyutility.SceneType.NEWGAME;
 /**
  * New game scene.
  * 

@@ -6,7 +6,7 @@ import model.animated.Enemy;
 import model.hitbox.HitBox;
 import model.inanimated.Door;
 import model.inanimated.Wall;
-import proxyutility.ImageType;
+import utility.ImageType;
 /**
  * 
  * BossRoom implement.

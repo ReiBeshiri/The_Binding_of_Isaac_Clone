@@ -15,8 +15,8 @@ import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.utility.ModelUtility;
-import proxyutility.ImageType;
 import utility.Command;
+import utility.ImageType;
 
 /**
  * Class that represent player bullet's type.

@@ -1,7 +1,8 @@
 package view;
 
+import static view.utility.SceneType.LOST;
+
 import javafx.event.Event;
-import static proxyutility.SceneType.LOST;
 
 /**
  * Class that represent lost scene.

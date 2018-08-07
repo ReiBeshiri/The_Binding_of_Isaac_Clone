@@ -1,4 +1,4 @@
-package view.util;
+package view.utility;
 
 import view.CreditScene;
 import view.GameScene;

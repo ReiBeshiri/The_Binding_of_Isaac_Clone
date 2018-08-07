@@ -5,8 +5,8 @@ import controller.event.Event;
 import controller.event.KeyEvent;
 import controller.event.KeyType;
 import javafx.scene.input.KeyCode;
-import proxyutility.SceneType;
 import utility.Command;
+import view.utility.SceneType;
 /**
  * Observer that manages the pressure of the keys on the keyboard.
  */

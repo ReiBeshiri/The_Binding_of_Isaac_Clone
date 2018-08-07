@@ -1,4 +1,4 @@
-package proxyutility;
+package view.utility;
 /**
  * Scenes of the game.
  * 

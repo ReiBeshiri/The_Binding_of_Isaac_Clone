@@ -1,6 +1,7 @@
-package proxyutility;
+package view.utility;
 
 import javafx.scene.image.Image;
+import utility.ImageType;
 /**
  * Interface that represent image loader.
  *

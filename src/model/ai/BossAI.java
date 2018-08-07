@@ -12,8 +12,8 @@ import model.strategy.BossAimedComboProjectile;
 import model.strategy.BossSimpleComboProjectile;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
-import proxyutility.ImageType;
 import utility.Command;
+import utility.ImageType;
 
 /**
  * Boss AI.

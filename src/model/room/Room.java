@@ -4,7 +4,7 @@ import java.util.List;
 import model.hitbox.HitBox;
 import model.inanimated.Door;
 import model.inanimated.Wall;
-import proxyutility.ImageType;
+import utility.ImageType;
 
 /**
  * 

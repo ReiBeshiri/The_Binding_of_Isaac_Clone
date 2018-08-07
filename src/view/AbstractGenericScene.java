@@ -4,9 +4,9 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import proxyutility.ProxyFXMLLoader;
-import proxyutility.SceneType;
 import view.controller.ControllerFXML;
+import view.utility.ProxyFXMLLoader;
+import view.utility.SceneType;
 
 /**
  * Class that represent a generic scene.

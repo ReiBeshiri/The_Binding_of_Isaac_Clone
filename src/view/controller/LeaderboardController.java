@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.ViewManagerImpl;
-import view.util.ViewUtils;
+import view.utility.ViewUtils;
 
 /**
  * Controller class for the LeaderboardView file.

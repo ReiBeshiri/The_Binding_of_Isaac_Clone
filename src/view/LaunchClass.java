@@ -2,9 +2,9 @@ package view;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import proxyutility.ImageType;
-import proxyutility.ProxyImageLoader;
-import view.util.SceneFactory;
+import utility.ImageType;
+import view.utility.ProxyImageLoader;
+import view.utility.SceneFactory;
 
 /**
  * Class used to launch application.

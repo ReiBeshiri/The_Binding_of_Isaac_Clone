@@ -9,8 +9,8 @@ import model.strategy.FourWayProjectile;
 import model.strategy.Motionless;
 import model.strategy.SimplyDirectionMovement;
 import model.strategy.SingleDirectionProjectile;
-import proxyutility.ImageType;
 import utility.Command;
+import utility.ImageType;
 
 import static model.animated.EntityStats.BOSS;
 import static model.animated.EntityStats.MOVEABLE_ENEMY;

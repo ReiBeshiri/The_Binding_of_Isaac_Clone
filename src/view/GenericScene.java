@@ -3,8 +3,8 @@ package view;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-import proxyutility.SceneType;
 import view.controller.ControllerFXML;
+import view.utility.SceneType;
 /**
  * generic type of scene.
  */

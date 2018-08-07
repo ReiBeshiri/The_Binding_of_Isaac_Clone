@@ -2,9 +2,11 @@ package view;
 
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
+
+import static view.utility.SceneType.PAUSE;
+
 import controller.event.KeyEventImpl;
 import controller.event.KeyType;
-import static proxyutility.SceneType.PAUSE;
 
 /**
  * Class for a pause scene.

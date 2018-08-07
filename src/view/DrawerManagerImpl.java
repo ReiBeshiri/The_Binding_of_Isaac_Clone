@@ -17,11 +17,12 @@ import model.hitbox.RectangularHitBox;
 import model.room.MainRoom;
 import model.room.Room;
 import model.room.ShopRoom;
-import proxyutility.ImageType;
-import proxyutility.ProxyImageLoader;
 import timer.Time;
-import view.util.Tupla;
-import view.util.ViewUtils;
+import utility.ImageType;
+import view.utility.ProxyImageLoader;
+import view.utility.Tupla;
+import view.utility.ViewUtils;
+
 import java.util.LinkedList;
 
 /**

@@ -1,4 +1,4 @@
-package proxyutility;
+package utility;
 /**
  * Enum that represent different type of images.
  *

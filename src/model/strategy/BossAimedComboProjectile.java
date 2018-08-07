@@ -12,7 +12,7 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.utility.ModelUtility;
 import model.utility.ProportionUtility;
-import proxyutility.ImageType;
+import utility.ImageType;
 
 /**
  * 

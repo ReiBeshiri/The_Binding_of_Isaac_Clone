@@ -7,7 +7,7 @@ import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.utility.ModelUtility;
-import proxyutility.ImageType;
+import utility.ImageType;
 
 /**
  * 

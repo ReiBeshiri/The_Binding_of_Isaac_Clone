@@ -5,7 +5,7 @@ import java.util.Collection;
 import model.ai.AI;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import proxyutility.ImageType;
+import utility.ImageType;
 
 /**
  * Class that represent generic enemy.

@@ -1,11 +1,12 @@
 package model.animated;
 
+import static utility.ImageType.PLAYER_BULLET;
+
 import java.util.Collection;
 import model.ai.AI;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import proxyutility.ImageType;
-import static proxyutility.ImageType.PLAYER_BULLET;
+import utility.ImageType;
 
 /**
  * Implementation of the Player.

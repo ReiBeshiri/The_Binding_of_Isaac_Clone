@@ -6,7 +6,7 @@ import model.hitbox.HitBox;
 import model.inanimated.Door;
 import model.inanimated.Inanimated;
 import model.inanimated.Wall;
-import proxyutility.ImageType;
+import utility.ImageType;
 /**
  * 
  * ShopRoom implement.

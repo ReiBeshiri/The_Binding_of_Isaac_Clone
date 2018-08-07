@@ -1,8 +1,8 @@
 package view;
 
-import javafx.event.Event;
+import static view.utility.SceneType.CREDITS;
 
-import static proxyutility.SceneType.CREDITS;
+import javafx.event.Event;
 /**
  * Class that represent Credit scene.
  *

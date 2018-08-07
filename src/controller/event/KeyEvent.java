@@ -1,6 +1,6 @@
 package controller.event;
 
-import proxyutility.SceneType;
+import view.utility.SceneType;
 /**
  * Event created by pressing a key.
  */

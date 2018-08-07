@@ -23,7 +23,7 @@ import model.utility.Mode;
 import model.utility.ModelUtility;
 import timer.Time;
 import view.ViewImpl;
-import view.util.ViewUtils;
+import view.utility.ViewUtils;
 
 /**
  * GameEngineImpl manages all game situations.

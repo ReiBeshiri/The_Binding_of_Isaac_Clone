@@ -3,7 +3,7 @@ package model.animated;
 import java.util.Collection;
 import java.util.Collections;
 import model.hitbox.HitBox;
-import proxyutility.ImageType;
+import utility.ImageType;
 /**
  * 
  * Abstract class that acts as a filter between Animated and BulletImpl.

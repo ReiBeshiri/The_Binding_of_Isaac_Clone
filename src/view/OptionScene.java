@@ -1,8 +1,8 @@
 package view;
 
-import javafx.event.Event;
+import static view.utility.SceneType.OPTIONS;
 
-import static proxyutility.SceneType.OPTIONS;
+import javafx.event.Event;
 
 /**
  * Class that represent option scene.

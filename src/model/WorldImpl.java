@@ -43,8 +43,8 @@ import model.worldevent.PlayerKillEnemy;
 import model.worldevent.PlayerScoreChange;
 import model.worldevent.RoomChange;
 import model.worldevent.WorldEvent;
-import proxyutility.ImageType;
 import utility.Command;
+import utility.ImageType;
 
 /**
  * WorldImpl.

@@ -7,7 +7,7 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
-import proxyutility.ImageType;
+import utility.ImageType;
 
 /**
  * Interface that represent AI for entity in game. This interface encapsulate

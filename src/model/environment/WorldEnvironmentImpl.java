@@ -25,7 +25,7 @@ import model.room.RoomFactoryImpl;
 import model.utility.ModelUtility;
 import model.utility.ProportionUtility;
 import model.utility.RoomEnum;
-import proxyutility.ImageType;
+import utility.ImageType;
 
 /**
  * World Environment Implement.

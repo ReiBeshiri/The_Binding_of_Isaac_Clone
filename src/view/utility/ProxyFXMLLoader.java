@@ -1,4 +1,4 @@
-package proxyutility;
+package view.utility;
 
 import java.io.IOException;
 import java.util.HashMap;

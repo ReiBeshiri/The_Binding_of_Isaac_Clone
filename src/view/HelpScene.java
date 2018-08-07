@@ -1,7 +1,8 @@
 package view;
 
+import static view.utility.SceneType.HELP;
+
 import javafx.event.Event;
-import static proxyutility.SceneType.HELP;
 /**
  * Class that represent help game scene.
  *

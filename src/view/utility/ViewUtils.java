@@ -1,4 +1,4 @@
-package view.util;
+package view.utility;
 
 import java.util.List;
 import controller.util.Score;

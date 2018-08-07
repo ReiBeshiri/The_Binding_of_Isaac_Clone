@@ -1,7 +1,8 @@
 package view;
 
+import static view.utility.SceneType.MENU;
+
 import javafx.event.Event;
-import static proxyutility.SceneType.MENU;
 /**
  * Class that represent menu scene.
  *

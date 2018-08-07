@@ -1,10 +1,11 @@
-package proxyutility;
+package view.utility;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 import javafx.scene.image.Image;
+import utility.ImageType;
 
 /**
  * Class that allow to load a image from disk.

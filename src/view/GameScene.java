@@ -3,10 +3,12 @@ package view;
 import javafx.beans.InvalidationListener;
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
-import view.util.SceneFactory;
+import view.utility.SceneFactory;
+
+import static view.utility.SceneType.GAME;
+
 import controller.event.KeyEventImpl;
 import controller.event.KeyType;
-import static proxyutility.SceneType.GAME;
 
 /**
  * Class that represent game scene.

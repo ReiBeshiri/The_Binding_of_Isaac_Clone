@@ -1,7 +1,7 @@
 package model;
 
 import model.hitbox.HitBox;
-import proxyutility.ImageType;
+import utility.ImageType;
 
 /**
  * 

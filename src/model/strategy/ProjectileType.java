@@ -3,7 +3,7 @@ package model.strategy;
 import java.util.Collection;
 import model.animated.Bullet;
 import model.hitbox.HitBox;
-import proxyutility.ImageType;
+import utility.ImageType;
 /**
  * 
  * Represents all the type of projectiles in the game.

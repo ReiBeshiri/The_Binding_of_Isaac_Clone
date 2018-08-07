@@ -14,8 +14,8 @@ import controller.event.ButtonEvent;
 import controller.event.Event;
 import model.animated.Animated;
 import model.room.Room;
-import view.util.SceneFactory;
-import view.util.ViewUtils;
+import view.utility.SceneFactory;
+import view.utility.ViewUtils;
 
 /**
  * Class that represent view.
