@@ -5,7 +5,7 @@ import input.Command;
 import model.animated.Animated;
 import model.hitbox.HitBox;
 import model.room.Room;
-import worldevent.WorldEvent;
+import model.worldevent.WorldEvent;
 
 /**
  * Utility used to obtain information of model.

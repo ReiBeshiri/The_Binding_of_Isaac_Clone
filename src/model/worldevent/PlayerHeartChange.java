@@ -1,4 +1,4 @@
-package worldevent;
+package model.worldevent;
 
 /**
  * Event generated when the player gain/lose heart points.

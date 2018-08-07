@@ -1,4 +1,4 @@
-package worldevent;
+package model.worldevent;
 /**
  * Event generated when player kill one enemy.
  * Allow to update the score in GameState. 

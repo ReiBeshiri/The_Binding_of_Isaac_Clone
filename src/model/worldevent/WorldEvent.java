@@ -1,4 +1,4 @@
-package worldevent;
+package model.worldevent;
 /**
  *WorldEvent Interface.
  */

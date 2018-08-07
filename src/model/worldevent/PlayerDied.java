@@ -1,4 +1,4 @@
-package worldevent;
+package model.worldevent;
 /**
  * Notify player dead.
  */

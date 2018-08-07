@@ -29,21 +29,21 @@ import model.rounds.StaticRounds;
 import model.strategy.PlayerMovement;
 import model.strategy.PlayerProjectile;
 import model.strategy.SimplyDirectionMovement;
+import model.worldevent.BossFightStarted;
+import model.worldevent.PlayerDied;
+import model.worldevent.PlayerHeartChange;
+import model.worldevent.PlayerHitButton;
+import model.worldevent.PlayerKillAllEnemy;
+import model.worldevent.PlayerKillBoss;
+import model.worldevent.PlayerKillEnemy;
+import model.worldevent.PlayerScoreChange;
+import model.worldevent.RoomChange;
+import model.worldevent.WorldEvent;
 import proxyutility.ImageType;
 import utility.CollisionUtil;
 import utility.Mode;
 import utility.ModelUtility;
 import utility.SpawnUtility;
-import worldevent.BossFightStarted;
-import worldevent.PlayerDied;
-import worldevent.PlayerHeartChange;
-import worldevent.PlayerHitButton;
-import worldevent.PlayerKillAllEnemy;
-import worldevent.PlayerKillBoss;
-import worldevent.PlayerKillEnemy;
-import worldevent.PlayerScoreChange;
-import worldevent.RoomChange;
-import worldevent.WorldEvent;
 
 /**
  * WorldImpl.

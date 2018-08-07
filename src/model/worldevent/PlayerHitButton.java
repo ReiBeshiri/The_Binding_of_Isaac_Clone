@@ -1,4 +1,4 @@
-package worldevent;
+package model.worldevent;
 /**
  * Event generated when player collide with button.
  */

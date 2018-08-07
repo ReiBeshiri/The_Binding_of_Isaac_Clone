@@ -1,4 +1,4 @@
-package worldevent;
+package model.worldevent;
 /**
  * Whenever the player pick up an object from the shop or gets hit.
  */

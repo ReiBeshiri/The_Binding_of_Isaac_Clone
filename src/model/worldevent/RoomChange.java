@@ -1,4 +1,4 @@
-package worldevent;
+package model.worldevent;
 
 import model.room.Room;
 
