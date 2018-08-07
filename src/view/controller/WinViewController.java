@@ -14,6 +14,7 @@ public class WinViewController extends AbstractControllerFXML {
 
     @FXML
     private void okButtonClick() {
+        ViewManagerImpl.get().pop();
         ViewManagerImpl.get().push(SceneFactory.createEndGameScene());
     }
 

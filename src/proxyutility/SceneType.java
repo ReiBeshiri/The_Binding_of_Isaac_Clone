@@ -39,7 +39,15 @@ public enum SceneType {
     /**
      * New game scene.
      */
-    NEWGAME("NewGameView.fxml");
+    NEWGAME("NewGameView.fxml"),
+    /**
+     * Win scene.
+     */
+    WIN("WinView.fxml"),
+    /**
+     * Lost scene.
+     */
+    LOST("LostView.fxml");
     private String file;
     SceneType(final String file) {
         this.file = file;
