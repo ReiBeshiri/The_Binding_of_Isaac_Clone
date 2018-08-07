@@ -3,34 +3,44 @@
     src: url('adrip1.ttf');
 }
 
+@font-face {
+    font-family: Magmawave Caps;
+    src: url('MagmaWaveCaps.otf');
+}
+
+@font-face {
+    font-family: Transformers Movie;
+    src: url('TransformersMovie.ttf');
+}
+
 .background {
     -fx-background-color: #d8d8d8;
 }
 
 .label {
-    -fx-font-size: 28pt;
-    -fx-font-family: 'a dripping marker';
+    -fx-font-size: 30pt;
+    -fx-font-family: 'Magmawave Caps';
     -fx-text-fill: black;
     -fx-opacity: 1;
 }
 
 #lblTitle {
-    -fx-font-size: 45pt;
-    -fx-font-family: 'a dripping marker';
+    -fx-font-size: 50pt;
+    -fx-font-family: 'Transformers Movie';
     -fx-text-fill: black;
     -fx-opacity: 1;
 }
 
 #lblSizeUp {
-    -fx-font-size: 35pt;
-    -fx-font-family: 'a dripping marker';
+    -fx-font-size: 40pt;
+    -fx-font-family: 'Magmawave Caps';
     -fx-text-fill: black;
     -fx-opacity: 1;
 }
 
 #HelpInfo {
     -fx-font-size: 20pt;
-    -fx-font-family: 'a dripping marker';
+    -fx-font-family: 'Magmawave Caps';
     -fx-text-fill: black;
     -fx-opacity: 1;
 }
@@ -38,7 +48,7 @@
 .text-input {
     -fx-background-color: transparent;
     -fx-font-size: 36pt;
-    -fx-font-family: 'a dripping marker';
+    -fx-font-family: 'Magmawave Caps';
     -fx-text-fill: black;
     -fx-border-color: #3e3e3e;
 	-fx-border-radius: 3px;
@@ -48,7 +58,7 @@
     -fx-background-color: transparent;
     -fx-border-color: #3e3e3e;
 	-fx-border-radius: 15px; 
-    -fx-font-family: 'a dripping marker';
+    -fx-font-family: 'Magmawave Caps';
     -fx-font-size: 36pt;
     -fx-text-fill: black;
 }
@@ -59,7 +69,7 @@
 
 .list-view {
     -fx-background-color: black;
-    -fx-font-family: 'a dripping marker';
+    -fx-font-family: 'Magmawave Caps';
     -fx-text-fill: black;
 }
 
@@ -69,7 +79,7 @@
 
 .combo-box-base {
     -fx-background-color: #c8c8c8;
-    -fx-font-family: 'a dripping marker';
+    -fx-font-family: 'Magmawave Caps';
     -fx-font-size: 15pt;
     -fx-text-fill: black;
 }
