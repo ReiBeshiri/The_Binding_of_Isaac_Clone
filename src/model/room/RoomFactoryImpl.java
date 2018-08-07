@@ -29,7 +29,7 @@ public class RoomFactoryImpl implements RoomFactory {
      */
     @Override
     public Room createBossRoom(final HitBox hitbox, final List<Door> doors, final Enemy boss, final List<Wall> walls) {
-        return new BossRoom(hitbox, doors, boss, walls, ImageType.BACKGROUND_BOSS_ROOM);
+        return new BossRoom(hitbox, doors, boss, walls, ImageType.BACKGROUND_MAIN_ROOM);
     }
 
     /**
