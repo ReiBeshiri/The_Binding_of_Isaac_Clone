@@ -1,7 +1,6 @@
 package model.strategy;
 
 import static model.animated.EntityStats.BOSS;
-import static model.animated.EntityStats.PLAYER;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,7 +21,6 @@ import utility.ProportionUtility;
  */
 public class BossAimedComboProjectile implements ProjectileType {
 
-    private static final double DELTA = PLAYER.getEntityRadius() * 3;
     private final int bulletNum;
 
     /**
@@ -44,8 +42,8 @@ public class BossAimedComboProjectile implements ProjectileType {
         final List<Bullet> bullets = new ArrayList<>();
         final int upperBullets = bulletNum % 2 == 0 ? bulletNum / 2 : bulletNum / 2 + 1;
         final int downBullets = bulletNum - upperBullets;
-        final double deltaUp = ((ProportionUtility.getHeight() - DELTA) / 2 - upperBullets * radius * 2) / upperBullets;
-        final double deltaDown = ((ProportionUtility.getHeight() - DELTA) / 2 - downBullets * radius * 2) / downBullets;
+        final double deltaUp = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2 - upperBullets * radius * 2) / upperBullets;
+        final double deltaDown = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2 - downBullets * radius * 2) / downBullets;
         bullets.addAll(
                 IntStream.range(0, upperBullets)
                         .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
@@ -60,7 +58,7 @@ public class BossAimedComboProjectile implements ProjectileType {
         bullets.addAll(
                 IntStream.range(0, downBullets)
                         .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
-                                sender.getY() + DELTA / 2 + deltaDown * x + radius * 2 * x, radius))
+                                sender.getY() + deltaDown * x + radius * 2 * x, radius))
                         .map(x -> new BulletImpl(x, vel,
                                 new BulletMovement(
                                         Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - x.getY(),
