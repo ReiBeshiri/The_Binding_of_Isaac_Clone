@@ -508,10 +508,8 @@ public class WorldImpl implements World {
             }
             if (!this.button.isPressed()
                     && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) getPlayer().getHitBox())
-                    && getCurrentRound() < NUM_ROUNDS) {
-                // se il bottone non è premuto e lo preme parte il round sucessivo.
-                // nella modalità normale ci sono 3 round e dopo la fine del terzo il current
-                // round sarà 4 quindi premendo il botton non succ niente.
+                    && (getCurrentRound() < NUM_ROUNDS || this.mode.equals(Mode.INFINITE))) {
+                // dopo 3 round non succ niente nella non infinity
                 setNextRound();
                 this.listEvent.add(new PlayerHitButton());
             }
