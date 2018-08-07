@@ -51,6 +51,7 @@ import worldevent.WorldEvent;
  */
 public class WorldImpl implements World {
     private static final int NUM_ROUNDS = 4;
+    private static final int PLAYER_HITTED = 100;
     private Animated player; // |is the player
     private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom
@@ -380,6 +381,7 @@ public class WorldImpl implements World {
         for (final Bullet b : this.listBulletEnemies) {
             b.update(deltaTime);
             if (!CollisionUtil.entityCollision(b, player).isEmpty() && !b.isDead()) {
+                listEvent.add(new PlayerScoreChange(PLAYER_HITTED));
                 decPlayerLife(b.getDamage(), player);
                 dieBullets.add(b);
             }
