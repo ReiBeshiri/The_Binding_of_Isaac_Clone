@@ -192,7 +192,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * Setter for world width proportion in view util.
+     * Setter for world width proportion in view utils.
      */
     @Override
     public void setWorldWidthProportion(final double wwProp) {
@@ -215,6 +215,12 @@ public final class ViewImpl implements View {
     @Override
     public void notifyGameOverEvent() {
         ViewManagerImpl.get().pop();
-        ViewManagerImpl.get().push(SceneFactory.createEndGameScene());
+        ViewManagerImpl.get().push(SceneFactory.createLostScene());
+    }
+
+    @Override
+    public void notifyWinGameEvent() {
+        ViewManagerImpl.get().pop();
+        ViewManagerImpl.get().push(SceneFactory.createWinScene());
     }
 }

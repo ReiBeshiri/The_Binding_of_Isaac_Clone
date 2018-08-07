@@ -126,4 +126,9 @@ public interface View {
      * Method used to notify that player was dead. 
      */
     void notifyGameOverEvent();
+
+    /**
+     * Method used to notify that player win game and defeated boss. 
+     */
+    void notifyWinGameEvent();
 }
