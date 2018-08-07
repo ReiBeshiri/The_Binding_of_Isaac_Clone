@@ -6,10 +6,12 @@ import view.GameScene;
 import view.GenericScene;
 import view.HelpScene;
 import view.LeaderboardScene;
+import view.LostScene;
 import view.MainMenuScene;
 import view.NewGameScene;
 import view.OptionScene;
 import view.PauseScene;
+import view.WinScene;
 /**
  * Class that represent scene factory.
  *
@@ -88,5 +90,21 @@ public final class SceneFactory {
      */
     public static GenericScene createNewGameScene() {
         return new NewGameScene();
+    }
+
+    /**
+     * create win scene.
+     * @return win game scene.
+     */
+    public static GenericScene createWinScene() {
+        return new WinScene();
+    }
+
+    /**
+     * create lost scene.
+     * @return lost game scene.
+     */
+    public static GenericScene createLostScene() {
+        return new LostScene();
     }
 }
