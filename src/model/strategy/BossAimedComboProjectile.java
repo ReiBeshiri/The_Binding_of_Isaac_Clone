@@ -52,8 +52,8 @@ public class BossAimedComboProjectile implements ProjectileType {
                                 deltaUp * (x + 1) + radius * 2 * x, radius))
                         .map(x -> new BulletImpl(x, vel,
                                 new BulletMovement(
-                                        Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(),
-                                                ModelUtility.getPlayerHitBox().getX() - sender.getX()))),
+                                        Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - x.getY(),
+                                                ModelUtility.getPlayerHitBox().getX() - x.getX()))),
                                 range, bulletImg, damage))
                         .collect(Collectors.toList()));
 
@@ -63,8 +63,8 @@ public class BossAimedComboProjectile implements ProjectileType {
                                 sender.getY() + DELTA / 2 + deltaDown * x + radius * 2 * x, radius))
                         .map(x -> new BulletImpl(x, vel,
                                 new BulletMovement(
-                                        Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(),
-                                                ModelUtility.getPlayerHitBox().getX() - sender.getX()))),
+                                        Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - x.getY(),
+                                                ModelUtility.getPlayerHitBox().getX() - x.getX()))),
                                 range, bulletImg, damage))
                         .collect(Collectors.toList()));
         return bullets;
