@@ -21,6 +21,7 @@ import model.hitbox.RectangularHitBox;
 import model.inanimated.Button;
 import model.inanimated.Heart;
 import model.inanimated.Inanimated;
+import model.inanimated.RangeUp;
 import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
@@ -40,6 +41,7 @@ import worldevent.PlayerHitButton;
 import worldevent.PlayerKillAllEnemy;
 import worldevent.PlayerKillBoss;
 import worldevent.PlayerKillEnemy;
+import worldevent.PlayerScoreChange;
 import worldevent.RoomChange;
 import worldevent.WorldEvent;
 
@@ -560,12 +562,21 @@ public class WorldImpl implements World {
             playerBulletHitsEnemy(deltaTime);
             final List<Inanimated> dieItems = new ArrayList<>();
             for (final Inanimated i : we.getItems()) {
-                final Heart h = (Heart) i;
-                if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())
-                        && ((AbstractCharacter) getPlayer()).getLife() != EntityStats.PLAYER.getLife()) {
-                    incPlayerLife(h.getLife());
-                    listEvent.add(new PlayerKillEnemy(-h.getCost()));
-                    dieItems.add(i);
+                if (i instanceof Heart) {
+                    final Heart h = (Heart) i;
+                    if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())
+                            && ((AbstractCharacter) getPlayer()).getLife() != EntityStats.PLAYER.getLife()) {
+                        incPlayerLife(h.getLife());
+                        listEvent.add(new PlayerScoreChange(h.getCost()));
+                        dieItems.add(i);
+                    }
+                } else if (i instanceof RangeUp) {
+                    final RangeUp r = (RangeUp) i;
+                    if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
+                        ((AbstractCharacter) getPlayer()).setRange(r.getRangeUp());
+                        listEvent.add(new PlayerScoreChange(r.getCost()));
+                        dieItems.add(i);
+                    }
                 }
             }
             we.getItems().removeAll(dieItems);

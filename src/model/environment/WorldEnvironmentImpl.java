@@ -16,6 +16,7 @@ import model.inanimated.Door;
 import model.inanimated.DoorImpl;
 import model.inanimated.HeartImpl;
 import model.inanimated.Inanimated;
+import model.inanimated.RangeUpImpl;
 import model.inanimated.Wall;
 import model.inanimated.WallImpl;
 import model.room.Room;
@@ -90,9 +91,12 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         final List<Door> ld = new ArrayList<>();
         ld.add(this.leftDoorFromShopToMain);
         ld.add(this.rightDoorFromShopToBoss);
-        final HitBox hb = new CircleHitBox(ModelUtility.getWorldWidth() / 2, ModelUtility.getWorldHeight() / 2,
+        final HitBox hbHeart = new CircleHitBox(ModelUtility.getWorldWidth() / 2, ModelUtility.getWorldHeight() / 2,
                 ProportionUtility.getRadiusButton());
-        items.add(new HeartImpl(hb, true));
+        final HitBox hbRangeUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2 + 100, ModelUtility.getWorldHeight() / 2,
+                ProportionUtility.getRadiusButton());
+        items.add(new HeartImpl(hbHeart, true));
+        items.add(new RangeUpImpl(hbRangeUp, true));
         return rf.createShopRoom(hbRoom, ld, items, lw);
     }
 
