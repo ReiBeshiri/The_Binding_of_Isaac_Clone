@@ -3,6 +3,7 @@ package view.controller;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
+import view.MainMenuScene;
 import view.ViewManagerImpl;
 import view.util.SceneFactory;
 /**
@@ -14,8 +15,10 @@ public class WinViewController extends AbstractControllerFXML {
 
     @FXML
     private void okButtonClick() {
-        ViewManagerImpl.get().pop();
-        ViewManagerImpl.get().push(SceneFactory.createEndGameScene());
+        //ViewManagerImpl.get().pop();
+        while (!(ViewManagerImpl.get().getCurrentScene() instanceof MainMenuScene)) {
+            ViewManagerImpl.get().pop();
+        }
     }
 
     @Override
