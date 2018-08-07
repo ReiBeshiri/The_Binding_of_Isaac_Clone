@@ -19,8 +19,6 @@ public class LaunchClass extends Application {
         primaryStage.setHeight(ViewManagerImpl.get().getStartedHeight());
         primaryStage.setWidth(ViewManagerImpl.get().getStartedWidth());
         ViewManagerImpl.get().push(SceneFactory.createMenuScene());
-        primaryStage.widthProperty().addListener(o -> ViewManagerImpl.get().updateViewState());
-        primaryStage.heightProperty().addListener(o -> ViewManagerImpl.get().updateViewState());
         primaryStage.setTitle("KTS");
         primaryStage.show();
     }

@@ -1,5 +1,6 @@
 package view;
 
+import javafx.beans.InvalidationListener;
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
 import view.util.SceneFactory;
@@ -13,11 +14,14 @@ import static proxyutility.SceneType.GAME;
  */
 public class GameScene extends AbstractGenericScene {
 
+    private static final InvalidationListener LISTENER = x -> ViewImpl.get().redraw();
     /**
      * Constructor for game scene.
      */
     public GameScene() {
         super(GAME);
+        ViewManagerImpl.get().getStage().heightProperty().addListener(LISTENER);
+        ViewManagerImpl.get().getStage().widthProperty().addListener(LISTENER);
     }
 
     /**
@@ -26,6 +30,8 @@ public class GameScene extends AbstractGenericScene {
     @Override
     public void exitStatus() {
         ViewManagerImpl.get().push(SceneFactory.createPauseScene());
+        ViewManagerImpl.get().getStage().heightProperty().removeListener(LISTENER);
+        ViewManagerImpl.get().getStage().widthProperty().removeListener(LISTENER);
     }
 
     /**

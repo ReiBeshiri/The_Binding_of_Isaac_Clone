@@ -5,7 +5,6 @@ import java.util.Stack;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import proxyutility.SceneType;
 
 /**
  * Class that represent view manager. This class is used to manage scene state.
@@ -92,15 +91,6 @@ public final class ViewManagerImpl implements ViewManager {
     }
 
     /**
-     * Update view state when stage dimension changed.
-     */
-    public void updateViewState() {
-        if (getCurrentScene().getSceneType() == SceneType.GAME) {
-            ViewImpl.get().redraw();
-        }
-    }
-
-    /**
      * Get actual height of stage.
      */
     @Override
@@ -138,6 +128,11 @@ public final class ViewManagerImpl implements ViewManager {
     @Override
     public double getStartedWidth() {
         return width;
+    }
+
+    @Override
+    public Stage getStage() {
+        return this.stage;
     }
 
 }
