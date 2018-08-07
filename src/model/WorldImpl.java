@@ -264,7 +264,7 @@ public class WorldImpl implements World {
             mainRoomActions(deltaTime);
             ModelUtility.updatePauseDuringRound(this.button.isPressed());
         } else if (getActualRoom().equals(this.listRoom.get(1))) {
-            shopRoomAction();
+            shopRoomAction(deltaTime);
             ModelUtility.updatePauseDuringRound(false);
         } else {
             bossRoomAction(deltaTime);
@@ -550,9 +550,10 @@ public class WorldImpl implements World {
     /**
      * Action in the shop room.
      */
-    private void shopRoomAction() {
+    private void shopRoomAction(final double deltaTime) {
         if (getActualRoom().equals(this.listRoom.get(1))) {
             wallColliding();
+            playerBulletHitsEnemy(deltaTime);
             final List<Inanimated> dieItems = new ArrayList<>();
             for (final Inanimated i : we.getItems()) {
                 final Heart h = (Heart) i;
