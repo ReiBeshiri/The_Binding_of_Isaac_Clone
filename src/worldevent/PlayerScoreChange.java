@@ -3,7 +3,7 @@ package worldevent;
  * Whenever the player pick up an object from the shop or gets hit.
  */
 public class PlayerScoreChange implements WorldEvent {
-    private int points;
+    private final int points;
 
     /**
      * @param p point to decrease.

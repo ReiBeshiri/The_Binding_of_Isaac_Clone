@@ -10,11 +10,10 @@ public class RangeUpImpl extends AbstractInanimated implements RangeUp {
     private static final int COST = 500;
     private static final double RANGE = 200;
     private final ImageType imgRangeUp;
-    private boolean taken = false;
 
     /**
      * @param h
-     *            hb.
+     *            hitBox.
      * @param enable
      *            .
      */
@@ -44,11 +43,7 @@ public class RangeUpImpl extends AbstractInanimated implements RangeUp {
      */
     @Override
     public double getRangeUp() {
-        if (!taken) {
-            return RANGE;
-        } else {
-            return 0;
-        }
+        return RANGE;
     }
 
 }
