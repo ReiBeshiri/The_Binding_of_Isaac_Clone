@@ -18,11 +18,7 @@ public class LostViewController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
-        if (!ViewUtils.isInfinityModeSelected()) {
-            scoreText.setText("0");
-        } else {
-            scoreText.setText("pts"); //TODO Da inserire effettivo punteggio
-        }
+        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
     }
 
     @FXML

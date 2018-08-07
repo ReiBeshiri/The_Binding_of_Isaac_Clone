@@ -85,19 +85,17 @@ public final class SceneFactory {
 
     /**
      * create victory scene.
-     * @param points points obtained during game.
      * @return new class that represent victory scene.
      */
-    public static GenericScene createVictoryScene(final int points) {
+    public static GenericScene createVictoryScene() {
         return new WinScene();
     }
 
     /**
      * create lost scene.
-     * @param points points obtained during game.
      * @return new class that represent lost scene.
      */
-    public static GenericScene createLostScene(final int points) {
+    public static GenericScene createLostScene() {
         return new LostScene();
     }
 }

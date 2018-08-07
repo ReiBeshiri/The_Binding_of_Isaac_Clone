@@ -27,6 +27,7 @@ public final class ViewUtils {
     private static double worldWidth;
     private static double worldHeightProportion;
     private static double worldWidthProportion;
+    private static int points;
 
     private static List<Score> leaderBoard; 
 
@@ -238,5 +239,21 @@ public final class ViewUtils {
      */
     public static double getBottomCanvasProp() {
         return BOTTOM_CANVAS_PROP;
+    }
+
+    /**
+     * Setter for points.
+     * @param pts points obtained by player during game.
+     */
+    public static void setPoints(final int pts) {
+        points = pts;
+    }
+
+    /**
+     * Getter for points.
+     * @return points obtained by player during game.
+     */
+    public static int getPoints() {
+        return points;
     }
 }

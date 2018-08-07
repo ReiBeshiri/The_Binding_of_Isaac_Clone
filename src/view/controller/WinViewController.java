@@ -6,6 +6,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.MainMenuScene;
 import view.ViewManagerImpl;
+import view.util.ViewUtils;
 
 /**
  * Controller class for the WinView file.
@@ -17,7 +18,7 @@ public class WinViewController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
-        scoreText.setText("WIN");
+        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
     }
 
     @FXML

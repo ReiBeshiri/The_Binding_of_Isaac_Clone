@@ -11,7 +11,7 @@ public class CreditsViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane creditsContentPane;
 
-    @FXML
+    @FXML 
     private void backButtonClick() {
         //super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
