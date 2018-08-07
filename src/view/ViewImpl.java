@@ -213,14 +213,14 @@ public final class ViewImpl implements View {
      * Method used to notify that player is died.
      */
     @Override
-    public void notifyGameOverEvent() {
+    public void notifyGameOverEvent(final int points) {
         ViewManagerImpl.get().pop();
-        ViewManagerImpl.get().push(SceneFactory.createLostScene());
+        ViewManagerImpl.get().push(SceneFactory.createLostScene(points));
     }
 
     @Override
-    public void notifyWinGameEvent() {
+    public void notifyVictoryGameEvent(final int points) {
         ViewManagerImpl.get().pop();
-        ViewManagerImpl.get().push(SceneFactory.createWinScene());
+        ViewManagerImpl.get().push(SceneFactory.createVictoryScene(points));
     }
 }

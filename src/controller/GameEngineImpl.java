@@ -119,16 +119,17 @@ public final class GameEngineImpl implements GameEngine {
      * The player has lost.
      */
     @Override
-    public void gameOver() {
-        ViewImpl.get().notifyGameOverEvent();
+    public void gameOver(final int point) {
+        ViewImpl.get().notifyGameOverEvent(point);
         stopGame();
     }
 
     /**
      * The player has won.
      */
-    public void victory() {
-        ViewImpl.get().notifyWinGameEvent();
+    @Override
+    public void victory(final int points) {
+        ViewImpl.get().notifyVictoryGameEvent(points);
         stopGame();
     }
 

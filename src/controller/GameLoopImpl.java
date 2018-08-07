@@ -207,10 +207,10 @@ public class GameLoopImpl implements GameLoop, Runnable {
                     GameEngineImpl.get().setLeaderboard(leaderboard);
                     // Richiamo il metodo della view a cui passo la leaderboard
                 }
-                GameEngineImpl.get().victory();
+                GameEngineImpl.get().victory(point);
             } else if (x instanceof PlayerDied) {
                 stopTime();
-                GameEngineImpl.get().gameOver();
+                GameEngineImpl.get().gameOver(point);
             } else if (x instanceof PlayerHeartChange) {
                 ViewImpl.get().playerLifeChanged(((PlayerHeartChange) x).getCurretLife());
             } else if (x instanceof RoomChange) {
