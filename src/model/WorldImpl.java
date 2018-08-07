@@ -475,6 +475,7 @@ public class WorldImpl implements World {
                 listEvent.add(new RoomChange(this.room));
                 getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
                         SpawnUtility.getSpawnYEnterRightDoor());
+                this.listBulletPlayer.clear();
             }
             if (!this.listEnemy.isEmpty()) {
                 listEnemy.forEach(x -> {
@@ -572,6 +573,7 @@ public class WorldImpl implements World {
                 this.listEvent.add(new BossFightStarted());
                 getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
                         SpawnUtility.getSpawnYEnterRightDoor());
+                this.listBulletPlayer.clear();
             }
         }
     }
