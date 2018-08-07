@@ -1,6 +1,7 @@
 package view.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.MainMenuScene;
@@ -11,10 +12,15 @@ import view.ViewManagerImpl;
 public class WinViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane contentPane;
+    @FXML private TextField scoreText;
+
+    @FXML
+    private void initialize() {
+        scoreText.setText("WIN"); //TODO Da inserire effettivo punteggio
+    }
 
     @FXML
     private void okButtonClick() {
-        //ViewManagerImpl.get().pop();
         while (!(ViewManagerImpl.get().getCurrentScene() instanceof MainMenuScene)) {
             ViewManagerImpl.get().pop();
         }

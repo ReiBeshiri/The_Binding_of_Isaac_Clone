@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -23,4 +24,17 @@
          </children>
       </GridPane>
    </bottom>
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label id="lblSizeUp" text="You Scored :" />
+            <TextField editable="false" />
+            <ImageView fitHeight="398.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/images/winnerImage.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

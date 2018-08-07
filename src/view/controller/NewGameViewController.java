@@ -31,6 +31,7 @@ public class NewGameViewController extends AbstractControllerFXML {
     @FXML
     private void btnPlayClick() {
         if (!txtNickname.getText().isEmpty()) {
+            ViewManagerImpl.get().pop();
             ViewManagerImpl.get().push(SceneFactory.createGameScene());
             ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.START_GAME, txtNickname.getText()));
         }
