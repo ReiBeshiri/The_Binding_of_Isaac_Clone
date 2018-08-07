@@ -3,6 +3,8 @@ package view;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
+
+import javafx.application.Platform;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -98,7 +100,7 @@ public class DrawerManagerImpl implements DrawerManager {
      * Method used to draw entire scene of the game.
      */
     @Override
-    public void draw() {
+    public synchronized void draw() {
         gcGameCanvas.clearRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
         drawRoom();
         drawEntities();
@@ -151,10 +153,10 @@ public class DrawerManagerImpl implements DrawerManager {
     @Override
     public void initTimeCanvas() {
         time = new Time(0, 0);
-        drawTime();
+        Platform.runLater(() -> drawTime());
     }
 
-    private void drawEntities() {
+    private synchronized void drawEntities() {
         final Tupla<Double, Double> scalingFactor = computeScaleFactor(
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ViewUtils.getWorldWidth(), ViewUtils.getWorldHeight()));
@@ -164,7 +166,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas.restore();
     }
 
-    private void drawRoom() {
+    private synchronized void drawRoom() {
         final Tupla<Double, Double> scalingFactor = computeScaleFactor(
                 new Tupla<Double, Double>(gameCanvas.getWidth(), gameCanvas.getHeight()),
                 new Tupla<Double, Double>(ViewUtils.getWorldWidth(), ViewUtils.getWorldHeight()));

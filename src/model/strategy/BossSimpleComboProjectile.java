@@ -45,7 +45,7 @@ public class BossSimpleComboProjectile implements ProjectileType {
         final double delta = (ProportionUtility.getHeight() - bulletNumber * BOSS.getBulletRadius() * 2) / (bulletNumber + 1);
         return IntStream.range(0, bulletNumber)
                 .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
-                        delta * (x + 1) + BOSS.getBulletRadius() * 2 * x, BOSS.getBulletRadius()))
+                        delta * (x + 1) + BOSS.getBulletRadius() * 2 * x + ProportionUtility.getWallHorizontalHeight(), BOSS.getBulletRadius()))
                 .map(x -> new BulletImpl(x, vel, new SimplyDirectionMovement(dir), range, bulletImg, damage))
                 .collect(Collectors.toList());
     }

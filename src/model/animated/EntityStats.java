@@ -8,7 +8,7 @@ public enum EntityStats {
     /**
      * Player stats.
      */
-    PLAYER(6, 7, 0, 40, 10, 400, 10, 10, 24),
+    PLAYER(6, 8, 0, 40, 5, 400, 10, 10, 24),
     /**
      * Static enemy stats.
      */
@@ -20,7 +20,7 @@ public enum EntityStats {
     /**
      * Boss stats.
      */
-    BOSS(30, 0, 5000, 60, 1, 600, 10, 9, 120);
+    BOSS(30, 0, 5000, 60, 1, 600, 10, 7, 120);
 
     private int life;
     private double vel;
