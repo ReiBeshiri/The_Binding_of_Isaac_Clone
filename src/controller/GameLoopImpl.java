@@ -21,6 +21,7 @@ import worldevent.PlayerHitButton;
 import worldevent.PlayerKillAllEnemy;
 import worldevent.PlayerKillBoss;
 import worldevent.PlayerKillEnemy;
+import worldevent.PlayerScoreChange;
 import worldevent.RoomChange;
 import worldevent.WorldEvent;
 
@@ -35,7 +36,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private static final long SECONDMICRO = 1000000;
     private static final int SECONDNANO = 1000000000;
     private static final int FPS = 60;
-    //private static final int MSWAIT = 5;
     private boolean running;
     private Thread gameLoopThread; 
     private int optimalTime;
@@ -191,25 +191,20 @@ public class GameLoopImpl implements GameLoop, Runnable {
                 startTime();
             } else if (x instanceof PlayerKillEnemy) {
                 point += ((PlayerKillEnemy) x).getPoint();
+            } else if (x instanceof PlayerScoreChange) {
+                point -= ((PlayerScoreChange) x).getPoints();
             } else if (x instanceof PlayerKillAllEnemy) {
                 stopTime();
             } else if (x instanceof BossFightStarted) {
                 startTime();
             } else if (x instanceof PlayerKillBoss) {
                 stopTime();
-                point += bonusTime(time.getTimeInSeconds());
-                final Score score = new ScoreImpl(name, point, time);
-                final List<Score> leaderboard = GameEngineImpl.get().getLeaderboard();
-                if (score.compareTo(leaderboard.get(leaderboard.size() - 1)) > 0) {
-                    leaderboard.remove(leaderboard.size() - 1);
-                    leaderboard.add(score);
-                    leaderboard.sort(new LeaderboardComparator<Score>());
-                    GameEngineImpl.get().setLeaderboard(leaderboard);
-                    // Richiamo il metodo della view a cui passo la leaderboard
-                }
+                point += bonusTime(time.getTimeInSeconds()); // BONUS TIME ONLY IF BOSS DIED.
+                checkResultWithLeaderboard();
                 GameEngineImpl.get().victory(point);
             } else if (x instanceof PlayerDied) {
                 stopTime();
+                checkResultWithLeaderboard();
                 GameEngineImpl.get().gameOver(point);
             } else if (x instanceof PlayerHeartChange) {
                 ViewImpl.get().playerLifeChanged(((PlayerHeartChange) x).getCurretLife());
@@ -246,5 +241,23 @@ public class GameLoopImpl implements GameLoop, Runnable {
      */
     private void stopTime() {
         timeAgent.interrupt();
+    }
+
+    /**
+     * Method used to check result with leaderboard results.
+     */
+    private void checkResultWithLeaderboard() {
+        final Score score = new ScoreImpl(name, point, time);
+        final List<Score> leaderboard = GameEngineImpl.get().getLeaderboard();
+        if (leaderboard.size() < 10) {
+            leaderboard.add(score);
+            leaderboard.sort(new LeaderboardComparator<>());
+            GameEngineImpl.get().setLeaderboard(leaderboard);
+        } else if (score.compareTo(leaderboard.get(leaderboard.size() - 1)) > 0) {
+            leaderboard.remove(leaderboard.size() - 1);
+            leaderboard.add(score);
+            leaderboard.sort(new LeaderboardComparator<Score>());
+            GameEngineImpl.get().setLeaderboard(leaderboard);
+        }
     }
 }

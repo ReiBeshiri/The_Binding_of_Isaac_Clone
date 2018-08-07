@@ -1,8 +1,12 @@
 package controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +29,7 @@ import view.util.ViewUtils;
  * GameEngineImpl manages all game situations.
  */
 public final class GameEngineImpl implements GameEngine {
+    private static final String PATH = System.getProperty("user.home") + File.separator + "Leaderboard.txt";
     private static final int NAME = 0;
     private static final int SCORE = 1;
     private static final int TIME = 2;
@@ -37,9 +42,12 @@ public final class GameEngineImpl implements GameEngine {
     /**
      * The class constructor.
      */
-    private GameEngineImpl() { }
+    private GameEngineImpl() {
+    }
+
     /**
      * Get the instance of GameEngineImpl.
+     * 
      * @return the instance of controller.
      */
     public static GameEngine get() {
@@ -48,6 +56,7 @@ public final class GameEngineImpl implements GameEngine {
         }
         return singleton;
     }
+
     /**
      * Initialize the view for the kts application.
      */
@@ -57,7 +66,7 @@ public final class GameEngineImpl implements GameEngine {
         if (!Objects.isNull(scoreList)) {
             ViewImpl.get().setScoreBoard(scoreList);
         }
-        //Passare alla view la leaderboard;
+        // Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
         ViewImpl.get().setInitialHeight(ScreenResolution.getHeigtSize() / ViewUtils.getYScreenProp());
@@ -71,7 +80,9 @@ public final class GameEngineImpl implements GameEngine {
 
     /**
      * Create a new game.
-     * @param name of the player.
+     * 
+     * @param name
+     *            of the player.
      */
     @Override
     public void newGame(final String name) {
@@ -132,7 +143,7 @@ public final class GameEngineImpl implements GameEngine {
     }
 
     /**
-     * @return the gameLoop object. 
+     * @return the gameLoop object.
      */
     public GameLoop getGameLoop() {
         return this.gameLoop;
@@ -140,6 +151,7 @@ public final class GameEngineImpl implements GameEngine {
 
     /**
      * Get the leaderboard of this computer.
+     * 
      * @return the leaderboard.
      */
     public List<Score> getLeaderboard() {
@@ -152,14 +164,14 @@ public final class GameEngineImpl implements GameEngine {
     @Override
     public void setLeaderboard(final List<Score> list) {
         this.scoreList = list;
-        //Qui bisogna fare il savataggio.
+        writeLeaderboard();
     }
 
     /**
      * Read the saves.
      */
     private void readLeaderboard() {
-        final File file = new File(System.getProperty("user.home") + File.separator + "Leaderboard.txt");
+        final File file = new File(PATH);
         List<String> items;
         List<String> splitTime;
 
@@ -169,13 +181,21 @@ public final class GameEngineImpl implements GameEngine {
                 for (String x = in.readLine(); x != null; x = in.readLine()) {
                     items = Arrays.asList(x.split(" "));
                     splitTime = Arrays.asList(items.get(TIME).split(":"));
-                    scoreList.add(new ScoreImpl(items.get(NAME), Integer.parseInt(items.get(SCORE)), 
-                            new Time(Integer.parseInt(splitTime.get(MINUTES)), Integer.parseInt(splitTime.get(SECONDS)))));
+                    scoreList.add(new ScoreImpl(items.get(NAME), Integer.parseInt(items.get(SCORE)), new Time(
+                            Integer.parseInt(splitTime.get(MINUTES)), Integer.parseInt(splitTime.get(SECONDS)))));
                 }
                 in.close();
             }
         } catch (Exception e) {
-            System.out.println("Error on reading leaderboard: " + e.getMessage()); //To change.
+            System.out.println("Error on reading leaderboard: " + e.getMessage()); // To change.
+        }
+    }
+
+    private void writeLeaderboard() {
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(PATH)))) {
+            scoreList.forEach(x -> out.println(x));
+        } catch (IOException e) {
+            System.out.println("Error reading leaderboard: " + e.getMessage());
         }
     }
 }

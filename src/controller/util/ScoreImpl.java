@@ -23,11 +23,11 @@ public class ScoreImpl implements Score {
     }
 
     /**
-     * Override of the method toString().
+     * Override of toString() method.
      */
     @Override
     public String toString() {
-        return this.name + " " + this.point + " " + this.time.toString();
+        return name + " " + point + " " + time;
     }
 
     /**
