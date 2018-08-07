@@ -3,15 +3,15 @@ package model.rounds;
 import java.util.ArrayList;
 import java.util.List;
 
-import input.Command;
 import model.animated.Animated;
 import model.animated.EnemyFactory;
 import model.animated.EnemyFactoryImpl;
 import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import utility.ModelUtility;
-import utility.Spawns;
+import model.utility.ModelUtility;
+import model.utility.Spawns;
+import utility.Command;
 
 /**
  * Static Rounds class. This class works like the DinamicRounds class but the

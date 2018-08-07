@@ -1,4 +1,4 @@
-package input;
+package utility;
 
 /**
  * Enum that represent the possibility of command.

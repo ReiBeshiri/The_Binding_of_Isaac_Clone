@@ -3,12 +3,13 @@ package model.strategy;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import input.Command;
+
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import proxyutility.ImageType;
+import utility.Command;
 
 /**
  * Projectile in a single basic direction.

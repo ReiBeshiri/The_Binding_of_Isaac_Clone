@@ -4,9 +4,9 @@ import controller.GameEngineImpl;
 import controller.event.Event;
 import controller.event.KeyEvent;
 import controller.event.KeyType;
-import input.Command;
 import javafx.scene.input.KeyCode;
 import proxyutility.SceneType;
+import utility.Command;
 /**
  * Observer that manages the pressure of the keys on the keyboard.
  */

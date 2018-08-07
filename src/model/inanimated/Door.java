@@ -1,7 +1,7 @@
 package model.inanimated;
 
+import model.utility.RoomEnum;
 import proxyutility.ImageType;
-import utility.RoomEnum;
 
 /**
  * 

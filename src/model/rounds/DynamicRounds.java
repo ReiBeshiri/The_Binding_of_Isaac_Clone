@@ -3,7 +3,7 @@ package model.rounds;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import input.Command;
+
 import model.animated.Animated;
 import model.animated.EnemyFactory;
 import model.animated.EnemyFactoryImpl;
@@ -11,8 +11,9 @@ import model.animated.EnemyType;
 import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import utility.ModelUtility;
-import utility.Spawns;
+import model.utility.ModelUtility;
+import model.utility.Spawns;
+import utility.Command;
 
 /**
  * Dynamic Round class. This class will mainly create a list of Enemy in a loop.

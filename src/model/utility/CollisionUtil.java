@@ -1,9 +1,10 @@
-package utility;
+package model.utility;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import input.Command;
+
 import model.hitbox.RectangularHitBox;
+import utility.Command;
 import model.animated.Animated;
 import model.hitbox.CircleHitBox;
 

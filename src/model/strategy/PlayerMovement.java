@@ -2,10 +2,10 @@ package model.strategy;
 
 import java.util.List;
 
-import utility.ModelUtility;
-import input.Command;
+import utility.Command;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.utility.ModelUtility;
 /**
  * Movement for player.
  *

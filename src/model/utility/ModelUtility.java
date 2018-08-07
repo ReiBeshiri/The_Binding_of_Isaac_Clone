@@ -1,11 +1,12 @@
-package utility;
+package model.utility;
 
 import java.util.List;
-import input.Command;
+
 import model.animated.Animated;
 import model.hitbox.HitBox;
 import model.room.Room;
 import model.worldevent.WorldEvent;
+import utility.Command;
 
 /**
  * Utility used to obtain information of model.

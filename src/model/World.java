@@ -2,12 +2,12 @@ package model;
 
 import java.util.List;
 
-import input.Command;
 import model.animated.Animated;
 import model.animated.Bullet;
 import model.inanimated.Button;
 import model.room.Room;
-import utility.Mode;
+import model.utility.Mode;
+import utility.Command;
 
 /**
  * Interface.

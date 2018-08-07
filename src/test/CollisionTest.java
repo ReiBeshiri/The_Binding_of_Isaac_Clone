@@ -4,13 +4,14 @@ import static model.animated.EntityStats.STATIC_ENEMY;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-import input.Command;
+
 import model.animated.Animated;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.RectangularHitBox;
 import model.strategy.BulletMovement;
-import utility.CollisionUtil;
+import model.utility.CollisionUtil;
+import utility.Command;
 
 class CollisionTest {
 

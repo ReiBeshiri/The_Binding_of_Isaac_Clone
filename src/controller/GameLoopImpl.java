@@ -8,8 +8,8 @@ import controller.util.LeaderboardComparator;
 import controller.util.Score;
 import controller.util.ScoreCalculator;
 import controller.util.ScoreImpl;
-import input.Command;
 import model.World;
+import model.utility.ModelUtility;
 import model.worldevent.BossFightStarted;
 import model.worldevent.PlayerDied;
 import model.worldevent.PlayerHeartChange;
@@ -22,7 +22,7 @@ import model.worldevent.RoomChange;
 import model.worldevent.WorldEvent;
 import timer.Time;
 import timer.TimeAgent;
-import utility.ModelUtility;
+import utility.Command;
 import view.ViewImpl;
 
 /**

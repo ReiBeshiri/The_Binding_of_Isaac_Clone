@@ -5,7 +5,7 @@ import static model.animated.EntityStats.PLAYER;
 import static model.animated.EntityStats.STATIC_ENEMY;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
-import input.Command;
+
 import model.ai.BasicAI;
 import model.animated.AbstractCharacter;
 import model.animated.Animated;
@@ -15,7 +15,8 @@ import model.hitbox.CircleHitBox;
 import model.strategy.PlayerMovement;
 import model.strategy.PlayerProjectile;
 import model.strategy.SimplyDirectionMovement;
-import utility.ModelUtility;
+import model.utility.ModelUtility;
+import utility.Command;
 
 class EntityMovementTest {
 

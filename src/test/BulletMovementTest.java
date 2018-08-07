@@ -8,7 +8,7 @@ import static model.animated.EntityStats.STATIC_ENEMY;
 import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
-import input.Command;
+
 import model.ai.BasicAI;
 import model.ai.BossAI;
 import model.animated.AbstractCharacter;
@@ -25,6 +25,7 @@ import model.strategy.FourWayProjectile;
 import model.strategy.Motionless;
 import model.strategy.SimplyDirectionMovement;
 import model.strategy.SingleDirectionProjectile;
+import utility.Command;
 
 class BulletMovementTest {
 

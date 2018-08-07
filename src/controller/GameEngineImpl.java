@@ -19,9 +19,9 @@ import controller.util.ScreenResolution;
 import model.World;
 import model.WorldImpl;
 import model.animated.AbstractCharacter;
+import model.utility.Mode;
+import model.utility.ModelUtility;
 import timer.Time;
-import utility.Mode;
-import utility.ModelUtility;
 import view.ViewImpl;
 import view.util.ViewUtils;
 

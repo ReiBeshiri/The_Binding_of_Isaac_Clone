@@ -1,20 +1,22 @@
 package model.strategy;
 
+import static utility.Command.DOWN;
+import static utility.Command.LEFT;
+import static utility.Command.RIGHT;
+import static utility.Command.UP;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import input.Command;
+
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.utility.ModelUtility;
 import proxyutility.ImageType;
-import utility.ModelUtility;
-import static input.Command.DOWN;
-import static input.Command.UP;
-import static input.Command.LEFT;
-import static input.Command.RIGHT;
+import utility.Command;
 
 /**
  * Class that represent player bullet's type.

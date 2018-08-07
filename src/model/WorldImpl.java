@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import input.Command;
+
 import model.ai.BasicAI;
 import model.animated.AbstractCharacter;
 import model.animated.Animated;
@@ -29,6 +29,10 @@ import model.rounds.StaticRounds;
 import model.strategy.PlayerMovement;
 import model.strategy.PlayerProjectile;
 import model.strategy.SimplyDirectionMovement;
+import model.utility.CollisionUtil;
+import model.utility.Mode;
+import model.utility.ModelUtility;
+import model.utility.SpawnUtility;
 import model.worldevent.BossFightStarted;
 import model.worldevent.PlayerDied;
 import model.worldevent.PlayerHeartChange;
@@ -40,10 +44,7 @@ import model.worldevent.PlayerScoreChange;
 import model.worldevent.RoomChange;
 import model.worldevent.WorldEvent;
 import proxyutility.ImageType;
-import utility.CollisionUtil;
-import utility.Mode;
-import utility.ModelUtility;
-import utility.SpawnUtility;
+import utility.Command;
 
 /**
  * WorldImpl.

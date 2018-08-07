@@ -1,7 +1,7 @@
 package model.animated;
 
-import input.Command;
 import model.hitbox.HitBox;
+import utility.Command;
 
 /**
  * Factory for enemy.

@@ -2,7 +2,7 @@ package model.strategy;
 
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import utility.ModelUtility;
+import model.utility.ModelUtility;
 
 /**
  * Class that represent the movement of aimed bullet or enemy.

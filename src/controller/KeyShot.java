@@ -1,6 +1,6 @@
 package controller;
 
-import input.Command;
+import utility.Command;
 /**
  * For add shot and remove shot.
  */

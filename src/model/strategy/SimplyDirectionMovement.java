@@ -1,11 +1,12 @@
 package model.strategy;
 
-import input.Command;
+import static utility.Command.DOWN;
+import static utility.Command.RIGHT;
+import static utility.Command.UP;
+
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import static input.Command.UP;
-import static input.Command.DOWN;
-import static input.Command.RIGHT;
+import utility.Command;
 
 /**
  * This class represent the horizontal movement of a enemy or a shoot.

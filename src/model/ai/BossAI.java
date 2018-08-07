@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import input.Command;
 import model.animated.Bullet;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
@@ -14,6 +13,7 @@ import model.strategy.BossSimpleComboProjectile;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
 import proxyutility.ImageType;
+import utility.Command;
 
 /**
  * Boss AI.

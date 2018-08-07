@@ -22,10 +22,10 @@ import model.inanimated.WallImpl;
 import model.room.Room;
 import model.room.RoomFactory;
 import model.room.RoomFactoryImpl;
+import model.utility.ModelUtility;
+import model.utility.ProportionUtility;
+import model.utility.RoomEnum;
 import proxyutility.ImageType;
-import utility.ModelUtility;
-import utility.ProportionUtility;
-import utility.RoomEnum;
 
 /**
  * World Environment Implement.

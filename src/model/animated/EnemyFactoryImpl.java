@@ -1,6 +1,5 @@
 package model.animated;
 
-import input.Command;
 import model.ai.BasicAI;
 import model.ai.BossAI;
 import model.hitbox.HitBox;
@@ -11,6 +10,8 @@ import model.strategy.Motionless;
 import model.strategy.SimplyDirectionMovement;
 import model.strategy.SingleDirectionProjectile;
 import proxyutility.ImageType;
+import utility.Command;
+
 import static model.animated.EntityStats.BOSS;
 import static model.animated.EntityStats.MOVEABLE_ENEMY;
 import static model.animated.EntityStats.STATIC_ENEMY;

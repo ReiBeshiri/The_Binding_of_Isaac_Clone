@@ -1,8 +1,8 @@
 package model.inanimated;
 
 import model.hitbox.HitBox;
+import model.utility.RoomEnum;
 import proxyutility.ImageType;
-import utility.RoomEnum;
 
 /**
  * 

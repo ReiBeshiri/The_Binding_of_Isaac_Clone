@@ -5,13 +5,14 @@ import static model.animated.EntityStats.BOSS;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import input.Command;
+
 import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.utility.ProportionUtility;
 import proxyutility.ImageType;
-import utility.ProportionUtility;
+import utility.Command;
 
 /**
  * 
