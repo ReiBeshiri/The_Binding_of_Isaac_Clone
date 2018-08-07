@@ -2,6 +2,8 @@ package view;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import proxyutility.ImageType;
+import proxyutility.ProxyImageLoader;
 import view.util.SceneFactory;
 
 /**
@@ -20,6 +22,7 @@ public class LaunchClass extends Application {
         primaryStage.setWidth(ViewManagerImpl.get().getStartedWidth());
         ViewManagerImpl.get().push(SceneFactory.createMenuScene());
         primaryStage.setTitle("KTS");
+        primaryStage.getIcons().add(ProxyImageLoader.get().getImage(ImageType.ICON));
         primaryStage.show();
     }
 

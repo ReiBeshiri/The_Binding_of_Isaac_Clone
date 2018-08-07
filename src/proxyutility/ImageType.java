@@ -95,7 +95,11 @@ public enum ImageType {
     /**
      * Background image for boss room.
      */
-    BACKGROUND_BOSS_ROOM("BackgroundBoss.png");
+    BACKGROUND_BOSS_ROOM("BackgroundBoss.png"),
+    /**
+     * Icons image.
+     */
+    ICON("ktsIcon.png");
     private final String path;
 
     ImageType(final String path) {
