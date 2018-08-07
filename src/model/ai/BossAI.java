@@ -23,7 +23,7 @@ public class BossAI implements AI {
     private static final int PHASE2_INIT = 20;
     private static final int PHASE3_INIT = 5;
     private static final List<Integer> SECOND_PHASE_BULLET_RANGE = Arrays.asList(4, 5, 6);
-    private static final int THIRD_PHASE_START_BULLET_NUM = 10;
+    private static final int THIRD_PHASE_START_BULLET_NUM = 8;
     private MovementStrategy movementStrategy;
     private ProjectileType pType;
 

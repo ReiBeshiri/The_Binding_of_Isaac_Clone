@@ -47,20 +47,24 @@ public class BossAimedComboProjectile implements ProjectileType {
         final double deltaDown = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2
                 - downBullets * radius * 2) / downBullets;
         bullets.addAll(IntStream.range(0, upperBullets)
-                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius() - radius,
-                        deltaUp * (x + 1) + radius * 2 * x, radius))
-               .map(x -> new BulletImpl(x, vel,
-                        new BulletMovement(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(),
-                                ModelUtility.getPlayerHitBox().getX() - sender.getX())),
+                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
+                        deltaUp * (x + 1) + radius * 2 * x + ProportionUtility.getWallHorizontalHeight(), radius))
+                .map(x -> new BulletImpl(x, vel,
+                        new BulletMovement(
+                                Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(),
+                                        ModelUtility.getPlayerHitBox().getX() - sender.getX()))),
                         range, bulletImg, damage))
                 .collect(Collectors.toList()));
 
         bullets.addAll(IntStream.range(0, downBullets)
-                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius() - radius,
-                        BOSS.getEntityRadius() + deltaDown * x + radius * 2 * x, radius))
+                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
+                        sender.getY() + deltaDown * x + radius * 2 * x
+                                + ProportionUtility.getWallHorizontalHeight(),
+                        radius))
                 .map(x -> new BulletImpl(x, vel,
-                        new BulletMovement(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(),
-                                ModelUtility.getPlayerHitBox().getX() - sender.getX())),
+                        new BulletMovement(
+                                Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - sender.getY(),
+                                        ModelUtility.getPlayerHitBox().getX() - sender.getX()))),
                         range, bulletImg, damage))
                 .collect(Collectors.toList()));
         return bullets;
