@@ -43,6 +43,7 @@ public class DynamicRounds implements RoundsGenerator {
     @Override
     public List<Animated> generateMonster() {
         fullList();
+        System.out.println(this.listSpawns);
         final int enemyToSpawn = numberOfEnemyToGenerate();
         Collections.shuffle(listSpawns);
         for (int i = 0; i < enemyToSpawn; i++) {
@@ -102,7 +103,7 @@ public class DynamicRounds implements RoundsGenerator {
         listEnemy.add(EnemyType.SIMPLEMOVE);
         listEnemy.add(EnemyType.SIMPLE);
         listEnemy.add(EnemyType.FOLLOWED);
-        // spawns.add(Spawns.A); i'll take A as player's spawn.
+        listSpawns.add(Spawns.A);
         listSpawns.add(Spawns.B);
         listSpawns.add(Spawns.C);
         listSpawns.add(Spawns.D);
