@@ -42,10 +42,10 @@ public class BossSimpleComboProjectile implements ProjectileType {
     @Override
     public final Collection<Bullet> shoot(final HitBox sender, final double range, final double vel,
             final ImageType bulletImg, final int damage, final double radius) {
-        final double delta = (ProportionUtility.getHeight() - bulletNumber * radius * 2) / (bulletNumber + 1);
+        final double delta = (ProportionUtility.getHeight() - bulletNumber * BOSS.getBulletRadius() * 2) / (bulletNumber + 1);
         return IntStream.range(0, bulletNumber)
-                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius() - radius,
-                        delta * (x + 1) + radius * 2 * x, radius))
+                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
+                        delta * (x + 1) + BOSS.getBulletRadius() * 2 * x, BOSS.getBulletRadius()))
                 .map(x -> new BulletImpl(x, vel, new SimplyDirectionMovement(dir), range, bulletImg, damage))
                 .collect(Collectors.toList());
     }

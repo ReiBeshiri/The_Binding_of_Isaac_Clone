@@ -123,12 +123,14 @@ public interface View {
     void initTimeCanvas();
 
     /**
-     * Method used to notify that player was dead. 
+     * Method used to notify game over events.
+     * @param points points obtained during game.
      */
-    void notifyGameOverEvent();
+    void notifyGameOverEvent(int points);
 
     /**
-     * Method used to notify that player win game and defeated boss. 
+     * Method used to notify victory event.
+     * @param points points obtained during game.
      */
-    void notifyWinGameEvent();
+    void notifyVictoryGameEvent(int points);
 }

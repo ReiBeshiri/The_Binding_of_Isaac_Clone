@@ -36,5 +36,4 @@ public class LostViewController extends AbstractControllerFXML {
     public final Region getRoot() {
         return contentPane;
     }
-
 }

@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -12,6 +11,7 @@ import controller.observer.ButtonObserver;
 import controller.observer.KeyObserver;
 import controller.util.Score;
 import controller.util.ScoreImpl;
+import controller.util.ScreenResolution;
 import model.World;
 import model.WorldImpl;
 import model.animated.AbstractCharacter;
@@ -60,10 +60,8 @@ public final class GameEngineImpl implements GameEngine {
         //Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
-        ViewImpl.get().setInitialHeight(
-                ((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / ViewUtils.getYScreenProp());
-        ViewImpl.get().setInitialWidth(
-                ((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth()) / ViewUtils.getXScreenProp());
+        ViewImpl.get().setInitialHeight(ScreenResolution.getHeigtSize() / ViewUtils.getYScreenProp());
+        ViewImpl.get().setInitialWidth(ScreenResolution.getWidthSize() / ViewUtils.getXScreenProp());
         ViewImpl.get().setWorldHeight(ModelUtility.getWorldHeight());
         ViewImpl.get().setWorldWidth(ModelUtility.getWorldWidth());
         ViewImpl.get().setWorldHeightProportion(ModelUtility.getWorldHeightProp());
@@ -119,16 +117,17 @@ public final class GameEngineImpl implements GameEngine {
      * The player has lost.
      */
     @Override
-    public void gameOver() {
-        ViewImpl.get().notifyGameOverEvent();
+    public void gameOver(final int point) {
+        ViewImpl.get().notifyGameOverEvent(point);
         stopGame();
     }
 
     /**
      * The player has won.
      */
-    public void victory() {
-        ViewImpl.get().notifyWinGameEvent();
+    @Override
+    public void victory(final int points) {
+        ViewImpl.get().notifyVictoryGameEvent(points);
         stopGame();
     }
 

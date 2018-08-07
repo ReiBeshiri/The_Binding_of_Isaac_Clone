@@ -23,6 +23,7 @@ public interface RoomFactory {
      * @return a MainRoom.
      */
     Room createMainRoom(HitBox hitbox, List<Door> doors, Button button, List<Wall> walls);
+
     /**
      * 
      * @param hitbox BossRoom's HitBox.
@@ -32,6 +33,7 @@ public interface RoomFactory {
      * @return a BossRoom.
      */
     Room createBossRoom(HitBox hitbox, List<Door> doors, Enemy boss, List<Wall> walls);
+
     /**
      * 
      * @param hitbox ShopRoom's HitBox.

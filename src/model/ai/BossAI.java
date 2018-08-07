@@ -1,6 +1,10 @@
 package model.ai;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import input.Command;
 import model.animated.Bullet;
 import model.hitbox.CircleHitBox;
@@ -18,7 +22,7 @@ import proxyutility.ImageType;
 public class BossAI implements AI {
     private static final int PHASE2_INIT = 20;
     private static final int PHASE3_INIT = 5;
-    private static final int SECOND_PHASE_START_BULLET_NUM = 10;
+    private static final List<Integer> SECOND_PHASE_BULLET_RANGE = Arrays.asList(4, 5, 6);
     private static final int THIRD_PHASE_START_BULLET_NUM = 10;
     private MovementStrategy movementStrategy;
     private ProjectileType pType;
@@ -79,7 +83,8 @@ public class BossAI implements AI {
                     new BossAimedComboProjectile(THIRD_PHASE_START_BULLET_NUM));
         } else if (life <= PHASE2_INIT) {
             setProjectileType(new BossSimpleComboProjectile(Command.LEFT,
-                    SECOND_PHASE_START_BULLET_NUM));
+                    SECOND_PHASE_BULLET_RANGE.get(0)));
+            Collections.shuffle(SECOND_PHASE_BULLET_RANGE);
         }
     }
 
