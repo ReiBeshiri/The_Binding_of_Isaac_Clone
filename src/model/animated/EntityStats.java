@@ -6,11 +6,11 @@ package model.animated;
  */
 public enum EntityStats {
     /**
-     * player stats.
+     * Player stats.
      */
     PLAYER(6, 7, 0, 40, 10, 400, 10, 10, 24),
     /**
-     * static enemy stats.
+     * Static enemy stats.
      */
     STATIC_ENEMY(4, 0, 300, 45, 1, 400, 10, 7, 22),
     /**
@@ -20,7 +20,7 @@ public enum EntityStats {
     /**
      * Boss stats.
      */
-    BOSS(30, 0, 5000, 50, 1, 500, 14, 9, 120);
+    BOSS(30, 0, 5000, 50, 1, 600, 14, 9, 120);
 
     private int life;
     private double vel;

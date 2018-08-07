@@ -48,6 +48,7 @@ import worldevent.WorldEvent;
  *
  */
 public class WorldImpl implements World {
+    private static final int NUM_ROUNDS = 4;
     private Animated player; // |is the player
     private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom
@@ -155,7 +156,7 @@ public class WorldImpl implements World {
      */
     @Override
     public void setNextRound() {
-        if (this.mode.equals(Mode.NORMAL) && getCurrentRound() < 4) {
+        if (this.mode.equals(Mode.NORMAL) && getCurrentRound() < NUM_ROUNDS) {
             listEnemy.addAll(roundsGenerator.generateMonster());
             this.button.setPressed(true);
         }
@@ -465,7 +466,7 @@ public class WorldImpl implements World {
             if (allEnemyDefeated() && !this.button.isPressed()) {
                 playerBulletHitsEnemy(deltaTime);
             }
-            if (!this.button.isPressed() && getCurrentRound() >= 4
+            if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS
                     && CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                             (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
                     && !this.mode.equals(Mode.INFINITE)) {
@@ -494,14 +495,14 @@ public class WorldImpl implements World {
                     if (this.mode.equals(Mode.NORMAL)) {
                         we.getRightDoorFromMainToShop().setOpen(true);
                     }
-                    if (getCurrentRound() >= 4 && this.mode.equals(Mode.NORMAL)) {
+                    if (getCurrentRound() >= NUM_ROUNDS && this.mode.equals(Mode.NORMAL)) {
                         we.getRightDoorFromShopToBoss().setOpen(true);
                     }
                 }
             }
             if (!this.button.isPressed()
                     && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) getPlayer().getHitBox())
-                    && getCurrentRound() < 4) {
+                    && getCurrentRound() < NUM_ROUNDS) {
                 // se il bottone non è premuto e lo preme parte il round sucessivo.
                 // nella modalità normale ci sono 3 round e dopo la fine del terzo il current
                 // round sarà 4 quindi premendo il botton non succ niente.
