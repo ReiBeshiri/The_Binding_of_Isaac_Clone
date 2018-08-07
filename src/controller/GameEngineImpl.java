@@ -120,7 +120,7 @@ public final class GameEngineImpl implements GameEngine {
      */
     @Override
     public void gameOver() {
-        //gui.gameOver();
+        ViewImpl.get().notifyGameOverEvent();
         stopGame();
     }
 
@@ -128,7 +128,7 @@ public final class GameEngineImpl implements GameEngine {
      * The player has won.
      */
     public void victory() {
-        //gui.victory();
+        ViewImpl.get().notifyWinGameEvent();
         stopGame();
     }
 
