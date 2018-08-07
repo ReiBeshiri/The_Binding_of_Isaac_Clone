@@ -1,4 +1,4 @@
-package controller.util;
+package controller.utility;
 /**
  *To specify what button was pressed.
  */

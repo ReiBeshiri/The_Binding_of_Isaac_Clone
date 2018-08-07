@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import controller.util.LeaderboardComparator;
-import controller.util.Score;
-import controller.util.ScoreCalculator;
-import controller.util.ScoreImpl;
+
+import controller.time.Time;
+import controller.time.TimeAgent;
+import controller.utility.LeaderboardComparator;
+import controller.utility.Score;
+import controller.utility.ScoreCalculator;
+import controller.utility.ScoreImpl;
 import model.World;
 import model.utility.ModelUtility;
 import model.worldevent.BossFightStarted;
@@ -20,8 +23,6 @@ import model.worldevent.PlayerKillEnemy;
 import model.worldevent.PlayerScoreChange;
 import model.worldevent.RoomChange;
 import model.worldevent.WorldEvent;
-import timer.Time;
-import timer.TimeAgent;
 import utility.Command;
 import view.ViewImpl;
 

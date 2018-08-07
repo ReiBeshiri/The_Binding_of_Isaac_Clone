@@ -1,4 +1,4 @@
-package timer;
+package controller.time;
 
 import java.util.ArrayList;
 import java.util.List;

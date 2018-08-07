@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+import controller.time.Time;
 import javafx.application.Platform;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
@@ -17,7 +18,6 @@ import model.hitbox.RectangularHitBox;
 import model.room.MainRoom;
 import model.room.Room;
 import model.room.ShopRoom;
-import timer.Time;
 import utility.ImageType;
 import view.utility.ProxyImageLoader;
 import view.utility.Tupla;

@@ -1,4 +1,4 @@
-package controller.util;
+package controller.utility;
 
 import java.util.List;
 import java.util.stream.Collectors;

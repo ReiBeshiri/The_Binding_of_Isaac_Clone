@@ -1,4 +1,4 @@
-package controller.util;
+package controller.utility;
 
 /**
  * Utility class used to calculate bonus time at the ending of the game.

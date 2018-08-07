@@ -2,9 +2,9 @@ package view;
 
 import java.util.List;
 
+import controller.time.TimeEventListener;
 import model.animated.Animated;
 import model.room.Room;
-import timer.TimeEventListener;
 
 /**
  * Class that manage the drawer on the two canvas of the game.

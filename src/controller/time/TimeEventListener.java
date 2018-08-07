@@ -1,4 +1,4 @@
-package timer;
+package controller.time;
 
 /**
  * Interface that represent event of time changed.

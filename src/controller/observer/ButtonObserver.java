@@ -3,7 +3,7 @@ package controller.observer;
 import controller.GameEngineImpl;
 import controller.event.ButtonEvent;
 import controller.event.Event;
-import controller.util.ButtonType;
+import controller.utility.ButtonType;
 /**
  *Observer for manage button events.
  */

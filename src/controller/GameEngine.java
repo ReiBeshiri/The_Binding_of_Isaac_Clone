@@ -1,7 +1,8 @@
 package controller;
 
 import java.util.List;
-import controller.util.Score;
+
+import controller.utility.Score;
 
 /**
  * Interface that manages all game situations.

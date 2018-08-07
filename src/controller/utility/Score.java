@@ -1,6 +1,6 @@
-package controller.util;
+package controller.utility;
 
-import timer.Time;
+import controller.time.Time;
 
 /**
  * Interface for score object.

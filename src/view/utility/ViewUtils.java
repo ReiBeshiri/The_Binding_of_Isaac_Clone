@@ -1,7 +1,8 @@
 package view.utility;
 
 import java.util.List;
-import controller.util.Score;
+
+import controller.utility.Score;
 
 /**
  * Utility class meant to keep views values e.g. fps, resolution and god mode.

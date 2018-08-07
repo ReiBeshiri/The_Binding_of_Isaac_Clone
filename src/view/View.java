@@ -2,7 +2,7 @@ package view;
 
 import java.util.List;
 import controller.observer.Observer;
-import controller.util.Score;
+import controller.utility.Score;
 import controller.event.Event;
 import model.animated.Animated;
 import model.room.Room;

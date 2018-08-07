@@ -1,6 +1,6 @@
 package view.controller;
 
-import controller.util.Score;
+import controller.utility.Score;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;

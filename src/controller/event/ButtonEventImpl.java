@@ -1,6 +1,6 @@
 package controller.event;
 
-import controller.util.ButtonType;
+import controller.utility.ButtonType;
 /**
  *Event created by pressing a view button.
  */

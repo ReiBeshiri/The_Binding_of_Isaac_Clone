@@ -1,4 +1,4 @@
-package timer;
+package controller.time;
 
 /**
  * Class used to implement thread for timer of the game.
