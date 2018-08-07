@@ -143,7 +143,7 @@ public class WorldImpl implements World {
      */
     public void setMode(final Mode m) {
         this.mode = m;
-        if (this.mode.equals(Mode.NORMAL)) {
+        if (!this.mode.equals(Mode.INFINITE)) {
             this.roundsGenerator = new StaticRounds();
         } else {
             this.roundsGenerator = new DynamicRounds();
@@ -156,7 +156,10 @@ public class WorldImpl implements World {
      */
     @Override
     public void setNextRound() {
-        if (this.mode.equals(Mode.NORMAL) && getCurrentRound() < NUM_ROUNDS) {
+        if (!this.mode.equals(Mode.INFINITE) && getCurrentRound() < NUM_ROUNDS) {
+            listEnemy.addAll(roundsGenerator.generateMonster());
+            this.button.setPressed(true);
+        } else if (this.mode.equals(Mode.INFINITE)) {
             listEnemy.addAll(roundsGenerator.generateMonster());
             this.button.setPressed(true);
         }
@@ -325,10 +328,12 @@ public class WorldImpl implements World {
      */
     private void decPlayerLife(final int life, final Animated c) {
         final AbstractCharacter player = (AbstractCharacter) c;
-        player.decLife(life);
-        listEvent.add(new PlayerHeartChange(player.getLife()));
-        if (player.getLife() <= 0 && !this.mode.equals(Mode.GOD)) {
-            this.listEvent.add(new PlayerDied());
+        if (!this.mode.equals(Mode.GOD)) {
+            player.decLife(life);
+            listEvent.add(new PlayerHeartChange(player.getLife()));
+            if (player.getLife() <= 0) {
+                this.listEvent.add(new PlayerDied());
+            }
         }
     }
 
@@ -493,10 +498,10 @@ public class WorldImpl implements World {
                     this.listEvent.add(new PlayerKillAllEnemy());
                     incCurrentRound();
                     this.button.setPressed(false);
-                    if (this.mode.equals(Mode.NORMAL)) {
+                    if (!this.mode.equals(Mode.INFINITE)) {
                         we.getRightDoorFromMainToShop().setOpen(true);
                     }
-                    if (getCurrentRound() >= NUM_ROUNDS && this.mode.equals(Mode.NORMAL)) {
+                    if (getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.INFINITE)) {
                         we.getRightDoorFromShopToBoss().setOpen(true);
                     }
                 }
@@ -558,7 +563,8 @@ public class WorldImpl implements World {
             final List<Inanimated> dieItems = new ArrayList<>();
             for (final Inanimated i : we.getItems()) {
                 final Heart h = (Heart) i;
-                if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
+                if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())
+                        && ((AbstractCharacter) getPlayer()).getLife() != EntityStats.PLAYER.getLife()) {
                     incPlayerLife(h.getLife());
                     listEvent.add(new PlayerKillEnemy(-h.getCost()));
                     dieItems.add(i);
@@ -585,8 +591,10 @@ public class WorldImpl implements World {
         final HitBox hb = new CircleHitBox(SpawnUtility.getSpawnAX(), SpawnUtility.getSpawnAY(),
                 EntityStats.PLAYER.getEntityRadius());
         return new PlayerImpl(EntityStats.PLAYER.getVel(), EntityStats.PLAYER.getLife(), hb,
-                new BasicAI(new PlayerMovement(), new PlayerProjectile()),
-                ImageType.PLAYER, EntityStats.PLAYER.getShotRatio(), EntityStats.PLAYER.getBulletRadius(), EntityStats.PLAYER.getBulletVel(), EntityStats.PLAYER.getBulletRange(), EntityStats.PLAYER.getBulletDamage());
+                new BasicAI(new PlayerMovement(), new PlayerProjectile()), ImageType.PLAYER,
+                EntityStats.PLAYER.getShotRatio(), EntityStats.PLAYER.getBulletRadius(),
+                EntityStats.PLAYER.getBulletVel(), EntityStats.PLAYER.getBulletRange(),
+                EntityStats.PLAYER.getBulletDamage());
     }
 
     /**
