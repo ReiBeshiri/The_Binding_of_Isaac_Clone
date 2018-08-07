@@ -3,9 +3,7 @@ package view;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
-
 import controller.time.Time;
-import javafx.application.Platform;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -94,7 +92,9 @@ public class DrawerManagerImpl implements DrawerManager {
     @Override
     public void setRoom(final Room room) {
         this.room = room;
-        drawRoom();
+        if (!Objects.isNull(room)) {
+            drawRoom();
+        }
     }
 
     /**
@@ -103,8 +103,10 @@ public class DrawerManagerImpl implements DrawerManager {
     @Override
     public synchronized void draw() {
         gcGameCanvas.clearRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
-        drawRoom();
-        drawEntities();
+        if (!Objects.isNull(room) && !Objects.isNull(entities)) {
+            drawRoom();
+            drawEntities();
+        }
     }
 
     /**
@@ -154,7 +156,7 @@ public class DrawerManagerImpl implements DrawerManager {
     @Override
     public void initTimeCanvas() {
         time = new Time(0, 0);
-        Platform.runLater(() -> drawTime());
+        drawTime();
     }
 
     private synchronized void drawEntities() {
