@@ -14,5 +14,9 @@ public enum EnemyType {
     /**
      * Create Simple Direction Moved Enemy.
      */
-    SIMPLEMOVE;
+    SIMPLEMOVE,
+    /**
+     * Create Followed Direction Moved Enemy.
+     */
+    FOLLOWED;
 }

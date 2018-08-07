@@ -66,8 +66,16 @@ public class DynamicRounds implements RoundsGenerator {
                         EntityStats.STATIC_ENEMY.getEntityRadius());
                 final Animated en = enemy.createStaticAimedBulletEnemy(hb);
                 listReturnEnemy.add(en);
+            } else if (listEnemy.get(0).equals(EnemyType.FOLLOWED)) {
+                final HitBox hbThird = new CircleHitBox(Spawns.G.getX(), Spawns.G.getY(),
+                        EntityStats.STATIC_ENEMY.getEntityRadius());
+                final Animated en = enemy.createStaticEnemyFollowPlayerBullet(hbThird);
+                listReturnEnemy.add(en);
             }
         }
+        listEnemy.clear();
+        listSpawns.clear();
+        listCommand.clear();
         return listReturnEnemy;
     }
 
@@ -89,9 +97,11 @@ public class DynamicRounds implements RoundsGenerator {
      * full the lists with the needed parameters.
      */
     private void fullList() {
+        listReturnEnemy.clear();
         listEnemy.add(EnemyType.SIMPLEAIMED);
         listEnemy.add(EnemyType.SIMPLEMOVE);
         listEnemy.add(EnemyType.SIMPLE);
+        listEnemy.add(EnemyType.FOLLOWED);
         // spawns.add(Spawns.A); i'll take A as player's spawn.
         listSpawns.add(Spawns.B);
         listSpawns.add(Spawns.C);
