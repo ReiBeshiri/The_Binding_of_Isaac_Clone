@@ -40,7 +40,6 @@ public final class ViewManagerImpl implements ViewManager {
         }
         stack.push(genScene);
         stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
-        System.out.println("SIZE: " + stack.size());
     }
 
     /**
@@ -54,7 +53,6 @@ public final class ViewManagerImpl implements ViewManager {
             stage.getScene().setRoot(stack.lastElement().getSceneController().getRoot());
             stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
-        System.out.println("SIZE: " + stack.size());
     }
 
     /**

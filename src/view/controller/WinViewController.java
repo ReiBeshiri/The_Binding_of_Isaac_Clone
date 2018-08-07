@@ -5,7 +5,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.MainMenuScene;
 import view.ViewManagerImpl;
-import view.util.SceneFactory;
 /**
  * Controller class for the WinView file.
  */
