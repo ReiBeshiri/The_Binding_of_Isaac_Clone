@@ -7,7 +7,7 @@ import proxyutility.ProxyImageLoader;
 import view.util.SceneFactory;
 
 /**
- * Class ised to lounch application.
+ * Class used to launch application.
  *
  */
 public class LaunchClass extends Application {
@@ -25,5 +25,4 @@ public class LaunchClass extends Application {
         primaryStage.getIcons().add(ProxyImageLoader.get().getImage(ImageType.ICON));
         primaryStage.show();
     }
-
 }
