@@ -195,7 +195,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     /**
      * Check the world's events.
      */
-    private void checkEvent() {
+    private synchronized void checkEvent() {
         final List<WorldEvent> worldEvent = Objects.isNull(ModelUtility.getWorldEventList()) ? Collections.emptyList()
                 : ModelUtility.getWorldEventList();
         worldEvent.forEach(x -> {

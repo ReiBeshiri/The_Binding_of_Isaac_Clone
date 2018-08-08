@@ -17,6 +17,6 @@ public final class ScoreCalculator {
      * @return Bonus time.
      */
     public static int bonusTime(final int timeElapsed) {
-        return (int) (DELTA_CURVE_MOLTIPLICATOR * Math.exp(-Math.pow(timeElapsed, 2) / DELTA_CURVE_DIVISOR)); //Bisogna guardarci meglio;
+        return (int) (DELTA_CURVE_MOLTIPLICATOR * Math.exp(-Math.pow(timeElapsed, 2) / DELTA_CURVE_DIVISOR));
     }
 }
