@@ -81,16 +81,6 @@
     -fx-text-fill: #3e3e3e;
 }
 
-.list-view {
-    -fx-background-color: black;
-    -fx-font-family: 'Magmawave Caps';
-    -fx-text-fill: black;
-}
-
-.list-cell {
-	-fx-text-fill: black;
-}
-
 .combo-box-base {
     -fx-background-color: #c8c8c8;
     -fx-font-family: 'Magmawave Caps';
@@ -119,16 +109,14 @@
 
 }
 
-.table-view{
-    -fx-background-color: transparent;
-    -fx-text-fill: black;
+.table-row-cell:selected {
+    -fx-background-color: yellow;
 }
 
 .table-column{
-    -fx-border-color: white;
-}
-
-.column-header {
-    -fx-background-color: transparent;
+    -fx-font-family: 'Magmawave Caps';
     -fx-text-fill: black;
+	-fx-alignment: center;
+    -fx-border-color: white;
+    -fx-font-size: 30pt;
 }
