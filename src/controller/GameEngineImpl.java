@@ -64,7 +64,7 @@ public final class GameEngineImpl implements GameEngine {
     public void initView() {
         readLeaderboard();
         if (!Objects.isNull(scoreList)) {
-            ViewImpl.get().setScoreBoard(scoreList);
+            ViewUtils.setScoreBoard(new ArrayList<Score>(scoreList));
         }
         // Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
@@ -165,6 +165,7 @@ public final class GameEngineImpl implements GameEngine {
     public void setLeaderboard(final List<Score> list) {
         this.scoreList = list;
         writeLeaderboard();
+        ViewUtils.setScoreBoard(new ArrayList<Score>(scoreList));
     }
 
     /**

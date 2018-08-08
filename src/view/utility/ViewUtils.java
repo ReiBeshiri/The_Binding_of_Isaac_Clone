@@ -31,7 +31,6 @@ public final class ViewUtils {
     private static double worldWidthProportion;
     private static int points;
     private static Statistic stats;
-
     private static List<Score> leaderBoard; 
 
     private ViewUtils() { }

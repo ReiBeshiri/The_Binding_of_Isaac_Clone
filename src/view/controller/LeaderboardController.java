@@ -24,16 +24,19 @@ public class LeaderboardController extends AbstractControllerFXML {
 
     @FXML
     private void backButtonClick() {
-        //super.closingFade(() -> ViewManagerImpl.get().pop());
+        // super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
     }
 
     @FXML
     private void initialize() {
-        table.getItems().addAll(ViewUtils.getScoreBoard());
-        nicknameColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getName()));
-        pointsColumn.setCellValueFactory(x -> new SimpleStringProperty(Integer.toString(x.getValue().getPoint())));
-        timeColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getTime().toString()));
+        // table.getItems().addAll(ViewUtils.getScoreBoard());
+        // nicknameColumn.setCellValueFactory(x -> new
+        // SimpleStringProperty(x.getValue().getName()));
+        // pointsColumn.setCellValueFactory(x -> new
+        // SimpleStringProperty(Integer.toString(x.getValue().getPoint())));
+        // timeColumn.setCellValueFactory(x -> new
+        // SimpleStringProperty(x.getValue().getTime().toString()));
     }
 
     /**
@@ -49,6 +52,7 @@ public class LeaderboardController extends AbstractControllerFXML {
      */
     @Override
     public void setText() {
+        table.getItems().clear();
         table.getItems().addAll(ViewUtils.getScoreBoard());
         nicknameColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getName()));
         pointsColumn.setCellValueFactory(x -> new SimpleStringProperty(Integer.toString(x.getValue().getPoint())));
