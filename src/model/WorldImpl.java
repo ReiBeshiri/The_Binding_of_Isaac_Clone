@@ -54,7 +54,7 @@ import utility.ImageType;
  */
 public class WorldImpl implements World {
     private static final int NUM_ROUNDS = 4;
-    private static final int PLAYER_HITTED = 100;
+    private static final int PLAYER_HITTED = 1000;
     private Animated player; // |is the player
     private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom

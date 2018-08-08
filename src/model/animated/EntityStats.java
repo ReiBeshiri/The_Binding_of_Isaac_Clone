@@ -12,15 +12,15 @@ public enum EntityStats {
     /**
      * Static enemy stats.
      */
-    STATIC_ENEMY(4, 0, 300, 45, 1, 400, 10, 7, 22),
+    STATIC_ENEMY(4, 0, 3000, 45, 1, 400, 10, 7, 22),
     /**
      * Movable enemy stats.
      */
-    MOVEABLE_ENEMY(3, 5, 500, 50, 1, 400, 10, 8, 22),
+    MOVEABLE_ENEMY(3, 5, 5000, 50, 1, 400, 10, 8, 22),
     /**
      * Boss stats.
      */
-    BOSS(30, 0, 5000, 60, 1, 600, 10, 7, 120);
+    BOSS(30, 0, 50000, 60, 1, 600, 10, 7, 120);
 
     private int life;
     private double vel;
