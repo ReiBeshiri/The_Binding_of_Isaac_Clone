@@ -47,6 +47,16 @@ public abstract class AbstractGenericScene implements GenericScene {
     public abstract void checkSceneHandler(Event e);
 
     /**
+     * Set listener for this scene.
+     */
+    public abstract void setSceneListener();
+
+    /**
+     * Remove listener for this scene.
+     */
+    public abstract void removeSceneListener();
+
+    /**
      * Get the scene type.
      * @return The type of scene, represented by a enum type.
      */

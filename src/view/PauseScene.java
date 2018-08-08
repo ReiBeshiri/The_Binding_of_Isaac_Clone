@@ -42,4 +42,15 @@ public class PauseScene extends AbstractGenericScene {
         }
     }
 
+    /**
+     * Set scene listener.
+     */
+    @Override
+    public void setSceneListener() { }
+
+    /**
+     * Remove scene listener.
+     */
+    @Override
+    public void removeSceneListener() { }
 }

@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import view.controller.ControllerFXML;
 import view.utility.SceneType;
+
 /**
  * generic type of scene.
  */
@@ -14,23 +15,37 @@ public interface GenericScene {
      * @return enum type of this scene.
      */
     SceneType getSceneType();
+
     /**
      * return event handler of that scene.
      * @return event handler.
      */
     EventHandler<KeyEvent> getEventHandler();
+
     /**
      * Check specific type of events.
      * @param e Event received.
      */
     void checkSceneHandler(Event e);
+
     /**
      * Add exit status to scene stack.
      */
     void exitStatus();
+
     /**
      * Get controller for a specific scene.
      * @return Controller of the scene.
      */
     ControllerFXML getSceneController();
+
+    /**
+     * Set listener for this scene.
+     */
+    void setSceneListener();
+
+    /**
+     * Remove listener for this scene.
+     */
+    void removeSceneListener();
 }

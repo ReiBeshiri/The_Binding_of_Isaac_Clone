@@ -38,6 +38,7 @@ public final class ViewManagerImpl implements ViewManager {
             scene.setRoot(genScene.getSceneController().getRoot());
         }
         stack.push(genScene);
+        genScene.setSceneListener();
         stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
     }
 
@@ -48,6 +49,7 @@ public final class ViewManagerImpl implements ViewManager {
     public void pop() {
         if (stack.size() > 1) {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
+            stack.lastElement().removeSceneListener();
             stack.pop();
             stage.getScene().setRoot(stack.lastElement().getSceneController().getRoot());
             stage.getScene().addEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());

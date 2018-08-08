@@ -22,8 +22,6 @@ public class GameScene extends AbstractGenericScene {
      */
     public GameScene() {
         super(GAME);
-        ViewManagerImpl.get().getStage().heightProperty().addListener(LISTENER);
-        ViewManagerImpl.get().getStage().widthProperty().addListener(LISTENER);
     }
 
     /**
@@ -32,8 +30,6 @@ public class GameScene extends AbstractGenericScene {
     @Override
     public void exitStatus() {
         ViewManagerImpl.get().push(SceneFactory.createPauseScene());
-        ViewManagerImpl.get().getStage().heightProperty().removeListener(LISTENER);
-        ViewManagerImpl.get().getStage().widthProperty().removeListener(LISTENER);
     }
 
     /**
@@ -50,4 +46,21 @@ public class GameScene extends AbstractGenericScene {
         }
     }
 
+    /**
+     * Set scene listener.
+     */
+    @Override
+    public void setSceneListener() {
+        ViewManagerImpl.get().getStage().heightProperty().addListener(LISTENER);
+        ViewManagerImpl.get().getStage().widthProperty().addListener(LISTENER);
+    }
+
+    /**
+     * Remove scene listener.
+     */
+    @Override
+    public void removeSceneListener() {
+        ViewManagerImpl.get().getStage().heightProperty().addListener(LISTENER);
+        ViewManagerImpl.get().getStage().widthProperty().addListener(LISTENER);
+    }
 }

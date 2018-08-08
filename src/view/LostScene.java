@@ -23,4 +23,15 @@ public class LostScene extends AbstractGenericScene {
     @Override
     public void checkSceneHandler(final Event e) { }
 
+    /**
+     * Set scene listener.
+     */
+    @Override
+    public void setSceneListener() { }
+
+    /**
+     * Remove scene listener.
+     */
+    @Override
+    public void removeSceneListener() { }
 }

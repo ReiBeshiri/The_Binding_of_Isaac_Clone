@@ -17,10 +17,27 @@ public class WinScene extends AbstractGenericScene {
         super(WIN);
     }
 
+    /**
+     * Exit status for this scene.
+     */
     @Override
     public void exitStatus() { }
 
+    /**
+     * Check event handler for this scene.
+     */
     @Override
     public void checkSceneHandler(final Event e) { }
 
+    /**
+     * Set scene listener.
+     */
+    @Override
+    public void setSceneListener() { }
+
+    /**
+     * Remove scene listener.
+     */
+    @Override
+    public void removeSceneListener() { }
 }
