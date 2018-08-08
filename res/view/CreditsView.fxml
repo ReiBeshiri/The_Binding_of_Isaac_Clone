@@ -26,23 +26,23 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Developed by:">
+            <Label id="lblSizeUp" text="Developed by:">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin></Label>
-            <Label text="Beshiri Rei" GridPane.rowIndex="1">
+            <Label id="lblPriorityInfo" text="Beshiri Rei" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" />
                </GridPane.margin></Label>
-            <Label text="Cristurean Denis" GridPane.rowIndex="2">
+            <Label id="lblPriorityInfo" text="Cristurean Denis" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="5.0" top="5.0" />
                </GridPane.margin></Label>
-            <Label text="Vaienti Andrea" GridPane.rowIndex="3">
+            <Label id="lblPriorityInfo" text="Vaienti Andrea" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="5.0" top="5.0" />
                </GridPane.margin></Label>
-            <Label text="Vincenzi Mattia" GridPane.rowIndex="4">
+            <Label id="lblPriorityInfo" text="Vincenzi Mattia" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="5.0" top="5.0" />
                </GridPane.margin></Label>

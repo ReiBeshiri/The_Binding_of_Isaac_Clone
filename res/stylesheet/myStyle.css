@@ -1,6 +1,6 @@
 @font-face {
-    font-family: a dripping marker;
-    src: url('adrip1.ttf');
+    font-family: Nasalization Rg;
+    src: url('nasalization-rg.ttf');
 }
 
 @font-face {
@@ -38,9 +38,23 @@
     -fx-opacity: 1;
 }
 
-#HelpInfo {
+#lblHighlight {
     -fx-font-size: 20pt;
-    -fx-font-family: 'Magmawave Caps';
+    -fx-font-family: 'Nasalization Rg';
+    -fx-text-fill: red;
+    -fx-opacity: 1;
+}
+
+#lblHelp {
+    -fx-font-size: 20pt;
+    -fx-font-family: 'Nasalization Rg';
+    -fx-text-fill: black;
+    -fx-opacity: 1;
+}
+
+#lblPriorityInfo{
+    -fx-font-size: 30pt;
+    -fx-font-family: 'Nasalization Rg';
     -fx-text-fill: black;
     -fx-opacity: 1;
 }
