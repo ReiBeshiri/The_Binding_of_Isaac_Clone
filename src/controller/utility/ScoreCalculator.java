@@ -6,7 +6,7 @@ package controller.utility;
  */
 public final class ScoreCalculator {
 
-    private static final int DELTA_CURVE_MOLTIPLICATOR = 1000;
+    private static final int DELTA_CURVE_MOLTIPLICATOR = 10000;
     private static final int DELTA_CURVE_DIVISOR = 200000;
 
     private ScoreCalculator() { }
@@ -17,6 +17,6 @@ public final class ScoreCalculator {
      * @return Bonus time.
      */
     public static int bonusTime(final int timeElapsed) {
-        return DELTA_CURVE_MOLTIPLICATOR * (int) Math.exp(-(Math.pow(timeElapsed, 2)) / DELTA_CURVE_DIVISOR); //Bisogna guardarci meglio;
+        return (int) (DELTA_CURVE_MOLTIPLICATOR * Math.exp(-Math.pow(timeElapsed, 2) / DELTA_CURVE_DIVISOR)); //Bisogna guardarci meglio;
     }
 }
