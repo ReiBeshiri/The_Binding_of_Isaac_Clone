@@ -92,9 +92,9 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         ld.add(this.leftDoorFromShopToMain);
         ld.add(this.rightDoorFromShopToBoss);
         final HitBox hbHeart = new CircleHitBox(ModelUtility.getWorldWidth() / 2, ModelUtility.getWorldHeight() / 2,
-                ProportionUtility.getRadiusButton());
+                ProportionUtility.getRadiusItemShop());
         final HitBox hbRangeUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2 + 100, ModelUtility.getWorldHeight() / 2,
-                ProportionUtility.getRadiusButton());
+                ProportionUtility.getRadiusItemShop());
         items.add(new HeartImpl(hbHeart, true));
         items.add(new RangeUpImpl(hbRangeUp, true));
         return rf.createShopRoom(hbRoom, ld, items, lw);

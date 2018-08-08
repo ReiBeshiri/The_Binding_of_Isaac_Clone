@@ -11,7 +11,7 @@ public final class ProportionUtility {
     private static final double PROPORTION_BUTTON = 40;
     private static final double PROPORTION_DOOR_WIDTH = 15;
     private static final double PROPORTION_DOOR_HEIGHT = 90;
-    private static final double PROPORTION_ITEMSHOP = 30;
+    private static final double PROPORTION_ITEMSHOP = 13;
     private static final double HEIGHT = 600;
     private static final double WIDTH = 1100;
     private static final double WALLVERTICALWIDTH = 15;
@@ -101,7 +101,7 @@ public final class ProportionUtility {
 
     /**
      * @return width of the room minus the dimension of the walls.
-     * So it return the actual dimension of the playable room (770).
+     * So it return the actual dimension of the playable room (1070).
      */
     public static double getWidth() {
         return ProportionUtility.WIDTH - getWallStandard() * 2;
