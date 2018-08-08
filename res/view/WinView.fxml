@@ -27,8 +27,8 @@
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label id="lblSizeUp" text="You Scored :" />
-            <TextField editable="false" />
+            <Label id="lblSizeUp" text="Your Score :" />
+             <TextField fx:id="scoreText" alignment="CENTER" editable="false" />
             <ImageView fitHeight="398.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="/images/winnerImage.png" />
