@@ -101,7 +101,7 @@ public final class CollisionUtil {
      *          The door HitBox.
      * @return True if the collision occurred, false otherwise. 
      */
-    public static boolean doorPlayerCollision(final CircleHitBox chb, final RectangularHitBox rhb) {
+    public static boolean rectPlayerCollision(final CircleHitBox chb, final RectangularHitBox rhb) {
         final double distX = Math.abs(chb.getX() - rhb.getX() - rhb.getWidth() / 2);
         final double distY = Math.abs(chb.getY() - rhb.getY() - rhb.getHeight() / 2);
         if (distX > ((rhb.getWidth() / 2) + chb.getRadius()) || distY > ((rhb.getHeight() / 2) + chb.getRadius())) {

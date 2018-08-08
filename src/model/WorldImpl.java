@@ -19,9 +19,11 @@ import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.hitbox.RectangularHitBox;
 import model.inanimated.Button;
+import model.inanimated.DamageUp;
 import model.inanimated.Heart;
 import model.inanimated.Inanimated;
 import model.inanimated.RangeUp;
+import model.inanimated.VelocityUp;
 import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
@@ -477,7 +479,7 @@ public class WorldImpl implements World {
                 playerBulletHitsEnemy(deltaTime);
             }
             if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS
-                    && CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
+                    && CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                             (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
                     && !this.mode.equals(Mode.INFINITE)) {
                 // se hai finito i round nella main puoi andare nello shop.
@@ -580,10 +582,24 @@ public class WorldImpl implements World {
                         listEvent.add(new PlayerScoreChange(r.getCost()));
                         dieItems.add(i);
                     }
+                } else if (i instanceof DamageUp) {
+                    final DamageUp d = (DamageUp) i;
+                    if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
+                        ((AbstractCharacter) getPlayer()).setDamage(d.getDamage());
+                        listEvent.add(new PlayerScoreChange(d.getCost()));
+                        dieItems.add(i);
+                    }
+                } else if (i instanceof VelocityUp) {
+                    final VelocityUp v = (VelocityUp) i;
+                    if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
+                        ((AbstractCharacter) getPlayer()).setVel(v.getVelocity());
+                        listEvent.add(new PlayerScoreChange(v.getCost()));
+                        dieItems.add(i);
+                    }
                 }
             }
             we.getItems().removeAll(dieItems);
-            if (CollisionUtil.doorPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
+            if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                     (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
                 this.room = this.listRoom.get(2);
                 listEvent.add(new RoomChange(this.room));

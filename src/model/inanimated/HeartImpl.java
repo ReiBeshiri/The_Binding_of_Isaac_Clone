@@ -3,9 +3,7 @@ package model.inanimated;
 import model.hitbox.HitBox;
 import utility.ImageType;
 /**
- * 
- * Heart implements.
- *
+ * Heart item implements.
  */
 public class HeartImpl extends AbstractInanimated implements Heart {
 
@@ -16,7 +14,6 @@ public class HeartImpl extends AbstractInanimated implements Heart {
     //All'inizio il "bottone" non sarà attivo perchè la vita sarà gia piena,
     //ma appena si perde vita bisogna attivarlo.
     /**
-     * 
      * @param h HitBox.
      * @param enable It's possible buy the life.
      */

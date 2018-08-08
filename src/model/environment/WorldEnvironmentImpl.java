@@ -12,11 +12,13 @@ import model.hitbox.HitBox;
 import model.hitbox.RectangularHitBox;
 import model.inanimated.Button;
 import model.inanimated.ButtonImpl;
+import model.inanimated.DamageUpImpl;
 import model.inanimated.Door;
 import model.inanimated.DoorImpl;
 import model.inanimated.HeartImpl;
 import model.inanimated.Inanimated;
 import model.inanimated.RangeUpImpl;
+import model.inanimated.VelocityUpImpl;
 import model.inanimated.Wall;
 import model.inanimated.WallImpl;
 import model.room.Room;
@@ -93,14 +95,26 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         ld.add(this.rightDoorFromShopToBoss);
         final HitBox hbHeart = new CircleHitBox(ModelUtility.getWorldWidth() / 2, ModelUtility.getWorldHeight() / 2,
                 ProportionUtility.getRadiusItemShop());
-        final HitBox hbRangeUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2 + 100, ModelUtility.getWorldHeight() / 2,
-                ProportionUtility.getRadiusItemShop());
-//        final HitBox hbHeart = new RectangularHitBox(ModelUtility.getWorldWidth() / 2 - 200,
-//                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2, ProportionUtility.getPowerUpHeight(),
-//                ProportionUtility.getPowerUpWidth());
+        final HitBox hbRangeUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2 + 100,
+                ModelUtility.getWorldHeight() / 2, ProportionUtility.getRadiusItemShop());
+        final HitBox hbDamageUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2,
+                ModelUtility.getWorldHeight() / 2 + 100, ProportionUtility.getRadiusItemShop());
+        final HitBox hbVelocityUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2,
+                ModelUtility.getWorldHeight() / 2 - 100, ProportionUtility.getRadiusItemShop());
+//        final HitBox hbVelocityUp = new RectangularHitBox(ModelUtility.getWorldWidth() / 2,
+//                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2 - 100,
+//                ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
+//        final HitBox hbHeart = new RectangularHitBox(ModelUtility.getWorldWidth() / 2,
+//                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2,
+//                ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
+//        final HitBox hbDamageUp = new RectangularHitBox(ModelUtility.getWorldWidth() / 2,
+//                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2 + 100,
+//                ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
 //        final HitBox hbRangeUp = new RectangularHitBox(ModelUtility.getWorldWidth() / 2 + 100,
-//                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2, ProportionUtility.getPowerUpHeight(),
-//                ProportionUtility.getPowerUpWidth());
+//                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2,
+//                ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
+        items.add(new DamageUpImpl(hbDamageUp, true));
+        items.add(new VelocityUpImpl(hbVelocityUp, true));
         items.add(new HeartImpl(hbHeart, true));
         items.add(new RangeUpImpl(hbRangeUp, true));
         return rf.createShopRoom(hbRoom, ld, items, lw);

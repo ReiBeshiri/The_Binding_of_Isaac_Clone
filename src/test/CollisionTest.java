@@ -86,17 +86,17 @@ class CollisionTest {
     public void collisionBetweenPlayerAndDoor() {
         final RectangularHitBox rigthDoor = new RectangularHitBox(780, 270, 30, 20);
         final CircleHitBox player = new CircleHitBox(778, 200, 2);
-        assertFalse(CollisionUtil.doorPlayerCollision(player, rigthDoor));
+        assertFalse(CollisionUtil.rectPlayerCollision(player, rigthDoor));
 
         // COLLISION WITH RIGHT DOOR.
         final double deltaY = 80;
         player.changePosition(player.getX(), player.getY() + deltaY);
-        assertTrue(CollisionUtil.doorPlayerCollision(player, rigthDoor));
+        assertTrue(CollisionUtil.rectPlayerCollision(player, rigthDoor));
 
         // COLLISION WITH LEFT DOOR.
         final RectangularHitBox leftDoor = new RectangularHitBox(0, 300, 30, 20);
         final CircleHitBox enemy = new CircleHitBox(2, 298, 2);
-        assertTrue(CollisionUtil.doorPlayerCollision(enemy, leftDoor));
+        assertTrue(CollisionUtil.rectPlayerCollision(enemy, leftDoor));
     }
 
     @Test

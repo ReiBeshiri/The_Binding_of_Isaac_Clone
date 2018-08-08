@@ -4,7 +4,7 @@ import model.hitbox.HitBox;
 import utility.ImageType;
 
 /**
- * Range Power Up.
+ * Range Power Up item.
  */
 public class RangeUpImpl extends AbstractInanimated implements RangeUp {
     private static final int COST = 500;

@@ -22,7 +22,7 @@ public abstract class AbstractCharacter implements Animated {
     private double bulletRange;
     private final double bulletRadius;
     private final double bulletVel;
-    private final int bulletDamage;
+    private int bulletDamage;
 
     /**
      * Constructor for this class.
@@ -92,6 +92,14 @@ public abstract class AbstractCharacter implements Animated {
     @Override
     public void setVel(final double vel) {
         velocity = vel;
+    }
+
+    /**
+     * Setter for damage up.
+     * @param damage the damage to increase.
+     */
+    public void setDamage(final int damage) {
+        this.bulletDamage *= damage;
     }
 
     /**
