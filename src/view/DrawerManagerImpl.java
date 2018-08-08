@@ -176,7 +176,7 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas.save();
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         drawHitBoxImage(room.getBackgroundImage(),
-                new RectangularHitBox(0, 0, ViewUtils.getWorldHeight(), ViewUtils.getWorldWidth()), gcGameCanvas);
+                new RectangularHitBox(15, 15, ViewUtils.getWorldHeight() - 30 , ViewUtils.getWorldWidth() - 30), gcGameCanvas);
         room.getDoors()
                 .forEach(x -> drawHitBoxImage(x.getImageType(), (RectangularHitBox) x.getHitBox(), gcGameCanvas));
         room.getWalls()
@@ -189,7 +189,7 @@ public class DrawerManagerImpl implements DrawerManager {
         } else if (room instanceof ShopRoom) {
             final ShopRoom shopRoom = (ShopRoom) room;
             shopRoom.getItems()
-                    .forEach(x -> drawHitBoxImage(x.getImageType(), (CircleHitBox) x.getHitBox(), gcGameCanvas));
+                    .forEach(x -> drawHitBoxImage(x.getImageType(), (RectangularHitBox) x.getHitBox(), gcGameCanvas));
         }
 
         gcGameCanvas.restore();
