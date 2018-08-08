@@ -102,16 +102,23 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
 //        final HitBox hbVelocityUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2,
 //                ModelUtility.getWorldHeight() / 2 - 100, ProportionUtility.getRadiusItemShop());
         final HitBox hbVelocityUp = new RectangularHitBox(ModelUtility.getWorldWidth() / 2,
-                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2 - 100,
+                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2
+                        - ProportionUtility.getUnderShopY(),
                 ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
-        final HitBox hbHeart = new RectangularHitBox(ModelUtility.getWorldWidth() / 2,
-                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2,
+        final HitBox hbHeart = new RectangularHitBox(
+                ModelUtility.getWorldWidth() / 2 - ProportionUtility.getUnderShopX(),
+                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2
+                        - ProportionUtility.getUnderShopY(),
                 ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
-        final HitBox hbDamageUp = new RectangularHitBox(ModelUtility.getWorldWidth() / 2,
-                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2 + 100,
+        final HitBox hbDamageUp = new RectangularHitBox(
+                ModelUtility.getWorldWidth() / 2 - ProportionUtility.getUnderShopX() * 2,
+                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2
+                        - ProportionUtility.getUnderShopY(),
                 ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
-        final HitBox hbRangeUp = new RectangularHitBox(ModelUtility.getWorldWidth() / 2 + 100,
-                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2,
+        final HitBox hbRangeUp = new RectangularHitBox(
+                ModelUtility.getWorldWidth() / 2 + ProportionUtility.getUnderShopX(),
+                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2
+                        - ProportionUtility.getUnderShopY(),
                 ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
         items.add(new DamageUpImpl(hbDamageUp, true));
         items.add(new VelocityUpImpl(hbVelocityUp, true));

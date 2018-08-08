@@ -18,8 +18,10 @@ public final class ProportionUtility {
     private static final double WALLHORIZONTALWIDTH = 30;
     private static final double WALLVERTICALLHEIGHT = 30;
     private static final double WALLHORIZONTALHEIGHT = 15;
-    private static final double POWER_UP_HEIGHT = 40;
-    private static final double POWER_UP_WIDTH = 30;
+    private static final double POWER_UP_HEIGHT = 100;
+    private static final double POWER_UP_WIDTH = 80;
+    private static final double UNDER_SHOP_Y = 80;
+    private static final double UNDER_SHOP_X = 100;
 
     private ProportionUtility() { }
 
@@ -28,6 +30,20 @@ public final class ProportionUtility {
      */
     public static double getPowerUpHeight() {
         return ProportionUtility.POWER_UP_HEIGHT;
+    }
+
+    /**
+     * @return under shop y (80).
+     */
+    public static double getUnderShopY() {
+        return ProportionUtility.UNDER_SHOP_Y;
+    }
+
+    /**
+     * @return under shop x (100).
+     */
+    public static double getUnderShopX() {
+        return ProportionUtility.UNDER_SHOP_X;
     }
 
     /**
