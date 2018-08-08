@@ -20,7 +20,7 @@ public enum EntityStats {
     /**
      * Boss stats.
      */
-    BOSS(30, 0, 50000, 60, 1, 600, 10, 7, 120);
+    BOSS(30, 0, 20000, 60, 1, 600, 10, 7, 120);
 
     private int life;
     private double vel;
