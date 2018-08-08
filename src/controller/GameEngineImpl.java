@@ -90,7 +90,7 @@ public final class GameEngineImpl implements GameEngine {
         world.createEnvironment();
         if (ViewImpl.get().isGodModeSelected()) {
             world.setMode(Mode.GOD);
-        } else if (ViewImpl.get().isInfinityModeSelected()) {
+        } else if (ViewImpl.get().isSurvivalModeSelected()) {
             world.setMode(Mode.INFINITE);
         } else {
             world.setMode(Mode.NORMAL);

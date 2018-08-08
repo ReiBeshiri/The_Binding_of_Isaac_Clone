@@ -80,7 +80,7 @@ public interface View {
      * Return if infinity mode is selected.
      * @return if infinity mode is selected.
      */
-    boolean isInfinityModeSelected();
+    boolean isSurvivalModeSelected();
 
     /**
      * Setter for initial height.

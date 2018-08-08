@@ -13,19 +13,6 @@ public interface ControllerFXML {
     Region getRoot();
 
     /**
-     * Method used to apply a fade-in transition to a window.
-     */
-    void openingFade();
-
-    /**
-     * Method used to apply a fade-out transition to a window
-     * and to set the window that needs to appear.
-     * @param toRun
-     *          The window that needs to be opened at the end of the transition.
-     */
-    void closingFade(Runnable toRun);
-
-    /**
      * Set text in different scene.
      */
     void setText();

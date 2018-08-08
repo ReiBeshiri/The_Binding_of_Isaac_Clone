@@ -35,12 +35,12 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </CheckBox>
-                  <Label text="Infinity Mode" GridPane.rowIndex="1">
+                  <Label text="Survival Mode" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <CheckBox fx:id="infinityModeCheckBox" mnemonicParsing="false" selected="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <CheckBox fx:id="survivalModeCheckBox" mnemonicParsing="false" selected="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

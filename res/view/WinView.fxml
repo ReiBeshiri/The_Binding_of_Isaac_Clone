@@ -27,7 +27,10 @@
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label id="lblSizeUp" text="Your Score :" />
+            <Label id="lblSizeUp" text="Your Score :">
+               <padding>
+                  <Insets top="10.0" />
+               </padding></Label>
              <TextField fx:id="scoreText" alignment="CENTER" editable="false" />
             <ImageView fitHeight="398.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
                <image>

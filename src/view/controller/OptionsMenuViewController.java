@@ -15,28 +15,26 @@ import view.utility.ViewUtils;
 public class OptionsMenuViewController extends AbstractControllerFXML {
 
     @FXML private CheckBox godModeCheckBox;
-    @FXML private CheckBox infinityModeCheckBox;
+    @FXML private CheckBox survivalModeCheckBox;
     @FXML private BorderPane contentPane;
 
     @FXML
     private void initialize() {
         godModeCheckBox.setSelected(ViewUtils.isGodModeSelected());
-        infinityModeCheckBox.setSelected(ViewUtils.isInfinityModeSelected());
+        survivalModeCheckBox.setSelected(ViewUtils.isSurvivalModeSelected());
     }
 
     @FXML
     private void applyButtonClick() {
         ViewUtils.setGodMode(godModeCheckBox.isSelected());
-        ViewUtils.setInfinityMode(infinityModeCheckBox.isSelected());
-        //super.closingFade(() -> ViewManagerImpl.get().pop());
+        ViewUtils.setSurvivalMode(survivalModeCheckBox.isSelected());
         ViewManagerImpl.get().pop();
     }
 
     @FXML
     private void exitButtonClick() {
         godModeCheckBox.setSelected(ViewUtils.isGodModeSelected());
-        infinityModeCheckBox.setSelected(ViewUtils.isInfinityModeSelected());
-        //super.closingFade(() -> ViewManagerImpl.get().pop());
+        survivalModeCheckBox.setSelected(ViewUtils.isSurvivalModeSelected());
         ViewManagerImpl.get().pop();
     }
 

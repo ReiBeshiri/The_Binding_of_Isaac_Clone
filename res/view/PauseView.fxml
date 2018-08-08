@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -26,24 +28,52 @@
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label alignment="CENTER" text="Score: " />
             <Label text="Damage: " GridPane.rowIndex="1" />
             <Label text="Velocity: " GridPane.rowIndex="2" />
             <Label text="Bullet Range: " GridPane.rowIndex="3" />
-            <Label fx:id="scoreLabel" text="Label" GridPane.columnIndex="1" />
-            <Label fx:id="damageLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="velLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="bulletRangeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="scoreLabel" text="Label" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="damageLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="velLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="bulletRangeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="5.0" right="5.0" />
+               </GridPane.margin></Label>
+            <ImageView fitHeight="200.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <image>
+                  <Image url="/images/gameImages/damageUpImage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <image>
+                  <Image url="/images/gameImages/VelocityUpImage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="200.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <image>
+                  <Image url="/images/gameImages/rangeUpImage.png" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
    </center>

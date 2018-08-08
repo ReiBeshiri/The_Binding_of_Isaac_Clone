@@ -140,8 +140,8 @@ public final class ViewImpl implements View {
      * Return if infinity mode is selected.
      */
     @Override
-    public boolean isInfinityModeSelected() {
-        return ViewUtils.isInfinityModeSelected();
+    public boolean isSurvivalModeSelected() {
+        return ViewUtils.isSurvivalModeSelected();
     }
 
     /**

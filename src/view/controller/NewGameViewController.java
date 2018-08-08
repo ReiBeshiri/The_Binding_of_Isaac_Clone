@@ -48,7 +48,6 @@ public class NewGameViewController extends AbstractControllerFXML {
 
     @FXML
     private void btnBackClick() {
-        //super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
     }
 }

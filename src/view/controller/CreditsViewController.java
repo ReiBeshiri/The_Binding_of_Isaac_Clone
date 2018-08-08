@@ -1,5 +1,6 @@
 package view.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
@@ -11,9 +12,8 @@ public class CreditsViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane creditsContentPane;
 
-    @FXML 
+    @FXML
     private void backButtonClick() {
-        //super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
     }
 

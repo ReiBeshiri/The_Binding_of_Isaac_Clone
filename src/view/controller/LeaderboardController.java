@@ -24,7 +24,6 @@ public class LeaderboardController extends AbstractControllerFXML {
 
     @FXML
     private void backButtonClick() {
-        // super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
     }
 

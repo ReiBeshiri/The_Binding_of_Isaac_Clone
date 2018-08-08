@@ -15,7 +15,6 @@ public class HelpViewController extends AbstractControllerFXML {
 
     @FXML
     private void backButtonClick() {
-        //super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
     }
 

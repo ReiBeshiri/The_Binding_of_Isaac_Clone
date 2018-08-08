@@ -6,7 +6,7 @@ import controller.utility.Score;
 import utility.Statistic;
 
 /**
- * Utility class meant to keep views values e.g. fps, resolution and god mode.
+ * Utility class meant to keep views values, statistics, god mode and survival mode.
  */
 public final class ViewUtils {
 
@@ -24,7 +24,7 @@ public final class ViewUtils {
     private static final double BOTTOM_CANVAS_PROP = 11;
 
     private static boolean godMode;
-    private static boolean infinityMode;
+    private static boolean survivalMode;
     private static double worldHeight;
     private static double worldWidth;
     private static double worldHeightProportion;
@@ -52,19 +52,19 @@ public final class ViewUtils {
     }
 
     /**
-     * Getter for the infinity Mode option.
+     * Getter for the survival Mode option.
      * @return True if is selected, false otherwise.
      */
-    public static boolean isInfinityModeSelected() {
-        return infinityMode;
+    public static boolean isSurvivalModeSelected() {
+        return survivalMode;
     }
 
     /**
-     * Setter used for the infinity Mode option.
+     * Setter used for the survival Mode option.
      * @param value True if the option is selected, false otherwise.
      */
-    public static void setInfinityMode(final boolean value) {
-        infinityMode = value;
+    public static void setSurvivalMode(final boolean value) {
+        survivalMode = value;
     }
 
     /**
