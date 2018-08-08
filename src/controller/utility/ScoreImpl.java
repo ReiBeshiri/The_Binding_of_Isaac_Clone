@@ -65,6 +65,9 @@ public class ScoreImpl implements Score {
         return this.point - player.getPoint();
     }
 
+    /**
+     * Hash code method.
+     */
     @Override
     public final int hashCode() {
         final int prime = 31;
@@ -73,6 +76,9 @@ public class ScoreImpl implements Score {
         return result;
     }
 
+    /**
+     * Equals method.
+     */
     @Override
     public final boolean equals(final Object obj) {
         if (this == obj) {
@@ -84,10 +90,7 @@ public class ScoreImpl implements Score {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        ScoreImpl other = (ScoreImpl) obj;
-        if (point != other.point || other.getTime().getTimeInSeconds() != this.time.getTimeInSeconds()) {
-            return false;
-        }
-        return true;
+        final ScoreImpl other = (ScoreImpl) obj;
+        return !(point != other.point || other.getTime().getTimeInSeconds() != this.time.getTimeInSeconds());
     }
 }
