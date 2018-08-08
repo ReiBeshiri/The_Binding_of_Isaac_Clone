@@ -569,7 +569,7 @@ public class WorldImpl implements World {
             for (final Inanimated i : we.getItems()) {
                 if (i instanceof Heart) {
                     final Heart h = (Heart) i;
-                    if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())
+                    if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) i.getHitBox())
                             && ((AbstractCharacter) getPlayer()).getLife() != EntityStats.PLAYER.getLife()) {
                         incPlayerLife(h.getLife());
                         listEvent.add(new PlayerScoreChange(h.getCost()));
@@ -577,21 +577,21 @@ public class WorldImpl implements World {
                     }
                 } else if (i instanceof RangeUp) {
                     final RangeUp r = (RangeUp) i;
-                    if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
+                    if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) i.getHitBox())) {
                         ((AbstractCharacter) getPlayer()).setRange(r.getRangeUp());
                         listEvent.add(new PlayerScoreChange(r.getCost()));
                         dieItems.add(i);
                     }
                 } else if (i instanceof DamageUp) {
                     final DamageUp d = (DamageUp) i;
-                    if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
+                    if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) i.getHitBox())) {
                         ((AbstractCharacter) getPlayer()).setDamage(d.getDamage());
                         listEvent.add(new PlayerScoreChange(d.getCost()));
                         dieItems.add(i);
                     }
                 } else if (i instanceof VelocityUp) {
                     final VelocityUp v = (VelocityUp) i;
-                    if (isColliding((CircleHitBox) getPlayer().getHitBox(), (CircleHitBox) i.getHitBox())) {
+                    if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) i.getHitBox())) {
                         ((AbstractCharacter) getPlayer()).setVel(v.getVelocity());
                         listEvent.add(new PlayerScoreChange(v.getCost()));
                         dieItems.add(i);
