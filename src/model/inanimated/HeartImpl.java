@@ -7,7 +7,7 @@ import utility.ImageType;
  */
 public class HeartImpl extends AbstractInanimated implements Heart {
 
-    private static final int COST = 500;
+    private static final int COST = 5000;
     private static final int LIFE = 1;
     private final ImageType imgHearth;
 

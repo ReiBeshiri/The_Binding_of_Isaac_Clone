@@ -7,7 +7,7 @@ import utility.ImageType;
  */
 public class VelocityUpImpl extends AbstractInanimated implements VelocityUp {
 
-    private static final int COST = 500;
+    private static final int COST = 5000;
     private static final double VEL = 10;
     private final ImageType imgVelocity;
 
