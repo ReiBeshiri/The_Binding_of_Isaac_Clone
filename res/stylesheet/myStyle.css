@@ -32,21 +32,21 @@
 }
 
 #lblSizeUp {
-    -fx-font-size: 40pt;
+    -fx-font-size: 30pt;
     -fx-font-family: 'Magmawave Caps';
     -fx-text-fill: black;
     -fx-opacity: 1;
 }
 
 #lblHighlight {
-    -fx-font-size: 20pt;
+    -fx-font-size: 15pt;
     -fx-font-family: 'Nasalization Rg';
     -fx-text-fill: red;
     -fx-opacity: 1;
 }
 
 #lblHelp {
-    -fx-font-size: 20pt;
+    -fx-font-size: 15pt;
     -fx-font-family: 'Nasalization Rg';
     -fx-text-fill: black;
     -fx-opacity: 1;
