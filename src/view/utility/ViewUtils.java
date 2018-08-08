@@ -15,7 +15,7 @@ public final class ViewUtils {
     private static final double LIFE_CANVAS_H = 50;
     private static final double LIFE_CANVAS_W = 550;
     private static final double STAGE_DELTA_HEIGTH = 75;
-    private static final double TIMER_TEXT_FONT = 3;
+    private static final double TIMER_TEXT_FONT = 4;
     private static final double HEARTH_HEIGHT = 25;
     private static final double HEARTH_WIDTH = 30;
     private static final double SPACE_HEARTH_PROPORTION = 40;
@@ -32,6 +32,7 @@ public final class ViewUtils {
     private static int points;
     private static Statistic stats;
     private static List<Score> leaderBoard; 
+    private static double wallMinorDimension;
 
     private ViewUtils() { }
 
@@ -273,5 +274,22 @@ public final class ViewUtils {
      */
     public static Statistic getStats() {
         return stats;
+    }
+
+    /**
+     * Getter for minor wall dimension.
+     * Used for draw background images.
+     * @return wall minor dimension.
+     */
+    public static double getWallMinorDimension() {
+        return wallMinorDimension;
+    }
+
+    /**
+     * Setter for wall minor dimension.
+     * @param wallDimension wall dimension.
+     */
+    public static void setWallMinorDimension(final double wallDimension) {
+        wallMinorDimension = wallDimension;
     }
 }

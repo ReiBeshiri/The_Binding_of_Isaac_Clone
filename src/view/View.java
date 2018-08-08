@@ -119,6 +119,12 @@ public interface View {
     void setWorldWidthProportion(double wwProp);
 
     /**
+     * Setter for wall minor dimension.
+     * @param wallDimension minor dimension of wall.
+     */
+    void setIWallMinorDimension(double wallDimension);
+
+    /**
      * Method used in new game for init time canvas.
      */
     void initTimeCanvas();
