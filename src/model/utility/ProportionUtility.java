@@ -11,15 +11,31 @@ public final class ProportionUtility {
     private static final double PROPORTION_BUTTON = 40;
     private static final double PROPORTION_DOOR_WIDTH = 15;
     private static final double PROPORTION_DOOR_HEIGHT = 90;
-    private static final double PROPORTION_ITEMSHOP = 13;
+    private static final double PROPORTION_ITEMSHOP = 12;
     private static final double HEIGHT = 600;
     private static final double WIDTH = 1100;
     private static final double WALLVERTICALWIDTH = 15;
     private static final double WALLHORIZONTALWIDTH = 30;
     private static final double WALLVERTICALLHEIGHT = 30;
     private static final double WALLHORIZONTALHEIGHT = 15;
+    private static final double POWER_UP_HEIGHT = 40;
+    private static final double POWER_UP_WIDTH = 30;
 
     private ProportionUtility() { }
+
+    /**
+     * @return power up height.
+     */
+    public static double getPowerUpHeight() {
+        return ProportionUtility.POWER_UP_HEIGHT;
+    }
+
+    /**
+     * @return power up width.
+     */
+    public static double getPowerUpWidth() {
+        return ProportionUtility.POWER_UP_WIDTH;
+    }
 
     /**
      * @return wall vertical width (15).

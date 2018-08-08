@@ -95,6 +95,12 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
                 ProportionUtility.getRadiusItemShop());
         final HitBox hbRangeUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2 + 100, ModelUtility.getWorldHeight() / 2,
                 ProportionUtility.getRadiusItemShop());
+//        final HitBox hbHeart = new RectangularHitBox(ModelUtility.getWorldWidth() / 2 - 200,
+//                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2, ProportionUtility.getPowerUpHeight(),
+//                ProportionUtility.getPowerUpWidth());
+//        final HitBox hbRangeUp = new RectangularHitBox(ModelUtility.getWorldWidth() / 2 + 100,
+//                ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2, ProportionUtility.getPowerUpHeight(),
+//                ProportionUtility.getPowerUpWidth());
         items.add(new HeartImpl(hbHeart, true));
         items.add(new RangeUpImpl(hbRangeUp, true));
         return rf.createShopRoom(hbRoom, ld, items, lw);
