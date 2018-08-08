@@ -19,7 +19,7 @@ public class RangeUpImpl extends AbstractInanimated implements RangeUp {
      */
     public RangeUpImpl(final HitBox h, final boolean enable) {
         super(h, enable);
-        imgRangeUp = ImageType.ICON;
+        imgRangeUp = ImageType.BULLET_RANGE_UP;
     }
 
     /**

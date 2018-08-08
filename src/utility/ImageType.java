@@ -108,11 +108,13 @@ public enum ImageType {
      * Bullet range power up image.
      */
     BULLET_RANGE_UP("rangeUpImage.png");
+
     private final String path;
 
     ImageType(final String path) {
         this.path = path;
     }
+
     /**
      * Getter for name.
      * @return Return the image name.
