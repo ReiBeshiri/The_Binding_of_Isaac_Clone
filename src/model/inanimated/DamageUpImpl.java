@@ -6,7 +6,7 @@ import utility.ImageType;
  * Damage item implement.
  */
 public class DamageUpImpl extends AbstractInanimated implements DamageUp {
-    private static final int COST = 500;
+    private static final int COST = 5000;
     private static final int DAMAGE = 2;
     private final ImageType imgDamage;
     /**
