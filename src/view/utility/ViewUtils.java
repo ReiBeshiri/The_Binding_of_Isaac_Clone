@@ -3,6 +3,7 @@ package view.utility;
 import java.util.List;
 
 import controller.utility.Score;
+import utility.Statistic;
 
 /**
  * Utility class meant to keep views values e.g. fps, resolution and god mode.
@@ -29,6 +30,7 @@ public final class ViewUtils {
     private static double worldHeightProportion;
     private static double worldWidthProportion;
     private static int points;
+    private static Statistic stats;
 
     private static List<Score> leaderBoard; 
 
@@ -256,5 +258,21 @@ public final class ViewUtils {
      */
     public static int getPoints() {
         return points;
+    }
+
+    /**
+     * Setter for player statistics.
+     * @param s player statistics.
+     */
+    public static void setStats(final Statistic s) {
+        stats = s;
+    }
+
+    /**
+     * Getter for points.
+     * @return player statistics.
+     */
+    public static Statistic getStats() {
+        return stats;
     }
 }

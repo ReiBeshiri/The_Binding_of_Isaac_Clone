@@ -14,6 +14,7 @@ import controller.event.ButtonEvent;
 import controller.event.Event;
 import model.animated.Animated;
 import model.room.Room;
+import utility.Statistic;
 import view.utility.SceneFactory;
 import view.utility.ViewUtils;
 
@@ -219,10 +220,21 @@ public final class ViewImpl implements View {
         ViewManagerImpl.get().push(SceneFactory.createLostScene());
     }
 
+    /**
+     * Method used to notify victory of game by player.
+     */
     @Override
     public void notifyVictoryGameEvent(final int points) {
         ViewUtils.setPoints(points);
         ViewManagerImpl.get().pop();
         ViewManagerImpl.get().push(SceneFactory.createVictoryScene());
+    }
+
+    /**
+     * Method used to set stats.
+     */
+    @Override
+    public void refreshPlayerStats(final Statistic stats) {
+        ViewUtils.setStats(stats);
     }
 }

@@ -6,6 +6,7 @@ import controller.utility.Score;
 import controller.event.Event;
 import model.animated.Animated;
 import model.room.Room;
+import utility.Statistic;
 /**
  * View class. This class communicate with controller.
  */
@@ -133,4 +134,10 @@ public interface View {
      * @param points points obtained during game.
      */
     void notifyVictoryGameEvent(int points);
+
+    /**
+     * Method used to refresh player statistics and maintained always updated.
+     * @param stats player statistic.
+     */
+    void refreshPlayerStats(Statistic stats);
 }

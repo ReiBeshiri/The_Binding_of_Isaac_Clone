@@ -12,6 +12,7 @@ import controller.utility.Score;
 import controller.utility.ScoreCalculator;
 import controller.utility.ScoreImpl;
 import model.World;
+import model.animated.AbstractCharacter;
 import model.utility.ModelUtility;
 import model.worldevent.BossFightStarted;
 import model.worldevent.PlayerDied;
@@ -24,12 +25,14 @@ import model.worldevent.PlayerScoreChange;
 import model.worldevent.RoomChange;
 import model.worldevent.WorldEvent;
 import utility.Command;
+import utility.Statistic;
+import utility.StatisticImpl;
 import view.ViewImpl;
 
 /**
  * 
- * Defines all the operation for update the model and pass the information of model 
- * to the view for update the graphic.
+ * Defines all the operation for update the model and pass the information of
+ * model to the view for update the graphic.
  */
 public class GameLoopImpl implements GameLoop, Runnable {
     private final List<Command> movement = new ArrayList<>();
@@ -38,7 +41,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private static final int SECONDNANO = 1000000000;
     private static final int FPS = 60;
     private boolean running;
-    private Thread gameLoopThread; 
+    private Thread gameLoopThread;
     private int optimalTime;
     private long lastLoop;
     private final World world;
@@ -50,8 +53,11 @@ public class GameLoopImpl implements GameLoop, Runnable {
 
     /**
      * The class constructor.
-     * @param world The instance of the model
-     * @param name of the player.s
+     * 
+     * @param world
+     *            The instance of the model
+     * @param name
+     *            of the player.s
      */
     public GameLoopImpl(final World world, final String name) {
         this.world = world;
@@ -91,7 +97,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
     }
 
     /**
-     * Method that implement the game loop of the game. It updates world, manage the world events and call the render.
+     * Method that implement the game loop of the game. It updates world, manage the
+     * world events and call the render.
      */
     @Override
     public void run() {
@@ -102,6 +109,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
             lastLoop = now;
 
             update(delta);
+            ViewImpl.get().refreshPlayerStats(createPlayerStats());
             ViewImpl.get().render(ModelUtility.getAnimatedObjects());
             checkEvent();
 
@@ -160,6 +168,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
 
     /**
      * Get player's name.
+     * 
      * @return the player's name.
      */
     public String getName() {
@@ -174,8 +183,10 @@ public class GameLoopImpl implements GameLoop, Runnable {
     }
 
     /**
-     * Call the the world's method update(). 
-     * @param delta The time between a frame and the next.
+     * Call the the world's method update().
+     * 
+     * @param delta
+     *            The time between a frame and the next.
      */
     private void update(final double delta) {
         world.update(delta, this.movement, this.shot);
@@ -217,7 +228,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
 
     /**
      * 
-     * @param timeElapsed The time the player took to finish the game.
+     * @param timeElapsed
+     *            The time the player took to finish the game.
      * @return Bonus point based on time.
      */
     private int bonusTime(final int timeElapsed) {
@@ -260,5 +272,11 @@ public class GameLoopImpl implements GameLoop, Runnable {
             leaderboard.sort(new LeaderboardComparator<Score>());
             GameEngineImpl.get().setLeaderboard(leaderboard);
         }
+    }
+
+    private Statistic createPlayerStats() {
+        final AbstractCharacter player = (AbstractCharacter) ModelUtility.getPlayer();
+        return new StatisticImpl(player.getLife(), point, player.getBulletDamage(), player.getVel(),
+                player.getBulletRange());
     }
 }
