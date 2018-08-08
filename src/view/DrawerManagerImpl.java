@@ -20,7 +20,6 @@ import utility.ImageType;
 import view.utility.ProxyImageLoader;
 import view.utility.Tupla;
 import view.utility.ViewUtils;
-
 import java.util.LinkedList;
 
 /**
@@ -176,7 +175,10 @@ public class DrawerManagerImpl implements DrawerManager {
         gcGameCanvas.save();
         gcGameCanvas.scale(scalingFactor.getX(), scalingFactor.getY());
         drawHitBoxImage(room.getBackgroundImage(),
-                new RectangularHitBox(15, 15, ViewUtils.getWorldHeight() - 30 , ViewUtils.getWorldWidth() - 30), gcGameCanvas);
+                new RectangularHitBox(ViewUtils.getWallMinorDimension(), ViewUtils.getWallMinorDimension(),
+                        ViewUtils.getWorldHeight() - 2 * ViewUtils.getWallMinorDimension(),
+                        ViewUtils.getWorldWidth() - 2 * ViewUtils.getWallMinorDimension()),
+                gcGameCanvas);
         room.getDoors()
                 .forEach(x -> drawHitBoxImage(x.getImageType(), (RectangularHitBox) x.getHitBox(), gcGameCanvas));
         room.getWalls()

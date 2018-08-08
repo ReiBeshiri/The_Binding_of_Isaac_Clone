@@ -201,6 +201,14 @@ public final class ViewImpl implements View {
     }
 
     /**
+     * Setter for wall minor dimension.
+     */
+    @Override
+    public void setIWallMinorDimension(final double wallDimension) {
+        ViewUtils.setWallMinorDimension(wallDimension);
+    }
+
+    /**
      * Method used to clear time canvas.
      */
     @Override

@@ -42,8 +42,7 @@ public final class GameEngineImpl implements GameEngine {
     /**
      * The class constructor.
      */
-    private GameEngineImpl() {
-    }
+    private GameEngineImpl() { }
 
     /**
      * Get the instance of GameEngineImpl.
@@ -66,7 +65,6 @@ public final class GameEngineImpl implements GameEngine {
         if (!Objects.isNull(scoreList)) {
             ViewUtils.setScoreBoard(new ArrayList<Score>(scoreList));
         }
-        // Passare alla view la leaderboard;
         ViewImpl.get().addObserver(new ButtonObserver());
         ViewImpl.get().addObserver(new KeyObserver());
         ViewImpl.get().setInitialHeight(ScreenResolution.getHeigtSize() / ViewUtils.getYScreenProp());
