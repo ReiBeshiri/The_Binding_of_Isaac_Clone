@@ -40,12 +40,13 @@ public interface GenericScene {
     ControllerFXML getSceneController();
 
     /**
-     * Set listener for this scene.
+     * Method called when scene is focused.
      */
-    void setSceneListener();
+    void notifyFocusUp();
 
     /**
-     * Remove listener for this scene.
+     * Method used when scene is not focused. 
+     * (When it's removed from the top of stack).
      */
-    void removeSceneListener();
+    void notifyFocusDown();
 }

@@ -47,19 +47,19 @@ public class GameScene extends AbstractGenericScene {
     }
 
     /**
-     * Set scene listener.
+     * Used when focus up.
      */
     @Override
-    public void setSceneListener() {
+    public void notifyFocusUp() {
         ViewManagerImpl.get().getStage().heightProperty().addListener(LISTENER);
         ViewManagerImpl.get().getStage().widthProperty().addListener(LISTENER);
     }
 
     /**
-     * Remove scene listener.
+     * Used when focus down.
      */
     @Override
-    public void removeSceneListener() {
+    public void notifyFocusDown() {
         ViewManagerImpl.get().getStage().heightProperty().addListener(LISTENER);
         ViewManagerImpl.get().getStage().widthProperty().addListener(LISTENER);
     }

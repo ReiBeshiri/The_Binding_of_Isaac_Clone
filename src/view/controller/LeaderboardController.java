@@ -36,9 +36,23 @@ public class LeaderboardController extends AbstractControllerFXML {
         timeColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getTime().toString()));
     }
 
+    /**
+     * Get root.
+     */
     @Override
     public final Region getRoot() {
         return this.contentPane;
+    }
+
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() {
+        table.getItems().addAll(ViewUtils.getScoreBoard());
+        nicknameColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getName()));
+        pointsColumn.setCellValueFactory(x -> new SimpleStringProperty(Integer.toString(x.getValue().getPoint())));
+        timeColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getTime().toString()));
     }
 
 }

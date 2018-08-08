@@ -17,8 +17,8 @@ public class LostViewController extends AbstractControllerFXML {
     @FXML private TextField scoreText;
 
     @FXML
-    private void initialize() {
-        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
+    private void initialize() { 
+//        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
     }
 
     @FXML
@@ -28,8 +28,19 @@ public class LostViewController extends AbstractControllerFXML {
         }
     }
 
+    /**
+     * Get root.
+     */
     @Override
     public final Region getRoot() {
         return contentPane;
+    }
+
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() {
+        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
     }
 }

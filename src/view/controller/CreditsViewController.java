@@ -17,9 +17,18 @@ public class CreditsViewController extends AbstractControllerFXML {
         ViewManagerImpl.get().pop();
     }
 
+    /**
+     * Get root.
+     */
     @Override
     public final Region getRoot() {
         return creditsContentPane;
     }
+
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() { }
 
 }

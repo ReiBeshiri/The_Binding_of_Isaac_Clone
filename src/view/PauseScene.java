@@ -43,14 +43,16 @@ public class PauseScene extends AbstractGenericScene {
     }
 
     /**
-     * Set scene listener.
+     * Used when focus up.
      */
     @Override
-    public void setSceneListener() { }
+    public void notifyFocusUp() { 
+        getSceneController().setText();
+    }
 
     /**
-     * Remove scene listener.
+     * Used when focus down.
      */
     @Override
-    public void removeSceneListener() { }
+    public void notifyFocusDown() { }
 }

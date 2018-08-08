@@ -40,8 +40,17 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
         ViewManagerImpl.get().pop();
     }
 
+    /**
+     * Get root.
+     */
     @Override
     public final Region getRoot() {
         return this.contentPane;
     }
+
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() { }
 }

@@ -31,14 +31,14 @@ public class HelpScene extends AbstractGenericScene {
     public void checkSceneHandler(final Event e) { }
 
     /**
-     * Set scene listener.
+     * Used when focus up.
      */
     @Override
-    public void setSceneListener() { }
+    public void notifyFocusUp() { }
 
     /**
-     * Remove scene listener.
+     * Used when focus down.
      */
     @Override
-    public void removeSceneListener() { }
+    public void notifyFocusDown() { }
 }

@@ -17,10 +17,19 @@ public class MainMenuViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane contentPane;
 
+    /**
+     * Get root.
+     */
     @Override
     public final Region getRoot() {
         return contentPane;
     }
+
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() { }
 
     @FXML
     private void playButtonClick() {

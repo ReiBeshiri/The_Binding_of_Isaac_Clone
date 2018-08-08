@@ -24,4 +24,9 @@ public interface ControllerFXML {
      *          The window that needs to be opened at the end of the transition.
      */
     void closingFade(Runnable toRun);
+
+    /**
+     * Set text in different scene.
+     */
+    void setText();
 }

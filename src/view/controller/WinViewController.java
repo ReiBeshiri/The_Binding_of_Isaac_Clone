@@ -18,7 +18,7 @@ public class WinViewController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
-        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
+//        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
     }
 
     @FXML
@@ -28,9 +28,19 @@ public class WinViewController extends AbstractControllerFXML {
         }
     }
 
+    /**
+     * Get root.
+     */
     @Override
     public final Region getRoot() {
         return contentPane;
     }
 
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() { 
+        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
+    }
 }

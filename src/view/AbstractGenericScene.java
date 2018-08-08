@@ -49,12 +49,12 @@ public abstract class AbstractGenericScene implements GenericScene {
     /**
      * Set listener for this scene.
      */
-    public abstract void setSceneListener();
+    public abstract void notifyFocusUp();
 
     /**
      * Remove listener for this scene.
      */
-    public abstract void removeSceneListener();
+    public abstract void notifyFocusDown();
 
     /**
      * Get the scene type.

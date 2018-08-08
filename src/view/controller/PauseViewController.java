@@ -29,15 +29,29 @@ public class PauseViewController extends AbstractControllerFXML {
 
     @FXML
     private void initialize() {
+//        scoreLabel.setText(Integer.toString(ViewUtils.getStats().getPoints()));
+//        damageLabel.setText(Integer.toString(ViewUtils.getStats().getBulletDamage()));
+//        velLabel.setText(Double.toString(ViewUtils.getStats().getVel()));
+//        bulletRangeLabel.setText(Double.toString(ViewUtils.getStats().getBulletRange()));
+    }
+
+    /**
+     * Get root.
+     */
+    @Override
+    public final Region getRoot() {
+        return contentPane;
+    }
+
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() {
         scoreLabel.setText(Integer.toString(ViewUtils.getStats().getPoints()));
         damageLabel.setText(Integer.toString(ViewUtils.getStats().getBulletDamage()));
         velLabel.setText(Double.toString(ViewUtils.getStats().getVel()));
         bulletRangeLabel.setText(Double.toString(ViewUtils.getStats().getBulletRange()));
-    }
-
-    @Override
-    public final Region getRoot() {
-        return contentPane;
     }
 
     @FXML

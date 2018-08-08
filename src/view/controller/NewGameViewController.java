@@ -23,10 +23,19 @@ public class NewGameViewController extends AbstractControllerFXML {
     @FXML private Button btnPlay;
     @FXML private TextField txtNickname;
 
+    /**
+     * Get root.
+     */
     @Override
     public final Region getRoot() {
         return this.contentPane;
     }
+
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() { }
 
     @FXML
     private void btnPlayClick() {
@@ -42,5 +51,4 @@ public class NewGameViewController extends AbstractControllerFXML {
         //super.closingFade(() -> ViewManagerImpl.get().pop());
         ViewManagerImpl.get().pop();
     }
-
 }

@@ -24,8 +24,17 @@ public class GameCanvasViewController extends AbstractControllerFXML {
         ViewImpl.get().setDrawer(drawer);
     }
 
+    /**
+     * Get root of scene.
+     */
     @Override
     public final Region getRoot() {
         return rootGamePane;
     }
+
+    /**
+     * Set text.
+     */
+    @Override
+    public void setText() { }
 }

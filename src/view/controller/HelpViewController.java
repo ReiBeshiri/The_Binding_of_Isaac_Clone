@@ -19,9 +19,17 @@ public class HelpViewController extends AbstractControllerFXML {
         ViewManagerImpl.get().pop();
     }
 
+    /**
+     * Get root.
+     */
     @Override
     public final Region getRoot() {
         return contentPane;
     }
 
+    /**
+     * Set Text.
+     */
+    @Override
+    public void setText() { }
 }
