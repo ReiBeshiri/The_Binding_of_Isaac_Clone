@@ -93,13 +93,21 @@ public enum ImageType {
      */
     BACKGROUND_SHOP_ROOM("BackgroundShop.png"),
     /**
-     * Background image for boss room.
-     */
-    BACKGROUND_BOSS_ROOM("BackgroundBoss.png"),
-    /**
      * Icons image.
      */
-    ICON("ktsIcon.png");
+    ICON("ktsIcon.png"),
+    /**
+     * Speed power up image.
+     */
+    SPEED_UP("VelocityUpImage.png"),
+    /**
+     * Damage power up image.
+     */
+    DAMAGE_UP("damageUpImage.png"),
+    /**
+     * Bullet range power up image.
+     */
+    BULLET_RANGE_UP("rangeUpImage.png");
     private final String path;
 
     ImageType(final String path) {
