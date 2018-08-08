@@ -276,7 +276,6 @@ public class GameLoopImpl implements GameLoop, Runnable {
 
     private Statistic createPlayerStats() {
         final AbstractCharacter player = (AbstractCharacter) ModelUtility.getPlayer();
-        return new StatisticImpl(player.getLife(), point, player.getBulletDamage(), player.getVel(),
-                player.getBulletRange());
+        return new StatisticImpl(point, player.getBulletDamage(), player.getVel(), player.getBulletRange());
     }
 }

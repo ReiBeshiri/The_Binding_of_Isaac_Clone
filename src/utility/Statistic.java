@@ -7,12 +7,6 @@ package utility;
 public interface Statistic {
 
     /**
-     * Getter for player life.
-     * @return player life.
-     */
-    int getLife();
-
-    /**
      * Getter for player points.
      * @return player points.
      */

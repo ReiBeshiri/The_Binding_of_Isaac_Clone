@@ -6,7 +6,6 @@ package utility;
  */
 public class StatisticImpl implements Statistic {
 
-    private final int life;
     private final int bulletDamage;
     private final int points;
     private final double bulletRange;
@@ -14,27 +13,17 @@ public class StatisticImpl implements Statistic {
 
     /**
      * Constructor for this class.
-     * @param life life.
      * @param points points.
      * @param bulletDamage damage of bullets.
-     * @param vel player vel.
      * @param bulletRange bullet range of bullets shot by player.
+     * @param vel velocity of player.
      */
-    public StatisticImpl(final int life, final int points, final int bulletDamage, final double vel,
+    public StatisticImpl(final int points, final int bulletDamage, final double vel,
             final double bulletRange) {
-        this.life = life;
-        this.vel = vel;
         this.points = points;
         this.bulletDamage = bulletDamage;
         this.bulletRange = bulletRange;
-    }
-
-    /**
-     * Return life of player.
-     */
-    @Override
-    public int getLife() {
-        return life;
+        this.vel = vel;
     }
 
     /**
