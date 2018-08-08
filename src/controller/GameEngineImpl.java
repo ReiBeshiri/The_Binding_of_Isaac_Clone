@@ -22,6 +22,7 @@ import model.WorldImpl;
 import model.animated.AbstractCharacter;
 import model.utility.Mode;
 import model.utility.ModelUtility;
+import model.utility.ProportionUtility;
 import view.ViewImpl;
 import view.utility.ViewUtils;
 
@@ -73,6 +74,7 @@ public final class GameEngineImpl implements GameEngine {
         ViewImpl.get().setWorldWidth(ModelUtility.getWorldWidth());
         ViewImpl.get().setWorldHeightProportion(ModelUtility.getWorldHeightProp());
         ViewImpl.get().setWorldWidthProportion(ModelUtility.getWorldWidthProp());
+        ViewImpl.get().setIWallMinorDimension(ProportionUtility.getWallVerticalWidth());
         ViewImpl.get().viewStart();
     }
 
