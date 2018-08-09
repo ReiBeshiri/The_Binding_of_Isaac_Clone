@@ -4,8 +4,9 @@ import static view.utility.SceneType.LEADERBOARD;
 
 import javafx.event.Event;
 import view.ViewManagerImpl;
+
 /**
- * Class that represent leaderboard view.
+ * Class that represent leader board view.
  *
  */
 public class LeaderboardScene extends AbstractGenericScene {
@@ -21,7 +22,7 @@ public class LeaderboardScene extends AbstractGenericScene {
      * Exit status for this scene.
      */
     @Override
-    public void exitStatus() { 
+    public void exitStatus() {
         ViewManagerImpl.get().pop();
     }
 

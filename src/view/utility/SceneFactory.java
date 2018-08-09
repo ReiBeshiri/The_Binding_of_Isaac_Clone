@@ -11,16 +11,19 @@ import view.scene.NewGameScene;
 import view.scene.OptionScene;
 import view.scene.PauseScene;
 import view.scene.WinScene;
+
 /**
  * Class that represent scene factory.
  *
  */
 public final class SceneFactory {
 
-    private SceneFactory() { }
+    private SceneFactory() {
+    }
 
     /**
      * create new credit scene.
+     * 
      * @return credit scene.
      */
     public static GenericScene createCreditScene() {
@@ -29,6 +32,7 @@ public final class SceneFactory {
 
     /**
      * create new game scene.
+     * 
      * @return game scene.
      */
     public static GenericScene createGameScene() {
@@ -37,6 +41,7 @@ public final class SceneFactory {
 
     /**
      * create new help scene.
+     * 
      * @return help scene.
      */
     public static GenericScene createHelpScene() {
@@ -45,6 +50,7 @@ public final class SceneFactory {
 
     /**
      * create new menu scene.
+     * 
      * @return menu scene.
      */
     public static GenericScene createMenuScene() {
@@ -53,6 +59,7 @@ public final class SceneFactory {
 
     /**
      * create new option scene.
+     * 
      * @return option scene.
      */
     public static GenericScene createOptionScene() {
@@ -61,6 +68,7 @@ public final class SceneFactory {
 
     /**
      * create new pause scene.
+     * 
      * @return pause scene.
      */
     public static GenericScene createPauseScene() {
@@ -69,6 +77,7 @@ public final class SceneFactory {
 
     /**
      * create leaderboard scene.
+     * 
      * @return leaderboard scene.
      */
     public static GenericScene createLeaderboardScene() {
@@ -77,6 +86,7 @@ public final class SceneFactory {
 
     /**
      * create new game scene.
+     * 
      * @return new game scene.
      */
     public static GenericScene createNewGameScene() {
@@ -85,6 +95,7 @@ public final class SceneFactory {
 
     /**
      * create victory scene.
+     * 
      * @return new class that represent victory scene.
      */
     public static GenericScene createVictoryScene() {
@@ -93,6 +104,7 @@ public final class SceneFactory {
 
     /**
      * create lost scene.
+     * 
      * @return new class that represent lost scene.
      */
     public static GenericScene createLostScene() {

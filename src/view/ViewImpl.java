@@ -23,6 +23,7 @@ import view.utility.ViewUtils;
  *
  */
 public final class ViewImpl implements View {
+
     private final List<Observer> observers;
     private DrawerManager drawer;
     private static View view;
@@ -129,7 +130,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * Return status of godmode.
+     * Return status of god mode.
      */
     @Override
     public boolean isGodModeSelected() {
@@ -169,7 +170,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * Setter for world height in view util.
+     * Setter for world height in view utils.
      */
     @Override
     public void setWorldHeight(final double wh) {
@@ -177,7 +178,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * Setter for world width in view util.
+     * Setter for world width in view utils.
      */
     @Override
     public void setWorldWidth(final double ww) {
@@ -185,7 +186,7 @@ public final class ViewImpl implements View {
     }
 
     /**
-     * Setter for world height proportion in view util.
+     * Setter for world height proportion in view utils.
      */
     @Override
     public void setWorldHeightProportion(final double whProp) {

@@ -30,7 +30,6 @@ public class PauseScene extends AbstractGenericScene {
     @Override
     public void exitStatus() {
         ViewManagerImpl.get().pop();
-        //ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.RESUME_GAME, ""));
     }
 
     /**

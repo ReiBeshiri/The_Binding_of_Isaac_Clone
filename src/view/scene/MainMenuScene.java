@@ -3,6 +3,7 @@ package view.scene;
 import static view.utility.SceneType.MENU;
 
 import javafx.event.Event;
+
 /**
  * Class that represent menu scene.
  *
@@ -23,7 +24,7 @@ public class MainMenuScene extends AbstractGenericScene {
     public void exitStatus() { }
 
     /**
-     * 
+     * Check specific type of events.
      */
     @Override
     public void checkSceneHandler(final Event e) { }

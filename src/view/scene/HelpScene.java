@@ -4,6 +4,7 @@ import static view.utility.SceneType.HELP;
 
 import javafx.event.Event;
 import view.ViewManagerImpl;
+
 /**
  * Class that represent help game scene.
  *
@@ -26,7 +27,7 @@ public class HelpScene extends AbstractGenericScene {
     }
 
     /**
-     * 
+     * Method used to check if occurs events in this type of scene.
      */
     @Override
     public void checkSceneHandler(final Event e) { }

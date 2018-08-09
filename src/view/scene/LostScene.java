@@ -17,9 +17,15 @@ public class LostScene extends AbstractGenericScene {
         super(LOST);
     }
 
+    /**
+     * Exit status for this scene.
+     */
     @Override
     public void exitStatus() { }
 
+    /**
+     * Method used to check if particular type of events occur in this scene.
+     */
     @Override
     public void checkSceneHandler(final Event e) { }
 
@@ -27,7 +33,7 @@ public class LostScene extends AbstractGenericScene {
      * Used when focus up.
      */
     @Override
-    public void notifyFocusUp() { 
+    public void notifyFocusUp() {
         getSceneController().setText();
     }
 

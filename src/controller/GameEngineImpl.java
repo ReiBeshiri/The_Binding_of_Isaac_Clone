@@ -150,16 +150,16 @@ public final class GameEngineImpl implements GameEngine {
     }
 
     /**
-     * Get the leaderboard of this computer.
+     * Get the leader board of this computer.
      * 
-     * @return the leaderboard.
+     * @return the leader board.
      */
     public List<Score> getLeaderboard() {
         return this.scoreList;
     }
 
     /**
-     * Set the leaderboard.
+     * Set the leader board.
      */
     @Override
     public void setLeaderboard(final List<Score> list) {

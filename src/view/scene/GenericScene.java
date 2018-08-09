@@ -7,24 +7,29 @@ import view.controller.ControllerFXML;
 import view.utility.SceneType;
 
 /**
- * generic type of scene.
+ * Generic type of scene.
  */
 public interface GenericScene {
+
     /**
-     * getter for a scene represented by this class.
-     * @return enum type of this scene.
+     * Getter for a scene represented by this class.
+     * 
+     * @return enumeration type of this scene.
      */
     SceneType getSceneType();
 
     /**
-     * return event handler of that scene.
+     * Return event handler of that scene.
+     * 
      * @return event handler.
      */
     EventHandler<KeyEvent> getEventHandler();
 
     /**
      * Check specific type of events.
-     * @param e Event received.
+     * 
+     * @param e
+     *            Event received.
      */
     void checkSceneHandler(Event e);
 
@@ -35,6 +40,7 @@ public interface GenericScene {
 
     /**
      * Get controller for a specific scene.
+     * 
      * @return Controller of the scene.
      */
     ControllerFXML getSceneController();
@@ -45,8 +51,8 @@ public interface GenericScene {
     void notifyFocusUp();
 
     /**
-     * Method used when scene is not focused. 
-     * (When it's removed from the top of stack).
+     * Method used when scene is not focused. (When it's removed from the top of
+     * stack).
      */
     void notifyFocusDown();
 }

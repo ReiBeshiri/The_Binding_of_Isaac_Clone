@@ -1,4 +1,5 @@
 package view.utility;
+
 import view.controller.ControllerFXML;
 
 /**
@@ -6,9 +7,12 @@ import view.controller.ControllerFXML;
  *
  */
 public interface LoaderFXML {
+
     /**
      * Load controller FXML.
-     * @param scene Scene to load.
+     * 
+     * @param scene
+     *            Scene to load.
      * @return Loaded controller FXML.
      */
     ControllerFXML getFXMLController(SceneType scene);

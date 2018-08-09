@@ -12,6 +12,7 @@ import utility.ImageType;
  *
  */
 public final class ProxyImageLoader implements ImageLoader {
+
     private final Map<ImageType, Image> loadedMap;
     private final RealImageLoader realLoader;
     private static ProxyImageLoader proxy;
@@ -20,6 +21,7 @@ public final class ProxyImageLoader implements ImageLoader {
         loadedMap = new HashMap<>();
         realLoader = new RealImageLoader();
     }
+
     /**
      * Get Image.
      */
@@ -32,6 +34,7 @@ public final class ProxyImageLoader implements ImageLoader {
             return loadedMap.get(image);
         }
     }
+
     /**
      * Singleton for proxy image loader.
      * @return Only instance of proxy image loader.
@@ -42,6 +45,7 @@ public final class ProxyImageLoader implements ImageLoader {
         }
         return proxy;
     }
+
     private class RealImageLoader implements ImageLoader {
         private static final String PATH = "/images/gameImages/";
 

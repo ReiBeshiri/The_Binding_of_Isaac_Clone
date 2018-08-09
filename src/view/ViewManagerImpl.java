@@ -12,6 +12,7 @@ import view.scene.GenericScene;
  *
  */
 public final class ViewManagerImpl implements ViewManager {
+
     private final Stack<GenericScene> stack;
     private Stage stage;
     private static ViewManager manager;
@@ -137,5 +138,4 @@ public final class ViewManagerImpl implements ViewManager {
     public Stage getStage() {
         return this.stage;
     }
-
 }

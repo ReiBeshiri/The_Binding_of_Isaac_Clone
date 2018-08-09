@@ -13,6 +13,7 @@ import view.controller.ControllerFXML;
  *
  */
 public final class ProxyFXMLLoader implements LoaderFXML {
+
     private final Map<SceneType, ControllerFXML> loadedMap;
     private final RealFXMLLoader realLoader;
     private static ProxyFXMLLoader proxy;
@@ -46,7 +47,9 @@ public final class ProxyFXMLLoader implements LoaderFXML {
         }
         return proxy;
     }
+
     private class RealFXMLLoader implements LoaderFXML {
+
         private static final String PATH = "/view/";
 
         /**

@@ -134,23 +134,23 @@ public final class ViewUtils {
 
     /**
      * Get proportion of distance between two hearth. 
-     * @return proportion of distance between two hearths.
+     * @return proportion of distance between two hearth.
      */
     public static double getHearthSpaceProportion() {
         return SPACE_HEARTH_PROPORTION;
     }
 
     /**
-     * Set scoreboard passed by controller.
-     * @param score scoreboard.
+     * Set score board passed by controller.
+     * @param score score board.
      */
     public static void setScoreBoard(final List<Score> score) {
         leaderBoard = score;
     }
 
     /**
-     * Getter for scoreboard.
-     * @return scoreboard.
+     * Getter for score board.
+     * @return score board.
      */
     public static List<Score> getScoreBoard() {
         return leaderBoard;
