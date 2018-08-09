@@ -1,22 +1,26 @@
 package model.animated;
 
 /**
- * Enum. that represent all type of entities.
+ * Enumeration that represent all type of entities.
  *
  */
 public enum EntityStats {
+
     /**
      * Player stats.
      */
     PLAYER(6, 8, 0, 40, 5, 400, 10, 10, 24),
+
     /**
      * Static enemy stats.
      */
     STATIC_ENEMY(4, 0, 3000, 45, 1, 400, 10, 7, 22),
+
     /**
      * Movable enemy stats.
      */
     MOVEABLE_ENEMY(3, 5, 5000, 50, 1, 400, 10, 8, 22),
+
     /**
      * Boss stats.
      */

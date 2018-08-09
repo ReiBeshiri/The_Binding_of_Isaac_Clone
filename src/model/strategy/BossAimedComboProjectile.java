@@ -42,30 +42,27 @@ public class BossAimedComboProjectile implements ProjectileType {
         final List<Bullet> bullets = new ArrayList<>();
         final int upperBullets = bulletNum % 2 == 0 ? bulletNum / 2 : bulletNum / 2 + 1;
         final int downBullets = bulletNum - upperBullets;
-        final double deltaUp = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2 - upperBullets * radius * 2) / upperBullets;
-        final double deltaDown = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2 - downBullets * radius * 2) / downBullets;
-        bullets.addAll(
-                IntStream.range(0, upperBullets)
-                        .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
-                                deltaUp * (x + 1) + radius * 2 * x, radius))
-                        .map(x -> new BulletImpl(x, vel,
-                                new BulletMovement(
-                                        Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - x.getY(),
-                                                ModelUtility.getPlayerHitBox().getX() - x.getX()))),
-                                range, bulletImg, damage))
-                        .collect(Collectors.toList()));
+        final double deltaUp = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2
+                - upperBullets * radius * 2) / upperBullets;
+        final double deltaDown = ((ProportionUtility.getHeight() - BOSS.getEntityRadius()) / 2
+                - downBullets * radius * 2) / downBullets;
+        bullets.addAll(IntStream.range(0, upperBullets)
+                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
+                        deltaUp * (x + 1) + radius * 2 * x, radius))
+                .map(x -> new BulletImpl(x, vel,
+                        new BulletMovement(Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - x.getY(),
+                                ModelUtility.getPlayerHitBox().getX() - x.getX()))),
+                        range, bulletImg, damage))
+                .collect(Collectors.toList()));
 
-        bullets.addAll(
-                IntStream.range(0, downBullets)
-                        .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
-                                sender.getY() + deltaDown * x + radius * 2 * x, radius))
-                        .map(x -> new BulletImpl(x, vel,
-                                new BulletMovement(
-                                        Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - x.getY(),
-                                                ModelUtility.getPlayerHitBox().getX() - x.getX()))),
-                                range, bulletImg, damage))
-                        .collect(Collectors.toList()));
+        bullets.addAll(IntStream.range(0, downBullets)
+                .mapToObj(x -> new CircleHitBox(sender.getX() - 2 * BOSS.getEntityRadius(),
+                        sender.getY() + deltaDown * x + radius * 2 * x, radius))
+                .map(x -> new BulletImpl(x, vel,
+                        new BulletMovement(Math.toDegrees(Math.atan2(ModelUtility.getPlayerHitBox().getY() - x.getY(),
+                                ModelUtility.getPlayerHitBox().getX() - x.getX()))),
+                        range, bulletImg, damage))
+                .collect(Collectors.toList()));
         return bullets;
     }
-
 }

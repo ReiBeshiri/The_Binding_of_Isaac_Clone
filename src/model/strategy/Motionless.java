@@ -2,11 +2,13 @@ package model.strategy;
 
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+
 /**
  * Class that represent static movement.
  *
  */
 public class Motionless implements MovementStrategy {
+
     /**
      * Entity without movement.
      */

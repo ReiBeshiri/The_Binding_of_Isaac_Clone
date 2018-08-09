@@ -15,6 +15,7 @@ import utility.ImageType;
  * Projectile in a single basic direction.
  */
 public class SingleDirectionProjectile implements ProjectileType {
+
     private final Command dir;
 
     /**
@@ -28,7 +29,7 @@ public class SingleDirectionProjectile implements ProjectileType {
     }
 
     /**
-     * 
+     * Return collection of bullet shot.
      */
     @Override
     public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel,
@@ -38,5 +39,4 @@ public class SingleDirectionProjectile implements ProjectileType {
                 new SimplyDirectionMovement(dir), range, bulletImg, damage));
         return list;
     }
-
 }

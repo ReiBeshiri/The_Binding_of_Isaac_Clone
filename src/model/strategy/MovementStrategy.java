@@ -7,6 +7,7 @@ import model.hitbox.HitBox;
  * Interface that represent root of movement types.
  */
 public interface MovementStrategy {
+
     /**
      * Method to perform move.
      * 

@@ -10,8 +10,8 @@ import model.utility.Mode;
 import utility.Command;
 
 /**
- * Interface.
- * World
+ * Interface of World.
+ * 
  **/
 public interface World {
 

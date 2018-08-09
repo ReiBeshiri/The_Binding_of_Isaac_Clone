@@ -53,12 +53,14 @@ import utility.ImageType;
  *
  */
 public class WorldImpl implements World {
+
     private static final int NUM_ROUNDS = 4;
     private static final int PLAYER_HITTED = 1000;
+
     private Animated player; // |is the player
     private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom
-    private final boolean gameOver; // false initially --> NO FINAL, appena viene modificata togliere final.
+    private final boolean gameOver; 
     private boolean bossDefeated; // false initially
     private final List<Bullet> listBulletPlayer;
     private final List<Bullet> listBulletEnemies;

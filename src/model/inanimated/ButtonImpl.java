@@ -2,18 +2,23 @@ package model.inanimated;
 
 import model.hitbox.HitBox;
 import utility.ImageType;
+
 /**
  * 
- * Button implements.
+ * Button implementation.
  *
  */
 public class ButtonImpl extends AbstractInanimated implements Button {
+
     private ImageType btnImg;
 
     /**
+     * Constructor for this class.
      * 
-     * @param h HitBox.
-     * @param pressed State of the button.
+     * @param h
+     *            HitBox.
+     * @param pressed
+     *            State of the button.
      */
     public ButtonImpl(final HitBox h, final boolean pressed) {
         super(h, pressed);
@@ -29,7 +34,10 @@ public class ButtonImpl extends AbstractInanimated implements Button {
     }
 
     /**
-     * @param press The state of the button.
+     * Set status of the button.
+     * 
+     * @param press
+     *            The state of the button.
      */
     @Override
     public void setPressed(final boolean press) {

@@ -9,13 +9,16 @@ import model.GameObject;
  *
  */
 public interface Animated extends GameObject {
+
     /**
+     * Getter for velocity.
      * 
      * @return Return velocity of the specific object.
      */
     double getVel();
 
     /**
+     * Setter for velocity.
      * 
      * @param vel
      *            Set the velocity of a specific object.
@@ -23,6 +26,7 @@ public interface Animated extends GameObject {
     void setVel(double vel);
 
     /**
+     * Update method, used to perform movement of entity.
      * 
      * @param dt
      *            DeltaTime to update position depending of time.
@@ -32,6 +36,7 @@ public interface Animated extends GameObject {
 
     /**
      * Method used to shot a collection of bullets.
+     * 
      * @return collection of bullet shoted.
      */
     Collection<Bullet> shot();

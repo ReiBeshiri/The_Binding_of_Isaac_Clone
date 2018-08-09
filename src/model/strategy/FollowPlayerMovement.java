@@ -9,7 +9,6 @@ import model.utility.ModelUtility;
  * 
  */
 public class FollowPlayerMovement implements MovementStrategy {
-    private static final int PLANE_ANGLE = 180;
 
     /**
      * Move the entity to next step.
@@ -18,8 +17,8 @@ public class FollowPlayerMovement implements MovementStrategy {
     public HitBox move(final double dt, final double vel, final CircleHitBox h) {
         final double angle = Math.toDegrees(Math.atan2((ModelUtility.getPlayerHitBox().getY() - h.getY()),
                 ModelUtility.getPlayerHitBox().getX() - h.getX()));
-        final double deltaX = dt * vel * Math.cos(angle * Math.PI / PLANE_ANGLE);
-        final double deltaY = dt * vel * Math.sin(angle * Math.PI / PLANE_ANGLE);
+        final double deltaX = dt * vel * Math.cos(Math.toRadians(angle));
+        final double deltaY = dt * vel * Math.sin(Math.toRadians(angle));
         return new CircleHitBox(h.getX() + deltaX, h.getY() + deltaY, h.getRadius());
     }
 }

@@ -1,6 +1,7 @@
 package model.inanimated;
+
 /**
- * Velocity Up item interface.
+ * Interface that represent a power up item for Velocity.
  */
 public interface VelocityUp extends Inanimated {
 

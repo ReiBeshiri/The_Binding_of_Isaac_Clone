@@ -7,8 +7,8 @@ import model.inanimated.Button;
 import model.inanimated.Door;
 import model.inanimated.Wall;
 import utility.ImageType;
-/**
- * 
+
+/** 
  * MainRoom implements.
  *
  */
@@ -29,7 +29,7 @@ public class MainRoom extends AbstractRoom {
     }
 
     /**
-     * 
+     * Return button in main room.
      * @return MainRoom's button.
      */
     public Button getButton() {

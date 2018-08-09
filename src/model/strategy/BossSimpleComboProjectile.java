@@ -16,7 +16,7 @@ import utility.ImageType;
 
 /**
  * 
- * Class that represent collection of bullet shooted in same direction.
+ * Class that represent collection of bullet shoted in same direction.
  *
  */
 public class BossSimpleComboProjectile implements ProjectileType {

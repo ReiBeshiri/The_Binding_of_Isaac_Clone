@@ -27,7 +27,7 @@ public final class ViewManagerImpl implements ViewManager {
      * Push scene Generic scene and update stack state.
      */
     @Override
-    public void push(final GenericScene genScene) {
+    public synchronized void push(final GenericScene genScene) {
         if (!stack.isEmpty()) {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
         }
@@ -46,7 +46,7 @@ public final class ViewManagerImpl implements ViewManager {
      * Pop scene.
      */
     @Override
-    public void pop() {
+    public synchronized void pop() {
         if (stack.size() > 1) {
             stage.getScene().removeEventHandler(KeyEvent.ANY, stack.lastElement().getEventHandler());
             stack.lastElement().notifyFocusDown();

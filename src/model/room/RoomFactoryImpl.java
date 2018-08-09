@@ -10,7 +10,6 @@ import model.inanimated.Wall;
 import utility.ImageType;
 
 /**
- * 
  * Implement Room Factory.
  *
  */
@@ -20,7 +19,8 @@ public class RoomFactoryImpl implements RoomFactory {
      * Create the MainRoom.
      */
     @Override
-    public Room createMainRoom(final HitBox hitbox, final List<Door> doors, final Button button, final List<Wall> walls) {
+    public Room createMainRoom(final HitBox hitbox, final List<Door> doors, final Button button,
+            final List<Wall> walls) {
         return new MainRoom(hitbox, doors, button, walls, ImageType.BACKGROUND_MAIN_ROOM);
     }
 
@@ -36,7 +36,8 @@ public class RoomFactoryImpl implements RoomFactory {
      * Create the ShopRoom.
      */
     @Override
-    public Room createShopRoom(final HitBox hitbox, final List<Door> doors, final List<Inanimated> items, final List<Wall> walls) {
+    public Room createShopRoom(final HitBox hitbox, final List<Door> doors, final List<Inanimated> items,
+            final List<Wall> walls) {
         return new ShopRoom(hitbox, doors, items, walls, ImageType.BACKGROUND_SHOP_ROOM);
     }
 

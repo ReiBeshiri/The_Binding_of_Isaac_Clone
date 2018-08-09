@@ -41,7 +41,7 @@ public class BulletImpl extends AbstractBullet implements Bullet {
     }
 
     /**
-     * return if bullet is dead.
+     * Return if bullet is dead.
      */
     @Override
     public boolean isDead() {

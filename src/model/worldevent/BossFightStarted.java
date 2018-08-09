@@ -1,7 +1,6 @@
 package model.worldevent;
-/**
- *
- */
-public class BossFightStarted implements WorldEvent {
 
-}
+/**
+ * Event that occur when boss fight starts.
+ */
+public class BossFightStarted implements WorldEvent { }

@@ -18,6 +18,7 @@ import utility.Command;
  * list of monster generated is pre setted.
  */
 public class StaticRounds implements RoundsGenerator {
+
     private final List<Animated> listReturnEnemy = new ArrayList<>();
 
     /**
@@ -85,5 +86,4 @@ public class StaticRounds implements RoundsGenerator {
     private int getCurrentRound() {
         return ModelUtility.getCurrentRound();
     }
-
 }

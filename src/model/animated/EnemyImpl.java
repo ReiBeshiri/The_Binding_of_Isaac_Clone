@@ -12,6 +12,7 @@ import utility.ImageType;
  *
  */
 public class EnemyImpl extends AbstractCharacter implements Enemy {
+
     private final int points;
     private final ImageType bulletImg;
 
@@ -75,5 +76,4 @@ public class EnemyImpl extends AbstractCharacter implements Enemy {
         return super.getAI().shoot(super.getHitBox(), super.getBulletVel(), super.getBulletRange(), bulletImg,
                 super.getBulletDamage(), super.getBulletRadius());
     }
-
 }

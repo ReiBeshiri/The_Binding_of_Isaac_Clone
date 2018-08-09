@@ -6,12 +6,13 @@ import model.hitbox.HitBox;
 import model.inanimated.Door;
 import model.inanimated.Wall;
 import utility.ImageType;
+
 /**
- * 
  * Abstract class for rooms.
  *
  */
 public abstract class AbstractRoom implements Room {
+
     private final HitBox h;
     private final List<Door> doors;
     private final List<Wall> walls;
@@ -19,10 +20,15 @@ public abstract class AbstractRoom implements Room {
 
     /**
      * Constructor for a generic room.
-     * @param h HitBox of room.
-     * @param doors list of actual room's doors.
-     * @param walls list of the walls in this room. 
-     * @param backImg background image.
+     * 
+     * @param h
+     *            HitBox of room.
+     * @param doors
+     *            list of actual room's doors.
+     * @param walls
+     *            list of the walls in this room.
+     * @param backImg
+     *            background image.
      */
     public AbstractRoom(final HitBox h, final List<Door> doors, final List<Wall> walls, final ImageType backImg) {
         this.h = h;
@@ -32,7 +38,7 @@ public abstract class AbstractRoom implements Room {
     }
 
     /**
-     * return the list of actual room's doors. 
+     * return the list of actual room's doors.
      */
     @Override
     public List<Door> getDoors() {

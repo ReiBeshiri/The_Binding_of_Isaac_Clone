@@ -6,9 +6,9 @@ import utility.Command;
 /**
  * Factory for enemy.
  * 
- * Note: We can add different type of enemy, depending of ai created.
  */
 public interface EnemyFactory {
+
     /**
      * Creates a static enemy that shot in a single direction.
      * 
@@ -63,6 +63,7 @@ public interface EnemyFactory {
 
     /**
      * Create boss.
+     * 
      * @param h
      *            HitBox.
      * @return Boss.

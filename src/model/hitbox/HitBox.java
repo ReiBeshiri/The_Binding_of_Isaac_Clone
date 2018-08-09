@@ -1,10 +1,11 @@
 package model.hitbox;
 
 /**
- * 
+ * Interface that represent a generic type of HitBox.
  *
  */
 public interface HitBox {
+
     /**
      * Changes the coordinates of a HitBox.
      * 
@@ -14,6 +15,7 @@ public interface HitBox {
      *          Y Coordinate.
      */
     void changePosition(double x, double y);
+
     /**
      * Get X of center of HitBox.
      * 

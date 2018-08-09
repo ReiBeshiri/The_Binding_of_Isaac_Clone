@@ -22,9 +22,8 @@ public class ChasePlayerProjectile implements ProjectileType {
     public Collection<Bullet> shoot(final HitBox sender, final double range, final double vel,
             final ImageType bulletImg, final int damage, final double radius) {
         final List<Bullet> list = new ArrayList<>();
-        list.add(new BulletImpl(
-                new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
-                new FollowPlayerMovement(), range, bulletImg, damage));
+        list.add(new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel, new FollowPlayerMovement(),
+                range, bulletImg, damage));
         return list;
     }
 

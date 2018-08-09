@@ -21,14 +21,17 @@ import utility.Command;
  * max number of monsters in a single round is 7.
  */
 public class DynamicRounds implements RoundsGenerator {
+
     private static final int MAXENEMY = 7;
+
     private final List<EnemyType> listEnemy;
     private final List<Command> listCommand;
     private final List<Spawns> listSpawns;
     private final List<Animated> listReturnEnemy;
 
     /**
-     * Add to the list all the possible enemies, and the spawns.
+     * Constructor for this class. Add to the list all the possible enemies, and the
+     * spawns.
      */
     public DynamicRounds() {
         listEnemy = new ArrayList<>();
@@ -94,7 +97,7 @@ public class DynamicRounds implements RoundsGenerator {
     }
 
     /**
-     * full the lists with the needed parameters.
+     * Full the lists with the needed parameters.
      */
     private void fullList() {
         listReturnEnemy.clear();

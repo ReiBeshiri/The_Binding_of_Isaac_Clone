@@ -1,7 +1,6 @@
 package model.worldevent;
-/**
- *
- */
-public class PlayerKillBoss implements WorldEvent {
 
-}
+/**
+ * Class that represent event that occur when player kill boss.
+ */
+public class PlayerKillBoss implements WorldEvent { }

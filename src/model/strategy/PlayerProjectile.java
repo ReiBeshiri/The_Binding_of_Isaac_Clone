@@ -56,5 +56,4 @@ public class PlayerProjectile implements ProjectileType {
         }
         return Collections.emptyList();
     }
-
 }

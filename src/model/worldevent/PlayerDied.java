@@ -1,7 +1,6 @@
 package model.worldevent;
-/**
- * Notify player dead.
- */
-public class PlayerDied implements WorldEvent {
 
-}
+/**
+ * Event that occurs when player died.
+ */
+public class PlayerDied implements WorldEvent { }

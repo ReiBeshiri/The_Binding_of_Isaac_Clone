@@ -10,11 +10,12 @@ import utility.ImageType;
  *
  */
 public class DoorImpl extends AbstractInanimated implements Door {
+
     private final RoomEnum destination;
     private ImageType imgDoor;
 
     /**
-     * 
+     * Constructor for this class.
      * @param h HitBox.
      * @param open State of the door.
      * @param destination Destination of the door.
@@ -35,7 +36,7 @@ public class DoorImpl extends AbstractInanimated implements Door {
     }
 
     /**
-     * 
+     * Set door status.
      * @param open The state of the door.
      */
     @Override

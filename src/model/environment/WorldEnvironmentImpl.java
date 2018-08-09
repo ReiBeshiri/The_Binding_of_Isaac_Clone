@@ -33,6 +33,7 @@ import utility.ImageType;
  * World Environment Implement.
  */
 public class WorldEnvironmentImpl implements WorldEnvironment {
+
     private final List<Room> listRoom = new ArrayList<>();
     private final RoomFactory rf = new RoomFactoryImpl();
     private final HitBox hbRoom = new RectangularHitBox(ProportionUtility.getWallVerticalWidth(),
@@ -93,14 +94,19 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
         final List<Door> ld = new ArrayList<>();
         ld.add(this.leftDoorFromShopToMain);
         ld.add(this.rightDoorFromShopToBoss);
-//        final HitBox hbHeart = new CircleHitBox(ModelUtility.getWorldWidth() / 2, ModelUtility.getWorldHeight() / 2,
-//                ProportionUtility.getRadiusItemShop());
-//        final HitBox hbRangeUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2 + 100,
-//                ModelUtility.getWorldHeight() / 2, ProportionUtility.getRadiusItemShop());
-//        final HitBox hbDamageUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2,
-//                ModelUtility.getWorldHeight() / 2 + 100, ProportionUtility.getRadiusItemShop());
-//        final HitBox hbVelocityUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2,
-//                ModelUtility.getWorldHeight() / 2 - 100, ProportionUtility.getRadiusItemShop());
+        // final HitBox hbHeart = new CircleHitBox(ModelUtility.getWorldWidth() / 2,
+        // ModelUtility.getWorldHeight() / 2,
+        // ProportionUtility.getRadiusItemShop());
+        // final HitBox hbRangeUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2 +
+        // 100,
+        // ModelUtility.getWorldHeight() / 2, ProportionUtility.getRadiusItemShop());
+        // final HitBox hbDamageUp = new CircleHitBox(ModelUtility.getWorldWidth() / 2,
+        // ModelUtility.getWorldHeight() / 2 + 100,
+        // ProportionUtility.getRadiusItemShop());
+        // final HitBox hbVelocityUp = new CircleHitBox(ModelUtility.getWorldWidth() /
+        // 2,
+        // ModelUtility.getWorldHeight() / 2 - 100,
+        // ProportionUtility.getRadiusItemShop());
         final HitBox hbVelocityUp = new RectangularHitBox(ModelUtility.getWorldWidth() / 2,
                 ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2
                         - ProportionUtility.getUnderShopY(),

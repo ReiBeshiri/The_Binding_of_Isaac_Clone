@@ -2,6 +2,7 @@ package model.inanimated;
 
 import model.hitbox.HitBox;
 import utility.ImageType;
+
 /**
  * Velocity power up item.
  */
@@ -9,11 +10,16 @@ public class VelocityUpImpl extends AbstractInanimated implements VelocityUp {
 
     private static final int COST = 5000;
     private static final double VEL = 10;
+
     private final ImageType imgVelocity;
 
     /**
-     * @param h hb.
-     * @param enable true.
+     * Constructor for this class.
+     * 
+     * @param h
+     *            hb.
+     * @param enable
+     *            Velocity power up status (true).
      */
     public VelocityUpImpl(final HitBox h, final boolean enable) {
         super(h, enable);
@@ -43,5 +49,4 @@ public class VelocityUpImpl extends AbstractInanimated implements VelocityUp {
     public double getVelocity() {
         return VEL;
     }
-
 }

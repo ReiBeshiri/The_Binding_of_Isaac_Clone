@@ -12,11 +12,6 @@ import utility.ImageType;
  * Implementation of the Player.
  */
 public class PlayerImpl extends AbstractCharacter implements Player {
-    // Represent the number of the bullet shooted by player.
-    // In this case is always the same, for expansion, we only need to change this
-    // constant
-    // or implement a get, set and transform this to a private field.
-    // private static final int N_BULLET_TO_SHOOT = 1;
 
     /**
      * 

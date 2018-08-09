@@ -6,10 +6,14 @@ import model.room.Room;
  * Event change room.
  */
 public class RoomChange implements WorldEvent {
+
     private final Room room;
 
     /**
-     * @param room the room changed.
+     * Constructor for this class.
+     * 
+     * @param room
+     *            the room changed.
      */
     public RoomChange(final Room room) {
         this.room = room;

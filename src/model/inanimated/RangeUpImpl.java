@@ -7,11 +7,15 @@ import utility.ImageType;
  * Range Power Up item.
  */
 public class RangeUpImpl extends AbstractInanimated implements RangeUp {
+
     private static final int COST = 5000;
     private static final double RANGE = 200;
+
     private final ImageType imgRangeUp;
 
     /**
+     * Constructor for this class.
+     * 
      * @param h
      *            hitBox.
      * @param enable
@@ -45,5 +49,4 @@ public class RangeUpImpl extends AbstractInanimated implements RangeUp {
     public double getRangeUp() {
         return RANGE;
     }
-
 }

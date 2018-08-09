@@ -10,7 +10,6 @@ import model.utility.ModelUtility;
 import utility.ImageType;
 
 /**
- * 
  * Shoots an aimed bullet to a specific point.
  *
  */

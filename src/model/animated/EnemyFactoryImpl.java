@@ -21,6 +21,7 @@ import static model.animated.EntityStats.STATIC_ENEMY;
  *
  */
 public class EnemyFactoryImpl implements EnemyFactory {
+
     /**
      * Create static enemy that shot in only direction.
      */
@@ -87,9 +88,8 @@ public class EnemyFactoryImpl implements EnemyFactory {
     @Override
     public Animated createStaticEnemyFourWayProjectile(final HitBox h) {
         return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
-                new BasicAI(new Motionless(), new FourWayProjectile()), STATIC_ENEMY.getPoints(),
-                ImageType.BASIC_ENEMY, STATIC_ENEMY.getShotRatio(), ImageType.ENEMY_BULLET,
-                STATIC_ENEMY.getBulletRadius(), STATIC_ENEMY.getBulletVel(), STATIC_ENEMY.getBulletRange(),
-                STATIC_ENEMY.getBulletDamage());
+                new BasicAI(new Motionless(), new FourWayProjectile()), STATIC_ENEMY.getPoints(), ImageType.BASIC_ENEMY,
+                STATIC_ENEMY.getShotRatio(), ImageType.ENEMY_BULLET, STATIC_ENEMY.getBulletRadius(),
+                STATIC_ENEMY.getBulletVel(), STATIC_ENEMY.getBulletRange(), STATIC_ENEMY.getBulletDamage());
     }
 }

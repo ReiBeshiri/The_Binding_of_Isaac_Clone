@@ -13,6 +13,7 @@ import utility.Command;
  * 
  */
 public class SimplyDirectionMovement implements MovementStrategy {
+
     private Command moveDirection;
 
     /**
@@ -25,8 +26,10 @@ public class SimplyDirectionMovement implements MovementStrategy {
     }
 
     /**
-     * Method to apply horizontal movement. Note: Different from the player
-     * movements, instead, we can't have two movements "pressed" in the same time.
+     * Method to apply horizontal movement.
+     * 
+     * Note: Different from the player movements, instead, 
+     * we can't have two movements "pressed" in the same time.
      */
     @Override
     public HitBox move(final double dt, final double vel, final CircleHitBox h) {

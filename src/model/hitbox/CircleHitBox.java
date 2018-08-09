@@ -5,10 +5,11 @@ package model.hitbox;
  *
  */
 public class CircleHitBox extends AbstractHitBox {
+
     private final double radius;
 
     /**
-     * 
+     * Constructor for this class.
      * @param x
      *            X center of the circle.
      * @param y
@@ -22,7 +23,7 @@ public class CircleHitBox extends AbstractHitBox {
     }
 
     /**
-     * 
+     * Getter for radius of entity.
      * @return Return the radius of the circle.
      */
     public double getRadius() {

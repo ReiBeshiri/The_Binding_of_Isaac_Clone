@@ -13,11 +13,9 @@ import utility.ImageType;
  * Interface that represent AI for entity in game. This interface encapsulate
  * the movement logic and the shoot logic.
  * 
- * Note: For extension we can use a setter method for change the movement
- * strategy or to change the bullet strategy. In this way you can give dynamic
- * behaviour to enemy.
  */
 public interface AI {
+
     /**
      * Method that realize movement.
      * 
@@ -32,7 +30,7 @@ public interface AI {
     HitBox move(double dt, double vel, CircleHitBox hBox);
 
     /**
-     * Return the collections of bullet shooted by entity.
+     * Return the collections of bullet shoted by entity.
      * 
      * @param hBox
      *            HitBox of entity where the bullet start.
@@ -46,37 +44,46 @@ public interface AI {
      *            Damage of the bullet.
      * @param bulletRadius
      *            Radius of the bullet.
-     * @return The collection of bullet shooted by entity.
+     * @return The collection of bullet shoted by entity.
      */
-    Collection<Bullet> shoot(HitBox hBox, double vel, double range, ImageType bulletImg, int damage, double bulletRadius);
+    Collection<Bullet> shoot(HitBox hBox, double vel, double range, ImageType bulletImg, int damage,
+            double bulletRadius);
 
     /**
      * Set new type of movement.
-     * @param mS New movement strategy.
+     * 
+     * @param mS
+     *            New movement strategy.
      */
     void setMovementStrategy(MovementStrategy mS);
 
     /**
      * Set new Projectile type.
-     * @param pT New projectile type.
+     * 
+     * @param pT
+     *            New projectile type.
      */
     void setProjectileType(ProjectileType pT);
 
     /**
      * Decide next phase.
-     * @param life Remain life.
+     * 
+     * @param life
+     *            Remain life.
      */
     void nextPhaseStrategy(int life);
 
     /**
      * Getter for actual projectile type.
+     * 
      * @return proj type.
      */
     ProjectileType getProjType();
 
     /**
      * Getter for actual movement strategy.
-     * @return actual movement startegy.
+     * 
+     * @return actual movement strategy.
      */
     MovementStrategy getMovementStrategy();
 }

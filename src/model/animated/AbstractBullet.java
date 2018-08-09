@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.Collections;
 import model.hitbox.HitBox;
 import utility.ImageType;
+
 /**
- * 
  * Abstract class that acts as a filter between Animated and BulletImpl.
  *
  */
@@ -29,29 +29,33 @@ public abstract class AbstractBullet implements Animated {
        this.hb = hb;
        this.img = img;
     }
+
     /**
-     * 
+     * Getter for HitBox.
      */
     @Override
     public HitBox getHitBox() {
         return hb;
     }
+
     /**
-     * 
+     * Setter for HitBox.
      */
     @Override
     public void setHitBox(final HitBox hb) {
         this.hb = hb;
     }
+
     /**
-     * 
+     * Getter for velocity of bullet.
      */
     @Override
     public double getVel() {
         return vel;
     }
+
     /**
-     * 
+     * Setter for velocity.
      */
     @Override
     public void setVel(final double vel) {
@@ -78,15 +82,16 @@ public abstract class AbstractBullet implements Animated {
     }
 
     /**
-     * 
+     * Update method used to perform move and chenge bullet position.
      */
     @Override
     public void update(final double dt) {
         final HitBox position = performMove(dt);
         this.hb.changePosition(position.getX(), position.getY());
     }
+
     /**
-     * 
+     * Getter for image that represent bullet.
      */
     @Override
     public ImageType getImageType() {

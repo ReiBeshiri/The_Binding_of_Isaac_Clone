@@ -14,6 +14,7 @@ import utility.ImageType;
  *
  */
 public class BasicAI implements AI {
+
     private MovementStrategy movementStrategy;
     private ProjectileType pType;
 
@@ -42,8 +43,6 @@ public class BasicAI implements AI {
     /**
      * Generic shoot.
      * 
-     * Note: We can add params to add personalization of shoot type (range, dmg)
-     * ecc...
      */
     @Override
     public Collection<Bullet> shoot(final HitBox hBox, final double vel, final double range, final ImageType bulletImg, final int damage, final double bulletRadius) {
@@ -52,7 +51,6 @@ public class BasicAI implements AI {
 
     /**
      * Set new Movement Strategy.
-     * Note: We can use this method in a player for poweUp.
      */
     @Override
     public void setMovementStrategy(final MovementStrategy mS) {
@@ -61,7 +59,6 @@ public class BasicAI implements AI {
 
     /**
      * Set new Projectile Strategy.
-     * Note: We can use this method in a player for poweUp.
      */
     @Override
     public void setProjectileType(final ProjectileType pT) {

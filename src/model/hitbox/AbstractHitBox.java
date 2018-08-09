@@ -1,15 +1,16 @@
 package model.hitbox;
 
 /**
- * Abstract HotBox to avoid the initialization of HitBox. Only the subclass can
+ * Abstract HitBox to avoid the initialization of HitBox. Only the subclass can
  * be initialized.
  */
 public abstract class AbstractHitBox implements HitBox {
+
     private double x;
     private double y;
 
     /**
-     * 
+     * Constructor for this class.
      * @param x
      *            Initial X value.
      * @param y
@@ -18,8 +19,9 @@ public abstract class AbstractHitBox implements HitBox {
     public AbstractHitBox(final double x, final double y) {
         changePosition(x, y);
     }
+
     /**
-     * 
+     * Method used to change position of entity.
      */
     @Override
     public void changePosition(final double x, final double y) {
@@ -28,7 +30,7 @@ public abstract class AbstractHitBox implements HitBox {
     }
 
     /**
-     * 
+     * Getter for x position.
      */
     @Override
     public double getX() {
@@ -36,11 +38,10 @@ public abstract class AbstractHitBox implements HitBox {
     }
 
     /**
-     * 
+     * Getter for Y position.
      */
     @Override
     public double getY() {
         return y;
     }
-
 }

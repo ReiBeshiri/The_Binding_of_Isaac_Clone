@@ -1,4 +1,5 @@
 package model.animated;
+
 /**
  * Interface that represent Player.
  */

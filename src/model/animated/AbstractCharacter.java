@@ -11,6 +11,7 @@ import utility.ImageType;
  * 
  */
 public abstract class AbstractCharacter implements Animated {
+
     private double velocity;
     private int life;
     private final AI ai;
@@ -48,9 +49,9 @@ public abstract class AbstractCharacter implements Animated {
      * @param bulletDamage
      *            Bullet damage for this entity.
      */
-    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai,
-            final ImageType img, final double ratio, final double bulletRadius, final double bulletVel,
-            final double bulletRange, final int bulletDamage) {
+    public AbstractCharacter(final double v, final int life, final HitBox h, final AI ai, final ImageType img,
+            final double ratio, final double bulletRadius, final double bulletVel, final double bulletRange,
+            final int bulletDamage) {
         velocity = v;
         this.life = life;
         this.maxLife = life;
@@ -96,10 +97,12 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * Setter for damage up.
-     * @param damage the damage to increase.
+     * 
+     * @param damage
+     *            the damage to increase.
      */
     public void setDamage(final int damage) {
-        this.bulletDamage *= damage;
+        this.bulletDamage += damage;
     }
 
     /**
@@ -146,7 +149,7 @@ public abstract class AbstractCharacter implements Animated {
     /**
      * 
      * @param dec
-     *            life to dec.
+     *            life to decrease.
      */
     public void decLife(final int dec) {
         life -= dec;
@@ -212,7 +215,7 @@ public abstract class AbstractCharacter implements Animated {
      * Method used to increment attend time.
      * 
      * @param val
-     *            val to inc.
+     *            value to increase.
      */
     public void incAttendTime(final double val) {
         attendTime += val;
@@ -220,6 +223,7 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * Getter for bullet vel.
+     * 
      * @return bullet vel.
      */
     public double getBulletVel() {
@@ -228,6 +232,7 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * Getter for bullet range.
+     * 
      * @return bullet range.
      */
     public double getBulletRange() {
@@ -236,6 +241,7 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * Getter for bullet radius.
+     * 
      * @return bullet radius.
      */
     public double getBulletRadius() {
@@ -244,6 +250,7 @@ public abstract class AbstractCharacter implements Animated {
 
     /**
      * Getter for bullet damage.
+     * 
      * @return bullet damage.
      */
     public int getBulletDamage() {

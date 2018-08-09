@@ -1,8 +1,10 @@
 package model.utility;
+
 /**
- * Spawn Enum.
+ * Spawn Enumeration.
  */
 public enum Spawns {
+
     /**
      * A spawn point.
      */

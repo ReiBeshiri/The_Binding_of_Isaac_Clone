@@ -2,6 +2,7 @@ package model.inanimated;
 
 import model.hitbox.HitBox;
 import utility.ImageType;
+
 /**
  * Heart item implements.
  */
@@ -9,13 +10,16 @@ public class HeartImpl extends AbstractInanimated implements Heart {
 
     private static final int COST = 5000;
     private static final int LIFE = 1;
+
     private final ImageType imgHearth;
 
-    //All'inizio il "bottone" non sarà attivo perchè la vita sarà gia piena,
-    //ma appena si perde vita bisogna attivarlo.
     /**
-     * @param h HitBox.
-     * @param enable It's possible buy the life.
+     * Constructor for this class.
+     * 
+     * @param h
+     *            HitBox.
+     * @param enable
+     *            It's possible buy the life.
      */
     public HeartImpl(final HitBox h, final boolean enable) {
         super(h, enable);
@@ -45,5 +49,4 @@ public class HeartImpl extends AbstractInanimated implements Heart {
     public ImageType getImageType() {
         return imgHearth;
     }
-
 }

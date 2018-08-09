@@ -196,9 +196,9 @@ public class GameLoopImpl implements GameLoop, Runnable {
     /**
      * Check the world's events.
      */
-    private synchronized void checkEvent() {
+    private void checkEvent() {
         final List<WorldEvent> worldEvent = Objects.isNull(ModelUtility.getWorldEventList()) ? Collections.emptyList()
-                : ModelUtility.getWorldEventList();
+                : new ArrayList<>(ModelUtility.getWorldEventList());
         worldEvent.forEach(x -> {
             if (x instanceof PlayerHitButton && (Objects.isNull(timerThread) || !timerThread.isAlive())) {
                 startTime();

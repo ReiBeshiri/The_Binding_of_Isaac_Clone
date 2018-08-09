@@ -124,24 +124,24 @@ public final class ProportionUtility {
     }
 
     /**
-     * @return the width or height of the wall.
-     * The dimension is based on the height or the width of the wall (15).
+     * @return the width or height of the wall. The dimension is based on the height
+     *         or the width of the wall (15).
      */
     public static double getWallStandard() {
         return ProportionUtility.PROPORTION_WALL;
     }
 
     /**
-     * @return width of the room minus the dimension of the walls.
-     * So it return the actual dimension of the playable room (1070).
+     * @return width of the room minus the dimension of the walls. So it return the
+     *         actual dimension of the playable room (1070).
      */
     public static double getWidth() {
         return ProportionUtility.WIDTH - getWallStandard() * 2;
     }
 
     /**
-     * @return height of the room minus the dimension of the walls.
-     * So it return the actual dimension of the playable room (570).
+     * @return height of the room minus the dimension of the walls. So it return the
+     *         actual dimension of the playable room (570).
      */
     public static double getHeight() {
         return ProportionUtility.HEIGHT - getWallStandard() * 2;

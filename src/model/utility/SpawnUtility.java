@@ -1,8 +1,10 @@
 package model.utility;
+
 /**
- *
+ * Utility class for spawn of enemies/objects.
  */
 public final class SpawnUtility {
+
     private static final double XSTANDARD = ProportionUtility.getWidth() / 5;
     private static final double YSTANDARD = ProportionUtility.getHeight() / 4;
     private static final double STANDARD = 10;
