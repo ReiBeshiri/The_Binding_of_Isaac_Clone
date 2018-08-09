@@ -13,13 +13,17 @@ public class StatisticImpl implements Statistic {
 
     /**
      * Constructor for this class.
-     * @param points points.
-     * @param bulletDamage damage of bullets.
-     * @param bulletRange bullet range of bullets shot by player.
-     * @param vel velocity of player.
+     * 
+     * @param points
+     *            points.
+     * @param bulletDamage
+     *            damage of bullets.
+     * @param bulletRange
+     *            bullet range of bullets shot by player.
+     * @param vel
+     *            velocity of player.
      */
-    public StatisticImpl(final int points, final int bulletDamage, final double vel,
-            final double bulletRange) {
+    public StatisticImpl(final int points, final int bulletDamage, final double vel, final double bulletRange) {
         this.points = points;
         this.bulletDamage = bulletDamage;
         this.bulletRange = bulletRange;
@@ -27,7 +31,7 @@ public class StatisticImpl implements Statistic {
     }
 
     /**
-     * Return point of player. 
+     * Return point of player.
      */
     @Override
     public int getPoints() {
@@ -57,5 +61,4 @@ public class StatisticImpl implements Statistic {
     public double getVel() {
         return vel;
     }
-
 }
