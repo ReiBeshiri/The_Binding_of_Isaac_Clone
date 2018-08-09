@@ -6,6 +6,8 @@ package controller.time;
  */
 public class TimeAgent implements Runnable {
 
+    private static final int MILLISEC_IN_SEC = 1000;
+
     private final Time time;
     private boolean stop;
 
@@ -26,7 +28,7 @@ public class TimeAgent implements Runnable {
         while (!stop) {
             time.incTime();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(MILLISEC_IN_SEC);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

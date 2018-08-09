@@ -31,6 +31,7 @@ import view.utility.ViewUtils;
  */
 public final class GameEngineImpl implements GameEngine {
     private static final String PATH = System.getProperty("user.home") + File.separator + "Leaderboard.txt";
+
     private static final int NAME = 0;
     private static final int SCORE = 1;
     private static final int TIME = 2;
@@ -43,7 +44,8 @@ public final class GameEngineImpl implements GameEngine {
     /**
      * The class constructor.
      */
-    private GameEngineImpl() { }
+    private GameEngineImpl() {
+    }
 
     /**
      * Get the instance of GameEngineImpl.
@@ -96,11 +98,9 @@ public final class GameEngineImpl implements GameEngine {
             world.setMode(Mode.NORMAL);
         }
 
-        /////// Dumb events created for start drawing life and time.
         ViewImpl.get().initTimeCanvas();
         ViewImpl.get().roomChanged(ModelUtility.getRoom());
         ViewImpl.get().playerLifeChanged(((AbstractCharacter) ModelUtility.getPlayer()).getLife());
-        ///////
 
         this.gameLoop = new GameLoopImpl(world, name);
         resumeGameLoop();

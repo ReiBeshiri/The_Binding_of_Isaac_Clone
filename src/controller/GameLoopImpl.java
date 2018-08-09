@@ -30,16 +30,17 @@ import utility.StatisticImpl;
 import view.ViewImpl;
 
 /**
- * 
  * Defines all the operation for update the model and pass the information of
  * model to the view for update the graphic.
  */
 public class GameLoopImpl implements GameLoop, Runnable {
-    private final List<Command> movement = new ArrayList<>();
-    private final List<Command> shot = new ArrayList<>();
+
     private static final long SECONDMICRO = 1000000;
     private static final int SECONDNANO = 1000000000;
     private static final int FPS = 60;
+
+    private final List<Command> movement = new ArrayList<>();
+    private final List<Command> shot = new ArrayList<>();
     private boolean running;
     private Thread gameLoopThread;
     private int optimalTime;

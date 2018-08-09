@@ -6,6 +6,7 @@ import controller.time.Time;
  * Class for the score of the player.
  */
 public class ScoreImpl implements Score {
+
     private final String name;
     private final int point;
     private final Time time;

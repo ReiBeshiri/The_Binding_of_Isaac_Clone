@@ -8,6 +8,7 @@ import java.util.List;
  *
  */
 public class Time {
+
     private static final int S_MAX = 59;
     private static final int M_MAX = 59;
     private static final int SECONDS_IN_A_MINUTE = 60;

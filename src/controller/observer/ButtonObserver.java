@@ -4,10 +4,12 @@ import controller.GameEngineImpl;
 import controller.event.ButtonEvent;
 import controller.event.Event;
 import controller.utility.ButtonType;
+
 /**
  *Observer for manage button events.
  */
 public class ButtonObserver implements Observer {
+
     /**
      * Manage button event.
      */
@@ -26,5 +28,4 @@ public class ButtonObserver implements Observer {
             }
         }
     }
-
 }

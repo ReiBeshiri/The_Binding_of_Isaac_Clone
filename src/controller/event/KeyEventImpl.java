@@ -6,9 +6,11 @@ import view.utility.SceneType;
  *Event created by pressing a key.
  */
 public class KeyEventImpl implements KeyEvent {
+
     private final KeyCode key;
     private final SceneType gameState;
     private final KeyType type;
+
     /**
      * The class constructor.
      * @param key was pressed.
@@ -20,6 +22,7 @@ public class KeyEventImpl implements KeyEvent {
         this.gameState = gameState;
         this.type = keyType;
     }
+
     /**
      * Get the key pressed.
      */
@@ -27,6 +30,7 @@ public class KeyEventImpl implements KeyEvent {
     public String getEvent() {
         return this.key.getName();
     }
+
     /**
      * Get the scene when the key was pressed.
      */
@@ -34,6 +38,7 @@ public class KeyEventImpl implements KeyEvent {
     public SceneType getGameState() {
         return this.gameState;
     }
+
     /**
      * Get if key was pressed or released.
      */
@@ -41,5 +46,4 @@ public class KeyEventImpl implements KeyEvent {
     public KeyType getType() {
         return this.type;
     }
-
 }

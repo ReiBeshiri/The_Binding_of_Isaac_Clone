@@ -7,10 +7,12 @@ import controller.event.KeyType;
 import javafx.scene.input.KeyCode;
 import utility.Command;
 import view.utility.SceneType;
+
 /**
  * Observer that manages the pressure of the keys on the keyboard.
  */
 public class KeyObserver implements Observer {
+
     /**
      * Manage KeyEvent events.
      */
@@ -30,6 +32,7 @@ public class KeyObserver implements Observer {
             }
         }
     }
+
     /**
      * Compare the event with the other argument.
      * @param event that happened.
@@ -41,6 +44,7 @@ public class KeyObserver implements Observer {
     private boolean compare(final KeyEvent event, final String key, final SceneType scene, final KeyType type) {
         return event.getEvent().equals(key) && event.getGameState().equals(scene) && event.getType().equals(type);
     }
+
     /**
      * Adds a command to the list of commands if the key has been pressed, remove it from the list if the button has been released.
      * @param key to check.

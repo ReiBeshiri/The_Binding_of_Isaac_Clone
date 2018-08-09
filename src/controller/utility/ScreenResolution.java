@@ -8,7 +8,9 @@ import java.awt.Toolkit;
  * Every PC have its personal resolution.
  */
 public final class ScreenResolution {
+
     private static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+
     private static final double WIDTH = SCREEN_SIZE.getWidth();
     private static final double HEIGHT = SCREEN_SIZE.getHeight();
 

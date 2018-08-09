@@ -1,10 +1,12 @@
 package controller.observer;
 
 import controller.event.Event;
+
 /**
  * Observer interface that wants to be informed of changes in observable objects.
  */
 public interface Observer {
+
     /**
      * 
      * @param event event that happened.

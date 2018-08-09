@@ -8,6 +8,7 @@ import controller.utility.Score;
  * Interface that manages all game situations.
  */
 public interface GameEngine {
+
     /**
      * Initialize the view for the kts application.
      */

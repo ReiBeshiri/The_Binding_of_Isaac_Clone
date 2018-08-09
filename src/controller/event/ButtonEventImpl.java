@@ -1,12 +1,15 @@
 package controller.event;
 
 import controller.utility.ButtonType;
+
 /**
  *Event created by pressing a view button.
  */
 public class ButtonEventImpl implements ButtonEvent {
+
     private final ButtonType buttonType;
     private final String name;
+
     /**
      * The class constructor.
      * @param type is what the button do.
@@ -16,6 +19,7 @@ public class ButtonEventImpl implements ButtonEvent {
         this.buttonType = type;
         this.name = name;
     }
+
     /**
      * Get the button pressed.
      */
@@ -23,6 +27,7 @@ public class ButtonEventImpl implements ButtonEvent {
     public String getEvent() {
         return buttonType.toString();
     }
+
     /**
      * Get player's name.
      */

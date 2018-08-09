@@ -5,6 +5,7 @@ package controller;
  * to the view for update the graphic.
  */
 public interface GameLoop extends KeyShot, KeyMovement {
+
     /**
      * Start the game loop.
      */
