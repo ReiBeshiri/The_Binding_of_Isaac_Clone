@@ -18,6 +18,10 @@ import model.strategy.SimplyDirectionMovement;
 import model.utility.ModelUtility;
 import utility.Command;
 
+/**
+ * Class test for entities movement types.
+ *
+ */
 class EntityMovementTest {
 
     @Test

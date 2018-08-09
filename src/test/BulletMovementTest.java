@@ -27,6 +27,10 @@ import model.strategy.SimplyDirectionMovement;
 import model.strategy.SingleDirectionProjectile;
 import utility.Command;
 
+/**
+ * Test class for bullets movements or behavior.
+ *
+ */
 class BulletMovementTest {
 
     @Test
@@ -39,8 +43,10 @@ class BulletMovementTest {
     }
 
     /**
-     * Test of bullet shot in diagonal of canvas direction. Note: angle * Math.PI /
-     * 180 -> conversion of the angle in radiant.
+     * Test of bullet shot in diagonal of canvas direction. 
+     * 
+     * Note: angle * Math.PI / 180 -> conversion of the angle in radiant.
+     * 
      */
     @Test
     public void testDiagonalMovementBullet() {

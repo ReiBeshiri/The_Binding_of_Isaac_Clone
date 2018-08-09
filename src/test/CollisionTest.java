@@ -13,6 +13,10 @@ import model.strategy.BulletMovement;
 import model.utility.CollisionUtil;
 import utility.Command;
 
+/**
+ * Test class for all types of collision.
+ *
+ */
 class CollisionTest {
 
     @Test
