@@ -32,7 +32,7 @@ public class ScoreImpl implements Score {
      */
     @Override
     public String toString() {
-        return name + " " + point + " " + time;
+        return name + " " + point + " " + time + " " + mode;
     }
 
     /**

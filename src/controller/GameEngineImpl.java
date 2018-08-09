@@ -35,6 +35,7 @@ public final class GameEngineImpl implements GameEngine {
     private static final int NAME = 0;
     private static final int SCORE = 1;
     private static final int TIME = 2;
+    private static final int MODE = 3;
     private static final int MINUTES = 0;
     private static final int SECONDS = 1;
 
@@ -180,6 +181,7 @@ public final class GameEngineImpl implements GameEngine {
         final File file = new File(PATH);
         List<String> items;
         List<String> splitTime;
+        String modeRead;
 
         try {
             if (!file.createNewFile()) {
@@ -187,10 +189,19 @@ public final class GameEngineImpl implements GameEngine {
                 for (String x = in.readLine(); x != null; x = in.readLine()) {
                     items = Arrays.asList(x.split(" "));
                     splitTime = Arrays.asList(items.get(TIME).split(":"));
+                    modeRead = items.get(MODE);
+                    Mode enumMode;
+                    if (modeRead.equals(Mode.GOD.toString())) {
+                        enumMode = Mode.GOD;
+                    } else if (modeRead.equals(Mode.SURVIVAL.toString())) {
+                        enumMode = Mode.SURVIVAL;
+                    } else {
+                        enumMode = Mode.NORMAL;
+                    }
                     scoreList.add(new ScoreImpl(items.get(NAME), Integer.parseInt(items.get(SCORE)),
                             new Time(Integer.parseInt(splitTime.get(MINUTES)),
                                     Integer.parseInt(splitTime.get(SECONDS))),
-                            selectedMode));
+                            enumMode));
                 }
                 in.close();
             }
