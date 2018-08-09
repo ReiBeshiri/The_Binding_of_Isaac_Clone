@@ -96,8 +96,8 @@ public final class GameEngineImpl implements GameEngine {
             world.setMode(Mode.GOD);
             selectedMode = Mode.GOD;
         } else if (ViewImpl.get().isSurvivalModeSelected()) {
-            world.setMode(Mode.INFINITE);
-            selectedMode = Mode.INFINITE;
+            world.setMode(Mode.SURVIVAL);
+            selectedMode = Mode.SURVIVAL;
         } else {
             world.setMode(Mode.NORMAL);
             selectedMode = Mode.NORMAL;

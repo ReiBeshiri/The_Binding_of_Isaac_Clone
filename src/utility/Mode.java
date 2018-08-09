@@ -14,7 +14,7 @@ public enum Mode {
     /**
      * Infinite mode.
      */
-    INFINITE,
+    SURVIVAL,
 
     /**
      * God Mode.

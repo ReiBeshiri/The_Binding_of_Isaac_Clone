@@ -151,7 +151,7 @@ public class WorldImpl implements World {
      */
     public void setMode(final Mode m) {
         this.mode = m;
-        if (!this.mode.equals(Mode.INFINITE)) {
+        if (!this.mode.equals(Mode.SURVIVAL)) {
             this.roundsGenerator = new StaticRounds();
         } else {
             this.roundsGenerator = new DynamicRounds();
@@ -164,10 +164,10 @@ public class WorldImpl implements World {
      */
     @Override
     public void setNextRound() {
-        if (!this.mode.equals(Mode.INFINITE) && getCurrentRound() < NUM_ROUNDS) {
+        if (!this.mode.equals(Mode.SURVIVAL) && getCurrentRound() < NUM_ROUNDS) {
             listEnemy.addAll(roundsGenerator.generateMonster());
             this.button.setPressed(true);
-        } else if (this.mode.equals(Mode.INFINITE)) {
+        } else if (this.mode.equals(Mode.SURVIVAL)) {
             listEnemy.addAll(roundsGenerator.generateMonster());
             this.button.setPressed(true);
         }
@@ -483,7 +483,7 @@ public class WorldImpl implements World {
             if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS
                     && CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                             (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
-                    && !this.mode.equals(Mode.INFINITE)) {
+                    && !this.mode.equals(Mode.SURVIVAL)) {
                 // se hai finito i round nella main puoi andare nello shop.
                 this.room = this.listRoom.get(1);
                 listEvent.add(new RoomChange(this.room));
@@ -507,17 +507,17 @@ public class WorldImpl implements World {
                     this.listEvent.add(new PlayerKillAllEnemy());
                     incCurrentRound();
                     this.button.setPressed(false);
-                    if (!this.mode.equals(Mode.INFINITE)) {
+                    if (!this.mode.equals(Mode.SURVIVAL)) {
                         we.getRightDoorFromMainToShop().setOpen(true);
                     }
-                    if (getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.INFINITE)) {
+                    if (getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
                         we.getRightDoorFromShopToBoss().setOpen(true);
                     }
                 }
             }
             if (!this.button.isPressed()
                     && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) getPlayer().getHitBox())
-                    && (getCurrentRound() < NUM_ROUNDS || this.mode.equals(Mode.INFINITE))) {
+                    && (getCurrentRound() < NUM_ROUNDS || this.mode.equals(Mode.SURVIVAL))) {
                 // dopo 3 round non succ niente nella non infinity
                 setNextRound();
                 this.listEvent.add(new PlayerHitButton());
