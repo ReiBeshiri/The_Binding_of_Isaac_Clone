@@ -1,6 +1,7 @@
 package controller.utility;
 
 import controller.time.Time;
+import utility.Mode;
 
 /**
  * Class for the score of the player.
@@ -10,17 +11,20 @@ public class ScoreImpl implements Score {
     private final String name;
     private final int point;
     private final Time time;
+    private final Mode mode;
 
     /**
-     * 
+     * Constructor for this class.
      * @param name of the player;
      * @param point the player has made.
      * @param time elapsed to win the game.
+     * @param mode mode selected.
      */
-    public ScoreImpl(final String name, final int point, final Time time) {
+    public ScoreImpl(final String name, final int point, final Time time, final Mode mode) {
         this.name = name;
         this.point = point;
         this.time = time;
+        this.mode = mode;
     }
 
     /**
@@ -93,5 +97,13 @@ public class ScoreImpl implements Score {
         }
         final ScoreImpl other = (ScoreImpl) obj;
         return !(point != other.point || other.getTime().getTimeInSeconds() != this.time.getTimeInSeconds());
+    }
+
+    /**
+     * Getter for mode.
+     */
+    @Override
+    public Mode getMode() {
+        return mode;
     }
 }

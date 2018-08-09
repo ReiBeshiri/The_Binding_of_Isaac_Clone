@@ -32,7 +32,6 @@ import model.strategy.PlayerMovement;
 import model.strategy.PlayerProjectile;
 import model.strategy.SimplyDirectionMovement;
 import model.utility.CollisionUtil;
-import model.utility.Mode;
 import model.utility.ModelUtility;
 import model.utility.SpawnUtility;
 import model.worldevent.BossFightStarted;
@@ -47,6 +46,7 @@ import model.worldevent.RoomChange;
 import model.worldevent.WorldEvent;
 import utility.Command;
 import utility.ImageType;
+import utility.Mode;
 
 /**
  * WorldImpl.

@@ -25,6 +25,7 @@ import model.worldevent.PlayerScoreChange;
 import model.worldevent.RoomChange;
 import model.worldevent.WorldEvent;
 import utility.Command;
+import utility.Mode;
 import utility.Statistic;
 import utility.StatisticImpl;
 import view.ViewImpl;
@@ -51,6 +52,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     private TimeAgent timeAgent;
     private final Time time;
     private final String name;
+    private final Mode mode;
 
     /**
      * The class constructor.
@@ -58,12 +60,15 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * @param world
      *            The instance of the model
      * @param name
-     *            of the player.s
+     *            Name of the player.
+     * @param selectedMode
+     *            Mode selected.
      */
-    public GameLoopImpl(final World world, final String name) {
+    public GameLoopImpl(final World world, final String name, final Mode selectedMode) {
         this.world = world;
         this.name = name;
         time = new Time(0, 0);
+        mode = selectedMode;
     }
 
     /**
@@ -261,7 +266,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * Method used to check result with leader board results.
      */
     private void checkResultWithLeaderboard() {
-        final Score score = new ScoreImpl(name, point, time);
+        final Score score = new ScoreImpl(name, point, time, mode);
         final List<Score> leaderboard = GameEngineImpl.get().getLeaderboard();
         if (leaderboard.size() < 10) {
             leaderboard.add(score);

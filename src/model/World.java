@@ -6,8 +6,8 @@ import model.animated.Animated;
 import model.animated.Bullet;
 import model.inanimated.Button;
 import model.room.Room;
-import model.utility.Mode;
 import utility.Command;
+import utility.Mode;
 
 /**
  * Interface of World.

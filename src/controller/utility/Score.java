@@ -1,6 +1,7 @@
 package controller.utility;
 
 import controller.time.Time;
+import utility.Mode;
 
 /**
  * Interface for score object.
@@ -24,4 +25,10 @@ public interface Score extends Comparable<Score> {
      * @return time elapsed for win the game.
      */
     Time getTime();
+
+    /**
+     * Return mode selected.
+     * @return mode selected.
+     */
+    Mode getMode();
 }

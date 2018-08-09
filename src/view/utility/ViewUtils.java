@@ -1,12 +1,12 @@
 package view.utility;
 
 import java.util.List;
-
 import controller.utility.Score;
 import utility.Statistic;
 
 /**
- * Utility class meant to keep views values, statistics, god mode and survival mode.
+ * Utility class meant to keep views values, statistics, god mode and survival
+ * mode.
  */
 public final class ViewUtils {
 
@@ -31,13 +31,14 @@ public final class ViewUtils {
     private static double worldWidthProportion;
     private static int points;
     private static Statistic stats;
-    private static List<Score> leaderBoard; 
+    private static List<Score> leaderBoard;
     private static double wallMinorDimension;
 
     private ViewUtils() { }
 
     /**
      * Getter for the God Mode option.
+     * 
      * @return True if is selected, false otherwise.
      */
     public static boolean isGodModeSelected() {
@@ -46,7 +47,9 @@ public final class ViewUtils {
 
     /**
      * Setter used for the God Mode option.
-     * @param value True if the option is selected, false otherwise.
+     * 
+     * @param value
+     *            True if the option is selected, false otherwise.
      */
     public static void setGodMode(final boolean value) {
         godMode = value;
@@ -54,6 +57,7 @@ public final class ViewUtils {
 
     /**
      * Getter for the survival Mode option.
+     * 
      * @return True if is selected, false otherwise.
      */
     public static boolean isSurvivalModeSelected() {
@@ -62,7 +66,9 @@ public final class ViewUtils {
 
     /**
      * Setter used for the survival Mode option.
-     * @param value True if the option is selected, false otherwise.
+     * 
+     * @param value
+     *            True if the option is selected, false otherwise.
      */
     public static void setSurvivalMode(final boolean value) {
         survivalMode = value;
@@ -70,6 +76,7 @@ public final class ViewUtils {
 
     /**
      * Get Height of canvas for the timer.
+     * 
      * @return height of canvas for the timer.
      */
     public static double getTimerCanvasHeight() {
@@ -78,6 +85,7 @@ public final class ViewUtils {
 
     /**
      * Get Width of canvas for the timer.
+     * 
      * @return width of canvas for the timer.
      */
     public static double getTimerCanvasWidth() {
@@ -86,6 +94,7 @@ public final class ViewUtils {
 
     /**
      * Get Height of canvas for the player life.
+     * 
      * @return Height of canvas for the player life.
      */
     public static double getLifeCanvasHeight() {
@@ -94,6 +103,7 @@ public final class ViewUtils {
 
     /**
      * Get Width of canvas for the player life.
+     * 
      * @return width of canvas for the player life.
      */
     public static double getLifeCanvasWidth() {
@@ -102,6 +112,7 @@ public final class ViewUtils {
 
     /**
      * Get stage delta height.
+     * 
      * @return delta height of stage.
      */
     public static double getStageDeltaHeight() {
@@ -110,6 +121,7 @@ public final class ViewUtils {
 
     /**
      * Get proportion for timer font.
+     * 
      * @return font proportion.
      */
     public static double getTextTimerProp() {
@@ -118,6 +130,7 @@ public final class ViewUtils {
 
     /**
      * Get heath width.
+     * 
      * @return hearth width.
      */
     public static double getHearthWidth() {
@@ -126,6 +139,7 @@ public final class ViewUtils {
 
     /**
      * Get hearth height.
+     * 
      * @return hearth height.
      */
     public static double getHearthHeight() {
@@ -133,7 +147,8 @@ public final class ViewUtils {
     }
 
     /**
-     * Get proportion of distance between two hearth. 
+     * Get proportion of distance between two hearth.
+     * 
      * @return proportion of distance between two hearth.
      */
     public static double getHearthSpaceProportion() {
@@ -142,7 +157,9 @@ public final class ViewUtils {
 
     /**
      * Set score board passed by controller.
-     * @param score score board.
+     * 
+     * @param score
+     *            score board.
      */
     public static void setScoreBoard(final List<Score> score) {
         leaderBoard = score;
@@ -150,6 +167,7 @@ public final class ViewUtils {
 
     /**
      * Getter for score board.
+     * 
      * @return score board.
      */
     public static List<Score> getScoreBoard() {
@@ -158,6 +176,7 @@ public final class ViewUtils {
 
     /**
      * X prop.
+     * 
      * @return x proportion.
      */
     public static double getXScreenProp() {
@@ -166,6 +185,7 @@ public final class ViewUtils {
 
     /**
      * Y prop.
+     * 
      * @return y proportion.
      */
     public static double getYScreenProp() {
@@ -174,7 +194,9 @@ public final class ViewUtils {
 
     /**
      * Set world height.
-     * @param wh world height.
+     * 
+     * @param wh
+     *            world height.
      */
     public static void setWorldHeight(final double wh) {
         worldHeight = wh;
@@ -182,7 +204,9 @@ public final class ViewUtils {
 
     /**
      * Set world width.
-     * @param ww world width.
+     * 
+     * @param ww
+     *            world width.
      */
     public static void setWorldWidth(final double ww) {
         worldWidth = ww;
@@ -190,6 +214,7 @@ public final class ViewUtils {
 
     /**
      * Getter for world height.
+     * 
      * @return world height.
      */
     public static double getWorldHeight() {
@@ -198,6 +223,7 @@ public final class ViewUtils {
 
     /**
      * Getter for world width.
+     * 
      * @return world width.
      */
     public static double getWorldWidth() {
@@ -206,7 +232,9 @@ public final class ViewUtils {
 
     /**
      * Set world height proportion.
-     * @param whP world height proportion.
+     * 
+     * @param whP
+     *            world height proportion.
      */
     public static void setWorldHeightProp(final double whP) {
         worldHeightProportion = whP;
@@ -214,7 +242,9 @@ public final class ViewUtils {
 
     /**
      * Set world width proportion.
-     * @param wwP world width proportion.
+     * 
+     * @param wwP
+     *            world width proportion.
      */
     public static void setWorldWidthProp(final double wwP) {
         worldWidthProportion = wwP;
@@ -222,6 +252,7 @@ public final class ViewUtils {
 
     /**
      * Getter for world height proportion.
+     * 
      * @return world height proportion.
      */
     public static double getWorldHeightProp() {
@@ -230,6 +261,7 @@ public final class ViewUtils {
 
     /**
      * Getter for world width proportion.
+     * 
      * @return world width proportion.
      */
     public static double getWorldWidthProp() {
@@ -238,6 +270,7 @@ public final class ViewUtils {
 
     /**
      * Getter for proportion of bottom canvas.
+     * 
      * @return bottom canvas.
      */
     public static double getBottomCanvasProp() {
@@ -246,7 +279,9 @@ public final class ViewUtils {
 
     /**
      * Setter for points.
-     * @param pts points obtained by player during game.
+     * 
+     * @param pts
+     *            points obtained by player during game.
      */
     public static void setPoints(final int pts) {
         points = pts;
@@ -254,6 +289,7 @@ public final class ViewUtils {
 
     /**
      * Getter for points.
+     * 
      * @return points obtained by player during game.
      */
     public static int getPoints() {
@@ -262,7 +298,9 @@ public final class ViewUtils {
 
     /**
      * Setter for player statistics.
-     * @param s player statistics.
+     * 
+     * @param s
+     *            player statistics.
      */
     public static void setStats(final Statistic s) {
         stats = s;
@@ -270,6 +308,7 @@ public final class ViewUtils {
 
     /**
      * Getter for points.
+     * 
      * @return player statistics.
      */
     public static Statistic getStats() {
@@ -277,8 +316,8 @@ public final class ViewUtils {
     }
 
     /**
-     * Getter for minor wall dimension.
-     * Used for draw background images.
+     * Getter for minor wall dimension. Used for draw background images.
+     * 
      * @return wall minor dimension.
      */
     public static double getWallMinorDimension() {
@@ -287,7 +326,9 @@ public final class ViewUtils {
 
     /**
      * Setter for wall minor dimension.
-     * @param wallDimension wall dimension.
+     * 
+     * @param wallDimension
+     *            wall dimension.
      */
     public static void setWallMinorDimension(final double wallDimension) {
         wallMinorDimension = wallDimension;

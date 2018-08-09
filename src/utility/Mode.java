@@ -1,4 +1,4 @@
-package model.utility;
+package utility;
 
 /**
  * This enumeration contains the information about the mode of the game.

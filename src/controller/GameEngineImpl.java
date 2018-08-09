@@ -20,9 +20,9 @@ import controller.utility.ScreenResolution;
 import model.World;
 import model.WorldImpl;
 import model.animated.AbstractCharacter;
-import model.utility.Mode;
 import model.utility.ModelUtility;
 import model.utility.ProportionUtility;
+import utility.Mode;
 import view.ViewImpl;
 import view.utility.ViewUtils;
 
@@ -30,16 +30,18 @@ import view.utility.ViewUtils;
  * GameEngineImpl manages all game situations.
  */
 public final class GameEngineImpl implements GameEngine {
-    private static final String PATH = System.getProperty("user.home") + File.separator + "Leaderboard.txt";
 
+    private static final String PATH = System.getProperty("user.home") + File.separator + "Leaderboard.txt";
     private static final int NAME = 0;
     private static final int SCORE = 1;
     private static final int TIME = 2;
     private static final int MINUTES = 0;
     private static final int SECONDS = 1;
+
     private static GameEngineImpl singleton;
     private GameLoop gameLoop;
     private List<Score> scoreList = new ArrayList<>();
+    private Mode selectedMode;
 
     /**
      * The class constructor.
@@ -92,17 +94,20 @@ public final class GameEngineImpl implements GameEngine {
         world.createEnvironment();
         if (ViewImpl.get().isGodModeSelected()) {
             world.setMode(Mode.GOD);
+            selectedMode = Mode.GOD;
         } else if (ViewImpl.get().isSurvivalModeSelected()) {
             world.setMode(Mode.INFINITE);
+            selectedMode = Mode.INFINITE;
         } else {
             world.setMode(Mode.NORMAL);
+            selectedMode = Mode.NORMAL;
         }
 
         ViewImpl.get().initTimeCanvas();
         ViewImpl.get().roomChanged(ModelUtility.getRoom());
         ViewImpl.get().playerLifeChanged(((AbstractCharacter) ModelUtility.getPlayer()).getLife());
 
-        this.gameLoop = new GameLoopImpl(world, name);
+        this.gameLoop = new GameLoopImpl(world, name, selectedMode);
         resumeGameLoop();
     }
 
@@ -182,8 +187,10 @@ public final class GameEngineImpl implements GameEngine {
                 for (String x = in.readLine(); x != null; x = in.readLine()) {
                     items = Arrays.asList(x.split(" "));
                     splitTime = Arrays.asList(items.get(TIME).split(":"));
-                    scoreList.add(new ScoreImpl(items.get(NAME), Integer.parseInt(items.get(SCORE)), new Time(
-                            Integer.parseInt(splitTime.get(MINUTES)), Integer.parseInt(splitTime.get(SECONDS)))));
+                    scoreList.add(new ScoreImpl(items.get(NAME), Integer.parseInt(items.get(SCORE)),
+                            new Time(Integer.parseInt(splitTime.get(MINUTES)),
+                                    Integer.parseInt(splitTime.get(SECONDS))),
+                            selectedMode));
                 }
                 in.close();
             }
