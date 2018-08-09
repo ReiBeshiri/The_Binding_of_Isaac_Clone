@@ -18,8 +18,8 @@ public final class ProportionUtility {
     private static final double WALLHORIZONTALWIDTH = 30;
     private static final double WALLVERTICALLHEIGHT = 30;
     private static final double WALLHORIZONTALHEIGHT = 15;
-    private static final double POWER_UP_HEIGHT = 100;
-    private static final double POWER_UP_WIDTH = 80;
+    private static final double POWER_UP_HEIGHT = 110;
+    private static final double POWER_UP_WIDTH = 90;
     private static final double UNDER_SHOP_Y = 80;
     private static final double UNDER_SHOP_X = 100;
 
