@@ -1,8 +1,9 @@
-package view;
+package view.scene;
 
 import static view.utility.SceneType.LEADERBOARD;
 
 import javafx.event.Event;
+import view.ViewManagerImpl;
 /**
  * Class that represent leaderboard view.
  *

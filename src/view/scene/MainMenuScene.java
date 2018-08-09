@@ -1,4 +1,4 @@
-package view;
+package view.scene;
 
 import static view.utility.SceneType.MENU;
 

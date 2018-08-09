@@ -7,9 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
-import view.MainMenuScene;
 import view.ViewImpl;
 import view.ViewManagerImpl;
+import view.scene.MainMenuScene;
 import view.utility.ViewUtils;
 
 /**

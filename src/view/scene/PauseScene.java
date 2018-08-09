@@ -1,7 +1,9 @@
-package view;
+package view.scene;
 
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
+import view.ViewImpl;
+import view.ViewManagerImpl;
 
 import static view.utility.SceneType.PAUSE;
 

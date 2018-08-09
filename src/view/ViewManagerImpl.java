@@ -5,6 +5,7 @@ import java.util.Stack;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import view.scene.GenericScene;
 
 /**
  * Class that represent view manager. This class is used to manage scene state.

@@ -1,33 +1,30 @@
-package view;
+package view.scene;
 
-import static view.utility.SceneType.OPTIONS;
+import static view.utility.SceneType.NEWGAME;
 
 import javafx.event.Event;
-
+import view.ViewManagerImpl;
 /**
- * Class that represent option scene.
- *
+ * New game scene.
+ * 
  */
-public class OptionScene extends AbstractGenericScene {
-
+public class NewGameScene extends AbstractGenericScene {
     /**
-     * Constructor fir a option scene.
+     * Constructor for a new game scene.
+     * 
      */
-    public OptionScene() {
-        super(OPTIONS);
+    public NewGameScene() {
+        super(NEWGAME);
     }
 
     /**
-     * Exit status for this specific scene.
+     * Exit status for this scene.
      */
     @Override
     public void exitStatus() {
         ViewManagerImpl.get().pop();
     }
 
-    /**
-     * 
-     */
     @Override
     public void checkSceneHandler(final Event e) { }
 

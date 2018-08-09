@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
-import view.MainMenuScene;
 import view.ViewManagerImpl;
+import view.scene.MainMenuScene;
 import view.utility.ViewUtils;
 
 /**

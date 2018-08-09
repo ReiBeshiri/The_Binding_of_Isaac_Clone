@@ -1,6 +1,7 @@
 package view;
 
 import javafx.stage.Stage;
+import view.scene.GenericScene;
 
 /**
  * Class that manage different types of view.

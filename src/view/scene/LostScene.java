@@ -1,31 +1,25 @@
-package view;
+package view.scene;
 
-import static view.utility.SceneType.WIN;
+import static view.utility.SceneType.LOST;
 
 import javafx.event.Event;
 
 /**
- * Class that represent win scene.
+ * Class that represent lost scene.
  *
  */
-public class WinScene extends AbstractGenericScene {
+public class LostScene extends AbstractGenericScene {
 
     /**
      * Constructor for this class.
      */
-    public WinScene() {
-        super(WIN);
+    public LostScene() {
+        super(LOST);
     }
 
-    /**
-     * Exit status for this scene.
-     */
     @Override
     public void exitStatus() { }
 
-    /**
-     * Check event handler for this scene.
-     */
     @Override
     public void checkSceneHandler(final Event e) { }
 

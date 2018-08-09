@@ -1,16 +1,16 @@
 package view.utility;
 
-import view.CreditScene;
-import view.GameScene;
-import view.GenericScene;
-import view.HelpScene;
-import view.LeaderboardScene;
-import view.LostScene;
-import view.MainMenuScene;
-import view.NewGameScene;
-import view.OptionScene;
-import view.PauseScene;
-import view.WinScene;
+import view.scene.CreditScene;
+import view.scene.GameScene;
+import view.scene.GenericScene;
+import view.scene.HelpScene;
+import view.scene.LeaderboardScene;
+import view.scene.LostScene;
+import view.scene.MainMenuScene;
+import view.scene.NewGameScene;
+import view.scene.OptionScene;
+import view.scene.PauseScene;
+import view.scene.WinScene;
 /**
  * Class that represent scene factory.
  *

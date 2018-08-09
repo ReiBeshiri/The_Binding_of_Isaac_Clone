@@ -1,29 +1,33 @@
-package view;
+package view.scene;
 
-import static view.utility.SceneType.NEWGAME;
+import static view.utility.SceneType.HELP;
 
 import javafx.event.Event;
+import view.ViewManagerImpl;
 /**
- * New game scene.
- * 
+ * Class that represent help game scene.
+ *
  */
-public class NewGameScene extends AbstractGenericScene {
+public class HelpScene extends AbstractGenericScene {
+
     /**
-     * Constructor for a new game scene.
-     * 
+     * Constructor for a help scene.
      */
-    public NewGameScene() {
-        super(NEWGAME);
+    public HelpScene() {
+        super(HELP);
     }
 
     /**
-     * Exit status for this scene.
+     * Exit status for the specific scene.
      */
     @Override
     public void exitStatus() {
         ViewManagerImpl.get().pop();
     }
 
+    /**
+     * 
+     */
     @Override
     public void checkSceneHandler(final Event e) { }
 

@@ -1,23 +1,25 @@
-package view;
+package view.scene;
 
-import static view.utility.SceneType.HELP;
+import static view.utility.SceneType.OPTIONS;
 
 import javafx.event.Event;
+import view.ViewManagerImpl;
+
 /**
- * Class that represent help game scene.
+ * Class that represent option scene.
  *
  */
-public class HelpScene extends AbstractGenericScene {
+public class OptionScene extends AbstractGenericScene {
 
     /**
-     * Constructor for a help scene.
+     * Constructor fir a option scene.
      */
-    public HelpScene() {
-        super(HELP);
+    public OptionScene() {
+        super(OPTIONS);
     }
 
     /**
-     * Exit status for the specific scene.
+     * Exit status for this specific scene.
      */
     @Override
     public void exitStatus() {

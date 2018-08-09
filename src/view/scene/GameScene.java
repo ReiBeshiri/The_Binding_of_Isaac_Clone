@@ -1,8 +1,10 @@
-package view;
+package view.scene;
 
 import javafx.beans.InvalidationListener;
 import javafx.event.Event;
 import javafx.scene.input.KeyEvent;
+import view.ViewImpl;
+import view.ViewManagerImpl;
 import view.utility.SceneFactory;
 
 import static view.utility.SceneType.GAME;
