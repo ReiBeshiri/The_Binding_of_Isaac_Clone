@@ -3,7 +3,6 @@ package view.controller;
 import controller.event.ButtonEventImpl;
 import controller.utility.ButtonType;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
@@ -19,8 +18,6 @@ import view.utility.SceneFactory;
 public class NewGameViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane contentPane;
-    @FXML private Button btnBack;
-    @FXML private Button btnPlay;
     @FXML private TextField txtNickname;
 
     /**

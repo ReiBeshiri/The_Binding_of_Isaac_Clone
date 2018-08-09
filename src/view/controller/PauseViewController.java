@@ -3,7 +3,6 @@ package view.controller;
 import controller.event.ButtonEventImpl;
 import controller.utility.ButtonType;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
@@ -20,8 +19,6 @@ import view.utility.ViewUtils;
 public class PauseViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane contentPane;
-    @FXML private Button exitButton;
-    @FXML private Button resumeButton;
     @FXML private Label scoreLabel;
     @FXML private Label damageLabel;
     @FXML private Label velLabel;
