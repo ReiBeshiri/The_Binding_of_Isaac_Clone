@@ -8,8 +8,8 @@ import javafx.scene.layout.Region;
 import view.ViewImpl;
 import view.ViewManagerImpl;
 import view.utility.SceneFactory;
+
 /**
- * 
  * Controller class for the MainMenuView file.
  *
  */
@@ -73,7 +73,7 @@ public class MainMenuViewController extends AbstractControllerFXML {
     }
 
     /**
-     * Event method to open the Leaderboard view.
+     * Event method to open the Leader board view.
      */
     @FXML
     public void btnLeaderboardClick() {

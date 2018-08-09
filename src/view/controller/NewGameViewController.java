@@ -11,7 +11,6 @@ import view.ViewManagerImpl;
 import view.utility.SceneFactory;
 
 /**
- * 
  * Controller class for the NewGameView file.
  *
  */
