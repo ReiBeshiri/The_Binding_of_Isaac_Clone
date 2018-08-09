@@ -31,7 +31,7 @@ import utility.Command;
  * Test class for bullets movements or behavior.
  *
  */
-class BulletMovementTest {
+class BulletTypeTest {
 
     @Test
     public void testSimpleMovementBullet() {
