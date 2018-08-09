@@ -12,8 +12,11 @@ public class CreditsViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane creditsContentPane;
 
+    /**
+     * Event method for the back button.
+     */
     @FXML
-    private void backButtonClick() {
+    public void backButtonClick() {
         ViewManagerImpl.get().pop();
     }
 

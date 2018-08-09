@@ -16,13 +16,11 @@ public class LostViewController extends AbstractControllerFXML {
     @FXML private BorderPane contentPane;
     @FXML private TextField scoreText;
 
+    /**
+     * Event method to acknowledge the lost and continue using the app.
+     */
     @FXML
-    private void initialize() { 
-//        scoreText.setText(Integer.toString(ViewUtils.getPoints()));
-    }
-
-    @FXML
-    private void okButtonClick() {
+    public void okButtonClick() {
         while (!(ViewManagerImpl.get().getCurrentScene() instanceof MainMenuScene)) {
             ViewManagerImpl.get().pop();
         }

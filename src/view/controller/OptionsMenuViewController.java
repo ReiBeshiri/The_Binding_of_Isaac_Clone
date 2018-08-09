@@ -18,21 +18,30 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
     @FXML private CheckBox survivalModeCheckBox;
     @FXML private BorderPane contentPane;
 
+    /**
+     * Initialize method that loads previous configuration.
+     */
     @FXML
-    private void initialize() {
+    public void initialize() {
         godModeCheckBox.setSelected(ViewUtils.isGodModeSelected());
         survivalModeCheckBox.setSelected(ViewUtils.isSurvivalModeSelected());
     }
 
+    /**
+     * Event method to close the displayed view and save the changes.
+     */
     @FXML
-    private void applyButtonClick() {
+    public void applyButtonClick() {
         ViewUtils.setGodMode(godModeCheckBox.isSelected());
         ViewUtils.setSurvivalMode(survivalModeCheckBox.isSelected());
         ViewManagerImpl.get().pop();
     }
 
+    /**
+     * Event method to close the displayed view.
+     */
     @FXML
-    private void exitButtonClick() {
+    public void exitButtonClick() {
         godModeCheckBox.setSelected(ViewUtils.isGodModeSelected());
         survivalModeCheckBox.setSelected(ViewUtils.isSurvivalModeSelected());
         ViewManagerImpl.get().pop();

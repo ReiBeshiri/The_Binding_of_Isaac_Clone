@@ -22,20 +22,12 @@ public class LeaderboardController extends AbstractControllerFXML {
     @FXML private TableColumn<Score, String> timeColumn;
     @FXML private BorderPane contentPane;
 
+    /**
+     * Event method for the back button.
+     */
     @FXML
-    private void backButtonClick() {
+    public void backButtonClick() {
         ViewManagerImpl.get().pop();
-    }
-
-    @FXML
-    private void initialize() {
-        // table.getItems().addAll(ViewUtils.getScoreBoard());
-        // nicknameColumn.setCellValueFactory(x -> new
-        // SimpleStringProperty(x.getValue().getName()));
-        // pointsColumn.setCellValueFactory(x -> new
-        // SimpleStringProperty(Integer.toString(x.getValue().getPoint())));
-        // timeColumn.setCellValueFactory(x -> new
-        // SimpleStringProperty(x.getValue().getTime().toString()));
     }
 
     /**

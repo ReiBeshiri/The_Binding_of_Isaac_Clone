@@ -31,34 +31,52 @@ public class MainMenuViewController extends AbstractControllerFXML {
     @Override
     public void setText() { }
 
+    /**
+     * Event method to open the NewGame view.
+     */
     @FXML
-    private void playButtonClick() {
+    public void playButtonClick() {
         ViewManagerImpl.get().push(SceneFactory.createNewGameScene());
     }
 
+    /**
+     * Event method to open the Options view.
+     */
     @FXML
-    private void optionsButtonClick() {
+    public void optionsButtonClick() {
         ViewManagerImpl.get().push(SceneFactory.createOptionScene());
     }
 
+    /**
+     * Event method to close the game.
+     */
     @FXML
-    private void exitButtonClick() {
+    public void exitButtonClick() {
         ViewManagerImpl.get().pop();
         ViewImpl.get().notifyEvent(new ButtonEventImpl(ButtonType.QUIT_GAME, ""));
     }
 
+    /**
+     * Event method to open the Help view.
+     */
     @FXML
-    private void helpButtonClick() {
+    public void helpButtonClick() {
         ViewManagerImpl.get().push(SceneFactory.createHelpScene());
     }
 
+    /**
+     * Event method to open the Credits view.
+     */
     @FXML
-    private void creditsButtonClick() {
+    public void creditsButtonClick() {
         ViewManagerImpl.get().push(SceneFactory.createCreditScene());
     }
 
+    /**
+     * Event method to open the Leaderboard view.
+     */
     @FXML
-    private void btnLeaderboardClick() {
+    public void btnLeaderboardClick() {
         ViewManagerImpl.get().push(SceneFactory.createLeaderboardScene());
     }
 }

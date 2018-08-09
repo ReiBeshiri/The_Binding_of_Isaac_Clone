@@ -32,7 +32,7 @@
                   <Insets top="10.0" />
                </padding></Label>
              <TextField fx:id="scoreText" alignment="CENTER" editable="false" />
-            <ImageView fitHeight="398.0" fitWidth="290.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="274.0" fitWidth="246.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="/images/winnerImage.png" />
                </image>

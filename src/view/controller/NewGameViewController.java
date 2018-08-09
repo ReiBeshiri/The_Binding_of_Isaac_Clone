@@ -37,8 +37,11 @@ public class NewGameViewController extends AbstractControllerFXML {
     @Override
     public void setText() { }
 
+    /**
+     * Event method to open the Canvas view in which the game will start.
+     */
     @FXML
-    private void btnPlayClick() {
+    public void btnPlayClick() {
         if (!txtNickname.getText().isEmpty()) {
             ViewManagerImpl.get().pop();
             ViewManagerImpl.get().push(SceneFactory.createGameScene());
@@ -46,8 +49,11 @@ public class NewGameViewController extends AbstractControllerFXML {
         }
     }
 
+    /**
+     * Event method for the back button.
+     */
     @FXML
-    private void btnBackClick() {
+    public void btnBackClick() {
         ViewManagerImpl.get().pop();
     }
 }

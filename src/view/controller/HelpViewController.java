@@ -13,8 +13,11 @@ public class HelpViewController extends AbstractControllerFXML {
 
     @FXML private BorderPane contentPane;
 
+    /**
+     * Event method for the back button.
+     */
     @FXML
-    private void backButtonClick() {
+    public void backButtonClick() {
         ViewManagerImpl.get().pop();
     }
 
