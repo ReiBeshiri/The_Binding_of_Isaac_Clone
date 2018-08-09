@@ -20,6 +20,7 @@ public class LeaderboardController extends AbstractControllerFXML {
     @FXML private TableColumn<Score, String> nicknameColumn;
     @FXML private TableColumn<Score, String> pointsColumn;
     @FXML private TableColumn<Score, String> timeColumn;
+    @FXML private TableColumn<Score, String> modeColumn;
     @FXML private BorderPane contentPane;
 
     /**
@@ -48,6 +49,7 @@ public class LeaderboardController extends AbstractControllerFXML {
         nicknameColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getName()));
         pointsColumn.setCellValueFactory(x -> new SimpleStringProperty(Integer.toString(x.getValue().getPoint())));
         timeColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getTime().toString()));
+        //modeColumn.setCellValueFactory(x -> new SimpleStringProperty());
     }
 
 }
