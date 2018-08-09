@@ -7,10 +7,13 @@ import controller.event.Event;
 import model.animated.Animated;
 import model.room.Room;
 import utility.Statistic;
+
 /**
  * View class. This class communicate with controller.
+ * 
  */
 public interface View {
+
     /**
      * Render new scene.
      * @param list Lit of objects to render.
@@ -65,14 +68,14 @@ public interface View {
     void redraw();
 
     /**
-     * Receive scoreboard from controller.
-     * @param score scoreboard.
+     * Receive score board from controller.
+     * @param score score board.
      */
     void setScoreBoard(List<Score> score);
 
     /**
-     * Return true if godmode is selected.
-     * @return if godmode is selected or not.
+     * Return true if god mode is selected.
+     * @return if god mode is selected or not.
      */
     boolean isGodModeSelected();
 

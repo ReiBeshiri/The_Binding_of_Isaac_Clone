@@ -27,7 +27,7 @@ public class OptionScene extends AbstractGenericScene {
     }
 
     /**
-     * 
+     * Check specific type of events.
      */
     @Override
     public void checkSceneHandler(final Event e) { }

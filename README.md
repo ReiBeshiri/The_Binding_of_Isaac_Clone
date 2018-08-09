@@ -1,15 +1,2 @@
-Da tracciare con GIT:
---> src 
---> res
---> lib
-
-Da NON tracciare con GIT:
---> bin
---> doc
-
-N.B: RES è da mettere nel buildpath, nel caso ci siano icone, file ecc...
-Nel buildpath perchè così finirà nel jar compresso.
-
-Branch:
---> master: per versioni stabili
---> develop: branch su cui lavorare. PULL prima delle PUSH.
+L'entry point del gioco è collocato all'interno del package ktsApp, dove è possibile trovare la classe
+ktsApp.java che contiene il metodo main.

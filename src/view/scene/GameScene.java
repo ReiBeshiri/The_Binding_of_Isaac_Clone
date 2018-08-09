@@ -19,6 +19,7 @@ import controller.event.KeyType;
 public class GameScene extends AbstractGenericScene {
 
     private static final InvalidationListener LISTENER = x -> ViewImpl.get().redraw();
+
     /**
      * Constructor for game scene.
      */

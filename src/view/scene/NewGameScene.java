@@ -4,6 +4,7 @@ import static view.utility.SceneType.NEWGAME;
 
 import javafx.event.Event;
 import view.ViewManagerImpl;
+
 /**
  * New game scene.
  * 
@@ -25,6 +26,9 @@ public class NewGameScene extends AbstractGenericScene {
         ViewManagerImpl.get().pop();
     }
 
+    /**
+     * Check specific type of events.
+     */
     @Override
     public void checkSceneHandler(final Event e) { }
 

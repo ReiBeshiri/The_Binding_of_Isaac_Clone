@@ -258,7 +258,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     }
 
     /**
-     * Method used to check result with leaderboard results.
+     * Method used to check result with leader board results.
      */
     private void checkResultWithLeaderboard() {
         final Score score = new ScoreImpl(name, point, time);

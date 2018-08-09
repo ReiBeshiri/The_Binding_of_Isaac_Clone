@@ -23,10 +23,10 @@ public class CreditScene extends AbstractGenericScene {
     @Override
     public void exitStatus() {
         ViewManagerImpl.get().pop();
-        //ViewManagerImpl.get().push(SceneFactory.createMenuScene());
     }
+
     /**
-     * 
+     * Method used to check if occur events in this particular scene.
      */
     @Override
     public void checkSceneHandler(final Event e) { }

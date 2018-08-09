@@ -8,6 +8,7 @@ import view.scene.GenericScene;
  * 
  */
 public interface ViewManager {
+
     /**
      * Push generic scene in scene stack.
      * @param scene Scene to push.
@@ -69,7 +70,7 @@ public interface ViewManager {
 
     /**
      * Get main stage.
-     * @return mian stage.
+     * @return main stage.
      */
     Stage getStage();
 }
