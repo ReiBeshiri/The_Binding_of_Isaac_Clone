@@ -1,6 +1,9 @@
 package view.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
@@ -32,8 +35,17 @@ public class OptionsMenuViewController extends AbstractControllerFXML {
      */
     @FXML
     public void applyButtonClick() {
-        ViewUtils.setGodMode(godModeCheckBox.isSelected());
-        ViewUtils.setSurvivalMode(survivalModeCheckBox.isSelected());
+        if (godModeCheckBox.isSelected() && survivalModeCheckBox.isSelected()) {
+            final Alert alert = new Alert(AlertType.INFORMATION, "The Survival Mode does NOT support the God Mode. Survival Mode will be deactivated.", ButtonType.OK);
+            alert.setTitle("Info");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            ViewUtils.setGodMode(godModeCheckBox.isSelected());
+            ViewUtils.setSurvivalMode(false);
+        } else {
+            ViewUtils.setGodMode(godModeCheckBox.isSelected());
+            ViewUtils.setSurvivalMode(survivalModeCheckBox.isSelected());
+        }
         ViewManagerImpl.get().pop();
     }
 
