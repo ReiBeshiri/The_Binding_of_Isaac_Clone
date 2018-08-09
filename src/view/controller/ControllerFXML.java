@@ -1,6 +1,7 @@
 package view.controller;
 
 import javafx.scene.layout.Region;
+
 /**
  * Interface that provides methods common to all views.
  */

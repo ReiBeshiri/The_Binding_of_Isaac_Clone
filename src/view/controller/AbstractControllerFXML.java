@@ -7,6 +7,9 @@ import javafx.scene.layout.Region;
  */
 public abstract class AbstractControllerFXML implements ControllerFXML {
 
+    /**
+     * Getter of the root node for the FXML file.
+     */
     @Override
     public abstract Region getRoot();
 
