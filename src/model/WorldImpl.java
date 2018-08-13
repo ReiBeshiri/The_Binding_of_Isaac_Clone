@@ -60,7 +60,7 @@ public class WorldImpl implements World {
     private Animated player; // |is the player
     private final List<Animated> listAnimatedObj;
     private Room room; // |method addRoom is setRoom
-    private final boolean gameOver; 
+    private final boolean gameOver;
     private boolean bossDefeated; // false initially
     private final List<Bullet> listBulletPlayer;
     private final List<Bullet> listBulletEnemies;
@@ -166,10 +166,10 @@ public class WorldImpl implements World {
     public void setNextRound() {
         if (!this.mode.equals(Mode.SURVIVAL) && getCurrentRound() < NUM_ROUNDS) {
             listEnemy.addAll(roundsGenerator.generateMonster());
-            this.button.setPressed(true);
+                this.button.setPressed(true);
         } else if (this.mode.equals(Mode.SURVIVAL)) {
             listEnemy.addAll(roundsGenerator.generateMonster());
-            this.button.setPressed(true);
+                this.button.setPressed(true);
         }
     }
 
@@ -475,55 +475,55 @@ public class WorldImpl implements World {
      *            delta time.
      */
     private void mainRoomActions(final Double deltaTime) {
-            wallColliding();
-            if (allEnemyDefeated() && !this.button.isPressed()) {
-                playerBulletHitsEnemy(deltaTime);
-            }
-            if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
-                this.getActualRoom().getDoors().get(0).setImgDoor(ImageType.RIGHT_SHOP_DOOR_UNLOCKED);
-            }
-            if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS
-                    && CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
-                            (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
-                    && !this.mode.equals(Mode.SURVIVAL)) {
-                // se hai finito i round nella main puoi andare nello shop.
-                this.room = this.listRoom.get(RoomEnum.SHOPROOM.getIndex());
-                listEvent.add(new RoomChange(this.room));
-                getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
-                        SpawnUtility.getSpawnYEnterRightDoor());
-                this.listBulletPlayer.clear();
-            }
-            if (!this.listEnemy.isEmpty()) {
-                listEnemy.forEach(x -> {
-                    x.update(deltaTime);
-                    if (((AbstractCharacter) x).canShot()) {
-                        listBulletEnemies.addAll(x.shot());
-                    }
-                });
-            }
-            if (!allEnemyDefeated()) {
-                playerBulletHitsEnemy(deltaTime);
-                playerGetsHitByBullet(getPlayer(), deltaTime);
-                if (allEnemyDefeated()) {
-                    this.listBulletEnemies.clear();
-                    this.listEvent.add(new PlayerKillAllEnemy());
-                    incCurrentRound();
-                    this.button.setPressed(false);
-                    if (!this.mode.equals(Mode.SURVIVAL)) {
-                        we.getRightDoorFromMainToShop().setOpen(true);
-                    }
-                    if (getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
-                        we.getRightDoorFromShopToBoss().setOpen(true);
-                    }
+        wallColliding();
+        if (allEnemyDefeated() && !this.button.isPressed()) {
+            playerBulletHitsEnemy(deltaTime);
+        }
+        if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
+            this.getActualRoom().getDoors().get(0).setImgDoor(ImageType.RIGHT_SHOP_DOOR_UNLOCKED);
+        }
+        if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS
+                && CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
+                        (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
+                && !this.mode.equals(Mode.SURVIVAL)) {
+            // se hai finito i round nella main puoi andare nello shop.
+            this.room = this.listRoom.get(RoomEnum.SHOPROOM.getIndex());
+            listEvent.add(new RoomChange(this.room));
+            getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
+                    SpawnUtility.getSpawnYEnterRightDoor());
+            this.listBulletPlayer.clear();
+        }
+        if (!this.listEnemy.isEmpty()) {
+            listEnemy.forEach(x -> {
+                x.update(deltaTime);
+                if (((AbstractCharacter) x).canShot()) {
+                    listBulletEnemies.addAll(x.shot());
+                }
+            });
+        }
+        if (!allEnemyDefeated()) {
+            playerBulletHitsEnemy(deltaTime);
+            playerGetsHitByBullet(getPlayer(), deltaTime);
+            if (allEnemyDefeated()) {
+                this.listBulletEnemies.clear();
+                this.listEvent.add(new PlayerKillAllEnemy());
+                incCurrentRound();
+                this.button.setPressed(false);
+                if (!this.mode.equals(Mode.SURVIVAL)) {
+                    we.getRightDoorFromMainToShop().setOpen(true);
+                }
+                if (getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
+                    we.getRightDoorFromShopToBoss().setOpen(true);
                 }
             }
-            if (!this.button.isPressed()
-                    && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) getPlayer().getHitBox())
-                    && (getCurrentRound() < NUM_ROUNDS || this.mode.equals(Mode.SURVIVAL))) {
-                // dopo 3 round non succ niente nella non infinity
-                setNextRound();
-                this.listEvent.add(new PlayerHitButton());
-            }
+        }
+        if (!this.button.isPressed()
+                && isColliding((CircleHitBox) this.button.getHitBox(), (CircleHitBox) getPlayer().getHitBox())
+                && (getCurrentRound() < NUM_ROUNDS || this.mode.equals(Mode.SURVIVAL))) {
+            // dopo 3 round non succ niente nella non infinity
+            setNextRound();
+            this.listEvent.add(new PlayerHitButton());
+        }
     }
 
     /**
@@ -533,82 +533,86 @@ public class WorldImpl implements World {
      *            dt.
      */
     private void bossRoomAction(final double deltaTime) {
-            wallColliding();
-            final Animated boss = we.getBoss();
-            final AbstractCharacter abstractBoss = (AbstractCharacter) boss;
-            abstractBoss.getLife();
-            playerBulletHitsEnemy(deltaTime);
-            if (!isBossDefeated()) {
-                if (listEnemy.isEmpty()) {
-                    this.listEnemy.add(boss);
-                }
-                abstractBoss.getAI().nextPhaseStrategy(abstractBoss.getLife());
-                if (!this.listEnemy.isEmpty()) {
-                    listEnemy.forEach(x -> {
-                        x.update(deltaTime);
-                        if (((AbstractCharacter) x).canShot()) {
-                            listBulletEnemies.addAll(x.shot());
-                        }
-                    });
-                }
-                playerGetsHitByBullet(getPlayer(), deltaTime);
-                if (allEnemyDefeated() || abstractBoss.getLife() <= 0) {
-                    this.bossDefeated = true;
-                    this.listEvent.add(new PlayerKillBoss());
-                }
+        wallColliding();
+        final Animated boss = we.getBoss();
+        final AbstractCharacter abstractBoss = (AbstractCharacter) boss;
+        abstractBoss.getLife();
+        playerBulletHitsEnemy(deltaTime);
+        if (!isBossDefeated()) {
+            if (listEnemy.isEmpty()) {
+                this.listEnemy.add(boss);
             }
+            abstractBoss.getAI().nextPhaseStrategy(abstractBoss.getLife());
+            if (!this.listEnemy.isEmpty()) {
+                listEnemy.forEach(x -> {
+                    x.update(deltaTime);
+                    if (((AbstractCharacter) x).canShot()) {
+                        listBulletEnemies.addAll(x.shot());
+                    }
+                });
+            }
+            playerGetsHitByBullet(getPlayer(), deltaTime);
+            if (allEnemyDefeated() || abstractBoss.getLife() <= 0) {
+                this.bossDefeated = true;
+                this.listEvent.add(new PlayerKillBoss());
+            }
+        }
     }
 
     /**
      * Action in the shop room.
      */
     private void shopRoomAction(final double deltaTime) {
-            wallColliding();
-            playerBulletHitsEnemy(deltaTime);
-            final List<Inanimated> dieItems = new ArrayList<>();
-            for (final Inanimated i : we.getItems()) {
-                if (i instanceof Heart) {
-                    final Heart h = (Heart) i;
-                    if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) i.getHitBox())
-                            && ((AbstractCharacter) getPlayer()).getLife() != EntityStats.PLAYER.getLife()) {
-                        incPlayerLife(h.getLife());
-                        listEvent.add(new PlayerScoreChange(h.getCost()));
-                        dieItems.add(i);
-                    }
-                } else if (i instanceof RangeUp) {
-                    final RangeUp r = (RangeUp) i;
-                    if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) i.getHitBox())) {
-                        ((AbstractCharacter) getPlayer()).setRange(r.getRangeUp());
-                        listEvent.add(new PlayerScoreChange(r.getCost()));
-                        dieItems.add(i);
-                    }
-                } else if (i instanceof DamageUp) {
-                    final DamageUp d = (DamageUp) i;
-                    if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) i.getHitBox())) {
-                        ((AbstractCharacter) getPlayer()).setDamage(d.getDamage());
-                        listEvent.add(new PlayerScoreChange(d.getCost()));
-                        dieItems.add(i);
-                    }
-                } else if (i instanceof VelocityUp) {
-                    final VelocityUp v = (VelocityUp) i;
-                    if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(), (RectangularHitBox) i.getHitBox())) {
-                        ((AbstractCharacter) getPlayer()).setVel(v.getVelocity());
-                        listEvent.add(new PlayerScoreChange(v.getCost()));
-                        dieItems.add(i);
-                    }
+        wallColliding();
+        playerBulletHitsEnemy(deltaTime);
+        final List<Inanimated> dieItems = new ArrayList<>();
+        for (final Inanimated i : we.getItems()) {
+            if (i instanceof Heart) {
+                final Heart h = (Heart) i;
+                if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
+                        (RectangularHitBox) i.getHitBox())
+                        && ((AbstractCharacter) getPlayer()).getLife() != EntityStats.PLAYER.getLife()) {
+                    incPlayerLife(h.getLife());
+                    listEvent.add(new PlayerScoreChange(h.getCost()));
+                    dieItems.add(i);
+                }
+            } else if (i instanceof RangeUp) {
+                final RangeUp r = (RangeUp) i;
+                if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
+                        (RectangularHitBox) i.getHitBox())) {
+                    ((AbstractCharacter) getPlayer()).setRange(r.getRangeUp());
+                    listEvent.add(new PlayerScoreChange(r.getCost()));
+                    dieItems.add(i);
+                }
+            } else if (i instanceof DamageUp) {
+                final DamageUp d = (DamageUp) i;
+                if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
+                        (RectangularHitBox) i.getHitBox())) {
+                    ((AbstractCharacter) getPlayer()).setDamage(d.getDamage());
+                    listEvent.add(new PlayerScoreChange(d.getCost()));
+                    dieItems.add(i);
+                }
+            } else if (i instanceof VelocityUp) {
+                final VelocityUp v = (VelocityUp) i;
+                if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
+                        (RectangularHitBox) i.getHitBox())) {
+                    ((AbstractCharacter) getPlayer()).setVel(v.getVelocity());
+                    listEvent.add(new PlayerScoreChange(v.getCost()));
+                    dieItems.add(i);
                 }
             }
-            we.getItems().removeAll(dieItems);
-            if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
-                    (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
-                this.room = this.listRoom.get(RoomEnum.BOSSROOM.getIndex());
-                listEvent.add(new RoomChange(this.room));
-                we.getLeftDoorFromBossToShop().setOpen(false);
-                this.listEvent.add(new BossFightStarted());
-                getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
-                        SpawnUtility.getSpawnYEnterRightDoor());
-                this.listBulletPlayer.clear();
-            }
+        }
+        we.getItems().removeAll(dieItems);
+        if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
+                (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
+            this.room = this.listRoom.get(RoomEnum.BOSSROOM.getIndex());
+            listEvent.add(new RoomChange(this.room));
+            we.getLeftDoorFromBossToShop().setOpen(false);
+            this.listEvent.add(new BossFightStarted());
+            getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
+                    SpawnUtility.getSpawnYEnterRightDoor());
+            this.listBulletPlayer.clear();
+        }
     }
 
     /**

@@ -8,17 +8,17 @@ public enum RoomEnum {
     /**
      * Boss room.
      */
-    BOSSROOM(0),
+    BOSSROOM(2),
 
     /**
      * Main room.
      */
-    MAINROOM(1),
+    MAINROOM(0),
 
     /**
      * Shop room.
      */
-    SHOPROOM(2);
+    SHOPROOM(1);
 
     private final int x;
 
