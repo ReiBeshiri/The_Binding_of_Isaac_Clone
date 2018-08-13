@@ -68,7 +68,7 @@ public interface EnemyFactory {
      *            HitBox.
      * @return Animated enemy that shot bullets in four diagonal directions.
      */
-    Animated createStaticEnemyFourWayDiagonalProjectyle(HitBox h);
+    Animated createStaticEnemyFourWayDiagonalProjectile(HitBox h);
 
     /**
      * Create boss.

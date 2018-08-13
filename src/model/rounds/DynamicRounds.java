@@ -77,7 +77,7 @@ public class DynamicRounds implements RoundsGenerator {
             } else if (listEnemy.get(0).equals(EnemyType.DIAGONAL)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.STATIC_ENEMY.getEntityRadius());
-                final Animated en = enemy.createStaticEnemyFourWayDiagonalProjectyle(hb);
+                final Animated en = enemy.createStaticEnemyFourWayDiagonalProjectile(hb);
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.STRAIGHT)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),

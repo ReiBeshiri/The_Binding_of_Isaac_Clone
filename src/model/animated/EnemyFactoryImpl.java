@@ -97,7 +97,7 @@ public class EnemyFactoryImpl implements EnemyFactory {
      * Create static enemy that shots in all four diagonal directions.
      */
     @Override
-    public Animated createStaticEnemyFourWayDiagonalProjectyle(final HitBox h) {
+    public Animated createStaticEnemyFourWayDiagonalProjectile(final HitBox h) {
         final double deltaAngle = -45;
         return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
                 new BasicAI(new Motionless(), new FourWayProjectile(deltaAngle)), STATIC_ENEMY.getPoints(), ImageType.BASIC_ENEMY,
