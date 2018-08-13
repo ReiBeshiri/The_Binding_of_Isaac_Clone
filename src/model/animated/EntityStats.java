@@ -7,22 +7,22 @@ package model.animated;
 public enum EntityStats {
 
     /**
-     * Player stats.
+     * Player statistics.
      */
     PLAYER(6, 8, 0, 30, 2, 400, 10, 10, 24),
 
     /**
-     * Static enemy stats.
+     * Static enemy statistics.
      */
     STATIC_ENEMY(4, 0, 3000, 45, 1, 350, 10, 7, 22),
 
     /**
-     * Movable enemy stats.
+     * Movable enemy statistics.
      */
     MOVEABLE_ENEMY(4, 5, 5000, 50, 1, 400, 10, 8, 22),
 
     /**
-     * Boss stats.
+     * Boss statistics.
      */
     BOSS(30, 0, 50000, 60, 1, 600, 10, 7, 120);
 
