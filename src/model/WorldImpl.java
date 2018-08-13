@@ -479,9 +479,6 @@ public class WorldImpl implements World {
         if (allEnemyDefeated() && !this.button.isPressed()) {
             playerBulletHitsEnemy(deltaTime);
         }
-        if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
-            this.getActualRoom().getDoors().get(0).setImgDoor(ImageType.RIGHT_SHOP_DOOR_UNLOCKED);
-        }
         if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS
                 && CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
@@ -511,6 +508,7 @@ public class WorldImpl implements World {
                 this.button.setPressed(false);
                 if (!this.mode.equals(Mode.SURVIVAL)) {
                     we.getRightDoorFromMainToShop().setOpen(true);
+                    this.getActualRoom().getDoors().get(0).setImgDoor(ImageType.RIGHT_SHOP_DOOR_UNLOCKED);
                 }
                 if (getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
                     we.getRightDoorFromShopToBoss().setOpen(true);
