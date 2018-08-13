@@ -116,7 +116,7 @@ class BulletTypeTest {
     @Test
     public void fourWayBullets() {
         final Animated enemy = new EnemyImpl(1, STATIC_ENEMY.getLife(), new CircleHitBox(1, 1, 2),
-                new BasicAI(new Motionless(), new FourWayProjectile()), STATIC_ENEMY.getPoints(), null,
+                new BasicAI(new Motionless(), new FourWayProjectile(0)), STATIC_ENEMY.getPoints(), null,
                 STATIC_ENEMY.getShotRatio(), null, STATIC_ENEMY.getBulletRadius(), 1,
                 STATIC_ENEMY.getBulletRange(), STATIC_ENEMY.getBulletDamage());
         final List<Bullet> bullets = (List<Bullet>) enemy.shot();

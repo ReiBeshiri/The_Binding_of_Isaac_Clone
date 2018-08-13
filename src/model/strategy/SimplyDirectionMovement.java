@@ -26,7 +26,7 @@ public class SimplyDirectionMovement implements MovementStrategy {
     }
 
     /**
-     * Method to apply horizontal movement.
+     * Method to apply movement.
      * 
      * Note: Different from the player movements, instead, 
      * we can't have two movements "pressed" in the same time.

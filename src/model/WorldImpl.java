@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
 import model.ai.BasicAI;
 import model.animated.AbstractCharacter;
 import model.animated.Animated;

@@ -86,9 +86,21 @@ public class EnemyFactoryImpl implements EnemyFactory {
      * Create enemy that shot bullets in four directions.
      */
     @Override
-    public Animated createStaticEnemyFourWayProjectile(final HitBox h) {
+    public Animated createStaticEnemyFourWayStraightProjectile(final HitBox h) {
         return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
-                new BasicAI(new Motionless(), new FourWayProjectile()), STATIC_ENEMY.getPoints(), ImageType.BASIC_ENEMY,
+                new BasicAI(new Motionless(), new FourWayProjectile(0)), STATIC_ENEMY.getPoints(), ImageType.BASIC_ENEMY,
+                STATIC_ENEMY.getShotRatio(), ImageType.ENEMY_BULLET, STATIC_ENEMY.getBulletRadius(),
+                STATIC_ENEMY.getBulletVel(), STATIC_ENEMY.getBulletRange(), STATIC_ENEMY.getBulletDamage());
+    }
+
+    /**
+     * Create static enemy that shots in all four diagonal directions.
+     */
+    @Override
+    public Animated createStaticEnemyFourWayDiagonalProjectyle(final HitBox h) {
+        final double deltaAngle = -45;
+        return new EnemyImpl(STATIC_ENEMY.getVel(), STATIC_ENEMY.getLife(), h,
+                new BasicAI(new Motionless(), new FourWayProjectile(deltaAngle)), STATIC_ENEMY.getPoints(), ImageType.BASIC_ENEMY,
                 STATIC_ENEMY.getShotRatio(), ImageType.ENEMY_BULLET, STATIC_ENEMY.getBulletRadius(),
                 STATIC_ENEMY.getBulletVel(), STATIC_ENEMY.getBulletRange(), STATIC_ENEMY.getBulletDamage());
     }

@@ -15,11 +15,20 @@ import model.hitbox.HitBox;
 import utility.ImageType;
 
 /**
- * 
  * Shoots a bullet in the direction/s given.
  *
  */
 public class FourWayProjectile implements ProjectileType {
+
+    private final double delta;
+
+    /**
+     * Constructor for this class.
+     * @param delta to be summed to four basic direction angles.
+     */
+    public FourWayProjectile(final double delta) {
+        this.delta = delta;
+    }
 
     /**
      * Create collection of bullets.
@@ -29,7 +38,7 @@ public class FourWayProjectile implements ProjectileType {
             final ImageType bulletImg, final int damage, final double radius) {
         return Arrays.asList(UP, DOWN, LEFT, RIGHT).stream()
                 .map(x -> new BulletImpl(new CircleHitBox(sender.getX(), sender.getY(), radius), vel,
-                        new SimplyDirectionMovement(x), range, bulletImg, damage))
+                        new BulletMovement(x.getAngle() + delta), range, bulletImg, damage))
                 .collect(Collectors.toList());
     }
 

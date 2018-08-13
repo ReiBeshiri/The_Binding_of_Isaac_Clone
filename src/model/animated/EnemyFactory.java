@@ -53,13 +53,22 @@ public interface EnemyFactory {
     Animated createStaticEnemyFollowPlayerBullet(HitBox h);
 
     /**
-     * Create a enemy that shot in all four directions.
+     * Create a enemy that shot in all four basic directions.
      * 
      * @param h
      *            HitBox of sender.
      * @return Animated enemy that shot bullets in four main directions.
      */
-    Animated createStaticEnemyFourWayProjectile(HitBox h);
+    Animated createStaticEnemyFourWayStraightProjectile(HitBox h);
+
+    /**
+     * Create a enemy that shot in the four diagonal directions.
+     * 
+     * @param h
+     *            HitBox.
+     * @return Animated enemy that shot bullets in four diagonal directions.
+     */
+    Animated createStaticEnemyFourWayDiagonalProjectyle(HitBox h);
 
     /**
      * Create boss.

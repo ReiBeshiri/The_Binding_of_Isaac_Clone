@@ -64,7 +64,7 @@ public class StaticRounds implements RoundsGenerator {
             // second enemy is enemy thats move in a simple direction.
             final HitBox hbSecond = new CircleHitBox(Spawn.E.getX(), Spawn.E.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
-            final Animated en2 = enemyFactory.createStaticEnemyFourWayProjectile(hbSecond);
+            final Animated en2 = enemyFactory.createStaticEnemyFourWayStraightProjectile(hbSecond);
             listReturnEnemy.add(en2);
             // third enemy is a Static enemy with aimed shot.
             final HitBox hbThird = new CircleHitBox(Spawn.G.getX(), Spawn.G.getY(),
