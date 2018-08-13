@@ -62,7 +62,7 @@ public class DynamicRounds implements RoundsGenerator {
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEMOVE)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.MOVEABLE_ENEMY.getEntityRadius());
-                final Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(0));
+                final Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1));
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEAIMED)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
