@@ -3,7 +3,7 @@ package model.utility;
 /**
  * Spawn Enumeration.
  */
-public enum Spawns {
+public enum Spawn {
 
     /**
      * A spawn point.
@@ -48,7 +48,7 @@ public enum Spawns {
     private double x;
     private double y;
 
-    Spawns(final double x, final double y) {
+    Spawn(final double x, final double y) {
         this.x = x;
         this.y = y;
     }

@@ -10,7 +10,7 @@ import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.utility.ModelUtility;
-import model.utility.Spawns;
+import model.utility.Spawn;
 import utility.Command;
 
 /**
@@ -30,49 +30,49 @@ public class StaticRounds implements RoundsGenerator {
         this.listReturnEnemy.clear();
         if (getCurrentRound() == 1) {
             // first enemy is a static simple direction shot enemy.
-            final HitBox hbFirst = new CircleHitBox(Spawns.B.getX(), Spawns.B.getY(),
+            final HitBox hbFirst = new CircleHitBox(Spawn.B.getX(), Spawn.B.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
             final Animated en1 = enemyFactory.createStaticSimpleDirectionShotEnemy(hbFirst, Command.DOWN);
             listReturnEnemy.add(en1);
             // second enemy is a simple direction moved enemy enemy.
-            final HitBox hbSecond = new CircleHitBox(Spawns.D.getX(), Spawns.D.getY(),
+            final HitBox hbSecond = new CircleHitBox(Spawn.D.getX(), Spawn.D.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
             final Animated en2 = enemyFactory.createSimpleDirectionMovedEnemy(hbSecond, Command.UP, Command.LEFT);
             listReturnEnemy.add(en2);
         } else if (getCurrentRound() == 2) {
             // first enemy is a static simple direction shot enemy.
-            final HitBox hbFirst = new CircleHitBox(Spawns.B.getX(), Spawns.B.getY(),
+            final HitBox hbFirst = new CircleHitBox(Spawn.B.getX(), Spawn.B.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
             final Animated en1 = enemyFactory.createStaticSimpleDirectionShotEnemy(hbFirst, Command.DOWN);
             listReturnEnemy.add(en1);
             // second enemy is a simple direction moved enemy enemy.
-            final HitBox hbSecond = new CircleHitBox(Spawns.D.getX(), Spawns.D.getY(),
+            final HitBox hbSecond = new CircleHitBox(Spawn.D.getX(), Spawn.D.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
             final Animated en2 = enemyFactory.createSimpleDirectionMovedEnemy(hbSecond, Command.UP, Command.LEFT);
             listReturnEnemy.add(en2);
             // second enemy is an enemy thats move in a simple direction.
-            final HitBox hbThird = new CircleHitBox(Spawns.H.getX(), Spawns.H.getY(),
+            final HitBox hbThird = new CircleHitBox(Spawn.H.getX(), Spawn.H.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
             final Animated en3 = enemyFactory.createSimpleDirectionMovedEnemy(hbThird, Command.LEFT, Command.UP);
             listReturnEnemy.add(en3);
         } else if (getCurrentRound() == 3) {
             // first enemy is a simple direction moved enemy.
-            final HitBox hbFirst = new CircleHitBox(Spawns.D.getX(), Spawns.D.getY(),
+            final HitBox hbFirst = new CircleHitBox(Spawn.D.getX(), Spawn.D.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
             final Animated en1 = enemyFactory.createSimpleDirectionMovedEnemy(hbFirst, Command.UP, Command.LEFT);
             listReturnEnemy.add(en1);
             // second enemy is enemy thats move in a simple direction.
-            final HitBox hbSecond = new CircleHitBox(Spawns.E.getX(), Spawns.E.getY(),
+            final HitBox hbSecond = new CircleHitBox(Spawn.E.getX(), Spawn.E.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
             final Animated en2 = enemyFactory.createStaticEnemyFourWayProjectile(hbSecond);
             listReturnEnemy.add(en2);
             // third enemy is a Static enemy with aimed shot.
-            final HitBox hbThird = new CircleHitBox(Spawns.G.getX(), Spawns.G.getY(),
+            final HitBox hbThird = new CircleHitBox(Spawn.G.getX(), Spawn.G.getY(),
                     EntityStats.STATIC_ENEMY.getEntityRadius());
             final Animated en3 = enemyFactory.createStaticEnemyFollowPlayerBullet(hbThird);
             listReturnEnemy.add(en3);
             // forth enemy is a Static enemy with aimed shot.
-            final HitBox hbForth = new CircleHitBox(Spawns.B.getX(), Spawns.B.getY(),
+            final HitBox hbForth = new CircleHitBox(Spawn.B.getX(), Spawn.B.getY(),
                     EntityStats.STATIC_ENEMY.getEntityRadius());
             final Animated en4 = enemyFactory.createStaticAimedBulletEnemy(hbForth);
             listReturnEnemy.add(en4);

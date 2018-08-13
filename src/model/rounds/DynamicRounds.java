@@ -12,7 +12,7 @@ import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.utility.ModelUtility;
-import model.utility.Spawns;
+import model.utility.Spawn;
 import utility.Command;
 
 /**
@@ -26,7 +26,7 @@ public class DynamicRounds implements RoundsGenerator {
 
     private final List<EnemyType> listEnemy;
     private final List<Command> listCommand;
-    private final List<Spawns> listSpawns;
+    private final List<Spawn> listSpawns;
     private final List<Animated> listReturnEnemy;
 
     /**
@@ -47,12 +47,12 @@ public class DynamicRounds implements RoundsGenerator {
     public List<Animated> generateMonster() {
         fullList();
         final int enemyToSpawn = numberOfEnemyToGenerate();
+        final EnemyFactory enemy = new EnemyFactoryImpl();
+        Spawn spawn;
         Collections.shuffle(listSpawns);
         for (int i = 0; i < enemyToSpawn; i++) {
             Collections.shuffle(listEnemy);
             Collections.shuffle(listCommand);
-            final EnemyFactory enemy = new EnemyFactoryImpl();
-            Spawns spawn;
             spawn = listSpawns.remove(0);
             if (listEnemy.get(0).equals(EnemyType.SIMPLE)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
@@ -62,7 +62,7 @@ public class DynamicRounds implements RoundsGenerator {
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEMOVE)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.MOVEABLE_ENEMY.getEntityRadius());
-                final Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1));
+                final Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(0));
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEAIMED)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
@@ -70,7 +70,7 @@ public class DynamicRounds implements RoundsGenerator {
                 final Animated en = enemy.createStaticAimedBulletEnemy(hb);
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.FOLLOWED)) {
-                final HitBox hbThird = new CircleHitBox(Spawns.G.getX(), Spawns.G.getY(),
+                final HitBox hbThird = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.STATIC_ENEMY.getEntityRadius());
                 final Animated en = enemy.createStaticEnemyFollowPlayerBullet(hbThird);
                 listReturnEnemy.add(en);
@@ -105,14 +105,14 @@ public class DynamicRounds implements RoundsGenerator {
         listEnemy.add(EnemyType.SIMPLEMOVE);
         listEnemy.add(EnemyType.SIMPLE);
         listEnemy.add(EnemyType.FOLLOWED);
-        listSpawns.add(Spawns.A);
-        listSpawns.add(Spawns.B);
-        listSpawns.add(Spawns.C);
-        listSpawns.add(Spawns.D);
-        listSpawns.add(Spawns.E);
-        listSpawns.add(Spawns.F);
-        listSpawns.add(Spawns.G);
-        listSpawns.add(Spawns.H);
+        listSpawns.add(Spawn.A);
+        listSpawns.add(Spawn.B);
+        listSpawns.add(Spawn.C);
+        listSpawns.add(Spawn.D);
+        listSpawns.add(Spawn.E);
+        listSpawns.add(Spawn.F);
+        listSpawns.add(Spawn.G);
+        listSpawns.add(Spawn.H);
         listCommand.add(Command.UP);
         listCommand.add(Command.RIGHT);
         listCommand.add(Command.DOWN);
