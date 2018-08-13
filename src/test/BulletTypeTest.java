@@ -142,7 +142,7 @@ class BulletTypeTest {
         final double yLeft = bullets.get(2).getHitBox().getY();
         bullets.get(2).update(1);
         assertEquals(xLeft - 1, bullets.get(2).getHitBox().getX());
-        assertEquals(yLeft, bullets.get(2).getHitBox().getY());
+        assertEquals(yLeft, Math.round(bullets.get(2).getHitBox().getY()));
 
         // RIGHT
         final double x = bullets.get(3).getHitBox().getX();

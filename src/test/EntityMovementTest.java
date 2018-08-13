@@ -53,14 +53,14 @@ class EntityMovementTest {
         ModelUtility.updateListMovementCommand(Arrays.asList(Command.LEFT));
         player.update(1);
         assertEquals(oldXLeft - 1, player.getHitBox().getX());
-        assertEquals(oldYLeft, player.getHitBox().getY());
+        assertEquals(oldYLeft, Math.round(player.getHitBox().getY()));
 
         // DOWN MOVEMENT.
         final double oldXDown = player.getHitBox().getX();
         final double oldYDown = player.getHitBox().getY();
         ModelUtility.updateListMovementCommand(Arrays.asList(Command.DOWN));
         player.update(1);
-        assertEquals(oldXDown, player.getHitBox().getX());
+        assertEquals(oldXDown, Math.round(player.getHitBox().getX()));
         assertEquals(oldYDown + 1, player.getHitBox().getY());
     }
 
