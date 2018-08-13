@@ -33,6 +33,7 @@ import model.strategy.PlayerProjectile;
 import model.strategy.SimplyDirectionMovement;
 import model.utility.CollisionUtil;
 import model.utility.ModelUtility;
+import model.utility.RoomEnum;
 import model.utility.SpawnUtility;
 import model.worldevent.BossFightStarted;
 import model.worldevent.PlayerDied;
@@ -136,7 +137,7 @@ public class WorldImpl implements World {
     public void createEnvironment() {
         we = new WorldEnvironmentImpl();
         listRoom.addAll(we.createWorld());
-        this.room = this.listRoom.get(0);
+        this.room = this.listRoom.get(RoomEnum.MAINROOM.getIndex());
         addButton(we.getButton());
         createPlayer(playerCreation());
         ModelUtility.updateRoomModelUtility(this.room);
@@ -271,10 +272,10 @@ public class WorldImpl implements World {
         ModelUtility.updateListMovementCommand(listMovement);
         createPlayerBullet();
         this.player.update(deltaTime);
-        if (getActualRoom().equals(this.listRoom.get(0))) {
+        if (getActualRoom().equals(this.listRoom.get(RoomEnum.MAINROOM.getIndex()))) {
             mainRoomActions(deltaTime);
             ModelUtility.updatePauseDuringRound(this.button.isPressed());
-        } else if (getActualRoom().equals(this.listRoom.get(1))) {
+        } else if (getActualRoom().equals(this.listRoom.get(RoomEnum.SHOPROOM.getIndex()))) {
             shopRoomAction(deltaTime);
             ModelUtility.updatePauseDuringRound(false);
         } else {
@@ -475,7 +476,6 @@ public class WorldImpl implements World {
      *            delta time.
      */
     private void mainRoomActions(final Double deltaTime) {
-        if (getActualRoom().equals(this.listRoom.get(0))) {
             wallColliding();
             if (allEnemyDefeated() && !this.button.isPressed()) {
                 playerBulletHitsEnemy(deltaTime);
@@ -488,7 +488,7 @@ public class WorldImpl implements World {
                             (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
                     && !this.mode.equals(Mode.SURVIVAL)) {
                 // se hai finito i round nella main puoi andare nello shop.
-                this.room = this.listRoom.get(1);
+                this.room = this.listRoom.get(RoomEnum.SHOPROOM.getIndex());
                 listEvent.add(new RoomChange(this.room));
                 getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
                         SpawnUtility.getSpawnYEnterRightDoor());
@@ -525,7 +525,6 @@ public class WorldImpl implements World {
                 setNextRound();
                 this.listEvent.add(new PlayerHitButton());
             }
-        }
     }
 
     /**
@@ -535,7 +534,6 @@ public class WorldImpl implements World {
      *            dt.
      */
     private void bossRoomAction(final double deltaTime) {
-        if (getActualRoom().equals(this.listRoom.get(2))) {
             wallColliding();
             final Animated boss = we.getBoss();
             final AbstractCharacter abstractBoss = (AbstractCharacter) boss;
@@ -560,14 +558,12 @@ public class WorldImpl implements World {
                     this.listEvent.add(new PlayerKillBoss());
                 }
             }
-        }
     }
 
     /**
      * Action in the shop room.
      */
     private void shopRoomAction(final double deltaTime) {
-        if (getActualRoom().equals(this.listRoom.get(1))) {
             wallColliding();
             playerBulletHitsEnemy(deltaTime);
             final List<Inanimated> dieItems = new ArrayList<>();
@@ -606,7 +602,7 @@ public class WorldImpl implements World {
             we.getItems().removeAll(dieItems);
             if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                     (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
-                this.room = this.listRoom.get(2);
+                this.room = this.listRoom.get(RoomEnum.BOSSROOM.getIndex());
                 listEvent.add(new RoomChange(this.room));
                 we.getLeftDoorFromBossToShop().setOpen(false);
                 this.listEvent.add(new BossFightStarted());
@@ -614,7 +610,6 @@ public class WorldImpl implements World {
                         SpawnUtility.getSpawnYEnterRightDoor());
                 this.listBulletPlayer.clear();
             }
-        }
     }
 
     /**
