@@ -70,7 +70,7 @@ public abstract class AbstractBullet implements Animated {
      * @return
      *          The HitBox in the new position.
     */
-    protected abstract HitBox performMove(double dt);
+    protected abstract HitBox deltaDistance(double dt);
 
     /**
      * Shot bullets of entity. (Template Method).
@@ -86,7 +86,7 @@ public abstract class AbstractBullet implements Animated {
      */
     @Override
     public void update(final double dt) {
-        final HitBox position = performMove(dt);
+        final HitBox position = deltaDistance(dt);
         this.hb.changePosition(position.getX(), position.getY());
     }
 

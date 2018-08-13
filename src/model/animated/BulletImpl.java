@@ -49,10 +49,10 @@ public class BulletImpl extends AbstractBullet implements Bullet {
     }
 
     /**
-     * Perform movement of the bullet.
+     * Distance travelled since the last update.
      */
     @Override
-    protected HitBox performMove(final double dt) {
+    protected HitBox deltaDistance(final double dt) {
         range -= super.getVel() * dt;
         return bulletMS.move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
     }
