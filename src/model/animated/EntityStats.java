@@ -37,7 +37,7 @@ public enum EntityStats {
     private double radius;
 
     /**
-     * Constructor for enum.
+     * Constructor for enumeration.
      * 
      * @param l
      *            life.
