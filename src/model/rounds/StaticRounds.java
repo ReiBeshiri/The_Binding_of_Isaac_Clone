@@ -40,10 +40,10 @@ public class StaticRounds implements RoundsGenerator {
             final Animated en2 = enemyFactory.createSimpleDirectionMovedEnemy(hbSecond, Command.UP, Command.LEFT);
             listReturnEnemy.add(en2);
         } else if (getCurrentRound() == 2) {
-            // first enemy is a static simple direction shot enemy.
+            // first enemy is a static enemy four way diagonal shot.
             final HitBox hbFirst = new CircleHitBox(Spawn.B.getX(), Spawn.B.getY(),
                     EntityStats.MOVEABLE_ENEMY.getEntityRadius());
-            final Animated en1 = enemyFactory.createStaticSimpleDirectionShotEnemy(hbFirst, Command.DOWN);
+            final Animated en1 = enemyFactory.createStaticEnemyFourWayDiagonalProjectyle(hbFirst);
             listReturnEnemy.add(en1);
             // second enemy is a simple direction moved enemy enemy.
             final HitBox hbSecond = new CircleHitBox(Spawn.D.getX(), Spawn.D.getY(),

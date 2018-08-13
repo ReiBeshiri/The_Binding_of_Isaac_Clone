@@ -70,9 +70,19 @@ public class DynamicRounds implements RoundsGenerator {
                 final Animated en = enemy.createStaticAimedBulletEnemy(hb);
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.FOLLOWED)) {
-                final HitBox hbThird = new CircleHitBox(spawn.getX(), spawn.getY(),
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.STATIC_ENEMY.getEntityRadius());
-                final Animated en = enemy.createStaticEnemyFollowPlayerBullet(hbThird);
+                final Animated en = enemy.createStaticEnemyFollowPlayerBullet(hb);
+                listReturnEnemy.add(en);
+            } else if (listEnemy.get(0).equals(EnemyType.DIAGONAL)) {
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
+                        EntityStats.STATIC_ENEMY.getEntityRadius());
+                final Animated en = enemy.createStaticEnemyFourWayDiagonalProjectyle(hb);
+                listReturnEnemy.add(en);
+            } else if (listEnemy.get(0).equals(EnemyType.STRAIGHT)) {
+                final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
+                        EntityStats.STATIC_ENEMY.getEntityRadius());
+                final Animated en = enemy.createStaticEnemyFourWayStraightProjectile(hb);
                 listReturnEnemy.add(en);
             }
         }
@@ -105,6 +115,8 @@ public class DynamicRounds implements RoundsGenerator {
         listEnemy.add(EnemyType.SIMPLEMOVE);
         listEnemy.add(EnemyType.SIMPLE);
         listEnemy.add(EnemyType.FOLLOWED);
+        listEnemy.add(EnemyType.DIAGONAL);
+        listEnemy.add(EnemyType.STRAIGHT);
         listSpawns.add(Spawn.A);
         listSpawns.add(Spawn.B);
         listSpawns.add(Spawn.C);

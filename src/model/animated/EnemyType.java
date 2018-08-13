@@ -23,5 +23,15 @@ public enum EnemyType {
     /**
      * Create Followed Direction Moved Enemy.
      */
-    FOLLOWED;
+    FOLLOWED,
+
+    /**
+     * Create Static Enemy Four Way Diagonal.
+     */
+    DIAGONAL,
+
+    /**
+     * Create Static Enemy Four Way Straight.
+     */
+    STRAIGHT;
 }
