@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.animated.Animated;
 import model.animated.Bullet;
+import model.animated.Player;
 import model.inanimated.Button;
 import model.room.Room;
 import utility.Command;
@@ -41,7 +42,7 @@ public interface World {
      * @param player
      *          set the playable character
      */
-    void createPlayer(Animated player);
+    void createPlayer(Player player);
 
     /**
      * This method set the next round to be played.
@@ -122,7 +123,7 @@ public interface World {
      * 
      * @return Return the Player Object
      */
-    Animated getPlayer();
+    Player getPlayer();
 
     /**
      * Add a Button to the World.

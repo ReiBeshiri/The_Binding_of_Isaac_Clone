@@ -1,7 +1,6 @@
 package model.animated;
 
 import model.hitbox.CircleHitBox;
-import model.hitbox.HitBox;
 import model.strategy.MovementStrategy;
 import utility.ImageType;
 
@@ -10,7 +9,7 @@ import utility.ImageType;
  * Class for all the bullets fired in the game.
  *
  */
-public class BulletImpl extends AbstractBullet implements Bullet {
+public class BulletImpl extends AbstractAnimated implements Bullet {
 
     private double range;
     private final int damage;
@@ -49,19 +48,19 @@ public class BulletImpl extends AbstractBullet implements Bullet {
     }
 
     /**
-     * Distance travelled since the last update.
-     */
-    @Override
-    protected HitBox deltaDistance(final double dt) {
-        range -= super.getVel() * dt;
-        return bulletMS.move(dt, super.getVel(), (CircleHitBox) super.getHitBox());
-    }
-
-    /**
      * Damage of the bullet.
      */
     @Override
     public int getDamage() {
         return damage;
+    }
+
+    /**
+     * Movement of entity.
+     */
+    @Override
+    protected void move(final double dt) {
+        range -= getVel() * dt;
+        setHitBox(bulletMS.move(dt, getVel(), (CircleHitBox) getHitBox()));
     }
 }

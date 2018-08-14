@@ -1,6 +1,7 @@
 package model.animated;
 
 /**
- * Interface that represent Player.
+ * Interface that only represent player.
+ *
  */
-public interface Player { }
+public interface Player extends Character { }

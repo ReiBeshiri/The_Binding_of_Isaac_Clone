@@ -8,13 +8,11 @@ import static model.animated.EntityStats.STATIC_ENEMY;
 import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
-
 import model.ai.BasicAI;
 import model.ai.BossAI;
-import model.animated.AbstractCharacter;
-import model.animated.Animated;
 import model.animated.Bullet;
 import model.animated.BulletImpl;
+import model.animated.Enemy;
 import model.animated.EnemyImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
@@ -76,11 +74,11 @@ class BulletTypeTest {
 
     @Test
     public void testComboBossBullets() {
-        final Animated boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
+        final Enemy boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
                 new BossAI(new Motionless(), new BossSimpleComboProjectile(Command.LEFT, 10)), BOSS.getPoints(), null,
                 BOSS.getShotRatio(), null, BOSS.getBulletRadius(), 1, BOSS.getBulletRange(),
                 BOSS.getBulletDamage());
-        final List<Bullet> bullets = (List<Bullet>) boss.shot();
+        final List<Bullet> bullets = (List<Bullet>) boss.shoot();
         assertFalse(bullets.isEmpty());
         assertTrue(bullets.size() == 10);
         IntStream.range(0, bullets.size()).forEach(x -> {
@@ -99,7 +97,7 @@ class BulletTypeTest {
     public void testBossDecision() {
         final int bossDmg1 = 15;
         final int bossDmg2 = 10;
-        final AbstractCharacter boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
+        final Enemy boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
                 new BossAI(new Motionless(), new SingleDirectionProjectile(Command.LEFT)), BOSS.getPoints(), null,
                 BOSS.getShotRatio(), null, BOSS.getBulletRadius(), 1, BOSS.getBulletRange(),
                 BOSS.getBulletDamage());
@@ -115,11 +113,11 @@ class BulletTypeTest {
 
     @Test
     public void fourWayBullets() {
-        final Animated enemy = new EnemyImpl(1, STATIC_ENEMY.getLife(), new CircleHitBox(1, 1, 2),
+        final Enemy enemy = new EnemyImpl(1, STATIC_ENEMY.getLife(), new CircleHitBox(1, 1, 2),
                 new BasicAI(new Motionless(), new FourWayProjectile(0)), STATIC_ENEMY.getPoints(), null,
                 STATIC_ENEMY.getShotRatio(), null, STATIC_ENEMY.getBulletRadius(), 1,
                 STATIC_ENEMY.getBulletRange(), STATIC_ENEMY.getBulletDamage());
-        final List<Bullet> bullets = (List<Bullet>) enemy.shot();
+        final List<Bullet> bullets = (List<Bullet>) enemy.shoot();
 
         assertTrue(bullets.size() == 4);
 

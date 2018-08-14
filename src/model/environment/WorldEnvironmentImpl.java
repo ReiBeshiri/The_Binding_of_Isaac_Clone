@@ -2,10 +2,9 @@ package model.environment;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.animated.Animated;
 import model.animated.Enemy;
-import model.animated.EnemyFactory;
-import model.animated.EnemyFactoryImpl;
+import model.animated.CharacterFactory;
+import model.animated.CharacterFactoryImpl;
 import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
@@ -54,7 +53,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private Door rightDoorFromBossToShop;
     private final List<Wall> lw = new ArrayList<>();
     private final List<Inanimated> items = new ArrayList<>();
-    private Animated boss;
+    private Enemy boss;
     private boolean considerDoor;
 
     /**
@@ -127,7 +126,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      */
     private Room createBossRoom() {
         final List<Wall> wallBossRoom = new ArrayList<>();
-        final EnemyFactory e = new EnemyFactoryImpl();
+        final CharacterFactory e = new CharacterFactoryImpl();
         this.rightDoorFromBossToShop = new DoorImpl(hbDoorl, false, RoomEnum.MAINROOM, ImageType.LEFT_BOSS_DOOR);
         final List<Door> ld = new ArrayList<>();
         ld.add(this.rightDoorFromBossToShop);
@@ -203,7 +202,8 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     /**
      * @return boss.
      */
-    public Animated getBoss() {
+    @Override
+    public Enemy getBoss() {
         return this.boss;
     }
 

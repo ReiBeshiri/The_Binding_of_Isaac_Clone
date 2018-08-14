@@ -7,7 +7,7 @@ import utility.Command;
  * Factory for enemy.
  * 
  */
-public interface EnemyFactory {
+public interface CharacterFactory {
 
     /**
      * Creates a static enemy that shot in a single direction.
@@ -16,9 +16,9 @@ public interface EnemyFactory {
      *            HitBox.
      * @param c
      *            Direction.
-     * @return Animated type enemy.
+     * @return Static enemy that shots in a single direction.
      */
-    Animated createStaticSimpleDirectionShotEnemy(HitBox h, Command c);
+    Enemy createStaticSimpleDirectionShotEnemy(HitBox h, Command c);
 
     /**
      * Create a enemy that shot in direction of player.
@@ -27,7 +27,7 @@ public interface EnemyFactory {
      *            HitBox.
      * @return Static enemy with aimed shot.
      */
-    Animated createStaticAimedBulletEnemy(HitBox h);
+    Enemy createStaticAimedBulletEnemy(HitBox h);
 
     /**
      * Create a enemy that moves on a single direction and shot in a single
@@ -39,36 +39,36 @@ public interface EnemyFactory {
      *            Direction to move.
      * @param dShot
      *            Direction to shot.
-     * @return Animated enemy thats move in a simple direction.
+     * @return enemy thats move in a simple direction.
      */
-    Animated createSimpleDirectionMovedEnemy(HitBox h, Command dMove, Command dShot);
+    Enemy createSimpleDirectionMovedEnemy(HitBox h, Command dMove, Command dShot);
 
     /**
      * Create a enemy that shot in direction of player.
      * 
      * @param h
      *            HitBox of sender.
-     * @return Animated enemy that shot bullets that follow player.
+     * @return enemy that shot bullets that follow player.
      */
-    Animated createStaticEnemyFollowPlayerBullet(HitBox h);
+    Enemy createStaticEnemyFollowPlayerBullet(HitBox h);
 
     /**
      * Create a enemy that shot in all four basic directions.
      * 
      * @param h
      *            HitBox of sender.
-     * @return Animated enemy that shot bullets in four main directions.
+     * @return enemy that shot bullets in four main directions.
      */
-    Animated createStaticEnemyFourWayStraightProjectile(HitBox h);
+    Enemy createStaticEnemyFourWayStraightProjectile(HitBox h);
 
     /**
      * Create a enemy that shot in the four diagonal directions.
      * 
      * @param h
      *            HitBox.
-     * @return Animated enemy that shot bullets in four diagonal directions.
+     * @return enemy that shot bullets in four diagonal directions.
      */
-    Animated createStaticEnemyFourWayDiagonalProjectile(HitBox h);
+    Enemy createStaticEnemyFourWayDiagonalProjectile(HitBox h);
 
     /**
      * Create boss.
@@ -77,5 +77,14 @@ public interface EnemyFactory {
      *            HitBox.
      * @return Boss.
      */
-    Animated createBoss(HitBox h);
+    Enemy createBoss(HitBox h);
+
+    /**
+     * Create player.
+     * 
+     * @param h
+     *            HitBox.
+     * @return Player.
+     */
+    Player createPlayer(HitBox h);
 }

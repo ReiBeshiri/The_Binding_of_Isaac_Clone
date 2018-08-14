@@ -3,6 +3,7 @@ package model.utility;
 import java.util.List;
 
 import model.animated.Animated;
+import model.animated.Player;
 import model.hitbox.HitBox;
 import model.room.Room;
 import model.worldevent.WorldEvent;
@@ -22,7 +23,7 @@ public final class ModelUtility {
 
     private static int currentRound;
     private static boolean pauseBetweenRound;
-    private static Animated player;
+    private static Player player;
     private static Room room;
     private static List<Command> listMovementCommand; // The list of the movement of the player.
     private static List<Command> listShotsCommand;
@@ -38,7 +39,7 @@ public final class ModelUtility {
     /**
      * @return player.
      */
-    public static Animated getPlayer() {
+    public static Player getPlayer() {
         return player;
     }
 
@@ -109,11 +110,11 @@ public final class ModelUtility {
     }
 
     /**
-     * @param player
+     * @param player2
      *            the new player to update.
      */
-    public static void updatePlayerModelUtility(final Animated player) {
-        ModelUtility.player = player;
+    public static void updatePlayerModelUtility(final Player player2) {
+        ModelUtility.player = player2;
     }
 
     /**

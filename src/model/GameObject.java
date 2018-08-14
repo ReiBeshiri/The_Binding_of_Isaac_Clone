@@ -11,12 +11,14 @@ import utility.ImageType;
 public interface GameObject {
 
     /**
+     * Getter for object hit box.
      * 
      * @return The hitBox of object.
      */
     HitBox getHitBox();
 
     /**
+     * Setter for object hit box.
      * 
      * @param h
      *            HitBox that contains object.

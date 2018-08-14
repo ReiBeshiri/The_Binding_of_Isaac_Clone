@@ -5,11 +5,10 @@ import static model.animated.EntityStats.PLAYER;
 import static model.animated.EntityStats.STATIC_ENEMY;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
-
 import model.ai.BasicAI;
-import model.animated.AbstractCharacter;
-import model.animated.Animated;
+import model.animated.Enemy;
 import model.animated.EnemyImpl;
+import model.animated.Player;
 import model.animated.PlayerImpl;
 import model.hitbox.CircleHitBox;
 import model.strategy.PlayerMovement;
@@ -27,9 +26,10 @@ class EntityMovementTest {
     @Test
     public void playerMovementTest() {
 
-        final Animated player = new PlayerImpl(1, PLAYER.getLife(), new CircleHitBox(0, 0, 2),
+        final Player player = new PlayerImpl(1, PLAYER.getLife(), new CircleHitBox(0, 0, 2),
                 new BasicAI(new PlayerMovement(), new PlayerProjectile()), null, PLAYER.getShotRatio(),
-                PLAYER.getBulletRadius(), PLAYER.getBulletVel(), PLAYER.getBulletRange(), PLAYER.getBulletDamage());
+                PLAYER.getBulletRadius(), PLAYER.getBulletVel(), PLAYER.getBulletRange(), PLAYER.getBulletDamage(),
+                null);
 
         // RIGHT MOVEMENT.
         final double oldX = player.getHitBox().getX();
@@ -67,7 +67,7 @@ class EntityMovementTest {
     @Test
     public void enemySimpleMovementTest() {
         // UP MOVEMENT.
-        final AbstractCharacter enemy = new EnemyImpl(1, STATIC_ENEMY.getLife(), new CircleHitBox(0, 0, 2),
+        final Enemy enemy = new EnemyImpl(1, STATIC_ENEMY.getLife(), new CircleHitBox(0, 0, 2),
                 new BasicAI(new SimplyDirectionMovement(Command.UP), null), STATIC_ENEMY.getPoints(), null,
                 STATIC_ENEMY.getShotRatio(), null, STATIC_ENEMY.getBulletRadius(), STATIC_ENEMY.getBulletVel(),
                 STATIC_ENEMY.getBulletRange(), STATIC_ENEMY.getBulletDamage());

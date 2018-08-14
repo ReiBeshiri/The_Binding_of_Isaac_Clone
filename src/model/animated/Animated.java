@@ -1,7 +1,5 @@
 package model.animated;
 
-import java.util.Collection;
-
 import model.GameObject;
 
 /**
@@ -33,11 +31,4 @@ public interface Animated extends GameObject {
      * 
      */
     void update(double dt);
-
-    /**
-     * Method used to shot a collection of bullets.
-     * 
-     * @return collection of bullet shoted.
-     */
-    Collection<Bullet> shot();
 }

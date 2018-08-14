@@ -3,10 +3,9 @@ package model.rounds;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import model.animated.Animated;
-import model.animated.EnemyFactory;
-import model.animated.EnemyFactoryImpl;
+import model.animated.CharacterFactory;
+import model.animated.CharacterFactoryImpl;
+import model.animated.Enemy;
 import model.animated.EnemyType;
 import model.animated.EntityStats;
 import model.hitbox.CircleHitBox;
@@ -27,7 +26,7 @@ public class DynamicRounds implements RoundsGenerator {
     private final List<EnemyType> listEnemy;
     private final List<Command> listCommand;
     private final List<Spawn> listSpawns;
-    private final List<Animated> listReturnEnemy;
+    private final List<Enemy> listReturnEnemy;
 
     /**
      * Constructor for this class. Add to the list all the possible enemies, and the
@@ -44,10 +43,10 @@ public class DynamicRounds implements RoundsGenerator {
      * Generate a random Monster.
      */
     @Override
-    public List<Animated> generateMonster() {
+    public List<Enemy> generateMonster() {
         fullList();
         final int enemyToSpawn = numberOfEnemyToGenerate();
-        final EnemyFactory enemy = new EnemyFactoryImpl();
+        final CharacterFactory enemy = new CharacterFactoryImpl();
         Spawn spawn;
         Collections.shuffle(listSpawns);
         for (int i = 0; i < enemyToSpawn; i++) {
@@ -57,32 +56,32 @@ public class DynamicRounds implements RoundsGenerator {
             if (listEnemy.get(0).equals(EnemyType.SIMPLE)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.STATIC_ENEMY.getEntityRadius());
-                final Animated en = enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0));
+                final Enemy en = enemy.createStaticSimpleDirectionShotEnemy(hb, listCommand.get(0));
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEMOVE)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.MOVEABLE_ENEMY.getEntityRadius());
-                final Animated en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1));
+                final Enemy en = enemy.createSimpleDirectionMovedEnemy(hb, listCommand.get(0), listCommand.get(1));
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.SIMPLEAIMED)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.STATIC_ENEMY.getEntityRadius());
-                final Animated en = enemy.createStaticAimedBulletEnemy(hb);
+                final Enemy en = enemy.createStaticAimedBulletEnemy(hb);
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.FOLLOWED)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.STATIC_ENEMY.getEntityRadius());
-                final Animated en = enemy.createStaticEnemyFollowPlayerBullet(hb);
+                final Enemy en = enemy.createStaticEnemyFollowPlayerBullet(hb);
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.DIAGONAL)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.STATIC_ENEMY.getEntityRadius());
-                final Animated en = enemy.createStaticEnemyFourWayDiagonalProjectile(hb);
+                final Enemy en = enemy.createStaticEnemyFourWayDiagonalProjectile(hb);
                 listReturnEnemy.add(en);
             } else if (listEnemy.get(0).equals(EnemyType.STRAIGHT)) {
                 final HitBox hb = new CircleHitBox(spawn.getX(), spawn.getY(),
                         EntityStats.STATIC_ENEMY.getEntityRadius());
-                final Animated en = enemy.createStaticEnemyFourWayStraightProjectile(hb);
+                final Enemy en = enemy.createStaticEnemyFourWayStraightProjectile(hb);
                 listReturnEnemy.add(en);
             }
         }

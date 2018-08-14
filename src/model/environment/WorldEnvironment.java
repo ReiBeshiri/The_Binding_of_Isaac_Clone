@@ -1,8 +1,7 @@
 package model.environment;
 
 import java.util.List;
-
-import model.animated.Animated;
+import model.animated.Enemy;
 import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
@@ -42,7 +41,7 @@ public interface WorldEnvironment {
     /**
      * @return boss.
      */
-    Animated getBoss();
+    Enemy getBoss();
 
     /**
      * @return button of the main room.
