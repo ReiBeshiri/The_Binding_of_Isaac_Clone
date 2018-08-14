@@ -12,7 +12,7 @@ public abstract class AbstractInanimated implements Inanimated {
     private HitBox hitBox;
 
     /**
-     * Constructor for this clas.
+     * Constructor for this class.
      * 
      * @param h
      *            HitBox.
