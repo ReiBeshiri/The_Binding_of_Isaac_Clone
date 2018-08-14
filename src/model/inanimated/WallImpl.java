@@ -6,22 +6,21 @@ import utility.ImageType;
 /**
  * Walls class.
  */
-public class WallImpl extends AbstractInanimated implements Wall {
+public class WallImpl implements Wall {
 
     private final ImageType imgWall;
+    private final HitBox hitBox;
 
     /**
      * Constructor for this class.
      * 
      * @param hb
      *            HitBox
-     * @param open
-     *            always false.
      * @param imgWall
      *            image of the wall.
      */
-    public WallImpl(final HitBox hb, final boolean open, final ImageType imgWall) {
-        super(hb, open);
+    public WallImpl(final HitBox hb, final ImageType imgWall) {
+        hitBox = hb;
         this.imgWall = imgWall;
     }
 
@@ -29,8 +28,7 @@ public class WallImpl extends AbstractInanimated implements Wall {
      * Cannot set HitBox after creating the wall.
      */
     @Override
-    public void setHitBox(final HitBox h) {
-    }
+    public void setHitBox(final HitBox h) { }
 
     /**
      * Get Image type.
@@ -38,5 +36,13 @@ public class WallImpl extends AbstractInanimated implements Wall {
     @Override
     public ImageType getImageType() {
         return this.imgWall;
+    }
+
+    /**
+     * Getter for HitBox.
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hitBox;
     }
 }

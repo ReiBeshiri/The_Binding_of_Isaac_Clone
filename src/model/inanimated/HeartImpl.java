@@ -6,11 +6,12 @@ import utility.ImageType;
 /**
  * Heart item implements.
  */
-public class HeartImpl extends AbstractInanimated implements Heart {
+public class HeartImpl implements Heart {
 
     private static final int COST = 5000;
     private static final int LIFE = 1;
 
+    private final HitBox hitBox;
     private final ImageType imgHearth;
 
     /**
@@ -18,11 +19,9 @@ public class HeartImpl extends AbstractInanimated implements Heart {
      * 
      * @param h
      *            HitBox.
-     * @param enable
-     *            It's possible buy the life.
      */
-    public HeartImpl(final HitBox h, final boolean enable) {
-        super(h, enable);
+    public HeartImpl(final HitBox h) {
+        hitBox = h;
         imgHearth = ImageType.POWERUP_HEALTH;
     }
 
@@ -49,4 +48,19 @@ public class HeartImpl extends AbstractInanimated implements Heart {
     public ImageType getImageType() {
         return imgHearth;
     }
+
+    /**
+     * Getter for HitBox.
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hitBox;
+    }
+
+    /**
+     * Setter for HitBox.
+     * Not used in this power up.
+     */
+    @Override
+    public void setHitBox(final HitBox h) { }
 }

@@ -1,12 +1,11 @@
 package model.room;
 
 import java.util.List;
-
 import model.animated.Enemy;
 import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
-import model.inanimated.Inanimated;
+import model.inanimated.PowerUp;
 import model.inanimated.Wall;
 
 /**
@@ -58,5 +57,5 @@ public interface RoomFactory {
      *            Walls of the room.
      * @return a ShopRoom.
      */
-    Room createShopRoom(HitBox hitbox, List<Door> doors, List<Inanimated> items, List<Wall> walls);
+    Room createShopRoom(HitBox hitbox, List<Door> doors, List<PowerUp> items, List<Wall> walls);
 }

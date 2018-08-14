@@ -5,7 +5,7 @@ import model.animated.Enemy;
 import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
-import model.inanimated.Inanimated;
+import model.inanimated.PowerUp;
 import model.room.Room;
 
 /**
@@ -51,7 +51,7 @@ public interface WorldEnvironment {
     /**
      * @return list of items.
      */
-    List<Inanimated> getItems();
+    List<PowerUp> getItems();
 
     /**
      * @return the HB of the room.

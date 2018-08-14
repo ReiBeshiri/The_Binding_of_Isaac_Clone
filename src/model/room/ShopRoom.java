@@ -1,10 +1,9 @@
 package model.room;
 
 import java.util.List;
-
 import model.hitbox.HitBox;
 import model.inanimated.Door;
-import model.inanimated.Inanimated;
+import model.inanimated.PowerUp;
 import model.inanimated.Wall;
 import utility.ImageType;
 
@@ -14,7 +13,7 @@ import utility.ImageType;
  */
 public class ShopRoom extends AbstractRoom {
 
-    private final List<Inanimated> items;
+    private final List<PowerUp> items;
 
     /**
      * Constructor of the room.
@@ -30,7 +29,7 @@ public class ShopRoom extends AbstractRoom {
      * @param backImg
      *            background image.
      */
-    public ShopRoom(final HitBox h, final List<Door> doors, final List<Inanimated> items, final List<Wall> walls,
+    public ShopRoom(final HitBox h, final List<Door> doors, final List<PowerUp> items, final List<Wall> walls,
             final ImageType backImg) {
         super(h, doors, walls, backImg);
         this.items = items;
@@ -40,7 +39,7 @@ public class ShopRoom extends AbstractRoom {
      * Getter for list of power up items in the shop.
      * @return List of items that you can buy.
      */
-    public List<Inanimated> getItems() {
+    public List<PowerUp> getItems() {
         return this.items;
     }
 

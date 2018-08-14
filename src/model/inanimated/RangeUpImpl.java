@@ -6,11 +6,12 @@ import utility.ImageType;
 /**
  * Range Power Up item.
  */
-public class RangeUpImpl extends AbstractInanimated implements RangeUp {
+public class RangeUpImpl implements RangeUp {
 
     private static final int COST = 5000;
     private static final double RANGE = 200;
 
+    private final HitBox hitBox;
     private final ImageType imgRangeUp;
 
     /**
@@ -18,11 +19,9 @@ public class RangeUpImpl extends AbstractInanimated implements RangeUp {
      * 
      * @param h
      *            hitBox.
-     * @param enable
-     *            .
      */
-    public RangeUpImpl(final HitBox h, final boolean enable) {
-        super(h, enable);
+    public RangeUpImpl(final HitBox h) {
+        hitBox = h;
         imgRangeUp = ImageType.BULLET_RANGE_UP;
     }
 
@@ -49,4 +48,19 @@ public class RangeUpImpl extends AbstractInanimated implements RangeUp {
     public double getRangeUp() {
         return RANGE;
     }
+
+    /**
+     * Getter for hitBox.
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hitBox;
+    }
+
+    /**
+     * Setter for hitBox.
+     * Not used in powerUp.
+     */
+    @Override
+    public void setHitBox(final HitBox h) { }
 }

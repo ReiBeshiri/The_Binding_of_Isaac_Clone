@@ -8,9 +8,11 @@ import utility.ImageType;
  * Button implementation.
  *
  */
-public class ButtonImpl extends AbstractInanimated implements Button {
+public class ButtonImpl implements Button {
 
     private ImageType btnImg;
+    private final HitBox hitBox;
+    private boolean status;
 
     /**
      * Constructor for this class.
@@ -21,7 +23,8 @@ public class ButtonImpl extends AbstractInanimated implements Button {
      *            State of the button.
      */
     public ButtonImpl(final HitBox h, final boolean pressed) {
-        super(h, pressed);
+        hitBox = h;
+        this.status = pressed;
         btnImg = ImageType.BUTTON_UP;
     }
 
@@ -30,7 +33,7 @@ public class ButtonImpl extends AbstractInanimated implements Button {
      */
     @Override
     public boolean isPressed() {
-        return super.isEnable();
+        return status;
     }
 
     /**
@@ -41,7 +44,7 @@ public class ButtonImpl extends AbstractInanimated implements Button {
      */
     @Override
     public void setPressed(final boolean press) {
-        super.setEnable(press);
+        status = press;
         if (press) {
             btnImg = ImageType.BUTTON_DOWN;
         } else {
@@ -56,4 +59,19 @@ public class ButtonImpl extends AbstractInanimated implements Button {
     public ImageType getImageType() {
         return btnImg;
     }
+
+    /**
+     * Getter for HitBox.
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hitBox;
+    }
+
+    /**
+     * Setter for HitBox.
+     * Not used in button.
+     */
+    @Override
+    public void setHitBox(final HitBox h) { }
 }

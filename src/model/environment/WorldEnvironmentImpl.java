@@ -15,7 +15,7 @@ import model.inanimated.DamageUpImpl;
 import model.inanimated.Door;
 import model.inanimated.DoorImpl;
 import model.inanimated.HeartImpl;
-import model.inanimated.Inanimated;
+import model.inanimated.PowerUp;
 import model.inanimated.RangeUpImpl;
 import model.inanimated.VelocityUpImpl;
 import model.inanimated.Wall;
@@ -52,7 +52,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private Door rightDoorFromShopToBoss;
     private Door rightDoorFromBossToShop;
     private final List<Wall> lw = new ArrayList<>();
-    private final List<Inanimated> items = new ArrayList<>();
+    private final List<PowerUp> items = new ArrayList<>();
     private Enemy boss;
     private boolean considerDoor;
 
@@ -112,10 +112,10 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
                 ModelUtility.getWorldHeight() / 2 - ProportionUtility.getPowerUpHeight() / 2
                         - ProportionUtility.getUnderShopY(),
                 ProportionUtility.getPowerUpHeight(), ProportionUtility.getPowerUpWidth());
-        items.add(new DamageUpImpl(hbDamageUp, true));
-        items.add(new VelocityUpImpl(hbVelocityUp, true));
-        items.add(new HeartImpl(hbHeart, true));
-        items.add(new RangeUpImpl(hbRangeUp, true));
+        items.add(new DamageUpImpl(hbDamageUp));
+        items.add(new VelocityUpImpl(hbVelocityUp));
+        items.add(new HeartImpl(hbHeart));
+        items.add(new RangeUpImpl(hbRangeUp));
         return rf.createShopRoom(hbRoom, ld, items, lw);
     }
 
@@ -144,12 +144,12 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
     private void createWalls() {
         for (double i = 0; i < ModelUtility.getWorldWidth(); i += ProportionUtility.getWallHorizontalWidth()) {
             lw.add(new WallImpl(new RectangularHitBox(i, 0, ProportionUtility.getWallHorizontalHeight(),
-                    ProportionUtility.getWallHorizontalWidth()), false, ImageType.MAP_VERTICAL_BORDER));
+                    ProportionUtility.getWallHorizontalWidth()), ImageType.MAP_VERTICAL_BORDER));
             lw.add(new WallImpl(
                     new RectangularHitBox(i,
                             ModelUtility.getWorldHeight() - ProportionUtility.getWallHorizontalHeight(),
                             ProportionUtility.getWallHorizontalHeight(), ProportionUtility.getWallHorizontalWidth()),
-                    false, ImageType.MAP_VERTICAL_BORDER));
+                    ImageType.MAP_VERTICAL_BORDER));
         }
         for (double i = ProportionUtility.getWallHorizontalHeight(); i < ModelUtility.getWorldHeight()
                 - ProportionUtility.getWallHorizontalHeight(); i += ProportionUtility.getWallVerticalHeight()) {
@@ -159,11 +159,11 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
                 i += ProportionUtility.getHeightDoor();
             }
             lw.add(new WallImpl(new RectangularHitBox(0, i, ProportionUtility.getWallVerticalHeight(),
-                    ProportionUtility.getWallVerticalWidth()), false, ImageType.MAP_HORIZONTAL_BORDER));
+                    ProportionUtility.getWallVerticalWidth()), ImageType.MAP_HORIZONTAL_BORDER));
             lw.add(new WallImpl(
                     new RectangularHitBox(ModelUtility.getWorldWidth() - ProportionUtility.getWallVerticalWidth(), i,
                             ProportionUtility.getWallVerticalHeight(), ProportionUtility.getWallVerticalWidth()),
-                    false, ImageType.MAP_HORIZONTAL_BORDER));
+                    ImageType.MAP_HORIZONTAL_BORDER));
         }
     }
 
@@ -211,7 +211,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
      * @return list of items in the shop.
      */
     @Override
-    public List<Inanimated> getItems() {
+    public List<PowerUp> getItems() {
         return this.items;
     }
 
@@ -240,7 +240,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
                 - ProportionUtility.getHeightDoor() / 2; i < ModelUtility.getWorldHeight() / 2
                         + ProportionUtility.getHeightDoor() / 2; i += ProportionUtility.getWallVerticalHeight()) {
             l.add(new WallImpl(new RectangularHitBox(0, i, ProportionUtility.getWallVerticalHeight(),
-                    ProportionUtility.getWallVerticalWidth()), false, ImageType.MAP_HORIZONTAL_BORDER));
+                    ProportionUtility.getWallVerticalWidth()), ImageType.MAP_HORIZONTAL_BORDER));
         }
         return l;
     }
@@ -256,7 +256,7 @@ public class WorldEnvironmentImpl implements WorldEnvironment {
             l.add(new WallImpl(
                     new RectangularHitBox(ModelUtility.getWorldWidth() - ProportionUtility.getWallVerticalWidth(), i,
                             ProportionUtility.getWallVerticalHeight(), ProportionUtility.getWallVerticalWidth()),
-                    false, ImageType.MAP_HORIZONTAL_BORDER));
+                    ImageType.MAP_HORIZONTAL_BORDER));
         }
         return l;
     }

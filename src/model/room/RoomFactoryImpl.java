@@ -5,7 +5,7 @@ import model.animated.Enemy;
 import model.hitbox.HitBox;
 import model.inanimated.Button;
 import model.inanimated.Door;
-import model.inanimated.Inanimated;
+import model.inanimated.PowerUp;
 import model.inanimated.Wall;
 import utility.ImageType;
 
@@ -36,7 +36,7 @@ public class RoomFactoryImpl implements RoomFactory {
      * Create the ShopRoom.
      */
     @Override
-    public Room createShopRoom(final HitBox hitbox, final List<Door> doors, final List<Inanimated> items,
+    public Room createShopRoom(final HitBox hitbox, final List<Door> doors, final List<PowerUp> items,
             final List<Wall> walls) {
         return new ShopRoom(hitbox, doors, items, walls, ImageType.BACKGROUND_SHOP_ROOM);
     }

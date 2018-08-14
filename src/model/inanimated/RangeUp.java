@@ -3,14 +3,7 @@ package model.inanimated;
 /**
  * Interface that represent power up item for player bullet range.
  */
-public interface RangeUp extends Inanimated {
-
-    /**
-     * Cost of the power up.
-     * 
-     * @return the cost of the power up.
-     */
-    int getCost();
+public interface RangeUp extends PowerUp {
 
     /**
      * The range to increase.

@@ -6,11 +6,12 @@ import utility.ImageType;
 /**
  * Velocity power up item.
  */
-public class VelocityUpImpl extends AbstractInanimated implements VelocityUp {
+public class VelocityUpImpl implements VelocityUp {
 
     private static final int COST = 5000;
     private static final double VEL = 10;
 
+    private final HitBox hitBox;
     private final ImageType imgVelocity;
 
     /**
@@ -18,11 +19,9 @@ public class VelocityUpImpl extends AbstractInanimated implements VelocityUp {
      * 
      * @param h
      *            hb.
-     * @param enable
-     *            Velocity power up status (true).
      */
-    public VelocityUpImpl(final HitBox h, final boolean enable) {
-        super(h, enable);
+    public VelocityUpImpl(final HitBox h) {
+        hitBox = h;
         imgVelocity = ImageType.SPEED_UP;
     }
 
@@ -49,4 +48,19 @@ public class VelocityUpImpl extends AbstractInanimated implements VelocityUp {
     public double getVelocity() {
         return VEL;
     }
+
+    /**
+     * Getter for HitBox.
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hitBox;
+    }
+
+    /**
+     * Set HitBox.
+     * Not used for power up.
+     */
+    @Override
+    public void setHitBox(final HitBox h) { }
 }

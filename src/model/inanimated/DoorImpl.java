@@ -9,20 +9,28 @@ import utility.ImageType;
  * Door implements.
  *
  */
-public class DoorImpl extends AbstractInanimated implements Door {
+public class DoorImpl implements Door {
 
     private final RoomEnum destination;
     private ImageType imgDoor;
+    private final HitBox hitBox;
+    private boolean status;
 
     /**
      * Constructor for this class.
-     * @param h HitBox.
-     * @param open State of the door.
-     * @param destination Destination of the door.
-     * @param imgDoor the image of the door.
+     * 
+     * @param h
+     *            HitBox.
+     * @param open
+     *            State of the door.
+     * @param destination
+     *            Destination of the door.
+     * @param imgDoor
+     *            the image of the door.
      */
     public DoorImpl(final HitBox h, final boolean open, final RoomEnum destination, final ImageType imgDoor) {
-        super(h, open);
+        hitBox = h;
+        status = open;
         this.destination = destination;
         this.imgDoor = imgDoor;
     }
@@ -32,16 +40,18 @@ public class DoorImpl extends AbstractInanimated implements Door {
      */
     @Override
     public boolean isOpen() {
-        return super.isEnable();
+        return status;
     }
 
     /**
      * Set door status.
-     * @param open The state of the door.
+     * 
+     * @param open
+     *            The state of the door.
      */
     @Override
     public void setOpen(final boolean open) {
-        super.setEnable(open);
+        status = open;
     }
 
     /**
@@ -59,7 +69,7 @@ public class DoorImpl extends AbstractInanimated implements Door {
     public ImageType getImageType() {
         return imgDoor;
     }
- 
+
     /**
      * set the new image of the door.
      */
@@ -67,4 +77,19 @@ public class DoorImpl extends AbstractInanimated implements Door {
     public void setImgDoor(final ImageType img) {
         this.imgDoor = img;
     }
+
+    /**
+     * Getter for HitBox.
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hitBox;
+    }
+
+    /**
+     * Setter for hitBox.
+     * Not used in doors.
+     */
+    @Override
+    public void setHitBox(final HitBox h) { }
 }
