@@ -32,7 +32,7 @@ public class VelocityUpImpl extends AbstractPowerUp implements VelocityUp {
      */
     @Override
     public int getEffect() {
-        Double d = new Double(VelocityUpImpl.VEL);
+        final Double d = new Double(VelocityUpImpl.VEL);
         return d.intValue();
     }
 

@@ -32,7 +32,7 @@ public class RangeUpImpl extends AbstractPowerUp implements RangeUp {
      */
     @Override
     public int getEffect() {
-        Double d = new Double(RangeUpImpl.RANGE);
+        final Double d = new Double(RangeUpImpl.RANGE);
         return d.intValue();
     }
 
