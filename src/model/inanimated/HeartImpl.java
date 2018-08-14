@@ -28,4 +28,12 @@ public class HeartImpl extends AbstractPowerUp implements Heart {
         return HeartImpl.LIFE;
     }
 
+    /**
+     * @return the effect of the item.
+     */
+    @Override
+    public int getEffect() {
+        return getLife();
+    }
+
 }

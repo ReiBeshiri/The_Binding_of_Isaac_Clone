@@ -5,7 +5,7 @@ import utility.ImageType;
 /**
  * Abstract Class for power ups.
  */
-public class AbstractPowerUp implements PowerUp {
+public abstract class AbstractPowerUp implements PowerUp {
 
     private final HitBox hb;
     private final ImageType img;
@@ -47,5 +47,10 @@ public class AbstractPowerUp implements PowerUp {
     public int getCost() {
         return COST;
     }
+
+    /**
+     * @return the effect of the item.
+     */
+    public abstract int getEffect();
 
 }
