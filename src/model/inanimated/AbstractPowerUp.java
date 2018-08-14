@@ -1,0 +1,51 @@
+package model.inanimated;
+
+import model.hitbox.HitBox;
+import utility.ImageType;
+/**
+ * Abstract Class for power ups.
+ */
+public class AbstractPowerUp implements PowerUp {
+
+    private final HitBox hb;
+    private final ImageType img;
+    private static final int COST = 5000;
+
+    AbstractPowerUp(final HitBox hb, final ImageType img) {
+        this.hb = hb;
+        this.img = img;
+    }
+
+    /**
+     * @return hb;
+     */
+    @Override
+    public HitBox getHitBox() {
+        return hb;
+    }
+
+    /**
+     * Does nothing, can't reset hb of an inanimate obj.
+     * @param h the hb.
+     */
+    @Override
+    public void setHitBox(final HitBox h) {
+    }
+
+    /**
+     * @return the image of the item.
+     */
+    @Override
+    public ImageType getImageType() {
+        return img;
+    }
+
+    /**
+     * @return the cost of the object.
+     */
+    @Override
+    public int getCost() {
+        return COST;
+    }
+
+}
