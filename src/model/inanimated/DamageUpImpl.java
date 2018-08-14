@@ -6,7 +6,7 @@ import utility.ImageType;
 /**
  * Damage item implement.
  */
-public class DamageUpImpl extends AbstractPowerUp {
+public class DamageUpImpl extends AbstractPowerUp implements DamageUp {
 
     private static final int DAMAGE = 2;
 

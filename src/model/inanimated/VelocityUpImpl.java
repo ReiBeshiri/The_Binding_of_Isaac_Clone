@@ -6,7 +6,7 @@ import utility.ImageType;
 /**
  * Velocity power up item.
  */
-public class VelocityUpImpl extends AbstractPowerUp {
+public class VelocityUpImpl extends AbstractPowerUp implements VelocityUp {
 
     private static final double VEL = 10;
 

@@ -6,7 +6,7 @@ import utility.ImageType;
 /**
  * Range Power Up item.
  */
-public class RangeUpImpl extends AbstractPowerUp {
+public class RangeUpImpl extends AbstractPowerUp implements RangeUp {
 
     private static final double RANGE = 200;
 
