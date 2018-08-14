@@ -25,7 +25,7 @@ public class HeartImpl extends AbstractPowerUp implements Heart {
      */
     @Override
     public int getLife() {
-        return HeartImpl.LIFE;
+        return getEffect();
     }
 
     /**
@@ -33,7 +33,7 @@ public class HeartImpl extends AbstractPowerUp implements Heart {
      */
     @Override
     public int getEffect() {
-        return getLife();
+        return HeartImpl.LIFE;
     }
 
 }

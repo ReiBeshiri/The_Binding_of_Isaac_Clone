@@ -17,6 +17,7 @@ import model.environment.WorldEnvironmentImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.hitbox.RectangularHitBox;
+import model.inanimated.AbstractPowerUp;
 import model.inanimated.Button;
 import model.inanimated.DamageUp;
 import model.inanimated.Heart;
@@ -564,7 +565,7 @@ public class WorldImpl implements World {
                         (RectangularHitBox) i.getHitBox())
                         && ((AbstractCharacter) getPlayer()).getLife() != EntityStats.PLAYER.getLife()) {
                     incPlayerLife(h.getLife());
-                    listEvent.add(new PlayerScoreChange(h.getCost()));
+                    listEvent.add(new PlayerScoreChange(((AbstractPowerUp) h).getCost()));
                     dieItems.add(i);
                 }
             } else if (i instanceof RangeUp) {
@@ -572,7 +573,7 @@ public class WorldImpl implements World {
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
                     ((AbstractCharacter) getPlayer()).setRange(r.getRangeUp());
-                    listEvent.add(new PlayerScoreChange(r.getCost()));
+                    listEvent.add(new PlayerScoreChange(((AbstractPowerUp) r).getCost()));
                     dieItems.add(i);
                 }
             } else if (i instanceof DamageUp) {
@@ -580,7 +581,7 @@ public class WorldImpl implements World {
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
                     ((AbstractCharacter) getPlayer()).setDamage(d.getDamage());
-                    listEvent.add(new PlayerScoreChange(d.getCost()));
+                    listEvent.add(new PlayerScoreChange(((AbstractPowerUp) d).getCost()));
                     dieItems.add(i);
                 }
             } else if (i instanceof VelocityUp) {
@@ -588,7 +589,7 @@ public class WorldImpl implements World {
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
                     ((AbstractCharacter) getPlayer()).setVel(v.getVelocity());
-                    listEvent.add(new PlayerScoreChange(v.getCost()));
+                    listEvent.add(new PlayerScoreChange(((AbstractPowerUp) v).getCost()));
                     dieItems.add(i);
                 }
             }

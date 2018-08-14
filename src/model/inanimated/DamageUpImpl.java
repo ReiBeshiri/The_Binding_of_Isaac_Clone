@@ -6,13 +6,10 @@ import utility.ImageType;
 /**
  * Damage item implement.
  */
-public class DamageUpImpl implements DamageUp {
+public class DamageUpImpl extends AbstractPowerUp {
 
-    private static final int COST = 5000;
     private static final int DAMAGE = 2;
 
-    private final ImageType imgDamage;
-    private final HitBox hitBox;
 
     /**
      * Constructor for this class.
@@ -21,48 +18,22 @@ public class DamageUpImpl implements DamageUp {
      *            hb.
      */
     public DamageUpImpl(final HitBox h) {
-        hitBox = h;
-        imgDamage = ImageType.DAMAGE_UP;
-    }
-
-    /**
-     * Getter for image of object.
-     * 
-     * @return the image of the dmgUp.
-     */
-    @Override
-    public ImageType getImageType() {
-        return imgDamage;
-    }
-
-    /**
-     * @return cost of the power up.
-     */
-    @Override
-    public int getCost() {
-        return COST;
+        super(h, ImageType.DAMAGE_UP);
     }
 
     /**
      * @return the damage to increase.
      */
-    @Override
     public int getDamage() {
-        return DAMAGE;
+        return getEffect();
     }
 
     /**
-     * Getter for HitBox.
+     * @return the effect of the item.
      */
     @Override
-    public HitBox getHitBox() {
-        return hitBox;
+    public int getEffect() {
+        return DamageUpImpl.DAMAGE;
     }
 
-    /**
-     * Setter for HitBox.
-     * Not used in powerUp.
-     */
-    @Override
-    public void setHitBox(final HitBox h) { }
 }

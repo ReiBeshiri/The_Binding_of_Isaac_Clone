@@ -6,13 +6,9 @@ import utility.ImageType;
 /**
  * Velocity power up item.
  */
-public class VelocityUpImpl implements VelocityUp {
+public class VelocityUpImpl extends AbstractPowerUp {
 
-    private static final int COST = 5000;
     private static final double VEL = 10;
-
-    private final HitBox hitBox;
-    private final ImageType imgVelocity;
 
     /**
      * Constructor for this class.
@@ -21,46 +17,23 @@ public class VelocityUpImpl implements VelocityUp {
      *            hb.
      */
     public VelocityUpImpl(final HitBox h) {
-        hitBox = h;
-        imgVelocity = ImageType.SPEED_UP;
-    }
-
-    /**
-     * @return the img of the item.
-     */
-    @Override
-    public ImageType getImageType() {
-        return imgVelocity;
-    }
-
-    /**
-     * @return the cost of the item.
-     */
-    @Override
-    public int getCost() {
-        return COST;
+        super(h, ImageType.SPEED_UP);
     }
 
     /**
      * @return the speed to increase.
      */
-    @Override
     public double getVelocity() {
-        return VEL;
+        return getEffect();
     }
 
     /**
-     * Getter for HitBox.
+     * @return the effect of the item.
      */
     @Override
-    public HitBox getHitBox() {
-        return hitBox;
+    public int getEffect() {
+        Double d = new Double(VelocityUpImpl.VEL);
+        return d.intValue();
     }
 
-    /**
-     * Set HitBox.
-     * Not used for power up.
-     */
-    @Override
-    public void setHitBox(final HitBox h) { }
 }
