@@ -30,7 +30,7 @@ public class NewGameScene extends AbstractGenericScene {
      * Check specific type of events.
      */
     @Override
-    public void checkSceneHandler(final Event e) { }
+    public void checkSceneEvents(final Event e) { }
 
     /**
      * Used when focus up.

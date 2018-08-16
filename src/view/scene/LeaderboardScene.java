@@ -30,7 +30,7 @@ public class LeaderboardScene extends AbstractGenericScene {
      * Events that can occur in this scene.
      */
     @Override
-    public void checkSceneHandler(final Event e) { }
+    public void checkSceneEvents(final Event e) { }
 
     /**
      * Used when focus up.

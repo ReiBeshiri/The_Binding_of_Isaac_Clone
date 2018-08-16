@@ -29,7 +29,7 @@ public class CreditScene extends AbstractGenericScene {
      * Method used to check if occur events in this particular scene.
      */
     @Override
-    public void checkSceneHandler(final Event e) { }
+    public void checkSceneEvents(final Event e) { }
 
     /**
      * Used when focus up.

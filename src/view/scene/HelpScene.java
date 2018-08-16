@@ -30,7 +30,7 @@ public class HelpScene extends AbstractGenericScene {
      * Method used to check if occurs events in this type of scene.
      */
     @Override
-    public void checkSceneHandler(final Event e) { }
+    public void checkSceneEvents(final Event e) { }
 
     /**
      * Used when focus up.

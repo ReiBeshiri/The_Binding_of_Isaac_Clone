@@ -31,7 +31,7 @@ public interface GenericScene {
      * @param e
      *            Event received.
      */
-    void checkSceneHandler(Event e);
+    void checkSceneEvents(Event e);
 
     /**
      * Add exit status to scene stack.

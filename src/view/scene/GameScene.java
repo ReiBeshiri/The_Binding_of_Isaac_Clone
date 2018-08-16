@@ -39,7 +39,7 @@ public class GameScene extends AbstractGenericScene {
      * Check specific handler of the scene.
      */
     @Override
-    public void checkSceneHandler(final Event e) {
+    public void checkSceneEvents(final Event e) {
         if (e.getEventType().equals(KeyEvent.KEY_PRESSED)) {
             ViewImpl.get().notifyEvent(new KeyEventImpl(((KeyEvent) e).getCode(),
                     this.getSceneType(), KeyType.KEY_PRESSED));

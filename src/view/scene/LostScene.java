@@ -27,7 +27,7 @@ public class LostScene extends AbstractGenericScene {
      * Method used to check if particular type of events occur in this scene.
      */
     @Override
-    public void checkSceneHandler(final Event e) { }
+    public void checkSceneEvents(final Event e) { }
 
     /**
      * Used when focus up.

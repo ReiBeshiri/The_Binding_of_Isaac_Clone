@@ -31,7 +31,7 @@ public abstract class AbstractGenericScene implements GenericScene {
             if (e.getCode() == KeyCode.ESCAPE && e.getEventType().equals(KeyEvent.KEY_PRESSED)) {
                 exitStatus();
             }
-            checkSceneHandler(e);
+            checkSceneEvents(e);
         };
     }
 
@@ -47,7 +47,7 @@ public abstract class AbstractGenericScene implements GenericScene {
      * @param e
      *            Event captured by the handler.
      */
-    public abstract void checkSceneHandler(Event e);
+    public abstract void checkSceneEvents(Event e);
 
     /**
      * Set listener for this scene.

@@ -27,7 +27,7 @@ public class WinScene extends AbstractGenericScene {
      * Check event handler for this scene.
      */
     @Override
-    public void checkSceneHandler(final Event e) { }
+    public void checkSceneEvents(final Event e) { }
 
     /**
      * Used when focus up.
