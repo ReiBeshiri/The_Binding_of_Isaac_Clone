@@ -215,7 +215,7 @@ public final class ViewImpl implements View {
     @Override
     public void initTimeCanvas() {
         if (!Objects.isNull(drawer)) {
-            Platform.runLater(() -> drawer.initTimeCanvas());
+            drawer.initTimeCanvas();
         }
     }
 

@@ -15,7 +15,7 @@ public final class ViewUtils {
     private static final double LIFE_CANVAS_H = 50;
     private static final double LIFE_CANVAS_W = 550;
     private static final double STAGE_DELTA_HEIGTH = 75;
-    private static final double TIMER_TEXT_FONT = 4;
+    private static final double TIMER_TEXT_FONT = 3;
     private static final double HEARTH_HEIGHT = 25;
     private static final double HEARTH_WIDTH = 30;
     private static final double SPACE_HEARTH_PROPORTION = 40;
