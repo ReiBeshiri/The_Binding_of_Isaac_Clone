@@ -201,7 +201,7 @@ public abstract class AbstractCharacter extends AbstractAnimated implements Char
      * Perform entity movement.
      */
     @Override
-    protected void move(final double dt) {
+    public void move(final double dt) {
         setHitBox(getAI().move(dt, super.getVel(), (CircleHitBox) super.getHitBox()));
     }
 }
