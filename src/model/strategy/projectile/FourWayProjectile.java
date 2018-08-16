@@ -1,4 +1,4 @@
-package model.strategy;
+package model.strategy.projectile;
 
 import static utility.Command.DOWN;
 import static utility.Command.LEFT;
@@ -12,6 +12,8 @@ import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.strategy.ProjectileType;
+import model.strategy.movement.BulletMovement;
 import utility.ImageType;
 
 /**

@@ -16,13 +16,13 @@ import model.animated.Enemy;
 import model.animated.EnemyImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import model.strategy.BossAimedComboProjectile;
-import model.strategy.BossSimpleComboProjectile;
-import model.strategy.BulletMovement;
-import model.strategy.FourWayProjectile;
-import model.strategy.Motionless;
-import model.strategy.SimplyDirectionMovement;
-import model.strategy.SingleDirectionProjectile;
+import model.strategy.movement.BulletMovement;
+import model.strategy.movement.Motionless;
+import model.strategy.movement.SimplyDirectionMovement;
+import model.strategy.projectile.BossAimedComboProjectile;
+import model.strategy.projectile.BossSimpleComboProjectile;
+import model.strategy.projectile.FourWayProjectile;
+import model.strategy.projectile.SingleDirectionProjectile;
 import utility.Command;
 
 /**

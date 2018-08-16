@@ -8,10 +8,10 @@ import java.util.List;
 import model.animated.Bullet;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
-import model.strategy.BossAimedComboProjectile;
-import model.strategy.BossSimpleComboProjectile;
 import model.strategy.MovementStrategy;
 import model.strategy.ProjectileType;
+import model.strategy.projectile.BossAimedComboProjectile;
+import model.strategy.projectile.BossSimpleComboProjectile;
 import utility.Command;
 import utility.ImageType;
 

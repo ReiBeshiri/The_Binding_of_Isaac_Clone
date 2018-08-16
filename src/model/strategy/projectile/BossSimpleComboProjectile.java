@@ -1,4 +1,4 @@
-package model.strategy;
+package model.strategy.projectile;
 
 import static model.animated.EntityStats.BOSS;
 
@@ -10,6 +10,8 @@ import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.strategy.ProjectileType;
+import model.strategy.movement.SimplyDirectionMovement;
 import model.utility.ProportionUtility;
 import utility.Command;
 import utility.ImageType;

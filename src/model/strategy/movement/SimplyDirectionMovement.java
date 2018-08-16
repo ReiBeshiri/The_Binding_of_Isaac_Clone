@@ -1,4 +1,4 @@
-package model.strategy;
+package model.strategy.movement;
 
 import static utility.Command.DOWN;
 import static utility.Command.RIGHT;
@@ -6,6 +6,7 @@ import static utility.Command.UP;
 
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.strategy.MovementStrategy;
 import utility.Command;
 
 /**

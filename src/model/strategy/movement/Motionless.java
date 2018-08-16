@@ -1,7 +1,8 @@
-package model.strategy;
+package model.strategy.movement;
 
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.strategy.MovementStrategy;
 
 /**
  * Class that represent static movement.

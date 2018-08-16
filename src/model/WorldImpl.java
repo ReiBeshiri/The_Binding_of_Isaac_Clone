@@ -28,7 +28,7 @@ import model.room.Room;
 import model.rounds.DynamicRounds;
 import model.rounds.RoundsGenerator;
 import model.rounds.StaticRounds;
-import model.strategy.SimplyDirectionMovement;
+import model.strategy.movement.SimplyDirectionMovement;
 import model.utility.CollisionUtil;
 import model.utility.ModelUtility;
 import model.utility.RoomEnum;

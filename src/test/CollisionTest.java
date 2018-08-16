@@ -9,7 +9,7 @@ import model.animated.Animated;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.RectangularHitBox;
-import model.strategy.BulletMovement;
+import model.strategy.movement.BulletMovement;
 import model.utility.CollisionUtil;
 import utility.Command;
 

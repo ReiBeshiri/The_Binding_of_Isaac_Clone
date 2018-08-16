@@ -1,4 +1,4 @@
-package model.strategy;
+package model.strategy.projectile;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,6 +6,8 @@ import model.animated.Bullet;
 import model.animated.BulletImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.strategy.ProjectileType;
+import model.strategy.movement.BulletMovement;
 import model.utility.ModelUtility;
 import utility.ImageType;
 

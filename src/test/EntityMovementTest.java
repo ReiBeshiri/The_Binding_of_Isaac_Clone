@@ -11,9 +11,9 @@ import model.animated.EnemyImpl;
 import model.animated.Player;
 import model.animated.PlayerImpl;
 import model.hitbox.CircleHitBox;
-import model.strategy.PlayerMovement;
-import model.strategy.PlayerProjectile;
-import model.strategy.SimplyDirectionMovement;
+import model.strategy.movement.PlayerMovement;
+import model.strategy.movement.SimplyDirectionMovement;
+import model.strategy.projectile.PlayerProjectile;
 import model.utility.ModelUtility;
 import utility.Command;
 

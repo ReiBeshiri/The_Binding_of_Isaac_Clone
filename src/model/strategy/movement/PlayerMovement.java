@@ -1,10 +1,11 @@
-package model.strategy;
+package model.strategy.movement;
 
 import java.util.List;
 
 import utility.Command;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
+import model.strategy.MovementStrategy;
 import model.utility.ModelUtility;
 
 /**
