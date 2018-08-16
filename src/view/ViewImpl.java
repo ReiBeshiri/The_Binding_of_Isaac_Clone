@@ -225,7 +225,6 @@ public final class ViewImpl implements View {
     @Override
     public void notifyGameOverEvent(final int points) {
         ViewUtils.setPoints(points);
-        //ViewManagerImpl.get().pop();
         ViewManagerImpl.get().push(SceneFactory.createLostScene());
     }
 
@@ -235,7 +234,6 @@ public final class ViewImpl implements View {
     @Override
     public void notifyVictoryGameEvent(final int points) {
         ViewUtils.setPoints(points);
-        //ViewManagerImpl.get().pop();
         ViewManagerImpl.get().push(SceneFactory.createVictoryScene());
     }
 
