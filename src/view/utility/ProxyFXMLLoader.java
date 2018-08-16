@@ -48,7 +48,7 @@ public final class ProxyFXMLLoader implements LoaderFXML {
         return proxy;
     }
 
-    private class RealFXMLLoader implements LoaderFXML {
+    private static class RealFXMLLoader implements LoaderFXML {
 
         private static final String PATH = "/view/";
 

@@ -46,7 +46,7 @@ public final class ProxyImageLoader implements ImageLoader {
         return proxy;
     }
 
-    private class RealImageLoader implements ImageLoader {
+    private static class RealImageLoader implements ImageLoader {
         private static final String PATH = "/images/gameImages/";
 
         /**
