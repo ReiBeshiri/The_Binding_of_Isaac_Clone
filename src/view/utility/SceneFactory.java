@@ -18,8 +18,7 @@ import view.scene.WinScene;
  */
 public final class SceneFactory {
 
-    private SceneFactory() {
-    }
+    private SceneFactory() { }
 
     /**
      * create new credit scene.
