@@ -4,12 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import view.ViewManagerImpl;
+
 /**
- * 
  * Controller class for the HelpView file.
  *
  */
-public class HelpViewController extends AbstractControllerFXML {
+public class HelpViewController implements ControllerFXML {
 
     @FXML private BorderPane contentPane;
 

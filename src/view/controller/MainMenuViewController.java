@@ -13,7 +13,7 @@ import view.utility.SceneFactory;
  * Controller class for the MainMenuView file.
  *
  */
-public class MainMenuViewController extends AbstractControllerFXML {
+public class MainMenuViewController implements ControllerFXML {
 
     @FXML private BorderPane contentPane;
 

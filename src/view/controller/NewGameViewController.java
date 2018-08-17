@@ -14,7 +14,7 @@ import view.utility.SceneFactory;
  * Controller class for the NewGameView file.
  *
  */
-public class NewGameViewController extends AbstractControllerFXML {
+public class NewGameViewController implements ControllerFXML {
 
     @FXML private BorderPane contentPane;
     @FXML private TextField txtNickname;

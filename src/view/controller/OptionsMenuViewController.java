@@ -11,11 +11,10 @@ import view.ViewManagerImpl;
 import view.utility.ViewUtils;
 
 /**
- * 
  * Controller class for the OptionsMenuView file.
  *
  */
-public class OptionsMenuViewController extends AbstractControllerFXML {
+public class OptionsMenuViewController implements ControllerFXML {
 
     @FXML private CheckBox godModeCheckBox;
     @FXML private CheckBox survivalModeCheckBox;

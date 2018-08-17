@@ -14,7 +14,7 @@ import view.utility.ViewUtils;
  * Controller class for the LeaderboardView file.
  *
  */
-public class LeaderboardController extends AbstractControllerFXML {
+public class LeaderboardController implements ControllerFXML {
 
     @FXML private TableView<Score> table;
     @FXML private TableColumn<Score, String> nicknameColumn;
@@ -51,5 +51,4 @@ public class LeaderboardController extends AbstractControllerFXML {
         timeColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getTime().toString()));
         modeColumn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getMode().toString()));
     }
-
 }

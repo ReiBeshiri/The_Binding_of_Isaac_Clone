@@ -9,6 +9,7 @@ public interface ControllerFXML {
 
     /**
      * Getter of the root node for the FXML file.
+     * 
      * @return The root element.
      */
     Region getRoot();

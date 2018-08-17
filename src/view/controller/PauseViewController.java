@@ -12,11 +12,10 @@ import view.scene.MainMenuScene;
 import view.utility.ViewUtils;
 
 /**
- * 
  * Controller class for the PauseView file.
  *
  */
-public class PauseViewController extends AbstractControllerFXML {
+public class PauseViewController implements ControllerFXML {
 
     @FXML private BorderPane contentPane;
     @FXML private Label scoreLabel;

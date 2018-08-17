@@ -11,7 +11,7 @@ import view.ViewImpl;
 /**
  * Controller class for the HelpView file.
  */
-public class GameCanvasViewController extends AbstractControllerFXML {
+public class GameCanvasViewController implements ControllerFXML {
 
     @FXML private Pane rootGamePane;
     @FXML private Canvas roomCanvas;

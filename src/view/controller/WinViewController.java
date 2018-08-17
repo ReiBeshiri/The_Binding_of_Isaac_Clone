@@ -11,7 +11,7 @@ import view.utility.ViewUtils;
 /**
  * Controller class for the WinView file.
  */
-public class WinViewController extends AbstractControllerFXML {
+public class WinViewController implements ControllerFXML {
 
     @FXML private BorderPane contentPane;
     @FXML private TextField scoreText;

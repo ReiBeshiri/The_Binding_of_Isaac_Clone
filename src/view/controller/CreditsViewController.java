@@ -8,7 +8,7 @@ import view.ViewManagerImpl;
 /**
  * Controller class for the CreditsView file.
  */
-public class CreditsViewController extends AbstractControllerFXML {
+public class CreditsViewController implements ControllerFXML {
 
     @FXML private BorderPane creditsContentPane;
 
@@ -33,5 +33,4 @@ public class CreditsViewController extends AbstractControllerFXML {
      */
     @Override
     public void setText() { }
-
 }
