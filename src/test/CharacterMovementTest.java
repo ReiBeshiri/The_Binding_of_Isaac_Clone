@@ -18,10 +18,10 @@ import model.utility.ModelUtility;
 import utility.Command;
 
 /**
- * Class test for entities movement types.
+ * Class test for character movement types.
  *
  */
-class EntityMovementTest {
+class CharacterMovementTest {
 
     @Test
     public void playerMovementTest() {
