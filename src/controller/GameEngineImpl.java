@@ -47,8 +47,7 @@ public final class GameEngineImpl implements GameEngine {
     /**
      * The class constructor.
      */
-    private GameEngineImpl() {
-    }
+    private GameEngineImpl() { }
 
     /**
      * Get the instance of GameEngineImpl.
