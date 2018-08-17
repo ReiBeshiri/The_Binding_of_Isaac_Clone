@@ -6,7 +6,7 @@ import utility.ImageType;
 import view.utility.ProxyImageLoader;
 
 
-class ProxyTest {
+class ImageLoaderTest {
 
     @Test
     public void imageLoaderTest() {
