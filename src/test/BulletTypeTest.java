@@ -43,16 +43,14 @@ class BulletTypeTest {
     /**
      * Test of bullet shot in diagonal of canvas direction. 
      * 
-     * Note: angle * Math.PI / 180 -> conversion of the angle in radiant.
-     * 
      */
     @Test
     public void testDiagonalMovementBullet() {
         final double angle = 45;
         final Bullet bullet = new BulletImpl(new CircleHitBox(0, 0, 0.2), 1, new BulletMovement(angle), 100, null, 1);
         bullet.update(1);
-        assertEquals(Math.cos(angle * Math.PI / 180), bullet.getHitBox().getX());
-        assertEquals(Math.sin(angle * Math.PI / 180), bullet.getHitBox().getY());
+        assertEquals(Math.cos(Math.toRadians(angle)), bullet.getHitBox().getX());
+        assertEquals(Math.sin(Math.toRadians(angle)), bullet.getHitBox().getY());
     }
 
     /**
