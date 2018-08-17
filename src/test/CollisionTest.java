@@ -55,7 +55,6 @@ class CollisionTest {
         for (int i = 0; i < 10; i++) {
             if (!CollisionUtil.entityCollision(player, (CircleHitBox) bullet.getHitBox()).isEmpty()) {
                 collisionDetected = true;
-                break;
             }
             bullet.update(1);
         }
