@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import controller.time.Time;
 import controller.time.TimeAgent;
 
-class TestTime {
+class TimeTest {
 
     @Test
     public void testTimeThread() {
