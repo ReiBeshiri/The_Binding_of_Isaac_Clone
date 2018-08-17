@@ -3,10 +3,8 @@ package test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import controller.time.Time;
 import controller.time.TimeAgent;
