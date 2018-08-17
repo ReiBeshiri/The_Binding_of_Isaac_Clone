@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -446,8 +445,7 @@ public class WorldImpl implements World {
      * @return if the two objects are colliding.
      */
     private boolean isColliding(final CircleHitBox hb1, final CircleHitBox hb2) {
-        final Collection<Command> c = CollisionUtil.entityCollision(hb1, hb2);
-        return !c.isEmpty();
+        return !CollisionUtil.entityCollision(hb1, hb2).isEmpty();
     }
 
     /**
