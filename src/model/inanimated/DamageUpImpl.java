@@ -21,19 +21,21 @@ public class DamageUpImpl extends AbstractPowerUp implements DamageUp {
         super(h, ImageType.DAMAGE_UP);
     }
 
-    /**
-     * @return the damage to increase.
-     */
-    public int getDamage() {
-        return getEffect();
-    }
 
     /**
      * @return the effect of the item.
      */
     @Override
-    public int getEffect() {
+    public int getSpecificEffect() {
         return DamageUpImpl.DAMAGE;
+    }
+
+    /**
+     * @return Specific effect of the power up.
+     */
+    @Override
+    public int getEffect() {
+        return getSpecificEffect();
     }
 
 }

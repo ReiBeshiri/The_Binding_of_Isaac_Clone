@@ -21,19 +21,20 @@ public class VelocityUpImpl extends AbstractPowerUp implements VelocityUp {
     }
 
     /**
-     * @return the speed to increase.
-     */
-    public double getVelocity() {
-        return getEffect();
-    }
-
-    /**
      * @return the effect of the item.
      */
     @Override
-    public int getEffect() {
+    public int getSpecificEffect() {
         final Double d = new Double(VelocityUpImpl.VEL);
         return d.intValue();
+    }
+
+    /**
+     * @return Specific effect of the power up.
+     */
+    @Override
+    public int getEffect() {
+        return getSpecificEffect();
     }
 
 }

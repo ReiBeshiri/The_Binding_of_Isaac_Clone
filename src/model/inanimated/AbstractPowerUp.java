@@ -27,6 +27,11 @@ public abstract class AbstractPowerUp implements PowerUp {
     }
 
     /**
+     * @return the effect of the item.
+     */
+    public abstract int getSpecificEffect();
+
+    /**
      * @return hb;
      */
     @Override
@@ -59,10 +64,4 @@ public abstract class AbstractPowerUp implements PowerUp {
     public int getCost() {
         return COST;
     }
-
-    /**
-     * @return the effect of the item.
-     */
-    public abstract int getEffect();
-
 }

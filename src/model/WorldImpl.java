@@ -15,11 +15,10 @@ import model.environment.WorldEnvironmentImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
 import model.hitbox.RectangularHitBox;
-import model.inanimated.AbstractPowerUp;
 import model.inanimated.Button;
 import model.inanimated.DamageUp;
 import model.inanimated.Heart;
-import model.inanimated.Inanimated;
+import model.inanimated.PowerUp;
 import model.inanimated.RangeUp;
 import model.inanimated.VelocityUp;
 import model.room.Room;
@@ -545,39 +544,35 @@ public class WorldImpl implements World {
     private void shopRoomAction(final double deltaTime) {
         wallColliding();
         playerBulletHitsEnemy(deltaTime);
-        final List<Inanimated> dieItems = new ArrayList<>();
-        for (final Inanimated i : WorldEnvironmentImpl.getInstance().getItems()) {
+        final List<PowerUp> dieItems = new ArrayList<>();
+        for (final PowerUp i : WorldEnvironmentImpl.getInstance().getItems()) {
             if (i instanceof Heart) {
-                final Heart h = (Heart) i;
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())
                         && getPlayer().getLife() != EntityStats.PLAYER.getLife()) {
-                    incPlayerLife(h.getLife());
-                    listEvent.add(new PlayerScoreChange(((AbstractPowerUp) h).getCost()));
+                    incPlayerLife(i.getEffect());
+                    listEvent.add(new PlayerScoreChange(i.getCost()));
                     dieItems.add(i);
                 }
             } else if (i instanceof RangeUp) {
-                final RangeUp r = (RangeUp) i;
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
-                    getPlayer().setRange(r.getRangeUp());
-                    listEvent.add(new PlayerScoreChange(((AbstractPowerUp) r).getCost()));
+                    getPlayer().setRange(i.getEffect());
+                    listEvent.add(new PlayerScoreChange(i.getCost()));
                     dieItems.add(i);
                 }
             } else if (i instanceof DamageUp) {
-                final DamageUp d = (DamageUp) i;
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
-                    getPlayer().setDamage(d.getDamage());
-                    listEvent.add(new PlayerScoreChange(((AbstractPowerUp) d).getCost()));
+                    getPlayer().setDamage(i.getEffect());
+                    listEvent.add(new PlayerScoreChange(i.getCost()));
                     dieItems.add(i);
                 }
             } else if (i instanceof VelocityUp) {
-                final VelocityUp v = (VelocityUp) i;
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
-                    getPlayer().setVel(v.getVelocity());
-                    listEvent.add(new PlayerScoreChange(((AbstractPowerUp) v).getCost()));
+                    getPlayer().setVel(i.getEffect());
+                    listEvent.add(new PlayerScoreChange(i.getCost()));
                     dieItems.add(i);
                 }
             }
