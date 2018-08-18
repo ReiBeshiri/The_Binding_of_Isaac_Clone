@@ -11,6 +11,9 @@ import controller.time.TimeAgent;
 
 class TimeTest {
 
+    /**
+     * Test time thread and operation with this.
+     */
     @Test
     public void testTimeThread() {
         final Time time = new Time(0, 0);
@@ -22,6 +25,9 @@ class TimeTest {
         assertEquals(finish, time.getTimeInSeconds());
     }
 
+    /**
+     * Test time to string composition.
+     */
     @Test
     public void testTimeToString() {
         final Time time = new Time(0, 0);

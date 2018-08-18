@@ -8,6 +8,9 @@ import view.utility.ProxyImageLoader;
 
 class ImageLoaderTest {
 
+    /**
+     * Test image loading.
+     */
     @Test
     public void imageLoaderTest() {
         try {

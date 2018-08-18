@@ -31,6 +31,9 @@ import utility.Command;
  */
 class BulletTypeTest {
 
+    /**
+     * Test used to check simple movements of bullets.
+     */
     @Test
     public void testSimpleMovementBullet() {
         final Bullet bullet = new BulletImpl(new CircleHitBox(0, 0, 0.2), 1, new SimplyDirectionMovement(Command.RIGHT),
@@ -70,6 +73,9 @@ class BulletTypeTest {
                 Math.atan2(player1.getY() - sender1.getY(), player1.getX() - sender1.getX()) * 180 / Math.PI);
     }
 
+    /**
+     * Test boss bullet combo movement.
+     */
     @Test
     public void testComboBossBullets() {
         final Enemy boss = new EnemyImpl(1, BOSS.getLife(), new CircleHitBox(400, 300, 1),
@@ -109,6 +115,9 @@ class BulletTypeTest {
         assertTrue(boss.getAI().getProjType() instanceof BossAimedComboProjectile);
     }
 
+    /**
+     * Test movement of bullets in four directions.
+     */
     @Test
     public void fourWayBullets() {
         final Enemy enemy = new EnemyImpl(1, STATIC_ENEMY.getLife(), new CircleHitBox(1, 1, 2),

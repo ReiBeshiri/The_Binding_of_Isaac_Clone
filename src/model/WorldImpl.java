@@ -325,10 +325,8 @@ public class WorldImpl implements World {
      * 
      * @param life
      *            hp to decrement to the player.
-     * @param c
-     *            Animated object to cast.
      */
-    private void decPlayerLife(final int life, final Animated c) {
+    private void decPlayerLife(final int life) {
         if (!this.mode.equals(Mode.GOD)) {
             getPlayer().decLife(life);
             listEvent.add(new PlayerHeartChange(getPlayer().getLife()));
@@ -370,16 +368,14 @@ public class WorldImpl implements World {
     /**
      * Check if a enemy bullet's hits the player.
      * 
-     * @param p
-     *            player.
      */
-    private void playerGetsHitByBullet(final Animated p, final Double deltaTime) {
+    private void playerGetsHitByBullet(final Double deltaTime) {
         final List<Bullet> dieBullets = new ArrayList<>();
         for (final Bullet b : this.listBulletEnemies) {
             b.update(deltaTime);
             if (!CollisionUtil.entityCollision(b, getPlayer()).isEmpty() && !b.isDead()) {
                 listEvent.add(new PlayerScoreChange(PLAYER_HITTED));
-                decPlayerLife(b.getDamage(), getPlayer());
+                decPlayerLife(b.getDamage());
                 dieBullets.add(b);
             }
             if (b.isDead()) {
@@ -490,7 +486,7 @@ public class WorldImpl implements World {
         }
         if (!allEnemyDefeated()) {
             playerBulletHitsEnemy(deltaTime);
-            playerGetsHitByBullet(getPlayer(), deltaTime);
+            playerGetsHitByBullet(deltaTime);
             if (allEnemyDefeated()) {
                 this.listBulletEnemies.clear();
                 this.listEvent.add(new PlayerKillAllEnemy());
@@ -535,7 +531,7 @@ public class WorldImpl implements World {
                     }
                 });
             }
-            playerGetsHitByBullet(getPlayer(), deltaTime);
+            playerGetsHitByBullet(deltaTime);
             if (allEnemyDefeated() || boss.getLife() <= 0) {
                 this.bossDefeated = true;
                 this.listEvent.add(new PlayerKillBoss());

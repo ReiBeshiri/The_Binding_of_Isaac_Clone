@@ -23,6 +23,9 @@ import utility.Command;
  */
 class CharacterMovementTest {
 
+    /**
+     * Test player movement in all directions.
+     */
     @Test
     public void playerMovementTest() {
 
@@ -64,6 +67,9 @@ class CharacterMovementTest {
         assertEquals(oldYDown + 1, player.getHitBox().getY());
     }
 
+    /**
+     * Test enemy simple movement.
+     */
     @Test
     public void enemySimpleMovementTest() {
         // UP MOVEMENT.

@@ -19,6 +19,9 @@ import utility.Command;
  */
 class CollisionTest {
 
+    /**
+     * Test collision between circles.
+     */
     @Test
     public void collisionBetweenCicles() {
         final CircleHitBox player = new CircleHitBox(10, 10, 2);
@@ -26,6 +29,9 @@ class CollisionTest {
         assertFalse(CollisionUtil.entityCollision(player, bullet).isEmpty());
     }
 
+    /**
+     * Test list of blocked command returned by a collision between circles.
+     */
     @Test
     public void checkBlockedCommand() {
         final CircleHitBox player = new CircleHitBox(1, 1, 2);
@@ -44,6 +50,9 @@ class CollisionTest {
                 && CollisionUtil.entityCollision(bullet2, player2).contains(Command.LEFT));
     }
 
+    /**
+     * Test collision between player and bullets.
+     */
     @Test
     public void collisionBetweenBulletAndPlayer() {
         final CircleHitBox player = new CircleHitBox(0, 0, 2);
@@ -61,8 +70,12 @@ class CollisionTest {
         assertTrue(collisionDetected);
     }
 
+    /**
+     * Test collision between player and room's border.
+     */
     @Test
     public void collisionBetweenEntityAndRoomBorders() {
+
         // TOP BORDER COLLISION.
         final RectangularHitBox room = new RectangularHitBox(0, 0, 600, 800);
         final CircleHitBox player = new CircleHitBox(3, 1.9, 2);
@@ -85,6 +98,9 @@ class CollisionTest {
         assertFalse(CollisionUtil.checkBoundaryCollision(boss, room));
     }
 
+    /**
+     * Test collision between player and door.
+     */
     @Test
     public void collisionBetweenPlayerAndDoor() {
         final RectangularHitBox rigthDoor = new RectangularHitBox(780, 270, 30, 20);
@@ -102,6 +118,9 @@ class CollisionTest {
         assertTrue(CollisionUtil.rectPlayerCollision(enemy, leftDoor));
     }
 
+    /**
+     * Test collision between hearth and player (always between two circles).
+     */
     @Test
     public void collisionWithHearth() {
         final CircleHitBox hearth = new CircleHitBox(400, 600, 0.5);
