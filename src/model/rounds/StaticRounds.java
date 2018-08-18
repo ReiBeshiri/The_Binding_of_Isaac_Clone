@@ -2,6 +2,7 @@ package model.rounds;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import model.animated.CharacterFactory;
 import model.animated.CharacterFactoryImpl;
 import model.animated.Enemy;
@@ -16,9 +17,28 @@ import utility.Command;
  * Static Rounds class. This class works like the DinamicRounds class but the
  * list of monster generated is pre setted.
  */
-public class StaticRounds implements RoundsGenerator {
+public final class StaticRounds implements RoundsGenerator {
 
     private final List<Enemy> listReturnEnemy = new ArrayList<>();
+
+    private static StaticRounds singleton;
+
+    /**
+     * Private constructor to avoid client applications to use constructor.
+     */
+    private StaticRounds() { }
+
+    /**
+     * Get the instance of StaticRounds.
+     * 
+     * @return the instance of StaticRounds.
+     */
+    public static StaticRounds getInstance() {
+        if (Objects.isNull(singleton)) {
+            singleton = new StaticRounds();
+        }
+        return singleton;
+    }
 
     /**
      * @return the list of the monsters generated this round.

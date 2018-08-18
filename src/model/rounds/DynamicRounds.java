@@ -3,6 +3,8 @@ package model.rounds;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+
 import model.animated.CharacterFactory;
 import model.animated.CharacterFactoryImpl;
 import model.animated.Enemy;
@@ -19,7 +21,7 @@ import utility.Command;
  * Every time the player get in a higher rounds there will be more monsters, the
  * max number of monsters in a single round is 7.
  */
-public class DynamicRounds implements RoundsGenerator {
+public final class DynamicRounds implements RoundsGenerator {
 
     private static final int MAXENEMY = 7;
 
@@ -28,15 +30,30 @@ public class DynamicRounds implements RoundsGenerator {
     private final List<Spawn> listSpawns;
     private final List<Enemy> listReturnEnemy;
 
+    private static DynamicRounds singleton;
+
     /**
+     * Private constructor to avoid client applications to use constructor.
      * Constructor for this class. Add to the list all the possible enemies, and the
      * spawns.
      */
-    public DynamicRounds() {
+    private DynamicRounds() {
         listEnemy = new ArrayList<>();
         listCommand = new ArrayList<>();
         listSpawns = new ArrayList<>();
         listReturnEnemy = new ArrayList<>();
+    }
+
+    /**
+     * Get the instance of DynamicRounds.
+     * 
+     * @return the instance of DynamicRounds.
+     */
+    public static DynamicRounds getInstance() {
+        if (Objects.isNull(singleton)) {
+            singleton = new DynamicRounds();
+        }
+        return singleton;
     }
 
     /**

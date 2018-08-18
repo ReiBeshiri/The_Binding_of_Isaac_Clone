@@ -11,7 +11,6 @@ import model.animated.CharacterFactoryImpl;
 import model.animated.Enemy;
 import model.animated.EntityStats;
 import model.animated.Player;
-import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
@@ -71,7 +70,6 @@ public class WorldImpl implements World {
     private int currentRound = 1;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
-    private WorldEnvironment we;
 
     /**
      * Constructor for this class.
@@ -132,10 +130,9 @@ public class WorldImpl implements World {
      * Create the environment. Needs to be called to create the rooms.
      */
     public void createEnvironment() {
-        we = new WorldEnvironmentImpl();
-        listRoom.addAll(we.createWorld());
+        listRoom.addAll(WorldEnvironmentImpl.getInstance().createWorld());
         this.room = this.listRoom.get(RoomEnum.MAINROOM.getIndex());
-        addButton(we.getButton());
+        addButton(WorldEnvironmentImpl.getInstance().getButton());
         createPlayer(playerCreation());
         ModelUtility.updateRoomModelUtility(this.room);
     }
@@ -150,9 +147,9 @@ public class WorldImpl implements World {
     public void setMode(final Mode m) {
         this.mode = m;
         if (!this.mode.equals(Mode.SURVIVAL)) {
-            this.roundsGenerator = new StaticRounds();
+            this.roundsGenerator = StaticRounds.getInstance();
         } else {
-            this.roundsGenerator = new DynamicRounds();
+            this.roundsGenerator = DynamicRounds.getInstance();
         }
     }
 
@@ -319,9 +316,8 @@ public class WorldImpl implements World {
      *            amount.
      */
     private void incPlayerLife(final int life) {
-        final AbstractCharacter player = (AbstractCharacter) getPlayer();
-        player.incLife(life);
-        listEvent.add(new PlayerHeartChange(player.getLife()));
+        getPlayer().incLife(life);
+        listEvent.add(new PlayerHeartChange(getPlayer().getLife()));
     }
 
     /**
@@ -333,11 +329,10 @@ public class WorldImpl implements World {
      *            Animated object to cast.
      */
     private void decPlayerLife(final int life, final Animated c) {
-        final AbstractCharacter player = (AbstractCharacter) c;
         if (!this.mode.equals(Mode.GOD)) {
-            player.decLife(life);
-            listEvent.add(new PlayerHeartChange(player.getLife()));
-            if (player.getLife() <= 0) {
+            getPlayer().decLife(life);
+            listEvent.add(new PlayerHeartChange(getPlayer().getLife()));
+            if (getPlayer().getLife() <= 0) {
                 this.listEvent.add(new PlayerDied());
             }
         }
@@ -380,12 +375,11 @@ public class WorldImpl implements World {
      */
     private void playerGetsHitByBullet(final Animated p, final Double deltaTime) {
         final List<Bullet> dieBullets = new ArrayList<>();
-        final AbstractCharacter player = (AbstractCharacter) p;
         for (final Bullet b : this.listBulletEnemies) {
             b.update(deltaTime);
-            if (!CollisionUtil.entityCollision(b, player).isEmpty() && !b.isDead()) {
+            if (!CollisionUtil.entityCollision(b, getPlayer()).isEmpty() && !b.isDead()) {
                 listEvent.add(new PlayerScoreChange(PLAYER_HITTED));
-                decPlayerLife(b.getDamage(), player);
+                decPlayerLife(b.getDamage(), getPlayer());
                 dieBullets.add(b);
             }
             if (b.isDead()) {
@@ -455,7 +449,7 @@ public class WorldImpl implements World {
      *            the list of the shots to create.
      */
     private void createPlayerBullet() {
-        if (!this.listShots.isEmpty() && ((AbstractCharacter) getPlayer()).canShot()) {
+        if (!this.listShots.isEmpty() && getPlayer().canShot()) {
             final Command d = this.listShots.remove(0);
             this.listShots.clear();
             this.listShots.add(d);
@@ -478,7 +472,7 @@ public class WorldImpl implements World {
         }
         if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS
                 && CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
-                        (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
+                        (RectangularHitBox) WorldEnvironmentImpl.getInstance().getRightDoorFromMainToShop().getHitBox())
                 && !this.mode.equals(Mode.SURVIVAL)) {
             this.room = this.listRoom.get(RoomEnum.SHOPROOM.getIndex());
             listEvent.add(new RoomChange(this.room));
@@ -503,8 +497,8 @@ public class WorldImpl implements World {
                 incCurrentRound();
                 this.button.setPressed(false);
                 if (getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
-                    we.getRightDoorFromMainToShop().setOpen(true);
-                    we.getRightDoorFromShopToBoss().setOpen(true);
+                    WorldEnvironmentImpl.getInstance().getRightDoorFromMainToShop().setOpen(true);
+                    WorldEnvironmentImpl.getInstance().getRightDoorFromShopToBoss().setOpen(true);
                     this.getActualRoom().getDoors().get(0).setImgDoor(ImageType.RIGHT_SHOP_DOOR_UNLOCKED);
                 }
             }
@@ -525,7 +519,7 @@ public class WorldImpl implements World {
      */
     private void bossRoomAction(final double deltaTime) {
         wallColliding();
-        final Enemy boss = we.getBoss();
+        final Enemy boss = WorldEnvironmentImpl.getInstance().getBoss();
         boss.getLife();
         playerBulletHitsEnemy(deltaTime);
         if (!isBossDefeated()) {
@@ -556,12 +550,12 @@ public class WorldImpl implements World {
         wallColliding();
         playerBulletHitsEnemy(deltaTime);
         final List<Inanimated> dieItems = new ArrayList<>();
-        for (final Inanimated i : we.getItems()) {
+        for (final Inanimated i : WorldEnvironmentImpl.getInstance().getItems()) {
             if (i instanceof Heart) {
                 final Heart h = (Heart) i;
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())
-                        && ((AbstractCharacter) getPlayer()).getLife() != EntityStats.PLAYER.getLife()) {
+                        && getPlayer().getLife() != EntityStats.PLAYER.getLife()) {
                     incPlayerLife(h.getLife());
                     listEvent.add(new PlayerScoreChange(((AbstractPowerUp) h).getCost()));
                     dieItems.add(i);
@@ -570,7 +564,7 @@ public class WorldImpl implements World {
                 final RangeUp r = (RangeUp) i;
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
-                    ((AbstractCharacter) getPlayer()).setRange(r.getRangeUp());
+                    getPlayer().setRange(r.getRangeUp());
                     listEvent.add(new PlayerScoreChange(((AbstractPowerUp) r).getCost()));
                     dieItems.add(i);
                 }
@@ -578,7 +572,7 @@ public class WorldImpl implements World {
                 final DamageUp d = (DamageUp) i;
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
-                    ((AbstractCharacter) getPlayer()).setDamage(d.getDamage());
+                    getPlayer().setDamage(d.getDamage());
                     listEvent.add(new PlayerScoreChange(((AbstractPowerUp) d).getCost()));
                     dieItems.add(i);
                 }
@@ -586,18 +580,18 @@ public class WorldImpl implements World {
                 final VelocityUp v = (VelocityUp) i;
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())) {
-                    ((AbstractCharacter) getPlayer()).setVel(v.getVelocity());
+                    getPlayer().setVel(v.getVelocity());
                     listEvent.add(new PlayerScoreChange(((AbstractPowerUp) v).getCost()));
                     dieItems.add(i);
                 }
             }
         }
-        we.getItems().removeAll(dieItems);
+        WorldEnvironmentImpl.getInstance().getItems().removeAll(dieItems);
         if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
-                (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
+                (RectangularHitBox) WorldEnvironmentImpl.getInstance().getRightDoorFromShopToBoss().getHitBox())) {
             this.room = this.listRoom.get(RoomEnum.BOSSROOM.getIndex());
             listEvent.add(new RoomChange(this.room));
-            we.getLeftDoorFromBossToShop().setOpen(false);
+            WorldEnvironmentImpl.getInstance().getLeftDoorFromBossToShop().setOpen(false);
             this.listEvent.add(new BossFightStarted());
             getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
                     SpawnUtility.getSpawnYEnterRightDoor());
@@ -627,10 +621,10 @@ public class WorldImpl implements World {
      */
     private void wallColliding() {
         CollisionUtil.checkBoundaryCollision((CircleHitBox) this.player.getHitBox(),
-                (RectangularHitBox) we.getRoomHB());
+                (RectangularHitBox) WorldEnvironmentImpl.getInstance().getRoomHB());
         for (final Animated enemy : this.listEnemy) {
             if (CollisionUtil.checkBoundaryCollision((CircleHitBox) enemy.getHitBox(),
-                    (RectangularHitBox) we.getRoomHB())) {
+                    (RectangularHitBox) WorldEnvironmentImpl.getInstance().getRoomHB())) {
                 final AbstractCharacter character = (AbstractCharacter) enemy;
                 if (character.getAI().getMovementStrategy() instanceof SimplyDirectionMovement) {
                     final SimplyDirectionMovement movement = (SimplyDirectionMovement) character.getAI()
@@ -642,7 +636,7 @@ public class WorldImpl implements World {
     }
 
     private void incInternalDT(final double dt) {
-        ((AbstractCharacter) getPlayer()).incAttendTime(dt);
+        getPlayer().incAttendTime(dt);
         listEnemy.forEach(x -> {
             ((AbstractCharacter) x).incAttendTime(dt);
         });
