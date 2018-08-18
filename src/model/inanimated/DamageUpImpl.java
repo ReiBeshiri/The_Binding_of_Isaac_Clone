@@ -29,13 +29,4 @@ public class DamageUpImpl extends AbstractPowerUp implements DamageUp {
     public int getSpecificEffect() {
         return DamageUpImpl.DAMAGE;
     }
-
-    /**
-     * @return Specific effect of the power up.
-     */
-    @Override
-    public int getEffect() {
-        return getSpecificEffect();
-    }
-
 }

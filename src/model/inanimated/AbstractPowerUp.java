@@ -46,8 +46,7 @@ public abstract class AbstractPowerUp implements PowerUp {
      *            the hb.
      */
     @Override
-    public void setHitBox(final HitBox h) {
-    }
+    public void setHitBox(final HitBox h) { }
 
     /**
      * @return the image of the item.
@@ -63,5 +62,13 @@ public abstract class AbstractPowerUp implements PowerUp {
     @Override
     public int getCost() {
         return COST;
+    }
+
+    /**
+     * @return Specific effect of the power up.
+     */
+    @Override
+    public int getEffect() {
+        return getSpecificEffect();
     }
 }

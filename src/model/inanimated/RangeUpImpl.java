@@ -28,13 +28,4 @@ public class RangeUpImpl extends AbstractPowerUp implements RangeUp {
         final Double d = new Double(RangeUpImpl.RANGE);
         return d.intValue();
     }
-
-    /**
-     * @return Specific effect of the power up.
-     */
-    @Override
-    public int getEffect() {
-        return getSpecificEffect();
-    }
-
 }

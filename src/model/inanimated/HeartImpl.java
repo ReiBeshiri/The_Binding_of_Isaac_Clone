@@ -27,12 +27,4 @@ public class HeartImpl extends AbstractPowerUp implements Heart {
     public int getSpecificEffect() {
         return HeartImpl.LIFE;
     }
-
-    /**
-     * @return Specific effect of the power up.
-     */
-    @Override
-    public int getEffect() {
-        return getSpecificEffect();
-    }
 }
