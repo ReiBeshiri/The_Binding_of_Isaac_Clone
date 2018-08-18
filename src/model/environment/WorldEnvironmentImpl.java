@@ -2,7 +2,6 @@ package model.environment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import model.animated.Enemy;
 import model.animated.CharacterFactory;
 import model.animated.CharacterFactoryImpl;
@@ -32,7 +31,7 @@ import utility.ImageType;
 /**
  * World Environment Implement.
  */
-public final class WorldEnvironmentImpl implements WorldEnvironment {
+public class WorldEnvironmentImpl implements WorldEnvironment {
 
     private final List<Room> listRoom = new ArrayList<>();
     private final RoomFactory rf = new RoomFactoryImpl();
@@ -56,24 +55,6 @@ public final class WorldEnvironmentImpl implements WorldEnvironment {
     private final List<PowerUp> items = new ArrayList<>();
     private Enemy boss;
     private boolean considerDoor;
-    private static WorldEnvironmentImpl singleton;
-
-    /**
-     * private constructor to avoid client applications to use constructor.
-     */
-    private WorldEnvironmentImpl() { }
-
-    /**
-     * Get the instance of WorldEnvironmentImpl.
-     * 
-     * @return  the instance of WorldEnvironmentImpl
-     */
-    public static WorldEnvironmentImpl getInstance() {
-        if (Objects.isNull(singleton)) {
-            singleton = new WorldEnvironmentImpl();
-        }
-        return singleton;
-    }
 
     /**
      * Create rooms. The first Room of the list is the MainRoom. The second Room of

@@ -11,6 +11,7 @@ import model.animated.CharacterFactoryImpl;
 import model.animated.Enemy;
 import model.animated.EntityStats;
 import model.animated.Player;
+import model.environment.WorldEnvironment;
 import model.environment.WorldEnvironmentImpl;
 import model.hitbox.CircleHitBox;
 import model.hitbox.HitBox;
@@ -69,6 +70,7 @@ public class WorldImpl implements World {
     private int currentRound = 1;
     private Mode mode;
     private RoundsGenerator roundsGenerator;
+    private WorldEnvironment we;
 
     /**
      * Constructor for this class.
@@ -129,9 +131,10 @@ public class WorldImpl implements World {
      * Create the environment. Needs to be called to create the rooms.
      */
     public void createEnvironment() {
-        listRoom.addAll(WorldEnvironmentImpl.getInstance().createWorld());
+        we = new WorldEnvironmentImpl();
+        listRoom.addAll(we.createWorld());
         this.room = this.listRoom.get(RoomEnum.MAINROOM.getIndex());
-        addButton(WorldEnvironmentImpl.getInstance().getButton());
+        addButton(we.getButton());
         createPlayer(playerCreation());
         ModelUtility.updateRoomModelUtility(this.room);
     }
@@ -467,7 +470,7 @@ public class WorldImpl implements World {
         }
         if (!this.button.isPressed() && getCurrentRound() >= NUM_ROUNDS
                 && CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
-                        (RectangularHitBox) WorldEnvironmentImpl.getInstance().getRightDoorFromMainToShop().getHitBox())
+                        (RectangularHitBox) we.getRightDoorFromMainToShop().getHitBox())
                 && !this.mode.equals(Mode.SURVIVAL)) {
             this.room = this.listRoom.get(RoomEnum.SHOPROOM.getIndex());
             listEvent.add(new RoomChange(this.room));
@@ -492,8 +495,8 @@ public class WorldImpl implements World {
                 incCurrentRound();
                 this.button.setPressed(false);
                 if (getCurrentRound() >= NUM_ROUNDS && !this.mode.equals(Mode.SURVIVAL)) {
-                    WorldEnvironmentImpl.getInstance().getRightDoorFromMainToShop().setOpen(true);
-                    WorldEnvironmentImpl.getInstance().getRightDoorFromShopToBoss().setOpen(true);
+                    we.getRightDoorFromMainToShop().setOpen(true);
+                    we.getRightDoorFromShopToBoss().setOpen(true);
                     this.getActualRoom().getDoors().get(0).setImgDoor(ImageType.RIGHT_SHOP_DOOR_UNLOCKED);
                 }
             }
@@ -514,7 +517,7 @@ public class WorldImpl implements World {
      */
     private void bossRoomAction(final double deltaTime) {
         wallColliding();
-        final Enemy boss = WorldEnvironmentImpl.getInstance().getBoss();
+        final Enemy boss = we.getBoss();
         boss.getLife();
         playerBulletHitsEnemy(deltaTime);
         if (!isBossDefeated()) {
@@ -545,7 +548,7 @@ public class WorldImpl implements World {
         wallColliding();
         playerBulletHitsEnemy(deltaTime);
         final List<PowerUp> dieItems = new ArrayList<>();
-        for (final PowerUp i : WorldEnvironmentImpl.getInstance().getItems()) {
+        for (final PowerUp i : we.getItems()) {
             if (i instanceof Heart) {
                 if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
                         (RectangularHitBox) i.getHitBox())
@@ -577,12 +580,12 @@ public class WorldImpl implements World {
                 }
             }
         }
-        WorldEnvironmentImpl.getInstance().getItems().removeAll(dieItems);
+        we.getItems().removeAll(dieItems);
         if (CollisionUtil.rectPlayerCollision((CircleHitBox) getPlayer().getHitBox(),
-                (RectangularHitBox) WorldEnvironmentImpl.getInstance().getRightDoorFromShopToBoss().getHitBox())) {
+                (RectangularHitBox) we.getRightDoorFromShopToBoss().getHitBox())) {
             this.room = this.listRoom.get(RoomEnum.BOSSROOM.getIndex());
             listEvent.add(new RoomChange(this.room));
-            WorldEnvironmentImpl.getInstance().getLeftDoorFromBossToShop().setOpen(false);
+            we.getLeftDoorFromBossToShop().setOpen(false);
             this.listEvent.add(new BossFightStarted());
             getPlayer().getHitBox().changePosition(SpawnUtility.getSpawnXEnterRightDoor(),
                     SpawnUtility.getSpawnYEnterRightDoor());
@@ -612,10 +615,10 @@ public class WorldImpl implements World {
      */
     private void wallColliding() {
         CollisionUtil.checkBoundaryCollision((CircleHitBox) this.player.getHitBox(),
-                (RectangularHitBox) WorldEnvironmentImpl.getInstance().getRoomHB());
+                (RectangularHitBox) we.getRoomHB());
         for (final Animated enemy : this.listEnemy) {
             if (CollisionUtil.checkBoundaryCollision((CircleHitBox) enemy.getHitBox(),
-                    (RectangularHitBox) WorldEnvironmentImpl.getInstance().getRoomHB())) {
+                    (RectangularHitBox) we.getRoomHB())) {
                 final AbstractCharacter character = (AbstractCharacter) enemy;
                 if (character.getAI().getMovementStrategy() instanceof SimplyDirectionMovement) {
                     final SimplyDirectionMovement movement = (SimplyDirectionMovement) character.getAI()
