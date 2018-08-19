@@ -103,8 +103,8 @@ public class GameLoopImpl implements GameLoop, Runnable {
     }
 
     /**
-     * Method that implement the game loop of the game. It updates world, manage the
-     * world events and call the render.
+     * Method that implement the game loop of the game. 
+     * It updates world, manage the world events and call the render.
      */
     @Override
     public void run() {
