@@ -93,7 +93,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * Stop the game loop.
      */
     @Override
-    public synchronized  void stop() {
+    public synchronized void stop() {
         if (running) {
             interrupt();
             if (!Objects.isNull(timerThread) && timeAgent.isRunning()) {
@@ -245,7 +245,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     /**
      * Start the time.
      */
-    private void startTime() {
+    private synchronized void startTime() {
         timeAgent = new TimeAgent(time);
         if (!time.getListeners().contains(ViewImpl.get().getDrawerReference())) {
             time.addListener(ViewImpl.get().getDrawerReference());
@@ -258,7 +258,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
     /**
      * Stop the time.
      */
-    private void stopTime() {
+    private synchronized void stopTime() {
         timeAgent.interrupt();
     }
 
