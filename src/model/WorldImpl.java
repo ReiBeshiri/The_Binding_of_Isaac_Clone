@@ -333,6 +333,7 @@ public class WorldImpl implements World {
             getPlayer().decLife(life);
             listEvent.add(new PlayerHeartChange(getPlayer().getLife()));
             if (getPlayer().getLife() <= 0) {
+                this.listEvent.clear();
                 this.listEvent.add(new PlayerDied());
             }
         }
