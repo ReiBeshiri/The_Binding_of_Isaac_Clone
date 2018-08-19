@@ -75,7 +75,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * Start the game loop.
      */
     @Override
-    public void start() {
+    public synchronized void start() {
         if (!running) {
             this.running = true;
             optimalTime = GameLoopImpl.SECONDNANO / GameLoopImpl.FPS;
@@ -93,7 +93,7 @@ public class GameLoopImpl implements GameLoop, Runnable {
      * Stop the game loop.
      */
     @Override
-    public void stop() {
+    public synchronized  void stop() {
         if (running) {
             interrupt();
             if (!Objects.isNull(timerThread) && timeAgent.isRunning()) {
